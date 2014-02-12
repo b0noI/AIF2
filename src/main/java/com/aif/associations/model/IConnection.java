@@ -1,4 +1,4 @@
-package com.aif.model;
+package com.aif.associations.model;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
