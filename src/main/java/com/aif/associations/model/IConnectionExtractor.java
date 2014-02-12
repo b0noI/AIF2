@@ -3,7 +3,7 @@ package com.aif.associations.model;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-public interface IConnection {
+public interface IConnectionExtractor {
 
     @Min(value = 0)
     @Max(value = 1)
