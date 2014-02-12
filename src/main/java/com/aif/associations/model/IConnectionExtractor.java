@@ -7,10 +7,10 @@ public interface IConnectionExtractor {
 
     @Min(value = 0)
     @Max(value = 1)
-    public double getProbabilityOfHavingItemsInOneExperiment(IItem item1, IItem item2);
+    public double getProbabilityOfHavingItemsInOneExperiment(final IItem item1, final IItem item2);
 
     @Min(value = 0)
     @Max(value = 1)
-    public double getApproximateIntervalBetweenItems(IItem item1, IItem item2);
+    public double getApproximateIntervalBetweenItems(final IItem item1, final IItem item2);
 
 }

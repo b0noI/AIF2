@@ -7,6 +7,6 @@ public interface IAssociationsExtractor {
 
     @Min(value = 0)
     @Max(value = 1)
-    public double getAssociationsLevel(IConnectionExtractor connectionExtractor, IItem item1, IItem item2);
+    public double getAssociationsLevel(final IConnectionExtractor connectionExtractor, final IItem item1, final IItem item2);
 
 }
