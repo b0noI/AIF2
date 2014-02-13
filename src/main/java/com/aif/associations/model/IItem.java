@@ -13,7 +13,7 @@ public interface IItem extends Comparable<IItem> {
     @Max(value = 1)
     public double getComplexety();
 
-    default public int compareTo(IItem item) {
+    default public int compareTo(final IItem item) {
         if (item.getWeight() == getWeight()) return 0;
         if (item.getWeight() > getWeight()) return -1;
         return 1;
