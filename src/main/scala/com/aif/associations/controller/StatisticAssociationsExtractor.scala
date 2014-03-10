@@ -22,7 +22,7 @@ class StatisticAssociationsExtractor[T <: Item, T2 <: Item] extends Associations
   }
 
   private def calculateDenominator(connectionExtractor: ConnectionExtractor[T, T2], item1: T, item2: T2): Double = {
-    val itemsDifficult = (item1.getComplexety + item2.getComplexety) / 2.0
+    val itemsDifficult = (item1.getComplexity + item2.getComplexity) / 2.0
     val aproxInterval = connectionExtractor.getApproximateIntervalBetweenItems(item1, item2)
     return itemsDifficult * aproxInterval
   }

@@ -2,7 +2,6 @@ package com.aif.associations.model
 
 import javax.validation.constraints.{Max, Min}
 
-
 trait ConnectionExtractor[T <: Item, T2 <: Item]{
 
   @Min(value = 0)

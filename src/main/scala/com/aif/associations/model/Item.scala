@@ -2,7 +2,7 @@ package com.aif.associations.model
 
 import javax.validation.constraints.{Max, Min}
 
-trait Item {
+trait Item extends Comparable[Item] {
 
   @Min(value = 0)
   @Max(value = 1)
@@ -10,12 +10,9 @@ trait Item {
 
   @Min(value = 0)
   @Max(value = 1)
-  def getComplexety: Double
+  def getComplexity: Double
 
-  def compareTo(item: IItem): Int = {
-    if (item.getWeight == getWeight) return 0
-    if (item.getWeight > getWeight) return -1
-    return 1
+  def compareTo(item: Item): Int = {
+    return (getWeight - item.getWeight).toInt
   }
-
 }
