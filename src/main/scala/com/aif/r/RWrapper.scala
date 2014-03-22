@@ -9,7 +9,7 @@ import org.antlr.runtime.{CommonTokenStream, ANTLRStringStream}
 object RWrapper {
 
   def evalR(input: String):String = {
-    result = eval(input).pretty();
+    var result = eval(input).pretty();
     result = result.replace("\r\n", "\n");
     return result;
   }
@@ -32,8 +32,8 @@ object RWrapper {
     }
   }
 
-  private[tools] var lexer: RLexer = new RLexer
+  private var lexer: RLexer = new RLexer
 
-  private[tools] var parser: RParser = new RParser(null)
+  private var parser: RParser = new RParser(null)
 
 }
