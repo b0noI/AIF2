@@ -37,7 +37,7 @@ object TextExtractor {
 }
   object Main {
     def main(args: Array[String]) {
-    val first = TextExtractor.parse("aababbac")
+    val first = TextExtractor.parse("test")
 
     for (elem <- first)
       println(elem._1, "positions = " + elem._2.getPositions().deep.mkString(","),
