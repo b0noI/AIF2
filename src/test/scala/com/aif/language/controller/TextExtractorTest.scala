@@ -5,7 +5,16 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class TextExtractor$Test extends FunSuite {
+class TextExtractorTest extends FunSuite {
+
+  test("merge string information") {
+    val firstInfo = new CharacterInfo(Array(1, 3), Array(2))
+    val secondInfo = new CharacterInfo(Array(6), Array())
+    val expected = new CharacterInfo(Array(1, 3, 6), Array(2, 3))
+
+    val actualResult = TextExtractor.mergeCharacterInfo(firstInfo, secondInfo)
+    assert(actualResult.equals(expected))
+  }
 
   test("parse simple string") {
     val inputString = "test"
