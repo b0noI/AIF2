@@ -1,6 +1,6 @@
 package com.aif.language.controller
 
-class CharacterInfo(positions: Array[Int], distances: Array[Int]) {
+class CharacterInfo(positions: Array[Double], distances: Array[Double]) {
   def getPositions() = positions
 
   def getDistances() = distances
