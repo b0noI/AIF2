@@ -7,7 +7,13 @@ object StatHelper {
   def variance(values: Array[Double]) = {
     val stat = new SummaryStatistics()
     values.foreach(f => stat.addValue(f))
-    stat.getVariance
+    scala.math.sqrt(stat.getVariance)
+  }
+
+  def variance(values: Array[Int]) = {
+    val stat = new SummaryStatistics()
+    values.foreach(f => stat.addValue(f))
+    scala.math.sqrt(stat.getVariance)
   }
 
 }
