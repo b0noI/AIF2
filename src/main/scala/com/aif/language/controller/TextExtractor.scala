@@ -68,5 +68,7 @@ object TextExtractor {
     def main2() {
       val first = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl1.txt").mkString)
       println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
+      val first2 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl2.txt").mkString)
+      println("Space 2 is: \"" + TextExtractor.getSpace(first2) + "\"")
     }
   }
