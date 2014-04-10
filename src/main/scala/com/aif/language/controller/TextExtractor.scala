@@ -19,6 +19,13 @@ object TextExtractor {
     new CharacterInfo(first.getPositions() ++ second.getPositions(), calculateDistances(first, second))
   }
 
+  def getSpace(characters: Map[Char, CharacterInfo]): Char = {
+    characters.toSeq.sortBy(x => {
+      val variance = StatHelper.variance(x._2.getDistances())
+      if (variance == 0.0) 1
+      else StatHelper.variance(x._2.getDistances())}).head._1
+  }
+
   def parse(data: String): Map[Char, CharacterInfo] = {
 
     @tailrec
@@ -49,22 +56,17 @@ object TextExtractor {
       "and there was the lion coming upon him. But when the great beast came up to him instead of attacking him it " +
       "kept on moaning and groaning and looking at Androcles, who saw that the lion was holding out his right paw, which was covered with blood and much swollen. Looking more closely at it Androcles saw a great big thorn pressed into the paw, which was the cause of all the lion’s trouble. Plucking up courage he seized hold of the thorn and drew it out of the lion’s paw, who roared with pain when the thorn came out, but soon after found such relief from it that he rubbed up against Androcles and showed, in every way that he knew, that he was truly thankful for being relieved from such pain.")
 
-      val variances = ArrayBuffer[Double]()
-      for (elem <- first) {
-        val variance = StatHelper.variance(elem._2.getPositions)
-        variances += variance
-        println("Element: " + elem._1, "Elements number: " + elem._2.getPositions().length,
-          " Dispersion: " + variance)
-      }
-      println(variances.sorted.mkString(","))
+      first.toSeq.sortBy(x => {
+        val variance = StatHelper.variance(x._2.getDistances())
+        if (variance == 0.0) 1
+        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1))
+
+      println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
+
+      main2()
     }
     def main2() {
       val first = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl1.txt").mkString)
-      for (elem <- first.toSeq.sortBy(x => StatHelper.variance(x._2.getDistances()))) {
-        println(elem._1, "positions = " ,
-          " distances = " + elem._2.getDistances().deep.mkString(","))
-        println(" dispersion = " + StatHelper.variance(elem._2.getDistances()))
-        //        println( elem )
-      }
+      println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
     }
   }

@@ -4,7 +4,7 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 
 object StatHelper {
 
-  def variance(values: Array[Int]): Double = {
+  def variance(values: Array[Double]): Double = {
     if (values.isEmpty) return 0.0
     val stat = new SummaryStatistics()
     val max = values.max
