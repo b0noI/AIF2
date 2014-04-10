@@ -4,16 +4,15 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 
 object StatHelper {
 
-  def variance(values: Array[Double]) = {
+  def variance(values: Array[Int]): Double = {
+    if (values.isEmpty) return 0.0
     val stat = new SummaryStatistics()
-    values.foreach(f => stat.addValue(f))
-    scala.math.sqrt(stat.getVariance)
-  }
-
-  def variance(values: Array[Int]) = {
-    val stat = new SummaryStatistics()
-    values.foreach(f => stat.addValue(f))
-    scala.math.sqrt(stat.getVariance)
+    val max = values.max
+    val min = values.min
+    if (max == min) return 0.0
+    val normalizedValues = values.map(i => (i - min)/(max - min))
+    normalizedValues.foreach(f => stat.addValue(f))
+    stat.getVariance
   }
 
 }

@@ -1,6 +1,8 @@
 package com.aif.language.controller
 
 import scala.collection.mutable.Map
+import com.aif.stat.StatHelper
+import scala.annotation.tailrec
 
 object TextExtractor {
 
@@ -17,11 +19,15 @@ object TextExtractor {
 
   def parse(data: String): Map[Char, CharacterInfo] = {
 
-    def parseData(text: String): Map[Char, CharacterInfo] = {
+    @tailrec
+    def parseData(text: String, toMerge: Map[Char, CharacterInfo]): Map[Char, CharacterInfo] = {
       if(text.length == 1) {
-        Map(text.head -> new CharacterInfo(Array(data.length - 1), Array()))
+        if (toMerge != null) merge(toMerge, Map(text.head -> new CharacterInfo(Array(data.length - 1), Array())))
+        else Map(text.head -> new CharacterInfo(Array(data.length - 1), Array()))
       } else {
-        merge(Map(text.head -> new CharacterInfo(Array(data.length - text.length), Array())), parseData(text.tail))
+        if (toMerge != null) parseData(text.tail, merge(toMerge, Map(text.head -> new CharacterInfo(Array(data.length - text.length), Array()))))
+          else
+          parseData(text.tail, Map(text.head -> new CharacterInfo(Array(data.length - text.length), Array())))
       }
     }
 
@@ -31,16 +37,18 @@ object TextExtractor {
         new CharacterInfo(Array(), Array()))))})
     }
 
-    parseData(data)
+    parseData(data, null)
   }
 
 }
   object Main {
     def main(args: Array[String]) {
-    val first = TextExtractor.parse("aababbac")
-
-    for (elem <- first)
-      println(elem._1, "positions = " + elem._2.getPositions().deep.mkString(","),
-        " distances = " + elem._2.getDistances().deep.mkString(","))
+      val first = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl1.txt").mkString)
+      for (elem <- first.toSeq.sortBy(x => StatHelper.variance(x._2.getDistances()))) {
+        println(elem._1, "positions = " ,
+          " distances = " + elem._2.getDistances().deep.mkString(","))
+        println(" dispersion = " + StatHelper.variance(elem._2.getDistances()))
+//        println( elem )
+      }
     }
   }
