@@ -64,6 +64,7 @@ object TextExtractor {
       println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
 
       main2()
+      diffLanguagesExample()
     }
     def main2() {
       val first = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl1.txt").mkString)
@@ -83,5 +84,19 @@ object TextExtractor {
         if (variance == 0.0) 1
         else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
       println("Space 4 is: \"" + TextExtractor.getSpace(first4) + "\"")
+    }
+
+    def diffLanguagesExample() {
+      val languages = Array("arabic", "chinese", "english", "finish", "french", "german",
+                            "greek", "hindi", "hungirian", "indonesian", "irish", "italian",
+                            "japanese", "korean", "mandarin", "norwegian", "polish", "portuguese",
+                            "romanian", "russian", "spanish", "swedish", "thai", "turkish", "vietnamese")
+
+      for(language <- languages) {
+        val textInfo = TextExtractor.parse(scala.io.Source.fromFile
+          ("src/test/scala/com/aif/stat/differentLanguages/LawIntro/%s.txt".format(language))
+          .mkString)
+        println("For %s space is: \"".format(language) + TextExtractor.getSpace(textInfo) + "\"")
+      }
     }
   }
