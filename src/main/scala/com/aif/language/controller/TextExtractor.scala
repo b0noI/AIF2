@@ -1,7 +1,5 @@
 package com.aif.language.controller
 
-import scala.collection.mutable.{ArrayBuffer, Map}
-import com.aif.stat.StatHelper
 import scala.collection.mutable.Map
 import com.aif.stat.StatHelper
 import scala.annotation.tailrec
@@ -62,41 +60,5 @@ object TextExtractor {
         else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1))
 
       println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
-
-      main2()
-      diffLanguagesExample()
-    }
-    def main2() {
-      val first = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl1.txt").mkString)
-      println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
-      val first2 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl2.txt").mkString)
-      println("Space 2 is: \"" + TextExtractor.getSpace(first2) + "\"")
-      val first3 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl3.txt").mkString)
-      first3.toSeq.sortBy(x => {
-        val variance = StatHelper.variance(x._2.getDistances())
-        if (variance == 0.0) 1
-        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-      println("Space 3 is: \"" + TextExtractor.getSpace(first3) + "\"")
-
-      val first4 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl3.txt").mkString)
-      first4.toSeq.sortBy(x => {
-        val variance = StatHelper.variance(x._2.getDistances())
-        if (variance == 0.0) 1
-        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-      println("Space 4 is: \"" + TextExtractor.getSpace(first4) + "\"")
-    }
-
-    def diffLanguagesExample() {
-      val languages = Array("arabic", "chinese", "english", "finish", "french", "german",
-                            "greek", "hindi", "hungirian", "indonesian", "irish", "italian",
-                            "japanese", "korean", "mandarin", "norwegian", "polish", "portuguese",
-                            "romanian", "russian", "spanish", "swedish", "thai", "turkish", "vietnamese")
-
-      for(language <- languages) {
-        val textInfo = TextExtractor.parse(scala.io.Source.fromFile
-          ("src/test/scala/com/aif/stat/differentLanguages/LawIntro/%s.txt".format(language))
-          .mkString)
-        println("For %s space is: \"".format(language) + TextExtractor.getSpace(textInfo) + "\"")
-      }
     }
   }
