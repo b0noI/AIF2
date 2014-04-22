@@ -2,7 +2,9 @@ package com.aif.stat
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.junit.Ignore
 
+@Ignore
 @RunWith(classOf[JUnitRunner])
 class StatHelperTest extends org.scalatest.FunSuite {
 

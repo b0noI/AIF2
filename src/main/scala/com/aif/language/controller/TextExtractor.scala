@@ -1,7 +1,5 @@
 package com.aif.language.controller
 
-import scala.collection.mutable.{ArrayBuffer, Map}
-import com.aif.stat.StatHelper
 import scala.collection.mutable.Map
 import com.aif.stat.StatHelper
 import scala.annotation.tailrec
@@ -62,6 +60,7 @@ object TextExtractor {
         else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1))
 
       println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
+<<<<<<< HEAD
 
       main2()
     }
@@ -99,5 +98,7 @@ object TextExtractor {
         if (variance == 0.0) 1
         else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
       println("Space 5 is: \"" + TextExtractor.getSpace(first5) + "\"")
+=======
+>>>>>>> 34baab379fbd69fbe13c102eb5f19d93de50151b
     }
   }
