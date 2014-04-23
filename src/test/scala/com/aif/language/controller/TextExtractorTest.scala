@@ -30,29 +30,15 @@ class TextExtractorTest extends FunSuite {
 
     val expectedCharacter = ' '
 
-    val firstText = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl1.txt").mkString)
-
     val secondText = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl2.txt").mkString)
 
     val thirdText = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl3.txt").mkString)
-//    thirdText.toSeq.sortBy(x => {
-//      val variance = StatHelper.variance(x._2.getDistances())
-//      if (variance == 0.0) 1
-//      else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
 
-    val forthText = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl3.txt").mkString)
-//    forthText.toSeq.sortBy(x => {
-//      val variance = StatHelper.variance(x._2.getDistances())
-//      if (variance == 0.0) 1
-//      else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-
-    expectResult(expectedCharacter) {TextExtractor.getSpace(firstText)}
     expectResult(expectedCharacter) {TextExtractor.getSpace(secondText)}
     expectResult(expectedCharacter) {TextExtractor.getSpace(thirdText)}
-    expectResult(expectedCharacter) {TextExtractor.getSpace(forthText)}
   }
 
-  ignore("find space character: multiply languages") {
+  test("find space character: multiply languages") {
     val languages = Array("arabic", "chinese", "english", "finish", "french", "german",
       "greek", "hindi", "hungirian", "indonesian", "irish", "italian",
       "japanese", "korean", "mandarin", "norwegian", "polish", "portuguese",

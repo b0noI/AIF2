@@ -18,10 +18,13 @@ object TextExtractor {
   }
 
   def getSpace(characters: Map[Char, CharacterInfo]): Char = {
+
+    val valuesList = characters.valuesIterator.toList
+    val sum = valuesList.map(_.getPositions().length).sum
+
     characters.toSeq.sortBy(x => {
-      val variance = StatHelper.variance(x._2.getDistances())
-      if (variance == 0.0) 1
-      else StatHelper.variance(x._2.getDistances())}).head._1
+      1.0 - x._2.getPositions().length.toDouble / sum.toDouble
+    }).head._1
   }
 
   def parse(data: String): Map[Char, CharacterInfo] = {
@@ -60,45 +63,6 @@ object TextExtractor {
         else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1))
 
       println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
-<<<<<<< HEAD
 
-      main2()
-    }
-    def main2() {
-      val first = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl1.txt").mkString)
-      first.toSeq.sortBy(x => {
-        val variance = StatHelper.variance(x._2.getDistances())
-        if (variance == 0.0) 1
-        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-      println("Space is: \"" + TextExtractor.getSpace(first) + "\"")
-
-      val first2 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl2.txt").mkString)
-      first2.toSeq.sortBy(x => {
-        val variance = StatHelper.variance(x._2.getDistances())
-        if (variance == 0.0) 1
-        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-      println("Space 2 is: \"" + TextExtractor.getSpace(first2) + "\"")
-      val first3 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl3.txt").mkString)
-      first3.toSeq.sortBy(x => {
-        val variance = StatHelper.variance(x._2.getDistances())
-        if (variance == 0.0) 1
-        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-      println("Space 3 is: \"" + TextExtractor.getSpace(first3) + "\"")
-
-//      val first4 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl4.txt").mkString)
-//      first4.toSeq.sortBy(x => {
-//        val variance = StatHelper.variance(x._2.getDistances())
-//        if (variance == 0.0) 1
-//        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-//      println("Space 4 is: \"" + TextExtractor.getSpace(first4) + "\"")
-
-      val first5 = TextExtractor.parse(scala.io.Source.fromFile("src/test/scala/com/aif/stat/engl5.txt").mkString)
-      first5.toSeq.sortBy(x => {
-        val variance = StatHelper.variance(x._2.getDistances())
-        if (variance == 0.0) 1
-        else StatHelper.variance(x._2.getDistances())}).foreach(x => println(x._1 + " DISP: " + StatHelper.variance(x._2.getDistances())))
-      println("Space 5 is: \"" + TextExtractor.getSpace(first5) + "\"")
-=======
->>>>>>> 34baab379fbd69fbe13c102eb5f19d93de50151b
     }
   }
