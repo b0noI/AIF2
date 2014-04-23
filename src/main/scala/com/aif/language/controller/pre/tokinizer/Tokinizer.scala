@@ -3,11 +3,25 @@ package com.aif.language.controller.pre.tokinizer
 import scala.collection.mutable.Map
 import scala.annotation.tailrec
 
-object Tokinizer {
+trait Tokinizer {
 
   def tokinize(data: String): Array[String] = {
     data.split(getSpace(data))
   }
+
+  def getSpace(data: String): Char
+
+}
+
+class TokinizerCharacterBased extends Tokinizer {
+
+  def getSpace(data: String): Char = {
+    ' '
+  }
+
+}
+
+class TokinizerProbabilityBased extends Tokinizer {
 
   def getSpace(data: String): Char = {
     getSpace(parse(data))
