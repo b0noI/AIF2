@@ -1,4 +1,4 @@
-package com.aif.language.controller
+package com.aif.language.controller.pre.tokinizer
 
 class CharacterInfo(positions: Array[Double], distances: Array[Double]) {
   def getPositions() = positions
