@@ -2,29 +2,30 @@ package com.aif.language.controller.pre.tokinizer
 
 import scala.collection.mutable.Map
 import scala.annotation.tailrec
+import scala.util.matching.Regex
 
 trait Tokinizer {
 
   def tokinize(data: String): Array[String] = {
-    data.split(getSpace(data))
+    getSpaceRegExp(data).split(data)
   }
 
-  def getSpace(data: String): Char
+  def getSpaceRegExp(data: String): Regex
 
 }
 
 class TokinizerCharacterBased extends Tokinizer {
 
-  def getSpace(data: String): Char = {
-    ' '
+  def getSpaceRegExp(data: String): Regex = {
+    "( |\n)".r
   }
 
 }
 
 class TokinizerProbabilityBased extends Tokinizer {
 
-  def getSpace(data: String): Char = {
-    getSpace(parse(data))
+  def getSpaceRegExp(data: String): Regex = {
+    ("(" + getSpace(parse(data)) + ")").r
   }
 
   private def getSpace(characters: Map[Char, CharacterInfo]): Char = {

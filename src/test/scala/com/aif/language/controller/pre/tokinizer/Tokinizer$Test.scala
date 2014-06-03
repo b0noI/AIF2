@@ -19,7 +19,7 @@ class Tokinizer$Test extends FunSuite {
       if (index == languages.length)
         0
       else {
-        if (tokinizer.getSpace(scala.io.Source.fromFile
+        if (tokinizer.getSpaceRegExp(scala.io.Source.fromFile
           (fileNameTemplate.format(languages(index))).mkString).equals(' '))
           1 + processLanguage(index + 1)
         else
