@@ -11,6 +11,10 @@ public class TokenSplitter {
         this.tokenSeparatorExtractor = tokenSeparatorExtractor;
     }
 
+    public TokenSplitter() {
+        this(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+    }
+
     public List<String> split(final String txt) {
         final List<Character> separators = tokenSeparatorExtractor.getSeparators(txt);
         final String regExp = TokenSplitter.prepareRegex(separators);
