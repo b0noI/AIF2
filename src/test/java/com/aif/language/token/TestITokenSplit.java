@@ -18,12 +18,14 @@ public class TestITokenSplit {
 
     public void testTokinization(final ITokenSeparatorExtractor testClass) {
         final TokenSplitter tokenSplitter = new TokenSplitter(testClass);
-        final String inputText = "toke2, toke2. Token3\n token4";
-        final List<String> expectedResult = Arrays.asList(new String[]{"toke2,", "toke2.", "Token3", "token4"});
+        final String inputText = "The JDK contains many terminal operations (such as average, sum, min, max, and count) that return one value by combining the contents of a stream. ";
+        final List<String> expectedResult = Arrays.asList(new String[]{"The", "JDK", "contains", "many"});
 
         final List<String> actualResult = tokenSplitter.split(inputText);
 
-        assertEquals(expectedResult, actualResult);
+        for (int i = 0; i < expectedResult.size(); i++) {
+            assertEquals(expectedResult.get(i), actualResult.get(i));
+        }
     }
 
 }

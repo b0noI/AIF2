@@ -8,7 +8,8 @@ public interface ITokenSeparatorExtractor {
 
     public static enum Type {
 
-        PREDEFINED(new PredefinedSeparatorExtractor()),;
+        PREDEFINED(new PredefinedSeparatorExtractor()),
+        PROBABILITY(new ProbabilityBasedSeparatorExtractor());
 
         private final ITokenSeparatorExtractor instance;
 
