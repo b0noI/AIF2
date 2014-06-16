@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 class ProbabilityBasedSeparatorExtractor implements ITokenSeparatorExtractor {
 
     @Override
-    public List<Character> getSeparators(String txt) {
+    public List<Character> getSeparators(final String txt) {
         final Character[] charactersArray = ProbabilityBasedSeparatorExtractor.toCharacterArray(txt.toCharArray());
         final List<Character> characters = Arrays.asList(charactersArray);
 
