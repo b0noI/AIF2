@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface IWordExtractor {
 
-    public List<Word.WordPlaceHolder> getWords(List<List<String>> sentances);
+    public List<AbstractWord.WordPlaceHolder> getWords(List<List<String>> sentances);
 
 }
