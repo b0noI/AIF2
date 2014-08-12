@@ -2,6 +2,7 @@ package com.aif.language.semantic;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.List;
 import java.util.Set;
 
 public interface ISemanticNode<T> {

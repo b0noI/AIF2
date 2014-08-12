@@ -1,10 +1,8 @@
 package com.aif.language.semantic;
 
 import com.aif.language.word.Word;
-import sun.security.pkcs11.wrapper.Functions;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class SemanticWord implements ISemanticNode<Word>{
