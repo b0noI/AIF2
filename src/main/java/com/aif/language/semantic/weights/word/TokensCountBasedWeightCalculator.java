@@ -8,8 +8,8 @@ public class TokensCountBasedWeightCalculator implements IWeightCalculator<Word>
 
     @Override
     public double calculateWeight(ISemanticNode<Word> semanticNode) {
-        final Word word = semanticNode.getNode();
-        return 1.0 - 1.0 / (double)word.getTokens();
+        final Word word = semanticNode.item();
+        return 1.0 - 1.0 / (double)word.getTokens().size();
     }
 
 }
