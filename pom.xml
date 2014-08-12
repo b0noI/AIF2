@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.aif</groupId>
-    <artifactId>com.aif.associations</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>aif</artifactId>
+    <version>2.0-SNAPSHOT</version>
 
     <repositories>
         <repository>
@@ -94,5 +94,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <name>libs-snapshot-local</name>
+            <url>http://192.241.238.122:8081/artifactory/libs-snapshot-local</url>
+        </repository>
+    </distributionManagement>
 
 </project>
