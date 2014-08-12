@@ -2,11 +2,13 @@ package com.aif.language.semantic;
 
 import com.aif.language.word.Word;
 
-import java.util.List;
+import java.util.*;
 
 public class SemanticWord implements ISemanticNode<Word>{
 
     private final Word word;
+
+    private final Map<Word, Double> connections = new HashMap<>();
 
     public SemanticWord(final Word word) {
         this.word = word;
@@ -14,16 +16,29 @@ public class SemanticWord implements ISemanticNode<Word>{
 
     @Override
     public double weight() {
-        return 0;
+        final OptionalLong maxCount = word.getTokens().stream()
+                .mapToLong(token -> word.tokenCount(token))
+                .max();
+
+        if (!maxCount.isPresent())
+            return 0.0;
+
+        // TODO
+        return 0.0;
     }
 
     @Override
     public double connectionWeight(final Word semanticNode) {
-        return 0;
+        return connections.get(semanticNode);
     }
 
     @Override
-    public List<Word> connectedItems() {
+    public Set<Word> connectedItems() {
+        return connections.keySet();
+    }
+
+    @Override
+    public Word getNode() {
         return null;
     }
 
