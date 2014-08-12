@@ -9,14 +9,14 @@ public interface ISemanticNode<T> {
 
     @Max(value = 1)
     @Min(value = 0)
-    public double weight();
+    public double                   weight();
 
     @Max(value = 1)
     @Min(value = 0)
-    public double connectionWeight(T semanticNode);
+    public double                   connectionWeight(ISemanticNode<T> semanticNode);
 
-    public Set<T> connectedItems();
+    public Set<ISemanticNode<T>>    connectedItems();
 
-    public T getNode();
+    public T                        item();
     
 }
