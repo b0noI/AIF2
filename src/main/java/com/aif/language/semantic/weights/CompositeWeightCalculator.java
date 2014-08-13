@@ -7,7 +7,11 @@ import java.util.Set;
 
 public class CompositeWeightCalculator<T> implements IWeightCalculator<T> {
 
-    private final Set<IWeightCalculator<T>> calculators = new HashSet<>();
+    private final Set<IWeightCalculator<T>> calculators;
+
+    public CompositeWeightCalculator(Set<IWeightCalculator<T>> calculators) {
+        this.calculators = calculators;
+    }
 
     @Override
     public double calculateWeight(ISemanticNode<T> semanticNode) {

@@ -1,40 +1,37 @@
 package com.aif.language.semantic;
 
+import com.aif.language.semantic.weights.CompositeWeightCalculator;
+import com.aif.language.semantic.weights.IWeightCalculator;
+import com.aif.language.semantic.weights.word.ConnectionBasedWeightCalculator;
+import com.aif.language.semantic.weights.word.TokensCountBasedWeightCalculator;
 import com.aif.language.word.Word;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class SemanticWord implements ISemanticNode<Word> {
 
     private static  final int                                   MAX_DISTANCE_BETWEEN_WORDS  = 5;
 
-    private static  final int                                   MAX_WORD_CONNECTION_COUNT   = 20_000;
+    private         final IWeightCalculator<Word>               weightCalculator;
 
     private         final Word                                  word;
 
     private         final Map<ISemanticNode<Word>, Connection>  connections                 = new HashMap<>();
 
-    public SemanticWord(final Word word) {
+    public SemanticWord(final Word word, final IWeightCalculator<Word> weightCalculator) {
         this.word = word;
+        this.weightCalculator = weightCalculator;
+    }
+
+    public SemanticWord(final Word word) {
+        this(word, SemanticWord.createDefaultWeightCalculator());
     }
 
     @Override
     public double weight() {
-        final Set<ISemanticNode<Word>> items = this.connectedItems();
-
-        final OptionalDouble maxConnectionWeightOptional = items
-                .parallelStream()
-                .mapToDouble(word -> connectionWeight(word))
-                .max();
-
-        if (!maxConnectionWeightOptional.isPresent())
-            return 0;
-
-        final double maxConnectionWeight = maxConnectionWeightOptional.getAsDouble();
-        final double normalizedConnectionCount = items.size() / MAX_WORD_CONNECTION_COUNT;
-
-        return maxConnectionWeight * (1. - normalizedConnectionCount);
+        return weightCalculator.calculateWeight(this);
     }
 
     @Override
@@ -68,6 +65,15 @@ public class SemanticWord implements ISemanticNode<Word> {
             return this.distances;
         }
 
+    }
+
+    private static IWeightCalculator<Word> createDefaultWeightCalculator() {
+        final Set<IWeightCalculator<Word>> calculators = new HashSet<>();
+
+        calculators.add(new TokensCountBasedWeightCalculator());
+        calculators.add(new ConnectionBasedWeightCalculator());
+
+        return new CompositeWeightCalculator<>(calculators);
     }
 
 }
