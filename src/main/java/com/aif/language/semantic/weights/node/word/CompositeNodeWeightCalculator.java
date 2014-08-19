@@ -1,15 +1,15 @@
-package com.aif.language.semantic.weights;
+package com.aif.language.semantic.weights.node.word;
 
 import com.aif.language.semantic.ISemanticNode;
+import com.aif.language.semantic.weights.node.INodeWeightCalculator;
 
-import java.util.HashSet;
 import java.util.Set;
 
-public class CompositeWeightCalculator<T> implements IWeightCalculator<T> {
+public class CompositeNodeWeightCalculator<T> implements INodeWeightCalculator<T> {
 
-    private final Set<IWeightCalculator<T>> calculators;
+    private final Set<INodeWeightCalculator<T>> calculators;
 
-    public CompositeWeightCalculator(Set<IWeightCalculator<T>> calculators) {
+    public CompositeNodeWeightCalculator(Set<INodeWeightCalculator<T>> calculators) {
         this.calculators = calculators;
     }
 

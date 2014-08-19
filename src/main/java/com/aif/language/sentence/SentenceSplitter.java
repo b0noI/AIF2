@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 /**
  * Created by andriikr on 14/06/2014.
  */
-public class SentenceSplit implements ISentenceSplit {
+public class SentenceSplitter implements ISentenceSplitter {
     private final static String REGEX = "^.*[\\.!\\?]$";
 
     @Override
