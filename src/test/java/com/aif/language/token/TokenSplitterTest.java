@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static junit.framework.Assert.*;
+
 /**
  * Created by admin on 20.08.14.
  */
@@ -18,18 +20,26 @@ public class TokenSplitterTest {
     private Path path_to_file;
 
     @Test
-    public void shouldGetTokensFromBook_AliceInTheWonderlends_RU() {
+    public void should_get_tokens_from_text_file_with_space_in_the_begining_using_PREDIFINED_separator() {
 
         try {
 
-            path_to_file = Paths.get(getClass().getResource("/TestData/RU/alice_in_the_wonderland.txt").toURI());
+            path_to_file = Paths.get(getClass().getResource("/TestData/RU/RU_text_with_space_begining.txt").toURI());
+
+            //Expected results:
+
+            final String lastToken = "токенов.";
+            final String firstToken = "-";
+            final long numberOfTokens = 11;
 
             final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
 
-            List<String> output = tokenSplitter.split(textFromFileToString(path_to_file));
+            final List<String> output = tokenSplitter.split(textFromFileToString(path_to_file));
 
-            System.out.println(output.size());
-            System.out.println(output.get(output.size()-1));
+            assertNotNull(output);
+            assertEquals(firstToken, output.get(0));
+            assertEquals(lastToken, output.get(output.size()-1));
+            assertEquals(numberOfTokens, output.size());
 
         } catch (URISyntaxException e) {
             e.printStackTrace();
