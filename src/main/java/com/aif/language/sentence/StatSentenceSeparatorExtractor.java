@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
-    private final static double PROBABILITY_LILIMT_REDUCER = 3;
+    private final static double PROBABILITY_LIMIT_REDUCER = 2.;
 
     @Override
     public List<Character> getSeparators(final List<String> tokens) {
@@ -22,14 +22,40 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
             return Arrays.asList(new Character[0]);
         }
 
-        final double probabilityLimit = maxProb.getAsDouble() / PROBABILITY_LILIMT_REDUCER;
+        characterStats.stream().mapToDouble(CharacterStat::getProbabilityThatEndCharacter).forEach(System.out::println);
 
-        final List<Character> filteredCharactersStat = characterStats
+        final List<Character> filteredCharactersStat = filterCharacterStatisticFromNonEndCharacters(characterStats)
                 .stream()
-                .filter(chStat -> chStat.getProbabilityThatEndCharacter() > probabilityLimit)
                 .<Character>map(CharacterStat::getCharacter)
                 .collect(Collectors.toList());
         return filteredCharactersStat;
+    }
+
+    private List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
+        final List<Double> deltas = new ArrayList<>(characterStats.size() - 1);
+        for (int i = 1; i < characterStats.size(); i++) {
+            final CharacterStat left = characterStats.get(i - 1);
+            final CharacterStat right = characterStats.get(i);
+            deltas.add(left.getProbabilityThatEndCharacter() - right.getProbabilityThatEndCharacter());
+        }
+        final Optional<Double> maxDelta = deltas
+                .stream()
+                .max(Double::compareTo);
+
+        if (!maxDelta.isPresent()) {
+            return Arrays.asList(new CharacterStat[0]);
+        }
+
+        final OptionalInt index = deltas
+                .stream()
+                .filter(delta -> delta > (maxDelta.get() / PROBABILITY_LIMIT_REDUCER))
+                .mapToInt(delta -> deltas.indexOf(delta)).max();
+
+        if (!index.isPresent()) {
+            return Arrays.asList(new CharacterStat[0]);
+        }
+
+        return characterStats.subList(0, index.getAsInt() + 1);
     }
 
     private List<CharacterStat> getCharactersStatistic(final StatData statData) {
