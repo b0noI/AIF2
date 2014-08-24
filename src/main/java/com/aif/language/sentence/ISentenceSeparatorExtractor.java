@@ -10,7 +10,7 @@ public interface ISentenceSeparatorExtractor {
 
     public static enum Type {
         PREDEFINED(new PredefinedSentenceSeparatorExtractor()),
-        STAT(new StatSentenceSplitter());
+        STAT(new StatSentenceSeparatorExtractor());
 
         private final ISentenceSeparatorExtractor instance;
 

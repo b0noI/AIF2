@@ -1,21 +1,50 @@
 package com.aif.language.sentence;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
-class StatSentenceSplitter implements ISentenceSeparatorExtractor {
+class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
+
+    private final static double PROBABILITY_LILIMT_REDUCER = 3;
 
     @Override
-    public List<Character> getSeparators(List<String> tokens) {
-        return null;
+    public List<Character> getSeparators(final List<String> tokens) {
+        final StatData statData = StatSentenceSeparatorExtractor.parseStat(tokens);
+        final List<CharacterStat> characterStats = getCharactersStatistic(statData);
+
+        final OptionalDouble maxProb = characterStats
+                .stream()
+                .mapToDouble(CharacterStat::getProbabilityThatEndCharacter)
+                .max();
+
+        if (!maxProb.isPresent()) {
+            return Arrays.asList(new Character[0]);
+        }
+
+        final double probabilityLimit = maxProb.getAsDouble() / PROBABILITY_LILIMT_REDUCER;
+
+        final List<Character> filteredCharactersStat = characterStats
+                .stream()
+                .filter(chStat -> chStat.getProbabilityThatEndCharacter() > probabilityLimit)
+                .<Character>map(CharacterStat::getCharacter)
+                .collect(Collectors.toList());
+        return filteredCharactersStat;
     }
 
-    private static StatData parseStat(final List<String> sentence) {
+    private List<CharacterStat> getCharactersStatistic(final StatData statData) {
+        final List<CharacterStat> characterStats = new ArrayList<>(statData.getAllCharacters().size());
+        for (Character ch : statData.getAllCharacters()) {
+            final CharacterStat characterStat = new CharacterStat(ch, statData.getProbabilityThatCharacterIsSplitterCharacter(ch));
+            characterStats.add(characterStat);
+        }
+        Collections.sort(characterStats);
+        return characterStats;
+    }
+
+    private static StatData parseStat(final List<String> tokens) {
         final StatData statData = new StatData();
-        sentence.parallelStream().filter(token -> token.length() > 2).forEach(token -> {
+        tokens.parallelStream().filter(token -> token.length() > 2).forEach(token -> {
             token.chars().forEach(ch -> statData.addCharacter((char) ch));
             statData.addEndCharacter(token.charAt(token.length() - 2),
                     token.charAt(token.length() - 1));
@@ -46,6 +75,10 @@ class StatSentenceSplitter implements ISentenceSeparatorExtractor {
             characters.merge(lowCaseCharacter, 1, (v1, v2) -> v1 + v2);
         }
 
+        public Set<Character> getAllCharacters() {
+            return characters.keySet();
+        }
+
         public double getProbabilityThatCharacterIsSplitterCharacter(final Character ch) {
             return getProbabiltyThatCharacterInTheEnd(ch) * getProbablityThatCharacterBeforeIsEndCharacter(ch);
         }
@@ -53,7 +86,9 @@ class StatSentenceSplitter implements ISentenceSeparatorExtractor {
         private Map<Character, Integer> getMapForEndCharacter(final Character endCharacter) {
             if (!charactersBeforeEndCharacter.containsKey(endCharacter)) {
                 synchronized (charactersBeforeEndCharacter) {
-                    return charactersBeforeEndCharacter.getOrDefault(endCharacter, new ConcurrentHashMap<Character, Integer>());
+                    final Map<Character, Integer> targetMap = charactersBeforeEndCharacter.getOrDefault(endCharacter, new ConcurrentHashMap<Character, Integer>());
+                    charactersBeforeEndCharacter.put(endCharacter, targetMap);
+                    return targetMap;
                 }
             }
             return charactersBeforeEndCharacter.getOrDefault(endCharacter, new ConcurrentHashMap<>());
@@ -79,6 +114,31 @@ class StatSentenceSplitter implements ISentenceSeparatorExtractor {
             return Character.toLowerCase(ch);
         }
 
+    }
+
+    private static class CharacterStat implements Comparable<CharacterStat> {
+
+        private final Character character;
+
+        private final Double probabilityThatEndCharacter;
+
+        private CharacterStat(Character character, Double probabilityThatEndCharacter) {
+            this.character = character;
+            this.probabilityThatEndCharacter = probabilityThatEndCharacter;
+        }
+
+        public Character getCharacter() {
+            return character;
+        }
+
+        public Double getProbabilityThatEndCharacter() {
+            return probabilityThatEndCharacter;
+        }
+
+        @Override
+        public int compareTo(CharacterStat that) {
+            return that.getProbabilityThatEndCharacter().compareTo(this.getProbabilityThatEndCharacter());
+        }
     }
 
 }
