@@ -1,11 +1,12 @@
 package com.aif.language.token;
 
-import com.sun.javafx.fxml.expression.Expression;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.LineInputStream;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,15 +15,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.Assert.*;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by admin on 20.08.14.
  */
 public class TokenSplitterTest {
-
-    private Path path_to_file;
 
     //This two String are pathes for gethering statistic
     private final String pathToStatisticSet = "/Users/admin/Documents/programming/projects/AIF2/testData";
@@ -33,17 +32,16 @@ public class TokenSplitterTest {
 
         try {
 
-            path_to_file = Paths.get(getClass().getResource("/TestData/RU/RU_text_with_space_begining.txt").toURI());
+            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_space_begining.txt").toURI());
 
             //Expected results:
-
             final String lastToken = "токенов.";
             final String firstToken = "-";
             final long numberOfTokens = 8;
 
             final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
 
-            final List<String> output = tokenSplitter.split(textFromFileToString(path_to_file));
+            final List<String> output = tokenSplitter.split(textFromFileToString(PathToFile));
 
             assertNotNull(output);
             assertEquals(numberOfTokens, output.size());
@@ -62,7 +60,8 @@ public class TokenSplitterTest {
     public void should_split_new_line_words() {
 
         try {
-            path_to_file = Paths.get(getClass().getResource("/TestData/RU/RU_text_with_new_lines.txt").toURI());
+
+            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_new_lines.txt").toURI());
 
             final String lastToken = "токенов";
             final String firstToken = "В";
@@ -70,7 +69,7 @@ public class TokenSplitterTest {
 
             final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
 
-            final List<String> output = tokenSplitter.split(textFromFileToString(path_to_file));
+            final List<String> output = tokenSplitter.split(textFromFileToString(PathToFile));
 
             assertNotNull(output);
             assertEquals(firstToken, output.get(0));
@@ -87,11 +86,11 @@ public class TokenSplitterTest {
     @Test
     public void should_get_tokens_from_file_using_probability_splitter() {
 
-        path_to_file = Paths.get("/Users/admin/Documents/programming/projects/AIF2/AIF2/src/main/resources/testData/RU/RU_10000_СеврюгаГрач.txt");
+        final Path PathToFile = Paths.get("/Users/admin/Documents/programming/projects/AIF2/src/main/resources/testData/RU/RU_10000_СеврюгаГрач.txt");
 
-        TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
+        final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
-        List<String> tokens = splitter.split(textFromFileToString(path_to_file));
+        final List<String> tokens = splitter.split(textFromFileToString(PathToFile));
 
         assertNotNull(tokens);
         assertEquals(10000, tokens.size());
@@ -103,19 +102,18 @@ public class TokenSplitterTest {
     //TODO this is not a real test, code below used for generating statistic data for probability splitter
     public void generate_statistic_for_probability_splitter() {
 
-        List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
+        final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
+        final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
+
         List<String> splittedText;
-
-
-        TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
         for(Path path: files) {
 
             splittedText = splitter.split(textFromFileToString(path));
 
-            String fileInnerName = path.toFile().getName();
+            final String fileInnerName = path.toFile().getName();
 
-            int correctElems = getTokensNumFromFileName(fileInnerName);
+            final int correctElems = getTokensNumFromFileName(fileInnerName);
 
             saveStatisticToFile(fileInnerName, correctElems, splittedText.size());
 
@@ -126,7 +124,7 @@ public class TokenSplitterTest {
     @Ignore
     public void create_file_set_for_statistic_for_PROBABILITY_based_splitting() {
 
-        TextGenerator tg = new TextGenerator();
+        final TextGenerator tg = new TextGenerator();
 
         tg.setFilesCount(100)
                 .setLenguage("RU")
@@ -136,7 +134,6 @@ public class TokenSplitterTest {
                 .setLocation(Paths.get(pathToStatisticSet))
                 .generate();
     }
-
     private List<Path> getAllFilesInFolder(Path parentPath) {
 
         List<Path> out = new ArrayList<>();
@@ -154,17 +151,13 @@ public class TokenSplitterTest {
 
         return out;
     }
-    private String textFromFileToString(final Path pathToFile) {
+    private static String textFromFileToString(final Path pathToFile) {
 
-        try(BufferedReader reader = Files.newBufferedReader(pathToFile)) {
+        try(final BufferedReader reader = Files.newBufferedReader(pathToFile)) {
 
-            StringBuffer buff = new StringBuffer();
+            final StringBuffer buff = new StringBuffer();
 
-            String line = null;
-
-            while((line = reader.readLine()) != null)
-                //TODO
-                buff.append(line+"\n");
+            reader.lines().forEach(x -> buff.append(x));
 
             return buff.toString();
 
@@ -177,7 +170,7 @@ public class TokenSplitterTest {
     }
     private void saveStatisticToFile(String fileName, int correctTokensNum, int foundTokensNum) {
 
-        try( BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(pathToStatisticResult).toFile(), true))) {
+        try( final BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(pathToStatisticResult).toFile(), true))) {
 
             bw.write(LocalDateTime.now().toString() + "," + fileName + "," + correctTokensNum + "," + foundTokensNum);
             bw.newLine();
