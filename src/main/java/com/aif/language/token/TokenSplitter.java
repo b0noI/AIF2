@@ -6,9 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TokenSplitter implements ISplitter<String>{
+public class TokenSplitter implements ISplitter<String> {
 
-    private final ITokenSeparatorExtractor tokenSeparatorExtractor;
+    private final static    String                      REGEXP_TEMPLATE = "[%s]+";
+
+    private final           ITokenSeparatorExtractor    tokenSeparatorExtractor;
 
     public TokenSplitter(final ITokenSeparatorExtractor tokenSeparatorExtractor) {
         this.tokenSeparatorExtractor = tokenSeparatorExtractor;
@@ -34,10 +36,8 @@ public class TokenSplitter implements ISplitter<String>{
 
     private static String prepareRegex(final List<Character> separators) {
         final StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("[");
         separators.stream().forEach(separator -> stringBuffer.append(separator));
-        stringBuffer.append("]+");
-        return stringBuffer.toString();
+        return String.format(REGEXP_TEMPLATE, stringBuffer.toString());
     }
 
 }
