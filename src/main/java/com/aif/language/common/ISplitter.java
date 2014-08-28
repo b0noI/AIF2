@@ -7,6 +7,6 @@ import java.util.List;
  */
 public interface ISplitter<T1, T2> {
 
-    public List<T2> split(T1 target);
+    public List<T2> split(final T1 target);
 
 }

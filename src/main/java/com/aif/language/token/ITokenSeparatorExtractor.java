@@ -1,15 +1,13 @@
 package com.aif.language.token;
 
-import java.util.List;
+import com.aif.language.common.IExtractor;
 
-public interface ITokenSeparatorExtractor {
-
-    public List<Character> getSeparators(final String txt);
+public interface ITokenSeparatorExtractor extends IExtractor<String, Character> {
 
     public static enum Type {
 
-        PREDEFINED(new PredefinedSeparatorExtractor()),
-        PROBABILITY(new ProbabilityBasedSeparatorExtractor());
+        PREDEFINED(new PredefinedTokenSeparatorExtractor()),
+        PROBABILITY(new ProbabilityBasedTokenSeparatorExtractor());
 
         private final ITokenSeparatorExtractor instance;
 

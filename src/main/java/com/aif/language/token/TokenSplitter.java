@@ -22,8 +22,8 @@ public class TokenSplitter implements ISplitter<String, String> {
 
     @Override
     public List<String> split(final String txt) {
-        final List<Character> separators = tokenSeparatorExtractor.getSeparators(txt);
-        final String regExp = TokenSplitter.prepareRegex(separators);
+        final List<Character> separators = tokenSeparatorExtractor.extract(txt);
+        final String regExp = TokenSplitter.prepareRegexp(separators);
         final List<String> tokens = Arrays.asList(txt.split(regExp));
         return TokenSplitter.filterIncorrectTokens(tokens);
     }
@@ -34,7 +34,7 @@ public class TokenSplitter implements ISplitter<String, String> {
                 .collect(Collectors.toList());
     }
 
-    private static String prepareRegex(final List<Character> separators) {
+    private static String prepareRegexp(final List<Character> separators) {
         final StringBuffer stringBuffer = new StringBuffer();
         separators.stream().forEach(separator -> stringBuffer.append(separator));
         return String.format(REGEXP_TEMPLATE, stringBuffer.toString());

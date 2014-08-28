@@ -14,7 +14,7 @@
 //        final ITokenSeparatorExtractor testClass = ITokenSeparatorExtractor.Type.PREDEFINED.getInstance();
 //        final List<Character> expectedResult = Arrays.asList(new Character[]{' ', '\n'});
 //
-//        final List<Character> actualResult = testClass.getSeparators("");
+//        final List<Character> actualResult = testClass.extract("");
 //
 //        assertEquals(expectedResult, actualResult);
 //    }
