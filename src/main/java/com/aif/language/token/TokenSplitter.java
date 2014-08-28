@@ -1,9 +1,11 @@
 package com.aif.language.token;
 
+import com.aif.language.common.ISplitter;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class TokenSplitter {
+public class TokenSplitter implements ISplitter<String>{
 
     private final ITokenSeparatorExtractor tokenSeparatorExtractor;
 
@@ -15,6 +17,7 @@ public class TokenSplitter {
         this(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
     }
 
+    @Override
     public List<String> split(final String txt) {
         final List<Character> separators = tokenSeparatorExtractor.getSeparators(txt);
         final String regExp = TokenSplitter.prepareRegex(separators);

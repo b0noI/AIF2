@@ -1,5 +1,6 @@
 package com.aif.language.sentence;
 
+import com.aif.language.common.ISplitter;
 import com.aif.language.token.ITokenSeparatorExtractor;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * Created by andriikr on 14/06/2014.
  */
-public class SentenceSplitter {
+public class SentenceSplitter implements ISplitter<List<String>> {
 
     private final ISentenceSeparatorExtractor sentenceSeparatorExtractor;
 
@@ -23,7 +24,8 @@ public class SentenceSplitter {
         this(ISentenceSeparatorExtractor.Type.PREDEFINED.getInstance());
     }
 
-    public List<List<String>> parseSentences(List<String> tokens) {
+    @Override
+    public List<List<String>> split(final List<String> tokens) {
         final List<Boolean> listOfPositions = mapToBooleans(tokens);
 
         final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
