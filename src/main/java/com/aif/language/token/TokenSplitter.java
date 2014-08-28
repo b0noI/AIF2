@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TokenSplitter implements ISplitter<String> {
+public class TokenSplitter implements ISplitter<String, String> {
 
     private final static    String                      REGEXP_TEMPLATE = "[%s]+";
 
