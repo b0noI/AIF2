@@ -4,6 +4,7 @@ import com.aif.language.common.ISplitter;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TokenSplitter implements ISplitter<String>{
 
@@ -21,7 +22,14 @@ public class TokenSplitter implements ISplitter<String>{
     public List<String> split(final String txt) {
         final List<Character> separators = tokenSeparatorExtractor.getSeparators(txt);
         final String regExp = TokenSplitter.prepareRegex(separators);
-        return Arrays.asList(txt.split(regExp));
+        final List<String> tokens = Arrays.asList(txt.split(regExp));
+        return TokenSplitter.filterIncorrectTokens(tokens);
+    }
+
+    private static List<String> filterIncorrectTokens(final List<String> tokens) {
+        return tokens.stream()
+                .filter(token -> !token.isEmpty())
+                .collect(Collectors.toList());
     }
 
     private static String prepareRegex(final List<Character> separators) {
