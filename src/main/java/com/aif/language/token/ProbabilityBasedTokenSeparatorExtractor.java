@@ -19,7 +19,8 @@ class ProbabilityBasedTokenSeparatorExtractor implements ITokenSeparatorExtracto
         final Map<Character, Integer> charactersMappedToCount =
                 ProbabilityBasedTokenSeparatorExtractor.getCharactersMappedToCount(characters);
 
-        final List<Character> separators = ProbabilityBasedTokenSeparatorExtractor.sortBySeparatorProbability(charactersMappedToCount);
+        final List<Character> separators =
+                ProbabilityBasedTokenSeparatorExtractor.sortBySeparatorProbability(charactersMappedToCount);
         return separators.subList(0, 1);
     }
 
