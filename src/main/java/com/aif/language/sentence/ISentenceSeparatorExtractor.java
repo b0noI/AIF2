@@ -2,11 +2,12 @@ package com.aif.language.sentence;
 
 
 
+import com.aif.language.common.IExtractor;
+
 import java.util.List;
+import java.util.Optional;
 
-public interface ISentenceSeparatorExtractor {
-
-    public List<Character> getSeparators(final List<String> tokens);
+public interface ISentenceSeparatorExtractor extends IExtractor<List<String>, List<Character>> {
 
     public static enum Type {
         PREDEFINED(new PredefinedSentenceSeparatorExtractor()),

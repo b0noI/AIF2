@@ -6,13 +6,14 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 class ProbabilityBasedTokenSeparatorExtractor implements ITokenSeparatorExtractor {
 
     @Override
-    public List<Character> extract(final String txt) {
+    public Optional<List<Character>> extract(final String txt) {
         final Character[] charactersArray = ArrayUtils.toObject(txt.toCharArray());
         final List<Character> characters = Arrays.asList(charactersArray);
 
@@ -21,7 +22,7 @@ class ProbabilityBasedTokenSeparatorExtractor implements ITokenSeparatorExtracto
 
         final List<Character> separators =
                 ProbabilityBasedTokenSeparatorExtractor.sortBySeparatorProbability(charactersMappedToCount);
-        return separators.subList(0, 1);
+        return Optional.of(separators.subList(0, 1));
     }
 
     @VisibilityReducedForTestPurposeOnly

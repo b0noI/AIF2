@@ -2,8 +2,10 @@ package com.aif.language.token;
 
 import com.aif.language.common.ISplitter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class TokenSplitter implements ISplitter<String, String> {
@@ -22,7 +24,12 @@ public class TokenSplitter implements ISplitter<String, String> {
 
     @Override
     public List<String> split(final String txt) {
-        final List<Character> separators = tokenSeparatorExtractor.extract(txt);
+        final Optional<List<Character>> optionalSeparators = tokenSeparatorExtractor.extract(txt);
+
+        if (!optionalSeparators.isPresent())
+            return new ArrayList<String>(1){{add(txt);}};
+
+        final List<Character> separators = optionalSeparators.get();
         final String regExp = TokenSplitter.prepareRegexp(separators);
         final List<String> tokens = Arrays.asList(txt.split(regExp));
         return TokenSplitter.filterIncorrectTokens(tokens);

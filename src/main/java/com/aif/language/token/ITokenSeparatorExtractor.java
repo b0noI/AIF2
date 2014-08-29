@@ -2,7 +2,9 @@ package com.aif.language.token;
 
 import com.aif.language.common.IExtractor;
 
-public interface ITokenSeparatorExtractor extends IExtractor<String, Character> {
+import java.util.List;
+
+public interface ITokenSeparatorExtractor extends IExtractor<String, List<Character>> {
 
     public static enum Type {
 

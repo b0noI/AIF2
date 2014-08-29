@@ -9,7 +9,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
     private final static double PROBABILITY_LIMIT_REDUCER = 2.;
 
     @Override
-    public List<Character> getSeparators(final List<String> tokens) {
+    public Optional<List<Character>> extract(final List<String> tokens) {
         final StatData statData = StatSentenceSeparatorExtractor.parseStat(tokens);
         final List<CharacterStat> characterStats = getCharactersStatistic(statData);
 
@@ -28,7 +28,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .stream()
                 .<Character>map(CharacterStat::getCharacter)
                 .collect(Collectors.toList());
-        return filteredCharactersStat;
+        return Optional.of(filteredCharactersStat);
     }
 
     private List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
