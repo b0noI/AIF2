@@ -19,7 +19,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .max();
 
         if (!maxProb.isPresent()) {
-            return Arrays.asList(new Character[0]);
+            return Optional.of(Arrays.asList(new Character[0]));
         }
 
         characterStats.stream().mapToDouble(CharacterStat::getProbabilityThatEndCharacter).forEach(System.out::println);

@@ -3,10 +3,8 @@ package com.aif.language.sentence;
 import com.aif.language.common.ISplitter;
 import com.aif.language.token.ITokenSeparatorExtractor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import javax.swing.text.html.Option;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -38,7 +36,15 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
     }
 
     private List<Boolean> mapToBooleans(final List<String> tokens) {
-        final String regex = SentenceSplitter.prepareRegex(sentenceSeparatorExtractor.getSeparators(tokens));
+        final Optional<List<Character>> optionalSeparators = sentenceSeparatorExtractor.extract(tokens);
+
+        if (!optionalSeparators.isPresent()) {
+            return Arrays.asList(new Boolean[tokens.size()]);
+        }
+
+        final List<Character> separators = optionalSeparators.get();
+
+        final String regex = SentenceSplitter.prepareRegex(separators);
         return tokens.stream()
                 .map(token -> token.matches(regex))
                 .collect(Collectors.toList());
