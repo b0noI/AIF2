@@ -41,7 +41,7 @@ public class Word extends AbstractWord {
                                     thatToken -> comparator.compare(thisToken, thatToken)
                             ).sum()
                 ).sum();
-        Double avg = sum / (this.getTokens().size() + that.getTokens().size());
+        Double avg = sum / (this.getTokens().size() * that.getTokens().size());
         return (avg > AVG_THRESHOLD);
     }
 
