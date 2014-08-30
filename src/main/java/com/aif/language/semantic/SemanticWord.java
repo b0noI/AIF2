@@ -1,40 +1,34 @@
 package com.aif.language.semantic;
 
+import com.aif.language.semantic.weights.node.INodeWeightCalculator;
+import com.aif.language.semantic.weights.node.word.IWordWeightCalculator;
 import com.aif.language.word.Word;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SemanticWord implements ISemanticNode<Word>{
+public class SemanticWord implements ISemanticNode<Word> {
 
     private static  final int                                   MAX_DISTANCE_BETWEEN_WORDS  = 5;
 
-    private static  final int                                   MAX_WORD_CONNECTION_COUNT   = 20_000;
+    private         final INodeWeightCalculator<Word> weightCalculator;
 
     private         final Word                                  word;
 
     private         final Map<ISemanticNode<Word>, Connection>  connections                 = new HashMap<>();
 
-    public SemanticWord(final Word word) {
+    public SemanticWord(final Word word, final INodeWeightCalculator<Word> weightCalculator) {
         this.word = word;
+        this.weightCalculator = weightCalculator;
+    }
+
+    public SemanticWord(final Word word) {
+        this(word, IWordWeightCalculator.createDefaultWeightCalculator());
     }
 
     @Override
     public double weight() {
-        final Set<ISemanticNode<Word>> items = this.connectedItems();
-
-        final OptionalDouble maxConnectionWeightOptional = items
-                .parallelStream()
-                .mapToDouble(word -> connectionWeight(word))
-                .max();
-
-        if (!maxConnectionWeightOptional.isPresent())
-            return 0;
-
-        final double maxConnectionWeight = maxConnectionWeightOptional.getAsDouble();
-        final double normalizedConnectionCount = items.size() / MAX_WORD_CONNECTION_COUNT;
-
-        return maxConnectionWeight * (1. - normalizedConnectionCount);
+        return weightCalculator.calculateWeight(this);
     }
 
     @Override
