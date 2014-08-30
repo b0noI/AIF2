@@ -1,6 +1,7 @@
 package com.aif.language.token;
 
 import com.aif.language.common.ISplitter;
+import com.aif.language.common.RegexpCooker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,8 +10,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class TokenSplitter implements ISplitter<String, String> {
-
-    private final static    String                      REGEXP_TEMPLATE = "[%s]+";
 
     private final           ITokenSeparatorExtractor    tokenSeparatorExtractor;
 
@@ -30,7 +29,7 @@ public class TokenSplitter implements ISplitter<String, String> {
             return new ArrayList<String>(1){{add(txt);}};
 
         final List<Character> separators = optionalSeparators.get();
-        final String regExp = TokenSplitter.prepareRegexp(separators);
+        final String regExp = RegexpCooker.prepareRegexp(separators);
         final List<String> tokens = Arrays.asList(txt.split(regExp));
         return TokenSplitter.filterIncorrectTokens(tokens);
     }
@@ -39,12 +38,6 @@ public class TokenSplitter implements ISplitter<String, String> {
         return tokens.stream()
                 .filter(token -> !token.isEmpty())
                 .collect(Collectors.toList());
-    }
-
-    private static String prepareRegexp(final List<Character> separators) {
-        final StringBuffer stringBuffer = new StringBuffer();
-        separators.stream().forEach(separator -> stringBuffer.append(separator));
-        return String.format(REGEXP_TEMPLATE, stringBuffer.toString());
     }
 
 }

@@ -1,9 +1,8 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
-import com.aif.language.token.ITokenSeparatorExtractor;
+import com.aif.language.common.RegexpCooker;
 
-import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -12,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
-    private final ISentenceSeparatorExtractor sentenceSeparatorExtractor;
+    private final           ISentenceSeparatorExtractor sentenceSeparatorExtractor;
 
     public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
@@ -44,18 +43,10 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         final List<Character> separators = optionalSeparators.get();
 
-        final String regex = SentenceSplitter.prepareRegex(separators);
+        final String regex = RegexpCooker.prepareRegexp(separators);
         return tokens.stream()
                 .map(token -> token.matches(regex))
                 .collect(Collectors.toList());
-    }
-
-    private static String prepareRegex(final List<Character> separators) {
-        final StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("[");
-        separators.stream().forEach(separator -> stringBuffer.append(separator));
-        stringBuffer.append("]+");
-        return stringBuffer.toString();
     }
 
     private static class SentenceIterator implements Iterator<List<String>> {
