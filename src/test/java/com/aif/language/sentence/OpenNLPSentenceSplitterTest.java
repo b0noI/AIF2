@@ -19,8 +19,8 @@ public class OpenNLPSentenceSplitterTest {
         ISplitter<String, String> splitter =
                 new OpenNLPSentenceSplitter(ClassLoader.class.getResourceAsStream(MODEL_RESOURCE_PATH));
 
-        List<String> actualResilt = splitter.split(inputString);
+        List<String> actualResult = splitter.split(inputString);
 
-        assertEquals(expectedResult, actualResilt);
+        assertEquals(expectedResult, actualResult);
     }
 }
