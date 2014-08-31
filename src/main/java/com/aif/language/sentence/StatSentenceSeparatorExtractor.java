@@ -1,5 +1,7 @@
 package com.aif.language.sentence;
 
+import com.aif.language.common.IExtractor;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
@@ -10,8 +12,16 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
     @Override
     public Optional<List<Character>> extract(final List<String> tokens) {
-        final StatData statData = StatSentenceSeparatorExtractor.parseStat(tokens);
-        final List<CharacterStat> characterStats = getCharactersStatistic(statData);
+
+        final IExtractor<String, Character> extractEndCharacter = token -> Optional.of(token.charAt(token.length() - 1));
+        final IExtractor<String, Character> extractCharacterBeforeEndCharacter = token -> Optional.of(token.charAt(token.length() - 2));
+        final IExtractor<String, Character> extractStartCharacter = token -> Optional.of(token.charAt(0));
+        final IExtractor<String, Character> extractCharacterAfterStartCharacter = token -> Optional.of(token.charAt(1));
+
+        final StatData endCharactersStatData = new StatData(extractEndCharacter, extractCharacterBeforeEndCharacter).parseStat(tokens);
+        final StatData startCharactersStatData = new StatData(extractStartCharacter, extractCharacterAfterStartCharacter).parseStat(tokens);
+
+        final List<CharacterStat> characterStats = getCharactersStatistic(startCharactersStatData, endCharactersStatData);
 
         final OptionalDouble maxProb = characterStats
                 .stream()
@@ -58,88 +68,16 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
         return characterStats.subList(0, index.getAsInt() + 1);
     }
 
-    private List<CharacterStat> getCharactersStatistic(final StatData statData) {
-        final List<CharacterStat> characterStats = new ArrayList<>(statData.getAllCharacters().size());
-        for (Character ch : statData.getAllCharacters()) {
-            final CharacterStat characterStat = new CharacterStat(ch, statData.getProbabilityThatCharacterIsSplitterCharacter(ch));
+    private List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
+        final List<CharacterStat> characterStats = new ArrayList<>(startCharacterStatData.getAllCharacters().size());
+        for (Character ch : startCharacterStatData.getAllCharacters()) {
+            final double probability1 = startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
+            final double probability2 = endCharactersStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
+            final CharacterStat characterStat = new CharacterStat(ch, Collections.max(Arrays.asList(probability1, probability2)));
             characterStats.add(characterStat);
         }
         Collections.sort(characterStats);
         return characterStats;
-    }
-
-    private static StatData parseStat(final List<String> tokens) {
-        final StatData statData = new StatData();
-        tokens.parallelStream().filter(token -> token.length() > 2).forEach(token -> {
-            token.chars().forEach(ch -> statData.addCharacter((char) ch));
-            statData.addEndCharacter(token.charAt(token.length() - 2),
-                    token.charAt(token.length() - 1));
-        });
-        return statData;
-    }
-
-    private static class StatData {
-
-        private final Map<Character, Map<Character, Integer>>   charactersBeforeEndCharacter  = new ConcurrentHashMap<>();
-
-        private final Map<Character, Integer>                   endCharacters                 = new ConcurrentHashMap<>();
-
-        private final Map<Character, Integer>                   characters                    = new ConcurrentHashMap<>();
-
-        public void addEndCharacter(final Character characterBeforeEndCharacterm, final Character endCharacter) {
-            final Character lowCaseCharacterBeforeEndCharacter = StatData.prepareCharacter(characterBeforeEndCharacterm);
-            final Character lowCaseEndCharacter = StatData.prepareCharacter(endCharacter);
-
-            endCharacters.merge(lowCaseEndCharacter, 1, (v1, v2) -> v1 + v2);
-
-            final Map<Character, Integer> characterBeforeEndCharacterMap = getMapForEndCharacter(endCharacter);
-            characterBeforeEndCharacterMap.merge(lowCaseCharacterBeforeEndCharacter, 1, (v1, v2) -> v1 + v2);
-        }
-
-        public void addCharacter(final Character ch) {
-            final Character lowCaseCharacter = StatData.prepareCharacter(ch);
-            characters.merge(lowCaseCharacter, 1, (v1, v2) -> v1 + v2);
-        }
-
-        public Set<Character> getAllCharacters() {
-            return characters.keySet();
-        }
-
-        public double getProbabilityThatCharacterIsSplitterCharacter(final Character ch) {
-            return getProbabiltyThatCharacterInTheEnd(ch) * getProbablityThatCharacterBeforeIsEndCharacter(ch);
-        }
-
-        private Map<Character, Integer> getMapForEndCharacter(final Character endCharacter) {
-            if (!charactersBeforeEndCharacter.containsKey(endCharacter)) {
-                synchronized (charactersBeforeEndCharacter) {
-                    final Map<Character, Integer> targetMap = charactersBeforeEndCharacter.getOrDefault(endCharacter, new ConcurrentHashMap<Character, Integer>());
-                    charactersBeforeEndCharacter.put(endCharacter, targetMap);
-                    return targetMap;
-                }
-            }
-            return charactersBeforeEndCharacter.getOrDefault(endCharacter, new ConcurrentHashMap<>());
-        }
-
-        private double getProbabiltyThatCharacterInTheEnd(final Character ch) {
-            final Character lowCaseCharacter = StatData.prepareCharacter(ch);
-            return (double) endCharacters.getOrDefault(lowCaseCharacter, 0) /
-                    (double) characters.getOrDefault(lowCaseCharacter, 0);
-        }
-
-        private double getProbablityThatCharacterBeforeIsEndCharacter(final Character ch) {
-            final Character lowCaseCharacter = StatData.prepareCharacter(ch);
-            final Map<Character, Integer> beforeCharacters = charactersBeforeEndCharacter.getOrDefault(lowCaseCharacter, new HashMap<>());
-
-            return beforeCharacters.keySet()
-                    .stream()
-                    .mapToDouble(k -> getProbabiltyThatCharacterInTheEnd(k) * (double)beforeCharacters.get(k))
-                    .sum() / (double)endCharacters.getOrDefault(lowCaseCharacter, 1);
-        }
-
-        private static Character prepareCharacter(final Character ch) {
-            return Character.toLowerCase(ch);
-        }
-
     }
 
     private static class CharacterStat implements Comparable<CharacterStat> {

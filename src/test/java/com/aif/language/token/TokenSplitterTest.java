@@ -1,26 +1,26 @@
-//package com.aif.language.token;
-//
-//import com.aif.language.sentence.ISentenceSeparatorExtractor;
-//import com.aif.language.sentence.SentenceSplitter;
-//import org.junit.Ignore;
-//import org.junit.Test;
-//
-//import java.io.*;
-//import java.net.URISyntaxException;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
-//import java.time.LocalDateTime;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import static junit.framework.Assert.*;
-//import static junit.framework.Assert.assertEquals;
-//
-///**
-// * Created by admin on 20.08.14.
-// */
-//public class TokenSplitterTest {
+package com.aif.language.token;
+
+import com.aif.language.sentence.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.SentenceSplitter;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import java.io.*;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertEquals;
+
+/**
+* Created by admin on 20.08.14.
+*/
+public class TokenSplitterTest {
 //
 //    private Path path_to_file;
 //
@@ -155,44 +155,44 @@
 //        return out;
 //    }
 //
-////    @Test
-////    public void test1() {
-////        String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/RU_alice_in_the_wonderland.txt"));
-////        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
-////        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
-////        sentenceSplitter.parseSentences(tokenSplitter.split(textFromFileToString));
-////    }
-////
-////    @Test
-////    public void test2() {
-////        String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
-////        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
-////        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
-////        sentenceSplitter.parseSentences(tokenSplitter.split(textFromFileToString));
-////    }
-//
-//    private String textFromFileToString(final Path pathToFile) {
-//
-//        try(BufferedReader reader = Files.newBufferedReader(pathToFile)) {
-//
-//            StringBuffer buff = new StringBuffer();
-//
-//            String line = null;
-//
-//            while((line = reader.readLine()) != null)
-//                //TODO
-//                buff.append(line+"\n");
-//
-//            return buff.toString();
-//
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        return null;
-//    }
-//
+    @Test
+    public void test1() {
+        String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/RU_alice_in_the_wonderland.txt"));
+        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
+        sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
+    }
+
+    @Test
+    public void test2() {
+        String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
+        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
+        sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
+    }
+
+    private String textFromFileToString(final Path pathToFile) {
+
+        try(BufferedReader reader = Files.newBufferedReader(pathToFile)) {
+
+            StringBuffer buff = new StringBuffer();
+
+            String line = null;
+
+            while((line = reader.readLine()) != null)
+                //TODO
+                buff.append(line+"\n");
+
+            return buff.toString();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
 //    private void saveStatisticToFile(String fileName, int correctTokensNum, int foundTokensNum) {
 //
 //        try( BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(pathToStatisticResult).toFile(), true))) {
@@ -212,4 +212,4 @@
 //        return Integer.parseInt(elems[1]);
 //    }
 //
-//}
+}
