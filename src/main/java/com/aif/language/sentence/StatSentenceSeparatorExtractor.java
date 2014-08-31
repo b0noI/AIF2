@@ -1,13 +1,13 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.IExtractor;
+import org.apache.commons.math3.stat.StatUtils;
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
-
-    private final static double                         PROBABILITY_LIMIT_REDUCER                   = 2.;
 
     private final static IExtractor<String, Character>  END_CHARACTER_EXTRACTOR                     = token -> Optional.of(token.charAt(token.length() - 1));
 
@@ -39,30 +39,18 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
     }
 
     private List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
-        final List<Double> deltas = new ArrayList<>(characterStats.size() - 1);
-        for (int i = 1; i < characterStats.size(); i++) {
-            final CharacterStat left = characterStats.get(i - 1);
-            final CharacterStat right = characterStats.get(i);
-            deltas.add(left.getProbabilityThatEndCharacter() - right.getProbabilityThatEndCharacter());
-        }
-        final Optional<Double> maxDelta = deltas
+        final SummaryStatistics stats = new SummaryStatistics();
+        characterStats
                 .stream()
-                .max(Double::compareTo);
+                .mapToDouble(CharacterStat::getProbabilityThatEndCharacter)
+                .forEach(item -> stats.addValue(item));
 
-        if (!maxDelta.isPresent()) {
-            return Arrays.asList(new CharacterStat[0]);
-        }
+        final double probabilityLevel = stats.getMean() + stats.getStandardDeviation();
 
-        final OptionalInt index = deltas
+        return characterStats
                 .stream()
-                .filter(delta -> delta > (maxDelta.get() / PROBABILITY_LIMIT_REDUCER))
-                .mapToInt(delta -> deltas.indexOf(delta)).max();
-
-        if (!index.isPresent()) {
-            return Arrays.asList(new CharacterStat[0]);
-        }
-
-        return characterStats.subList(0, index.getAsInt() + 1);
+                .filter(stat -> stat.getProbabilityThatEndCharacter() > probabilityLevel)
+                .collect(Collectors.toList());
     }
 
     private List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
@@ -113,9 +101,10 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
         }
 
         @Override
-        public int compareTo(CharacterStat that) {
+        public int compareTo(final CharacterStat that) {
             return that.getProbabilityThatEndCharacter().compareTo(this.getProbabilityThatEndCharacter());
         }
+
     }
 
 }
