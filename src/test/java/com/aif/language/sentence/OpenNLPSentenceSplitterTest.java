@@ -3,6 +3,7 @@ package com.aif.language.sentence;
 import com.aif.language.common.ISplitter;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class OpenNLPSentenceSplitterTest {
     private static final String MODEL_RESOURCE_PATH = "/opennlp-models/en-sent.bin";
 
     @Test
-    public void testSplit() {
+    public void testSplit() throws IOException{
         final String inputString = " First sentence. Second sentence.";
         final List<String> expectedResult = Arrays.asList("First sentence.", "Second sentence.");
 
