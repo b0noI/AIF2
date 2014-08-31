@@ -12,23 +12,14 @@ import java.util.List;
 
 public class OpenNLPSentenceSplitter implements ISplitter<String, String> {
     private final SentenceDetector detector;
-    public OpenNLPSentenceSplitter(InputStream modelIn) {
-        SentenceModel model = null;
-        try {
-            model = new SentenceModel(modelIn);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if(modelIn != null) {
-                try {
-                    modelIn.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+
+    public OpenNLPSentenceSplitter(InputStream modelIn) throws IOException {
+
+        final SentenceModel model = new SentenceModel(modelIn);
+
         detector = new SentenceDetectorME(model);
     }
+
     @Override
     public List<String> split(String target) {
         return Arrays.asList(detector.sentDetect(target));
