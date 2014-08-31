@@ -3,40 +3,37 @@ package com.aif.language.sentence;
 import com.aif.language.common.IExtractor;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
-    private final static double PROBABILITY_LIMIT_REDUCER = 2.;
+    private final static double                         PROBABILITY_LIMIT_REDUCER                   = 2.;
+
+    private final static IExtractor<String, Character>  END_CHARACTER_EXTRACTOR                     = token -> Optional.of(token.charAt(token.length() - 1));
+
+    private final static IExtractor<String, Character>  CHARACTER_BEFORE_END_CHARACTER_EXTRACTOR    = token -> Optional.of(token.charAt(token.length() - 2));
+
+    private final static IExtractor<String, Character>  START_CHARACTER_EXTRACTOR                   = token -> Optional.of(token.charAt(0));
+
+    private final static IExtractor<String, Character>  CHARACTER_AFTER_START_CHARACTER_EXTRACTOR   = token -> Optional.of(token.charAt(1));
+
+    private final static StatDataExtractor              END_CHARACTER_STAT_DATA_EXTRACTOR           = new StatDataExtractor(END_CHARACTER_EXTRACTOR, CHARACTER_BEFORE_END_CHARACTER_EXTRACTOR);
+
+    private final static StatDataExtractor              START_CHARACTER_STAT_DATA_EXTRACTOR         = new StatDataExtractor(START_CHARACTER_EXTRACTOR, CHARACTER_AFTER_START_CHARACTER_EXTRACTOR);
 
     @Override
     public Optional<List<Character>> extract(final List<String> tokens) {
 
-        final IExtractor<String, Character> extractEndCharacter = token -> Optional.of(token.charAt(token.length() - 1));
-        final IExtractor<String, Character> extractCharacterBeforeEndCharacter = token -> Optional.of(token.charAt(token.length() - 2));
-        final IExtractor<String, Character> extractStartCharacter = token -> Optional.of(token.charAt(0));
-        final IExtractor<String, Character> extractCharacterAfterStartCharacter = token -> Optional.of(token.charAt(1));
+        final List<String> filteredTokens = filter(tokens);
 
-        final StatData endCharactersStatData = new StatData(extractEndCharacter, extractCharacterBeforeEndCharacter).parseStat(tokens);
-        final StatData startCharactersStatData = new StatData(extractStartCharacter, extractCharacterAfterStartCharacter).parseStat(tokens);
+        final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
+        final StatData startCharactersStatData = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
 
         final List<CharacterStat> characterStats = getCharactersStatistic(startCharactersStatData, endCharactersStatData);
 
-        final OptionalDouble maxProb = characterStats
-                .stream()
-                .mapToDouble(CharacterStat::getProbabilityThatEndCharacter)
-                .max();
-
-        if (!maxProb.isPresent()) {
-            return Optional.of(Arrays.asList(new Character[0]));
-        }
-
-        characterStats.stream().mapToDouble(CharacterStat::getProbabilityThatEndCharacter).forEach(System.out::println);
-
         final List<Character> filteredCharactersStat = filterCharacterStatisticFromNonEndCharacters(characterStats)
                 .stream()
-                .<Character>map(CharacterStat::getCharacter)
+                .map(CharacterStat::getCharacter)
                 .collect(Collectors.toList());
         return Optional.of(filteredCharactersStat);
     }
@@ -78,6 +75,22 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
         }
         Collections.sort(characterStats);
         return characterStats;
+    }
+
+    private static List<String> filter(final List<String> tokens) {
+        return tokens.parallelStream()
+                .map(String::toLowerCase).map(token -> {
+                    int index = token.length();
+                    while (index > 1 &&
+                            token.charAt(index - 1) == token.charAt(index - 2)) {
+                        index--;
+                    }
+                    if (index != token.length()) {
+                        return token.substring(0, index);
+                    }
+                    return token;
+                })
+                .collect(Collectors.toList());
     }
 
     private static class CharacterStat implements Comparable<CharacterStat> {

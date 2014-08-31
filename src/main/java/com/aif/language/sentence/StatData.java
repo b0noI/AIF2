@@ -9,18 +9,9 @@ class StatData {
 
     private final Map<Character, Map<Character, Integer>>   charactersNearEdgeCharacter = new ConcurrentHashMap<>();
 
-    private final Map<Character, Integer>                   edgeCharacters = new ConcurrentHashMap<>();
+    private final Map<Character, Integer>                   edgeCharacters              = new ConcurrentHashMap<>();
 
-    private final Map<Character, Integer>                   characters                    = new ConcurrentHashMap<>();
-
-    private final IExtractor<String, Character>             edgeCharacterExtractor;
-
-    private final IExtractor<String, Character>             characterNearEdgeCharacterExtractor;
-
-    StatData(IExtractor<String, Character> edgeCharacterExtractor, IExtractor<String, Character> characterNearEdgeCharacterExtractor) {
-        this.edgeCharacterExtractor = edgeCharacterExtractor;
-        this.characterNearEdgeCharacterExtractor = characterNearEdgeCharacterExtractor;
-    }
+    private final Map<Character, Integer>                   characters                  = new ConcurrentHashMap<>();
 
     public void addEdgeCharacter(final Character characterNearEdgeCharacter, final Character edgeCharacter) {
         final Character lowCaseCharacterBeforeEndCharacter = StatData.prepareCharacter(characterNearEdgeCharacter);
@@ -43,25 +34,6 @@ class StatData {
 
     public double getProbabilityThatCharacterIsSplitterCharacter(final Character ch) {
         return getProbabilityThatCharacterOnEdge(ch) * getProbabilityThatCharacterBeforeIsEdgeCharacter(ch);
-    }
-
-    public StatData parseStat(List<String> tokens) {
-        final StatData endCharacterStatdata = new StatData(edgeCharacterExtractor, characterNearEdgeCharacterExtractor);
-        tokens.parallelStream().filter(token -> token.length() > 2).forEach(token -> parsToken(token, endCharacterStatdata));
-        return endCharacterStatdata;
-    }
-
-    private void parsToken(final String token, final StatData statData) {
-        token.chars().forEach(ch -> statData.addCharacter((char) ch));
-
-        final Optional<Character> edgeCharacter = edgeCharacterExtractor.extract(token);
-        final Optional<Character> characterNearEdge = characterNearEdgeCharacterExtractor.extract(token);
-
-        if (!edgeCharacter.isPresent() || !characterNearEdge.isPresent()) {
-            return;
-        }
-
-        statData.addEdgeCharacter(characterNearEdge.get(), edgeCharacter.get());
     }
 
     private Map<Character, Integer> getMapForEdgeCharacter(final Character endCharacter) {
