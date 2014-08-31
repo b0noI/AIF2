@@ -1,36 +1,60 @@
 package com.aif.language.word;
 
-import java.util.List;
+import java.util.*;
 
-public abstract class Word {
+public class Word extends AbstractWord {
 
-    public abstract List<String> getTokens();
+    private static final double AVG_THRESHOLD = 0.75;
+    private final Map<String, Long> tokensCount = new HashMap<>();
+    private final ITokenComparator comparator;
 
-    public abstract long tokenCount(final String token);
-
-    public abstract String basicToken();
+    public Word(String token, ITokenComparator comparator) {
+        tokensCount.put(token, (long) 1);
+        this.comparator = comparator;
+    }
 
     @Override
-    public String toString() {
-        return basicToken();
+    public Set<String> getTokens() {
+        return tokensCount.keySet();
     }
 
-    public class WordPlaceHolder {
-
-        private final String token;
-
-        public WordPlaceHolder(String token) {
-            this.token = token;
-        }
-
-        public String getToken() {
-            return token;
-        }
-
-        public Word getWord() {
-            return Word.this;
-        }
-
+    @Override
+    public long tokenCount(String token) {
+        return tokensCount.get(token);
     }
 
+    @Override
+    public String basicToken() {
+        return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Word that = (Word) o;
+        Double sum = this.getTokens().stream()
+                .mapToDouble(
+                    thisToken -> that.getTokens().stream()
+                            .mapToDouble(
+                                    thatToken -> comparator.compare(thisToken, thatToken)
+                            ).sum()
+                ).sum();
+        Double avg = sum / (this.getTokens().size() * that.getTokens().size());
+        return (avg > AVG_THRESHOLD);
+    }
+
+    @Override
+    public int hashCode() {
+        return tokensCount.hashCode();
+    }
+
+    @Override
+    public void merge(AbstractWord that) {
+        that.getTokens().forEach(
+                thatToken -> tokensCount.put(thatToken, that.tokenCount(thatToken) +
+                (tokensCount.containsKey(thatToken) ? tokensCount.get(thatToken) : 0l))
+        );
+    }
 }
