@@ -4,6 +4,7 @@ import com.aif.language.common.ISplitter;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,11 +18,14 @@ public class OpenNLPSentenceSplitterTest {
         final String inputString = " First sentence. Second sentence.";
         final List<String> expectedResult = Arrays.asList("First sentence.", "Second sentence.");
 
-        ISplitter<String, String> splitter =
-                new OpenNLPSentenceSplitter(ClassLoader.class.getResourceAsStream(MODEL_RESOURCE_PATH));
+        try(InputStream modelResource = ClassLoader.class.getResourceAsStream(MODEL_RESOURCE_PATH)) {
+            ISplitter<String, String> splitter =
+                    new OpenNLPSentenceSplitter(modelResource);
 
-        List<String> actualResult = splitter.split(inputString);
+            List<String> actualResult = splitter.split(inputString);
 
-        assertEquals(expectedResult, actualResult);
+            assertEquals(expectedResult, actualResult);
+        }
     }
+
 }
