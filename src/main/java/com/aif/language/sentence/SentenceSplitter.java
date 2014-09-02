@@ -62,7 +62,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         @Override
         public boolean hasNext() {
-            return tokens.isEmpty();
+            return !tokens.isEmpty();     // or maybe return tokens.size() > 0;
         }
 
         @Override
