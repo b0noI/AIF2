@@ -31,14 +31,14 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
 
-        final List<List<String>> sentances = new ArrayList<>();
+        final List<List<String>> sentences = new ArrayList<>();
         while (sentenceIterator.hasNext()) {
-            sentances.add(sentenceIterator.next());
+            sentences.add(sentenceIterator.next());
         }
 
-        sentances.forEach(sentence -> prepareSentences(sentence, separators));
+        sentences.forEach(sentence -> prepareSentences(sentence, separators));
 
-        return sentances
+        return sentences
                 .parallelStream()
                 .map(sentence -> SentenceSplitter.prepareSentences(sentence, separators))
                 .collect(Collectors.toList());
