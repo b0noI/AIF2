@@ -45,24 +45,29 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
     }
 
     private static List<String> prepareSentences(final List<String> sentence, final List<Character> separators) {
-        final String lastToken = sentence.get(sentence.size() - 1);
-        int index = lastToken.length() - 1;
-        while (index > 0 && separators.contains(lastToken.charAt(index))) {
-            index--;
+        final List<String> preparedTokens = new ArrayList<>();
+
+        for (String token: sentence) {
+            preparedTokens.addAll(prepareToken(token, separators));
         }
-        index++;
-        if (index < lastToken.length()) {
-            final String leftToken = lastToken.substring(0, index);
-            final String rightToken = lastToken.substring(index);
-            final List<String> preparedSentance = new ArrayList<>(sentence.size() + 1);
-            for (int i = 0; i < sentence.size() - 1; i++) {
-                preparedSentance.add(sentence.get(i));
+
+        return preparedTokens;
+    }
+
+    private static List<String> prepareToken(final String token, final List<Character> separators) {
+        final List<String> tokens = new ArrayList<>(3);
+        boolean prevCharacterIsSeparator = separators.contains(token.charAt(0));
+        int lastIndex = 0;
+        for (int i = 1; i < token.length(); i++) {
+            final boolean cuurentCharacterSeparator = separators.contains(token.charAt(i));
+            if (prevCharacterIsSeparator != cuurentCharacterSeparator) {
+                tokens.add(token.substring(lastIndex, i));
+                lastIndex = i;
+                prevCharacterIsSeparator = cuurentCharacterSeparator;
             }
-            preparedSentance.add(leftToken);
-            preparedSentance.add(rightToken);
-            return preparedSentance;
         }
-        return sentence;
+        tokens.add(token.substring(lastIndex));
+        return tokens;
     }
 
     private List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {
