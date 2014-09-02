@@ -182,7 +182,8 @@ public class TokenSplitterTest {
         String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/stih.txt"));
         final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
         final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
-        sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
+        final List<List<String>> sentences = sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
+        final List<List<String>> sentences2 = sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
     }
 
     @Test

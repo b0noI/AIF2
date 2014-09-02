@@ -1,7 +1,6 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
-import com.aif.language.common.RegexpCooker;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,7 +19,15 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
     @Override
     public List<List<String>> split(final List<String> tokens) {
-        final List<Boolean> listOfPositions = mapToBooleans(tokens);
+        final Optional<List<Character>> optionalSeparators = sentenceSeparatorExtractor.extract(tokens);
+
+        if (!optionalSeparators.isPresent()) {
+            return new ArrayList<List<String>>(){{add(tokens);}};
+        }
+
+        final List<Character> separators = optionalSeparators.get();
+
+        final List<Boolean> listOfPositions = mapToBooleans(tokens, separators);
 
         final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
 
@@ -28,19 +35,37 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         while (sentenceIterator.hasNext()) {
             sentances.add(sentenceIterator.next());
         }
-        return sentances;
+
+        sentances.forEach(sentence -> prepareSentences(sentence, separators));
+
+        return sentances
+                .parallelStream()
+                .map(sentence -> SentenceSplitter.prepareSentences(sentence, separators))
+                .collect(Collectors.toList());
     }
 
-    private List<Boolean> mapToBooleans(final List<String> tokens) {
-        final Optional<List<Character>> optionalSeparators = sentenceSeparatorExtractor.extract(tokens);
-
-        if (!optionalSeparators.isPresent()) {
-            return Arrays.asList(new Boolean[tokens.size()]);
+    private static List<String> prepareSentences(final List<String> sentence, final List<Character> separators) {
+        final String lastToken = sentence.get(sentence.size() - 1);
+        int index = lastToken.length() - 1;
+        while (index > 0 && separators.contains(lastToken.charAt(index))) {
+            index--;
         }
+        index++;
+        if (index < lastToken.length()) {
+            final String leftToken = lastToken.substring(0, index);
+            final String rightToken = lastToken.substring(index);
+            final List<String> preparedSentance = new ArrayList<>(sentence.size() + 1);
+            for (int i = 0; i < sentence.size() - 1; i++) {
+                preparedSentance.add(sentence.get(i));
+            }
+            preparedSentance.add(leftToken);
+            preparedSentance.add(rightToken);
+            return preparedSentance;
+        }
+        return sentence;
+    }
 
-        final List<Character> separators = optionalSeparators.get();
-
-        return tokens.stream()
+    private List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {return tokens.stream()
                 .map(token -> separators.contains(token.charAt(token.length() - 1)))
                 .collect(Collectors.toList());
     }
