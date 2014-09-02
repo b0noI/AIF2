@@ -1,5 +1,6 @@
 package com.aif.language.token;
 
+import com.aif.language.common.ISplitter;
 import com.aif.language.sentence.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.SentenceSplitter;
 import jdk.nashorn.internal.ir.annotations.Ignore;
@@ -13,6 +14,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static junit.framework.Assert.*;
 import static junit.framework.Assert.assertEquals;
@@ -21,6 +23,23 @@ import static junit.framework.Assert.assertEquals;
 * Created by admin on 20.08.14.
 */
 public class TokenSplitterTest {
+
+
+    @Test(groups = "unit-tests")
+    public void testExtract() throws Exception {
+        final String inputText = "test1 test2\ntest3";
+        final List<String> expectedResult = new ArrayList<>();
+        expectedResult.add("test1");
+        expectedResult.add("test2");
+        expectedResult.add("test3");
+
+        final ISplitter<String, String> tokenSeparatorExtractor = new TokenSplitter();
+
+        final List<String> actualResult = tokenSeparatorExtractor.split(inputText);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
 //
 //    private Path path_to_file;
 //
@@ -186,6 +205,7 @@ public class TokenSplitterTest {
         final List<List<String>> sentences2 = sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
     }
 
+    @Ignore
     @Test
     public void test4() {
         String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/ENG/engl2.txt"));
