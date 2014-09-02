@@ -155,6 +155,8 @@ public class TokenSplitterTest {
 //        return out;
 //    }
 //
+
+    @Ignore
     @Test
     public void test1() {
         String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/RU_alice_in_the_wonderland.txt"));
@@ -163,9 +165,27 @@ public class TokenSplitterTest {
         sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
     }
 
+    @Ignore
     @Test
     public void test2() {
         String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
+        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
+        sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
+    }
+
+    @Ignore
+    @Test
+    public void test3() {
+        String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/stih.txt"));
+        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
+        sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
+    }
+
+    @Test
+    public void test4() {
+        String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/ENG/engl2.txt"));
         final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
         final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
         sentenceSplitter.split(tokenSplitter.split(textFromFileToString));

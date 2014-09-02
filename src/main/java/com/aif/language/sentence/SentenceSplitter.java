@@ -6,9 +6,6 @@ import com.aif.language.common.RegexpCooker;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Created by andriikr on 14/06/2014.
- */
 public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
     private final           ISentenceSeparatorExtractor sentenceSeparatorExtractor;
