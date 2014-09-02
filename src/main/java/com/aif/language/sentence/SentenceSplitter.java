@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
-    private final           ISentenceSeparatorExtractor sentenceSeparatorExtractor;
+    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor;
 
     public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
@@ -40,17 +40,18 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         final List<Character> separators = optionalSeparators.get();
 
-        final String regex = RegexpCooker.prepareRegexp(separators);
         return tokens.stream()
-                .map(token -> token.matches(regex))
+                .map(token -> separators.contains(token.charAt(token.length() - 1)))
                 .collect(Collectors.toList());
     }
 
     private static class SentenceIterator implements Iterator<List<String>> {
 
-        private final List<String>  tokens;
+        private final   List<String>    tokens;
 
-        private final List<Boolean> endTokens;
+        private final   List<Boolean>   endTokens;
+
+        private         int             currentPosition = 0;
 
         private SentenceIterator(List<String> tokens, List<Boolean> endTokens) {
             this.tokens = tokens;
@@ -59,29 +60,32 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         @Override
         public boolean hasNext() {
-            return tokens.isEmpty();
+            return currentPosition != tokens.size();
         }
 
         @Override
         public List<String> next() {
             final List<String> sentence = getNextSentence();
-            this.removeNLeftElements(sentence.size());
 
             return sentence;
         }
 
         private List<String> getNextSentence() {
-            final int index = this.endTokens.indexOf(true);
-            final int endIndex = index == -1 ? this.tokens.size() - 1 : index;
-            return this.tokens.subList(0, endIndex + 1);
+            final int oldIndex = currentPosition;
+            currentPosition = getNextTrueIndex();
+            return this.tokens.subList(oldIndex, currentPosition);
         }
 
-        private void removeNLeftElements(final int count) {
-            final int newSzie = this.tokens.size() - count;
-            while (this.tokens.size() != newSzie) {
-                this.tokens.remove(0);
-                this.endTokens.remove(0);
+        private int getNextTrueIndex() {
+            int startIndex = currentPosition;
+            while(startIndex < endTokens.size() - 1) {
+                startIndex++;
+                if (endTokens.get(startIndex)) {
+                    startIndex++;
+                    return startIndex;
+                }
             }
+            return startIndex + 1;
         }
 
     }

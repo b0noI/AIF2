@@ -1,17 +1,19 @@
 package com.aif.language.token;
 
-import org.junit.Test;
+
+import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.assertEquals;
+
 
 public class ProbabilityBasedTokenSeparatorExtractorTest {
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGetCharactersMappedToCount() throws Exception {
         final List<Character> inputCharacters = Arrays.asList('a', 'a', 'A', ' ', ' ', ' ');
 
