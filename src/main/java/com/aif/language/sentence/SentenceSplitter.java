@@ -65,7 +65,8 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         return sentence;
     }
 
-    private List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {return tokens.stream()
+    private List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {
+        return tokens.stream()
                 .map(token -> separators.contains(token.charAt(token.length() - 1)))
                 .collect(Collectors.toList());
     }
@@ -103,13 +104,13 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         private int getNextTrueIndex() {
             int startIndex = currentPosition;
-            while(startIndex < endTokens.size() - 1) {
-                startIndex++;
+            do {
                 if (endTokens.get(startIndex)) {
                     startIndex++;
                     return startIndex;
                 }
-            }
+                startIndex++;
+            } while(startIndex < endTokens.size() - 1);
             return startIndex + 1;
         }
 
