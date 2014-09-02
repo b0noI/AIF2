@@ -11,7 +11,9 @@ import java.util.stream.Collectors;
 
 public class TokenSplitter implements ISplitter<String, String> {
 
-    private final           ITokenSeparatorExtractor    tokenSeparatorExtractor;
+    private static  final   RegexpCooker                REGEXP_COOKER           = new RegexpCooker();
+
+    private         final   ITokenSeparatorExtractor    tokenSeparatorExtractor;
 
     public TokenSplitter(final ITokenSeparatorExtractor tokenSeparatorExtractor) {
         this.tokenSeparatorExtractor = tokenSeparatorExtractor;
@@ -29,7 +31,7 @@ public class TokenSplitter implements ISplitter<String, String> {
             return new ArrayList<String>(1){{add(txt);}};
 
         final List<Character> separators = optionalSeparators.get();
-        final String regExp = RegexpCooker.prepareRegexp(separators);
+        final String regExp = REGEXP_COOKER.prepareRegexp(separators);
         final List<String> tokens = Arrays.asList(txt.split(regExp));
         return TokenSplitter.filterIncorrectTokens(tokens);
     }
