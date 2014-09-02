@@ -2,8 +2,7 @@ package com.aif.language.token;
 
 import com.aif.language.sentence.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.SentenceSplitter;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -165,10 +164,12 @@ public class TokenSplitterTest {
 
     @Test
     public void test2() {
-        String textFromFileToString = textFromFileToString(Paths.get("/Users/b0noI/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
+        String textFromFileToString = textFromFileToString(Paths.get("/Users/vsk/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
         final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
         final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
-        sentenceSplitter.split(tokenSplitter.split(textFromFileToString));
+        final List<String> tokens = tokenSplitter.split(textFromFileToString);
+        final List<List<String>> result = sentenceSplitter.split(tokens);
+        assertTrue(result.size() > 0);
     }
 
     private String textFromFileToString(final Path pathToFile) {
