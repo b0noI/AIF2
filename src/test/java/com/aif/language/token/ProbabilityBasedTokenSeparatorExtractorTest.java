@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
 
 public class ProbabilityBasedTokenSeparatorExtractorTest {
 
-    @Test(groups = "unit-tests")
+    @Test(groups = "functional-fast")
     public void testGetCharactersMappedToCount() throws Exception {
         final List<Character> inputCharacters = Arrays.asList('a', 'a', 'A', ' ', ' ', ' ');
 
