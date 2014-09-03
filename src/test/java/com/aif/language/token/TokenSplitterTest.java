@@ -144,7 +144,7 @@ public class TokenSplitterTest {
 
             //Expected results:
 
-            final String lastToken = "токенов.";
+            final String lastToken = "tokens.";
             final String firstToken = "-";
             final long numberOfTokens = 8;
 
@@ -171,8 +171,8 @@ public class TokenSplitterTest {
         try {
             path_to_file = Paths.get(getClass().getResource("/TestData/RU/RU_text_with_new_lines.txt").toURI());
 
-            final String lastToken = "токенов";
-            final String firstToken = "В";
+            final String lastToken = "tokenov";
+            final String firstToken = "B";
             final long numberOfTokens = 9;
 
             final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
@@ -194,7 +194,7 @@ public class TokenSplitterTest {
     @Test
     public void should_get_tokens_from_file_using_probability_splitter() {
 
-        path_to_file = Paths.get("/Users/admin/Documents/programming/projects/AIF2/AIF2/src/main/resources/testData/RU/RU_10000_СеврюгаГрач.txt");
+        path_to_file = Paths.get("/Users/admin/Documents/programming/projects/AIF2/AIF2/src/main/resources/testData/RU/");
 
         TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
