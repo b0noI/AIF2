@@ -238,7 +238,7 @@ public class TokenSplitterTest {
         tg.setFilesCount(100)
                 .setLenguage("RU")
                 .setStep(10000)
-                .setBaseToken("СеврюгаГрач")
+                .setBaseToken("SG")
                 .setInitialTokensInFile(10000)
                 .setLocation(Paths.get(pathToStatisticSet))
                 .generate();
