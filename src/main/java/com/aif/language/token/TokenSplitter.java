@@ -2,6 +2,7 @@ package com.aif.language.token;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.RegexpCooker;
+import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,16 +12,22 @@ import java.util.stream.Collectors;
 
 public class TokenSplitter implements ISplitter<String, String> {
 
-    private static  final   RegexpCooker                REGEXP_COOKER           = new RegexpCooker();
+    private final   RegexpCooker                regexpCooker;
 
-    private         final   ITokenSeparatorExtractor    tokenSeparatorExtractor;
+    private final   ITokenSeparatorExtractor    tokenSeparatorExtractor;
 
     public TokenSplitter(final ITokenSeparatorExtractor tokenSeparatorExtractor) {
-        this.tokenSeparatorExtractor = tokenSeparatorExtractor;
+        this(tokenSeparatorExtractor, new RegexpCooker());
     }
 
     public TokenSplitter() {
-        this(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+        this(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance(), new RegexpCooker());
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    TokenSplitter(final ITokenSeparatorExtractor tokenSeparatorExtractor, final RegexpCooker regexpCooker) {
+        this.tokenSeparatorExtractor = tokenSeparatorExtractor;
+        this.regexpCooker = regexpCooker;
     }
 
     @Override
@@ -31,12 +38,13 @@ public class TokenSplitter implements ISplitter<String, String> {
             return new ArrayList<String>(1){{add(txt);}};
 
         final List<Character> separators = optionalSeparators.get();
-        final String regExp = REGEXP_COOKER.prepareRegexp(separators);
+        final String regExp = regexpCooker.prepareRegexp(separators);
         final List<String> tokens = Arrays.asList(txt.split(regExp));
         return TokenSplitter.filterIncorrectTokens(tokens);
     }
 
-    private static List<String> filterIncorrectTokens(final List<String> tokens) {
+    @VisibilityReducedForTestPurposeOnly
+    static List<String> filterIncorrectTokens(final List<String> tokens) {
         return tokens.stream()
                 .filter(token -> !token.isEmpty())
                 .collect(Collectors.toList());

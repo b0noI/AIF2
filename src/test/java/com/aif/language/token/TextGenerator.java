@@ -12,7 +12,7 @@ public class TextGenerator {
 
     private String baseToken;
     private char[] tokenElements;
-    final private char[] elements = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮйцукенгшщзхъфывапролджэячсмитьбю".toCharArray();
+    final private char[] elements = " ".toCharArray();
     private char separator;
     private int filesCount;
     private Path location;
