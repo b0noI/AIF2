@@ -120,12 +120,9 @@ public class QualityOutputResults {
 	// sentences.
 	private int getOpenNlpResult(String stringFile) {
 		final String MODEL_RESOURCE_PATH = "/opennlp-models/en-sent.bin";
-		InputStream modelResource = ClassLoader.class
-				.getResourceAsStream(MODEL_RESOURCE_PATH);
 
-		OpenNLPSentenceSplitter openNlpSplitter;
-		try {
-			openNlpSplitter = new OpenNLPSentenceSplitter(modelResource);
+		try(InputStream modelResource = ClassLoader.class.getResourceAsStream(MODEL_RESOURCE_PATH)) {
+            OpenNLPSentenceSplitter openNlpSplitter = new OpenNLPSentenceSplitter(modelResource);
 			List<String> openNlpResult = openNlpSplitter.split(stringFile);
 
 			return openNlpResult.size();
