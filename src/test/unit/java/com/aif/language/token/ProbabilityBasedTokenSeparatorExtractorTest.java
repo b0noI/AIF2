@@ -11,9 +11,9 @@ import java.util.Map;
 import static org.testng.Assert.assertEquals;
 
 
-public class ITProbabilityBasedTokenSeparatorExtractorTest {
+public class ProbabilityBasedTokenSeparatorExtractorTest {
 
-    @Test(groups = "functional-fast")
+    @Test(groups = "unit-tests")
     public void testGetCharactersMappedToCount() throws Exception {
         final List<Character> inputCharacters = Arrays.asList('a', 'a', 'A', ' ', ' ', ' ');
 
