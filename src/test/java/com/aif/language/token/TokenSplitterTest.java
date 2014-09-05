@@ -1,12 +1,21 @@
 package com.aif.language.token;
 
+
+import org.testng.annotations.BeforeMethod;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.RegexpCooker;
 import com.aif.language.sentence.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.SentenceSplitter;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.testng.annotations.Test;
-
 import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -18,12 +27,66 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static junit.framework.Assert.*;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
+
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
 
 public class TokenSplitterTest {
+
+    
+    //This two String are pathes for gethering statistic
+    private final String settingsPath = "/unitTestData/settings.xml";
+    private final String rootResourcesPath = "/../../src/main/resources/";
+    private Document doc;
+
+    //This two String are pathes for gethering statistic
+    private final String pathToStatisticSet = "/Users/admin/Documents/programming/projects/AIF2/testData";
+    private final String pathToStatisticResult = "/Users/admin/Documents/programming/projects/AIF2/AIF2/src/main/resources/testData/RU/Results.csv";
+    
+    @BeforeMethod
+    public void testResoursesEnitialize() {
+        try {
+            
+            final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            doc = (Document) factory.newDocumentBuilder().parse(new File(getClass().getResource(settingsPath).toURI()));
+            
+        } catch (ParserConfigurationException | IOException | URISyntaxException | SAXException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+    @Test
+    public void should_get_tokens_from_text_file_with_space_in_the_begining_using_PREDEFINED_separator() {
+
+        try {
+
+            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_space_begining.txt").toURI());
+
+            //Expected results:
+            final String lastToken = "токенов.";
+            final String firstToken = "-";
+            final long numberOfTokens = 8;
+
+            final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+
+            final List<String> output = tokenSplitter.split(textFromFileToString(PathToFile));
+
+            assertNotNull(output);
+            assertEquals(numberOfTokens, output.size());
+            assertEquals(firstToken, output.get(0));
+            assertEquals(lastToken, output.get(output.size() - 1));
+
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Test(groups = "unit-tests")
@@ -35,10 +98,35 @@ public class TokenSplitterTest {
         expectedResult.add("test3");
 
         final ISplitter<String, String> tokenSeparatorExtractor = new TokenSplitter();
-
         final List<String> actualResult = tokenSeparatorExtractor.split(inputText);
 
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void should_split_new_line_words() {
+
+        try {
+
+            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_new_lines.txt").toURI());
+
+            final String lastToken = "токенов";
+            final String firstToken = "В";
+            final long numberOfTokens = 9;
+
+            final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+
+            final List<String> output = tokenSplitter.split(textFromFileToString(PathToFile));
+
+            assertNotNull(output);
+            assertEquals(firstToken, output.get(0));
+            assertEquals(lastToken, output.get(output.size() - 1));
+            assertEquals(numberOfTokens, output.size());
+
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test(groups = "unit-tests")
@@ -129,102 +217,53 @@ public class TokenSplitterTest {
         // verify
     }
 
-    private Path path_to_file;
-
-    //This two String are pathes for gethering statistic
-    private final String pathToStatisticSet = "/Users/admin/Documents/programming/projects/AIF2/testData";
-    private final String pathToStatisticResult = "/Users/admin/Documents/programming/projects/AIF2/AIF2/src/main/resources/testData/RU/Results.csv";
-
-    @Test
-    public void should_get_tokens_from_text_file_with_space_in_the_begining_using_PREDEFINED_separator() {
-
-        try {
-
-            path_to_file = Paths.get(getClass().getResource("/TestData/RU/RU_text_with_space_begining.txt").toURI());
-
-            //Expected results:
-
-            final String lastToken = "tokens.";
-            final String firstToken = "-";
-            final long numberOfTokens = 8;
-
-            final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
-
-            final List<String> output = tokenSplitter.split(textFromFileToString(path_to_file));
-
-            assertNotNull(output);
-            assertEquals(numberOfTokens, output.size());
-            assertEquals(firstToken, output.get(0));
-            assertEquals(lastToken, output.get(output.size()-1));
-
-
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    @Test
-    public void should_split_new_line_words() {
-
-        try {
-            path_to_file = Paths.get(getClass().getResource("/TestData/RU/RU_text_with_new_lines.txt").toURI());
-
-            final String lastToken = "tokenov";
-            final String firstToken = "B";
-            final long numberOfTokens = 9;
-
-            final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
-
-            final List<String> output = tokenSplitter.split(textFromFileToString(path_to_file));
-
-            assertNotNull(output);
-            assertEquals(firstToken, output.get(0));
-            assertEquals(lastToken, output.get(output.size()-1));
-            assertEquals(numberOfTokens, output.size());
-
-
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     @Test
     public void should_get_tokens_from_file_using_probability_splitter() {
 
-        path_to_file = Paths.get("/Users/admin/Documents/programming/projects/AIF2/AIF2/src/main/resources/testData/RU/");
+        try {
 
-        TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
+            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_10000_СеврюгаГрач.txt").toURI());
 
-        List<String> tokens = splitter.split(textFromFileToString(path_to_file));
+            final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
-        assertNotNull(tokens);
-        assertEquals(10000, tokens.size());
+            final List<String> tokens = splitter.split(textFromFileToString(PathToFile));
 
+            assertNotNull(tokens);
+            assertEquals(10000, tokens.size());
+
+        } catch (URISyntaxException e) {
+
+            e.printStackTrace();
+        }
     }
 
-    @Test
+    public void test2() {
+        String textFromFileToString = textFromFileToString(Paths.get("/Users/vsk/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
+        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
+        final List<String> tokens = tokenSplitter.split(textFromFileToString);
+        final List<List<String>> result = sentenceSplitter.split(tokens);
+        assertTrue(result.size() > 0);
+    }
+
     @Ignore
     //TODO this is not a real test, code below used for generating statistic data for probability splitter
     public void generate_statistic_for_probability_splitter() {
 
-        List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
+        final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
+        final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
+
         List<String> splittedText;
 
-
-        TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
-
-        for(Path path: files) {
+        for (Path path : files) {
 
             splittedText = splitter.split(textFromFileToString(path));
 
-            String fileInnerName = path.toFile().getName();
+            final String fileInnerName = path.toFile().getName();
 
-            int correctElems = getTokensNumFromFileName(fileInnerName);
+            final int correctElems = getTokensNumFromFileName(fileInnerName);
 
-            saveStatisticToFile(fileInnerName, correctElems, splittedText.size());
+            saveStatisticToFile(fileInnerName, correctElems, splittedText.size(), "RU");
 
         }
     }
@@ -233,30 +272,29 @@ public class TokenSplitterTest {
     @Ignore
     public void create_file_set_for_statistic_for_PROBABILITY_based_splitting() {
 
-        TextGenerator tg = new TextGenerator();
+        final TextGenerator tg = new TextGenerator();
 
-        tg.setFilesCount(100)
+        tg.setFilesCount(10)
                 .setLenguage("RU")
                 .setStep(10000)
-                .setBaseToken("SG")
+                .setBaseToken("RuTestFile")
                 .setInitialTokensInFile(10000)
                 .setLocation(Paths.get(pathToStatisticSet))
                 .generate();
     }
-
     private List<Path> getAllFilesInFolder(Path parentPath) {
 
         List<Path> out = new ArrayList<>();
 
         String[] files = parentPath.toFile().list();
 
-        for(String fileName: files)
-            out.add(Paths.get(parentPath.toString()+"/"+fileName));
+        for (String fileName : files)
+            out.add(Paths.get(parentPath.toString() + "/" + fileName));
 
 
         //.DS_Store is Mac_OS hidden file, as I don't know how to ignore it I will remove it from list
         //But we need //TODO some thing with .DS_Store system file
-        if(out.get(0).toFile().getName().equals(".DS_Store"))
+        if (out.get(0).toFile().getName().equals(".DS_Store"))
             out.remove(0);
 
         return out;
@@ -265,15 +303,11 @@ public class TokenSplitterTest {
 
     private String textFromFileToString(final Path pathToFile) {
 
-        try(BufferedReader reader = Files.newBufferedReader(pathToFile)) {
+        try(final BufferedReader reader = Files.newBufferedReader(pathToFile)) {
 
-            StringBuffer buff = new StringBuffer();
+            final StringBuffer buff = new StringBuffer();
 
-            String line = null;
-
-            while((line = reader.readLine()) != null)
-                //TODO
-                buff.append(line+"\n");
+            reader.lines().forEach(x -> buff.append(x));
 
             return buff.toString();
 
@@ -285,23 +319,61 @@ public class TokenSplitterTest {
         return null;
     }
 
-    private void saveStatisticToFile(String fileName, int correctTokensNum, int foundTokensNum) {
+    private void saveStatisticToFile(String fileName, int correctTokensNum, int foundTokensNum, String LNG) {
 
-        try( BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(pathToStatisticResult).toFile(), true))) {
+        try( final BufferedWriter bw = new BufferedWriter(new FileWriter(getPathToResourse(LNG).toFile(), true))) {
 
             bw.write(LocalDateTime.now().toString() + "," + fileName + "," + correctTokensNum + "," + foundTokensNum);
             bw.newLine();
 
         }catch (IOException e) {
 
+            e.printStackTrace();
+
         }
-
-
-
     }
+
     private int getTokensNumFromFileName(String name) {
         String[] elems = name.split("_");
         return Integer.parseInt(elems[1]);
     }
 
+    private Path getPathToResourse(String LNG) {
+
+        Path output = null;
+
+        final XPathFactory xPathFactory = XPathFactory.newInstance();
+        final XPath xpath = xPathFactory.newXPath();
+        try {
+            final XPathExpression expression = xpath.compile("/Parameters/Paths/"+LNG+"/Path[@name='PathToStatisticResultFile']/text()");
+            final String path = rootResourcesPath+expression.evaluate(doc);
+            output = Paths.get(getClass().getResource("/").toString());
+            output = output.resolve(path).toAbsolutePath();
+
+        } catch (XPathExpressionException e) {
+            e.printStackTrace();
+        }
+
+        return output;
+    }
+
+//    private void saveStatisticToFile(String fileName, int correctTokensNum, int foundTokensNum) {
+//
+//        try( BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(pathToStatisticResult).toFile(), true))) {
+//
+//            bw.write(LocalDateTime.now().toString() + "," + fileName + "," + correctTokensNum + "," + foundTokensNum);
+//            bw.newLine();
+//
+//        }catch (IOException e) {
+//
+//        }
+//
+//
+//
+//    }
+//    private int getTokensNumFromFileName(String name) {
+//        String[] elems = name.split("_");
+//        return Integer.parseInt(elems[1]);
+//    }
+//
 }
