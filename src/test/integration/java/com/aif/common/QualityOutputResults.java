@@ -14,9 +14,9 @@ import com.aif.language.sentence.StanfordNLPSentenceSplitter;
  * @Test
  * 
  *       This class gets results made by
- *       com.aif.language.sentence.AIF2NLPSentenceSplitter,
- *       com.aif.language.sentence.OpenNLPSentenceSplitter,
- *       com.aif.language.sentence.StanfordNLPSentenceSplitter classes and
+ *       AIF2NLPSentenceSplitter,
+ *       OpenNLPSentenceSplitter,
+ *       StanfordNLPSentenceSplitter classes and
  *       compares it with a standard text body. The standard must to be 100%
  *       correct and has the exact number of sentences. And if we compare our
  *       result with the standard, we will get quality output result.

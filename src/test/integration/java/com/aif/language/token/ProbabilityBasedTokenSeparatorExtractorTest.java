@@ -27,4 +27,5 @@ public class ProbabilityBasedTokenSeparatorExtractorTest {
 
         assertEquals(expectedResult, actualResult);
     }
+
 }
