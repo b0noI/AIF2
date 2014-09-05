@@ -48,10 +48,9 @@ public class QualityOutputResults {
 
 	// set standard String file.
 	public QualityOutputResults() {
-		try {
-			stringFile = FileHelper.readAllTextFromFile(ClassLoader.class
-					.getResourceAsStream(STANDARD_TEXT_PATH));
-			checkAll(stringFile);
+		try(final InputStream resourceFile = ClassLoader.class
+                .getResourceAsStream(STANDARD_TEXT_PATH)) {
+			checkAll(FileHelper.readAllTextFromFile(resourceFile));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.err.println("Problem with FileHelper. File not found: " + e);
