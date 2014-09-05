@@ -20,11 +20,11 @@
             <version>3.2</version>
         </dependency>
         <dependency>
-<<<<<<< HEAD
             <groupId>jdom</groupId>
             <artifactId>jdom</artifactId>
             <version>1.1</version>
-=======
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
@@ -54,7 +54,6 @@
             <version>3.3.1</version>
             <classifier>models</classifier>
             <scope>test</scope>
->>>>>>> FETCH_HEAD
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
