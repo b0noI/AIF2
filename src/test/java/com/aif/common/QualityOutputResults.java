@@ -27,7 +27,7 @@ import com.aif.language.sentence.StanfordNLPSentenceSplitter;
 
 public class QualityOutputResults {
 
-	private String standardTextPath = "/com/aif/language/"
+	private static final String STANDARD_TEXT_PATH = "/com/aif/language/"
 			+ "sentence/for_sentence_split_test.txt";
 
 	private String stringFile = null;
@@ -50,7 +50,7 @@ public class QualityOutputResults {
 	public QualityOutputResults() {
 		try {
 			stringFile = FileHelper.readAllTextFromFile(ClassLoader.class
-					.getResourceAsStream(standardTextPath));
+					.getResourceAsStream(STANDARD_TEXT_PATH));
 			checkAll(stringFile);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
