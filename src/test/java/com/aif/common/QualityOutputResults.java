@@ -30,7 +30,6 @@ public class QualityOutputResults {
 	private static final String STANDARD_TEXT_PATH = "/com/aif/language/"
 			+ "sentence/for_sentence_split_test.txt";
 
-	private String stringFile = null;
 	private int standardSentencesNumber = 5000; // it's number just from my head
 	
 	
@@ -65,8 +64,7 @@ public class QualityOutputResults {
 			int standardSentencesNumber) {
 		this.standardSentencesNumber = standardSentencesNumber;
 		try {
-			stringFile = FileHelper.readAllTextFromFile(inputStream);
-			checkAll(stringFile);
+			checkAll(FileHelper.readAllTextFromFile(inputStream));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.err.println("Problem with FileHelper. File not found: " + e);
@@ -75,16 +73,6 @@ public class QualityOutputResults {
 			System.err.println("Problem with FileHelper get String File: " + e);
 		}
 
-	}
-
-	/* default getters and setters */
-
-	public String getStringFile() {
-		return stringFile;
-	}
-
-	public void setStringFile(String stringFile) {
-		this.stringFile = stringFile;
 	}
 
 	public int getStandardSentencesNumber() {
