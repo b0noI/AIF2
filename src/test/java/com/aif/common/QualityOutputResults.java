@@ -148,7 +148,7 @@ public class QualityOutputResults {
 	}
 	
 	private int compareWithStandard(int number) {
-		return (int) (number * 100) / this.standardSentencesNumber;
+		return (number * 100) / this.standardSentencesNumber;
 	}
 
 }
