@@ -27,10 +27,9 @@ import com.aif.language.sentence.StanfordNLPSentenceSplitter;
 
 public class QualityOutputResults {
 
-	private String standardTextPath = "/com/aif/language/"
+	private static final String STANDARD_TEXT_PATH = "/com/aif/language/"
 			+ "sentence/for_sentence_split_test.txt";
 
-	private String stringFile = null;
 	private int standardSentencesNumber = 5000; // it's number just from my head
 	
 	
@@ -48,10 +47,9 @@ public class QualityOutputResults {
 
 	// set standard String file.
 	public QualityOutputResults() {
-		try {
-			stringFile = FileHelper.readAllTextFromFile(ClassLoader.class
-					.getResourceAsStream(standardTextPath));
-			checkAll(stringFile);
+		try(final InputStream resourceFile = ClassLoader.class
+                .getResourceAsStream(STANDARD_TEXT_PATH)) {
+			checkAll(FileHelper.readAllTextFromFile(resourceFile));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.err.println("Problem with FileHelper. File not found: " + e);
@@ -66,8 +64,7 @@ public class QualityOutputResults {
 			int standardSentencesNumber) {
 		this.standardSentencesNumber = standardSentencesNumber;
 		try {
-			stringFile = FileHelper.readAllTextFromFile(inputStream);
-			checkAll(stringFile);
+			checkAll(FileHelper.readAllTextFromFile(inputStream));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.err.println("Problem with FileHelper. File not found: " + e);
@@ -76,16 +73,6 @@ public class QualityOutputResults {
 			System.err.println("Problem with FileHelper get String File: " + e);
 		}
 
-	}
-
-	/* default getters and setters */
-
-	public String getStringFile() {
-		return stringFile;
-	}
-
-	public void setStringFile(String stringFile) {
-		this.stringFile = stringFile;
 	}
 
 	public int getStandardSentencesNumber() {
@@ -133,12 +120,9 @@ public class QualityOutputResults {
 	// sentences.
 	private int getOpenNlpResult(String stringFile) {
 		final String MODEL_RESOURCE_PATH = "/opennlp-models/en-sent.bin";
-		InputStream modelResource = ClassLoader.class
-				.getResourceAsStream(MODEL_RESOURCE_PATH);
 
-		OpenNLPSentenceSplitter openNlpSplitter;
-		try {
-			openNlpSplitter = new OpenNLPSentenceSplitter(modelResource);
+		try(InputStream modelResource = ClassLoader.class.getResourceAsStream(MODEL_RESOURCE_PATH)) {
+            OpenNLPSentenceSplitter openNlpSplitter = new OpenNLPSentenceSplitter(modelResource);
 			List<String> openNlpResult = openNlpSplitter.split(stringFile);
 
 			return openNlpResult.size();
@@ -161,7 +145,7 @@ public class QualityOutputResults {
 	}
 	
 	private int compareWithStandard(int number) {
-		return (int) (number * 100) / this.standardSentencesNumber;
+		return (number * 100) / this.standardSentencesNumber;
 	}
 
 }
