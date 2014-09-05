@@ -10,13 +10,13 @@ import java.util.List;
 import static junit.framework.Assert.assertTrue;
 
 
-public class SentenceSplitterTest {
+public class ITSentenceSplitterTest {
 
     private static final String TEXT_RESOURCE_PATH = "for_sentence_split_test.txt";
 
     @Test(groups = "functional-fast")
     public void testSplit() throws Exception {
-        try(final InputStream modelResource = SentenceSplitterTest.class.getResourceAsStream(TEXT_RESOURCE_PATH)) {
+        try(final InputStream modelResource = ITSentenceSplitterTest.class.getResourceAsStream(TEXT_RESOURCE_PATH)) {
 
             final String text = FileHelper.readAllTextFromFile(modelResource);
 
