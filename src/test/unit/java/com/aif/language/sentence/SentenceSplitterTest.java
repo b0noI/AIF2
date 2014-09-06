@@ -1,23 +1,94 @@
 package com.aif.language.sentence;
 
+import com.aif.language.common.ISplitter;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.*;
 import static org.testng.Assert.*;
 
 public class SentenceSplitterTest {
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testSplit() throws Exception {
+        // input arguments
+        final List<String> inputTokens = Arrays.asList(new String[]{
+                "token...",
+                "(token",
+                "(!.token..",
+                "token",
+                "tok!en"
+        });
+        final List<Character> inputCharacters = Arrays.asList(new Character[]{'(', '!', '.'});
 
+        // mocks
+        final ISentenceSeparatorExtractor mockSentenceSeparatorExtractor = mock(ISentenceSeparatorExtractor.class);
+        when(mockSentenceSeparatorExtractor.extract(eq(inputTokens))).thenReturn(Optional.of(inputCharacters));
+
+        // expected results
+        final List<List<String>> expectedResult = new ArrayList<List<String>>() {
+            {
+                add(Arrays.asList(new String[]{"token", "..."}));
+                add(Arrays.asList(new String[]{"(", "token"}));
+                add(Arrays.asList(new String[]{"(!.", "token", ".."}));
+                add(Arrays.asList(new String[]{"token", "tok!en"}));
+            }
+        };
+
+        // creating test instance
+        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(mockSentenceSeparatorExtractor);
+
+        // execution test
+        final List<List<String>> actaulResult = testInstance.split(inputTokens);
+
+        // result assert
+        assertEquals(actaulResult, expectedResult);
+
+        // mocks verify
+        verify(mockSentenceSeparatorExtractor, times(1)).extract(eq(inputTokens));
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testPrepareSentences() throws Exception {
+        // input arguments
+        final List<String> inputTokens = Arrays.asList(new String[]{
+                "token...",
+                "(token",
+                "(!.token..",
+                "token",
+                "tok!en"
+        });
+        final List<Character> inputCharacters = Arrays.asList(new Character[]{'(', '!', '.'});
 
+        // mocks
+
+        // expected results
+        final List<String> expectedResults = Arrays.asList(new String[]{
+                "token",
+                "...",
+                "(",
+                "token",
+                "(!.",
+                "token",
+                "..",
+                "token",
+                "tok!en"
+        });
+
+        // creating test instance
+
+        // execution test
+        final List<String> actualResults = SentenceSplitter.prepareSentences(inputTokens, inputCharacters);
+
+        // result assert
+        assertEquals(actualResults, expectedResults);
+
+        // mocks verify
     }
 
     @Test(groups = "unit-tests")
