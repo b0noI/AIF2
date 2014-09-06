@@ -2,6 +2,7 @@ package com.aif.language.sentence;
 
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,8 +20,32 @@ public class SentenceSplitterTest {
 
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testPrepareToken() throws Exception {
+
+        final List<String> inputTokens = Arrays.asList(new String[]{
+                "token.",
+                "(token",
+                "tok.en",
+                "tokeN"
+        });
+        final List<Character> inputCharacters = Arrays.asList(new Character[] {
+            '.', '('
+        });
+
+        final List<List<String>> expectedResults = new ArrayList<List<String>>(){{
+                add(Arrays.asList(new String[]{"token", "."}));
+                add(Arrays.asList(new String[]{"(", "token"}));
+                add(Arrays.asList(new String[]{"tok.en"}));
+                add(Arrays.asList(new String[]{"tokeN"}));
+            }
+        };
+
+        for (int i = 0; i < expectedResults.size(); i++) {
+            final List<String> expectedResult = expectedResults.get(i);
+            final String inputToke = inputTokens.get(i);
+            testPrepareToken(inputToke, inputCharacters, expectedResult);
+        }
 
     }
 
@@ -50,6 +75,24 @@ public class SentenceSplitterTest {
 
         // execution test
         final List<Boolean> actualResult = SentenceSplitter.mapToBooleans(inputTokens, inputCharacters);
+
+        // result assert
+        assertEquals(expectedResult, actualResult);
+
+        // mocks verify
+    }
+
+    private static void testPrepareToken(final String inputToken, final List<Character> inputCharacters, final List<String> expectedResult){
+        // input arguments
+
+        // mocks
+
+        // expected results
+
+        // creating test instance
+
+        // execution test
+        final List<String> actualResult = SentenceSplitter.prepareToken(inputToken, inputCharacters);
 
         // result assert
         assertEquals(expectedResult, actualResult);
