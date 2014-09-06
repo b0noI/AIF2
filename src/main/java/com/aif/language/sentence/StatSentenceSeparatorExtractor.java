@@ -1,6 +1,7 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.IExtractor;
+import com.aif.language.common.VisibilityReducedForCLI;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
@@ -23,13 +24,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
     @Override
     public Optional<List<Character>> extract(final List<String> tokens) {
-
-        final List<String> filteredTokens = filter(tokens);
-
-        final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
-        final StatData startCharactersStatData = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
-
-        final List<CharacterStat> characterStats = getCharactersStatistic(startCharactersStatData, endCharactersStatData);
+        final List<CharacterStat> characterStats = getCharactersStat(tokens);
 
         final List<Character> filteredCharactersStat = filterCharacterStatisticFromNonEndCharacters(characterStats)
                 .stream()
@@ -38,7 +33,17 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
         return Optional.of(filteredCharactersStat);
     }
 
-    private List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
+    @VisibilityReducedForCLI
+    static List<CharacterStat> getCharactersStat(final List<String> tokens) {
+        final List<String> filteredTokens = filter(tokens);
+
+        final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
+        final StatData startCharactersStatData = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
+
+        return getCharactersStatistic(startCharactersStatData, endCharactersStatData);
+    }
+
+    private static List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
         final SummaryStatistics stats = new SummaryStatistics();
         characterStats
                 .stream()
@@ -53,7 +58,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .collect(Collectors.toList());
     }
 
-    private List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
+    private static List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
         final List<CharacterStat> characterStats = new ArrayList<>(startCharacterStatData.getAllCharacters().size());
         for (Character ch : startCharacterStatData.getAllCharacters()) {
             final double probability1 = startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
