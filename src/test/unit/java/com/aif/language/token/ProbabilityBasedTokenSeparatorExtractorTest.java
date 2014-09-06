@@ -1,7 +1,9 @@
 package com.aif.language.token;
 
 
+import com.aif.language.common.IExtractor;
 import junit.framework.Assert;
+import org.apache.commons.lang3.ArrayUtils;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -59,6 +61,28 @@ public class ProbabilityBasedTokenSeparatorExtractorTest {
         Assert.assertEquals(expectedResult, actualResult);
 
         // verify
+    }
+
+    @Test (groups = "unit-tests")
+    public void testExtract() throws Exception {
+        // input arguments
+        final String inputText = "token1 adddddddddd";
+
+        // mocks
+
+        // expected results
+        final Optional<List<Character>> expectedResult = Optional.of(Arrays.asList(new Character[]{'d'}));
+
+        // creating test instance
+        final ITokenSeparatorExtractor tokenSeparatorExtractor = ITokenSeparatorExtractor.Type.PROBABILITY.getInstance();
+
+        // execution test
+        final Optional<List<Character>> actualResult = tokenSeparatorExtractor.extract(inputText);
+
+        // result assert
+        assertEquals(expectedResult, actualResult);
+
+        // mocks verify
     }
 
 }
