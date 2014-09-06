@@ -59,11 +59,11 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         boolean prevCharacterIsSeparator = separators.contains(token.charAt(0));
         int lastIndex = 0;
         for (int i = 1; i < token.length(); i++) {
-            final boolean cuurentCharacterSeparator = separators.contains(token.charAt(i));
-            if (prevCharacterIsSeparator != cuurentCharacterSeparator) {
+            final boolean currentCharacterSeparator = separators.contains(token.charAt(i));
+            if (prevCharacterIsSeparator != currentCharacterSeparator) {
                 tokens.add(token.substring(lastIndex, i));
                 lastIndex = i;
-                prevCharacterIsSeparator = cuurentCharacterSeparator;
+                prevCharacterIsSeparator = currentCharacterSeparator;
             }
         }
         tokens.add(token.substring(lastIndex));
