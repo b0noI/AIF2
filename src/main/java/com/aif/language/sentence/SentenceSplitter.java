@@ -75,6 +75,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         return tokens;
     }
 
+    @VisibilityReducedForTestPurposeOnly
     static int firstNonSeparatorPosition(final String token, final List<Character> separarors) {
         if (!separarors.contains(token.charAt(0))) {
             return 0;
@@ -89,6 +90,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         return i;
     }
 
+    @VisibilityReducedForTestPurposeOnly
     static int lastNonSeparatorPosition(final String token, final List<Character> separators) {
         if (!separators.contains(token.charAt(token.length() - 1))) {
             return token.length();

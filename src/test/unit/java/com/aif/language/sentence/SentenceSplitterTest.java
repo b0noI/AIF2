@@ -21,6 +21,98 @@ public class SentenceSplitterTest {
     }
 
     @Test(groups = "unit-tests")
+    public void testLastNonSeparatorPositionWhenNoLastCharacter() throws Exception {
+        // input arguments
+        final String inputToken = ".token";
+        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.'});
+
+        // mocks
+
+        // expected results
+        final int expectedResult = 6;
+
+        // creating test instance
+
+        // execution test
+        final int actualResult = SentenceSplitter.lastNonSeparatorPosition(inputToken, inputCharacters);
+
+        // result assert
+        assertEquals(expectedResult, actualResult);
+
+        // mocks verify
+
+    }
+
+    @Test(groups = "unit-tests")
+    public void testFirstNonSeparatorPositionWhenNoFirstCharacter() throws Exception {
+        // input arguments
+        final String inputToken = "token";
+        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.'});
+
+        // mocks
+
+        // expected results
+        final int expectedResult = 0;
+
+        // creating test instance
+
+        // execution test
+        final int actualResult = SentenceSplitter.firstNonSeparatorPosition(inputToken, inputCharacters);
+
+        // result assert
+        assertEquals(expectedResult, actualResult);
+
+        // mocks verify
+
+    }
+
+    @Test(groups = "unit-tests")
+    public void testFirstNonSeparatorPositionWhenFirstCharacter() throws Exception {
+        // input arguments
+        final String inputToken = ".!token";
+        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.', '!'});
+
+        // mocks
+
+        // expected results
+        final int expectedResult = 2;
+
+        // creating test instance
+
+        // execution test
+        final int actualResult = SentenceSplitter.firstNonSeparatorPosition(inputToken, inputCharacters);
+
+        // result assert
+        assertEquals(actualResult, expectedResult);
+
+        // mocks verify
+
+    }
+
+    @Test(groups = "unit-tests")
+    public void testLastNonSeparatorPositionWhenLastCharacter() throws Exception {
+        // input arguments
+        final String inputToken = ".token!";
+        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.', '!'});
+
+        // mocks
+
+        // expected results
+        final int expectedResult = 6;
+
+        // creating test instance
+
+        // execution test
+        final int actualResult = SentenceSplitter.lastNonSeparatorPosition(inputToken, inputCharacters);
+
+        // result assert
+        assertEquals(expectedResult, actualResult);
+
+        // mocks verify
+
+    }
+
+    @Test(groups = "unit-tests")
     public void testPrepareToken() throws Exception {
 
         final List<String> inputTokens = Arrays.asList(new String[]{
