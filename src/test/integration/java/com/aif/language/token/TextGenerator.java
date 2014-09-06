@@ -6,19 +6,13 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
-/**
- * Created by admin on 21.08.14.
- */
 public class TextGenerator {
 
     private String baseToken;
     private char[] tokenElements;
-    final private char[] elements = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮйцукенгшщзхъфывапролджэячсмитьбю".toCharArray();
+    final private char[] elements = " ".toCharArray();
     private char separator;
     private int filesCount;
     private Path location;
@@ -37,7 +31,7 @@ public class TextGenerator {
         this.tokensInOneLine = 10;
         this.initialTekensNumber = 10;
         try {
-            this.location = Paths.get(getClass().getResource("/TestData").toURI());
+            this.location = Paths.get(getClass().getResource("/unitTestData/TestData").toURI());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

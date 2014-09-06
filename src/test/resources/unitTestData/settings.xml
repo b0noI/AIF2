@@ -1,0 +1,12 @@
+<Parameters>
+    <AceptenceParameters>
+        <AcceptenceParameter name="TokenSplitterEffectivnese">80</AcceptenceParameter>
+        <AcceptenceParameter name="SentanceSplitterEffectivness">80</AcceptenceParameter>
+    </AceptenceParameters>
+    <Paths>
+        <RU>
+            <Path name="PathToStatisticFolder">unitTestData/testData/RU/statistic</Path>
+            <Path name="PathToStatisticResultFile">unitTestData/testData/RU/Results.csv</Path>
+        </RU>
+    </Paths>
+</Parameters>

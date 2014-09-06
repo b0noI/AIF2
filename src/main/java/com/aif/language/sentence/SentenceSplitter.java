@@ -1,17 +1,14 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
-import com.aif.language.common.RegexpCooker;
+import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Created by andriikr on 14/06/2014.
- */
 public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
-    private final           ISentenceSeparatorExtractor sentenceSeparatorExtractor;
+    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor;
 
     public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
@@ -23,68 +20,127 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
     @Override
     public List<List<String>> split(final List<String> tokens) {
-        final List<Boolean> listOfPositions = mapToBooleans(tokens);
-
-        final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
-
-        final List<List<String>> sentances = new ArrayList<>();
-        while (sentenceIterator.hasNext()) {
-            sentances.add(sentenceIterator.next());
-        }
-        return sentances;
-    }
-
-    private List<Boolean> mapToBooleans(final List<String> tokens) {
         final Optional<List<Character>> optionalSeparators = sentenceSeparatorExtractor.extract(tokens);
 
         if (!optionalSeparators.isPresent()) {
-            return Arrays.asList(new Boolean[tokens.size()]);
+            return new ArrayList<List<String>>(){{add(tokens);}};
         }
 
         final List<Character> separators = optionalSeparators.get();
 
-        final String regex = RegexpCooker.prepareRegexp(separators);
-        return tokens.stream()
-                .map(token -> token.matches(regex))
+        final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separators);
+
+        final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
+
+        final List<List<String>> sentences = new ArrayList<>();
+        while (sentenceIterator.hasNext()) {
+            sentences.add(sentenceIterator.next());
+        }
+
+        sentences.forEach(sentence -> prepareSentences(sentence, separators));
+
+        return sentences
+                .parallelStream()
+                .map(sentence -> SentenceSplitter.prepareSentences(sentence, separators))
                 .collect(Collectors.toList());
     }
 
-    private static class SentenceIterator implements Iterator<List<String>> {
+    @VisibilityReducedForTestPurposeOnly
+    static List<String> prepareSentences(final List<String> sentence, final List<Character> separators) {
+        final List<String> preparedTokens = new ArrayList<>();
 
-        private final List<String>  tokens;
+        for (String token: sentence) {
+            preparedTokens.addAll(prepareToken(token, separators));
+        }
 
-        private final List<Boolean> endTokens;
+        return preparedTokens;
+    }
 
-        private SentenceIterator(List<String> tokens, List<Boolean> endTokens) {
+    @VisibilityReducedForTestPurposeOnly
+    static List<String> prepareToken(final String token, final List<Character> separators) {
+        final List<String> tokens = new ArrayList<>(3);
+        boolean prevCharacterIsSeparator = separators.contains(token.charAt(0));
+        int lastIndex = 0;
+        for (int i = 1; i < token.length(); i++) {
+            final boolean currentCharacterSeparator = separators.contains(token.charAt(i));
+            if (prevCharacterIsSeparator != currentCharacterSeparator) {
+                tokens.add(token.substring(lastIndex, i));
+                lastIndex = i;
+                prevCharacterIsSeparator = currentCharacterSeparator;
+            }
+        }
+        tokens.add(token.substring(lastIndex));
+        return tokens;
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    static List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {
+        final List<Boolean> result = new ArrayList<>(tokens.size());
+
+        for (int i = 0; i < tokens.size(); i++) {
+            final String token = tokens.get(i);
+            if (separators.contains(token.charAt(token.length() - 1))) {
+                result.add(true);
+            } else if (i != tokens.size() - 1 && separators.contains(token.charAt(0))) {
+                result.add(true);
+            } else {
+                result.add(false);
+            }
+        }
+
+        return result;
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    static class SentenceIterator implements Iterator<List<String>> {
+
+        private final   List<String>    tokens;
+
+        private final   List<Boolean>   endTokens;
+
+        private         int             currentPosition = 0;
+
+        public SentenceIterator(List<String> tokens, List<Boolean> endTokens) {
+            assert tokens != null;
+            assert endTokens != null;
+            assert tokens.size() == endTokens.size();
             this.tokens = tokens;
             this.endTokens = endTokens;
         }
 
         @Override
         public boolean hasNext() {
-            return tokens.isEmpty();
+            return currentPosition != tokens.size();
         }
 
         @Override
         public List<String> next() {
             final List<String> sentence = getNextSentence();
-            this.removeNLeftElements(sentence.size());
 
             return sentence;
         }
 
         private List<String> getNextSentence() {
-            final int index = this.endTokens.indexOf(true);
-            final int endIndex = index == -1 ? this.tokens.size() - 1 : index;
-            return this.tokens.subList(0, endIndex + 1);
+            final int oldIndex = currentPosition;
+            currentPosition = getNextTrueIndex();
+            return this.tokens.subList(oldIndex, currentPosition);
         }
 
-        private void removeNLeftElements(final int count) {
-            final int newSzie = this.tokens.size() - count;
-            while (this.tokens.size() != newSzie) {
-                this.tokens.remove(0);
-                this.endTokens.remove(0);
+        private int getNextTrueIndex() {
+            int startIndex = currentPosition;
+
+            if (endTokens.size() == startIndex) {
+                return startIndex;
             }
+
+            do {
+                if (endTokens.get(startIndex)) {
+                    startIndex++;
+                    return startIndex;
+                }
+                startIndex++;
+            } while(startIndex < endTokens.size() - 1);
+            return startIndex + 1;
         }
 
     }

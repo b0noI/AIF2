@@ -2,14 +2,41 @@ package com.aif.language.common;
 
 import java.util.List;
 
-public abstract class RegexpCooker {
+public class RegexpCooker {
 
-    private final static String REGEXP_TEMPLATE = "[%s]+";
+    private final static String REGEXP_TEMPLATE = "%s[%s]+%s";
 
-    public static String prepareRegexp(final List<Character> characters) {
+    private final String prefix;
+
+    private final String postfix;
+
+    public RegexpCooker(String prefix, String postfix) {
+        this.prefix = prefix;
+        this.postfix = postfix;
+    }
+
+    public RegexpCooker() {
+        this("", "");
+    }
+
+    public String prepareRegexp(final List<Character> characters) {
         final StringBuffer stringBuffer = new StringBuffer();
-        characters.stream().forEach(separator -> stringBuffer.append(characters));
-        return String.format(REGEXP_TEMPLATE, stringBuffer.toString());
+        characters.stream().forEach(separator -> stringBuffer.append(RegexpCooker.prepareCharacter(separator)));
+        return String.format(REGEXP_TEMPLATE, prefix, stringBuffer.toString(), postfix);
+    }
+
+    private static String prepareCharacter(final Character ch) {
+        switch (ch) {
+            case '.':
+            case '\\':
+            case '\'':
+            case '\"':
+            case ']':
+            case '[':
+                return "\\" + ch;
+            default:
+                return "" + ch;
+        }
     }
 
 }

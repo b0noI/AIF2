@@ -6,7 +6,7 @@ import java.util.Optional;
 
 class PredefinedTokenSeparatorExtractor implements ITokenSeparatorExtractor {
 
-    private static final List<Character> SEPARATORS = Arrays.asList(new Character[]{' ', '\n'});
+    private static final List<Character> SEPARATORS = Arrays.asList(new Character[]{' ', '\n', System.lineSeparator().charAt(0)});
 
     @Override
     public Optional<List<Character>> extract(final String txt) {
