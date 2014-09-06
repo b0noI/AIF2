@@ -86,6 +86,7 @@
                     <parallel>methods</parallel>
                     <threadCount>10</threadCount>
                     <groups>unit-tests,functional-fast</groups>
+                    <enableAssertions>true</enableAssertions>
                 </configuration>
             </plugin>
             <plugin>

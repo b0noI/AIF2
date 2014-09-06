@@ -1,6 +1,7 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
+import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -76,7 +77,8 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
                 .collect(Collectors.toList());
     }
 
-    private static class SentenceIterator implements Iterator<List<String>> {
+    @VisibilityReducedForTestPurposeOnly
+    static class SentenceIterator implements Iterator<List<String>> {
 
         private final   List<String>    tokens;
 
@@ -84,7 +86,10 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         private         int             currentPosition = 0;
 
-        private SentenceIterator(List<String> tokens, List<Boolean> endTokens) {
+        public SentenceIterator(List<String> tokens, List<Boolean> endTokens) {
+            assert tokens != null;
+            assert endTokens != null;
+            assert tokens.size() == endTokens.size();
             this.tokens = tokens;
             this.endTokens = endTokens;
         }
@@ -109,6 +114,11 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         private int getNextTrueIndex() {
             int startIndex = currentPosition;
+
+            if (endTokens.size() == startIndex) {
+                return startIndex;
+            }
+
             do {
                 if (endTokens.get(startIndex)) {
                     startIndex++;
