@@ -28,7 +28,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
         final List<Character> separators = optionalSeparators.get();
 
-        final List<Boolean> listOfPositions = mapToBooleans(tokens, separators);
+        final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separators);
 
         final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
 
@@ -45,7 +45,8 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
                 .collect(Collectors.toList());
     }
 
-    private static List<String> prepareSentences(final List<String> sentence, final List<Character> separators) {
+    @VisibilityReducedForTestPurposeOnly
+    static List<String> prepareSentences(final List<String> sentence, final List<Character> separators) {
         final List<String> preparedTokens = new ArrayList<>();
 
         for (String token: sentence) {
@@ -55,7 +56,8 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         return preparedTokens;
     }
 
-    private static List<String> prepareToken(final String token, final List<Character> separators) {
+    @VisibilityReducedForTestPurposeOnly
+    static List<String> prepareToken(final String token, final List<Character> separators) {
         final List<String> tokens = new ArrayList<>(3);
         boolean prevCharacterIsSeparator = separators.contains(token.charAt(0));
         int lastIndex = 0;
@@ -71,10 +73,22 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         return tokens;
     }
 
-    private List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {
-        return tokens.stream()
-                .map(token -> separators.contains(token.charAt(token.length() - 1)))
-                .collect(Collectors.toList());
+    @VisibilityReducedForTestPurposeOnly
+    static List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {
+        final List<Boolean> result = new ArrayList<>(tokens.size());
+
+        for (int i = 0; i < tokens.size(); i++) {
+            final String token = tokens.get(i);
+            if (separators.contains(token.charAt(token.length() - 1))) {
+                result.add(true);
+            } else if (i != tokens.size() - 1 && separators.contains(token.charAt(0))) {
+                result.add(true);
+            } else {
+                result.add(false);
+            }
+        }
+
+        return result;
     }
 
     @VisibilityReducedForTestPurposeOnly
