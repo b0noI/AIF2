@@ -4,33 +4,38 @@ import com.aif.language.common.ISplitter;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.process.DocumentPreprocessor;
 
+import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StanfordNLPSentenceSplitter implements ISplitter<Reader, String> {
+public class StanfordNLPSentenceSplitter implements ISplitter<String, String> {
 
     @Override
-    public List<String> split(Reader target) {
+    public List<String> split(String target) {
 
-        List<String> sentenceList = new LinkedList<String>();
+        List<String> sentenceList = new LinkedList<>();
 
-        DocumentPreprocessor dp = new DocumentPreprocessor(target);
-        Iterator<List<HasWord>> iterator = dp.iterator();
+        try (Reader targetReader = new StringReader(target)) {
 
-        while (iterator.hasNext()) {
+            DocumentPreprocessor dp = new DocumentPreprocessor(targetReader);
+            Iterator<List<HasWord>> iterator = dp.iterator();
 
-            StringBuilder sentenceSb = new StringBuilder();
-            List<HasWord> sentence = iterator.next();
-            for (HasWord token : sentence) {
-                if(sentenceSb.length() > 1) {
-                    sentenceSb.append(" ");
+            while (iterator.hasNext()) {
+
+                StringBuilder sentenceSb = new StringBuilder();
+                List<HasWord> sentence = iterator.next();
+                for (HasWord token : sentence) {
+                    if(sentenceSb.length() > 1) {
+                        sentenceSb.append(" ");
+                    }
+                    sentenceSb.append(token);
                 }
-                sentenceSb.append(token);
+                sentenceList.add(sentenceSb.toString());
             }
-            sentenceList.add(sentenceSb.toString());
-        }
+        } catch (IOException e) {}
 
         return sentenceList;
 

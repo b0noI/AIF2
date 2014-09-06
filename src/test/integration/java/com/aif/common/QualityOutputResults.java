@@ -138,8 +138,7 @@ public class QualityOutputResults {
 	private int getStanfordResult(String stringFile) {
 		StanfordNLPSentenceSplitter stanfordSplitter = new StanfordNLPSentenceSplitter();
 
-		StringReader stringReader = new StringReader(stringFile);
-		List<String> stanfordResult = stanfordSplitter.split(stringReader);
+		List<String> stanfordResult = stanfordSplitter.split(stringFile);
 
 		return stanfordResult.size();
 	}
