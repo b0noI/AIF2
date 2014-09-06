@@ -24,6 +24,7 @@ public class Word extends AbstractWord {
     }
 
     @Override
+    //TODO: What should this method return?
     public String basicToken() {
         return null;
     }
