@@ -1,14 +1,14 @@
 package com.aif.common;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.util.List;
 
 import com.aif.language.sentence.AIF2NLPSentenceSplitter;
 import com.aif.language.sentence.OpenNLPSentenceSplitter;
 import com.aif.language.sentence.StanfordNLPSentenceSplitter;
+import org.testng.annotations.Test;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * @Test
@@ -30,83 +30,34 @@ public class QualityOutputResults {
 	private static final String STANDARD_TEXT_PATH = "/com/aif/language/"
 			+ "sentence/for_sentence_split_test.txt";
 
-	private int standardSentencesNumber = 5000; // it's number just from my head
-	
-	
-	public static void main(String args[]) {
 
-		// default test
-		new QualityOutputResults();
+    @Test
+    public void russianSentenceSplittersTest() {
+        final int ethalonSentenceCount = 2500;
+        final String textPath = "/unitTestData/TestData/RU/RU_alice_in_the_wonderland.txt";
 
-		// test with different file
-		new QualityOutputResults(
-				ClassLoader.class.getResourceAsStream("/unitTestData/TestData/"
-						+ "RU/RU_alice_in_the_wonderland.txt"), 2500);
+        try(final InputStream resourceFile =
+                    ClassLoader.class.getResourceAsStream(textPath)) {
 
-	}
+            final String textData = FileHelper.readAllTextFromFile(resourceFile);
 
-	// set standard String file.
-	public QualityOutputResults() {
-		try(final InputStream resourceFile = ClassLoader.class
-                .getResourceAsStream(STANDARD_TEXT_PATH)) {
-			checkAll(FileHelper.readAllTextFromFile(resourceFile));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.err.println("Problem with FileHelper. File not found: " + e);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.err.println("Problem with FileHelper get String File: " + e);
-		}
-	}
+            int aifResult = getAifResult(textData);
+            int openNlpResult = getOpenNlpResult(textData);
+            int stanfordResult = getStanfordResult(textData);
 
-	// set user standard file
-	public QualityOutputResults(InputStream inputStream,
-			int standardSentencesNumber) {
-		this.standardSentencesNumber = standardSentencesNumber;
-		try {
-			checkAll(FileHelper.readAllTextFromFile(inputStream));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.err.println("Problem with FileHelper. File not found: " + e);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.err.println("Problem with FileHelper get String File: " + e);
-		}
+            assertTrue(ethalonSentenceCount <= aifResult);
+            assertTrue(ethalonSentenceCount <= openNlpResult);
+            assertTrue(ethalonSentenceCount <= stanfordResult);
 
-	}
+            System.out.println(String.format("Quality test result: \n" +
+                    "AIF2 lib: %d sentences detected\n" +
+                    "OpenNLP lib: %d sentences detecded\n" +
+                    "StanfordNLP lib: %d sentences detected", aifResult, openNlpResult, stanfordResult));
 
-	public int getStandardSentencesNumber() {
-		return standardSentencesNumber;
-	}
-
-	public void setStandardSentencesNumber(int standardSentencesNumber) {
-		this.standardSentencesNumber = standardSentencesNumber;
-	}
-
-	/* private methods */
-
-	private void checkAll(String stringFile) {
-		// show all text in terminal
-		// System.out.println(stringFile);
-
-		// get all results:
-		int aifResult = getAifResult(stringFile);
-		int openNlpResult = getOpenNlpResult(stringFile);
-		int stanfordResult = getStanfordResult(stringFile);
-
-		System.out.println("AifSplitter's sentences number: " + aifResult
-				+ " comp: " + compareWithStandard(aifResult) + "%");
-		System.out.println("openNlpSplitter's sentences number: "
-				+ openNlpResult + " comp: "
-				+ compareWithStandard(openNlpResult) + "%");
-		System.out.println("stanfordSplitter's sentences number: "
-				+ stanfordResult + " comp: "
-				+ compareWithStandard(stanfordResult) + "%");
-
-		// TODO count result number
-		System.out.println("standard sentences number: "
-				+ standardSentencesNumber + "\n");
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 	// get the AIF's splitter result:
 	private int getAifResult(String stringFile) {
@@ -141,10 +92,6 @@ public class QualityOutputResults {
 		List<String> stanfordResult = stanfordSplitter.split(stringFile);
 
 		return stanfordResult.size();
-	}
-	
-	private int compareWithStandard(int number) {
-		return (number * 100) / this.standardSentencesNumber;
 	}
 
 }
