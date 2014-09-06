@@ -38,7 +38,8 @@ class ProbabilityBasedTokenSeparatorExtractor implements ITokenSeparatorExtracto
                 ));
     }
 
-    private static List<Character> sortBySeparatorProbability (final Map<Character, Integer> charactersMappedToCount) {
+    @VisibilityReducedForTestPurposeOnly
+    static List<Character> sortBySeparatorProbability (final Map<Character, Integer> charactersMappedToCount) {
         return charactersMappedToCount.entrySet().parallelStream()
                 .map(Map.Entry::getKey)
                 .sorted((ch1, ch2) -> charactersMappedToCount.get(ch2).compareTo(charactersMappedToCount.get(ch1)))
