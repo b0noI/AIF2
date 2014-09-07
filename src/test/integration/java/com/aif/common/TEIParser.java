@@ -38,6 +38,7 @@ public class TEIParser implements ICorporaParser {
         private static final String WORD_TAG = "w";
         private static final String PARAGRAPH_TAG = "p";
         private static final List<String> TEXT_ELEMENTS = Arrays.asList("w", "c", "seg");
+        private int sentenceCount = 0;
 
         private final StringBuilder resultBuilder = new StringBuilder();
 
@@ -60,8 +61,10 @@ public class TEIParser implements ICorporaParser {
 
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-            if(qName.equalsIgnoreCase(SENTENCE_TAG))
+            if(qName.equalsIgnoreCase(SENTENCE_TAG)) {
                 resultBuilder.append(' ');
+                sentenceCount++;
+            }
 
             if(qName.equalsIgnoreCase(HEADING_TAG))
                 resultBuilder.append("\n\n");
@@ -82,6 +85,10 @@ public class TEIParser implements ICorporaParser {
         public String getResult() {
 
             return resultBuilder.toString();
+        }
+
+        public int getSentenceCount() {
+            return sentenceCount;
         }
 
     }
