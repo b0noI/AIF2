@@ -1,5 +1,6 @@
 package com.aif.common;
 
+import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -8,6 +9,8 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class TEIParser implements ICorporaParser {
@@ -30,7 +33,51 @@ public class TEIParser implements ICorporaParser {
     }
 
     private static final class TEIHandler extends DefaultHandler {
+        private static final String SENTENCE_TAG = "sen";
+        private static final String HEADING_TAG = "head";
+        private static final String WORD_TAG = "w";
+        private static final String PARAGRAPH_TAG = "p";
+        private static final List<String> TEXT_ELEMENTS = Arrays.asList("w", "c", "seg");
+
         private final StringBuilder resultBuilder = new StringBuilder();
+
+        private boolean textElement = false;
+
+        @Override
+        public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+            if(TEXT_ELEMENTS.contains(qName.toLowerCase()))
+                textElement = true;
+
+            if(qName.equalsIgnoreCase(HEADING_TAG))
+                resultBuilder.append("\n\n");
+
+            if(qName.equalsIgnoreCase(WORD_TAG))
+                resultBuilder.append(' ');
+
+            if(qName.equalsIgnoreCase(PARAGRAPH_TAG))
+                resultBuilder.append('\n');
+        }
+
+        @Override
+        public void endElement(String uri, String localName, String qName) throws SAXException {
+            if(qName.equalsIgnoreCase(SENTENCE_TAG))
+                resultBuilder.append(' ');
+
+            if(qName.equalsIgnoreCase(HEADING_TAG))
+                resultBuilder.append("\n\n");
+
+            textElement = false;
+        }
+
+        @Override
+        public void characters(char[] ch, int start, int length) throws SAXException {
+            if(textElement) {
+
+                String data = new String(ch, start, length).replaceAll("\n", " ");
+                if(!data.matches("\\s+"))
+                    resultBuilder.append(data);
+            }
+        }
 
         public String getResult() {
 
