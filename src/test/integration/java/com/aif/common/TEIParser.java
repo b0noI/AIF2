@@ -35,6 +35,7 @@ public class TEIParser implements ICorporaParser {
         return "";
     }
 
+    @Override
     public int getSentenceCount() {
         return sentenceCount;
     }
