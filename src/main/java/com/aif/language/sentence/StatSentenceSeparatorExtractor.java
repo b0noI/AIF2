@@ -86,7 +86,8 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .collect(Collectors.toList());
     }
 
-    private static class CharacterStat implements Comparable<CharacterStat> {
+    @VisibilityReducedForCLI
+    static class CharacterStat implements Comparable<CharacterStat> {
 
         private final Character character;
 
