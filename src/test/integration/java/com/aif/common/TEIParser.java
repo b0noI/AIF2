@@ -15,6 +15,7 @@ import java.util.List;
 
 public class TEIParser implements ICorporaParser {
     private final SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+    private int sentenceCount = 0;
 
     @Override
     public String toPlainText(InputStream xmlInput) {
@@ -25,6 +26,8 @@ public class TEIParser implements ICorporaParser {
 
             parser.parse(xmlInput, handler);
 
+            sentenceCount = handler.getSentenceCount();
+
             return handler.getResult();
         } catch (ParserConfigurationException|SAXException|IOException e) {
             e.printStackTrace();
@@ -32,8 +35,12 @@ public class TEIParser implements ICorporaParser {
         return "";
     }
 
+    public int getSentenceCount() {
+        return sentenceCount;
+    }
+
     private static final class TEIHandler extends DefaultHandler {
-        private static final String SENTENCE_TAG = "sen";
+        private static final String SENTENCE_TAG = "s";
         private static final String HEADING_TAG = "head";
         private static final String WORD_TAG = "w";
         private static final String PARAGRAPH_TAG = "p";
@@ -51,9 +58,6 @@ public class TEIParser implements ICorporaParser {
 
             if(qName.equalsIgnoreCase(HEADING_TAG))
                 resultBuilder.append("\n\n");
-
-            if(qName.equalsIgnoreCase(WORD_TAG))
-                resultBuilder.append(' ');
 
             if(qName.equalsIgnoreCase(PARAGRAPH_TAG))
                 resultBuilder.append('\n');
