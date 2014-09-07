@@ -33,6 +33,8 @@ public class RegexpCooker {
             case '\"':
             case ']':
             case '[':
+            case '(':
+            case ')':
                 return "\\" + ch;
             default:
                 return "" + ch;
