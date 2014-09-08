@@ -60,7 +60,6 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .collect(Collectors.toList());
     }
 
-    @VisibilityReducedForTestPurposeOnly
     static List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
         final List<CharacterStat> characterStats = new ArrayList<>(startCharacterStatData.getAllCharacters().size());
         for (Character ch : startCharacterStatData.getAllCharacters()) {

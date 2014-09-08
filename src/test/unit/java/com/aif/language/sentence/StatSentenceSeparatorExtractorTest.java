@@ -60,21 +60,38 @@ public class StatSentenceSeparatorExtractorTest {
 
     @Test
     public void testGetCharactersStat() throws Exception {
-
+        // TODO
     }
 
     @Test
     public void testFilterCharacterStatisticFromNonEndCharacters() throws Exception {
-
+        // TODO
     }
 
     @Test
     public void testGetCharactersStatistic() throws Exception {
-
+        // TODO
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testFilter() throws Exception {
+        // input arguments
+        final List<String> inputTokens = Arrays.asList(new String[]{"tOKen", "token..."});
 
+        // mocks
+
+        // expected results
+        final List<String> expectedResult = Arrays.asList(new String[]{"token", "token."});
+
+        // creating test instance
+
+        // execution test
+        final List<String> actualResult = StatSentenceSeparatorExtractor.filter(inputTokens);
+
+        // result assert
+        assertEquals(actualResult, expectedResult);
+
+        // mocks verify
     }
+
 }
