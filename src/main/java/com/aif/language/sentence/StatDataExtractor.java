@@ -1,13 +1,14 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.IExtractor;
+import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 
 import java.util.List;
 import java.util.Optional;
 
 class StatDataExtractor {
 
-    private final IExtractor<String, Character> edgeCharacterExtractor;
+    private final IExtractor<String, Character>             edgeCharacterExtractor;
 
     private final IExtractor<String, Character>             characterNearEdgeCharacterExtractor;
 
@@ -22,7 +23,8 @@ class StatDataExtractor {
         return endCharacterStatdata;
     }
 
-    private void parsToken(final String token, final StatData statData) {
+    @VisibilityReducedForTestPurposeOnly
+    void parsToken(final String token, final StatData statData) {
         token.chars().forEach(ch -> statData.addCharacter((char) ch));
 
         final Optional<Character> edgeCharacter = edgeCharacterExtractor.extract(token);
