@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:vici="http://www.tei-c.org/ns/VICI">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title></title>
+        <author>Gerard J Steen</author>
+        <author>Aletta G Dorst</author>
+        <author>J Berenike Herrmann</author>
+        <author>Anna A Kaal</author>
+        <author>Tina Krennmayr</author>
+        <funder>NWO, Netherlands Organization for Scientific Research, grant 277-30-001, ‘Metaphor in discourse: Linguistic forms, conceptual structures, cognitive representations’ (Vici programme)</funder>
+      </titleStmt>
+      <publicationStmt>
+        <authority>deposited by <persName>Steen, Gerard</persName>
+          <orgName>Free University of Amsterdam</orgName>
+          <placeName>Amsterdam</placeName>
+          <address><addrLine>Department of Language and Communication,</addrLine><addrLine>Arts Faculty,</addrLine><addrLine>VU University Amsterdam</addrLine>
+            <addrLine>De Boelelaan 1105</addrLine><addrLine>Amsterdam,</addrLine><addrLine>Netherlands,</addrLine><addrLine>1081 HV</addrLine><addrLine><email>Gj.steen@let.vu.nl</email>
+            </addrLine></address>
+          <date>2010-09-01</date>
+        </authority>
+        <distributor>
+          <orgName>Oxford Text Archive</orgName>
+          <placeName>Oxford</placeName>
+          <address>
+            <addrLine>
+              <orgName>OTA</orgName>
+            </addrLine>
+            <addrLine>OUCS</addrLine>
+            <addrLine>7-19 Banbury Road</addrLine>
+            <addrLine>Oxford</addrLine>
+            <addrLine>OX2 6NN</addrLine>
+            <addrLine>
+              <email>info@ota.oucs.ac.uk</email>
+            </addrLine>
+          </address>
+        </distributor>
+        <idno type="ota">2541</idno>
+        <availability n="OTA-new" status="restricted" rend="visible">
+          <p>Available for non-commercial use on condition that the terms of the BNC Licence are observed and that this header is included in its
+            entirety with any copy distributed. Registration or request via our order form is
+            required.</p>
+        </availability>
+        <date>2010-09</date>
+      </publicationStmt>
+      <notesStmt>
+        <note>Title proper taken from OTA Catalogue Form</note>
+        <note>
+          The resource contains a selection of excerpts from BNC-Baby files that have been annotated for metaphor. There are four registers, each comprising about 50,000 words: academic texts, news texts, fiction, and conversations.
+          Words have been separately labelled as participating in multi-word expressions (about 1.5%) or as discarded for metaphor analysis (0.02%).
+          Main categories include words that are related to metaphor (MRW), words that signal metaphor (MFlag), and words that are not related to metaphor.
+          For metaphor-related words, subdivisions have been made between clear cases of metaphor versus borderline cases (WIDLII, When In Doubt, Leave It In). 
+          Another parameter of metaphor-related words makes a distinction between direct metaphor, indirect metaphor, and implicit metaphor.
+          
+        </note>
+      </notesStmt>
+      <sourceDesc>
+        <biblFull>
+          <titleStmt>
+            <title/>
+          </titleStmt>
+          <publicationStmt>
+            <idno type="callNo"/>
+          </publicationStmt>
+        </biblFull>
+        <bibl>The corpus is a small subset of BNC Baby, composed of fragments of BNC Baby texts.
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>
+          Metaphor is commonly seen as a deliberate figure of speech, a rhetorical device utilized to achieve aesthetic or rhetorical effects: its stereotypical manifestations are in literature and politics. Metaphor is therefore also generally regarded as a striking and deviant form of language use. This view, however, has been under fire since 1980, when Lakoff and Johnson published Metaphors we live by. Subsequent cognitive-linguistic research has emphasized that metaphor is normal and pervasive in language and its use. It even suggests that much of our general thinking is non-literal. As a result, metaphor has been recast as a figure of thought, and metaphor in language is analyzed as a natural reflection of metaphor in thought.
+          The new approach has had a great impact on metaphor research in linguistics and psycholinguistics. One recent development has been the increased awareness that it is not entirely clear what counts as metaphor in language, language use, and cognitive processing. Followers of Lakoff and Johnson have mainly relied on clear cases out of context, but when metaphor is studied in authentic discourse, problematic questions about the identification of metaphor arise. These issues have been successfully addressed in this project.
+          The programme creates a foundation in authentic discourse, including literature, education, journalism, politics, and business, for the investigation of many of the new findings about metaphor. This will redress the neglect of systematic attention to specific linguistic forms and their metaphorical meanings, their genre-related distribution and function, and the diverging depths of their cognitive representation in discourse processing.
+        </p>
+      </projectDesc>
+      <editorialDecl>
+        <p>Encoding format: TEI P5 XML</p>
+      </editorialDecl>
+      <classDecl>
+        <taxonomy xml:id="OTASH">
+          <bibl>Oxford Text Archive Subject Headings</bibl>
+        </taxonomy>
+        <taxonomy xml:id="LCSH">
+          <bibl>Library of Congress Subject Headings</bibl>
+        </taxonomy>
+      </classDecl>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <date from="2005-09-01" to="2010-08-31">The corpus was annotated between September 2005 and August 2010 </date>
+        <note>A publication based on the data is Gerard J. Steen, Aletta G. Dorst, J. Berenike Herrmann, Anna A. Kaal, Tina Krennmayr, Trijntje Pasma (2010). 
+          A method for linguistic metaphor identification: From MIP to MIPVU. Amsterdam/Philadelphia: John Benjamins Publishing Company.</note>
+      </creation>
+      <langUsage>
+        <language ident="eng">English</language>
+      </langUsage>
+      <textClass>
+        <keywords scheme="#OTASH">
+          <term type="genre">Linguistic corpora</term>
+        </keywords>
+        <keywords scheme="#LCSH">
+          <term type="genre">Linguistics</term>
+        </keywords>
+        <keywords scheme="#LCSH">
+          <term type="genre">Linguistics analysis (Linguistics)</term>
+        </keywords>
+        <keywords scheme="#LCSH">
+          <term type="genre"/>
+        </keywords>
+        <keywords scheme="#LCSH">
+          <term type="genre"/>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change><date>2010-12-03</date><label>cataloguer</label><persName>Wynne, Martin</persName>TEIXML
+        header composed </change>
+	    </revisionDesc>
+  </teiHeader>
+  <text>
+    <group>
+      <text xmlns="http://www.tei-c.org/ns/1.0" xml:id="a1e-fragment01">
+        <body>
+          <div1 n="891002 edition -- Business and City Page 23" type="u">
+            <head type="MAIN">
+              <s n="1">
+                <w lemma="late" type="AJS">Latest </w>
+                <w lemma="corporate" type="AJ0">corporate </w>
+                <w lemma="unbundler" type="NN1">unbundler </w>
+                <w lemma="reveal" type="VVZ">
+                  <seg function="mrw" type="met" vici:morph="n">reveals</seg>
+                </w>
+                <w lemma="laid-back" type="AJ0">laid-back </w>
+                <w lemma="approach" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">approach</seg>
+                </w>
+                <c type="PUN">: </c>
+                <w lemma="roland" type="NP0">Roland </w>
+                <w lemma="franklin" type="NP0">Franklin</w>
+                <c type="PUN">, </c>
+                <w lemma="who" type="PNQ">who </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="lead" type="VVG">
+                  <seg function="mrw" type="met" vici:morph="n">leading</seg>
+                </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="697m" type="NN0">697m </w>
+                <w lemma="pound" type="NN1">pound </w>
+                <w lemma="break-up" type="NN1">break-up </w>
+                <w lemma="bid" type="NN1-VVB">bid </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="drg" type="NP0">DRG</w>
+                <c type="PUN">, </c>
+                <w lemma="talk" type="NN2-VVZ">talks </w>
+                <w lemma="to" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">to</seg>
+                </w>
+                <w lemma="frank" type="NP0">Frank </w>
+                <w lemma="kane" type="NP0">Kane</w>
+              </s>
+            </head>
+            <head type="BYLINE">
+              <s n="2">
+                <w lemma="by" type="PRP">By </w>
+                <w lemma="frank" type="NP0">FRANK </w>
+                <w lemma="kane" type="NP0-NN1">KANE</w>
+              </s>
+            </head>
+            <p>
+              <s n="3">
+                <w lemma="it" type="PNP">IT </w>
+                <w lemma="seem" type="VVZ">SEEMS </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="roland" type="NP0">Roland </w>
+                <w lemma="franklin" type="NP0">Franklin</w>
+                <c type="PUN">, </c>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="late" type="AJS">latest </w>
+                <w lemma="unbundler" type="NN1">unbundler </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="appear" type="VVI">appear </w>
+                <w lemma="in" type="PRP">in </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="uk" type="NP0">UK</w>
+                <c type="PUN">, </c>
+                <w lemma="have" type="VHZ">has </w>
+                <w lemma="make" type="VVN">
+                  <seg function="mrw" type="met" vici:morph="n">made</seg>
+                </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="fatal" type="AJ0">
+                  <seg function="mrw" type="met" vici:morph="n">fatal</seg>
+                </w>
+                <w lemma="error" type="NN1">error </w>
+                <w lemma="in" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">in</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="preparation" type="NN1">preparation </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="he" type="DPS">his </w>
+                <w lemma="£697m" type="NN0">£697m </w>
+                <w lemma="break-up" type="NN1">break-up </w>
+                <w lemma="bid" type="NN1-VVB">bid </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="stationery" type="NN1">stationery </w>
+                <w lemma="and" type="CJC">and </w>
+                <w lemma="packaging" type="NN1">packaging </w>
+                <w lemma="group" type="NN1">group </w>
+                <w lemma="drg" type="NP0">DRG</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="4">
+                <w lemma="he" type="PNP">He </w>
+                <w lemma="have" type="VHZ">has </w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="properly" type="AV0">properly </w>
+                <w lemma="investigate" type="VVN">investigated </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="target" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">target</seg>
+                </w>
+                <w lemma="'s" type="POS">'s </w>
+                <w lemma="dining" type="NN1">dining </w>
+                <w lemma="facility" type="NN2">facilities</w>
+                <c type="PUN">.</c>
+              </s>
+            </p>
+            <p>
+              <s n="5">
+                <w lemma="the" type="AT0">The </w>
+                <w lemma="63-year-old" type="AJ0">63-year-old </w>
+                <w lemma="head" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">head</seg>
+                </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="pembridge" type="NP0">Pembridge </w>
+                <w lemma="investment" type="NN2">Investments</w>
+                <c type="PUN">, </c>
+                <w lemma="through" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">through</seg>
+                </w>
+                <w lemma="which" type="DTQ">which </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="bid" type="NN1">bid </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="be" type="VBG">being </w>
+                <w lemma="mount" type="VVN-AJ0">
+                  <seg function="mrw" type="met" vici:morph="n">mounted</seg>
+                </w>
+                <w lemma="say" type="VVZ">says</w>
+                <c type="PUN">, </c>
+                <c type="PUQ">‘</c>
+                <w lemma="rule" type="NN1-VVB">
+                  <seg function="mrw" subtype="WIDLII" type="met" vici:morph="n">rule</seg>
+                </w>
+                <w lemma="number" type="NN1">number </w>
+                <w lemma="one" type="CRD">one </w>
+                <w lemma="in" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">in</seg>
+                </w>
+                <w lemma="this" type="DT0">
+                  <seg function="mrw" type="met" vici:morph="n">this</seg>
+                </w>
+                <w lemma="business" type="NN1">business </w>
+                <w lemma="be" type="VBZ">is</w>
+                <c type="PUN">: </c>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="more" type="AV0">more </w>
+                <w lemma="luxurious" type="AJ0">luxurious </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="luncheon" type="NN1">luncheon </w>
+                <w lemma="room" type="NN2">rooms </w>
+                <w lemma="at" type="PRP">at </w>
+                <w lemma="headquarters" type="NN0">
+                  <seg function="mrw" type="met" vici:morph="n">headquarters</seg>
+                </w>
+                <c type="PUN">, </c>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="more" type="AV0">more </w>
+                <w lemma="inefficient" type="AJ0">inefficient </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="business" type="NN1">business</w>
+                <c type="PUQ">’</c>
+                <c type="PUN">.</c>
+              </s>
+              <s n="6">
+                <w lemma="if" type="CJS">If </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="have" type="VHD">had </w>
+                <w lemma="take" type="VVN">
+                  <seg function="mrw" type="met" vici:morph="n">taken</seg>
+                </w>
+                <w lemma="he" type="DPS">his </w>
+                <w lemma="own" type="DT0">own </w>
+                <w lemma="rule" type="NN1">rule </w>
+                <w lemma="seriously" type="AV0">seriously</w>
+                <c type="PUN">, </c>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="would" type="VM0">would </w>
+                <w lemma="have" type="VHI">have </w>
+                <w xml:id="a1e-fragment01-pv1" lemma="find" type="VVN">found 
+                  </w>
+                <w corresp="#a1e-fragment01-pv1" lemma="out" type="AVP">out 
+                  </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="drg" type="NP0">DRG </w>
+                <w lemma="have" type="VHZ">has </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="very" type="AV0">very </w>
+                <w lemma="modest" type="AJ0">
+                  <seg function="mrw" type="met" vici:morph="n">modest</seg>
+                </w>
+                <w lemma="self-service" type="AJ0">self-service </w>
+                <w lemma="canteen" type="NN1">canteen </w>
+                <w lemma="at" type="PRP">at </w>
+                <w lemma="it" type="DPS">its </w>
+                <w lemma="bristol" type="NP0">Bristol </w>
+                <w lemma="head" type="AJ0">
+                  <seg function="mrw" type="met" vici:morph="n">head</seg>
+                </w>
+                <w lemma="office" type="NN1">office</w>
+                <c type="PUN">.</c>
+              </s>
+            </p>
+            <p>
+              <s n="7">
+                <w lemma="there" type="EX0">There </w>
+                <w lemma="be" type="VBB">are </w>
+                <w lemma="other" type="AJ0">other </w>
+                <w lemma="thing" type="NN2">
+                  <seg function="mrw" type="met" vici:morph="n">things</seg>
+                </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="have" type="VHZ">has</w>
+                <c type="PUN">, </c>
+                <w lemma="on" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">on</seg>
+                </w>
+                <w lemma="he" type="DPS">his </w>
+                <w lemma="own" type="DT0">own </w>
+                <w lemma="admission" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">admission</seg>
+                </w>
+                <c type="PUN">, </c>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="fully" type="AV0">fully </w>
+                <w lemma="investigate" type="VVN">investigated</w>
+                <c type="PUN">, </c>
+                <w lemma="like" type="PRP">like </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="value" type="NN1">value </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="drg" type="NP0">DRG </w>
+                <w lemma="property" type="NN2">properties</w>
+                <c type="PUN">, </c>
+                <w lemma="or" type="CJC">or </w>
+                <w lemma="which" type="DTQ">which </w>
+                <w lemma="part" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">part</seg>
+                </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="drg" type="NP0">DRG </w>
+                <w lemma="business" type="NN1">business </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="would" type="VM0">would </w>
+                <w lemma="keep" type="VVI">
+                  <seg function="mrw" type="met" vici:morph="n">keep</seg>
+                </w>
+                <w lemma="after" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">after</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w xml:id="a1e-fragment01-cn1" lemma="break" type="NN1-VVB">break 
+                  </w>
+                <w corresp="#a1e-fragment01-cn1" lemma="up" type="AVP">up
+                  </w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="8">
+                <w lemma="when" type="CJS">When </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="bid" type="NN1">bid </w>
+                <w lemma="was" type="VBD">was </w>
+                <w lemma="launch" type="VVN">
+                  <seg function="mrw" type="met" vici:morph="n">launched</seg>
+                </w>
+                <w lemma="last" type="ORD">last </w>
+                <w lemma="week" type="NN1">week</w>
+                <c type="PUN">, </c>
+                <w lemma="mr" type="NP0">Mr </w>
+                <w lemma="franklin" type="NP0">Franklin </w>
+                <w lemma="face" type="VVD">
+                  <seg function="mrw" type="met" vici:morph="n">faced</seg>
+                </w>
+                <w lemma="some" type="DT0">some </w>
+                <w lemma="criticism" type="NN1">criticism </w>
+                <w lemma="from" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">from</seg>
+                </w>
+                <w lemma="city" type="NN1">City </w>
+                <w lemma="commentator" type="NN2">commentators </w>
+                <w lemma="on" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">on</seg>
+                </w>
+                <w lemma="both" type="DT0">both </w>
+                <w lemma="those" type="DT0">
+                  <seg function="mrw" type="met" vici:morph="n">those</seg>
+                </w>
+                <w lemma="count" type="NN2">
+                  <seg function="mrw" type="met" vici:morph="n">counts</seg>
+                </w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="9">
+                <w lemma="he" type="PNP">He </w>
+                <w lemma="regard" type="VVZ">
+                  <seg function="mrw" type="met" vici:morph="n">regards</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="charge" type="NN2">
+                  <seg function="mrw" subtype="WIDLII" type="met" vici:morph="n">charges</seg>
+                </w>
+                <w lemma="as" type="CJS">as </w>
+                <w lemma="unfounded" type="AJ0">unfounded</w>
+                <c type="PUN">.</c>
+              </s>
+            </p>
+            <p>
+              <s n="10">
+                <w lemma="on" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">On</seg>
+                </w>
+                <w lemma="property" type="NN1">property</w>
+                <c type="PUN">, </c>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="blunt" type="AJ0">
+                  <seg function="mrw" type="met" vici:morph="n">blunt</seg>
+                </w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="11">
+                <c type="PUQ">‘</c>
+                <w lemma="i" type="PNP">I </w>
+                <w lemma="do" type="VDB">do </w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="regard" type="VVI">
+                  <seg function="mrw" type="met" vici:morph="n">regard</seg>
+                </w>
+                <w lemma="property" type="NN1">property </w>
+                <w lemma="profit" type="NN2">profits </w>
+                <w lemma="as" type="PRP">as </w>
+                <w lemma="earnings" type="NN2">earnings</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="12">
+                <w lemma="we" type="PNP">We </w>
+                <w lemma="have" type="VHB">have </w>
+                <w lemma="make" type="VVN">
+                  <seg function="mrw" type="met" vici:morph="n">made</seg>
+                </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="bid" type="NN1">bid </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="nearly" type="AV0">nearly </w>
+                <w lemma="£700m" type="NN0">£700m </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="company" type="NN1">company </w>
+                <w lemma="with" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">with</seg>
+                </w>
+                <w lemma="a" type="AT0">a </w>
+                <w xml:id="a1e-fragment01-cn2" lemma="book" type="NN1">book </w>
+                <w corresp="#a1e-fragment01-cn2" lemma="value" type="NN1">value </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="£200m" type="NN0">£200m </w>
+                <c type="PUN">— </c>
+                <w lemma="we" type="PNP">we</w>
+                <w lemma="have" type="VHB">'ve </w>
+                <w lemma="acknowledge" type="VVN">acknowledged </w>
+                <w lemma="there" type="AV0">there </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="some" type="DT0">some </w>
+                <w lemma="extra" type="AJ0">extra </w>
+                <w lemma="worth" type="PRP">worth </w>
+                <w lemma="there" type="AV0">
+                  <seg function="mrw" type="met" vici:morph="n">there</seg>
+                </w>
+                <c type="PUN">, </c>
+                <w lemma="but" type="CJC">but </w>
+                <w lemma="i" type="PNP">I </w>
+                <w lemma="can" type="VM0">can</w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="see" type="VVI">
+                  <seg function="mrw" type="met" vici:morph="n">see</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="sort" type="NN1">sort </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="value" type="NN1">value </w>
+                <w lemma="they" type="PNP">they </w>
+                <w lemma="be" type="VBB">are </w>
+                <w lemma="talk" type="VVG">talking </w>
+                <w lemma="about" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">about</seg>
+                </w>
+                <w lemma="in" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">in</seg>
+                </w>
+                <w lemma="property" type="NN1">property</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="13">
+                <w lemma="if" type="CJS">If </w>
+                <w lemma="they" type="PNP">they </w>
+                <w lemma="can" type="VM0">can </w>
+                <w lemma="prove" type="VVI">prove </w>
+                <w lemma="it" type="PNP">it </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="there" type="AV0">
+                  <seg function="mrw" type="met" vici:morph="n">there</seg>
+                </w>
+                <c type="PUN">, </c>
+                <w lemma="we" type="PNP">we </w>
+                <w lemma="might" type="VM0">might </w>
+                <w lemma="pay" type="VVI">pay </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="it" type="PNP">it</w>
+                <c type="PUN">,</c>
+                <c type="PUQ">’</c>
+              </s>
+            </p>
+            <p>
+              <s n="14">
+                <w lemma="on" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">On</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="other" type="AJ0">other </w>
+                <w lemma="criticism" type="NN1">criticism </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="equally" type="AV0">equally </w>
+                <w lemma="dismissive" type="AJ0">dismissive</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="15">
+                <c type="PUQ">‘</c>
+                <w lemma="that" type="DT0">
+                  <seg function="mrw" type="met" vici:morph="n">That</seg>
+                </w>
+                <w lemma="point" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">point</seg>
+                </w>
+                <w lemma="about" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">about</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="core" type="NN1">core </w>
+                <w lemma="business" type="NN1">business </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="very" type="AV0">very </w>
+                <w lemma="unfair" type="AJ0">unfair</w>
+                <c type="PUN">,</c>
+                <c type="PUQ">’ </c>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="say" type="VVZ">says</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="16">
+                <w lemma="it" type="PNP">It </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="difficult" type="AJ0">difficult </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="decide" type="VVI">decide </w>
+                <w lemma="when" type="AVQ-CJS">when </w>
+                <w lemma="you" type="PNP">you </w>
+                <w lemma="be" type="VBB">are </w>
+                <w lemma="an" type="AT0">an </w>
+                <w lemma="outsider" type="NN1">outsider </w>
+                <w lemma="what" type="DTQ">what </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="business" type="NN1">business </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="like" type="PRP">like</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="17">
+                <w lemma="we" type="PNP">We </w>
+                <w lemma="would" type="VM0">would </w>
+                <w lemma="eventually" type="AV0">eventually </w>
+                <w lemma="like" type="VVI">like </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="do" type="VDI">do </w>
+                <w lemma="it" type="PNP">it </w>
+                <w lemma="along with" type="PRP">along with </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="management" type="NN1">management</w>
+                <c type="PUN">, </c>
+                <w lemma="within" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">within</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="philosophy" type="NN1">philosophy </w>
+                <w lemma="we" type="PNP">we </w>
+                <w lemma="will" type="VM0">will </w>
+                <w lemma="impose" type="VVI">impose</w>
+                <c type="PUN">.</c>
+                <c type="PUQ">’</c>
+              </s>
+            </p>
+            <p>
+              <s n="18">
+                <w lemma="the" type="AT0">The </w>
+                <w lemma="franklin" type="NP0">Franklin </w>
+                <w lemma="philosophy" type="NN1">philosophy </w>
+                <w lemma="was" type="VBD">was </w>
+                <w lemma="learn" type="VVN">learnt </w>
+                <w lemma="in" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">in</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="us" type="NP0">US </w>
+                <w lemma="leveraged" type="AJ0">leveraged </w>
+                <w lemma="buyout" type="NN1">buyout </w>
+                <w lemma="business" type="NN1">business </w>
+                <w lemma="at" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">at</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="side" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">side</seg>
+                </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="sir" type="NP0">Sir </w>
+                <w lemma="james" type="NP0">James </w>
+                <w lemma="goldsmith" type="NN1">Goldsmith</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="19">
+                <w lemma="mr" type="NP0">Mr </w>
+                <w lemma="franklin" type="NP0">Franklin </w>
+                <w lemma="go" type="VVD">went </w>
+                <w lemma="there" type="AV0">there </w>
+                <w lemma="at" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">at</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="end" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">end</seg>
+                </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="1970s" type="CRD">1970s</w>
+                <c type="PUN">, </c>
+                <w lemma="after" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">after</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="collapse" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">collapse</seg>
+                </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="keyser" type="NP0-NN1">Keyser </w>
+                <w lemma="ullman" type="NP0-NN1">Ullman</w>
+                <c type="PUN">, </c>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="merchant" type="NN1">merchant </w>
+                <w lemma="bank" type="NN1">bank </w>
+                <w lemma="where" type="CJS-AVQ">where </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="was" type="VBD">was </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="director" type="NN1">director </w>
+                <w lemma="that" type="CJT-DT0">that </w>
+                <w lemma="was" type="VBD">was </w>
+                <w lemma="rescue" type="VVN">rescued </w>
+                <w lemma="by" type="PRP">by </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="bank" type="NN1">Bank </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="england" type="NP0">England</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="20">
+                <w lemma="he" type="PNP">He </w>
+                <w lemma="feel" type="VVZ">
+                  <seg function="mrw" type="met" vici:morph="n">feels</seg>
+                </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="keyser" type="NP0-NN1">Keyser</w>
+                <w lemma="'s" type="POS">'s </w>
+                <w lemma="problem" type="NN2">problems </w>
+                <w lemma="be" type="VBD">were </w>
+                <w lemma="hasten" type="VVN">hastened </w>
+                <w lemma="by" type="PRP">by </w>
+                <w lemma="an" type="AT0">an </w>
+                <w lemma="unwise" type="AJ0">unwise </w>
+                <w lemma="acquisition" type="NN1">acquisition</w>
+                <c type="PUN">.</c>
+              </s>
+            </p>
+            <p>
+              <s n="21">
+                <w lemma="he" type="PNP">He </w>
+                <w lemma="go" type="VVD">went </w>
+                <w lemma="to" type="PRP">to </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="us" type="NP0">US </w>
+                <w lemma="because" type="CJS">because </w>
+                <c type="PUQ">‘</c>
+                <w lemma="goldsmith" type="NN1">Goldsmith </w>
+                <w lemma="decide" type="VVD">decided </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="if" type="CJS">if </w>
+                <w lemma="you" type="PNP">you </w>
+                <w lemma="want" type="VVD">wanted </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="be" type="VBI">be </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="capitalist" type="NN1-AJ0">capitalist </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="uk" type="NP0">UK </w>
+                <w lemma="and" type="CJC">and </w>
+                <w lemma="france" type="NP0">France </w>
+                <w lemma="be" type="VBD">were </w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="place" type="NN2">places </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="be" type="VBI">be</w>
+                <c type="PUQ">’</c>
+                <c type="PUN">.</c>
+              </s>
+              <s n="22">
+                <w lemma="along with" type="PRP">Along with </w>
+                <w lemma="sir" type="NP0">Sir </w>
+                <w lemma="james" type="NP0">James </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="find" type="VVD">
+                  <seg function="mrw" type="met" vici:morph="n">found</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="us" type="NP0">US </w>
+                <w lemma="much" type="AV0">much </w>
+                <w lemma="more" type="AV0">more </w>
+                <w lemma="attractive" type="AJ0">
+                  <seg function="mrw" type="met" vici:morph="n">attractive</seg>
+                </w>
+                <c type="PUN">, </c>
+                <w xml:id="a1e-fragment01-pv2" lemma="take" type="VVG">taking 
+                  </w>
+                <w corresp="#a1e-fragment01-pv2" lemma="over" type="AVP">over 
+                  </w>
+                <w lemma="and" type="CJC">and </w>
+                <w lemma="break" type="VVG">
+                  <seg function="mrw" xml:id="a1e-fragment01-pv3" type="met" vici:morph="n">breaking</seg>
+                </w>
+                <w lemma="up" type="AVP">
+                  <seg function="mrw" corresp="#a1e-fragment01-pv3" type="met" vici:morph="n">up</seg>
+                </w>
+                <w lemma="some" type="DT0">some </w>
+                <w lemma="fairly" type="AV0">fairly </w>
+                <w lemma="hefty" type="AJ0">
+                  <seg function="mrw" type="met" vici:morph="n">hefty</seg>
+                </w>
+                <w lemma="us" type="NP0">US </w>
+                <w lemma="corporation" type="NN2">corporations</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="23">
+                <w lemma="he" type="PNP">He </w>
+                <w lemma="reject" type="VVZ">rejects </w>
+                <w lemma="charge" type="NN2">
+                  <seg function="mrw" subtype="WIDLII" type="met" vici:morph="n">charges</seg>
+                </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="was" type="VBD">was </w>
+                <w lemma="partly" type="AV0">partly </w>
+                <w lemma="responsible" type="AJ0">responsible </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="the" type="AT0">the </w>
+                <c type="PUQ">‘</c>
+                <w lemma="casino" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">casino</seg>
+                </w>
+                <w lemma="atmosphere" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">atmosphere</seg>
+                </w>
+                <c type="PUQ">’ </c>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="grip" type="VVD">
+                  <seg function="mrw" type="met" vici:morph="n">gripped</seg>
+                </w>
+                <w lemma="us" type="NP0">US </w>
+                <w lemma="corporate" type="AJ0">corporate </w>
+                <w lemma="life" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">life</seg>
+                </w>
+                <w lemma="in" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">in</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="early" type="AJ0">early </w>
+                <w lemma="1980s" type="CRD">1980s</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="24">
+                <c type="PUQ">‘</c>
+                <w lemma="we" type="PNP">We </w>
+                <w lemma="stir" type="VVD">
+                  <seg function="mrw" xml:id="a1e-fragment01-pv4" type="met" vici:morph="n">stirred</seg>
+                </w>
+                <w lemma="it" type="PNP">it </w>
+                <w lemma="up" type="AVP">
+                  <seg function="mrw" corresp="#a1e-fragment01-pv4" type="met" vici:morph="n">up</seg>
+                </w>
+                <c type="PUN">, </c>
+                <w lemma="yes" type="ITJ">yes</w>
+                <c type="PUN">, </c>
+                <w lemma="but" type="CJC">but </w>
+                <w lemma="we" type="PNP">we </w>
+                <w lemma="never" type="AV0">never </w>
+                <w lemma="lose" type="VVD">
+                  <seg function="mrw" type="met" vici:morph="n">lost</seg>
+                </w>
+                <w lemma="any" type="DT0">any </w>
+                <w lemma="money" type="NN1">money </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="anybody" type="PNI">anybody </w>
+                <w lemma="and" type="CJC">and </w>
+                <w lemma="we" type="PNP">we </w>
+                <w lemma="never" type="AV0">never </w>
+                <w lemma="add" type="VVD">
+                  <seg function="mrw" type="met" vici:morph="n">added</seg>
+                </w>
+                <w lemma="to" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">to</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="unemployment" type="NN1">unemployment </w>
+                <w lemma="figure" type="NN2">figures </w>
+                <c type="PUN">.</c>
+                <c type="PUQ">’</c>
+              </s>
+            </p>
+            <p>
+              <s n="25">
+                <w lemma="what" type="DTQ">What </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="have" type="VHZ">has </w>
+                <w lemma="learn" type="VVN">learned </w>
+                <w lemma="from" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">from</seg>
+                </w>
+                <w lemma="goldsmith" type="NN1">Goldsmith </w>
+                <c type="PUL">(</c>
+                <c type="PUQ">‘</c>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="only" type="AJ0">only </w>
+                <w lemma="genius" type="NN1">genius </w>
+                <w lemma="i" type="PNP">I </w>
+                <w lemma="have" type="VHB">have </w>
+                <w lemma="ever" type="AV0">ever </w>
+                <w lemma="come" type="VVN">
+                  <seg function="mrw" subtype="WIDLII" type="met" vici:morph="n">come</seg>
+                </w>
+                <w lemma="across" type="AV0">
+                  <seg function="mrw" type="met" vici:morph="n">across</seg>
+                </w>
+                <c type="PUQ">’</c>
+                <c type="PUR">) </c>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="holding" type="AJ0">holding </w>
+                <w lemma="company" type="NN1">company </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="most" type="AV0">most </w>
+                <w lemma="important" type="AJ0">important </w>
+                <w lemma="unit" type="NN1">unit </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="corporate" type="AJ0">corporate </w>
+                <w lemma="organisation" type="NN1">organisation</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="26">
+                <c type="PUQ">‘</c>
+                <w lemma="the" type="AT0">The </w>
+                <w lemma="concept" type="NN1">concept </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="company" type="NN1">company </w>
+                <w lemma="do" type="VDZ">does </w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="interest" type="VVI">interest </w>
+                <w lemma="i" type="PNP">me </w>
+                <c type="PUN">- </c>
+                <w lemma="it" type="PNP">it</w>
+                <w lemma="be" type="VBZ">'s </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="business" type="NN2">businesses </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="be" type="VBB">are </w>
+                <w lemma="important" type="AJ0">important</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="27">
+                <w lemma="it" type="PNP">It </w>
+                <w lemma="do" type="VDZ">does </w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="matter" type="VVI">matter </w>
+                <w lemma="whether or not" type="CJS">whether or not </w>
+                <w lemma="drg" type="NP0">DRG </w>
+                <w lemma="make" type="VVZ">
+                  <seg function="mrw" subtype="PP" type="met" vici:morph="n">makes</seg>
+                </w>
+                <w lemma="sellotape" type="NN1">sellotape </w>
+                <w lemma="or" type="CJC">or </w>
+                <w lemma="basildon" type="NP0">Basildon </w>
+                <w lemma="bond" type="NP0">Bond </w>
+                <c type="PUN">— </c>
+                <w lemma="it" type="PNP">it</w>
+                <w lemma="be" type="VBZ">'s </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="no" type="AT0">no </w>
+                <w lemma="consequence" type="NN1">consequence </w>
+                <w lemma="to" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">to</seg>
+                </w>
+                <w lemma="anybody" type="PNI">anybody </w>
+                <w lemma="if" type="CJS">if </w>
+                <w lemma="somebody" type="PNI">somebody </w>
+                <w lemma="else" type="AV0">else </w>
+                <w lemma="make" type="VVZ">makes </w>
+                <w lemma="they" type="PNP">them</w>
+                <c type="PUN">.</c>
+                <c type="PUQ">’</c>
+              </s>
+            </p>
+            <p>
+              <s n="28">
+                <w lemma="and" type="CJC">And </w>
+                <w lemma="there" type="EX0">there </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="always" type="AV0">always </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="ultimate" type="AJ0">ultimate </w>
+                <w lemma="unbundler" type="NN1">unbundler</w>
+                <w lemma="'s" type="POS">'s </w>
+                <w lemma="defence" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">defence</seg>
+                </w>
+                <c type="PUN">— </c>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="will" type="VM0">will </w>
+                <w lemma="make" type="VVI">
+                  <seg function="mrw" type="met" vici:morph="n">make</seg>
+                </w>
+                <w lemma="money" type="NN1">money </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="he" type="DPS">his </w>
+                <w lemma="backer" type="NN2">backers</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="29">
+                <w lemma="in" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">In</seg>
+                </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="takeover" type="NN1">takeover </w>
+                <w lemma="campaign" type="NN1-VVB">campaign </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="have" type="VHZ">has </w>
+                <w lemma="already" type="AV0">already </w>
+                <w lemma="see" type="VVN">
+                  <seg function="mrw" type="met" vici:morph="n">seen</seg>
+                </w>
+                <w lemma="vitriolic" type="AJ0">vitriolic </w>
+                <w lemma="language" type="NN1">language</w>
+                <c type="PUN">, </c>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="respond" type="VVZ">responds </w>
+                <w lemma="to" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">to</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="charge" type="NN1">
+                  <seg function="mrw" subtype="WIDLII" type="met" vici:morph="n">charge</seg>
+                </w>
+                <w lemma="that" type="CJT">that </w>
+                <w lemma="he" type="PNP">he </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="mount" type="VVG">
+                  <seg function="mrw" type="met" vici:morph="n">mounting</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="bid" type="NN1">bid </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="enrich" type="VVI">enrich </w>
+                <w lemma="himself" type="PNX">himself </w>
+                <w lemma="and" type="CJC">and </w>
+                <w lemma="he" type="DPS">his </w>
+                <w lemma="friend" type="NN2">friends </w>
+                <w lemma="by" type="PRP">by </w>
+                <w lemma="say" type="VVG">saying</w>
+                <c type="PUN">: </c>
+                <c type="PUQ">‘</c>
+                <w lemma="nobody" type="PNI">Nobody </w>
+                <w lemma="could" type="VM0">could </w>
+                <w lemma="take" type="VVI">
+                  <seg function="mrw" type="met" vici:morph="n">take</seg>
+                </w>
+                <w lemma="that" type="DT0">
+                  <seg function="mrw" type="met" vici:morph="n">that</seg>
+                </w>
+                <w lemma="as" type="PRP">as </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="criticism" type="NN1">criticism </w>
+                <c type="PUN">— </c>
+                <w lemma="this" type="DT0">
+                  <seg function="mrw" type="met" vici:morph="n">this</seg>
+                </w>
+                <w lemma="be" type="VBZ">is </w>
+                <w lemma="an" type="AT0">an </w>
+                <w lemma="investor" type="NN1">investor </w>
+                <w lemma="group" type="NN1">group</w>
+                <c type="PUN">.</c>
+              </s>
+              <s n="30">
+                <w lemma="it" type="PNP">It </w>
+                <w lemma="would" type="VM0">would </w>
+                <w lemma="be" type="VBI">be </w>
+                <w lemma="a" type="AT0">a </w>
+                <w lemma="criticism" type="NN1">criticism </w>
+                <w lemma="if" type="CJS">if </w>
+                <w lemma="i" type="PNP">I </w>
+                <w lemma="was" type="VBD">was </w>
+                <w lemma="do" type="VDG">doing </w>
+                <w lemma="it" type="PNP">it </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="impoverish" type="VVI">impoverish </w>
+                <w lemma="myself" type="PNX">myself</w>
+                <c type="PUQ">’</c>
+                <c type="PUN">.</c>
+              </s>
+            </p>
+          </div1>
+        </body>
+      </text>
+      <text xmlns="http://www.tei-c.org/ns/1.0" xml:id="a1f-fragment06">
+        <body>
+          <div1 n="891002 edition -- Editorial Page 18" type="u">
+            <head type="MAIN">
+              <s n="142">
+                <w lemma="letter" type="NN1">Letter</w>
+                <c type="PUN">: </c>
+                <w lemma="policy" type="NN1">Policy </w>
+                <w lemma="and" type="CJC">and </w>
+                <w lemma="politics" type="NN1">politics </w>
+                <w lemma="at" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">at</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w xml:id="a1f-fragment06-cn1" lemma="labour" type="AJ0">Labour 
+                  </w>
+                <w corresp="#a1f-fragment06-cn1" lemma="party" type="NN1">Party  
+                  </w>
+                <w lemma="conference" type="NN1">Conference</w>
+              </s>
+            </head>
+            <head type="BYLINE">
+              <s n="143">
+                <w lemma="from" type="PRP">From </w>
+                <w lemma="mr" type="NP0">MR </w>
+                <w lemma="david" type="NP0">DAVID </w>
+                <w lemma="soskin" type="NP0-NN1">SOSKIN</w>
+              </s>
+            </head>
+            <p>
+              <s n="144">
+                <w lemma="sir" type="NN1">Sir</w>
+                <c type="PUN">: </c>
+                <w lemma="i" type="PNP">I </w>
+                <w lemma="was" type="VBD">was </w>
+                <w lemma="interested" type="AJ0">interested </w>
+                <w lemma="by" type="PRP">by </w>
+                <w lemma="you" type="DPS"> your </w>
+                <w lemma="juxtaposition" type="NN1"> juxtaposition </w>
+                <w lemma="of" type="PRF">of </w>
+                <c type="PUQ">‘</c>
+                <w lemma="poll" type="NN1">Poll </w>
+                <w lemma="predict" type="VVZ">
+                  <seg function="mrw" type="met" vici:morph="n">predicts</seg>
+                </w>
+                <w lemma="42-seat" type="AJ0">42-seat </w>
+                <w lemma="majority" type="NN1">majority </w>
+                <w lemma="for" type="PRP">for </w>
+                <w lemma="labour" type="AJ0">Labour</w>
+                <c type="PUQ">’ </c>
+                <w lemma="with" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">with</seg>
+                </w>
+                <c type="PUQ">‘</c>
+                <w lemma="tory" type="NN2">Tories </w>
+                <w lemma="hold" type="VVB">
+                  <seg function="mrw" xml:id="a1f-fragment06-pv1" type="met" vici:morph="n">hold</seg>
+                </w>
+                <w lemma="on" type="AVP-PRP">
+                  <seg function="mrw" corresp="#a1f-fragment06-pv1" type="met" vici:morph="n">on</seg>
+                </w>
+                <c type="PUQ">’ </c>
+                <c type="PUL">(</c>
+                <w lemma="30" type="CRD">30 </w>
+                <w lemma="september" type="NP0">September</w>
+                <c type="PUR">)</c>
+                <c type="PUN">, </c>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="latter" type="DT0">latter </w>
+                <w lemma="refer" type="VVG">referring</w>
+                <c type="PUN">, </c>
+                <w lemma="of course" type="AV0">of course</w>
+                <c type="PUN">, </c>
+                <w lemma="to" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">to</seg>
+                </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="conservative" type="AJ0-NN1">Conservative </w>
+                <w lemma="victory" type="NN1">victory </w>
+                <w lemma="in" type="PRP">in </w>
+                <w lemma="wandsworth" type="NP0">Wandsworth</w>
+                <c type="PUN">, </c>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="significance" type="NN1">significance </w>
+                <w lemma="of" type="PRF">of </w>
+                <w lemma="which" type="DTQ">which </w>
+                <w lemma="appear" type="VVZ">
+                  <seg function="mrw" type="met" vici:morph="n">appears</seg>
+                </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="have" type="VHI">have </w>
+                <w lemma="be" type="VBN">been </w>
+                <w lemma="almost" type="AV0">almost </w>
+                <w lemma="totally" type="AV0">totally </w>
+                <w lemma="ignore" type="VVN">ignored </w>
+                <w lemma="by" type="PRP">by </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="media" type="NN0">media</w>
+                <c type="PUN">.</c>
+              </s>
+            </p>
+            <p>
+              <s n="145">
+                <w lemma="elector" type="NN2">Electors </w>
+                <w lemma="be" type="VBB">are </w>
+                <w lemma="always" type="AV0">always </w>
+                <w lemma="prepared" type="AJ0">
+                  <seg function="mrw" subtype="WIDLII" type="met" vici:morph="n">prepared</seg>
+                </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="criticise" type="VVI"> criticise </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="government" type="NN1">Government </w>
+                <w lemma="in answer to" type="PRP">in answer to </w>
+                <w lemma="pollster" type="NN2">pollsters</w>
+                <w lemma="'" type="POS">' </w>
+                <w lemma="question" type="NN2">questions</w>
+                <c type="PUN">, </c>
+                <w lemma="but" type="CJC">but </w>
+                <w lemma="when" type="CJS">when </w>
+                <w lemma="the" type="AT0">the </w>
+                <w lemma="same" type="DT0">same </w>
+                <w lemma="individual" type="NN2">individuals </w>
+                <w lemma="arrive" type="VVB">arrive </w>
+                <w lemma="at" type="PRP">at </w>
+                <w lemma="the" type="AT0">the </w>
+                <w xml:id="a1f-fragment06-cn2" lemma="polling" type="NN1">polling 
+                  </w>
+                <w corresp="#a1f-fragment06-cn2" lemma="booth" type="NN1">booth 
+                  </w>
+                <w lemma="they" type="PNP">they </w>
+                <w lemma="simply" type="AV0">simply </w>
+                <w lemma="can" type="VM0">can</w>
+                <w lemma="not" type="XX0">not </w>
+                <w lemma="bring" type="VVI">
+                  <seg function="mrw" type="met" vici:morph="n">bring</seg>
+                </w>
+                <w lemma="themselves" type="PNX">themselves </w>
+                <w lemma="to" type="TO0">to </w>
+                <w lemma="vote" type="VVI">vote </w>
+                <w lemma="labour" type="AJ0">Labour </w>
+                <w lemma="into" type="PRP">
+                  <seg function="mrw" type="met" vici:morph="n">into</seg>
+                </w>
+                <w lemma="power" type="NN1">
+                  <seg function="mrw" type="met" vici:morph="n">power</seg>
+                </w>
+                <c type="PUN">.</c>
+              </s>
+            </p>
+          </div1>
+        </body>
+      </text>
+    </group>
+  </text>
+</TEI>
