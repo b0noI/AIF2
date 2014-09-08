@@ -93,7 +93,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
         private final Double probabilityThatEndCharacter;
 
-        private CharacterStat(Character character, Double probabilityThatEndCharacter) {
+        public CharacterStat(Character character, Double probabilityThatEndCharacter) {
             this.character = character;
             this.probabilityThatEndCharacter = probabilityThatEndCharacter;
         }
