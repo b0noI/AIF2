@@ -2,6 +2,7 @@ package com.aif.language.sentence;
 
 import com.aif.language.common.IExtractor;
 import com.aif.language.common.VisibilityReducedForCLI;
+import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
@@ -34,7 +35,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
     }
 
     @VisibilityReducedForCLI
-    static List<CharacterStat> getCharactersStat(final List<String> tokens) {
+    List<CharacterStat> getCharactersStat(final List<String> tokens) {
         final List<String> filteredTokens = filter(tokens);
 
         final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
@@ -43,7 +44,8 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
         return getCharactersStatistic(startCharactersStatData, endCharactersStatData);
     }
 
-    private static List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
+    @VisibilityReducedForTestPurposeOnly
+    List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
         final SummaryStatistics stats = new SummaryStatistics();
         characterStats
                 .stream()
@@ -58,7 +60,8 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .collect(Collectors.toList());
     }
 
-    private static List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
+    @VisibilityReducedForTestPurposeOnly
+    static List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
         final List<CharacterStat> characterStats = new ArrayList<>(startCharacterStatData.getAllCharacters().size());
         for (Character ch : startCharacterStatData.getAllCharacters()) {
             final double probability1 = startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
@@ -70,7 +73,8 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
         return characterStats;
     }
 
-    private static List<String> filter(final List<String> tokens) {
+    @VisibilityReducedForTestPurposeOnly
+    static List<String> filter(final List<String> tokens) {
         return tokens.parallelStream()
                 .map(String::toLowerCase).map(token -> {
                     int index = token.length();
