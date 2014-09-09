@@ -1,0 +1,1000 @@
+Coexpression of mouse PKR ( 1-515 ) WT as a Gal4 DNA-binding domain fusion with either the catalytic-deficient human PKR ( 1-551 ) K296R mutant , the RNA-binding-deficient human PKR ( 1-551 ) K64E / K296R double mutant , or wild-type mouse PKR ( 1-515 ) WT as full-length PKR-Gal4 activation domain fusions resulted in activation of the HIS3 and lacZ reporters .
+The interleukin 2 receptor alpha-chain ( IL-2R alpha ) gene is rapidly and potently induced in T cells in response to mitogenic stimuli .
+TPO by itself did not activate ERK1 , ERK2 and protein kinase C ( PKC ) , whereas TPO directly enhanced the PKC-dependent activation of ERKs induced by other agonists including thrombin and phorbol esters , without affecting the PKC activation by those agonists . 
+Furthermore , the insertion of the ColE1 cer site into the RK2 plasmid deleted for the par region failed to stabilize the plasmid in the MC1061K strain , indicating that the multimer resolution activity encoded by parCBA is not by itself responsible for the stabilization activity observed for this operon . 
+Mobility and supershift assays demonstrated that upstream stimulatory factor ( USF ) and Sp1 bind to the former elements and competition experiments confirmed that CREB / ATF and AP-1 bind to the CRE / TRE element . 
+These observations establish that RsmC negatively regulates rsmB transcription but positively affects RsmA production . 
+VDR / RXR bound well to the VDREs and to DR4 and DR5 using the electrophoretic mobility shift assay . 
+Stringent hybridization of EHS-1 back to primate genomic DNA indicates two distinct EHS-1 loci in normal human DNA , an identical band pattern in chimpanzee DNA , and a single locus in rhesus monkey DNA . 
+The arginyl peptide bonds that are cleaved in the conversion of human factor IX to factor IXa by factor XIa were identified as Arg145-Ala146 and Arg180-Val181 . 
+Two phosphopeptides , identified as RS- [ 32P ] SGASGLLTSEHHSR and S- [ 32P ] SGASGLLTSEHHSR , were obtained after stoichiometric phosphorylation and trypsinization of the peptide . 
+HIRES ( MP , 75 ) ( U1 ) -MP-CP-3'UTR ) , were able to express the MP gene in vitro . 
+We have previously shown that LBP-1 represses HIV-1 transcription by inhibiting the binding of TFIID to the TATA box . 
+Therefore , the impaired floor plate development in oep mutants is not caused by the absence of the floor plate inducer shh . 
+The N-terminal small segment of yeast TAF145 ( yTAF145 ) binds to TBP and thereby inhibits TBP function . 
+This interaction is reciprocal , since C / EBP dimer binding to a strong C / EBP site leads to enhanced CREB-1 recruitment to ATF / CREB sites that are weakly bound by CREB . 
+Electrophile Response Elements ( EpREs ) , located in 5'-flanking sequences of both the GCSh and GCSl subunit genes , are hypothesized to at least partially mediate gene induction following xenobiotic exposure . 
+It acts on Cdks in the G1 and S phases of the cell cycle , and also binds to proliferating cell nuclear antigen ( PCNA ) , blocking DNA replication in vitro . 
+-137 to -129 ) adjacent to a variant cAMP-response element ( CRE ) . 
+Levels of TSG-14 protein ( also termed PTX-3 ) become elevated in the serum of mice and humans after injection with bacterial lipopolysaccharide , but in contrast to conventional acute phase proteins , the bulk of TSG-14 synthesis in the intact organism occurs outside the liver . 
+Analysis of mCTR mRNAs has revealed that the three alternative promoters give rise to at least seven mCTR isoforms in the 5' region of the gene and generate 5'-untranslated regions of very different lengths . 
+Using the yeast two-hybrid system to screen for proteins which interact with Tax1 , we isolated the B subunit of the CCAAT binding protein NF-Y from a HeLa cDNA library . 
+These data locate the aniridia gene ( AN2 ) and a recurrent T-cell leukemia breakpoint ( TCL2 ) in the marker sequence , on opposite sides of MIC1 . 
+We show that a protein , UBC9 , interacts specifically with TEL in vitro and in vivo . 
+( iii ) The mRNA is not efficiently polyadenylated at sequences in the 3' end of the DHFR cDNA but rather uses polyadenylation signals downstream from the DHFR cDNA . 
+DAF16 is known to be a component of a signaling pathway that has been partially dissected genetically and includes homologues of the insulin / IGF-1 receptor , PtdIns 3-kinase and PKB . 
+Both receptors utilize protein tyrosine kinases ( PTKs ) for the phosphorylation of various signaling molecules , a process that is critical for the function of both receptors . 
+Overexpression of wild-type p53 also induces apoptosis in an LCL . 
+Although Pho85 is not essential for viability , Pcl1 , 2-Pho85 kinase complexes become essential for Start in the absence of Cln1 , 2-Cdc28 kinases . 
+BCL6 encodes a POZ / Zn finger protein , a structure similar to that of many Drosophila developmental regulators and to another protein involved in a human hematopoietic malignancy , PLZF . 
+CONCLUSION : Some Gulf War veterans may have delayed , chronic neurotoxic syndromes from wartime exposure to combinations of chemicals that inhibit butyrylcholinesterase and neuropathy target esterase . 
+In a heterologous transcriptional system in which the upstream regions of oIFNtau were inserted in front of simian virus 40 ( SV40 ) promoter , the regions between bases -654 and -555 were determined as being the enhancer region required for oIFNtau-SV40-CAT transactivation . 
+In these constructs , GUS expression was driven by promoter regions derived from the Arabidopsis alcohol dehydrogenase ( Adh1 ) , maize ubiquitin ( Ubi1 ) , rice actin ( Act1 ) and CaMV 35S genes . 
+The first contains ATF / CRE and TBP / TATA sequence motifs within an 87-bp region . 
+These human IFN-beta-transformed cell populations have acquired a low , constitutive production of human IFN , while replicating at a rate similar to that of untransformed cells and of cells transformed with the control vector carrying a human IFN-beta sequence encoding an inactive , mutated protein . 
+Consistent with this possibility , a non-MBD region of Bin1 was sufficient to recruit a repression function to DNA that was unrelated to histone deacetylase . 
+We show that IL-6 activates JRE-IL6 through an H7-sensitive pathway that does not involve protein kinase C , cyclic AMP-dependent kinase , Ca ( 2+ ) - or calmodulin-dependent kinases , Ras , Raf-1 , or NF-IL6 ( C / EBP beta ) . 
+Thus , the PCE binds a Pbx dimer partner that behaves unlike Class I Hox proteins . 
+Intraventricular injection of ( 2S , 1'R , 2'R , 3'R ) -2- ( 2 , 3-dicarboxycyclopropyl ) glycine ( DCG-IV ) , a potent agonist for metabotropic glutamate receptors , to rats retarded dose-dependently the recovery from halothane anesthesia at a dose range from 30 to 300 pmol / rat . 
+RPM / RGL3 resembled AF-6 and Nore1 in interacting strongly with constitutively active M-Ras and p21 Ras . 
+Taken together , these observations indicate that inhibition of p27 ( KIP1 ) transcription through PI3K-induced FKHR-L1 phosphorylation provides a novel mechanism of regulating cytokine-mediated survival and proliferation . 
+Recovery of carbimazole-induced agranulocytosis following recombinant granulocyte-macrophage colony stimulating factor ( rhGM-CSF ) administration . 
+ECM disruption in Lytechinus embryos caused a relative drop in USF RNA accumulation levels to approximately 60% of control embryos , while LpS1 RNA accumulation levels dropped to less than 5% . 
+Chick brain actin depolymerizing factor ( ADF ) is a 19-kDa protein that severs actin filaments and binds actin monomers . 
+The inhibition of focus formation observed in the presence of C3G was not due to toxic effects on cell viability , since transfected C3G cells exhibited the same survival and growth rates as untransfected NIH3T3 cells or cells transfected with plasmid vector alone . 
+We studied the functional interaction between human embryonic zeta 2 globin promoter and the alpha globin regulatory element ( HS-40 ) located 40 kb upstream of the zeta 2 globin gene . 
+The reconstituted RNA polymerases containing the mutant alpha subunits were examined for their response to transcription activation by cAMP-CRP and the rrnBP1 UP element . 
+The human SHBG proximal promoter was analyzed by DNase I footprinting , and the functional significance of 6 footprinted regions ( FP1-FP6 ) within the proximal promoter was studied in human HepG2 hepatoblastoma cells . 
+Weak promoter activity was observed for the promoter of the C1 and C2 ORFs ( C1-C2 gene ) and for the promoter of the V1 ORF . 
+Exons III to VIII , which cover the coding region and the 3' untranslated region , are almost identical in all types of PST or AST cDNAs . 
+To test whether or not SOCS-3 also binds to the IGFIR , we cloned human SOCS-3 by reverse transcription-polymerase chain reaction from human skeletal muscle mRNA . 
+The interaction of U1-70K with the SRZ proteins is confirmed further in vitro using a blot overlay assay . 
+These results suggest that , for the HML ARS cluster ( ARS303 , ARS320 , and ARS302 ) , inactivity of origins is independent of local transcriptional silencing , even though origins and silencers share key cis- and trans-acting components . 
+TRAF2 is known to associate with TRADD , and expression of a dominant-negative N-terminal deletion TRAF2 mutant was found to partially inhibit LMP1-induced JNK activation in 293 cells . 
+The NF-kappaB responsive reporter construct , ( PRDII ) ( 4 ) -CAT , was used to explore transcription resulting from NF-kappaB activated by Tat . 
+These observations of elevated serum lipase and serum CA 19-9 in Sjogren's syndrome without evidence of malignancy may reflect pancreatic involvement in this disorder . 
+Interaction of H-2Eb with an IAP retrotransposon in the A20 / 2J B cell lymphoma . 
+Inhibition of the apolipoprotein B mRNA editing enzyme-complex by hnRNP C1 protein and 40S hnRNP complexes . 
+In the absence of Mg2+ , a hydrophobic exonuclease site dominates over the polymerase site for possession of the primer terminus . 
+Glutathione peroxidase in human red cells in health and disease . 
+Gel filtration , sedimentation velocity , and immunoprecipitation experiments revealed that beta4 is a component of a multisubunit complex ( AP-4 ) that also contains the sigma4 polypeptide and two additional adaptor subunit homologs named mu4 ( mu-ARP2 ) and epsilon . 
+This transcriptional regulation occurs through modulation of the forkhead transcription factor FKHR-L1 , and IL-3 inhibited FKHR-L1 activity in a PI3K-dependent manner . 
+Interestingly , we find that the interaction between Tat and hCycT1 requires zinc as well as essential cysteine residues in both proteins . 
+Hierarchy of protein tyrosine kinases in interleukin-2 ( IL-2 ) signaling : activation of syk depends on Jak3 . 
+Molecular cloning of the polypeptide component of the Rel-related human p75 nucleoprotein complex has revealed its identity with the 65-kDa ( p65 ) subunit of NF-kappa B . 
+The Schistosoma mansoni homologue ( SmSmad2 ) was overexpressed in bacteria as a Sj26-GST fusion protein and used to raise specific antibodies . 
+Both carbachol ( 100 microM ) and EGF ( 10 nM ) induced Ras activation . 
+Consistent with ErbB-2 being a shared receptor subunit , its tyrosine phosphorylation was increased by both heterologous ligands and it mediated a trans-inhibitory effect of NDF on EGF binding . 
+We showed previously that a fusion protein ( GAL4-p40 ) containing the DNA-binding domain of GAL4 and sequences of chicken l kappa B-alpha ( p40 ) inhibits growth in the yeast Saccharomyces cerevisiae . 
+Thus , as expected , trans-splicing depends on the integrity of U2 , U4 , and U6 snRNAs . 
+In contrast , transcription initiating from opuE P-1 ( sigma A ) rose in proportion to the external osmolarity and was maintained at high levels . 
+This construct , termed pDeltaCREC / EBP , binds C / EBPalpha and beta but not CREB , yet it confers a nearly complete glucocorticoid response when transiently transfected into H4IIE rat hepatoma cells . 
+Src activation induced by FGF1 was blocked by the SH2 domain of Src and PP2 , a specific inhibitor of Src . 
+In flies , the dShc protein physically associates with the activated Drosophila epidermal growth factor receptor homolog ( DER ) and is inducibly phosphorylated on tyrosine by DER . 
+Moreover , glucan synthase activity , which is activated by Rho1p , was significantly reduced in the deltabem4 mutant . 
+Dominant negative Sos did not affect carbachol stimulation of HA-ERK2 but inhibited the stimulatory effect of EGF by 60% . 
+Through two novel mechanisms , Arf inhibits the oncoprotein Hdm2 , a negative regulator of p53 . 
+The activity of the EGF receptor promoter can be modulated by E1A protein and receptor RNA levels increased by stimulation with phorbol ester or fetal calf serum . 
+Our results show that the temperature-sensitive rad54-3 allele blocks mitotic recombination between tandemly repeated DYZ3 satellite sequences and significantly stabilizes a human DYZ5 satellite-containing YAC clone . 
+Insulin-like growth factor-I induces bcl-2 promoter through the transcription factor cAMP-response element-binding protein . 
+Carcinoembryonic antigen ( CEA ) procedures and clinical evaluation . 
+Epstein-Barr virus nuclear protein 2 ( EBNA2 ) binds to a component of the human SNF-SWI complex , hSNF5 / Ini1 . 
+These results indicate that TGF-betaf potentiates the c-fos SRE activated by PKC through the SRF binding site . 
+The expressed G1-G2 bound to both hyaluronan and link protein indicating that the immunoglobulin-fold motif and proteoglycan tandem repeat loops of the G1 domain were correctly folded . 
+Further studies demonstrated that the PPARalpha ligand 8 ( S ) -hydroxyeicosatetraenoic acid strongly promotes the interaction of PPARalpha with the co-activator RIP-140 but decreases the interaction of PPARalpha with the co-repressor SMRT . 
+Moreover , a complex containing PTP phi , paxillin , and a paxillin-associated tyrosine kinase , Pyk2 , can be immunoprecipitated from macrophage lysates , and the catalytic domain of PTP phi selectively binds paxillin and Pyk2 in vitro . 
+In the former cells , ets-2 was a CSF-1 immediate-early response gene , and phosphorylated ets-2 was detected after 2 to 4 h , coincident with expression of ets-2 protein . 
+In serum-stimulated cells , the binding of NF-Y / CBF to TKC1 increased gradually , reaching a plateau at the S phase . 
+Thus , hGRbeta potentially functions as a dominant negative inhibitor of hGRalpha activity . 
+A decamer sequence , 5'-CGA-CCCCUCC-3' , complementary to a conserved sequence adjacent to the enzymatic cleavage site on the mitochondrial RNA substrate , is present in the RNAase MRP RNA . 
+Purified Hsk1 phosphorylates the Cdc19 ( Mcm2 ) subunit of the six-member minichromosome maintenance protein complex purified from fission yeast . 
+Ki-ras and p53 mutations in pancreatic ductal adenocarcinoma . 
+The structural genes encoding glyceraldehyde-3-phosphate dehydrogenase ( GAPDH ) , 3-phosphoglycerate kinase ( PGK ) and the N-terminal part of triosephosphate isomerase ( TIM ) from mesophilic Bacillus megaterium DSM319 have been cloned as a gene cluster ( gap operon ) by complementation of an Escherichia coli gap amber mutant . 
+The inhibition of StAR gene transcription by DAX-1 was dose-dependent reducing transcription to 6% of control levels . 
+The dual specificity kinases mitogen-activated protein kinase ( MAPK ) kinase ( MKK ) 7 and MKK4 are the only molecules known to directly activate the stress kinases stress-activated protein kinases ( SAPKs ) / c-Jun N-terminal kinases ( JNKs ) in response to environmental or mitogenic stimuli . 
+Cyclin D1 promoter activity was stimulated by overexpression of mitogen-activated protein kinase ( p41MAPK ) or c-Ets-2 through the proximal 22 base pairs . 
+The promoter activity of the gene encoding Alzheimer beta-amyloid precursor protein ( APP ) is regulated by two blocks of upstream sequences . 
+Moreover , the reconstitution of eUSF and TFIID-depleted transcription complexes with purified protein fractions demonstrate that not only TFIID but also eUSF essentially participates in complex formation even on H5 promoter mutations lacking the TATA-box . 
+However , cotransfection studies indicate that RVR does not activate transcription when this hormone response element is linked to a reporter gene but rather acts as a potent competitive repressor of ROR alpha function . 
+Membrane-bound Steel factor induces more persistent tyrosine kinase activation and longer life span of c-kit gene-encoded protein than its soluble form . 
+Using a battery of I kappa B alpha mutants , we show that ( i ) a dimer binds a single I kappa B alpha molecule , ( ii ) the acidic C-terminal region of I kappa B alpha is not required for protein-protein binding and does not mask the nuclear localization signal of the dimer , ( iii ) the same C-terminal region is required for inhibition of DNA binding , and ( iv ) this inhibition may be accomplished by direct interaction between the PEST-like region and the DNA-binding region of one of the subunits of the dimer . 
+Nevertheless , antibodies directed against an epitope-tagged version of Prp42p specifically precipitate U1 snRNA from yeast extracts . 
+Gel mobility shift and super-shift assays using liver nuclear extracts from either rat liver or DDT1MF-2 cells demonstrated that the CRE in the alpha 1B-AR gene bound CRE binding protein . 
+The paper is concerned with the data on change in the blood level of ACTH , STH , TSH , cortisol , T3 , insulin , C-peptide during a 25-minute session of respiration using a gaseous hypoxic mixture with 10% oxygen ( GHM-10 ) . 
+Altogether , our results indicate that the transcriptional activity of Cut proteins is modulated by PKC . 
+GCD10 binds RNA in vitro and we present strong biochemical evidence that it is identical to the RNA-binding subunit of yeast initiation factor-3 ( eIF-3 ) . 
+Here we have investigated the structural requirements and consequences of regulatory phosphorylation for the interaction between c-Jun and JNK in vivo . 
+Although isl-1 binds to both the insulin and amylin gene promoter elements in vitro , these sequences display marked differences in their relative transcriptional properties when ligated adjacent to a heterologous promoter and transfected into InR1 -G9 islet cells . 
+Pretreatment of cells with the mitogen-activated protein-extracellular signal-regulated kinase kinase ( MEK ) inhibitor U0126 inhibited S6K2 activation to a greater extent than S6K1 . 
+Ras- and ultra-violet-responsive protein kinases that phosphorylate c-Jun on serine residues at positions 63 and 73 and stimulate its transcriptional activity have been identified . 
+Endogenous RMP was immunologically detected interacting with assembled RPB5 in RNA polymerase in mammalian cells . 
+Recombination and transcription of the endogenous Ig heavy chain locus is effected by the Ig heavy chain intronic enhancer core region in the absence of the matrix attachment regions . 
+In this study , we used footprinting and gel mobility retardation assays to reveal that bacterially synthesized Zta fusion proteins bound directly to six TGTGCAA-like motifs within DSL . 
+Prostate-specific antigen ( PSA ) promoter-driven androgen-inducible expression of sodium iodide symporter in prostate cancer cell lines . 
+The levels of transactivation are correlated with the respective binding affinities of the response elements ( IRper-1 > DR-4 > IRhsp-1 ) . 
+IFN-stimulated gene factor-3 and STAT1 homodimers formed and bound an IFN-stimulated response element ( ISRE ) and gamma-activated sequence ( GAS ) element , respectively . 
+In situ copper-phenanthroline footprinting of individual gel shift assembly intermediates shows that on the 302-nucleotide G4oric , the first two SSB tetramers assemble at random , but the addition of more SSB tetramers results in formation of a unique structure . 
+G-box-directed expression in leaves required the presence of an enhancer region from the cauliflower mosaic virus ( CaMV ) 35S promoter . 
+LMP2A enhances Lyn and Syk ubiquitination in vivo in a fashion that depends on the activity of Nedd4 family members and correlates with destabilization of the Lyn tyrosine kinase . 
+The localization of ZAP-70 to the cell cortex is , therefore , regulated by the activity of SRC-family kinases , independently of their ability to phosphorylate immunoreceptor tyrosine-based activation motifs of the TCR . 
+In contrast , an amino-terminal fragment containing the C / H1 domain was sufficient for coactivation of Zta transcription and viral reactivation function . 
+Wild type HA-p190 induced a phenotype of rounded cells with long , beaded extensions similar to that seen when Rho function is disrupted by ADP-ribosylation . 
+As determined in a modified yeast two-hybrid system , mIRS3 bound strongly to the p85 subunit of phosphatidylinositol 3-kinase . 
+Here we report the isolation and characterization of the forkhead homologue in rhabdomyosarcoma ( FKHR ) , a recently described member of the hepatocyte nuclear factor 3 / forkhead homeotic gene family , as a nuclear hormone receptor ( NR ) intermediary protein . 
+Also , the human glycoprotein alpha-subunit promoter was induced 10-fold by FSK in GH4 rat pituitary cells . 
+Structure of the EMAPII domain of human aminoacyl-tRNA synthetase complex reveals evolutionary dimer mimicry . 
+The requirement for proteolytic activity of both FVIIa and FXa suggests that protease-activated receptors may be involved . 
+Binding of serum response factor to CArG box sequences is necessary but not sufficient to restrict gene expression to arterial smooth muscle cells . 
+Binding activity in rat liver nuclear extracts includes these orphan receptors as judged from electromobility supershift experiments and from results obtained with expressed receptors , although the element in CYP2C11 did not bind HNF-4 . 
+Expression and regulation by interferon of a double-stranded-RNA-specific adenosine deaminase from human cells : evidence for two forms of the deaminase . 
+We show here that RA and E1A induce phosphorylation of the E1A-associated 300 kDa protein ( p300 ) during the differentiation of F9 cells . 
+A receptor-like protein kinase , OsPK10 , has been cloned from rice ( Oryza sativa ) . 
+Moreover , the hypoxia-induced expression of the endogenous Epo gene was significantly inhibited in Hep3B cells stably transfected with HNF-4 delta C . 
+C / EBP alpha also activates the promoter of the rat class-I ADH gene in a sequence-specific manner [ Potter et al . , Arch . 
+We have previously demonstrated that expression of the gene for the reproductive neuropeptide , GnRH , is repressed by the glutamate / NO / cyclic GMP ( cGMP ) signal transduction pathway through cGMP-dependent protein kinase in the hypothalamic GnRH-secreting neuronal cell line GT1-7 . 
+Whereas Smad2 was rapidly phosphorylated by TGF-beta and involved in the initial activation of Agc expression in confluent cells , Smad2 activation was not required for maintaining the high level of Agc expression . 
+The ARF promoter was also found to be highly responsive to E2F1 expression , in keeping with previous results at the RNA level . 
+We found that the 3'-end-adjacent sequence CA ( N ) 3-10AGTNNAA , conserved in plant Pol II-specific U snRNA genes , is essential for the 3'-end formation of U2 transcripts and , similar to the vertebrate 3' box , is highly tolerant to mutation . 
+However , D8 binding was observed by nuclease protection with lactotroph- as well as somatotroph-like cell nuclear protein . 
+Transcriptional blockade was reversed by co-transfections of a wild-type SRF expression vector , but was not rescued by the expression of other myogenic factors , such as MyoD and Mef-2C . 
+Hybridization data indicate that 6F6 . 2 corresponds to the previously characterized m6F6 cDNA clone and that 6F6 . 1 and 6F6 . 3 , but not 6F6 . 2 , are adjacent to alpha-type genes . 
+Substrates include the p21 ( ras ) proteins , nuclear lamins , and a series of retinal proteins . 
+We recently found that the p72syk protein tyrosine kinase is physically associated with the TCR / CD3 complex and is rapidly tyrosine phosphorylated and activated by receptor triggering also in T cells lacking p56lck . 
+Specific class I and II histone deacetylases ( HDACs ) interact in vivo with BCoR , suggesting that BCoR may functionally link these two classes of HDACs . 
+This is the first study in which mutation screening has been performed for both the EXT1 and EXT2 genes prior to any linkage analysis . 
+The protein predicted by the sequence of the human pim-1 proto-oncogene shares extensive homology with known serine / threonine protein kinases , and yet the human Pim-1 enzyme has previously been reported to exhibit protein tyrosine kinase activity both in vitro and in vivo . 
+However , while IL-1beta and TNF-alpha both induced nuclear binding of the Rel proteins p50 and p65 to an NF-kappaB consensus oligonucleotide in gel shift assays and caused transient degradation of inhibitor of NF-kappaB-alpha ( IkappaB-alpha ) in the cytoplasm of myofibroblasts , only IL-1beta upregulated PDGF-Ralpha . 
+Posttranslational regulation of Ty1 retrotransposition by mitogen-activated protein kinase Fus3 . 
+Gamma glutamyl transpeptidase ( GGTP ) activity in the seminal fluid . 
+Transcription of the metH gene in Salmonella typhimurium and Escherichia coli is positively regulated by the metR gene product , a DNA binding protein . 
+This complex interacts at the GTPase domain in the large subunit rRNA , overlapping the binding site of the protein L11-like eukaryotic counterpart ( Saccharomyces cerevisiae protein L15 and mammalian protein L12 ) . 
+The SH3 domains of Grb2 bound in vitro to specific proline-rich motifs in the HPK1 tail and functioned synergistically to direct the stable binding of Grb2 to HPK1 in transfected Cos1 cells . 
+Removal of all core histone tail domains by limited trypsin proteolysis or acetylation of the core histone tails significantly relieves this inhibition and allows TFIIIA to exhibit high-affinity binding to nucleosomal DNA . 
+Minor differences were noted with latamoxef producing mild persistant elevation of prothrombin time ( 0 . 7 second ) associated with depression of factor II and factor VII . 
+Relatively large DNA rearrangements spanning the region with tandem direct repeats encoding the carboxy-terminal histone H1-like structure of AlgP were detected in several strains upon conversion from the mucoid to the nonmucoid phenotype . 
+An endogenous mammalian regulator of this process , named Usurpin , has been identified ( aliases for Usurpin include CASH , Casper , CLARP , FLAME-1 , FLIP , I-FLICE and MRIT ) . 
+These data strongly implicate the normal product of the int-2 gene , which is related to the fibroblast growth factor family , as a contributory factor in virally induced mammary tumors . 
+Antibodies specific to rE12 and rNFIL-6 disrupt nucleoprotein complexes with these DNA-binding sites , confirming the interaction of native in vivo factors . 
+These results suggest that Rho1p regulates cytoskeletal reorganization at least through Bni1p and Pkc1p . 
+Using an ELISA , we found that surfactant protein A ( SP-A ) was markedly elevated in the pneumonia patients . 
+These RZR subtypes represent members of a new family of orphan nuclear receptors that most likely regulate specific gene expression . 
+High-affinity site-specific DNA binding by POU domain transcription factors requires both the POU-specific and the POU-homeodomain . 
+A cDNA , cak1At , was isolated that suppressed the CAK mutation in budding yeast , and it also complemented a fission yeast CAK mutant . cak1At encodes a protein related to animal CAKs . 
+PKA phosphorylated WT1 at Ser-365 and Ser-393 in vitro , as well as at additional sites , and this phosphorylation abolished the DNA-binding activity of WT1 in vitro . 
+Change in plasma cystyl aminopeptidase ( oxytocinase ) between 30-34 weeks' gestation as a predictor of pregnancy-induced hypertension . 
+P-CIP1 , a novel protein that interacts with the cytosolic domain of peptidylglycine alpha-amidating monooxygenase , is associated with endosomes . 
+However , there were some properties of Rak that are distinct from Src-like kinases : ( a ) expression of Rak was predominantly in epithelial-derived cell lines and tissues , especially normal liver and kidney , and cell lines of breast and colon origin . 
+In several cell lines , mTOR or its downstream targets can be regulated by phosphatidylinositol ( PI ) 3-kinase . 
+The MCAD nuclear receptor response element 1 ( NRRE-1 ) interacts in vitro with ERR alpha expressed in COS-7 cells . 
+Insulin-like growth factor II ( IGFII ) is a mitogenic polypeptide , the mRNAs of which are present in multiple forms , despite derivation from a single gene . 
+Induction of the CINC promoter by IL-17 in IEC-6 cells was TNF receptor-associated factor-6 ( TRAF6 ) , but not TRAF2 , dependent . 
+Although the terminase apparently interacts with this gp20 portal peptide , polyclonal antibody against the portal peptide appears unable to access it in the native structure , suggesting intimate association of gp20 and gp17 possibly internalizes terminase regions within the portal in the packasome complex . 
+During the 1980's , quantifications of immunoserological testings , especially C reactive protein , rheumatoid factor and antistreptolysin O , progressed rapidly . 
+The coding sequences of the Crry gene encompass over 25 kb of DNA , whereas the Crry-ps sequences are included within a single 5 . 6-kb Eco-R1 fragment . 
+The codon usage is particularly marked for the gag , pol , and env genes . 
+The rrd1 , 2delta mutant was partially rescued by inactivation of HOG1 or PBS2 , suggesting an interaction between the RRD genes and the Hog1p signal transduction pathway . 
+A number of serological tests measuring the presence of Helicobacter pylori-specific serum immunoglobulin G ( IgG ) are now commercially available . 
+The STAT protein accumulation resulting from C / EBP expression was tightly coupled to the morphological conversion of fibroblasts to adipocytes and represents an expression profile identical to that reported for mature adipocytes in vivo . 
+Sp1 and two Sp3 isoforms were detected as the primary cellular constituents of DNA-protein complexes formed with the NF-kappaB-proximal site . 
+A substantial fraction of Cbl was constitutively associated with Grb2 and this interaction was mediated by Grb2 SH3 domains . 
+The size of the mutant molecule corresponds to the unprocessed cytoplasmic precursor ( pre-super-pro-PrB ) , as detected in sec61 mutants , when translocation into the endoplasmic reticulum is blocked . 
+In budding yeast , the protein Skp1p , the cullin-family member Cdc53p , and the F-box / WD-repeat protein Cdc4p form the SCFCdc4p ubiquitin ligase complex , which targets the cyclin-dependent kinase ( Cdk ) inhibitor Sic1p for proteolysis [ 3 ] [ 4 ] [ 5 ] [ 6 ] [ 7 ] [ 8 ] . 
+GGS1 is the same gene as TPS1 which was identified as encoding a subunit of the trehalose-6-phosphate synthase / phosphatase complex and it is allelic to the fdp1 , byp1 , glc6 and cif1 mutations . 
+Conservation of function of Drosophila melanogaster abl and murine v-abl proteins in transformation of mammalian cells . 
+Expression of a hybrid protein containing the cytoplasmic C-terminal half of UhpB fused to glutathione S-transferase ( GST ) also interfered with Uhp signaling . 
+Our results suggest that the crucial role of the mutations activating v-erbA as an oncogene is to 'freeze' c-ErbA / TRalpha in its non-liganded , repressive conformation and to facilitate its overexpression . 
+Its interaction with RFX5 and RFXAP is essential for binding of the RFX complex to MHC-II promoters . 
+Members of the meis1 and pbx homeodomain protein families cooperatively bind a cAMP-responsive sequence ( CRS1 ) from bovine CYP17 . 
+Constitutive phosphorylation and nuclear localization of Smad3 are correlated with increased collagen gene transcription in activated hepatic stellate cells . 
+The data indicate that calcitonin induced a beta-endorphin increase independent of enhanced corticotrophin-cortisol release . 
+We also localized the Fra-2 phosphorylation sites by MAPK to three threonine and three serine residues in the COOH-terminal region by means of site-directed mutagenesis and showed that the threonine residues were more susceptible to MAPK . 
+Complete nucleotide sequence of the bacteriophage K1F tail gene encoding endo-N-acylneuraminidase ( endo-N ) and comparison to an endo-N homolog in bacteriophage PK1E . 
+The yeast gene that encodes eIF-5 , designated TIF5 , has been isolated and expressed in Escherichia coli to yield a catalytically active eIF-5 protein . 
+HS inducibility required the HSE which was bound by HS transcription factor-1 ( HSF-1 ) present in extracts prepared from cells exposed to HS . 
+HEED was found to bind to MA protein in vitro , as efficiently as in vivo in yeast cells . 
+The time course of RNA1 replication and RNA3 synthesis in induced yeast paralleled that in yeast transfected with natural FHV virion RNA . 
+The RAS-cyclic AMP-dependent protein kinase cAPK pathway prevents the UAS activity of IREu in the presence of glucose as the sole carbon source , while the transcriptional activators Msn2p and Msn4p promote the UAS activity of this repeat in the presence of acetate . 
+The 12S E1A product does not activate a TRE sequence , but cotransfection with c-jun circumvents this lack of stimulation . 
+In addition , the gcd1-101 mutation suppressed the low translational efficiency of GCN4-lacZ mRNA observed in gcn2- and gcn3- cells . 
+Premature initiation of mitosis in yeast lacking RCC1 or an interacting GTPase . 
+An increase in hypothalamic expression of at least two of the erbB receptors is initiated before the pubertal augmentation of gonadal steroid secretion and is completed on the day of the first preovulatory surge of gonadotropins . 
+Among the H / ACA snoRNAs associated with Gar1p , one can distinguish a large group of snoRNAs that are not essential in yeast and serve as guides for pseudouridine synthesis onto the pre-rRNA molecule . 
+Syndecan-4 is a focal adhesion component , and this interaction may both localize PKC and amplify its activity at sites of forming adhesions . 
+The results presented here show that AR1 of the promoter-proximal CAP subunit was required for papBA transcription even in the absence of the histone-like protein H-NS . 
+Additionally , I kappa B beta , but not I kappa B alpha , also prevented the binding of Rel to the kappa B site . 
+Both NUP98-HOXA9 chimeras transformed NIH 3T3 fibroblasts , and this transformation required the HOXA9 domains for DNA binding and PBX interaction . 
+Our results indicate that D ( 4 ) and D ( 2L ) receptors activate the ERK kinase cascade by first mobilizing signaling by the PDGF receptor , followed by the subsequent activation of ERK1 / 2 by pathways associated with this receptor tyrosine kinase . 
+The deduced amino acid sequence of the gene has significant homology to the interferon regulatory factors ( IRFs ) . 
+The hexanucleotide 5'-TGTCCT-3' , thought to be important for GRE activity , not only was found in this sequence and in the 5'-flanking region , but also was present twice in the 3' end of the gene that did not show specific receptor binding . 
+STAT5A mutations in the Src homology 2 ( SH2 ) and SH3 domains did not alter the BTK-mediated tyrosine phosphorylation . 
+However , despite its relationship to the TR , Rev-Erb bound poorly to TR binding sites . 
+In addition , npm3 , which is usually coactivated with fgf8 by MMTV insertion , was not up-regulated by androgens in SC-3 cells . 
+This study shows that C / EBPbeta is the predominant C / EBP isoform found in activated stellate cells and that increased C / EBPbeta protein and C / EBPbeta binding to a proximal C / EBP binding site in the promoter mediates the activating effect of acetaldehyde . 
+Since proteins containing TPR elements are typically involved in multiple protein-protein interactions , we suggest that the 102kD protein interacts within the tri-snRNP with both the U5 and U4 / U6 snRNPs , thus bridging the two particles . 
+This effect was abolished once the EM motif in the promoter-reporter construct was mutated , thus suggesting that the synergistic transactivation function of the TEF-1-Max heterotypic complex is mediated through binding of the complex to the EM motif . 
+We show that CBF-A and CBF-C interact with each other to form a CBF-A-CBF-C complex and that CBF-B does not interact with CBF-A or CBF-C individually but that it associates with the CBF-A-CBF-C complex . 
+Finger associated box-zinc finger proteins ( FAX-ZFPs ) constitute a subfamily of the many C2H2 type ZFPs in Xenopus laevis . 
+High-affinity binding sites for both GR and AP-1 nucleoproteins were identified at adjacent elements within the nGRE . 
+In the current model , Wingless / Wnt signal stabilizes Armadillo / beta-catenin , which then accumulates in nuclei and binds TCF / LEF family proteins , forming bipartite transcription factors which activate transcription of Wingless / Wnt responsive genes . 
+Our results indicate that the minimal requirements for induction of PEPCK by PKA and inhibition by insulin include : 1 ) the CREB activation domain , 2 ) the PEPCK TATA sequence , and 3 ) insulin-responsive hepatoma cells . 
+Isoelectric focusing of tryptic peptides generated from MHC-B phosphorylated with cdc2 kinase revealed one major phosphopeptide that was purified by reverse-phase high performance liquid chromatography and sequenced . 
+Cardiac output at anaerobic threshold ( COAT ) < or = 7 . 3 L / min was the best cutoff value for identifying multivessel coronary artery disease ( relative risk , 3 . 1 ) . 
+The standard principles of surgical management must be adhered to when using Sandostatin to treat patients with these disorders . 
+CO2 assimilation by chloroplasts illuminated on filter paper . 
+Secondary cleavage of RT at Trp-595-Tyr-596 of Pol yields a truncated form lacking the C-terminal RNase H domain . 
+In three of the seven , inhalation of 2 ml normal saline produced FEV1 falls of 25% to 30% , but these falls were not as great as each subject's reactions to the test solutions . 
+CD7+ / CD3- T-cell precursors exhibit V delta 2D delta 3 rearrangements . 
+The coding region of mkh1 is contained within a single exon encoding a 1 , 116-amino-acid protein . 
+Next , we show that two EMS-induced mutations , previously shown to interact genetically with zipper ( Ebr ) , disrupt the RhoA locus . 
+However , serial passages of fetal lamb kidney ( FLK ) cells , which are sensitive to infection with BLV , after transient transfection revealed that mutation of a second tyrosine residue in the N-terminal motif completely prevented the propagation of the virus . 
+The gene lac-1 , encoding the enzyme laccase , is the best characterized of a number of genes in the chestnut blight fungus , Cryphonectria parasitica , that are repressed by hypoviruses , a group of virulence-attenuating mycoviruses . lac-1 has also been shown to be transcriptionally activated by low concentrations of the translational inhibitor cycloheximide ( CHX ) and by the immunosuppressant cyclosporin A . 
+These differences involve specific hydrogen-bonding interactions between the protein and DNA , including guanine N7 sites in the major groove of DNA , and alterations in DNA phosphodiester conformation induced by protein binding . 
+Adding phytase and nP improved the orderliness of development , mineralization and arrangement of cartilage and bone cells , and alleviated the effects of P deficiency on the histological and gross structure of the tibias . 
+The biosynthesis and stability of the three mutant proteins were similar to those of the wild-type erbB protein , and all three retained the ability to transform chicken embryo fibroblasts . 
+We have isolated a cDNA encoding human MEKK3 . 
+Sequence analysis and identification of two hyp regulatory mutants . 
+Therefore , both the Chilean and the Japanese samples collected in high-risk areas showed higher mutagenic rates than the Japanese ones in a low-risk area , with a statistical significance ( p < 0 . 001 ) , chi-square test ) . 
+Skeletal muscle metaboreceptor exercise responses are attenuated in heart failure . 
+Management of postvitrectomy diabetic vitreous hemorrhage with tissue plasminogen activator ( t-PA ) and volume homeostatic fluid-fluid exchanger . 
+Current status of telepathology . 
+Sequence analysis of this region revealed three eight-bp repetitive elements , the deletion of which restored wild-type levels of luciferase activity to the -916-bp reporter plasmid . 
+No mutations were found in follicular adenomas . 
+Prevention of acute paraquat toxicity in rats by superoxide dismutase . 
+Results from our and other laboratories have suggested that UCN-01 induces preferential G1-phase accumulation in several human tumor cell lines tested . 
+Recombinant HRMT1L2 protein encoded by the most common 5'-variant exhibited methyltransferase activity in vitro . 
+A total of 26 BCG strains , out of them 10 Czechoslovak strains ( 2 lyophilized cultures of BCG of different batch , 6 strains isolated from abscesses of children after BCG-vaccination and 2 strains from fatal cases after BCG-vaccination ) and 16 strains obtained from foreign laboratories , were used . 
+We have identified in the 5' untranslated region of the Drosophila copia retrotransposon , 3' to the left LTR , a sequence for transcriptional regulation by homeoproteins . 
+The two methods identify the same patients only if micturitional pressures are normal ( 40 to 60 cmH2O ) to high ( over 60 cmH2O ) and the Sussett formula is used with a higher ( 95th centile ) cutoff . 
+In 10 control sheep mean plasma TXB2 concentration increased from 0 . 39 ng / ml prebypass to about 1 . 1 ng / ml at 8 and 16 min of bypass . 
+The protein is composed of a central alpha-helical portion with globular domains at both NH2 and COOH termini , and the epitope to the monoclonal antibody resides in the central alpha-helical stalk . 
+Mo + SV M-MuLV-inoculated animals became moribund at 3 to 13 months postinoculation , whereas delta Mo + SV M-MuLV-inoculated animals became moribund at 6 to 24 months postinoculation . 
+Genotoxic activity of a tobacco-specific nitrosamine . 
+Likewise , at 150 degrees C with 2% APS the surface density of NH2 groups reached a maximum at 24 hr and remained relatively constant up to 96 hr . 
+16 women were treated with methadone to prevent withdrawal symptoms . 
+Between 1967 and 1994 , 495 patients underwent surgery for primary PTC at the Department of Surgery , Helsinki University Central Hospital . 
+The subgroup innervating the medial rectus lies exclusively along the medial face of the oculomotor nucleus , with no aberrant neurons in the medial longitudinal fasciculus , as have been found in other mammals . 
+Moreover , elderly men with bioavailable estradiol levels below the median [ 40 pmol / liter ( 11 pg / ml ) ] had significantly higher rates of bone loss and levels of bone resorption markers than men with bioavailable estradiol levels above 40 pmol / liter . 
+In the 10 patients with a more severe degree of steatorrhea the decrease in fat loss approached 20% and a close relationship was found ( r = 0 . 84 , p less than 0 . 01 ) between the extent of the fatty acid loss on placebo and the decrease of this loss on taurine . 
+Additional information including echocardiographic sequences , perioperative video sequences , x-ray analysis , angiograms , etc . is represented in the program . 
+Using a conditional-lethal mutant allele of SUP45 ( sup45-2 ) and a combination of in vivo and in vitro approaches , we demonstrate that the product of the SUP45 gene ( Sup45p or eRF1 ) is a factor required for translation termination in yeast . 
+After overtraining on the original discrimination , the controls showed the normal difficulty in learning the first reversal . 
+Identification of mutations in the coding sequence of the proto-oncogene c-kit in a human mast cell leukemia cell line causing ligand-independent activation of c-kit product . 
+Therefore , magnetic resonance imaging was used to determine liver volume in pediatric and adolescent patients , in whom systemic clearance of three model substrates [ lorazepam ( 0 . 03 mg / kg ) , antipyrine ( 10 mg / kg ) , and indocyanine green ( ICG ; 0 . 5 mg / kg ) ] was also determined . 
+Urease activity , judged as the amount of ammonia production from urea , could be measured at 25 ng per tube ( S / N = 1 . 5 ) with Jack bean meal urease . 
+195mPt-labeled cisplatin was administered iv and ip to control mice and to mice bearing Sarcoma 180 . 
+The effect of food on procainamide absorption . 
+Effects of chronic descending tractotomy on the response patterns of neurons in the trigeminal nuclei principalis and oralis . 
+A reduction in blood pressure was only observed at the end of the study , from 142 + / - 17 / 86 . 6 + / - 9 . 1 to 139 + / - 13 / 82 . 9 + / - 8 . 9 mmHg ( P less than 0 . 05 for DBP ) . 
+A G22V mutant of M-Ras was constitutively active and its expression in an interleukin-3 ( IL-3 ) -dependent mast cell / megakaryocyte cell line resulted in increased survival in the absence of IL-3 , increased growth in IL-4 , and , at high expression levels , in factor-independent growth . 
+A genomic DNA clone encoding oryzacystatin ( Oc ) , a cysteine proteinase inhibitor ( cystatin ) of rice , was isolated from a lambda EMBL3 phage library constructed with Sau3AI partial digests of rice chromosomal DNA , by screening with an oc cDNA as a probe . 
+Results for men who drank up to two drinks per day suggest that if the dependence criteria were invalid , reductions in the prevalence of specific indicators of alcohol dependence would range from 0 . 3% to 5 . 2% . 
+The region between DXS52 and Factor VIII gene in the human Xq28 chromosomal band contains a G+C-rich isochore to which many genes have been mapped . 
+Large strain differences were found for all variables recorded , i . e . , the proportion of attacking males , the time spent in the brightly lit box , and the number of transitions between the lit and the dark boxes . 
+The effect of low-profile serine substitutions in the V3 loop of HIV-1 gp120 IIIB / LAI on the immunogenicity of the envelope protein . 
+Granulocyte colony-stimulating factor ( G-CSF ) administration in vivo has been shown to improve the defence mechanisms against infection by different microbes . 
+In patients with limited disease , the survival in the alternating arm was significantly superior to the survival in the CAV arm ( P = . 014 ) or the survival in the PE arm ( P = . 023 ) . 
+Two patients with recurrent tumors had high S-phase fractions both on the first resected specimens and at the time of the second operation . 
+Marine oils and cardiovascular reactivity . 
+The Ntl1 gene is present as a unique copy in the diploid N . plumbaginifolia species . 
+Preface . 
+Optimal activation of T cells requires at least two signals . 
+In this study the splenectomized captive born cynomolgus appeared to be capable of supplementing rhesus as an antimalarial drug testing model . 
+The site of autophosphorylation is Tyr397 which corresponds to the consensus autophosphorylation site of other Src family tyrosine kinases . 
+Postprandial plasma enteroglucagon concentration after 90 minutes in untreated patients correlated positively to the faecal fat excretion ( r = 0 . 58 , p less than 0 . 02 ) . 
+Using RACE techniques we have cloned and sequenced one of the hamster liver 3-hydroxy-hexobarbital dehydrogenases which catalyze not only cyclic alcohols but also 17beta-hydroxy-steroids and 3alpha-hydroxysteroids . 
+This computerized list was linked to the central files of the Massachusetts Cancer Registry and cases diagnosed between 1982 and 1988 were identified . 
+Bullous angiolymphoid hyperplasia with eosinophilia . 
+A subsequent screen for the loss of the positively selectable target locus marker detects the desired replacement at modest frequency ( > 2% ) . 
+The transcription factor Sp1 bound to eight sites , as demonstrated by footprinting assays and gel shift analysis with purified Sp1 . 
+These results were corroborated in a subsequent study in which 30 hypogonadal men were supplemented with SLT 5 mg three times daily for 6 months . 
+Despite supraphysiologic E2 concentrations , however , cervical mucus scores were significantly reduced in the CC-treated group ( P less than 0 . 01 ) . 
+The wild-type and altered forms of the F protein were expressed in BHK-21 and HeLa T4 cells by use of the recombinant vaccinia virus-encoding T7 polymerase system . 
+In the past decade , there have been enormous advances in the use of Bayesian methodology for analysis of epidemiologic data , and there are now many practical advantages to the Bayesian approach . 
+Because of this latter phenomenon , we were able to identify a particular cysteine motif that was repeated multiple times in Dfurin2 but present only twice in mammalian furin . 
+Therefore , it was concluded that thrombotic tendency certainly existed in patients with MS compared to those with non RHD and that it was one of the causes of the significantly high incidence of thromboembolism in comparison with non RHD . 
+In retrospect , the diagnoses were reconsidered applying strict criteria . 
+Previous studies showed that mutations in the 6K protein led to the slow release of aberrant , multi-cored infectious virions . 
+An experiment examined the effects of treatment with gonadotrophin releasing hormone ( 100 micrograms GnRH injected 24 h after progestagen sponge removal ) , season of treatment ( autumn v . spring ) , the effect of supplementary feeding with lupin grain ( in autumn only , from 12 days before until 8 days after sponge removal ) on the time of ovulation in 182 mature Merino ewes superovulated with a combination of 400 I . U . pregnant mare serum gonadotrophin ( PMSG ) and 12 mg follicle stimulating hormone ( FSH-P ) . 
+However , kidneys perfused for 72 hr demonstrated more similar renal functions when tested by either IMPK or IBPK . 
+Therefore , vitamin D3 analogues have a substantial antipsoriatic effect . 
+Role of the 3' untranslated region of baculovirus p10 mRNA in high-level expression of foreign genes . 
+The sera and nasal secretions of 142 patients , who were positive in HD or mites skin test , were subjected to a radioallergosorbent test ( RAST ) for estimating the specific IgE antibody activity to mites . 
+Transfection of increasing amounts of delta5ERalpha expression vector into [ ERalpha+ ] OS cells resulted in potentiation of E2-stimulated ERELuc activity in a synergistic , dose-dependent manner . 
+Lactate accumulation peak was unaffected by supplementation ( HMB , 8 . 1 + / - 1 . 1 mM ; LEU , 6 . 2 + / - 0 . 8 mM ; CON , 7 . 5 + / - 1 . 3 mM ) . 
+However , L-plastin has been found in many types of malignant human cells of non-hemopoietic origin suggesting that its expression is induced accompanying tumorigenesis in solid tissues . 
+AMDA white paper identifies ways to improve pharmaceutical care in SNFs . 
+PFK-A mRNA was more abundantly expressed in all tissues than were the PFK-B and PFK-C genes . 
+The mass of UO2 in the extrapulmonary bronchi and first bifurcation decreased more slowly over 0--8 d after inhalation than the corresponding mass on the trachea . 
+Although L-threo-dihydroxyphenylserine ( DOPS ) , an artificial norepinephrine ( NE ) precursor , did not change immobility in intact mice , DOPS significantly reduced immobility in mice pretreated with the selective NE neurotoxin DSP4 . 
+Positive correlations were seen between the measurements for protein intake ( r = . 58 , P = . 0026 ) energy intake ( r = . 78 , P < . 00001 ) , with mean differences of . 066 g / kg / d ( SD . 38 ) 2 . 04 kcal / kg / day ( SD 6 . 67 ) , respectively . 
+The sixth nucleotide was bulged out to allow stacking of this U . G pair on the adjacent helical region . 
+Normal rates of weight gain were seen once absorbed energy intakes reached 100-110% of requirements . 
+We present the preliminary results obtained on 36 patients which were followed for a mean period of 12 months . 
+Regulation of ASN1 and ASN2 expression was studied using lacZ fusions and both genes were found to be several times less expressed in the absence of the transcription activator Gcn4p . 
+It is striking that the active CHO spacer promoter violated the otherwise universal rule that metazoan RNA polymerase I promoters all have a G residue at position -16 . 
+The roles of phorbol esters and cyclic AMP in mediating the GnRH response were also investigated . 
+To our knowledge this is the first case in which a probable association between cholelithiasis and Wildervanck's syndrome has been recorded . 
+In addition , on the Cohler's maternal scale , Korean mothers were found to view their infants as more passive and dependent than American mothers did ( P less than 0 . 00 ) . 
+Duration of remission in advanced gastric cancer patients responding to sequential dose of MTX and 5-FU . 
+We show here that , despite their structural and functional similarities , the pop1 and pop2 genes fail to complement each other's deletion phenotypes , indicating that they perform non-redundant , but potentially interdependent , functions in proteolysis . 
+Human LAF-4 readily hybridized with genes in mouse and chicken , thus showing that this gene family has been highly conserved during vertebrate evolution . 
+Forty 4-month old SD female rats were randomly divided into four groups , namely sham operation , bilateral ovariectomy , ovariectomy plus supplementary ethinyl estradiol ( 0 . 2 microgram / 100 g B . 
+Activation was biphasic ; peaking at 5-10 min and 24 h after treatment . 
+Five additional copies of Lian elements were isolated , mapped by restriction digestion , and partially sequenced . 
+Molecular cloning and characterization of OsPSK , a gene encoding a precursor for phytosulfokine-alpha , required for rice cell proliferation . 
+BRCA1 protein contains an amino-terminal zinc finger motif and a carboxy-terminal acidic region . 
+N-terminal sequence analysis and NMR measurements revealed that this fragment originates from the C-terminal 80 residues of MBF1 and form a well structured C-terminal domain of MBF1 , MBF1CTD . 
+The RMR was measured twice in each phase and found to be similar ( F ( 1 , 18 ) = 0 . 863 ) across the follicular ( 5018 kJ / 24 h ) and the luteal ( 5098 kJ / 24 h ) phases . 
+In this study , we elucidate signaling pathways induced by photodynamic therapy ( PDT ) with hypericin . 
+Adrenergic nerve function , noradrenaline level and noradrenaline uptake in cat nictitating membrane after reserpine treatment . 
+All 62 isolates were resistant to lincomycin , colistin , nystatin , amphotericin B , trimethoprim lactate , polymyxin B , and anisomycin . 
+Triumph of Leninist national policy . 
+This mode of ternary complex formation is in contrast to the one seen in the promoter of the c-fos protooncogene , where formation of the ternary complex is dependent on the prior assembly of the serum response factor-DNA binary complex . 
+The E1 replication protein of bovine papillomavirus type 1 contains an extended nuclear localization signal that includes a p34cdc2 phosphorylation site . 
+To examine the role of this CE2 element in regulating Hoxa1 expression in vivo , transgenic mice were generated which express a Hoxa1 beta-galactosidase reporter gene that contains a mutation in the CE2 element . 
+Zebrafish cyclops ( cyc ) encodes a Transforming Growth Factor beta ( TGFbeta ) signaling factor closely related to mouse Nodal . 
+Three mutants were isolated from the widely used strain , PAO1 . 
+A second study group , with intact cardiac innervation , consisted of 19 patients with stable angina pectoris class I to III . 
+US-Doppler has recently gained attention as a noninvasive method for the functional evaluation of arteriovenous fistulas ( FAV ) . 
+Uses of orthoclone OKT3 for prophylaxis of rejection and induction in initial nonfunction in kidney transplantation . 
+The RF values correlated well with the angiographic semiquantitative scale of severity of aortal insufficiency ( r = 0 . 805 ; p less than 0 . 001 ) , although they enabled the authors only to make a partial differentiation of haemodynamically severe regurgitations and mild or insignificant ones . 
+Gaucher's disease is a rare metabolic disorder characterized by the lack of beta-glucocerebrosidase enzyme . 
+Just before inserting on the anterior margin and apex of the iliac crest it widens , assuming the aspect of a small cone . 
+The novel hematopoietic growth factor FLT3 ligand ( FL ) is the cognate ligand for the FLT3 , tyrosine kinase receptor ( R ) , also referred to as FLK-2 and STK-1 . 
+Of the compounds tested , alpha- ( 3-methyl-2-quinoxalinyl ) -N-methylnitrone 1 , 4-dioxide ( 2 ) was the most active agent in vivo against the gram-negative and the gram-positive organisms . 
+Our data provide a biochemical explanation for the similarity in phenotype between A-T and NBS . 
+In gel mobility shift assays , we found no evidence for VDR-TR heterodimer interaction with any tested element . 
+The present investigation sought to identify the principal dimensions of the Framingham Type A scale ( FTAS ) and then to examine their physiological and psychological correlates . 
+In Mv1Lu lung epithelial cells , ActR-IB and T beta R-I signal a common set of growth-inhibitory and transcriptional responses in association with their corresponding ligands and type II receptors . 
+Closure of an open high below-knee guillotine amputation wound using a skin-stretching device . 
+The resulting integrated physical , genetic , and cytogenetic map constitutes a resource for the characterization of genes that may be involved in the WAGR syndrome . 
+TGF beta 1 expression is largely governed by three AP-1 binding sites located in two different promoters of this gene . 
+Early indicators of the effect of a breast cancer screening program for low-income women . 
+S6 kinase activation requires displacement of this inhibitory segment , which is proposed to occur consequent to its multiple phosphorylation . 
+Until now , each of these loci was considered to contain three genes ( for regulator , permease and alpha-glucosidase ) , but a fourth gene , presumably an extra alpha-glucosidase gene , was found at MAL1 adjacent to the usual cluster of three genes . 
+Thus , diamide treatment of nuclear extracts strongly reduces the binding of NFI proteins , and the addition of higher concentrations of dithiothreitol to nuclear extracts from TG-treated cells restores NFI-DNA binding to levels in extracts from untreated cells . 
+Of these carriers 149 were diagnosed to be asymptomatic clinically , biochemically and echographically . 
+The primary CT findings were misinterpreted as a brain infarct or possibly a tumour . 
+H-7 , which specifically , although weakly , inhibited PKC activation , had no effect on tyrosine phosphorylation and PtdIns ( 3 , 4 ) P2 production . 
+Mutation analyses identified the cobalt-responsive sequences as the stress-response elements ( StREs ) . 
+While the examiner observed the interior of the eye with indirect ophthalmoscopy , the point source of light from the fiberoptic light pipe was moved along the margins of the episcleral plaque . 
+There was no difference in apnea duration between the supine and prone positions . 
+Hypertonic glucose administered intrajejunally in Heidenhain pouch dogs resulted in an equal inhibition of pentagastrin-induced acid secretion from the pouch and the main stomach , whereas hypertonic saline had no effect . 
+2001 . 
+Molecular characterization of the 50- and 57-kDa subunits of the bovine vacuolar proton pump . 
+Adding 10 mmol SDS / l led to transient inhibition of acidification , metal solubilization and sulfur oxidation . 
+The 84 . 1C mAb recognizes a site on IgE which is identical or very close to the Fc epsilon R binding site , and 95 . 3 recognizes a site on IgE which is related , but not identical to the Fc epsilon R binding site . 
+Cbf3 contains three proteins , Cbf3a , Cbf3b and Cbf3c . 
+The data further indicate that the IL-7R alpha chains are directly involved in the activation of JAKs and STATs and have a major role in proliferative signaling in precursor B cells . 
+Problems remain to be resolved in the area of quantitative risk assessment . 
+Cardiac preservation . 
+Histological slides of one biopsy of each patient ( formalin-fixed and paraffin-embedded ) were stained with a Modified Giemsa ( MG ) , the Warthin-Starry ( WS ) , and an immunohistochemical method ( IMM ) using purified polyclonal H . pylori antiserum ( DAKO B471 ) . 
+With current methodology beta-2 transferrin does not appear to be a reliable clinical marker for perilymph in the operative setting . 
+Heterogeneity of human serum albumin . 
+The consequences of intensive swine production on the environment and possible solutions by means of nutrition are outlined . 
+Although the expression of the 4E-BP1 gene alone has not yet been accomplished , the gene was expressed in Escherichia coli [ BL21 ( DE3 ) ] as a fusion gene with the glutathione-S-transferase ( GST ) gene using a prokaryotic gene fusion vector ( pGEX-4T-2 ) , which contains a gene sequence coding the cleavage site for a specific protease , alpha-thrombin . 
+The correct termination of retroviral transcripts at the 3' LTR R / U5 junction is primarily dependent on the canonical AAUAAA polyadenylation signal , so we have analyzed the effect of mutating the polyadenylation signal sequences on the properties of a selectable murine retroviral vector . 
+A mouse brain beta-spectrin of cDNA was identified within a lambda Gt11 expression library using an antibody which specifically binds with the 235 kDa spectrin beta-subunit . 
+A series of 5'-deletions revealed that the fragment -218 to +4 from the TSS had the highest promoter activity , nearly 1000-fold greater than the promoterless chloramphenicol acetyltransferase construct . 
+Primer extension and mung bean and S1 nuclease mapping indicated multiple transcription initiation sites and were consistent with Northern analyses . 
+The observed sequence variation disrupts the first ORF in many Y's while most of the second ORF including the putative helicase region is unaffected . 
+The production of ceramide is emerging as a fixture of programmed cell death . 
+Although both transfected cell lines contain FGF-1 cell surface receptors as judged by crosslinking studies , the wild-type transfectants are refractory to exogenous FGF-1 , whereas the mutant transfectants respond normally . 
+When overexpressed in an appropriate cell line , TAN-1C prevented kappa B-dependent transactivation in transient reporter gene assays in a fashion similar to the structurally related protein , Bcl-3 . 
+Further , the ORFs of components 3 and 5 potentially encoded proteins of about 20 kDa , the size of the BBTV coat protein . 
+For oral administration , AUC0-infinity was 58 . 47 + / - 16 . 37 microg x h / ml , t1 / 2beta was 18 . 39 + / - 0 . 06 hours , maximum concentration ( Cmax ) was 2 . 12 + / - 00 . 51 microg / ml , time to Cmax was 2 . 20 + / - 2 . 17 hours , mean absorption time was 2 . 09 + / - 0 . 51 hours , and bioavailability was 42 + / - 0 . 42% . 
+The effect of pure natural porcine secretin on endocrine and exocrine pancreatic secretion was studied in the totally isolated perfused porcine pancreas . 
+The experimental end points were the time required for treated tumors to reach 3 times their treatment size , the survival of stem cells in the duodenal crypts , and the breathing rate measured early ( 19-23 weeks ) and late ( 41-46 weeks ) after treatment . 
+Thyroid lymphoma and its management . 
+There were 45 to 56 nt differences between the virulent and avirulent groups while there were 6 to 14 nt differences among four avirulent strains . 
+Synovial cysts of the hip joint . 
+Two studies assessed two types of reliability of the student Jenkins Activity Survey ( JAS ; a questionnaire measure of Type A behavior ) . 
+Our results indicate that Shh can drive continued cycling in immature , proliferating CGNPs . 
+All were experienced hearing aid users who wore linear Class D instruments with input compression limiting at the time of their enrollment in this study . 
+In C . albicans , HST6 is expressed constitutively at high levels in the different cell types analysed ( yeast , hyphae , white and opaque ) , demonstrating that HST6 transcription is not repressed in this diploid yeast , unlike in diploid S . cerevisiae , and suggesting a basic biological function for the Hst6p transporter in C . albicans . 
+From day 10 , a significant increase in platelet count was observed in eight of the ten patients treated with heparin ( p < 0 . 05 ) , with return to the initial value after heparin cessation in six of the responders . 
+We determined whether the human StAR promoter is responsive to sterol regulatory element-binding proteins ( SREBPs ) . 
+The NF1 locus encodes a protein functionally related to mammalian GAP and yeast IRA proteins . 
+Regulation of the Raf kinase in T cells differs from findings with a variety of cell lines that the catalytic domain of Raf ( Raf ( delta26-303 ) ) shows no activity . 
+These changes in virus entry features may result in coronaviruses with novel pathogenic properties . 
+The prevalence of malnutrition was 30% in the 47 patients without CVD and was significantly higher ( 70% , P < 0 . 001 ) in the 70 patients with CVD , who also had lower tHcy , SAlb , plasma IGF-1 , serum creatinine ( SCr ) , and blood hemoglobin . 
+Surprisingly , TFIIIC alpha has no homology to any of the yeast TFIIIC subunits already cloned , suggesting a significant degree of evolutionary divergence for RNA polymerase III factors . 
+Clinical use of absorbable polyglycolic acid suture in Blalock-Taussig's operation . 
+Wegener's granulomatosis . 
+Ectopic expression of the dominant mutant Lg3 allele is believed to cause the phenotype . 
+Fentanyl , a prototypic mu-opiate receptor agonist , has been previously shown to produce a syndrome characterized by marked analgesia and locomotor stimulation as well as tachycardia , tachypnoea and behavioural arousal . 
+No post-operative haemorrhages from the prostheses were observed . 
+Characterization of the 5' end of the growth-regulated Syrian hamster CAD gene . 
+The intensity of myocardial uptake of Tc-99m-PYP in patients with echocardiographic left ventricular hypertrophy and / or highly refractile myocardial echoes , so-called granular sparkling appearance ( GS ) was slightly greater than that in patients with neither myocardial hypertrophy nor GS . 
+A flow rate of at least 5 mL / h is required through the receptor ( volume , 0 . 4 mL ) for accurate results . 
+Kinetic experiments revealed that within 10 min this radiolabeled precursor protein was converted in HL-60 cells into an Mr approximately 150 , 000 chondroitin sulfate proteoglycan intermediate . 
+A subset of these DMP1 recognition sequences containing a GGA trinucleotide core can also function as Ets-responsive elements . 
+However , when a second , upstream IRE-like sequence was evaluated by EMSA , a DNA binding pattern distinct from that seen following exposure to IFN-gamma alone was observed after prolonged stimulation with both IFN-alpha and IFN-gamma . 
+Cells containing alpha subunits that lacked a distal domain ( term-3 ) or had the alternatively spliced alpha-2 distal domain showed markedly decreased ability to support tyrosine phosphorylation of Jak-2 and its substrates or to up-regulate CD86 . 
+Chemotherapy of metastasizing breast cancer . 
+A Drosophila shc gene product is implicated in signaling by the DER receptor tyrosine kinase . 
+This paper gives an overview of the global pattern of casualties in earthquakes which occurred during the 30-month period from 1 September 1993 to 29 February 1996 . 
+Immunoprecipitation experiments using DokR-specific antibodies revealed an interaction between endogenous DokR and a 150-kDa protein that is tyrosine-phosphorylated in EGF-stimulated BaF / 3 cells . 
+Using adenoviral transfer of IkappaBalpha ( IkappaBalpha overexpression ) , the production of TNF-alpha induced by whole GBS was inhibited by only 20% . 
+Most of the phenomena of azotaemic osteodystrophy are encountered in simple vitamin D deficiency ; as in that condition , deficiency of 1 , 25-dihydroxycholecalciferol may be of primary significance in causing secondary hyperparathyroidism in renal failure . 
+When cells were microinjected with TFOs designed to bind to a 30-bp polypurine site situated between the two TK genes , recombination was observed at frequencies in the range of 1% , 2 , 500-fold above the background . 
+A new Onchocerca species , a parasite of domestic cattle , in Senegal . 
+Moreover , we found that cyclin E , in contrast to cyclin D1 , was required for the G1 / S transition even in cells lacking retinoblastoma protein function . 
+Chloroplast mutator ( chm ) of Arabidopsis is a recessive nuclear mutation that causes green and white variegation in leaves and is inherited in a non-Mendelian fashion . 
+The second class of cDNA hybridized to a 13 kb transcript , which was approximately twice as large as the mammalian lactase mRNA . 
+Gastritis score was significantly lower in nodminus sign / CagAminus signchildren than in nod+ / CagAminus sign ( p = . 004 ) , nodminus sign / CagA+ ( p = . 002 ) and nod+ / CagA+ ( p < . 001 ) , both in the antrum and corpus . 
+To determine whether mononuclear cell secretory products contribute to the changes in bone turnover that characterize the development of postmenopausal osteoporosis , we evaluated the effects of oophorectomy and subsequent estrogen replacement on the spontaneous secretion of interleukin 1 ( IL-1 ) and tumor necrosis factor alpha ( TNF-alpha ) and on the phytohemagglutinin A-induced secretion of granulocyte-macrophage colony-stimulating factor ( GM-CSF ) from peripheral blood mononuclear cells . 
+Hepatic oxygen supply and selected blood parameters were recorded in fasted male rates given 20--30 mg / kg Escherichia coli endotoxin intraperitoneally . 
+These data provide strong evidence that E2F or an E2F-related transcription factor is involved in the regulation of nonmuscle myosin expression . 
+The susceptibility of the PPNG strains to clinically relevant antibiotics varied with the plasmid pattern ; this stresses the necessity of permanent surveillance of gonococcal infections and of regular evaluation of the recommendations for antimicrobial treatment . 
+Long-term effects of clofibrate ( Atromid-S ) on serum lipids in man . 
+Dorsal foot TcpO2 was measured by using oxygen-sensing electrodes with surface temperatures of 42 degrees C and 45 degrees C ; in theory , changes in sympathetic activity should affect vasomotor tone and TcpO2 in skin beneath an electrode at 42 degrees C ( submaximal vasodilation ) , but not at 45 degrees C ( maximal vasodilation ) . 
+The effects of dominant interfering forms of the JNK / p38 signaling pathway demonstrate that activation of these kinases is critical for cytokine-induced E-selectin gene expression . 
+As a result , beta-apo-8'-carotenoic acid ethyl ester ( apo-EE ) was used as a reference standard in Experiments 4 to 6 . 
+The tumor suppressor and transcriptional factor p53 is a phosphorylated protein . 
+Antimicrobial Susceptibility of Klebsiella pneumoniae Producing Extended-Spectrum beta-lactamase ( ESBL ) Isolated in Hospitals in Brazil . 
+A mutation which abrogates the binding of these factors reduces Wp reporter activity specifically in B cell lines , whereas a mutation which converts the site to a consensus CREB-binding sequence maintains wild-type promoter function . 
+In a similar experiment , simultaneous nitrofurazone administration and S . enteritidis challenge resulted in no significant differences in S . enteritidis isolation frequency . 
+The Clb5 kinase , which promotes S phase , remains active during the G2-phase arrest of cells of the parental strain , but its activity declines rapidly in sim mutants . 
+The minimal promoter of the RII beta gene was composed of two adjacent functional elements . 
+These results indicate that during pregnancy there are increases in bone formation rates contributing to the increases in skeletal mass . 
+The clinical relevance of these findings is strengthened by the observation that similar results were obtained when P . HCl was given by the intravenous route . 
+Furthermore , the NH2-terminal portion of the homologue was not translocated into the outer membrane without its COOH-terminal part . 
+Germ-free rabbits given mouse CRF-flora showed values quite different from control animals for most parameters , indicating unsuitability of mouse CRF flora to 'normalize' rabbits . 
+4 ) PU and PD lacked the canonical TATA or CAAT motifs , and are AT-rich . 
+Daily and seasonal rhythmicity in the methylation of pineal indolic compounds in adult male golden hamsters , kept under natural conditions . 
+These activities are all required for stimulation of cell growth by middle-T and activate members of the MAP kinase family . 
+The recovery value of systolic pressure was higher than diastolic pressure and pulse pressure increased . 
+A promising new cement , 4-META / MMA-TBB opaque resin , has shown remarkable adhesive properties as a bone cement in vivo . 
+This work , therefore , also emphasizes the importance of careful choice of oligonucleotide and cDNA probes to study PKC zeta mRNA . 
+Lesion diameters of greater than 20 mm and the large sessile-type configurations were factors that were associated with incomplete removal . 
+Ninety-four percent of the EPs were tubal , and 90% of the tubes exhibited some pathologic changes , including chronic salpingitis ( 49 . 5% ) and follicular salpingitis ( 10% ) , among others . 
+Lipiodol was covalently conjugated with EDTB . 
+Detection of exercise-induced asynergy by M-mode echocardiography . 
+Possible roles of RAD5 putative ATPase / DNA helicase activity in DNA repair and in the maintenance of wild-type rates of instability of simple repetitive sequences are discussed . 
+Abrogation of p53 function by E6 resulted in an increase in the spontaneous mutation frequencies at the heterozygous thymidine kinase ( TK ) locus but not at the hemizygous hypoxanthine phosphoribosyl transferase ( HPRT ) locus . 
+A cDNA for a newly discovered pseudogene , closely related to the mouse mast cell chymases was isolated by polymerase chain reaction amplification from a mouse connective tissue-like mast cell line . 
+We conclude from this study that Arix and NBPhox exhibit indistinguishable and independent transcriptional regulatory properties on the DBH promoter . 
+The high conservation of the 3' terminus suggests that this region directs the assembly of proteins required for the initiation of RNA replication . 
+Contractile responses to norepinephrine , serotonin and potassium ( K+ ) and relaxant responses to isoproterenol and papaverine were studied in vitro with spirally cut thoracic aortic strips from aortic coarcted hypertensive rats ( AHR ) 2 , 6 , 14 and 28 days postoperatively and compared to time-matched , sham-operated normotensive controls . 
+NF-kappaB , which is probably important for basal activity of the human NOS II promoter , is unlikely to function as a major effector of CM in DLD-1 cells . 
+Improvement of the polypyrimidine tract also increased the splicing efficiency , but to a degree slightly less than that obtained with the branchpoint mutation . 
+In a third experiment , crossover AM between dissimilar textures was investigated , and it was found that the more salient textures carried the AM . 
+The malate synthase gene , MLS1 , of the yeast Saccharomyces cerevisiae is transcriptionally regulated by the carbon source in the growth medium . 
+In this study , we purified and characterized the recombinant furin from the conditioned medium of these cells . 
+The [ 18F ] FMISO TMRR is a simple and clinically useful index for detecting tumour hypoxia in NPC . 
+The efficacy of quantitative and qualitative chloride titrators in the estimation of human salt intake . 
+Radiogallium imaging is thus of limited use in evaluation of suspected giant cell tumors of bone . 
+NOT4 interacts with NOT1 and NOT3 in the two-hybrid assay , and overexpression of NOT3 or NOT4 suppresses not1 and not2 mutations . 
+These cell lines displayed methylation of the CpG island surrounding the first exon of p16INK4A and expressed abundant levels of a nontranslated mRNA containing an alternative first exon ( E1 beta ) , as did all other cell lines in which the p16INK4A locus was not deleted . 
+The results show that both the amino and carboxy termini of the NS1 protein molecule and the cysteines at residues 337 and 340 are essential for tubule formation . 
+19F NMR studies in ABF4-type layered antiferromagnets . 
+The deduced 96-residue amino acid coding sequence of the murine HMG-I ( Y ) cDNA is very similar to the reported amino acid sequence of human HMG-I , except that it lacks 11 internal amino acids reported in the human protein . 
+It has been suggested that members of this protein family exhibit both prolyl isomerase and chaperone activity . 
+Full thyroid function testing was performed on 600 randomly selected samples with normal TSH values and also on subjects with abnormal TSH levels . 
+Nine strains were subtyped as Camp . jejuni subsp . jejuni biotype II and the remaining ones as biotype I . 
+Recently , a distantly related UmuC-homolog , DinB , has also been identified in E . coli . 
+These studies demonstrate that site-specific recognition of the bxd PRE by d ( GA ) ( n ) repeat binding activities mediates PcG-dependent silencing . 
+Strontium-90 was inject i . v . into pregnant rats on day 18 post conception ( p . c . ) . 
+The 3 . 3-fold higher expression in the fetal heart than in the adult heart suggests that HFHZ mRNA is downregulated in the process of development . 
+[ 18F ] ( + ) -4-fluorobenzyltrozamicol ( FBT ) , which selectively binds to the vesicular acetylcholine transporter in the presynaptic cholinergic neuron , has previously been shown to be a useful ligand for the study of cholinergic terminal density in the basal ganglia with PET . 
+The other transmembrane regions as well as the nucleoplasmic domain are not required for sorting . 
+REM dream content was scored for categories suggesting the predominant influence of the left hemisphere , e . g . , good ego functioning , verbalization , or the right hemisphere , e . g . , music , spatial salience , bizarreness . 
+We have identified two Marek's Disease Virus ( MDV ) genes within the EcoRI-B fragment of MDV-GA genomic DNA . 
+SERS spectra were obtained by vacuum evaporation and casting of p-NTP onto silver island films , and also from colloidal silver solutions . 
+Follow-up controls of luteinizing hormone ( LH ) , follicle stimulating hormone ( FSH ) , prolactin ( HPRL ) , oestradiol ( E2 ) , progesterone ( P ) and testosterone ( T ) in the catabolic and healing phase of burn disease . 
+Although the molecular mechanisms involved in this regulation are currently being elucidated , very little is known about the trans-acting factors that allow expression of the nitrate and nitrite reductase genes which code for the first enzymes in the pathway . 
+However , the BCH group showed inferior gross motor performance on the Bruininks-Oseretsky Test of Motor Proficiency ( Bruininks 1978 ) . 
+These transcripts have a unique 5'untranslated region and NH2-terminal sequence and encode a predicted protein of 121 kD . 
+During chronic treatment , when plasma concentrations fluctuated between 23 . 5 ng . ml-1 at 8 h and 14 ng . ml-1 at 24 h post-dosing , ST segment depression at an individually comparable workload was significantly decreased by 28% compared with placebo ( P < 0 . 005 ) at both points in time . 
+Transcription factor recognition surface on the RNA polymerase alpha subunit is involved in contact with the DNA enhancer element . 
+In insects , arylalkylamine N-acetyltransferases ( AANATs ) have been implicated in several physiological processes , including sclerotization , inactivation of certain neurotransmitters , and , similar to the function in vertebrates , catalysis of the rate-limiting step in melatonin biosynthesis . 
+A one-week ulcer therapy with atropine and Vikalin ( Roter ) led to a significant ( p less than 0 . 01 ) reduction of the nocturnal proteolytic activity . 
+Statistics of the past 5 years . 
+However , after repeated infections , hypobiotic larvae were numerous . 
+An abundant 1 . 1-kb virion-sense polyadenylated RNA and four complementary-sense polyadenylated RNAs of 1 . 7 , 1 . 5 , 1 . 3 , and 0 . 7 kb have been identified by northern blot hybridization , confirming the bidirectional transcription strategy implied by the arrangement of ORFs . 
+The hybridizing clone of V . vulnificus chromosomal DNA complemented a V . cholerae fur mutant . 
+Recommendations to deal with these and related issues are presented . 
+The genome of Thogoto virus comprises six segments of single-stranded , negative sense RNA . 
+We have improved our system for nuclear contour digitization and determined its theoretical limitations by digitizing standardized objects . 
+Nevertheless , we demonstrate that the entire three-component yeast capping apparatus , consisting of RNA 5'-triphosphatase ( Cet1p ) , RNA guanylyltransferase ( Ceg1p ) , and Abd1p could be replaced in vivo by the two-component mammalian apparatus consisting of a bifunctional triphosphatase-guanylyltransferase Mce1p and the methyltransferase Hcm1 ( 121-476 ) p . 
+In addition , we did not detect significant differences in CDR3 sequences of endogenous Ig lambdaL and kappaL chain gene loci cloned from peripheral blood lymphocytes of an NBS patient and of healthy individuals . 
+Recently , an alternatively spliced form of c-myb-encoded mRNA has been identified in murine cells containing either normal or rearranged c-myb genes . 
+The real challenge for the future will be the management of patients who do not respond to first-line treatment . 
+Truncated forms of a novel yeast protein suppress the lethality of a G protein alpha subunit deficiency by interacting with the beta subunit . 
+The iron dependence of transcription and expression of cvaA , which encodes a transporter accessory protein , and cvi , encoding the colicin V immunity protein , was assessed under conditions of iron excess or depletion . 
+Considering these sources of error some of the variability in the present investigation might be avoided by systematic instructions . 
+The close proximity of the two neuropeptide Y receptor genes suggests that they have evolved from a gene duplication event with the small intron interrupting the coding sequence of the y1 gene being converted into a functional sequence within the y5 gene , while the reverse complementary sequence was utilized as an alternatively spliced 5' exon for the y1 gene . 
+Here , we report that swa5-1 is a new temperature-sensitive allele of the clathrin heavy chain gene ( chc1-5 ) , which carries a frameshift mutation near the 3' end of the CHC1 open reading frame . 
+Proposals on authorization ; by a group of nurses from psychiatric hospitals . 
+A case of M hemoglobinosis . 
+The radiation burden associated with the majority of examinations in nuclear medicine expressed as the effective dose is comparable with the radiation burden of radiodiagnostic examinations , only after administration of preparations with 131I , 201Tl , 67Ga and 111In it is markedly higher . 
+Essentially , 2'- O -methyl oligoribonucleotides ( 2'OMeRNA ) were delivered to the nuclei of primary mdx myoblasts in culture . 
+Myocardial antioxidant enzymes , catalase , glutathione peroxidase and superoxide dismutase , in the MCT-treated rats were not different compared to control rats . 
+The 95% confidence values ( 2SD ) for the change in Ros required to exclude natural variability were 0 . 39 , 0 . 50 and 0 . 53 cmH2O l-1 s , respectively . 
+A combination of cisplatin and 5-fluorouracil , both administered 4 days continuously as infusion , was assessed in advanced head and neck cancer . 
+The recovered calves were tested for immunity to homologous severe challenge , 50 or 73 days after the first infection . 
+Changes following periodontal surgery . 
+Ly-49 is a family type II transmembrane proteins encoded by a gene cluster on murine chromosome 6 . 
+In the SPP2 screening test , a few plates were not seen in both groups . 
+The potential for highly reactive nanoparticles ( RNP ) to absorb destructively , i . e . to neutralize highly toxic substances such as the warfare agents GA , GB , HD and VX , has been demonstrated in the laboratory . 
+Although linker regions in transcription factors are known to modulate DNA binding specificity , our studies suggest that the human HSF1 linker plays no role in determining HSF1 binding preferences in vivo but is a critical determinant in regulating the HSF1 monomer-trimer equilibrium . 
+Low-selenium diet has a human unfavourable impact . 
+Automatic view box . 
+TSA treatment , however , did not detectably alter enhancer factor binding or the positioning of nuc-1 on the majority of the chromatin templates indicating that protein acetylation and chromatin remodeling may be limiting steps that occur only on transcriptionally competent templates , or that remodeling of nuc-1 requires additional factors . 
+Hypoglycemic and antidiabetic properties . 
+Haplotype mapping and sequence analysis of the mouse Nramp gene predict susceptibility to infection with intracellular parasites . 
+A cohort of Swedish children was monitored from 6 months to 11 years of age . 
+A total of 125 acute leukemia adult patients were autografted with bone marrow ( BM ) purged by mafosfamide ( ASTA Z ) during the period of January 1983 to January 1993 . 
+Cocaine-treated rats acquired a preference for cocaine-associated contextual stimuli ( CS ) relative to saline-injected control rats . 
+Like Epo , HNF-4 is expressed in kidney , liver , and Hep3B cells but not in HeLa cells . 
+These overall results indicate that there is generally one PERV copy per integration site . 
+The effect of Rho on AP-1 is independent of the mitogen-activated protein kinase pathway , as a dominant-negative MEK and a MEK inhibitor ( PD98059 ) did not affect Rho-induced AP-1 activity . 
+Both Rep78 and Rep68 cut the terminal AAV sequence at the same site ( nucleotide 124 ) . 
+The geometric mean hemagglutination-inhibition antibody titers ( GMT ) of non-immunized , once-immunized , and twice-immunized chickens were compared at 2-week intervals following primary immunization , secondary immunization , and challenge . 
+In order to investigate the blood compatibility of autogenous vein graft ( AVG ) , changes in prostacyclin ( PGI2 ) production following harvesting and arterial implantation were studied experimentally . 
+Animals may be immunized by oral vaccination , but natural mechanisms that also can terminate outbreaks are discussed . 
+In memory of Magdelaine Comtesse . 
+A possible decrease in theophylline's volume of distribution at 4 days , but not immediately , after administration of chloroquine was suggested , although this just failed to achieve statistical significance ( p = 0 . 055 ) . 
+1 A colonic delivery system is described to deliver orally ingested drugs to the colon and release them at that site by coating with an acrylic based resin ( Eudragit S ) . 
+The Caenorhabditis elegans death susceptibility gene , ced-3 , has a number of homologs in vertebrate species , including interleukin-1 beta ( IL-1 beta ) -converting enzyme ( ICE ) , Ich-1long , and CPP32 . 
+Genomic libraries were stored as frozen cultures in a 96-well format , each well containing approximately 300-600 colonies ( 12 plates for small library , four for medium-size library and four for large library ) . 
+A stable heterologous cell line containing the mouse TRH receptor was constructed by transfection of nonexcitable 293 cells , which lack L channel activity . 
+Transcripts for both ODV-E18 and ODV-EC27 initiate from conserved TAAG motifs , and transcripts are detected from 16 through 72 hr p . i . 
+As regards lipid metabolism , the mean values for total triglycerides , cholesterol , LDL-cholesterol and HDL-cholesterol seen at the end of five years of Norplant-2 rod use and six months postremoval were similar to the preinsertion mean . 
+Current diagnostic uses of computerized tomography in clinical medicine . 
+Based on restriction enzyme analysis , Southern blots , polymerase chain reaction analysis and DNA sequencing , it was confirmed that the three overlapping clones isolated cover the entire cHO-1 gene , as well as approximately 10 kb of the flanking regions on both ends . 
+These results indicate that the total number of subunit c in F0 should be a multiple of 2 and 3 . 
+51 . 9% ( P = 0 . 0006 ) in the MMF versus the AZA groups , respectively . 
+Modifications of the involuntary postcontraction in diseased people . 
+In children unable to perform forced expiratory maneuvers ( n = 25 ) , FOT , contrary to the interrupter technique , clearly identified a subgroup of young children with high resistance values at baseline , which returned to normal after bronchodilation . 
+Like humans , the PITSLRE PK genes in chickens must be closely linked , based on fluorescent in situ hybridization ( FISH ) localization of these genes to a single chicken microchromosome . 
+The main causes of liver disease in the patients with HCC were hepatitis C virus ( HCV ) ( 77% ) , alcohol abuse ( 73% ) , and the combination of HCV and alcohol abuse ( 50% ) . 
+All radiologists using the machine found that the reporting terminal was simple to operate , but found that reporting abnormalities caused an increased effort and took a longer time . 
+Developmental toxicity of the class III antiarrhythmic agent almokalant in mice . 
+A yeast DNA fragment carrying the gene CP A1 encoding the small subunit of the arginine pathway carbamoyl-phosphate synthetase has been sequenced . 
+Urinary N-acetylglucosaminidase activity per mg creatinine did not differ significantly between groups . 
+This sequence is almost identical with that of human luteinizing hormone ( Sairam , M . 
+18F and 85Sr scintimetry in the study of primary arthropathies . 
+Thus RV O2 demand fell when RC O2 supply was reduced , although a flow reserve was available . 
+No UOxase mRNA was detected in 11 nonhepatic tissues of rat , suggesting tissue specificity of expression of this UOxase gene . 
+UbiA is also unique among known polyubiquitin genes in containing four cis-spliced introns within its coding sequence . 
+These results indicate that CSFHU can increase neutrophil counts by increasing the number and maturity of the marrow neutrophil precursors in some types of childhood chronic neutropenia . 
+A case observed in Saigon . 
+At necropsy 28 days post-inoculation , F344 rats had no gross lung lesions , even those given the maximum dose of 1 . 4 X 10 ( 9 ) colony-forming units of M . pulmonis . 
+100 of the patients who would have died survive . 
+In a longitudinal study , 14 low-risk fetuses were studied at 2-week intervals from 32 weeks of gestation onward . 
+To facilitate the availability of important new therapeutic agents , the Food and Drug Administration ( FDA ) in the mid-1970s began assigning therapeutic ratings to investigational new drugs and holding end-of-phase II conferences with drug sponsors . 
+These data show that PTH and cAMP can repress collagen promoter activity in calvariae from transgenic mice , suggesting that the alpha 1 ( I ) collagen promoter may contain cis elements down-stream of -2 . 3 kilobases that mediate PTH and cAMP repression of collagen gene expression in bone . 
+The presence of such a putative RNA- binding domain suggests a mechanism for the observed autoregulation of bacteriophage T4 DNA polymerase synthesis by binding to its own mRNA . 
+Ethylene is involved in endosperm rupture and high-level betaGLU I expression ; but , it does not affect the spatial and temporal pattern of betaGLU I expression . 
+nos-1 and nos-2 , two genes related to Drosophila nanos , regulate primordial germ cell development and survival in Caenorhabditis elegans . 
+Therefore , this study has demonstrated that prenatal disturbance can induce a lasting change in cytokine biology , which persists well beyond the fetal and infant stage . 
+The test was not performed in 3923 patients because of contraindications . 
+We report an example of an MDV-transformed T-lymphoblastoid cell line ( T9 ) expressing high levels of a truncated C-MYB protein as a result of RAV integration within one c-myb allele . 
+Displacement thresholds of peripheral sites in monocular human vision were obtained . 
+Thioredoxin ( TR ) is a small ubiquitous dithiol-reductase enzyme first identified in bacteria and plants . 
+However , activation of the cAMP pathway , which is known to regulate inhibin alpha expression , greatly enhanced the actions of SF-1 . 
+The genomic structure and chromosomal location of the human TR2 orphan receptor , a member of the steroid receptor superfamily . 
+ZIOS was significantly more sensitive than all subsequent methods , and Ptc , O2 was significantly more sensitive than FEV1 . 
+Cytogenetic analysis of LOH mutants by chromosome painting indicated a mosaic of chromosomal aberrations involving chromosome 17 , in which partial chromosome deletions , amplifications , and multiple translocations appeared heterogeneously in a single mutant . 
+Following the satisfactory results and taking into account that the complications had reduced to a very low rate ( in 2 cases lead tip displacement and pouch haematoma occurred respectively ) , the Authors consider the adopted method an useful approach for PMK implantation particularly when the use of the vena cephalica is deemed impossible . 
+To investigate the activity of TCF11 through this selected site , both alone and in the presence of MafG , we have used a transient transfection assay . 
+A mutational analysis has resolved a region of seven amino acids ( amino acids 26-32 ) in the N-terminus of Bob1 that are important for contacting the DNA binding POU domain of Oct-1 or Oct-2 . 
+It contains three putative binding sites for transcription factor Sp1 as well as several short sequences that are similar to known cis-acting enhancers or binding sites for transcription factors . 
+Mod ( mdg4 ) , also known as E ( var ) 3-93D , is involved in a variety of processes , such as gene silencing in position effect variegation ( PEV ) , the control of gypsy insulator sequences , regulation of homeotic gene expression , and programmed cell death . 
+Three missense mutants in subunit a of the Escherichia coli F1F0-ATPase were isolated and characterized after hydroxylamine mutagenesis of a plasmid carrying the uncB ( subunit a ) gene . 
+Mutations of the RET gene , encoding a receptor tyrosine kinase , have been associated with the inherited cancer syndromes MEN 2A and MEN 2B . 
+Systematic review of diagnostic tests for vaginal trichomoniasis . 
+The first symptoms of enzootic calcinosis were noted in March 1998 , when some of the cows developed locomotor abnormalities . 
+A computed tomographic scan obtained after EOE-13 infusion accurately showed the perfusion pattern of the implanted catheter . 
+CNS effects of local anesthetics only partially dependent on biogenic amine mechanisms . 
+This implies that the groups do not just differ along one dimension , but along three dimensions . 
+The records from 1948 through 1967 of 344 previously untreated patients with squamous cell carcinoma of the oral cavity , oropharynx , supraglottic larynx and hypopharynx who had clinically positive cervical lymph node metastases staged N1 , N2A , or N2B , and whose initial neck treatment consisted of external radiation therapy alone were reviewed . 
+Standardized gastric wall specimens from the area of grossly healed ulcers were obtained , processed , and evaluated by light microscopy and by transmission electron microscopy . 
+Therefore , the molecular mechanisms of the estrogen action that govern the lactoferrin gene expression differ between mouse and human . 
+The Prolactin levels were within the physiological norms ; the responses to TRH were normal , and elevated only in a few cases . 
+Interestingly , the positions of these introns have been conserved in comparison with the genes of two other transglutaminase-like activities described in the literature , but the TGM1 gene is by far the smallest characterized to date because its introns are relatively smaller . 
+Mycoplasma hominis infections are easily missed because conventional methods for bacterial detection may fail . 
+Eleven patients tested positive for the hepatitis B surface antigen ( HBsAg ) . 
+A 13-bp cis-regulatory element in the LTR promoter of the tobacco retrotransposon Tto1 is involved in responsiveness to tissue culture , wounding , methyl jasmonate and fungal elicitors . 
+Based on subcellular fractionation , the 47-kDa P-CIP2 protein is mostly cytosolic . 
+Fluorometric methods can also provide information about porphyrin binding sites that is useful in understanding porphyrin transport and clearance . 
+Experimentally in green monkeys , Syrian hamsters and white mice the authors studied the pathogenic properties of a new virus Issyk-Kul . 
+Rice dwarf phytoreovirus segment S12 transcript is tricistronic in vitro . 
+Relation between mixing ratio of raw materials and composition of products in the synthesis of aluminosilicates . 
+The Fas receptor mediates a signalling cascade resulting in programmed cell death ( apoptosis ) within hours of receptor cross-linking . 
+Determination of 20 alpha-hydroxy-9 beta , 10 alpha-pregna-4 , 6-dien-3-one in plasma by selected ion monitoring . 
+Simultaneously a greater NA was found with no change in plasma epinephrine response . 
+While this Saccharomyces cerevisiae SIN4 gene product is a component of a mediator complex associated with RNA polymerase II , various studies suggest the involvement of Sin4 in the alteration of higher-order chromatin structure . 
+The suppression was also demonstrated in a transient expression assay in vivo using isolated barley endosperms . 
+The actA gene is present as a single copy in the genome of A . chrysogenum ; and its expression level , opposite to pcbC and cefEF cephalosporin biosynthetic genes , was steady during cephalosporin fermentation , showing a single 1 . 4-kb transcript . 
+Oscilloscope triggering circuit for recording long transients at fast sweep speeds . 
+SIP1 ( Smad interacting protein 1 ) and deltaEF1 ( delta-crystallin enhancer binding factor ) are structurally similar transcriptional repressors . 
+A potential TATA box is located 29 base pairs upstream of the first transcription initiation site . 
+Consanguinity and migration in the marriages of the region of Nunoa , Santiago , 1850-1960 . 
+The topology and chain folding of the beta subunits in the artifactual beta 60 capsid are similar to the native alpha 3 beta 60 enzyme . 
+Eighteen patients were untreated , and 8 had been given previous treatment with depot testosterone 100 mg intramuscularly every 2-3 weeks for an average duration of 4 . 7 years . 
+In this report , we identify and characterize two overlapping ELL functional domains that govern its interaction with RNA polymerase II and the ternary elongation complex . 
+Northern blot analysis demonstrated that the STORP gene has a ubiquitous pattern of expression similar to that of the PML gene . 
+Deletion of a 53-bp early promoter region containing the transcription start site and a putative TATA box completely abolishes the ability of upstream elements to drive transcription of the luciferase cDNA . 
+To examine transcriptional regulation of the rat eIF4E gene , 2 . 1 kB of the rat eIF4E promoter region was cloned and the contribution of specific elements in regulating transcription was determined in primary cultures of rat cardiocytes and in a murine C ( 2 ) C ( 12 ) myoblast cell line . 
+Two related cDNAs were isolated that encode proteins that recognize the XMyoDa TATA motif . 
+The aim of the present study was to examine the antimicrobial susceptibility to 10 currently used antimicrobial agents of 50 strains of P . acnes isolated from acne lesions and identified using a Rap ID ANA II panel . 
+By contrast , all proteins initiated with a methionine placed one residue upstream of the natural N terminus of PR failed to show specific proteolysis . 
+NGF elicits a more delayed and sustained ERK phosphorylation than EGF , consistent with previous reports . 
+Using himA mutants , we confirmed that IHF plays a role in the molybdate-dependent regulation of dmsA-lacZ expression in vivo . 
+Sequence conservation is greatest for residues located near the active centers of the exo and pol domains of the E . coli DNA polymerase I structure . 
+A total of 57 patients with Hodgkin's disease limited to above the diaphragm ( Stages I and II , A and B ) were treated with radiation therapy alone at the University of Florida between 1964 and 1974 . 
+The experiment included 6 male and 4 female healthy subjects who , during a 24-hour stay in the respiration chambers , performed , in the morning and afternoon , 15 min cycling with the total work of 6 , 750 kg m . 
+In HeLa cells , it activated transcription from the herpes simplex virus type 1 thymidine kinase promoter linked to the chloramphenicol acetyltransferase gene when located in inverted orientation upstream of the thymidine kinase promoter or downstream of the chloramphenicol acetyltransferase gene coding sequence . 
+The main issues are the need to explain a number of still unknown mechanisms , to determine which "natural diet" carries the minimum coronary risk and whether "new" foods produced by modern technology are really needed to contrast this epidemic . 
+The pathogenesis of Dupuytren's contracture . 
+Pokeweed mitogen ( PWM ) or anti-CD3 significantly increases c-jun messenger RNA ( mRNA ) levels in T cells . 
+The nit-3 gene of the filamentous fungus Neurospora crassa encodes nitrate reductase , the enzyme which catalyzes the first step in nitrate assimilation . 
+To the problem of the stimulation of the growth of transplantable tumors of animals previously treated with antineoplastic antibiotics . 
+Composites as restoration materials . 
+Less antibacterial activity was shown toward the Gram-negative bacilli , i . e . , Pseudomonas , Klebsiella-Enterobacter , Shigella , Escherichia coli , Serratia marcescens and Proteus . 
+In Arabidopsis , the induction of a dehydration-responsive gene , rd22 , is mediated by abscisic acid ( ABA ) and requires protein biosynthesis for ABA-dependent gene expression . 
+Cotransfection of either construct with plasmids encoding PKI ( 1-31 ) inhibits cAMP-stimulated but not basal- or phorbol ester-stimulated expression . 
+These results suggest that Thr115 may play an important role in the regulation of MyoD function under conditions of high mitogenesis . 
+Complexes of qTBP42 with each complementary strand of telomeric DNA and with quadruplex forms of the guanine-rich strand had 3 . 7-14 . 6 nM dissociation constants , Kd , whereas complexes with double-stranded telomeric DNA had up to 100-fold higher Kd values . 
+Reverse transcriptase and protease activities of avian leukosis virus Gag-Pol fusion proteins expressed in insect cells . 
+The 7-day treatment resulted in a decrease in mitochondrial uptake of Rh123 and an increase in NAO uptake . 
+Despite total tumor resection , multiple intraperitoneal tumor nodules of varying sizes were found and resected six months and one year later . 
+Our results support a model where both E2F- and CDE-mediated repression , acting at different stages in the cell cycle , are dependent on promoter-specific CHR elements . 
+A 724-bp segment of the 5'-flanking region consisting of the proximal E-box flanked upstream by a mammalian-specific 352-bp region was sufficient for maximal transcriptional activation in postconfluent BC3H1 myoblasts . 
+The unilateral vestibular hypofunction . 
+The frameshift initiated by ADEx2 is believed to alter the regular coding sequence , acting as a loss-of-function ASIP mutation . 
+Effects of verapamil and propranolol on early afterdepolarizations and ventricular arrhythmias induced by epinephrine in congenital long QT syndrome . 
+Morphological and functional alterations noted after baboon renal allotransplantation . 
+A stratified random sample of 20 active employees from a cohort of phenoxy herbicide workers was selected in 1995 for determining PCDD and PCDF congeners in blood lipids to assess the extent of past PCDD and PCDF exposure in this cohort and whether that exposure might explain site-specific cancer findings in the total cohort . 
+The response of the plasma fibrinogen level to the subucutaneous injection of turpentine and to the intravenous injection of endotoxin was measured in normal rabbits and in rabbits made granulocytopenic and thrombocytopenic with busulfan . 
+Drug interactions have been found with drugs that compete for the same CYP450 isoenzymes as statins . 
+Following the injection of PGF2 alpha , heifers were observed visually for signs of estrus at 0730 and 1630 ( 45 min each ) . 
+The requirement of 3' complementarity for a ligation reaction is reaffirmed by results from 1 nt insertions on either the 3'- or 5'-side of the nick . 
+Although the OC promoter is activated in a C terminus dependent manner , the MDR , LTR and BSP promoters are repressed by three distinct mechanisms , either independent of or involving the AML C terminus , or requiring only the conserved C-terminal pentapeptide VWRPY . 
+Alternative splicing of CDC25B may therefore contribute to the control of cell proliferation . 
+Moritta ) and contains Bis-GMA . 
+This would have had the effect of positioning the genes currently on the long arm adjacent to the centromeric heterochromatin , perhaps resulting in a "position effect" on transcription of these genes . 
+Study on the evagination of Cysticercus pisiformis . 
+Significance of thin glomerular basement membranes in hematuric children . 
+Topical 1 percent isoproterenol in the presence of the phosphodiesterase inhibitor theophylline was tested for its ability to stimulate the rate of aqueous humor flow through the anterior chamber of the normal and the partially adrenergically denervated human eye ( Horner's syndrome ) . 
+The authors report the results of a series of toxicological tests conducted on plastic materials ( polyethylene ) activated with tetraphenylbutadiene ( TPB ) an additive recently proposed as a sensitizer capable of photodegrading plastic materials . 
+Secretory function of the prostate gland . 
+Radiation therapy was effective in controlling symptomatic metastasis in all three patients . 
+Identification and estimation of monosaccharides and disaccharides in urine by gas-liquid chromatography . 
+Thus , it was confirmed that the sodium lauryl sulfate method of estimating hemoglobin concentration is an appropriate alternative to the cyanmethemoglobin method and avoids the generation of toxic wastes . 
+Autoimmune manipulation aids juvenile diabetes management . 
+Thus , replication fork movement near HML pauses at a silent origin which is competent for replication initiation but kept silent through Orc2p , a component of the replication initiator . 
+Despite the existence of 30 cysteine residues , carboxymethylation prevented the formation of most if not all disulfide bonds that otherwise occurred when the cells were sonicated . 
+Mean fluorosis scores , however , were similar . 
+Chronic hypophosphatemia is the most common type of "resistant" rickets . 
+Two distinct Salmonella fimbrins , AgfA and SefA , comprising thin aggregative fimbriae SEF17 and SEF14 , respectively , were each genetically engineered to carry PT3 , an alpha-helical 16-amino acid Leishmania T-cell epitope derived from the metalloprotease gp63 . 
+Effects of thromboxane synthetase inhibition on postburn mesenteric vascular resistance and the rate of bacterial translocation in a chronic porcine model . 
+However , whether or not nonsense codon recognition within TPI transcripts takes place prior to or after splicing remained unresolved . 
+The transcriptional activities of the full-length promoter ( -295 to +85 ) and of three deletion constructs ( -197 , -154 and -74 to +85 ) were significantly down-regulated in resistant cells . 
+In such a manner , activated PKR inhibits cell growth and induces apoptosis , whereas disruption of normal PKR signaling results in unregulated cell growth . 
+Major clinical symptoms of the disease were defined in this group of patients . 
+The therapy time to deliver the NCS therapeutic dose of 10000 RBE-cGy , is 27 times longer when 157Gd is used instead of 10B . 
+Electrophoretic mobility shift assays and coimmunoprecipitation studies suggest that homo- and heterodimerization occurs between cKrox family members . 
+In this report , we present two lines of evidence that all ribosomes which synthesize GCN4 have previously translated uORF1 , resumed scanning , and reinitiated at the GCN4 start site . 
+Using an interspecific backcross panel , we localized both Gng3 and Gng3lg to the same locus on chromosome 19 . 
+Ribonuclease protection assays revealed that hmg1 and hmg2 are differentially expressed in a developmentally- and spatially-modulated manner during morphogenesis of specialized terpenoid-containing pigment glands in embryos . 
+Transcript analysis reveals that lethal B block substitutions reduce U6 RNA synthesis at least 10-fold in vivo and 20-fold in vitro . 
+At the end of the experiment the urinary porphyrin excretion and the porphyrin content in lijver and skin were diminished in HCB-CQ-treated animals by about 50% compared to the HCB controls . 
+Guinea pigs weighing 300 approximately 350 g were used . 
+Physical principles in therapeutic apheresis . 
+In a series of 402 consecutive autopsies , parietal pleural plaques ( PP ) were found in 68 individuals above 40 years of age . 
+The effects of two levels of caffeine ingestion on excess postexercise oxygen consumption in untrained women . 
+They share many downstream targets , including remodeling of the actin cytoskeleton , activation of p70 ( S6 ) kinase and c-jun N-terminal kinase ( JNK ) , and regulation of transcription and cell proliferation . 
+The need for including forensic medical expertise in the list of urgent criminal investigative actions . 
+Deletion mapping of the human presenilin-1 ( PS1 ) promoter delineated the most active fragment from -118 to +178 in relation to the transcription start site mapped in this study , in both human neuroblastoma SK-N-SH and hepatoma HepG2 cells . 
+The procedure facilitated the retention of a mandibular molar with a Class III FI in a manner acceptable to both the patient and the clinician . 
+STP1 is an unessential yeast gene involved in the removal of intervening sequences from some , but not all , families of intervening sequence-containing pre-tRNAs . 
+Rat kidney carboxylesterase . 
+An endometrial luteal phase deficiency was detected in 15 ( 30% ) of aborting patients . 
+Lck has been postulated to dimerize through the SH2 and SH3 domains . 
+The promoter activity of the proximal region was found to be restricted to a subset of prestalk cells . 
+Marked sedative activity was observed with 9-methoxy-5-phenylpyrrolo [ 2 , 1-d ] [ 1 , 5 ] benzothiazepin-6 , 6-dioxide ( NF19 ) and 9-chloro-5-p-nitrophenylpyrrolo [ 2 , 1-d ] [ 1 , 5 ] benzothiazepin-6 , 6-dioxide ( NF20 ) . 
+The fission yeast dsk1+ gene , a multicopy suppressor for cold-sensitive dis1 mutants , encodes a novel 61-kd protein kinase . 
+Of major concern to food processors is the inadvertent cross-contact of food products with allergenic residues , which could result in potentially life-threatening reactions in those with a food allergy . 
+Neither mutant exhibited derepression of the silent mating type loci . 
+The expression of chloramphenicol acetyltransferase was detected within 1 h after infection of cells with recombinant virus , reflecting the early nature of the promoters used . 
+Subunit composition and domain structure of the Spo0A sporulation transcription factor of Bacillus subtilis . 
+Moreover , exons 2a and 2b share the same 5' sequence but differ from each other by the use of two distinct donor splice sites 171 bp apart in the gene . 
+Activation of the SH2-containing protein tyrosine phosphatase , SH-PTP2 , by phosphotyrosine-containing peptides derived from insulin receptor substrate-1 . 
+A major task for sports scientists may be to verify empirically the nature of an integrated model of the sport performer . 
+To evaluate the cost and benefits of screening tests for Chlamydia trachomatis in adolescent males , we developed a decision analysis model and compared the leukocyte esterase urine dipstick test with culture , with direct-smear fluorescent antibody ( DFA ) , and with the option of no screening ( no treatment ) . 
+Ischaemia was induced by a low flow rate of 0 . 8 mL min-1 for 30 min , and was followed by a 40-minute reperfusion . 
+These defects no doubt impair the folding and configuration necessary for normal processing of the AVP gene precursor . 
+This philosophy was instituted for the compound RP 73401 , a specific phosphodiesterase IV inhibitor , that was being developed simultaneously for delivery by both oral and pulmonary routes of administration . 
+Pulmonary arterial pressure and structure in the patas monkey after prolonged administration of aminorex fumarate . 
+Regulation of laminin beta2 chain gene expression in human cancer cell lines . 
+The MAP kinase cascade is highly conserved in all eukaryotes and involved in numerous cellular responses . 
+A full-length human pim-1 cDNA was subcloned into the bacterial vector pGEX-2T and the Pim-1 protein expressed as a fusion product with bacterial glutathione S-transferase ( GST ) . 
+The results indicate that the carbon-perfused areas and MBF in the liver , renal cortex , spleen , and small intestinal serosa ( only MBF ) increased significantly 5 h after CLP . 
+TPTA produced brain congestion , and hepatic and pulmonary petechial and generalized hemorrhages . 
+Procion yellow dye was injected intracellularly into large auditory fibers of goldfish to investigate the relationship between the response type of these fibers and their site of termination in the saccular macula . 
+Hypomagnesemia was due to magnesium wasting by the kidney . 
+The nucleotide sequences of these genes differ at only nine positions , resulting in three amino acid differences . 
+Analysis of the upstream untranslated region of CHL15 revealed the presence of the hexamer element , ACGCGT ( an MluI restriction site ) controlling both the periodic expression and coordinate regulation of the DNA synthesis genes in budding yeast . 
+Cell survival by Epo did not require activation of other known signaling pathways including PI-3 kinase , PLC-gamma , Ras or Stats . 
+A recombinant derivative harboring the pMJ101 replication region proved to be compatible with pJM1 , a plasmid containing the iron acquisition system required for the virulence of V . anguillarum 775 , another important pathogen that causes vibriosis . 
+Dentalplaque was controlled by the oral higienic index of the whole dentition daily , after staining with 1 per cent alkaline fuxin . 
+However , mutations in the HNF-4 binding site on element CIIB and inhibition of HNF-4 synthesis in HepG2 cells by antisense HNF-4 constructs decreased the apoCII promoter activity to 25-40% of the control , indicating that HNF-4 is a positive regulator of the apoCII gene . 
+Significance of the pulmonary gas exchange reaction to physical loading in evaluating the effectiveness of mitral commissurotomy . 
+Identification of a proline-rich sequence in the CD2 cytoplasmic domain critical for regulation of integrin-mediated adhesion and activation of phosphoinositide 3-kinase . 
+A second domain , located in the C-terminal 437 amino acids of IE1 , is required for inhibitory and DNA-binding activities . 
+The microdensitometric scores and their side-to-side differences in patients correlated negatively with the serum 25-OHD concentration and positively with the degree of paralysis . 
+Both neural and hormonal pathways and both opiate and nonopiate substances play roles in the complex modulation of pain transmission . 
+The debate over electives--1899 . 
+This differential sensitivity to DB , as measured by a lower concentration of DB which caused loss of righting in LS , was accompanied by an equal rate of water-soluble barbiturate brain distribution and elimination in the two lines . 
+However , a 10--15% lengthening of the partial thromboplastin time is evident after 24 hours of storage . 
+We report here that a 25-bp promoter element previously shown to be important for the G1-S activation of the human thymidine kinase ( htk ) promoter in growth-stimulated cells is a cellular target of cyclin A and the p33cdk2 complexes . 
+Electrocardiograms of the month . 
+Production of C mu RNAs , unlike mu mRNAs , does not require recombination with the joining region ( JH ) locus . 
+Ultrastructural studies of retinopathy of premature infants . 
+It is concluded that suppression of elevated prolactin levels in progressive metastatic breast cancer patients is not effective in restoring tumor sensitivity to chemotherapy . 
+Reliability of cervical range of motion using the OSI CA 6000 spine motion analyser on asymptomatic and symptomatic subjects . 
+Dynamics of hospital stay in peptic ulcer patients . 
+Revascularization after anterior maxillary and mandibular osteotomy . 
+Salazopyrine desensitization . 
+This cluster consisted of four apparently unrelated ESTs and two genes , pregnancy-associated plasma protein-A ( PAPP-A ) and a novel gene ( tentatively named EST-YD1 ) . 
+RNase protection assays reveal that this gene , unr , is transcribed in the same direction as N-ras and that its 3' end is located just 130 base pairs away from the point at which N-ras transcription begins . 
+This mutation no longer repressed the HPV-11 upstream regulatory region-controlled reporter expression . 
+In addition , a wild-type strain containing a temperature-sensitive threonyl-tRNA synthetase mutation showed increased thr operon expression at the non-permissive temperature , whereas none of the mutants showed any change . 
+Results from the mechanism study have revealed that YY1 is able to inhibit transactivation mediated by either AP1 or the Sp1-related protein , and YY1 suppressive activity is DNA binding dependent . 
+Partial characterization of the active site human platelet cAMP phosphodiesterase , PDE3A , by site-directed mutagenesis . 
+Marrow cell necrosis in anorexia nervosa and involuntary starvation . 
+There was no clear correlation between the MFA and the severity of the UTS phenotype . 
+The low number of false positives indicates that our scheme would not confuse the radiologist by suggesting normal regions as suspicious . 
+Identification of eotaxin-3 will further promote our understanding of the control of eosinophil trafficking and other CCR3-mediated biological phenomena . 
+The first gene , NSR1 , a previously identified gene , encodes a protein involved in ribosomal RNA maturation and possibly in transport of proteins into the nucleus . 
+The CVA16 . 4 proteolipid transcript is the most prevalent of the two proteolipid messages in expanding ovules harvested 10 d post-anthesis . 
+Defects of fibrillin ( FBN1 ) , a glycoprotein component of the extracellular microfibril , cause Marfan syndrome . 
+Almost complete sequence identity was found between the 3' end of the DXS6673E gene and two expressed sequence tags ( ESTs ) and between the 5' end of the DXS6673E gene and a third EST . 
+Preservatives are an important component of ophthalmic preparations , providing antimicrobial activity in the bottle and preventing decomposition of active drug . 
+Although E2FBP1 lacks the transactivation domain , it stimulates E2F site-dependent transcription in cooperation with E2F-1 . 
+Trypanosoma cruzi . 
+Differential regulation of the pre-C and pregenomic promoters of human hepatitis B virus by members of the nuclear receptor superfamily . 
+Cicatricial pemphigoid is an autoimmune systemic disease characterized by chronic conjunctival cicatrization . 
+We argue that this is the general property of QSAR models developed using LOO cross-validation . 
+Fermentation process after supplementation of nitrate , nitrite , lactic acid bacteria and formic acid . 
+Using immunochemical co-precipitation methods , we also found that the two proteins are bound in vivo . 
+The data suggest that like in yeast , in plants a certain subfamily of UBC is specifically involved in the proteolytic degradation of abnormal proteins as result of stress . 
+Determination of lead in blood . 
+The pigment intensity of both melanized colonies and appressoria of CAL transformants was weaker than that of the wild type . 
+Of the 43 infants with a ( probable ) loss 18 were examined again at 3 months corrected age . 
+The prognosis of seven patients who received ABSCT was significantly better than that of 13 patients who received conventional therapy alone . 
+The P13 and N22 of ppSEPs had phase reversal relationship with the P2 and N2 recorded from the PES , respectively . 
+In addition , we show that the expression of individual members of one subfamily of KRAB zinc finger genes is restricted to specific hematopoietic cell lineages . 
+Spfkh1 is transcribed in one open reading frame that contains the DNA binding domain , nuclear localization signal and transactivation domain . 
+Other therapies are also available , including hypertonic saline solution , THAM ( Tris-hydroxy-methyl-aminomethane ) buffer , and high-dose barbiturates . 
+There was no difference in plasma concentrations of PGI2 ( figure 4 ) and TxA2 in patients with normal blood pressure , mild preeclampsia and hypotension , whereas in severe preeclampsia , the plasma concentration of PGI2 was significantly lower ( p < 0 . 001 ) and of TxA2 significantly higher ( p < 0 . 001 ) . 
+The nuclear proteins encoded by the c-fos and c-jun protooncogenes are expressed during the proliferation period of osteoblast phenotype development . 
+Using lectin-affinity chromatography , discordance between the pattern of O-glycosylation of SSBP and DSBP was demonstrated . 
+We have identified two functional elements , both located downstream from the TATA motif , that control Id4 promoter activity . 
+Dopamine beta-hydroxylase ( DBH ) catalyzes the conversion of dopamine to noradrenaline and is selectively expressed in noradrenergic and adrenergic neurons and neuroendocrine cells . 
+After resection of the proximal fragment , all scaphoid contact area and pressure was born by the distal scaphoid fragment . 
+Serum-ferritin in diagnosis of haemochromatosis . 
+Mutational analysis of a DNA sequence involved in linking gene expression to the cell cycle . 
+Modification of the growth of Tetrahymena by compounds which affect the adrenergic mechanism . 
+This is in contrast to PPARgamma2 , which was previously shown to be phosphorylated at a single site in a motif that is not homologous to the sites now described in PPARalpha . 
+The variations were caused by opposite shifts in TSH frequency distribution in mothers and neonates . 
+The Saccharomyces cerevisiae RAD30 gene , a homologue of Escherichia coli dinB and umuC , is DNA damage inducible and functions in a novel error-free postreplication repair mechanism . 
+Of the six cases of malignant polyposis , none were identified using CT , and only two were diagnosed by small bowel follow-through . 
+VirD2 is one of the key Agrobacterium tumefaciens proteins involved in T-DNA processing and transfer . 
+The RNA genome of rabbit hemorrhagic disease virus ( RHDV ) was molecularly cloned . 
+The DNA binding domain of NirA was expressed as a fusion protein with the glutathione S-transferase of Schistosoma japonicum . 
+A single amino acid substitution in the cyclin D binding domain of the infected cell protein no . 
+Northern blot analysis revealed that mlt 1 is normally expressed in brain , spleen , stom ach , and liver . 
+These results indicate that patients who undergo postoperative irradiation for low grade spinal astrocytomas and localized spinal ependymomas achieve excellent survival . 
+Copyright 2000 Academic Press . 
+Variation in the temporal-spatial distribution of 228Ra and 224Ra in the RES and marrow-free skeleton after incorporation of colloidal ThO2 . 
+GCD10 was first identified genetically as a translational repressor of GCN4 . 
+It could also inhibit C1q-dependent haemolysis of both IgG- and IgM-sensitized erythrocytes . 
+Pyrethroid insecticides are widely used in agriculture and private households . 
+Mechanism of immunogenesis in vaccination with streptomycin-dependent mutants of salmonellae and shigellae . 
+The morphological effects of two snake venoms , N . naja and A . piscivorus , and of the Direct Lytic Factor and Phospholipase-A , compounds purified from N . naja crude venom , were investigated on lung and cremaster vessels of rats . 
+The method requires a reversed-phase column and a paired-ion technique to separate docusate sodium from other components . 
+FK506 is 10- to 100-fold more potent than cyclosporin A in preventing organ rejection and in toxicity . 
+B cell antigen receptor ( BCR ) -induced apoptosis in the WEHI-231 B lymphoma cell line can be prevented by engaging CD40 . 
+Similar observations have been made previously for other genes . 
+Furthermore , this study looks at the impact of synthesis conditions on block length and crystallinity , and the impact of the blocking on both , crystallinity and solubility of the polymers . 
+The scr regulon of pUR400 and the chromosomally encoded scr regulon of Klebsiella pneumoniae KAY2026 are both negatively controlled by a specific repressor ( ScrR ) . 
+Comprehensive care of the patient exposed to a human teratogen may also include discussion of prenatal diagnostic procedures and other pregnancy management options . 
+Thus , despite the potential for common regulatory mechanisms , the available evidence indicates that the Mtx minimal promoter does not significantly affect Thbs3 gene expression . 
+Varieties of envious experience . 
+The existence of these two categories of strains offers a new genetic system in which the properties of a potential invertebrate retrovirus can be tested . 
+We have partially sequenced the RAP74 protein from purified HeLa cells , cloned its complementary DNA and shown that its translation product can interact with RAP30 in vitro as well as in vivo . 
+Chronic administration of sodium cyanate decreases O2 extraction ratio in dogs . 
+"Complex partial" seizures . 
+New techniques for the mass spectrometry of natural products . 
+IVOX was named as an acronym for intravascular oxygenator . 
+We are reporting an autopsy case of so-called "acute multiple sclerosis" that was difficult to differentiate from a brain tumor on MRI findings . 
+Control intact rats were age-matched to the different treated groups . 
+Motile nocardoid Actinomycetales . 
+Besides the characterization and discussion of the experimental setup used , the rate constants obtained are discussed and compared with estimated values . 
+Recent studies have shown the rat larynx to be an important organ in the evaluation of irritancy of inhaled materials . 
+Analysis of an autopsy population . 
+Foxp1 and Foxp2 are expressed at high levels in the lung as early as E12 . 5 of mouse development with Foxp2 expression restricted to the airway epithelium . 
+In vitro translation of the mTRF1 cDNA resulted in a 56 kDa protein that binds to TTAGGG repeat arrays . 
+The ability of U6-U57 mutants to influence the fidelity of both branch site and 3' splice site recognition suggests that this nucleotide may participate in the formation of the active site ( s ) of the spliceosome . 
+Similarly , overexpression of increasing concentration of COUP-TFI , but not COUP-TFI delta35 , can squelch the silencing activity of the unliganded TRbeta . 
+Truncations composed of 78 and 64 amino acids were translocated across the endoplasmic reticulum membrane , and translocation was found to be strictly co-translational and SRP-dependent . 
+Neither is it a major cause of rehydration-induced renal Na retention . 
+Protamine and heparin doses , their sum ( Sigma-dose ) and differential ( Delta-dose ) doses , and activated clotting times were tabulated . 
+In this study , we investigated STAT activation in a panel of rodent fibroblast cell lines stably transformed by diverse viral oncoproteins . 
+The mature AP-2 mRNA is spliced from 7 exons distributed over a region of 18 kb genomic DNA . 
+Calibration and a correction of blood O2 content measured by Po2 and CO saturation . 
+The results of these studies demonstrate that the rat HDL receptor SR-BI promoter contains two sterol response elements ( pSRE and dSRE ) through which SREBP-1a can bind and activate transcription of this gene . 
+These results suggest KCC3 is a new member of the KCC family that is under distinct regulation from KCC1 . 
+Forty-five cases were surgically by direct approach to the tumour , while two cases were treated only with a shunt . 
+Hypomorphic dSLBP alleles support zygotic development but cause female sterility . 
+Assembly of a complex between FAK and Src kinases may serve to regulate the subcellular localization and the enzymatic activity of members of the Src family of kinases . 
+We suggest that CT scan be preferable in diagnosis of tumors in that area . 
+Secretion of interleukin-8 , RANTES , macrophage inflammatory protein 1alpha , and 10-kappaDa IFN-gamma-inducible protein were increased in differentiating keratinocytes by E6 . 
+Nephrotoxicity after orthotopic liver transplantation in cyclosporin A and FK 506-treated patients . 
+It is concluded that the plasma prolactin response to 12 . 5 micrograms i . v . 
+The DNA sequence of the sulfate activation locus from Escherichia coli K-12 has been determined . 
+We recently characterized a single yeast hnRNP methyltransferase ( HMT1 ) . 
+Variety of cows and sires according to types of dermatoglyphics ( patterns ) of the nose-labial mirror of cattle . 
+The alpha 7A form RNA contains an additional 113 nucleotides compared to the B form , and a common coding region in the A and B form RNAs is used in alternate reading frames . 
+No dominant clinical factor of risk was found , but multiple regression analysis identified age , body surface area , valve size , shop order fracture rate , and manufacturing period as risk factors for OSF . 
+Each dietary treatment was fed to six pen replicates of five chicks per pen for 21 d . 
+The films were analyzed using a scanning helium-neon laser densitometer with a small aperture of 5-10 microns . 
+The number of bacteria in the lung , peripheral white blood cell and BAL fluid cell also decreased by the administration of FN . 
+We also raised a polyclonal antibody against the glutathione S-transferase fusion protein containing the NH2-terminal 86 amino acids of human NRAMP2 . 
+The human gp39 promoter . 
+We also examined the relationship between the side of sinusitis and the cleft side in patients with unilateral cleft palate . 
+Polypeptide growth factors and cytokines mediate their biochemical functions through their responsive receptors . 
+Histological analysis showed that the neuronal loss in the DHED-treated group was notably reduced in the hippocampal area ( CA1 ) of ischemic rats and in the dentate gyrus and hippocampal area ( CA1 and CA3 ) of EC-lesioned rats compared with the nontreated group . 
+Ventilatory management casebook . 
+In addition , the DNA-binding experiments show that either one of the two MADS domains of a dimer can be sufficient to confer a particular DNA-binding specificity to the complex and that sequences outside the amino-terminal basic region of the MADS domain can , in some cases , contribute to the DNA-binding specificity of the proteins . 
+Poor response when laboratory recommended range for serum lithium is changed . 
+The model is able to anticipate why the effect of water fluoridation on caries prevalence is most pronounced when caries is diagnosed at cavity level . 
+This c-Jun activity is inhibited by c-Fos , another protooncoprotein that can dimerize with c-Jun to form the transcription factor AP-1 . 
+In the VA-SMV mode , the connection was made with valved conduits from the LV apex ( inflow ) to the ascending aorta ( outflow ) ( n = 11 ) or to the DAo ( n = 12 ) . 
+On the diagnosis of bovine leucosis and its control in southern Lower Saxony . 
+If this is unavailable , then Supramid has a proven record for good tissue compatibility and resistance to infection . 
+These results indicate that residue 266 serves as a "protein sensor" of altered minor groove interactions and identifies which base pair interactions are altered by these lesions . 
+This motif , first described for the Drosophila homeobox activator DEAF-1 , identifies an emerging group of metazoan transcriptional modulators . 
+The mutants were obtained by substitution into a molecular clone of M-MuLV DNA by DNA from two acutely transforming viruses , Ableson MuLV ( Ab-MuLV ) and Moloney murine sarcoma virus ( M-MSV ) . 
+Among them , 26 cases were benign and 34 malignant . 
+DNA sequence and evolution of the CPS domain of the Syrian hamster multifunctional protein CAD . 
+Viral and atypical pathogens as causes of type 1 acute exacerbations of chronic bronchitis . 
+Reactivities to horse anti-lymphocyte globulin . 
+Thus , we have produced lipoyl domain constructs that can be employed in sorting the specific roles of E2L1 and E2L2 in facilitating catalytic and regulatory processes . 
+In gel mobility shift assays , factors present in nuclear extracts derived from differentiated osteoblast bound to oligonucleotide probes containing the E-box 1 and E-box 2 elements . 
+When transiently transfected into K562 cells , this Lg genomic clone is actively transcribed , suggesting that , although it possesses the characteristics of a processed pseudogene , it is likely to correspond to the gene encoding this new ferritin subunit . 
+Further support for a direct interaction of Tub4p , Spc98p and Spc97p comes from the toxicity of strong SPC97 overexpression which is suppressed by co-overexpression of TUB4 or SPC98 . 
+The cardiac myosin light chain-2 ( MLC-2 ) gene promoter contains several positive and negative cis-acting sequences that are involved in the regulation of its expression . 
+The COL7A1 gene , which encodes type VII collagen , has been implicated as a candidate gene for dominantly and recessively inherited forms of dystrophic epidermolysis bullosa . 
+The binary and tertiary combinations of plant-derived molluscicides Azadirachta indica and Cedrus deodara oil with synergists MGK-264 , piperonyl butoxide ( PB ) and fruit powder of Embelia ribes were used against the Lymnaea acuminata . 
+Similarly , in mammalian cells PBP74 is synthesized as a pre-protein that requires membrane potential-dependent import into mitochondria for its maturation . 
+Ent-kaurene synthase from the fungus Phaeosphaeria sp . 
+The obtained results were compared with control group ( 10 female volunteers ) . 
+Hu-Met-1 mRNA expression in a small number of human T cell tumor lines did not correlate with any particular phenotype or stage of development . 
+Lung prostacyclin production may be related to flow . 
+In summary , at equianesthetic concentrations , desflurane and isoflurane produced similar hemodynamic effects ; however , in the absence of drugs that inhibit autonomic reflexes , desflurane had less negative inotropic activity and produced less decrease in arterial pressure . 
+At temperatures permissive for transformation , 6m2 cells contain P58gag produced from the 4 . 0-kilobase ( kb ) viral RNA genome and P85gag-mos translated from a 3 . 5-kb spliced mRNA . 
+One group ( n = 9 ) was premedicated with midazolam , 0 . 1 mg kg-1 , and atropine 0 . 2-0 . 4 mg i . m . 
+Mesial temporal sclerosis . 
+Two specific DNA-protein complexes were identified in gel retardation assays using HeLa cell nuclear extracts and an oligonucleotide probe spanning the footprinted region . 
+These data suggest that AP-A may be potentially useful in the management of heart failure . 
+Analysis of the 5' flanking region of the gene also revealed the presence of multiple TATA and CAAT sequences . 
+Studies on the life cycle of Haplorchis pumilio ( Looss , 1896 ) Looss , 1899 with morphological redescription of larval and adult stages . 
+Ligand-independent activation of platelet-derived growth factor receptor is a necessary intermediate in lysophosphatidic , acid-stimulated mitogenic activity in L cells . 
+A narrow zone of myelin-axonal dissociation was also observed . 
+A second large group of disorders in pregnancy is caused by effects of infections of the mother without pathogens being transmitted to the embryo or the placenta . 
+We also demonstrate that preformed triplexes are quite stable when precipitated with ethanol and resuspended in water . 
+A comparison of physical and cytogenetic estimates of radiation dose in patients treated with iodine-131 for thyroid carcinoma . 
+In the remaining case , the aneurysm originated from the proximal end of the associated A1 fenestration . 
+For these patients the introduction of a separate category "extended oligoarthritis at onset" should be considered to establish comparable patient groups . 
+When this DNA fragment was placed upstream of the chloramphenicol acetyltransferase ( CAT ) reporter gene and transfected into a carp CF cell line , it could drive the synthesis of CAT enzyme 16 times more efficiently than the promoterless pCAT-Basic . 
+67 393 bp of contiguous DNA located between markers cdc18 and cdc14 on the right arm of fission yeast chromosome II has been sequenced as part of the European Union Schizosaccharomyces pombe genome sequencing project . 
+However , in some of them either pattern may predominate or be exclusively present . 
+The cost per test is less than those for CC , kEIA and PACE2 . 
+The Mif1 5' flanking region contains a functional ER stress-responsive element which is sufficient for induction by tunicamycin . 
+A five-phase experiment was designed to investigate ( a ) whether contingent music-listening would act as a reinforcer to increase arithmetic performance of EMR children and ( b ) whether this contingent reinforcement would affect preference for that reinforcer . 
+Our results , however , were obtained for Z itself and not for [ Z ] . 
+The pyramidal tract and Mesencephalic Reticular Formation ( MRF ) were stimulated before and after the transection . 
+The corresponding inhibition of acid phosphatase activity in control male and female guinea pigs was 15 . 91% and 20 . 33% respectively . 
+Previous studies indicated that the 20S proteasome is a catalytic core of the 26S proteolytic complex that possesses a latent multicatalytic proteinase activity and catalyzes an ATP-dependent , selective breakdown of proteins ligated to ubiquitin . 
+Molecular cloning of a P-type ATPase gene from the cyanobacterium Synechocystis sp . 
+Construction of human cell lines which contain and express the adenovirus DNA binding protein gene by cotransformation with the HSV-1 tk gene . 
+To determine whether P35 could activate the 39k promoter in the absence of IE1 , the p35 open reading frame was cloned under the control of the ie1 promoter . 
+The effect of CBZ and DPH can be explained by interference with thyroid hormone binding to TBG combined with enzyme-induced increased metabolic clearance rate of thyroid hormones without homeostatic maintenance of premedication levels of FT4 and FT3 . 
+Deletion analysis of the ICL1 promoter led to the identification of an upstream activating sequence element , UASICL1 ( 5' CATTCATCCG 3' ) , necessary and sufficient for conferring carbon source-dependent regulation on a heterologous reporter gene . 
+These residues , Ile244 at the extracellular end of transmembrane helix 3 , and Tyr318 at the COOH-terminal portion of extracellular loop 2 , are replaced by Leu and Ile in the PTH-1 receptor , respectively . 
+Thus analysis indicated no reliable evidence that conscious presleep suggestions become incorporated into dream content . 
+Cbl constitutively interacts with the SH3 domains of Grb2 , with a preference for the amino-terminal domain , and is in this way recruited to Shc upon BCR stimulation . 
+Treatment and care of adult diabetes mellitus without coma . 
+Induction of correctly spliced germline transcripts is necessary to target a switch region for recombination and switching . 
+In the face of the outbreak , there was a delay before vaccination was able to stop deaths . 
+Sp1 can activate transcription through immunoglobulin kappa-chain enhancer or P-selectin promoter NF-kappaB sites . 
+To elucidate whether potential endocrine changes resulted from acute hypoxaemia alone , the underlying disease , or unspecific influences connected with the ICU setting , all measurements were compared to those of a completely healthy reference group ( REF ) with comparable acute experimental hypoxaemia . 
+Clinical trials with 1 , 3-bis ( 2-chloroethyl ) -1-nitrosourea , NSC-409962 . 
+No significant differences were found in relation to Type A behaviour and beta-adrenoceptor blockade . 
+The structure of the calcineurin A gene was determined by comparison of the genomic and cDNA sequences . 
+Sustained ventricular tachycardia and its successful prophylaxis during high-dose bolus interleukin-2 therapy for metastatic renal cell carcinoma . 
+Labile LTR-binding proteins appear to be essential for c-myc hyperexpression , since both LTR-enhanced transcription and the activities of LTR-binding proteins are specifically decreased after inhibition of protein synthesis ( A . 
+On the third occasion water ( W ) was ingested throughout the run . 
+Maximum number of strains ( 39 . 1% ) were resistant in S . bareilly serotype , followed by S . typhimurium ( 21 . 7% ) and least in S . typhi ( 17 . 4% ) . 
+Statistically significant effects were noted at doses which did not appear to be maternally toxic . 
+Tilmicosin is a novel macrolide antibiotic developed for exclusive use in veterinary medicine . 
+The IgA deficiency is combined with the IgE one . 
+The effects of anabolic implants on rate , composition and energetic efficiency of growth were determined in steers fed diets varying in forage and grain content . 
+Mutational analyses showed that in-frame stop codons introduced into five of seven RNA 2 ORFs did not affect accumulation of progeny LIYV RNA 1 or RNA 2 , confirming that RNA 2 does not encode proteins necessary for LIYV RNA replication . 
+The purified recombinant enzyme catalyzed specific phosphoryl transfer from ATP to UMP and CMP . 
+Also , the amplitude of the oscillatory potentials ( O1+O2+O3+O4 ) was significantly reduced in the early postoperative period . 
+To characterize this effect , we looked for targets of NS1 influenza virus protein among cellular translation factors . 
+T-cell hybridomas , thymocytes , and T cells can be induced to undergo apoptotic cell death by activation through the T-cell receptor . 
+This caused severe cortical damage and neuronal loss in hippocampus subfields CA1 , CA3 , and hilus . 
+These findings suggest that the F-wave may be elicited in motoneuron of different depolarization threshold but primarily in larger and faster nerve fibers , with a lower threshold of depolarization . 
+Immunophenotyping in four cases , demonstrated non-B , non-T cell origin in three and pre-B cell origin in one . 
+One such element , 1P , was employed to clone from a rat pituitary cDNA expression library a novel 417-amino acid WD protein , designated PREB ( PRL regulatory element binding ) protein . 
+Sequence analysis of the zebrafish egr1 coding region revealed a high level of homology to the mouse , rat , and human Egr1 genes with the notable exception of a polymorphic , triplet nucleotide repeat sequence in the region coding for the amino terminus of the Egr1 protein . 
+Neurofibromatosis of the breast in a patient with Morbus von Recklinghausen . 
+The specific interaction between a defined structural element of the human immunodeficiency virus mRNA ( RRE , the Rev response element ) and the virus-encoded protein Rev has been implicated in the regulation of the export of unspliced or singly spliced mRNA from the nucleus to the cytoplasm . 
+If hnRNP K is a transcription factor , then interactions with the RNA polymerase II transcription apparatus are predicted . 
+65-kilodalton protein phosphorylated by interleukin 2 stimulation bears two putative actin-binding sites and two calcium-binding sites . 
+Results from in vitro transcription-translation analysis and maxicell experiments suggested that the 447-bp ORF was the one being actively expressed . 
+Sequence analysis of the promoter region showed no TATA box but identified consensus binding motifs for Sp1 , CREB , and half sites of the estrogen receptor binding site . 
+Long-range mapping of the 11q23 region involved in chromosome aberrations in human tumors by pulsed-field gel electrophoresis with a yeast artificial chromosome . 
+These experiments delineate a 186-bp , EBNA-2-responsive cell DNA fragment and provide firm evidence that EBNA-2 transactivates transcription of cell genes . 
+Furthermore , no Shine-Dalgarno sequences are present upstream of the presumed translational start codons . 
+In vitro expression of four different naturally occurring nonsense and missense mutations revealed a dramatically altered subcellular location of the protein in cultured cells . 
+Isolation of T . gambiense strains in Zaire and their adaptation to laboratory animals . 
+Scanning electron microscopic investigations on the formation of Reissner's fiber in Rattus rattus . 
+The seventh cysteine residue of CTSE is located within the activation peptide region of the proenzyme . 
+Comparison with the sequence databanks show that Tactile is a member of the immunoglobulin gene superfamily , with similarity to Drosophila amalgam , the melanoma Ag MUC-18 , members of the carcinoembryonic Ag family , the poliovirus receptor , and the neural cell adhesion molecule . 
+Contraction of the tracheal muscle and the activity of stretch receptors in the trachea . 
+Also , the anti-inflammatory activities of an aqueous extract of Buddleia cordata and its principal glycoside linarin were evaluated . 
+In view of these results , simultaneous pancreas-kidney transplantation appears to be the treatment of choice for Type I diabetic patients . 
+The data suggest that plasminogen , alpha 2AP , and C1-INH , should be considered equine acute-phase proteins . 
+Percentages of recovery for overload and dilution tests were between 87 and 120% . 
+Serum gamma glutamyltransferase in the diagnosis of liver disease in cattle . 
+The R2 region within the class I enhancer acts as a negative element in Ad12-transformed cells and exhibits a stronger binding activity than is observed in nontumorigenic Ad5-transformed cells , which are not reduced in class I expression . 
+The association of clopamide and hydergine ( Brinedine ) in the treatment of the vasculo-renal syndromes of pregnancy . 
+No relevant changes in heart rate , body weight , and plasma levels of renin activity and aldosterone concentration were observed . 
+Repair of double-strand breaks ( DSBs ) in chromosomal DNA by nonhomologous end-joining ( NHEJ ) is not well characterized in the yeast Saccharomyces cerevisiae . 
+The antilog transformation of pH did not improve the results . 
+Copper treatments were assigned to simulate the different levels of copper intake that might result from differences in daily feed intake similar to the practice followed with commercial industry . 
+3 activities of the factor II molecule in the newborn infant at term . 
+It applies Udry's biosocial perspective , which attempts to reconcile the biological and sociological models of premarital sexual and reproductive behaviour . 
+Analysis of clearance curve of rose bengal-I-131 . 
+These results suggest that beta-1 may act as a tissue-specific , trans-acting regulator of the expression of the beta-zein gene in developing maize endosperm . 
+Using immunolocalization , we observe that ACE3 , a 440-bp chorion element that contains information sufficient to drive amplification , directs DmORC localization in follicle cells . 
+A cDNA clone was isolated from a chicken embryo cDNA library employing a PCR-generated radiolabeled probe specific for the U3 region of the Rous sarcoma virus LTR . 
+Stable association of U2 snRNP with the branchpoint sequence of mammalian pre-mRNAs requires binding of a non-snRNP protein to the polypyrimidine tract . 
+Furthermore , as in the human gene , the 3' end of the Cacna1f gene maps within 5 kb of the 5' end of the mouse synaptophysin gene in a region orthologous to Xp11 . 23 . 
+We report here that constitutively active Mek1 could activate p96h2bk in the absence of oncogenic Ras . 
+The effectiveness of alpha-mercapto-beta- ( 2-furyl ) acrylic acid ( MFA ) and N-benzyl-N-dithiocarboxy-D-glucamine ( NaB ) , used in combination , in the mobilization and excretion of lead was investigated in rats . 
+This study investigated the degree to which racial identity influences Mexican-Americans' performance on the L , K , and MF scales of the MMPI-2 . 
+Treadmill training at least for 2 weeks can reduce the infarction size and edema caused by MCA occlusion ( P < 0 . 01 ) . 
+A proposal of 50 performance indicators divided into five different groups is presented here , namely structural indicators , operational indicators , water and service quality indicators , personnel indicators and economic indicators . 
+In about one third of the cases this operation results in tonal and vocal improvement for patients suffering from progressive perceptive deafness . 
+Compensatory renal hypertrophy in parabiotic rats . 
+All our patients had polyps , 23 ( 54% ) had asthma , 12 ( 27% ) had aspirin sensitivity , 20 ( 65% ) had eosinophilia , and 9 ( 69% ) had increased total IgE levels . 
+These observations , together with the occurrence of putative 4'-phosphopantetheine-attachment sites and a putative thioesterase site , are discussed with reference to the reaction sequence leading to production of the ACV tripeptide . 
+The ParaSight-F test alone was used to monitor serum antigen levels after treatment in 24 patients . 
+Potentiation of the thrombolytic efficacy of single-chain urokinase ( Pro-urokinase ) by heparin . 
+Obstruction of the ERF repressor function by the transactivating members of the ets family of genes ( i . e . gag-myb-ets ) may be essential for the control of genes involved in cell proliferation and may also underlie their tumorigenic effects . 
+In addition , CaMig1 formed specific complexes with the URS1 region of the S . cerevisiae FBP1 gene . 
+Cervicovaginal foetal fibronectin in the prediction of preterm labour in a low-risk population . 
+Varicella-zoster virus ( VZV ) glycoprotein gI is a type 1 transmembrane glycoprotein which is one component of the heterodimeric gE : gI Fc receptor complex . 
+A segment of mRNA encoding the leader peptide of the CPA1 gene confers repression by arginine on a heterologous yeast gene transcript . 
+In addition , lexical priming was examined by presenting an identity prime earlier in the text . 
+Lower extremity weight bearing under various standing conditions in independently ambulatory patients with hemiparesis . 
+Insulin-like growth factor 1 ( IGF-1 ) in burn patients . 
+This approach enables the sources of error in the calculation of nutrient utilization to be readily identified , and their effect on precision to be assessed in different nutritional and metabolic states . 
+We identify the "M region" of the muscle-specific Xenopus cardiac actin gene promoter from -282 to -348 as necessary for the embryonic expression of a cardiac actin-beta-globin reporter gene injected into fertilized eggs . 
+We found that 120 bp of the enhancer's transcriptional core becomes DNase I hypersensitive early in B-cell development . 
+Biochemical experiments have shown that CopG co-operatively associates to its target DNA at low protein : DNA ratios , completely protecting four helical turns on the same face of the double helix in both directions from the inverted repeat that constitutes the CopG primary target . 
+Competition needs to be better studied , since in Central America and Caribean islands this kind of study has favored the biological control of planorbid species . 
+Echocardiography revealed right ventricular diastolic collapse ( RVDC ) without physical signs of cardiac tamponade . 
+Structure and expression of a gene from Arabidopsis thaliana encoding a protein related to SNF1 protein kinase . 
+Our results indicate that the retroplasmid reverse transcriptase is uniquely adapted to initiate cDNA synthesis by recognizing a 3' CCA sequence . 
+TNF-alpha exposure markedly increased activity of several RNA-binding proteins , especially a novel Mr 50 , 000-55 , 000 RNA-binding protein . 
