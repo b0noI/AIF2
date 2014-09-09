@@ -60,7 +60,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .collect(Collectors.toList());
     }
 
-    static List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
+    List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
         final List<CharacterStat> characterStats = new ArrayList<>(startCharacterStatData.getAllCharacters().size());
         for (Character ch : startCharacterStatData.getAllCharacters()) {
             final double probability1 = startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
@@ -73,7 +73,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
     }
 
     @VisibilityReducedForTestPurposeOnly
-    static List<String> filter(final List<String> tokens) {
+    List<String> filter(final List<String> tokens) {
         return tokens.parallelStream()
                 .map(String::toLowerCase).map(token -> {
                     int index = token.length();
