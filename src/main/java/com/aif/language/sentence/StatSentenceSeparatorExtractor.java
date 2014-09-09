@@ -120,6 +120,26 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
             return that.getProbabilityThatEndCharacter().compareTo(this.getProbabilityThatEndCharacter());
         }
 
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            CharacterStat that = (CharacterStat) o;
+
+            if (!character.equals(that.character)) return false;
+            if (!probabilityThatEndCharacter.equals(that.probabilityThatEndCharacter)) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = character.hashCode();
+            result = 31 * result + probabilityThatEndCharacter.hashCode();
+            return result;
+        }
+
     }
 
 }

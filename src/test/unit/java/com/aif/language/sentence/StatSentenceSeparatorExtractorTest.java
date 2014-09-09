@@ -1,6 +1,7 @@
 package com.aif.language.sentence;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -156,9 +157,48 @@ public class StatSentenceSeparatorExtractorTest {
         verify(mockSummaryStatistics, times(1)).getStandardDeviation();
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGetCharactersStatistic() throws Exception {
-        // TODO
+        // input arguments
+        final StatData startCharacterStatData = new StatData();
+        final StatData endCharacterStatData = new StatData();
+        for (char ch : "token".toCharArray()) {
+            startCharacterStatData.addCharacter(ch);
+            endCharacterStatData.addCharacter(ch);
+        }
+        startCharacterStatData.addCharacter('e');
+        startCharacterStatData.addCharacter('n');
+        endCharacterStatData.addCharacter('e');
+        endCharacterStatData.addCharacter('e');
+        endCharacterStatData.addCharacter('n');
+        endCharacterStatData.addCharacter('n');
+
+        startCharacterStatData.addEdgeCharacter('e', 'n');
+        startCharacterStatData.addEdgeCharacter('n', 'e');
+        endCharacterStatData.addEdgeCharacter('e', 'n');
+        endCharacterStatData.addEdgeCharacter('e', 'n');
+        endCharacterStatData.addEdgeCharacter('n', 'e');
+
+        // mocks
+
+        // expected results
+        final List<StatSentenceSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
+        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('n', 0.25));
+        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('e', 0.25));
+        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('t', 0.));
+        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('o', 0.));
+        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('k', 0.));
+
+        // creating test instance
+        final StatSentenceSeparatorExtractor testInstance = new StatSentenceSeparatorExtractor();
+
+        // execution test
+        final List<StatSentenceSeparatorExtractor.CharacterStat> actualResult = testInstance.getCharactersStatistic(startCharacterStatData, endCharacterStatData);
+
+        // result assert
+        actualResult.forEach(result -> expectedResult.contains(result));
+
+        // mocks verify
     }
 
     @Test(groups = "unit-tests")
