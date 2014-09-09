@@ -1,6 +1,7 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.IExtractor;
+import com.aif.language.common.PackageLevelConstructorForTests;
 import com.aif.language.common.VisibilityReducedForCLI;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import org.apache.commons.math3.stat.StatUtils;
@@ -46,7 +47,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
     @VisibilityReducedForTestPurposeOnly
     List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
-        final SummaryStatistics stats = new SummaryStatistics();
+        final SummaryStatistics stats = createSummaryStatistics();
         characterStats
                 .stream()
                 .mapToDouble(CharacterStat::getProbabilityThatEndCharacter)
@@ -87,6 +88,11 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                     return token;
                 })
                 .collect(Collectors.toList());
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    SummaryStatistics createSummaryStatistics() {
+        return new SummaryStatistics();
     }
 
     @VisibilityReducedForCLI

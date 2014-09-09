@@ -1,5 +1,6 @@
 package com.aif.language.sentence;
 
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -112,9 +113,47 @@ public class StatSentenceSeparatorExtractorTest {
         // mocks verify
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testFilterCharacterStatisticFromNonEndCharacters() throws Exception {
-        // TODO
+        // input arguments
+        final StatSentenceSeparatorExtractor.CharacterStat stat1 = new StatSentenceSeparatorExtractor.CharacterStat('t', 0.1);
+        final StatSentenceSeparatorExtractor.CharacterStat stat2 = new StatSentenceSeparatorExtractor.CharacterStat('o', 0.2);
+        final List<StatSentenceSeparatorExtractor.CharacterStat> inputStats = new ArrayList<>();
+        inputStats.add(stat1);
+        inputStats.add(stat2);
+
+        // mocks
+        final SummaryStatistics mockSummaryStatistics = mock(SummaryStatistics.class);
+        when(mockSummaryStatistics.getMean()).thenReturn(0.1);
+        when(mockSummaryStatistics.getStandardDeviation()).thenReturn(0.05);
+
+
+        // expected results
+        final List<StatSentenceSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
+        expectedResult.add(stat2);
+
+        // creating test instance
+        final StatSentenceSeparatorExtractor testInstance = new StatSentenceSeparatorExtractor() {
+
+            @Override
+            SummaryStatistics createSummaryStatistics() {
+                return mockSummaryStatistics;
+            }
+
+        };
+
+        // execution test
+        final List<StatSentenceSeparatorExtractor.CharacterStat> actualResult = testInstance.filterCharacterStatisticFromNonEndCharacters(inputStats);
+
+        // result assert
+        assertEquals(actualResult, expectedResult);
+
+        // mocks verify
+        verify(mockSummaryStatistics, times(1)).addValue(eq(0.1d));
+        verify(mockSummaryStatistics, times(1)).addValue(eq(0.2d));
+
+        verify(mockSummaryStatistics, times(1)).getMean();
+        verify(mockSummaryStatistics, times(1)).getStandardDeviation();
     }
 
     @Test
