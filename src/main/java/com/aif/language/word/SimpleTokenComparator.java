@@ -3,12 +3,6 @@ package com.aif.language.word;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * - Find the biggest substring in the two strings and calculates it's length.
- * - Recursively on the left and right continue finding substrings and get the length.
- * - Once the above is completed sum all the lengths of substrings, multiply by 2 and divide by the sum of the lengths
- *      of the 2 strings
- */
 
 public class SimpleTokenComparator implements ITokenComparator {
 
