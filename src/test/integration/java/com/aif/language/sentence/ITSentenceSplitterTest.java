@@ -12,7 +12,7 @@ import static junit.framework.Assert.assertTrue;
 
 public class ITSentenceSplitterTest {
 
-    private static final String TEXT_RESOURCE_PATH = "for_sentence_split_test.txt";
+    private static final String TEXT_RESOURCE_PATH = "for_sentence_split_test_4939.txt";
 
     @Test(groups = "functional-fast")
     public void testSplit() throws Exception {
