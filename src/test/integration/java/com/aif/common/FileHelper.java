@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 public abstract class FileHelper {
 
-    public static String readAllTextFromFile(final InputStream inputStream) throws IOException {
+    public static String readAllText(final InputStream inputStream) throws IOException {
         try(final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 
             final StringBuffer buff = new StringBuffer();

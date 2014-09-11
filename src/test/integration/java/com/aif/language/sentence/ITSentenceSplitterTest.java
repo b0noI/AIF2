@@ -18,7 +18,7 @@ public class ITSentenceSplitterTest {
     public void testSplit() throws Exception {
         try(final InputStream modelResource = ITSentenceSplitterTest.class.getResourceAsStream(TEXT_RESOURCE_PATH)) {
 
-            final String text = FileHelper.readAllTextFromFile(modelResource);
+            final String text = FileHelper.readAllText(modelResource);
 
             final TokenSplitter tokenSplitter = new TokenSplitter();
             final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());

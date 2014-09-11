@@ -39,7 +39,7 @@ public class SentenceSplitterQualityTest {
         try(final InputStream resourceFile =
                     ClassLoader.class.getResourceAsStream(textPath)) {
 
-            final String textData = FileHelper.readAllTextFromFile(resourceFile);
+            final String textData = FileHelper.readAllText(resourceFile);
 
             int aifResult = getAifResult(textData);
             int openNlpResult = getOpenNlpResult(textData);
