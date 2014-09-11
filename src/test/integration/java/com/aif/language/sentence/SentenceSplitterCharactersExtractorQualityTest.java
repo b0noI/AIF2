@@ -43,15 +43,11 @@ public class SentenceSplitterCharactersExtractorQualityTest {
         final List<Character> actualResult = testInstance.extract(inputToken).get();
 
         // result assert
-        int correct = 0;
-        int incorrect = Math.abs(actualResult.size() - expectedResult.size());
 
-        for (Character ch : actualResult) {
-            if (expectedResult.contains(ch))
-                correct++;
-            else
-                incorrect++;
-        }
+        long correct  = actualResult
+                .stream()
+                .filter(ch -> expectedResult.contains(ch))
+                .count();
         double result = (correct * 2.) / (double)(expectedResult.size() + actualResult.size());
         assertTrue(String.format("result is: %f", result), result > 0.53);
 
