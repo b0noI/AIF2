@@ -11,7 +11,7 @@ public interface ISentenceSeparatorExtractor extends IExtractor<List<String>, Li
 
     public static enum Type {
         PREDEFINED(new PredefinedSentenceSeparatorExtractor()),
-        STAT(new StatSentenceSeparatorExtractor());
+        STAT(new RecursiveStatSentenceSeparatorExtractor());
 
         private final ISentenceSeparatorExtractor instance;
 

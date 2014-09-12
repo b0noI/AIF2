@@ -7,20 +7,30 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.testng.AssertJUnit.assertTrue;
 
 public class SentenceSplitterCharactersExtractorQualityTest {
 
-    private static final String TEXT_FILE_NAME = "46800-0.txt";
+    private static final String[] TEXT_FILE_NAMES = new String[]{
+            "46800-0.txt",
+            "for_sentence_split_test_4939.txt",
+            "for_sentence_split_test_opencorpora_RU_5000.txt",
+            "RU_alice_in_the_wonderland.txt"
+    };
 
     @Test(groups = { "quality-test", "acceptance-tests" })
     public void testSeparatorExtractionQuality() throws Exception {
+        for (String path : TEXT_FILE_NAMES) {
+            executeTest(path);
+        }
+    }
+
+    private void executeTest(final String path) throws Exception {
         // input arguments
         String inputText;
-        try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(TEXT_FILE_NAME)) {
+        try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {
             inputText = FileHelper.readAllText(modelResource);
         }
         final TokenSplitter tokenSplitter = new TokenSplitter();
@@ -34,6 +44,9 @@ public class SentenceSplitterCharactersExtractorQualityTest {
                 ',', '#', '%',
                 '%', '\'', '?',
                 '!', '[', ']'
+        });
+        final List<Character> mandatoryCharacters = Arrays.asList(new Character[]{
+                '.'
         });
 
         // creating test instance
@@ -51,5 +64,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
         double result = (correct * 2.) / (double)(expectedResult.size() + actualResult.size());
         assertTrue(String.format("result is: %f", result), result > 0.53);
 
+        mandatoryCharacters.forEach(ch -> assertTrue(actualResult.contains(ch)));
     }
+
 }
