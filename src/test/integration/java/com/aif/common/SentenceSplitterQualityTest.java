@@ -31,7 +31,7 @@ public class SentenceSplitterQualityTest {
 			+ "sentence/for_sentence_split_test.txt";
 
 
-    @Test(groups = "functional-fast")
+    @Test(groups = "functional-slow")
     public void russianSentenceSplittersTest() {
         final int ethalonSentenceCount = 3015;
         final String textPath = "/unitTestData/TestData/RU/RU_alice_in_the_wonderland.txt";
