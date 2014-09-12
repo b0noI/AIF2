@@ -1,5 +1,6 @@
 package com.aif.language.sentence;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -8,7 +9,10 @@ class RecursiveStatSentenceSeparatorExtractor extends StatSentenceSeparatorExtra
 
     @Override
     public Optional<List<Character>> extract(List<String> tokens) {
-        final Optional<List<Character>> optSeparators = super.extract(tokens);
+
+        final List<String> tokensCopy = new ArrayList<>(tokens);
+
+        final Optional<List<Character>> optSeparators = super.extract(tokensCopy);
         if (!optSeparators.isPresent()) {
             return optSeparators;
         }
@@ -16,7 +20,7 @@ class RecursiveStatSentenceSeparatorExtractor extends StatSentenceSeparatorExtra
             return optSeparators;
         }
         final List<Character> separators = optSeparators.get();
-        final List<String> filteredTokens = filter(tokens, separators);
+        final List<String> filteredTokens = filter(tokensCopy, separators);
 
         final List<Character> nextSeparators = super.extract(filteredTokens).get();
 
