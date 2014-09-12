@@ -7,6 +7,7 @@ import java.util.List;
 import com.aif.language.sentence.AIF2NLPSentenceSplitter;
 import com.aif.language.sentence.OpenNLPSentenceSplitter;
 import com.aif.language.sentence.StanfordNLPSentenceSplitter;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static junit.framework.Assert.assertTrue;
 
@@ -27,17 +28,23 @@ import static junit.framework.Assert.assertTrue;
 
 public class SentenceSplitterQualityTest {
 
-	private static final String STANDARD_TEXT_PATH = "/com/aif/language/"
-			+ "sentence/for_sentence_split_test.txt";
+    private static final Integer ALLOWED_DEVIATION = 50;
+
+    @DataProvider(name = "texts")
+    public Object[][] getTexts() {
+        return new Object[][] {
+                {"/unitTestData/TestData/RU/for_sentence_split_test_4939.txt", 4939},
+                {"/unitTestData/TestData/ENG/for_sentence_split_test_EN_1000.txt", 1000},
+                {"/unitTestData/TestData/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000}
+        };
+    }
 
 
-    @Test(groups = "functional-slow")
-    public void russianSentenceSplittersTest() {
-        final int ethalonSentenceCount = 3015;
-        final String textPath = "/unitTestData/TestData/RU/RU_alice_in_the_wonderland.txt";
+    @Test(groups = "quality-test", dataProvider = "texts")
+    public void sentenceSplittersTest(String filePath, Integer ethalonSentenceCount) {
 
         try(final InputStream resourceFile =
-                    ClassLoader.class.getResourceAsStream(textPath)) {
+                    ClassLoader.class.getResourceAsStream(filePath)) {
 
             final String textData = FileHelper.readAllText(resourceFile);
 
@@ -45,12 +52,15 @@ public class SentenceSplitterQualityTest {
             int openNlpResult = getOpenNlpResult(textData);
             int stanfordResult = getStanfordResult(textData);
 
-            assertTrue(ethalonSentenceCount <= aifResult);
+            assertTrue(aifResult >= ethalonSentenceCount-ALLOWED_DEVIATION);
+            //assertTrue(aifResult <= ethalonSentenceCount+ALLOWED_DEVIATION);
 
             System.out.println(String.format("Quality test result: \n" +
-                    "AIF2 lib: %d sentences detected\n" +
-                    "OpenNLP lib: %d sentences detecded\n" +
-                    "StanfordNLP lib: %d sentences detected", aifResult, openNlpResult, stanfordResult));
+                            "File: %s, ethalon sentence count: %d\n" +
+                            "AIF2 lib: %d sentences detected\n" +
+                            "OpenNLP lib: %d sentences detecded\n" +
+                            "StanfordNLP lib: %d sentences detected\n", filePath, ethalonSentenceCount,
+                    aifResult, openNlpResult, stanfordResult));
 
         } catch (IOException e) {
             e.printStackTrace();
