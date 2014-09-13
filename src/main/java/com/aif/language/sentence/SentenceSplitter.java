@@ -173,6 +173,10 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
                 return startIndex;
             }
 
+            if (endTokens.size() == startIndex + 1) {
+                return startIndex + 1;
+            }
+
             do {
                 if (endTokens.get(startIndex)) {
                     startIndex++;

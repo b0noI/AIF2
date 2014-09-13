@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -68,6 +69,34 @@ public class SentenceSplitterCharactersExtractorQualityTest {
         actualResult.forEach(ch ->
             assertFalse(String.format("Character %s is alphabetic", ch), Character.isAlphabetic(ch)));
 
+    }
+
+    // will be removed, used for collection result for article
+    @Test (groups = "experimental")
+    public void test1() throws Exception {
+        String text = "";
+
+        try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("46800-0_mutated.txt")) {
+            text = FileHelper.readAllText(modelResource);
+        }
+
+        StanfordNLPSentenceSplitter stanfordNLPSentenceSplitter = new StanfordNLPSentenceSplitter();
+
+        List<String> sentences = stanfordNLPSentenceSplitter.split(text);
+        assertTrue(sentences.size() > 0);
+
+        try(InputStream modelResource = ClassLoader.class.getResourceAsStream("/models/opennlp/en-sent.bin")) {
+            ISplitter<String, String> splitter =
+                    new OpenNLPSentenceSplitter(modelResource);
+
+            List<String> actualResult = splitter.split(text);
+
+            assertTrue(actualResult.size() > 0);
+        }
+
+        AIF2NLPSentenceSplitter aif2NLPSentenceSplitter = new AIF2NLPSentenceSplitter();
+        List<List<String>> sentences2 = aif2NLPSentenceSplitter.split(text);
+        assertTrue(sentences2.size() > 0);
     }
 
 }
