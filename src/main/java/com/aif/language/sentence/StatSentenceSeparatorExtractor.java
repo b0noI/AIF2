@@ -1,10 +1,8 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.IExtractor;
-import com.aif.language.common.PackageLevelConstructorForTests;
 import com.aif.language.common.VisibilityReducedForCLI;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
-import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;

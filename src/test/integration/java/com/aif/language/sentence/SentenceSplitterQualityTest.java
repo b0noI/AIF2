@@ -1,10 +1,11 @@
-package com.aif.common;
+package com.aif.language.sentence;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
+import com.aif.common.FileHelper;
 import com.aif.language.sentence.AIF2NLPSentenceSplitter;
 import com.aif.language.sentence.OpenNLPSentenceSplitter;
 import com.aif.language.sentence.StanfordNLPSentenceSplitter;
@@ -34,6 +35,7 @@ public class SentenceSplitterQualityTest {
     @DataProvider(name = "texts")
     public TestData[][] getTexts() {
         return new TestData[][] {
+                {new TestData("for_sentence_split_test_4939_mutated.txt", 4939)},
                 {new TestData("/unitTestData/TestData/RU/for_sentence_split_test_4939.txt", 4939)},
                 {new TestData("/unitTestData/TestData/ENG/for_sentence_split_test_EN_1000.txt", 1000)},
                 {new TestData("/unitTestData/TestData/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000)}
@@ -44,7 +46,7 @@ public class SentenceSplitterQualityTest {
     public void sentenceSplittersTest(final TestData testData) throws Exception {
 
         try(final InputStream resourceFile =
-                    ClassLoader.class.getResourceAsStream(testData.getPath())) {
+                    SentenceSplitterQualityTest.class.getResourceAsStream(testData.getPath())) {
 
             final String textData = FileHelper.readAllText(resourceFile);
 

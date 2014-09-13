@@ -5,7 +5,7 @@ import com.aif.language.token.TokenSplitter;
 
 import java.util.List;
 
-public class AIF2NLPSentenceSplitter implements ISplitter<String, List<String>>{
+class AIF2NLPSentenceSplitter implements ISplitter<String, List<String>>{
 
     private final TokenSplitter tokenSplitter = new TokenSplitter();
     private final SentenceSplitter sentenceSplitter = new SentenceSplitter();

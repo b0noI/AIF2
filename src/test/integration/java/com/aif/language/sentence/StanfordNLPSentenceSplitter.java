@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StanfordNLPSentenceSplitter implements ISplitter<String, String> {
+class StanfordNLPSentenceSplitter implements ISplitter<String, String> {
 
     @Override
     public List<String> split(String target) {
