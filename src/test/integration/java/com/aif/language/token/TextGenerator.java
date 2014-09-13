@@ -31,7 +31,7 @@ public class TextGenerator {
         this.tokensInOneLine = 10;
         this.initialTekensNumber = 10;
         try {
-            this.location = Paths.get(getClass().getResource("/texts/TestData").toURI());
+            this.location = Paths.get(getClass().getResource("/unitTestData/TestData").toURI());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
