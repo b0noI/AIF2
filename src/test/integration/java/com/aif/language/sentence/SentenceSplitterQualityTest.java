@@ -9,6 +9,7 @@ import com.aif.common.FileHelper;
 import com.aif.language.sentence.AIF2NLPSentenceSplitter;
 import com.aif.language.sentence.OpenNLPSentenceSplitter;
 import com.aif.language.sentence.StanfordNLPSentenceSplitter;
+import org.apache.log4j.Logger;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static junit.framework.Assert.assertTrue;
@@ -31,6 +32,8 @@ import static junit.framework.Assert.assertTrue;
 public class SentenceSplitterQualityTest {
 
     private static final Double ALLOWED_DEVIATION = 3.0;
+
+    private static final Logger logger = Logger.getLogger(SentenceSplitterQualityTest.class);
 
     @DataProvider(name = "texts")
     public TestData[][] getTexts() {
@@ -57,12 +60,12 @@ public class SentenceSplitterQualityTest {
 
             int resultDelta = Math.abs(aifResult - expectedResult);
             double deviation = (double)resultDelta / (double)expectedResult;
-            assertTrue(deviation > ALLOWED_DEVIATION);
+            assertTrue(deviation < ALLOWED_DEVIATION);
 
-            System.out.println(String.format("Quality test result: \n" +
-                            "File: %s, ethalon sentence count: %d\n" +
+            logger.debug(String.format("Quality test result: \n" +
+                            "File: %s, have sentence count: %d\n" +
                             "AIF2 lib: %d sentences detected\n" +
-                            "OpenNLP lib: %d sentences detecded\n" +
+                            "OpenNLP lib: %d sentences detected\n" +
                             "StanfordNLP lib: %d sentences detected\n", testData.getPath(), testData.getSentenceCount(),
                     aifResult, openNlpResult, stanfordResult));
 
