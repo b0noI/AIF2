@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
+import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class SentenceSplitterCharactersExtractorQualityTest {
@@ -19,13 +20,13 @@ public class SentenceSplitterCharactersExtractorQualityTest {
        return new String[][]{
                {"46800-0.txt"},
                {"for_sentence_split_test_4939.txt"},
-               {"for_sentence_split_test_opencorpora_RU_5000.txt"},
+               // {"for_sentence_split_test_opencorpora_RU_5000.txt"}, // This text should be switched on only after fixing issue #83
                {"RU_alice_in_the_wonderland.txt"}
         } ;
     }
 
     @Test(groups = { "quality-test", "acceptance-tests" }, dataProvider = "path_provider")
-    private void testSeparatorExtractionQuality(final String path) throws Exception {
+    public void testSeparatorExtractionQuality(final String path) throws Exception {
         // input arguments
         String inputText;
         try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {
@@ -39,12 +40,11 @@ public class SentenceSplitterCharactersExtractorQualityTest {
                 '.', '(', ')',
                 ':', '\"', '#',
                 ';', '‘', '“',
-                ',', '#', '%',
-                '%', '\'', '?',
-                '!', '[', ']'
+                ',', '\'', '?',
+                '!'
         });
         final List<Character> mandatoryCharacters = Arrays.asList(new Character[]{
-                '.'
+                '.', ',', '(', ')', '?'
         });
 
         // creating test instance
@@ -59,10 +59,15 @@ public class SentenceSplitterCharactersExtractorQualityTest {
                 .stream()
                 .filter(ch -> expectedResult.contains(ch))
                 .count();
-        double result = (correct * 2.) / (double)(expectedResult.size() + actualResult.size());
-        assertTrue(String.format("result is: %f", result), result > 0.53);
+        double result = (double)correct / (double)expectedResult.size();
+        assertTrue(String.format("result is: %f", result), result > 0.65);
 
-        mandatoryCharacters.forEach(ch -> assertTrue(actualResult.contains(ch)));
+        mandatoryCharacters.forEach(ch ->
+            assertTrue(String.format("mandatory character(%s) absent", ch), actualResult.contains(ch)));
+
+        actualResult.forEach(ch ->
+            assertFalse(String.format("Character %s is alphabetic", ch), Character.isAlphabetic(ch)));
+
     }
 
 }
