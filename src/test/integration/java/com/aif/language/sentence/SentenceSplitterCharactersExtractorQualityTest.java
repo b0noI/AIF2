@@ -3,6 +3,7 @@ package com.aif.language.sentence;
 import com.aif.common.FileHelper;
 import com.aif.language.common.ISplitter;
 import com.aif.language.token.TokenSplitter;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -13,21 +14,18 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class SentenceSplitterCharactersExtractorQualityTest {
 
-    private static final String[] TEXT_FILE_NAMES = new String[]{
-            "46800-0.txt",
-            "for_sentence_split_test_4939.txt",
-            "for_sentence_split_test_opencorpora_RU_5000.txt",
-            "RU_alice_in_the_wonderland.txt"
-    };
-
-    @Test(groups = { "quality-test", "acceptance-tests" })
-    public void testSeparatorExtractionQuality() throws Exception {
-        for (String path : TEXT_FILE_NAMES) {
-            executeTest(path);
-        }
+    @DataProvider(name = "path_provider")
+    private static String[][] pathProvider() {
+       return new String[][]{
+               {"46800-0.txt"},
+               {"for_sentence_split_test_4939.txt"},
+               {"for_sentence_split_test_opencorpora_RU_5000.txt"},
+               {"RU_alice_in_the_wonderland.txt"}
+        } ;
     }
 
-    private void executeTest(final String path) throws Exception {
+    @Test(groups = { "quality-test", "acceptance-tests" }, dataProvider = "path_provider")
+    private void testSeparatorExtractionQuality(final String path) throws Exception {
         // input arguments
         String inputText;
         try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {

@@ -6,9 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.aif.common.FileHelper;
-import com.aif.language.sentence.AIF2NLPSentenceSplitter;
-import com.aif.language.sentence.OpenNLPSentenceSplitter;
-import com.aif.language.sentence.StanfordNLPSentenceSplitter;
 import org.apache.log4j.Logger;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
