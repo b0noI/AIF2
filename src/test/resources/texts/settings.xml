@@ -5,8 +5,8 @@
     </AceptenceParameters>
     <Paths>
         <RU>
-            <Path name="PathToStatisticFolder">unitTestData/testData/RU/statistic</Path>
-            <Path name="PathToStatisticResultFile">unitTestData/testData/RU/Results.csv</Path>
+            <Path name="PathToStatisticFolder">texts/testData/RU/statistic</Path>
+            <Path name="PathToStatisticResultFile">texts/testData/RU/Results.csv</Path>
         </RU>
     </Paths>
 </Parameters>

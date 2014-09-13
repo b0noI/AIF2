@@ -10,8 +10,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import com.aif.language.common.ISplitter;
-import com.aif.language.common.RegexpCooker;
+
 import com.aif.language.sentence.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.SentenceSplitter;
 import jdk.nashorn.internal.ir.annotations.Ignore;
@@ -23,22 +22,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.*;
 
 public class ITTokenSplitterTest {
 
     
     //This two String are pathes for gethering statistic
-    private final String settingsPath = "/unitTestData/settings.xml";
+    private final String settingsPath = "/texts/settings.xml";
     private final String rootResourcesPath = "/../../src/main/resources/";
     private Document doc;
 
@@ -66,7 +62,7 @@ public class ITTokenSplitterTest {
 
         try {
 
-            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_space_begining.txt").toURI());
+            final Path PathToFile = Paths.get(getClass().getResource("/texts/RU/RU_text_with_space_begining.txt").toURI());
 
             //Expected results:
             final String lastToken = "токенов.";
@@ -93,7 +89,7 @@ public class ITTokenSplitterTest {
 
         try {
 
-            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_new_lines.txt").toURI());
+            final Path PathToFile = Paths.get(getClass().getResource("/texts/RU/RU_text_with_new_lines.txt").toURI());
 
             final String lastToken = "токенов";
             final String firstToken = "В";
@@ -119,7 +115,7 @@ public class ITTokenSplitterTest {
 
         try {
 
-            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_10000_СеврюгаГрач.txt").toURI());
+            final Path PathToFile = Paths.get(getClass().getResource("/texts/RU/RU_10000_СеврюгаГрач.txt").toURI());
 
             final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
