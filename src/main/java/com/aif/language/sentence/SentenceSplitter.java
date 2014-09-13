@@ -2,13 +2,16 @@ package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
-    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor;
+    private static  final   Logger                      logger                      = Logger.getLogger(SentenceSplitter.class)  ;
+
+    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor                                              ;
 
     public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
@@ -20,13 +23,16 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
     @Override
     public List<List<String>> split(final List<String> tokens) {
+        logger.debug(String.format("Starting sentence extraction for tokens: %d", tokens.size()));
         final Optional<List<Character>> optionalSeparators = sentenceSeparatorExtractor.extract(tokens);
 
-        if (!optionalSeparators.isPresent()) {
+        if (!optionalSeparators.isPresent() || optionalSeparators.get().size() == 0) {
+            logger.error("Fail to extract any sentence separators, returning tokens");
             return new ArrayList<List<String>>(){{add(tokens);}};
         }
 
         final List<Character> separators = optionalSeparators.get();
+        logger.debug(String.format("Sentences separators in this text: %s", Arrays.toString(separators.toArray())));
 
         final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separators);
 
@@ -38,6 +44,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         }
 
         sentences.forEach(sentence -> prepareSentences(sentence, separators));
+        logger.debug(String.format("Founded %d sentences", sentences.size()));
 
         return sentences
                 .parallelStream()
