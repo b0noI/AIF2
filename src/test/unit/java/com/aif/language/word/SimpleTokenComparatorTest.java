@@ -1,10 +1,12 @@
-package com.aif.language.token;
+package com.aif.language.word;
 
 import com.aif.language.word.ITokenComparator;
 import com.aif.language.word.SimpleTokenComparator;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.FileAssert.fail;
 
 
 public class SimpleTokenComparatorTest {
@@ -49,10 +51,15 @@ public class SimpleTokenComparatorTest {
         assertEquals(actual, expected);
     }
 
-    //@Test(expected = NullPointerException.class)
+    @Test(groups = "unit-tests")
     public void testCompareNull() {
         ITokenComparator comparator = new SimpleTokenComparator();
-        comparator.compare(null, null);
+        try {
+            comparator.compare(null, null);
+            fail();
+        } catch (NullPointerException e) {
+            assertNotNull(e);
+        }
     }
 
     @Test(groups = "unit-tests")
