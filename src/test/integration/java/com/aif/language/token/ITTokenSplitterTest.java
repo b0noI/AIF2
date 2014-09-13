@@ -254,23 +254,4 @@ public class ITTokenSplitterTest {
         return output;
     }
 
-//    private void saveStatisticToFile(String fileName, int correctTokensNum, int foundTokensNum) {
-//
-//        try( BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(pathToStatisticResult).toFile(), true))) {
-//
-//            bw.write(LocalDateTime.now().toString() + "," + fileName + "," + correctTokensNum + "," + foundTokensNum);
-//            bw.newLine();
-//
-//        }catch (IOException e) {
-//
-//        }
-//
-//
-//
-//    }
-//    private int getTokensNumFromFileName(String name) {
-//        String[] elems = name.split("_");
-//        return Integer.parseInt(elems[1]);
-//    }
-//
 }

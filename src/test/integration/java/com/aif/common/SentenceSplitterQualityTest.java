@@ -2,6 +2,7 @@ package com.aif.common;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
 
 import com.aif.language.sentence.AIF2NLPSentenceSplitter;
@@ -28,42 +29,41 @@ import static junit.framework.Assert.assertTrue;
 
 public class SentenceSplitterQualityTest {
 
-    private static final Integer ALLOWED_DEVIATION = 50;
+    private static final Double ALLOWED_DEVIATION = 3.0;
 
     @DataProvider(name = "texts")
-    public Object[][] getTexts() {
-        return new Object[][] {
-                {"/unitTestData/TestData/RU/for_sentence_split_test_4939.txt", 4939},
-                {"/unitTestData/TestData/ENG/for_sentence_split_test_EN_1000.txt", 1000},
-                {"/unitTestData/TestData/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000}
+    public TestData[][] getTexts() {
+        return new TestData[][] {
+                {new TestData("/unitTestData/TestData/RU/for_sentence_split_test_4939.txt", 4939)},
+                {new TestData("/unitTestData/TestData/ENG/for_sentence_split_test_EN_1000.txt", 1000)},
+                {new TestData("/unitTestData/TestData/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000)}
         };
     }
 
-
     @Test(groups = "quality-test", dataProvider = "texts")
-    public void sentenceSplittersTest(String filePath, Integer ethalonSentenceCount) {
+    public void sentenceSplittersTest(final TestData testData) throws Exception {
 
         try(final InputStream resourceFile =
-                    ClassLoader.class.getResourceAsStream(filePath)) {
+                    ClassLoader.class.getResourceAsStream(testData.getPath())) {
 
             final String textData = FileHelper.readAllText(resourceFile);
 
             int aifResult = getAifResult(textData);
             int openNlpResult = getOpenNlpResult(textData);
             int stanfordResult = getStanfordResult(textData);
+            int expectedResult = testData.getSentenceCount();
 
-            assertTrue(aifResult >= ethalonSentenceCount-ALLOWED_DEVIATION);
-            //assertTrue(aifResult <= ethalonSentenceCount+ALLOWED_DEVIATION);
+            int resultDelta = Math.abs(aifResult - expectedResult);
+            double deviation = (double)resultDelta / (double)expectedResult;
+            assertTrue(deviation > ALLOWED_DEVIATION);
 
             System.out.println(String.format("Quality test result: \n" +
                             "File: %s, ethalon sentence count: %d\n" +
                             "AIF2 lib: %d sentences detected\n" +
                             "OpenNLP lib: %d sentences detecded\n" +
-                            "StanfordNLP lib: %d sentences detected\n", filePath, ethalonSentenceCount,
+                            "StanfordNLP lib: %d sentences detected\n", testData.getPath(), testData.getSentenceCount(),
                     aifResult, openNlpResult, stanfordResult));
 
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -101,5 +101,25 @@ public class SentenceSplitterQualityTest {
 
 		return stanfordResult.size();
 	}
+
+    private static class TestData {
+
+        private final String path;
+
+        private final int sentenceCount;
+
+        private TestData(String path, int sentenceCount) {
+            this.path = path;
+            this.sentenceCount = sentenceCount;
+        }
+
+        public String getPath() {
+            return path;
+        }
+
+        public int getSentenceCount() {
+            return sentenceCount;
+        }
+    }
 
 }
