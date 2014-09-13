@@ -2,7 +2,6 @@ package com.aif.language.sentence;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.List;
 
 import com.aif.common.FileHelper;
@@ -36,9 +35,9 @@ public class SentenceSplitterQualityTest {
     public TestData[][] getTexts() {
         return new TestData[][] {
                 {new TestData("for_sentence_split_test_4939_mutated.txt", 4939)},
-                {new TestData("/unitTestData/TestData/RU/for_sentence_split_test_4939.txt", 4939)},
-                {new TestData("/unitTestData/TestData/ENG/for_sentence_split_test_EN_1000.txt", 1000)},
-                {new TestData("/unitTestData/TestData/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000)}
+                {new TestData("/texts/RU/for_sentence_split_test_4939.txt", 4939)},
+                {new TestData("/texts/ENG/for_sentence_split_test_EN_1000.txt", 1000)},
+                {new TestData("/texts/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000)}
         };
     }
 
@@ -80,7 +79,7 @@ public class SentenceSplitterQualityTest {
 	// with IOException when we create modelResource otherwise return number of
 	// sentences.
 	private int getOpenNlpResult(String stringFile) {
-		final String MODEL_RESOURCE_PATH = "/opennlp-models/en-sent.bin";
+		final String MODEL_RESOURCE_PATH = "/models/opennlp/en-sent.bin";
 
 		try(InputStream modelResource = ClassLoader.class.getResourceAsStream(MODEL_RESOURCE_PATH)) {
             OpenNLPSentenceSplitter openNlpSplitter = new OpenNLPSentenceSplitter(modelResource);
