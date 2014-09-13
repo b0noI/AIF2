@@ -130,15 +130,6 @@ public class ITTokenSplitterTest {
         }
     }
 
-    public void test2() {
-        String textFromFileToString = textFromFileToString(Paths.get("/Users/vsk/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
-        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
-        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
-        final List<String> tokens = tokenSplitter.split(textFromFileToString);
-        final List<List<String>> result = sentenceSplitter.split(tokens);
-        assertTrue(result.size() > 0);
-    }
-
     @Ignore
     //TODO this is not a real test, code below used for generating statistic data for probability splitter
     public void generate_statistic_for_probability_splitter() {
