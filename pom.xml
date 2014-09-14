@@ -6,7 +6,7 @@
 
     <groupId>com.aif</groupId>
     <artifactId>aif</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>0.0.0-Alpha1</version>
 
     <dependencies>
         <dependency>
@@ -119,8 +119,8 @@
     <distributionManagement>
         <repository>
             <id>snapshots</id>
-            <name>libs-snapshot-local</name>
-            <url>http://192.241.238.122:8081/artifactory/libs-snapshot-local</url>
+            <name>libs-release-local</name>
+            <url>http://192.241.238.122:8081/artifactory/libs-release-local</url>
         </repository>
     </distributionManagement>
 
