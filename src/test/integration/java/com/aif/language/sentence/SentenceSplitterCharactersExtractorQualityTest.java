@@ -60,7 +60,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
                 .filter(ch -> expectedResult.contains(ch))
                 .count();
         double result = (double)correct / (double)expectedResult.size();
-        assertTrue(String.format("result is: %f", result), result > 0.6);
+        assertTrue(String.format("result is: %f", result), result > 0.9);
 
         mandatoryCharacters.forEach(ch ->
             assertTrue(String.format("mandatory character(%s) absent", ch), actualResult.contains(ch)));

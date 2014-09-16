@@ -88,6 +88,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                     return token;
                 })
                 .filter(token -> token.length() > MINIMUM_TOKEN_SIZE)
+                .distinct()
                 .collect(Collectors.toList());
     }
 

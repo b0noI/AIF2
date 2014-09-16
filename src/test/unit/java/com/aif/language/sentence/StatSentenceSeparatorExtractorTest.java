@@ -204,7 +204,7 @@ public class StatSentenceSeparatorExtractorTest {
     @Test(groups = "unit-tests")
     public void testFilter() throws Exception {
         // input arguments
-        final List<String> inputTokens = Arrays.asList(new String[]{"tOKen", "token...", "tok", "0"});
+        final List<String> inputTokens = Arrays.asList(new String[]{"tOKen", "token...", "tok", "0", "token.", "token."});
 
         // mocks
 
