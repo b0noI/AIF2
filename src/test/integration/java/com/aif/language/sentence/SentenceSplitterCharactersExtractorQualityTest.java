@@ -20,7 +20,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
        return new String[][]{
                {"46800-0.txt"},
                // {"for_sentence_split_test_4939.txt"},                 // not working on CI due to Russian text
-               // {"for_sentence_split_test_opencorpora_RU_5000.txt"},  // This text should be switched on only after fixing issue #83
+               // {"for_sentence_split_test_opencorpora_RU_5000.txt"},
                // {"RU_alice_in_the_wonderland.txt"}                    // not working on CI due to Russian text
         } ;
     }
@@ -73,7 +73,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
     // will be removed, used for collection result for article
     @Test (groups = "experimental")
     public void test1() throws Exception {
-        String text = "";
+        String text;
 
         try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("46800-0_mutated.txt")) {
             text = FileHelper.readAllText(modelResource);
