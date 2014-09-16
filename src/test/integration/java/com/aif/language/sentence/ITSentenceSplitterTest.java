@@ -21,7 +21,7 @@ public class ITSentenceSplitterTest {
             final String text = FileHelper.readAllText(modelResource);
 
             final TokenSplitter tokenSplitter = new TokenSplitter();
-            final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
+            final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance());
 
             final List<List<String>> actualResult = sentenceSplitter.split(tokenSplitter.split(text));
 

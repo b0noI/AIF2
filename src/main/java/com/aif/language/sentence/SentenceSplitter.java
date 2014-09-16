@@ -18,7 +18,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
     }
 
     public SentenceSplitter() {
-        this(ISentenceSeparatorExtractor.Type.STAT.getInstance());
+        this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance());
     }
 
     @Override

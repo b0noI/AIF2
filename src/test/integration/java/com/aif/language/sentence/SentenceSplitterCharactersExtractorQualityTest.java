@@ -6,7 +6,6 @@ import com.aif.language.token.TokenSplitter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
@@ -49,7 +48,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
         });
 
         // creating test instance
-        final ISentenceSeparatorExtractor testInstance = ISentenceSeparatorExtractor.Type.STAT.getInstance();
+        final ISentenceSeparatorExtractor testInstance = ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance();
 
         // execution test
         final List<Character> actualResult = testInstance.extract(inputToken).get();
