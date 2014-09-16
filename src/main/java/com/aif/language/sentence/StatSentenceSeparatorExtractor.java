@@ -6,6 +6,8 @@ import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
@@ -22,7 +24,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
     private static final StatDataExtractor              START_CHARACTER_STAT_DATA_EXTRACTOR         = new StatDataExtractor(START_CHARACTER_EXTRACTOR, CHARACTER_AFTER_START_CHARACTER_EXTRACTOR);
 
-    private static final int                            MINIMUM_TOKEN_SIZE = 4;
+    private static final int                            MINIMUM_TOKEN_SIZE                          = 3;
 
     @Override
     public Optional<List<Character>> extract(final List<String> tokens) {
@@ -88,7 +90,6 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                     return token;
                 })
                 .filter(token -> token.length() > MINIMUM_TOKEN_SIZE)
-                .distinct()
                 .collect(Collectors.toList());
     }
 
