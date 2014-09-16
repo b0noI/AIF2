@@ -58,7 +58,7 @@ public class ITTokenSplitterTest {
     
     
     @Test
-    public void should_get_tokens_from_text_file_with_space_in_the_begining_using_PREDEFINED_separator() {
+    public void shouldGetTokensFromTextFileWithSpaceInTheBeginingUsingPREDEFINEDSeparator() {
 
         try {
 
@@ -85,7 +85,7 @@ public class ITTokenSplitterTest {
     }
 
     @Test
-    public void should_split_new_line_words() {
+    public void shouldSplitNewLineWords() {
 
         try {
 
@@ -111,7 +111,7 @@ public class ITTokenSplitterTest {
     }
 
     @Test
-    public void should_get_tokens_from_file_using_probability_splitter() {
+    public void shouldGetTokensFromFileUsingProbabilitySplitter() {
 
         try {
 
@@ -132,7 +132,7 @@ public class ITTokenSplitterTest {
 
     @Ignore
     //TODO this is not a real test, code below used for generating statistic data for probability splitter
-    public void generate_statistic_for_probability_splitter() {
+    public void generateStatisticForProbabilitySplitter() {
 
         final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
         final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
@@ -154,7 +154,7 @@ public class ITTokenSplitterTest {
 
     @Test
     @Ignore
-    public void create_file_set_for_statistic_for_PROBABILITY_based_splitting() {
+    public void createFileSetForStatisticForPROBABILITYBasedSplitting() {
 
         final TextGenerator tg = new TextGenerator();
 
