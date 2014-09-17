@@ -14,7 +14,7 @@ public class ITSentenceSplitterTest {
 
     private static final String TEXT_RESOURCE_PATH = "for_sentence_split_test_4939.txt";
 
-    @Test(groups = "functional-fast")
+    @Test(groups = "unit-tests")
     public void testSplit() throws Exception {
         try(final InputStream modelResource = ITSentenceSplitterTest.class.getResourceAsStream(TEXT_RESOURCE_PATH)) {
 
