@@ -11,7 +11,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.testng.annotations.Test;
 import java.io.*;
 import java.net.URISyntaxException;
@@ -82,7 +81,7 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test (groups = { "acceptance-tests", "functional-fast" })
+    @Test (enabled = false, groups = { "acceptance-tests", "functional-fast" })
     public void shouldSplitNewLineWords() {
 
         try {
@@ -108,7 +107,7 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test (groups = { "acceptance-tests", "functional-fast" })
+    @Test (enabled = false, groups = { "acceptance-tests", "functional-fast" })
     public void shouldGetTokensFromFileUsingProbabilitySplitter() {
 
         try {
@@ -128,8 +127,7 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Ignore
-    @Test (groups = "help-test")
+    @Test (enabled = false, groups = "help-test")
     public void generateStatisticForProbabilitySplitter() {
 
         final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
@@ -150,9 +148,7 @@ public class ITTokenSplitterTest {
         }
     }
 
-
-    @Ignore
-    @Test (groups = "help-test")
+    @Test (enabled = false, groups = "help-test")
     public void createFileSetForStatisticForPROBABILITYBasedSplitting() {
 
         final TextGenerator tg = new TextGenerator();
