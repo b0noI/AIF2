@@ -17,7 +17,7 @@ public class StringHelperTest {
         final String expected = "substring";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -28,7 +28,7 @@ public class StringHelperTest {
         final String expected = "substring";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -39,7 +39,7 @@ public class StringHelperTest {
         final String expected = "substring";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -50,7 +50,7 @@ public class StringHelperTest {
         final String expected = "substring";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -61,7 +61,7 @@ public class StringHelperTest {
         final String expected = "substring";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -72,7 +72,7 @@ public class StringHelperTest {
         final String expected = "substring";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -83,7 +83,7 @@ public class StringHelperTest {
         final String expected = "cieve";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -94,7 +94,7 @@ public class StringHelperTest {
         final String expected = "er";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 
@@ -105,7 +105,7 @@ public class StringHelperTest {
         final String expected = "";
         String actual;
 
-        actual = StringHelper.findBiggestSubstring(t1, t2);
+        actual = StringHelper.findLongestCommonSubstring(t1, t2);
         assertEquals(actual, expected);
     }
 

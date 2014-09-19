@@ -49,11 +49,14 @@ public class SimpleTokenComparatorTest {
         assertEquals(actual, expected);
     }
 
-    //@Test(expected = NullPointerException.class)
+    @Test(groups = "unit-tests")
     public void testCompareNull() {
         ITokenComparator comparator = new SimpleTokenComparator();
-        comparator.compare(null, null);
+        try {
+            comparator.compare(null, null);
+        } catch (NullPointerException e) {}
     }
+
 
     @Test(groups = "unit-tests")
     public void testRepeatedLetters() {

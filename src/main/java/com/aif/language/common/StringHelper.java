@@ -2,11 +2,12 @@ package com.aif.language.common;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 
 public class StringHelper {
 
-    public static String findBiggestSubstring(final String t1, final String t2) {
+    public static String findLongestCommonSubstring(final String t1, final String t2) {
         String s1 = t1.toLowerCase();
         String s2 = t2.toLowerCase();
 
@@ -22,7 +23,7 @@ public class StringHelper {
             s2SubWords = generateSubWords(s2, subWordLength);
 
             subWord = searchForCommonString(s1SubWords, s2SubWords);
-            if (subWord != "")
+            if (!subWord.isEmpty())
                 break;
 
             subWordLength--;
@@ -31,7 +32,7 @@ public class StringHelper {
     }
 
     public static String searchForCommonString(Set<String> s1, Set<String> s2) {
-        // FIXME: The method returns an empty string if no matching words are found.
+        // TODO: Dealing with multiple common strings.
         String matched = "";
         for (String s1Word : s1)
             if (s2.contains(s1Word)) {
@@ -47,6 +48,7 @@ public class StringHelper {
                     "The word '" + word + "' length cannot be less than the length " + length
                     + " of the words to be generated.");
 
+        // LinkedHashSet maintains the order. if there are multiple common substrings the left most should match first.
         Set<String> generatedWords = new LinkedHashSet<>();
         for (int i = 0; i <= (word.length() - length); i++)
             generatedWords.add(word.substring(i, length + i));
