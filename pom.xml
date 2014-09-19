@@ -61,6 +61,11 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -85,7 +90,7 @@
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>10</threadCount>
-                    <groups>unit-tests,functional-fast</groups>
+                    <groups>unit-tests,quality-test,functional-fast,integration-tests</groups>
                     <enableAssertions>true</enableAssertions>
                 </configuration>
             </plugin>

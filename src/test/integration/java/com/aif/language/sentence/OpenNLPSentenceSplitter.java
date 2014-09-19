@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
-public class OpenNLPSentenceSplitter implements ISplitter<String, String> {
+class OpenNLPSentenceSplitter implements ISplitter<String, String> {
     private final SentenceDetector detector;
 
     public OpenNLPSentenceSplitter(InputStream modelIn) throws IOException {

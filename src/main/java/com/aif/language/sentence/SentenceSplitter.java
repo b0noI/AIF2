@@ -2,31 +2,38 @@ package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
-    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor;
+    private static  final   Logger                      logger                      = Logger.getLogger(SentenceSplitter.class)  ;
+
+    private         final ISentenceSeparatorExtractor sentenceSeparatorExtractor                                              ;
 
     public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
     }
 
     public SentenceSplitter() {
-        this(ISentenceSeparatorExtractor.Type.PREDEFINED.getInstance());
+        this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance());
     }
 
     @Override
     public List<List<String>> split(final List<String> tokens) {
+        logger.debug(String.format("Starting sentence extraction for tokens: %d", tokens.size()));
         final Optional<List<Character>> optionalSeparators = sentenceSeparatorExtractor.extract(tokens);
 
-        if (!optionalSeparators.isPresent()) {
+        if (!optionalSeparators.isPresent() || optionalSeparators.get().size() == 0) {
+            logger.error("Fail to extract any sentence separators, returning tokens");
             return new ArrayList<List<String>>(){{add(tokens);}};
         }
 
         final List<Character> separators = optionalSeparators.get();
+        logger.debug(String.format("Sentences separators in this text: %s", Arrays.toString(separators.toArray())));
 
         final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separators);
 
@@ -38,6 +45,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         }
 
         sentences.forEach(sentence -> prepareSentences(sentence, separators));
+        logger.debug(String.format("Founded %d sentences", sentences.size()));
 
         return sentences
                 .parallelStream()
@@ -59,18 +67,51 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
     @VisibilityReducedForTestPurposeOnly
     static List<String> prepareToken(final String token, final List<Character> separators) {
         final List<String> tokens = new ArrayList<>(3);
-        boolean prevCharacterIsSeparator = separators.contains(token.charAt(0));
-        int lastIndex = 0;
-        for (int i = 1; i < token.length(); i++) {
-            final boolean currentCharacterSeparator = separators.contains(token.charAt(i));
-            if (prevCharacterIsSeparator != currentCharacterSeparator) {
-                tokens.add(token.substring(lastIndex, i));
-                lastIndex = i;
-                prevCharacterIsSeparator = currentCharacterSeparator;
-            }
+        final int lastPosition = lastNonSeparatorPosition(token, separators);
+        final int firstPosition = firstNonSeparatorPosition(token, separators);
+
+        if (firstPosition != 0) {
+            tokens.add(token.substring(0, firstPosition));
         }
-        tokens.add(token.substring(lastIndex));
+
+        tokens.add(token.substring(firstPosition, lastPosition));
+
+        if (lastPosition != token.length()) {
+            tokens.add(token.substring(lastPosition, token.length()));
+        }
+
         return tokens;
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    static int firstNonSeparatorPosition(final String token, final List<Character> separarors) {
+        if (!separarors.contains(token.charAt(0))) {
+            return 0;
+        }
+        int i = 0;
+        while (i < token.length() && separarors.contains(token.charAt(i))) {
+            i++;
+        }
+        if (i == token.length()) {
+            return 0;
+        }
+        return i;
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    static int lastNonSeparatorPosition(final String token, final List<Character> separators) {
+        if (!separators.contains(token.charAt(token.length() - 1))) {
+            return token.length();
+        }
+        int i = token.length() - 1;
+        while (i > 0 && separators.contains(token.charAt(i))) {
+            i--;
+        }
+        i++;
+        if (i == 0) {
+            return token.length();
+        }
+        return i;
     }
 
     @VisibilityReducedForTestPurposeOnly
@@ -131,6 +172,10 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
             if (endTokens.size() == startIndex) {
                 return startIndex;
+            }
+
+            if (endTokens.size() == startIndex + 1) {
+                return startIndex + 1;
             }
 
             do {

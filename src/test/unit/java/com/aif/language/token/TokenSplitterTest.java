@@ -1,27 +1,10 @@
 package com.aif.language.token;
 
 
-import org.testng.annotations.BeforeMethod;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.RegexpCooker;
-import com.aif.language.sentence.ISentenceSeparatorExtractor;
-import com.aif.language.sentence.SentenceSplitter;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.testng.annotations.Test;
-import java.io.*;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

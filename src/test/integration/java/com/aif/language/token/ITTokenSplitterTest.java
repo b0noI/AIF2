@@ -10,11 +10,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import com.aif.language.common.ISplitter;
-import com.aif.language.common.RegexpCooker;
-import com.aif.language.sentence.ISentenceSeparatorExtractor;
-import com.aif.language.sentence.SentenceSplitter;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import org.testng.annotations.Test;
 import java.io.*;
 import java.net.URISyntaxException;
@@ -23,22 +19,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.*;
 
 public class ITTokenSplitterTest {
 
     
     //This two String are pathes for gethering statistic
-    private final String settingsPath = "/unitTestData/settings.xml";
+    private final String settingsPath = "/settings.xml";
     private final String rootResourcesPath = "/../../src/main/resources/";
     private Document doc;
 
@@ -61,12 +54,12 @@ public class ITTokenSplitterTest {
     
     
     
-    @Test
-    public void should_get_tokens_from_text_file_with_space_in_the_begining_using_PREDEFINED_separator() {
+    @Test (groups = { "acceptance-tests", "functional-fast" })
+    public void shouldGetTokensFromTextFileWithSpaceInTheBeginingUsingPREDEFINEDSeparator() {
 
         try {
 
-            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_space_begining.txt").toURI());
+            final Path PathToFile = Paths.get(getClass().getResource("/texts/RU/RU_text_with_space_begining.txt").toURI());
 
             //Expected results:
             final String lastToken = "токенов.";
@@ -88,12 +81,12 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
-    public void should_split_new_line_words() {
+    @Test (enabled = false, groups = { "acceptance-tests", "functional-fast" })
+    public void shouldSplitNewLineWords() {
 
         try {
 
-            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_text_with_new_lines.txt").toURI());
+            final Path PathToFile = Paths.get(getClass().getResource("/texts/RU/RU_text_with_new_lines.txt").toURI());
 
             final String lastToken = "токенов";
             final String firstToken = "В";
@@ -114,12 +107,12 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
-    public void should_get_tokens_from_file_using_probability_splitter() {
+    @Test (enabled = false, groups = { "acceptance-tests", "functional-fast" })
+    public void shouldGetTokensFromFileUsingProbabilitySplitter() {
 
         try {
 
-            final Path PathToFile = Paths.get(getClass().getResource("/unitTestData/TestData/RU/RU_10000_СеврюгаГрач.txt").toURI());
+            final Path PathToFile = Paths.get(getClass().getResource("/texts/RU/RU_10000_СеврюгаГрач.txt").toURI());
 
             final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
@@ -134,18 +127,8 @@ public class ITTokenSplitterTest {
         }
     }
 
-    public void test2() {
-        String textFromFileToString = textFromFileToString(Paths.get("/Users/vsk/src/AIF2/src/main/resources/TestData/RU/pno.txt"));
-        final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
-        final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.STAT.getInstance());
-        final List<String> tokens = tokenSplitter.split(textFromFileToString);
-        final List<List<String>> result = sentenceSplitter.split(tokens);
-        assertTrue(result.size() > 0);
-    }
-
-    @Ignore
-    //TODO this is not a real test, code below used for generating statistic data for probability splitter
-    public void generate_statistic_for_probability_splitter() {
+    @Test (enabled = false, groups = "help-test")
+    public void generateStatisticForProbabilitySplitter() {
 
         final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
         final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
@@ -165,9 +148,8 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
-    @Ignore
-    public void create_file_set_for_statistic_for_PROBABILITY_based_splitting() {
+    @Test (enabled = false, groups = "help-test")
+    public void createFileSetForStatisticForPROBABILITYBasedSplitting() {
 
         final TextGenerator tg = new TextGenerator();
 
@@ -254,23 +236,4 @@ public class ITTokenSplitterTest {
         return output;
     }
 
-//    private void saveStatisticToFile(String fileName, int correctTokensNum, int foundTokensNum) {
-//
-//        try( BufferedWriter bw = new BufferedWriter(new FileWriter(Paths.get(pathToStatisticResult).toFile(), true))) {
-//
-//            bw.write(LocalDateTime.now().toString() + "," + fileName + "," + correctTokensNum + "," + foundTokensNum);
-//            bw.newLine();
-//
-//        }catch (IOException e) {
-//
-//        }
-//
-//
-//
-//    }
-//    private int getTokensNumFromFileName(String name) {
-//        String[] elems = name.split("_");
-//        return Integer.parseInt(elems[1]);
-//    }
-//
 }
