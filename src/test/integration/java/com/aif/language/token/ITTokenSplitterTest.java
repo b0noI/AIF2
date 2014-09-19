@@ -11,8 +11,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import com.aif.language.sentence.ISentenceSeparatorExtractor;
-import com.aif.language.sentence.SentenceSplitter;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.testng.annotations.Test;
 import java.io.*;

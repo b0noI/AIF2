@@ -2,6 +2,7 @@ package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import org.apache.log4j.Logger;
 
 import java.util.*;
@@ -11,7 +12,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
     private static  final   Logger                      logger                      = Logger.getLogger(SentenceSplitter.class)  ;
 
-    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor                                              ;
+    private         final ISentenceSeparatorExtractor sentenceSeparatorExtractor                                              ;
 
     public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;

@@ -1,4 +1,4 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
 import com.aif.language.common.IExtractor;
 import com.aif.language.common.VisibilityReducedForCLI;
@@ -6,8 +6,6 @@ import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {

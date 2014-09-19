@@ -1,6 +1,7 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
+import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;

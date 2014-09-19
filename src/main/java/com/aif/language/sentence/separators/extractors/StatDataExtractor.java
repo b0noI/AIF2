@@ -1,4 +1,4 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
 import com.aif.language.common.IExtractor;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;

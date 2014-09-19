@@ -1,6 +1,7 @@
 package com.aif.language.sentence;
 
 import com.aif.common.FileHelper;
+import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import com.aif.language.token.TokenSplitter;
 import org.testng.annotations.Test;
 

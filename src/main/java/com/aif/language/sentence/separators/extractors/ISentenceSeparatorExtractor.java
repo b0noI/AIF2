@@ -1,11 +1,10 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
 
 
 import com.aif.language.common.IExtractor;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ISentenceSeparatorExtractor extends IExtractor<List<String>, List<Character>> {
 

@@ -1,4 +1,4 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
 import java.util.ArrayList;
 import java.util.List;

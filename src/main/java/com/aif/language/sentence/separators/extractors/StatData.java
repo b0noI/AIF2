@@ -1,6 +1,4 @@
-package com.aif.language.sentence;
-
-import com.aif.language.common.IExtractor;
+package com.aif.language.sentence.separators.extractors;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

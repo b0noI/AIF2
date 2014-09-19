@@ -1,13 +1,11 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.*;
 
 import static org.mockito.Mockito.*;
-import static org.testng.Assert.*;
 import static org.testng.Assert.assertEquals;
 
 public class StatSentenceSeparatorExtractorTest {

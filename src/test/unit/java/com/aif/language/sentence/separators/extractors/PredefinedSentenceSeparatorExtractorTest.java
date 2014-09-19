@@ -1,5 +1,6 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
+import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;

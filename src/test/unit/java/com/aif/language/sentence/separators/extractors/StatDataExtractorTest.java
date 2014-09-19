@@ -1,6 +1,8 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
 import com.aif.language.common.IExtractor;
+import com.aif.language.sentence.separators.extractors.StatData;
+import com.aif.language.sentence.separators.extractors.StatDataExtractor;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -26,7 +28,7 @@ public class StatDataExtractorTest {
         // creating test instance
         final StatDataExtractor statDataExtractor = new StatDataExtractor(
                 str -> Optional.of(str.charAt(0)),
-                str -> Optional.of(str.charAt(0))){
+                str -> Optional.of(str.charAt(0))) {
 
             @Override
             void parsToken(final String token, final StatData statData) {

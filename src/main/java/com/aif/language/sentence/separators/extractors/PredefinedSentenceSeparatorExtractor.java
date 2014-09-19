@@ -1,7 +1,6 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.separators.extractors;
 
-import com.aif.language.token.ITokenSeparatorExtractor;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
