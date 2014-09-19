@@ -55,7 +55,7 @@ public class ITTokenSplitterTest {
     
     
     
-    @Test
+    @Test (groups = { "acceptance-tests", "functional-fast" })
     public void shouldGetTokensFromTextFileWithSpaceInTheBeginingUsingPREDEFINEDSeparator() {
 
         try {
@@ -82,7 +82,7 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
+    @Test (groups = { "acceptance-tests", "functional-fast" })
     public void shouldSplitNewLineWords() {
 
         try {
@@ -108,7 +108,7 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
+    @Test (groups = { "acceptance-tests", "functional-fast" })
     public void shouldGetTokensFromFileUsingProbabilitySplitter() {
 
         try {
@@ -129,7 +129,7 @@ public class ITTokenSplitterTest {
     }
 
     @Ignore
-    //TODO this is not a real test, code below used for generating statistic data for probability splitter
+    @Test (groups = "help-test")
     public void generateStatisticForProbabilitySplitter() {
 
         final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
@@ -150,8 +150,9 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
+
     @Ignore
+    @Test (groups = "help-test")
     public void createFileSetForStatisticForPROBABILITYBasedSplitting() {
 
         final TextGenerator tg = new TextGenerator();

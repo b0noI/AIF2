@@ -26,7 +26,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
         } ;
     }
 
-    @Test(groups = { "quality-test", "acceptance-tests" }, dataProvider = "path_provider")
+    @Test(groups = { "acceptance-tests", "quality-fast" }, dataProvider = "path_provider")
     public void testSeparatorExtractionQuality(final String path) throws Exception {
         // input arguments
         String inputText;

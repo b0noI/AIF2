@@ -41,7 +41,7 @@ public class SentenceSplitterQualityTest {
         };
     }
 
-    @Test(groups = "quality-test", dataProvider = "texts")
+    @Test(groups = {"integration-tests", "quality-fast"}, dataProvider = "texts")
     public void sentenceSplittersTest(final TestData testData) throws Exception {
 
         try(final InputStream resourceFile =

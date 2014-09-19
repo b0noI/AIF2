@@ -1,6 +1,7 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -10,7 +11,8 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class StanfordNLPSentenceSplitterTest {
 
-    @Test
+    @Ignore
+    @Test (groups = "help-test")
     public void testSplit() {
 
         final String inputString = " First sentence. Second sentence.";
