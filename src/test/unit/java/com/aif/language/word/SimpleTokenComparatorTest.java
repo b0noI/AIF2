@@ -69,4 +69,12 @@ public class SimpleTokenComparatorTest {
         Double actual = comparator.compare("aaaaabcde", "aab");
         assertEquals(actual, expected);
     }
+
+    @Test(groups = "unit-tests")
+    public void testCompareAnagrams() throws Exception {
+        Double expected = 1.0;
+        ITokenComparator comparator = new SimpleTokenComparator();
+        Double actual = comparator.compare("mate", "tame");
+        assertEquals(actual, expected);
+    }
 }
