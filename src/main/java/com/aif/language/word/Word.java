@@ -59,7 +59,7 @@ public class Word extends AbstractWord {
         that.getTokens()
             .forEach(token -> {
                 long count = tokensCountMap.getOrDefault(token, 0l) + that.tokenCount(token);
-                tokensCountMap.put(token, count)
+                tokensCountMap.put(token, count);
             });
     }
 }
