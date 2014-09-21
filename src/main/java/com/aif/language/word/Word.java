@@ -55,6 +55,8 @@ public class Word extends AbstractWord {
     }
 
     @Override
+    // TODO: merge should either return new AbstractWord or use thread safe tokensCountMap
+    // (HashMap is not thread safe)
     public void merge(AbstractWord that) {
         that.getTokens()
             .forEach(token -> {
@@ -62,4 +64,5 @@ public class Word extends AbstractWord {
                 tokensCountMap.put(token, count);
             });
     }
+
 }
