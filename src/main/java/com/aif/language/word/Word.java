@@ -5,22 +5,23 @@ import java.util.*;
 public class Word extends AbstractWord {
 
     private static final double AVG_THRESHOLD = 0.75;
-    private final Map<String, Long> tokensCount = new HashMap<>();
+
+    private final Map<String, Long> tokensCountMap = new HashMap<>();
     private final ITokenComparator comparator;
 
     public Word(String token, ITokenComparator comparator) {
-        tokensCount.put(token, (long) 1);
+        tokensCountMap.put(token, (long) 1);
         this.comparator = comparator;
     }
 
     @Override
     public Set<String> getTokens() {
-        return tokensCount.keySet();
+        return tokensCountMap.keySet();
     }
 
     @Override
     public long tokenCount(String token) {
-        return tokensCount.get(token);
+        return tokensCountMap.get(token);
     }
 
     @Override
@@ -35,27 +36,30 @@ public class Word extends AbstractWord {
         if (o == null || getClass() != o.getClass()) return false;
 
         Word that = (Word) o;
-        Double sum = this.getTokens().stream()
-                .mapToDouble(
-                    thisToken -> that.getTokens().stream()
-                            .mapToDouble(
-                                    thatToken -> comparator.compare(thisToken, thatToken)
-                            ).sum()
-                ).sum();
+        Double sum = getTokens()
+                .stream()
+                .mapToDouble(t1 -> that.getTokens()
+                                .stream()
+                                .mapToDouble(t2 -> comparator.compare(t1, t2))
+                                .sum()
+                )
+                .sum();
+
         Double avg = sum / (this.getTokens().size() * that.getTokens().size());
         return (avg > AVG_THRESHOLD);
     }
 
     @Override
     public int hashCode() {
-        return tokensCount.hashCode();
+        return tokensCountMap.hashCode();
     }
 
     @Override
     public void merge(AbstractWord that) {
-        that.getTokens().forEach(
-                thatToken -> tokensCount.put(thatToken, that.tokenCount(thatToken) +
-                (tokensCount.containsKey(thatToken) ? tokensCount.get(thatToken) : 0l))
-        );
+        that.getTokens()
+            .forEach(token -> {
+                long count = tokensCountMap.getOrDefault(token, 0l) + that.tokenCount(token);
+                tokensCountMap.put(token, count)
+            });
     }
 }
