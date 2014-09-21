@@ -17,7 +17,8 @@ public interface ISentenceSeparatorsGrouper {
 
     public enum Type {
 
-        PREDEFINED(new PredefinedGrouper());
+        PREDEFINED(new PredefinedGrouper()),
+        PROBABILITY(new StatGrouper());
 
         private final ISentenceSeparatorsGrouper instance;
 

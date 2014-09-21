@@ -3,6 +3,7 @@ package com.aif.language.sentence.separators.extractors;
 import com.aif.language.common.IExtractor;
 import com.aif.language.common.VisibilityReducedForCLI;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.aif.language.token.TokenMappers;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;
@@ -76,17 +77,7 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
     @VisibilityReducedForTestPurposeOnly
     List<String> filter(final List<String> tokens) {
         return tokens.parallelStream()
-                .map(String::toLowerCase).map(token -> {
-                    int index = token.length();
-                    while (index > 1 &&
-                            token.charAt(index - 1) == token.charAt(index - 2)) {
-                        index--;
-                    }
-                    if (index != token.length()) {
-                        return token.substring(0, index);
-                    }
-                    return token;
-                })
+                .map(String::toLowerCase).map(TokenMappers::removeMultipleEndCharacters)
                 .filter(token -> token.length() > MINIMUM_TOKEN_SIZE)
                 .collect(Collectors.toList());
     }
