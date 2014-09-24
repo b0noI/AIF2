@@ -42,7 +42,7 @@ public class SentenceSplitterTest {
         };
 
         // creating test instance
-        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(mockSentenceSeparatorExtractor);
+        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(mockSentenceSeparatorExtractor, null);
 
         // execution test
         final List<List<String>> actaulResult = testInstance.split(inputTokens);
@@ -238,7 +238,7 @@ public class SentenceSplitterTest {
         // creating test instance
 
         // execution test
-        final List<Boolean> actualResult = SentenceSplitter.mapToBooleans(inputTokens, inputCharacters);
+        final List<Boolean> actualResult = SentenceSplitter.mapToBooleans(inputTokens, null);
 
         // result assert
         assertEquals(expectedResult, actualResult);

@@ -3,6 +3,7 @@ package com.aif.language.sentence;
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import org.apache.log4j.Logger;
 
 import java.util.*;
@@ -12,14 +13,19 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
     private static  final   Logger                      logger                      = Logger.getLogger(SentenceSplitter.class)  ;
 
-    private         final ISentenceSeparatorExtractor sentenceSeparatorExtractor                                              ;
+    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor                                              ;
 
-    public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor) {
+    private         final ISentenceSeparatorsGrouper    sentenceSeparatorsGrouper                                               ;
+
+    public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor,
+                            final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
+        this.sentenceSeparatorsGrouper = sentenceSeparatorsGrouper;
     }
 
     public SentenceSplitter() {
-        this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance());
+        this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance(),
+                ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance());
     }
 
     @Override
@@ -35,7 +41,9 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         final List<Character> separators = optionalSeparators.get();
         logger.debug(String.format("Sentences separators in this text: %s", Arrays.toString(separators.toArray())));
 
-        final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separators);
+        final Map<ISentenceSeparatorsGrouper.Group, Set<Character>> separatorsGroup = sentenceSeparatorsGrouper.group(tokens, separators);
+
+        final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separatorsGroup.get(ISentenceSeparatorsGrouper.Group.GROUP_1));
 
         final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
 
@@ -44,7 +52,6 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
             sentences.add(sentenceIterator.next());
         }
 
-        sentences.forEach(sentence -> prepareSentences(sentence, separators));
         logger.debug(String.format("Founded %d sentences", sentences.size()));
 
         return sentences
@@ -115,7 +122,7 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
     }
 
     @VisibilityReducedForTestPurposeOnly
-    static List<Boolean> mapToBooleans(final List<String> tokens, final List<Character> separators) {
+    static List<Boolean> mapToBooleans(final List<String> tokens, final Set<Character> separators) {
         final List<Boolean> result = new ArrayList<>(tokens.size());
 
         for (int i = 0; i < tokens.size(); i++) {

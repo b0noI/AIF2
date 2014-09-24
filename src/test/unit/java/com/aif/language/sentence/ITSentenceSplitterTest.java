@@ -2,6 +2,7 @@ package com.aif.language.sentence;
 
 import com.aif.common.FileHelper;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import com.aif.language.token.TokenSplitter;
 import org.testng.annotations.Test;
 
@@ -22,7 +23,8 @@ public class ITSentenceSplitterTest {
             final String text = FileHelper.readAllText(modelResource);
 
             final TokenSplitter tokenSplitter = new TokenSplitter();
-            final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance());
+            final SentenceSplitter sentenceSplitter = new SentenceSplitter(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance(),
+                    ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance());
 
             final List<List<String>> actualResult = sentenceSplitter.split(tokenSplitter.split(text));
 

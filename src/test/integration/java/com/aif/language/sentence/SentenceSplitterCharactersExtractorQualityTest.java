@@ -22,7 +22,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
        return new String[][]{
                {"46800-0.txt"},
                {"for_sentence_split_test_4939.txt"},                 // not working on CI due to Russian text
-               // {"for_sentence_split_test_opencorpora_RU_5000.txt"},
+               {"for_sentence_split_test_opencorpora_RU_5000.txt"},
                {"RU_alice_in_the_wonderland.txt"}                    // not working on CI due to Russian text
         } ;
     }
