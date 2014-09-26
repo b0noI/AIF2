@@ -2,6 +2,7 @@ package com.aif.language.sentence;
 
 import com.aif.common.FileHelper;
 import com.aif.language.common.ISplitter;
+import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import com.aif.language.token.TokenSplitter;
@@ -55,7 +56,8 @@ public class SentenceSplitterCharactersExtractorQualityTest {
         // execution test
         final List<Character> actualResult = testInstance.extract(inputTokens).get();
         ISentenceSeparatorsGrouper separatorsGrouper = ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance();
-        separatorsGrouper.group(inputTokens, actualResult);
+        ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory = ISentenceSeparatorGroupsClassificatory.Type.PROBABILITY.getInstance();
+        sentenceSeparatorGroupsClassificatory.classify(inputTokens, separatorsGrouper.group(inputTokens, actualResult));
 
         // result assert
 

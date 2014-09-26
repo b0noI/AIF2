@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 class StatGrouper implements ISentenceSeparatorsGrouper {
 
     @Override
-    public Map<Group, Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
+    public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
 
         final List<String> filteredTokens = filterTokens(tokens);
 
@@ -18,44 +18,47 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
         filterConnections(connections);
 
         // all test shows that this magic .4 works much batter then any smart adaptive methods
-        final List<CharactersGroup> groups = parsGroup(connections, .4);
+        final List<CharactersGroup> groups = parsGroup(connections);
 
-        return group(groups);
+        return groups
+                .stream()
+                .map(CharactersGroup::getSplitters)
+                .collect(Collectors.toList());
     }
 
-    // TODO: this method should be done in different way!
-    private Map<Group, Set<Character>> group(final List<CharactersGroup> groups) {
-        final Set<Character> group1 = new HashSet<>();
-        final Set<Character> group2 = new HashSet<>();
-
-        groups.forEach(gr -> {
-            if (gr.getSplitters().contains('.')) {
-                group1.addAll(gr.getSplitters());
-            } else {
-                group2.addAll(gr.getSplitters());
-            }
-        });
-        final Map<Group, Set<Character>> result = new HashMap<>();
-        result.put(Group.GROUP_1, group1);
-        result.put(Group.GROUP_2, group2);
-        return result;
-    }
-
-//    private List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections) {
-//        double limit = .4;
-//        double prevLimit = 1.;
-//        do {
-//            List<CharactersGroup> result = parsGroup(connections, limit);
-//            if (result.size() > 2) {
-//                prevLimit = limit;
-//                limit /= 2.;
-//            } else if (result.size() < 2) {
-//                limit = (limit + prevLimit) / 2.;
+//    // TODO: this method should be done in different way!
+//    private Map<Group, Set<Character>> group(final List<CharactersGroup> groups) {
+//        final Set<Character> group1 = new HashSet<>();
+//        final Set<Character> group2 = new HashSet<>();
+//
+//        groups.forEach(gr -> {
+//            if (gr.getSplitters().contains('.')) {
+//                group1.addAll(gr.getSplitters());
 //            } else {
-//                return result;
+//                group2.addAll(gr.getSplitters());
 //            }
-//        } while (true);
+//        });
+//        final Map<Group, Set<Character>> result = new HashMap<>();
+//        result.put(Group.GROUP_1, group1);
+//        result.put(Group.GROUP_2, group2);
+//        return result;
 //    }
+
+    private List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections) {
+        double limit = .4;
+        double prevLimit = 1.;
+        do {
+            List<CharactersGroup> result = parsGroup(connections, limit);
+            if (result.size() > 2) {
+                prevLimit = limit;
+                limit /= 2.;
+            } else if (result.size() < 2) {
+                limit = (limit + prevLimit) / 2.;
+            } else {
+                return result;
+            }
+        } while (true);
+    }
 
     private List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections, final double limit) {
         final List<CharactersGroup> groups = new ArrayList<>();
@@ -69,22 +72,26 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
                             if (connections.get(key).isEmpty()) return;
                             if (connections.get(key).keySet().size() <= 3) return;
 
-                            final Set<Character> characters = new HashSet<>(connections.get(key).keySet());
+                            final Map<Character, Double> characters = new HashMap<>();
+                            connections.get(key).keySet().forEach(key1 -> {
+                                double max = (double)connections.get(key).keySet().stream().mapToInt(key2 -> connections.get(key).get(key2)).max().getAsInt();
+                                characters.put(key1, (double)connections.get(key).get(key1) / max);
+                            });
 
                             if (groups.isEmpty()) {
-                                final CharactersGroup charactersGroup = new CharactersGroup(characters, key);
+                                final CharactersGroup charactersGroup = new CharactersGroup(new HashSet<>(characters.keySet()), key);
                                 groups.add(charactersGroup);
                                 return;
                             }
 
                             for (CharactersGroup charactersGroup : groups) {
                                 if (charactersGroup.closeTo(characters) > limit) {
-                                    charactersGroup.addCharacters(characters);
+                                    charactersGroup.addCharacters(characters.keySet());
                                     charactersGroup.addSplitter(key);
                                     return;
                                 }
                             }
-                            final CharactersGroup charactersGroup = new CharactersGroup(characters, key);
+                            final CharactersGroup charactersGroup = new CharactersGroup(new HashSet<>(characters.keySet()), key);
                             groups.add(charactersGroup);
                         }
                 );
@@ -171,12 +178,12 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
             this.splitters.add(spliter);
         }
 
-        public double closeTo(final Collection<Character> characters) {
-            final int commonCharacters = characters.stream().mapToInt(ch -> {
-                if (groupCharacters.contains(ch)) return 1;
-                return 0;
+        public double closeTo(final Map<Character, Double> characters) {
+            final double commonCharacters = characters.keySet().stream().mapToDouble(ch -> {
+                if (groupCharacters.contains(ch)) return characters.get(ch);
+                return 0.;
             }).sum();
-            return (double)commonCharacters /
+            return commonCharacters /
                     (double)Math.min(characters.size(), groupCharacters.size());
         }
 

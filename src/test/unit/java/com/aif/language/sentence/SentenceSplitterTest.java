@@ -42,7 +42,7 @@ public class SentenceSplitterTest {
         };
 
         // creating test instance
-        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(mockSentenceSeparatorExtractor, null);
+        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(mockSentenceSeparatorExtractor, null, null);
 
         // execution test
         final List<List<String>> actaulResult = testInstance.split(inputTokens);

@@ -9,7 +9,7 @@ class PredefinedGrouper implements ISentenceSeparatorsGrouper {
     });
 
     @Override
-    public Map<Group, Set<Character>> group(List<String> tokens, List<Character> splitters) {
+    public List<Set<Character>> group(List<String> tokens, List<Character> splitters) {
         final Set<Character> group1 = new HashSet<>();
         final Set<Character> group2 = new HashSet<>();
 
@@ -21,9 +21,9 @@ class PredefinedGrouper implements ISentenceSeparatorsGrouper {
             }
         });
 
-        final Map<Group, Set<Character>> groups = new HashMap<>();
-        groups.put(Group.GROUP_1, group1);
-        groups.put(Group.GROUP_2, group2);
+        final List<Set<Character>> groups = new ArrayList<>(2);
+        groups.add(group1);
+        groups.add(group2);
         return groups;
     }
 

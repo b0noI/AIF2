@@ -6,14 +6,7 @@ import java.util.Set;
 
 public interface ISentenceSeparatorsGrouper {
 
-    public Map<Group, Set<Character>> group(final List<String> tokens, final List<Character> splitters);
-
-    public enum Group {
-
-        GROUP_1,
-        GROUP_2
-
-    }
+    public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters);
 
     public enum Type {
 

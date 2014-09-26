@@ -2,6 +2,7 @@ package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import org.apache.log4j.Logger;
@@ -11,21 +12,26 @@ import java.util.stream.Collectors;
 
 public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
 
-    private static  final   Logger                      logger                      = Logger.getLogger(SentenceSplitter.class)  ;
+    private static  final   Logger                                  logger                                  = Logger.getLogger(SentenceSplitter.class)  ;
 
-    private         final   ISentenceSeparatorExtractor sentenceSeparatorExtractor                                              ;
+    private         final   ISentenceSeparatorExtractor             sentenceSeparatorExtractor                                                          ;
 
-    private         final ISentenceSeparatorsGrouper    sentenceSeparatorsGrouper                                               ;
+    private         final   ISentenceSeparatorsGrouper              sentenceSeparatorsGrouper                                                           ;
+
+    private         final ISentenceSeparatorGroupsClassificatory    sentenceSeparatorGroupsClassificatory                                               ;
 
     public SentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor,
-                            final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper) {
+                            final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper,
+                            final ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
         this.sentenceSeparatorsGrouper = sentenceSeparatorsGrouper;
+        this.sentenceSeparatorGroupsClassificatory = sentenceSeparatorGroupsClassificatory;
     }
 
     public SentenceSplitter() {
         this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance(),
-                ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance());
+                ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance(),
+                ISentenceSeparatorGroupsClassificatory.Type.PROBABILITY.getInstance());
     }
 
     @Override
@@ -41,9 +47,11 @@ public class SentenceSplitter implements ISplitter<List<String>, List<String>> {
         final List<Character> separators = optionalSeparators.get();
         logger.debug(String.format("Sentences separators in this text: %s", Arrays.toString(separators.toArray())));
 
-        final Map<ISentenceSeparatorsGrouper.Group, Set<Character>> separatorsGroup = sentenceSeparatorsGrouper.group(tokens, separators);
+        final List<Set<Character>> separatorsGroups = sentenceSeparatorsGrouper.group(tokens, separators);
 
-        final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separatorsGroup.get(ISentenceSeparatorsGrouper.Group.GROUP_1));
+        final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> separatorsGroupsClassified = sentenceSeparatorGroupsClassificatory.classify(tokens, separatorsGroups);
+
+        final List<Boolean> listOfPositions = SentenceSplitter.mapToBooleans(tokens, separatorsGroupsClassified.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1));
 
         final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
 
