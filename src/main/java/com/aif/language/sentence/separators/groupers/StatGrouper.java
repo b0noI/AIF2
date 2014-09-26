@@ -47,15 +47,23 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
     private List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections) {
         double limit = .4;
         double prevLimit = 1.;
+        List<CharactersGroup> lastCorrectResult = null;
         do {
             List<CharactersGroup> result = parsGroup(connections, limit);
-            if (result.size() > 2) {
+            if (Math.abs(prevLimit - limit) < 0.1) {
+                if (lastCorrectResult != null) {
+                    return lastCorrectResult;
+                }
+                return result;
+            }
+            if (result.size() == 2) {
+                lastCorrectResult = result;
+            }
+            if (result.size() >= 2) {
                 prevLimit = limit;
                 limit /= 2.;
             } else if (result.size() < 2) {
                 limit = (limit + prevLimit) / 2.;
-            } else {
-                return result;
             }
         } while (true);
     }
@@ -79,19 +87,19 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
                             });
 
                             if (groups.isEmpty()) {
-                                final CharactersGroup charactersGroup = new CharactersGroup(new HashSet<>(characters.keySet()), key);
+                                final CharactersGroup charactersGroup = new CharactersGroup(characters, key);
                                 groups.add(charactersGroup);
                                 return;
                             }
 
                             for (CharactersGroup charactersGroup : groups) {
                                 if (charactersGroup.closeTo(characters) > limit) {
-                                    charactersGroup.addCharacters(characters.keySet());
+                                    charactersGroup.addCharacters(characters);
                                     charactersGroup.addSplitter(key);
                                     return;
                                 }
                             }
-                            final CharactersGroup charactersGroup = new CharactersGroup(new HashSet<>(characters.keySet()), key);
+                            final CharactersGroup charactersGroup = new CharactersGroup(characters, key);
                             groups.add(charactersGroup);
                         }
                 );
@@ -169,18 +177,18 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
 
     private static class CharactersGroup {
 
-        private final Set<Character> groupCharacters;
+        private final Map<Character, Double> groupCharacters;
 
         private final Set<Character> splitters = new HashSet<>();
 
-        private CharactersGroup(Set<Character> characters, final Character spliter) {
+        private CharactersGroup(Map<Character, Double> characters, final Character spliter) {
             this.groupCharacters = characters;
             this.splitters.add(spliter);
         }
 
         public double closeTo(final Map<Character, Double> characters) {
             final double commonCharacters = characters.keySet().stream().mapToDouble(ch -> {
-                if (groupCharacters.contains(ch)) return characters.get(ch);
+                if (groupCharacters.keySet().contains(ch)) return characters.get(ch) * groupCharacters.get(ch);
                 return 0.;
             }).sum();
             return commonCharacters /
@@ -188,15 +196,22 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
         }
 
         public Set<Character> getGroupCharacters() {
-            return groupCharacters;
+            return groupCharacters.keySet();
         }
 
         public Set<Character> getSplitters() {
             return splitters;
         }
 
-        public void addCharacters(final Collection<Character> characters) {
-            groupCharacters.addAll(characters);
+        public void addCharacters(final Map<Character, Double> characters) {
+            characters.entrySet().forEach(element -> {
+                if (groupCharacters.keySet().contains(element.getKey())) {
+                    final double value = groupCharacters.get(element.getKey());
+                    groupCharacters.put(element.getKey(), (value + element.getValue()) / 2.);
+                } else {
+                    groupCharacters.put(element.getKey(), element.getValue());
+                }
+            });
         }
 
         public void addSplitter(final Character splitter) {

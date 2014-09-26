@@ -55,11 +55,20 @@ class StatSentenceSeparatorGroupsClassificatory implements ISentenceSeparatorGro
             }
         }
 
-        Map<Integer, Double> sum = new HashMap<>();
+        final Map<Integer, Double> sum = new HashMap<>();
         groupsIntegrationFactor.keySet().forEach(key -> sum.put(key, groupsIntegrationFactor.get(key).stream().mapToDouble(i -> (double)i).average().getAsDouble()));
 
-        return null;
-
+        final Map<Group, Set<Character>> result = new HashMap<>();
+        result.put(Group.GROUP_2, new HashSet<>());
+        final double max = sum.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
+        sum.keySet().forEach(key -> {
+            if (sum.get(key) ==  max) {
+                result.put(Group.GROUP_1, separatorsGroups.get(key - 1));
+            } else {
+                result.get(Group.GROUP_2).addAll(separatorsGroups.get(key - 1));
+            }
+        });
+        return result;
     }
 
 }
