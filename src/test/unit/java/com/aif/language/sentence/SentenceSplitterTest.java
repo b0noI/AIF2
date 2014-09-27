@@ -40,7 +40,11 @@ public class SentenceSplitterTest {
         final ISentenceSeparatorsGrouper mockSentenceSeparatorsGrouper = mock(ISentenceSeparatorsGrouper.class);
         when(mockSentenceSeparatorsGrouper.group(inputTokens, inputCharacters)).thenReturn(mockGroups);
 
+        final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> classifiedGroups = new HashMap<>();
+        classifiedGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1, mockGroup1);
+        classifiedGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2, Collections.emptySet());
         final ISentenceSeparatorGroupsClassificatory mockSentenceSeparatorGroupsClassificatory = mock(ISentenceSeparatorGroupsClassificatory.class);
+        when(mockSentenceSeparatorGroupsClassificatory.classify(inputTokens, mockGroups)).thenReturn(classifiedGroups);
 
         // expected results
         final List<List<String>> expectedResult = new ArrayList<List<String>>() {
