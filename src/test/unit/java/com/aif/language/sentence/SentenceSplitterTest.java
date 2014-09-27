@@ -1,13 +1,12 @@
 package com.aif.language.sentence;
 
 import com.aif.language.common.ISplitter;
+import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
@@ -31,6 +30,18 @@ public class SentenceSplitterTest {
         final ISentenceSeparatorExtractor mockSentenceSeparatorExtractor = mock(ISentenceSeparatorExtractor.class);
         when(mockSentenceSeparatorExtractor.extract(eq(inputTokens))).thenReturn(Optional.of(inputCharacters));
 
+        final List<Set<Character>> mockGroups = new ArrayList<>();
+        final Set<Character> mockGroup1 = new HashSet<>();
+        mockGroup1.add('(');
+        mockGroup1.add('!');
+        mockGroup1.add('.');
+        mockGroups.add(mockGroup1);
+        mockGroups.add(Collections.emptySet());
+        final ISentenceSeparatorsGrouper mockSentenceSeparatorsGrouper = mock(ISentenceSeparatorsGrouper.class);
+        when(mockSentenceSeparatorsGrouper.group(inputTokens, inputCharacters)).thenReturn(mockGroups);
+
+        final ISentenceSeparatorGroupsClassificatory mockSentenceSeparatorGroupsClassificatory = mock(ISentenceSeparatorGroupsClassificatory.class);
+
         // expected results
         final List<List<String>> expectedResult = new ArrayList<List<String>>() {
             {
@@ -42,13 +53,16 @@ public class SentenceSplitterTest {
         };
 
         // creating test instance
-        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(mockSentenceSeparatorExtractor, null, null);
+        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(
+                mockSentenceSeparatorExtractor,
+                mockSentenceSeparatorsGrouper,
+                mockSentenceSeparatorGroupsClassificatory);
 
         // execution test
-        final List<List<String>> actaulResult = testInstance.split(inputTokens);
+        final List<List<String>> actualResult = testInstance.split(inputTokens);
 
         // result assert
-        assertEquals(actaulResult, expectedResult);
+        assertEquals(actualResult, expectedResult);
 
         // mocks verify
         verify(mockSentenceSeparatorExtractor, times(1)).extract(eq(inputTokens));
@@ -224,9 +238,12 @@ public class SentenceSplitterTest {
                 "(tok.en",
                 "t(ok.en",
         });
-        final List<Character> inputCharacters = Arrays.asList(new Character[]{
-                '.', ')', '(', '!'
-        });
+        final Set<Character> inputCharacters = new HashSet<Character>(){{
+                add('.');
+                add(')');
+                add('(');
+                add('!');
+        }};
 
         // mocks
 
@@ -238,7 +255,7 @@ public class SentenceSplitterTest {
         // creating test instance
 
         // execution test
-        final List<Boolean> actualResult = SentenceSplitter.mapToBooleans(inputTokens, null);
+        final List<Boolean> actualResult = SentenceSplitter.mapToBooleans(inputTokens, inputCharacters);
 
         // result assert
         assertEquals(expectedResult, actualResult);

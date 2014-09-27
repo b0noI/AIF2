@@ -37,8 +37,14 @@ public class PredefinedGrouperTest {
         final List<Set<Character>> actualResult = sentenceSeparatorsGrouper.group(inputTokens, inputSplitters);
 
         // result assert
-        assertEquals(null, expectedGroup1);
-        assertEquals(null, expectedGroup2);
+        assertTrue(actualResult.size() == 2);
+        if (actualResult.get(0).equals(expectedGroup1)) {
+            assertEquals(actualResult.get(0), expectedGroup1);
+            assertEquals(actualResult.get(1), expectedGroup2);
+        } else {
+            assertEquals(actualResult.get(1), expectedGroup1);
+            assertEquals(actualResult.get(0), expectedGroup2);
+        }
 
         // mocks verify
     }
