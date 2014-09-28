@@ -41,6 +41,10 @@ public class SentenceSplitterTest {
         when(mockSentenceSeparatorsGrouper.group(inputTokens, inputCharacters)).thenReturn(mockGroups);
 
         final ISentenceSeparatorGroupsClassificatory mockSentenceSeparatorGroupsClassificatory = mock(ISentenceSeparatorGroupsClassificatory.class);
+        final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> classGroups = new HashMap<>();
+        classGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1, mockGroup1);
+        classGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2, Collections.emptySet());
+        when(mockSentenceSeparatorGroupsClassificatory.classify(inputTokens, mockGroups)).thenReturn(classGroups);
 
         // expected results
         final List<List<String>> expectedResult = new ArrayList<List<String>>() {
@@ -66,6 +70,11 @@ public class SentenceSplitterTest {
 
         // mocks verify
         verify(mockSentenceSeparatorExtractor, times(1)).extract(eq(inputTokens));
+        verify(mockSentenceSeparatorsGrouper, times(1)).group(inputTokens, inputCharacters);
+        verify(mockSentenceSeparatorGroupsClassificatory, times(1)).classify(inputTokens, mockGroups);
+        verifyNoMoreInteractions(mockSentenceSeparatorExtractor);
+        verifyNoMoreInteractions(mockSentenceSeparatorsGrouper);
+        verifyNoMoreInteractions(mockSentenceSeparatorGroupsClassificatory);
     }
 
     @Test(groups = "unit-tests")

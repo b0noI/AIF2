@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 class StatGrouper implements ISentenceSeparatorsGrouper {
 
+    private static final double START_LIMIT = .4;
+
+    private static final double QUALITY_STEP = 0.1;
+
     @Override
     public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
 
@@ -17,7 +21,6 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
 
         filterConnections(connections);
 
-        // all test shows that this magic .4 works much batter then any smart adaptive methods
         final List<CharactersGroup> groups = parsGroup(connections);
 
         return groups
@@ -26,31 +29,13 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
                 .collect(Collectors.toList());
     }
 
-//    // TODO: this method should be done in different way!
-//    private Map<Group, Set<Character>> group(final List<CharactersGroup> groups) {
-//        final Set<Character> group1 = new HashSet<>();
-//        final Set<Character> group2 = new HashSet<>();
-//
-//        groups.forEach(gr -> {
-//            if (gr.getSplitters().contains('.')) {
-//                group1.addAll(gr.getSplitters());
-//            } else {
-//                group2.addAll(gr.getSplitters());
-//            }
-//        });
-//        final Map<Group, Set<Character>> result = new HashMap<>();
-//        result.put(Group.GROUP_1, group1);
-//        result.put(Group.GROUP_2, group2);
-//        return result;
-//    }
-
     private List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections) {
-        double limit = .4;
+        double limit = START_LIMIT;
         double prevLimit = 1.;
         List<CharactersGroup> lastCorrectResult = null;
         do {
             List<CharactersGroup> result = parsGroup(connections, limit);
-            if (Math.abs(prevLimit - limit) < 0.1) {
+            if (Math.abs(prevLimit - limit) < QUALITY_STEP) {
                 if (lastCorrectResult != null) {
                     return lastCorrectResult;
                 }
