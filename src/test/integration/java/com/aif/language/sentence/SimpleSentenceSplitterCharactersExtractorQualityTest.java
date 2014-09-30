@@ -16,7 +16,7 @@ import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
-public class SentenceSplitterCharactersExtractorQualityTest {
+public class SimpleSentenceSplitterCharactersExtractorQualityTest {
 
     @DataProvider(name = "path_provider")
     private static String[][] pathProvider() {
@@ -32,7 +32,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
     public void testSeparatorGroupingQuality(final String path) throws Exception {
         // input arguments
         String inputText;
-        try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {
             inputText = FileHelper.readAllText(modelResource);
         }
         final TokenSplitter tokenSplitter = new TokenSplitter();
@@ -80,7 +80,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
     public void testSeparatorExtractionQuality(final String path) throws Exception {
         // input arguments
         String inputText;
-        try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {
             inputText = FileHelper.readAllText(modelResource);
         }
         final TokenSplitter tokenSplitter = new TokenSplitter();
@@ -126,7 +126,7 @@ public class SentenceSplitterCharactersExtractorQualityTest {
     public void test1() throws Exception {
         String text;
 
-        try(InputStream modelResource = SentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("46800-0_mutated.txt")) {
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("46800-0_mutated.txt")) {
             text = FileHelper.readAllText(modelResource);
         }
 

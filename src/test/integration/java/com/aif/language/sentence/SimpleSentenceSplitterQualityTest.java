@@ -25,11 +25,11 @@ import static junit.framework.Assert.assertTrue;
  * 
  */
 
-public class SentenceSplitterQualityTest {
+public class SimpleSentenceSplitterQualityTest {
 
     private static final Double ALLOWED_DEVIATION = 3.0;
 
-    private static final Logger logger = Logger.getLogger(SentenceSplitterQualityTest.class);
+    private static final Logger logger = Logger.getLogger(SimpleSentenceSplitterQualityTest.class);
 
     @DataProvider(name = "texts")
     public TestData[][] getTexts() {
@@ -46,7 +46,7 @@ public class SentenceSplitterQualityTest {
     public void sentenceSplittersTest(final TestData testData) throws Exception {
 
         try(final InputStream resourceFile =
-                    SentenceSplitterQualityTest.class.getResourceAsStream(testData.getPath())) {
+                    SimpleSentenceSplitterQualityTest.class.getResourceAsStream(testData.getPath())) {
 
             final String textData = FileHelper.readAllText(resourceFile);
 

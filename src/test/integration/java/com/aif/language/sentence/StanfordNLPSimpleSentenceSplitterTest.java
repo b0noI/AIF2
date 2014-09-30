@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class StanfordNLPSentenceSplitterTest {
+public class StanfordNLPSimpleSentenceSplitterTest {
 
     @Ignore
     @Test (groups = "help-test")
