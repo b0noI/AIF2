@@ -8,6 +8,7 @@ import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
 
@@ -42,31 +43,48 @@ class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
                 }
             }
         }
+        final int maxV = sentencesSize.stream().max(Integer::compare).get();
+        final double levelM = (double)maxV * .9;
+
+        List<Integer> filtereSizes = sentencesSize.stream().filter(l -> l < levelM).collect(Collectors.toList());
 
         final double max = connections.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
-        connections.keySet().forEach(k -> connections.put(k, connections.get(k) / max));
+
+        final Map<Character, Double> filterdConnections = new HashMap<>();
+        final Double levelM2 = max * .9;
+        connections.keySet().stream().filter(k -> connections.get(k) < levelM2).forEach(k -> filterdConnections.put(k, connections.get(k)));
+        final double max2 = filterdConnections.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
+        filterdConnections.keySet().forEach(k -> filterdConnections.put(k, filterdConnections.get(k) / max2));
 
         final SummaryStatistics stats = new SummaryStatistics();
-        sentencesSize.forEach(size -> stats.addValue(size));
+        filtereSizes.forEach(size -> stats.addValue(size));
+
+        // final List<Character> spliitersSorted = new ArrayList<>();
+
         final List<Boolean> booleans = new ArrayList<>(tokens.size());
         lastPosition = 0;
         for (int i = 0; i < tokens.size() - 1; i++) {
             final String token = tokens.get(i);
             if (sentenceSplitters.contains(token.charAt(0)) || sentenceSplitters.contains(token.charAt(token.length() - 1))) {
                 int size = i - lastPosition;
+                lastPosition = i;
+                int nextSize = toNextTrue(booleans, i);
                 double level = stats.getMean() + stats.getStandardDeviation();
-//                if (size > level) {
-//                    booleans.add(true);
-//                    continue;
-//                }
+                if (size > level || nextSize > level) {
+                    booleans.add(true);
+                    continue;
+                }
                 final Character nextChar = tokens.get(i + 1).charAt(0);
-                final double prob = /*((double)size / level) */ (connections.get(nextChar));
-                if (prob > 0.1) {
+                if (!filterdConnections.containsKey(nextChar)) {
+                    continue;
+                }
+
+                final double prob = /*((double)size / level) */ (filterdConnections.get(nextChar));
+                if (prob > 0.01) {
                     booleans.add(true);
                 } else {
                     booleans.add(false);
                 }
-                lastPosition = i;
 
             } else {
                 booleans.add(false);
@@ -84,6 +102,15 @@ class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
         super.getLogger().debug(String.format("Founded %d sentences", sentences.size()));
 
         return sentences;
+    }
+
+    private int toNextTrue(List<Boolean> list, int current) {
+        for (int i = current + 1; i < list.size(); i++) {
+            if (list.get(i)) {
+                return i - current;
+            }
+        }
+        return list.size() - 1 - current;
     }
 
     @VisibilityReducedForTestPurposeOnly
