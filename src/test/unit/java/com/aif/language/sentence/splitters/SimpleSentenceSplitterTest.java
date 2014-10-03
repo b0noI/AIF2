@@ -4,7 +4,6 @@ import com.aif.language.common.ISplitter;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
-//import com.aif.language.sentence.splitters.SentenceSplitter;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -61,183 +60,24 @@ public class SimpleSentenceSplitterTest {
         };
 
         // creating test instance
-//        final ISplitter<List<String>, List<String>> testInstance = new SentenceSplitter(
-//                mockSentenceSeparatorExtractor,
-//                mockSentenceSeparatorsGrouper,
-//                mockSentenceSeparatorGroupsClassificatory);
-//
-//        // execution test
-//        final List<List<String>> actualResult = testInstance.split(inputTokens);
-//
-//        // result assert
-//        assertEquals(actualResult, expectedResult);
-//
-//        // mocks verify
-//        verify(mockSentenceSeparatorExtractor, times(1)).extract(eq(inputTokens));
-//        verify(mockSentenceSeparatorsGrouper, times(1)).group(inputTokens, inputCharacters);
-//        verify(mockSentenceSeparatorGroupsClassificatory, times(1)).classify(inputTokens, mockGroups);
-//        verifyNoMoreInteractions(mockSentenceSeparatorExtractor);
-//        verifyNoMoreInteractions(mockSentenceSeparatorsGrouper);
-//        verifyNoMoreInteractions(mockSentenceSeparatorGroupsClassificatory);
-    }
-
-    @Test(groups = "unit-tests")
-    public void testPrepareSentences() throws Exception {
-        // input arguments
-        final List<String> inputTokens = Arrays.asList(new String[]{
-                "token...",
-                "(token",
-                "(!.token..",
-                "token",
-                "tok!en"
-        });
-        final List<Character> inputCharacters = Arrays.asList(new Character[]{'(', '!', '.'});
-
-        // mocks
-
-        // expected results
-        final List<String> expectedResults = Arrays.asList(new String[]{
-                "token",
-                "...",
-                "(",
-                "token",
-                "(!.",
-                "token",
-                "..",
-                "token",
-                "tok!en"
-        });
-
-        // creating test instance
+        final ISplitter<List<String>, List<String>> testInstance = new SimpleSentenceSplitter(
+                mockSentenceSeparatorExtractor,
+                mockSentenceSeparatorsGrouper,
+                mockSentenceSeparatorGroupsClassificatory);
 
         // execution test
-//        final List<String> actualResults = SentenceSplitter.prepareSentences(inputTokens, inputCharacters);
-//
-//        // result assert
-//        assertEquals(actualResults, expectedResults);
-//
-//        // mocks verify
-    }
+        final List<List<String>> actualResult = testInstance.split(inputTokens);
 
-    @Test(groups = "unit-tests")
-    public void testLastNonSeparatorPositionWhenNoLastCharacter() throws Exception {
-        // input arguments
-        final String inputToken = ".token";
-        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.'});
+        // result assert
+        assertEquals(actualResult, expectedResult);
 
-        // mocks
-
-        // expected results
-        final int expectedResult = 6;
-
-        // creating test instance
-
-        // execution test
-//        final int actualResult = SentenceSplitter.lastNonSeparatorPosition(inputToken, inputCharacters);
-//
-//        // result assert
-//        assertEquals(expectedResult, actualResult);
-//
-//        // mocks verify
-
-    }
-
-    @Test(groups = "unit-tests")
-    public void testFirstNonSeparatorPositionWhenNoFirstCharacter() throws Exception {
-        // input arguments
-        final String inputToken = "token";
-        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.'});
-
-        // mocks
-
-        // expected results
-        final int expectedResult = 0;
-
-        // creating test instance
-
-        // execution test
-//        final int actualResult = SentenceSplitter.firstNonSeparatorPosition(inputToken, inputCharacters);
-//
-//        // result assert
-//        assertEquals(expectedResult, actualResult);
-//
-//        // mocks verify
-
-    }
-
-    @Test(groups = "unit-tests")
-    public void testFirstNonSeparatorPositionWhenFirstCharacter() throws Exception {
-        // input arguments
-        final String inputToken = ".!token";
-        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.', '!'});
-
-        // mocks
-
-        // expected results
-        final int expectedResult = 2;
-
-        // creating test instance
-
-//        // execution test
-//        final int actualResult = SentenceSplitter.firstNonSeparatorPosition(inputToken, inputCharacters);
-//
-//        // result assert
-//        assertEquals(actualResult, expectedResult);
-//
-//        // mocks verify
-
-    }
-
-    @Test(groups = "unit-tests")
-    public void testLastNonSeparatorPositionWhenLastCharacter() throws Exception {
-        // input arguments
-        final String inputToken = ".token!";
-        final List<Character> inputCharacters = Arrays.asList(new Character[]{'.', '!'});
-
-        // mocks
-
-        // expected results
-        final int expectedResult = 6;
-
-        // creating test instance
-
-        // execution test
-//        final int actualResult = SentenceSplitter.lastNonSeparatorPosition(inputToken, inputCharacters);
-//
-//        // result assert
-//        assertEquals(expectedResult, actualResult);
-//
-//        // mocks verify
-
-    }
-
-    @Test(groups = "unit-tests")
-    public void testPrepareToken() throws Exception {
-
-        final List<String> inputTokens = Arrays.asList(new String[]{
-                "token.",
-                "(token",
-                "tok.en",
-                "tokeN"
-        });
-        final List<Character> inputCharacters = Arrays.asList(new Character[] {
-            '.', '('
-        });
-
-        final List<List<String>> expectedResults = new ArrayList<List<String>>(){{
-                add(Arrays.asList(new String[]{"token", "."}));
-                add(Arrays.asList(new String[]{"(", "token"}));
-                add(Arrays.asList(new String[]{"tok.en"}));
-                add(Arrays.asList(new String[]{"tokeN"}));
-            }
-        };
-
-        for (int i = 0; i < expectedResults.size(); i++) {
-            final List<String> expectedResult = expectedResults.get(i);
-            final String inputToke = inputTokens.get(i);
-            testPrepareToken(inputToke, inputCharacters, expectedResult);
-        }
-
+        // mocks verify
+        verify(mockSentenceSeparatorExtractor, times(1)).extract(eq(inputTokens));
+        verify(mockSentenceSeparatorsGrouper, times(1)).group(inputTokens, inputCharacters);
+        verify(mockSentenceSeparatorGroupsClassificatory, times(1)).classify(inputTokens, mockGroups);
+        verifyNoMoreInteractions(mockSentenceSeparatorExtractor);
+        verifyNoMoreInteractions(mockSentenceSeparatorsGrouper);
+        verifyNoMoreInteractions(mockSentenceSeparatorGroupsClassificatory);
     }
 
     @Test(groups = "unit-tests")
@@ -268,30 +108,12 @@ public class SimpleSentenceSplitterTest {
         // creating test instance
 
         // execution test
-//        final List<Boolean> actualResult = SentenceSplitter.mapToBooleans(inputTokens, inputCharacters);
-//
-//        // result assert
-//        assertEquals(expectedResult, actualResult);
-//
-//        // mocks verify
-    }
+        final List<Boolean> actualResult = SimpleSentenceSplitter.mapToBooleans(inputTokens, inputCharacters);
 
-    private static void testPrepareToken(final String inputToken, final List<Character> inputCharacters, final List<String> expectedResult){
-        // input arguments
+        // result assert
+        assertEquals(expectedResult, actualResult);
 
-        // mocks
-
-        // expected results
-
-        // creating test instance
-
-        // execution test
-//        final List<String> actualResult = SentenceSplitter.prepareToken(inputToken, inputCharacters);
-//
-//        // result assert
-//        assertEquals(expectedResult, actualResult);
-//
-//        // mocks verify
+        // mocks verify
     }
 
 }
