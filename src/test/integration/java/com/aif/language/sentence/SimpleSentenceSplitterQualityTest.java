@@ -37,8 +37,8 @@ public class SimpleSentenceSplitterQualityTest {
                 // Tests switched off because we have problems with Russian books during mvn test
                 //{new TestData("for_sentence_split_test_4939_mutated.txt", 4939)},
                 //{new TestData("/texts/RU/for_sentence_split_test_4939.txt", 4939)},
-                //{new TestData("/texts/ENG/for_sentence_split_test_EN_1000.txt", 1000)},
-                {new TestData("/texts/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000)}
+                {new TestData("/texts/ENG/for_sentence_split_test_EN_1000.txt", 1000)},
+                //{new TestData("/texts/RU/for_sentence_split_test_opencorpora_RU_5000.txt", 5000)}
         };
     }
 
