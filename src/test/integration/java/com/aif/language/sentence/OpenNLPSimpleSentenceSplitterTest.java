@@ -12,7 +12,7 @@ import java.util.List;
 import static org.testng.AssertJUnit.assertEquals;
 
 
-public class OpenNLPSentenceSplitterTest {
+public class OpenNLPSimpleSentenceSplitterTest {
 
     private static final String MODEL_RESOURCE_PATH = "/models/opennlp/en-sent.bin";
 
