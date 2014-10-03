@@ -1,4 +1,4 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.splitters;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;

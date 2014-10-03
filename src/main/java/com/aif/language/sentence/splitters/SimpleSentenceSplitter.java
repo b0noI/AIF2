@@ -24,20 +24,10 @@ class SimpleSentenceSplitter extends AbstractSentenceSplitter {
     }
 
     @Override
-    public List<List<String>> split(final List<String> tokens, final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
+    public List<Boolean> split(final List<String> tokens, final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
 
-        final List<Boolean> listOfPositions = SimpleSentenceSplitter.mapToBooleans(tokens, splitters.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1));
+        return SimpleSentenceSplitter.mapToBooleans(tokens, splitters.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1));
 
-        final SentenceIterator sentenceIterator = new SentenceIterator(tokens, listOfPositions);
-
-        final List<List<String>> sentences = new ArrayList<>();
-        while (sentenceIterator.hasNext()) {
-            sentences.add(sentenceIterator.next());
-        }
-
-        super.getLogger().debug(String.format("Founded %d sentences", sentences.size()));
-
-        return sentences;
     }
 
     @VisibilityReducedForTestPurposeOnly
