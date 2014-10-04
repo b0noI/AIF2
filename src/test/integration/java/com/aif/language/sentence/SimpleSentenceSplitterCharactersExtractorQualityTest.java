@@ -47,7 +47,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 {"Charaktere+und+Schicksale.txt"},
                 {"Compendio+di+Chimica+Fisiologica.txt"},
                 {"Contos+dAldeia.txt"},
-                //{"Cumners+Son+and+Other+South+Sea+Folk.txt"},
+                {"Cumners+Son+and+Other+South+Sea+Folk.txt"},
                 {"Dan+Merrithew.txt"},
                 {"Darwiniana.txt"},
                 {"Defence+of+Harriet+Shelley.txt"},
@@ -300,10 +300,10 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 });
 
         assertTrue(errors.toString(), errors.size() == 0);
-        // current state: 47/107
+        // current state: 41/107
         // . absent at all  10
         // , absent at all  2
-        // . absent in Gr1  43
+        // . absent in Gr1  37
         // other
         // alhabetic 3
     }
