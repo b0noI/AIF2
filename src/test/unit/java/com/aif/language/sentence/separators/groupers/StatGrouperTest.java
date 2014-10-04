@@ -100,7 +100,7 @@ public class StatGrouperTest {
         // mocks verify
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testParsGroup() throws Exception {
         // input arguments
         final Map<Character, Map<Character, Integer>> inputConnections = new HashMap<>();
@@ -143,7 +143,7 @@ public class StatGrouperTest {
         // mocks verify
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testParsGroupInnerWhenExpectingZeroGroups() throws Exception {
         // input arguments
         final Map<Character, Map<Character, Integer>> inputConnections = new HashMap<>();
@@ -180,7 +180,7 @@ public class StatGrouperTest {
         // mocks verify
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testParsGroupInnerWhenExpectingOneGroup() throws Exception {
         // input arguments
         final Map<Character, Map<Character, Integer>> inputConnections = new HashMap<>();
@@ -227,7 +227,7 @@ public class StatGrouperTest {
         // mocks verify
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testAddCharactersToGroup() throws Exception {
         // input arguments
         final Map<Character, Double> inputCharacters = new HashMap<>();
@@ -253,6 +253,81 @@ public class StatGrouperTest {
         assertEquals(groups.size(), 1);
         assertEquals(groups.get(0).getSplitters().size(), 1);
         assertEquals(groups.get(0).getSplitters().toArray()[0], '.');
+
+        // mocks verify
+    }
+
+    @Test(groups = "unit-tests")
+    public void testAddCharactersToGroupWhenDifferentGroupExists() throws Exception {
+        // input arguments
+        final Map<Character, Double> inputCharacters = new HashMap<>();
+        inputCharacters.put('A', .2);
+        inputCharacters.put('B', .3);
+        inputCharacters.put('C', .8);
+        inputCharacters.put('D', 1.);
+        final Character inputRoot  = '.';
+        final List<StatGrouper.CharactersGroup> groups = new ArrayList<>();
+
+        final Map<Character, Double> commaCharacters = new HashMap<>();
+        inputCharacters.put('a', .2);
+        inputCharacters.put('b', .3);
+        inputCharacters.put('c', .8);
+        inputCharacters.put('d', 1.);
+        final StatGrouper.CharactersGroup commaGroup = new StatGrouper.CharactersGroup(commaCharacters, ',');
+        groups.add(commaGroup);
+
+        final double limit = 0.3;
+
+        // mocks
+
+        // expected results
+
+        // creating test instance
+        final StatGrouper testInstance = new StatGrouper();
+
+        // execution test
+        testInstance.addCharactersToGroup(inputCharacters, inputRoot, groups, limit);
+
+        // result assert
+        assertEquals(groups.size(), 2);
+
+        // mocks verify
+    }
+
+    @Test(groups = "unit-tests")
+    public void testAddCharactersToGroupWhenSameGroupExists() throws Exception {
+        // input arguments
+        final Map<Character, Double> inputCharacters = new HashMap<>();
+        inputCharacters.put('A', .2);
+        inputCharacters.put('B', .3);
+        inputCharacters.put('C', .8);
+        inputCharacters.put('D', 1.);
+        final Character inputRoot  = '!';
+        final List<StatGrouper.CharactersGroup> groups = new ArrayList<>();
+
+        final Map<Character, Double> commaCharacters = new HashMap<>();
+        inputCharacters.put('a', .2);
+        inputCharacters.put('B', .3);
+        inputCharacters.put('C', .8);
+        inputCharacters.put('D', 1.);
+        final StatGrouper.CharactersGroup commaGroup = new StatGrouper.CharactersGroup(commaCharacters, ',');
+        groups.add(commaGroup);
+
+        final double limit = 0.3;
+
+        // mocks
+
+        // expected results
+
+        // creating test instance
+        final StatGrouper testInstance = new StatGrouper();
+
+        // execution test
+        testInstance.addCharactersToGroup(inputCharacters, inputRoot, groups, limit);
+
+        // result assert
+        assertEquals(groups.size(), 1);
+        assertEquals(groups.get(0).getSplitters().size(), 2);
 
         // mocks verify
     }

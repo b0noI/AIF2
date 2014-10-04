@@ -198,6 +198,10 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
         }
 
         public double closeTo(final Map<Character, Double> characters) {
+            if (groupCharacters.size() == 0) {
+                return 1.;
+            }
+
             final double commonCharacters = characters.keySet().stream().mapToDouble(ch -> {
                 if (groupCharacters.keySet().contains(ch)) return characters.get(ch) * groupCharacters.get(ch);
                 return 0.;
