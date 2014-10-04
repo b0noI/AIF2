@@ -11,7 +11,7 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
 
     private static final double START_LIMIT = .4;
 
-    private static final double QUALITY_STEP = 0.1;
+    private static final double QUALITY_STEP = 0.05;
 
     @Override
     public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {

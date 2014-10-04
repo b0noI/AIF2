@@ -7,26 +7,12 @@ class StatSentenceSeparatorGroupsClassificatory implements ISentenceSeparatorGro
 
     @Override
     public Map<Group, Set<Character>> classify(final List<String> tokens, final List<Set<Character>> separatorsGroups) {
-        final List<Integer> mapTokensToGroups = tokens
-                .stream()
-                .map(
-                        token -> {
-                            if (token.isEmpty()) return 0;
-                            for (Integer i = 0; i < separatorsGroups.size(); i++) {
-                                final Set<Character> separatorGroup = separatorsGroups.get(i);
-                                if (separatorGroup.contains(token.charAt(0))) {
-                                    return i + 1;
-                                }
-                                if (separatorGroup.contains(token.charAt(token.length() - 1))) {
-                                    return i + 1;
-                                }
-                            }
-                            return 0;
-                        }
-                ).collect(Collectors.toList());
+        final List<Integer> mapTokensToGroups = mapTokensToGroups(tokens, separatorsGroups);
+
         final Map<Integer, List<Integer>> groupsIntegrationFactor = new HashMap<>();
         final Map<Integer, Integer> tempGroupIntegrationFactorCalculator = new HashMap<>();
         final Map<Integer, Integer> lastPosition = new HashMap<>();
+
         for (int i = 1; i <= separatorsGroups.size(); i++) {
             groupsIntegrationFactor.put(i, new ArrayList<>());
             tempGroupIntegrationFactorCalculator.put(i, 0);
@@ -34,7 +20,7 @@ class StatSentenceSeparatorGroupsClassificatory implements ISentenceSeparatorGro
         }
 
         for (int i = 0; i < mapTokensToGroups.size(); i++) {
-            Integer element = mapTokensToGroups.get(i);
+            final Integer element = mapTokensToGroups.get(i);
             if (element != 0) {
                 groupsIntegrationFactor.get(element).add(tempGroupIntegrationFactorCalculator.get(element));
                 tempGroupIntegrationFactorCalculator.put(element, 0);
@@ -69,6 +55,26 @@ class StatSentenceSeparatorGroupsClassificatory implements ISentenceSeparatorGro
             }
         });
         return result;
+    }
+
+    private List<Integer> mapTokensToGroups(final List<String> tokens, final List<Set<Character>> separatorsGroups) {
+        return tokens
+                .stream()
+                .map(
+                        token -> {
+                            if (token.isEmpty()) return 0;
+                            for (Integer i = 0; i < separatorsGroups.size(); i++) {
+                                final Set<Character> separatorGroup = separatorsGroups.get(i);
+                                if (separatorGroup.contains(token.charAt(0))) {
+                                    return i + 1;
+                                }
+                                if (separatorGroup.contains(token.charAt(token.length() - 1))) {
+                                    return i + 1;
+                                }
+                            }
+                            return 0;
+                        }
+                ).collect(Collectors.toList());
     }
 
 }
