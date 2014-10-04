@@ -227,4 +227,34 @@ public class StatGrouperTest {
         // mocks verify
     }
 
+    @Test
+    public void testAddCharactersToGroup() throws Exception {
+        // input arguments
+        final Map<Character, Double> inputCharacters = new HashMap<>();
+        inputCharacters.put('A', .2);
+        inputCharacters.put('B', .3);
+        inputCharacters.put('C', .8);
+        inputCharacters.put('D', 1.);
+        final Character inputRoot  = '.';
+        final List<StatGrouper.CharactersGroup> groups = new ArrayList<>();
+        final double limit = 0.3;
+
+        // mocks
+
+        // expected results
+
+        // creating test instance
+        final StatGrouper testInstance = new StatGrouper();
+
+        // execution test
+        testInstance.addCharactersToGroup(inputCharacters, inputRoot, groups, limit);
+
+        // result assert
+        assertEquals(groups.size(), 1);
+        assertEquals(groups.get(0).getSplitters().size(), 1);
+        assertEquals(groups.get(0).getSplitters().toArray()[0], '.');
+
+        // mocks verify
+    }
+
 }
