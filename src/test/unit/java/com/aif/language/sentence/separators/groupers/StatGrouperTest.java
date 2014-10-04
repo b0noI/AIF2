@@ -269,10 +269,10 @@ public class StatGrouperTest {
         final List<StatGrouper.CharactersGroup> groups = new ArrayList<>();
 
         final Map<Character, Double> commaCharacters = new HashMap<>();
-        inputCharacters.put('a', .2);
-        inputCharacters.put('b', .3);
-        inputCharacters.put('c', .8);
-        inputCharacters.put('d', 1.);
+        commaCharacters.put('a', .2);
+        commaCharacters.put('b', .3);
+        commaCharacters.put('c', .8);
+        commaCharacters.put('d', 1.);
         final StatGrouper.CharactersGroup commaGroup = new StatGrouper.CharactersGroup(commaCharacters, ',');
         groups.add(commaGroup);
 

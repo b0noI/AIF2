@@ -106,7 +106,7 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
     Map<Character, Double> convertConnections(final Map<Character, Integer> connections) {
         final Map<Character, Double> convertedConnections = new HashMap<>();
         connections.keySet().forEach(key1 -> {
-            double max = (double)connections.keySet().stream().mapToInt(key2 -> connections.get(key2)).max().getAsInt();
+            final double max = (double)connections.keySet().stream().mapToInt(key2 -> connections.get(key2)).max().getAsInt();
             convertedConnections.put(key1, (double)connections.get(key1) / max);
         });
         return convertedConnections;
@@ -119,21 +119,17 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
             if (currentConnection.isEmpty()) {
                 return;
             }
-            final int max = currentConnection
-                    .entrySet()
-                    .stream()
-                    .mapToInt(element -> element.getValue())
-                    .max()
-                    .getAsInt();
-
-            final int minLevel = (int)((double)max * .2);
 
             final Map<Character, Integer> filteredConnection = new HashMap<>();
-            currentConnection.entrySet().forEach(element -> {
-                if (element.getValue() > minLevel) {
-                    filteredConnection.put(element.getKey(), element.getValue());
-                }
-            });
+
+            final List<Character> keysSorted = currentConnection.keySet()
+                    .stream()
+                    .sorted((key1, key2) -> currentConnection.get(key1).compareTo(currentConnection.get(key2)))
+                    .collect(Collectors.toList());
+
+            for (int i = (int)((double)keysSorted.size() * .8); i < keysSorted.size(); i++) {
+                filteredConnection.put(keysSorted.get(i), currentConnection.get(keysSorted.get(i)));
+            }
 
             connections.put(key, filteredConnection);
         });

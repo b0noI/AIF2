@@ -33,14 +33,14 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
     @DataProvider(name = "eng_books_provider")
     private static String[][] engBooksProvider() {
         return new String[][]{
-                {"A+Defence+of+Poesie+and+Poems.txt"},
-                {"A+General+History+and+Collection+of+Voyages+and+Travels.txt"},
-                {"Address+by+Honorable+William+C.+Redfield%2c+Secretary+of+Commerce+at+Conference+of+Regional+Chairmen.txt"},
+//                {"A+Defence+of+Poesie+and+Poems.txt"},
+//                {"A+General+History+and+Collection+of+Voyages+and+Travels.txt"},
+//                {"Address+by+Honorable+William+C.+Redfield%2c+Secretary+of+Commerce+at+Conference+of+Regional+Chairmen.txt"},
 //                {"Afloat+on+the+Flood.txt"},
 //                {"As+A+Chinaman+Saw+Us.txt"},
 //                {"Atlantic+Monthly%2c+Vol.+4%2c+no.+24+October+1859.txt"},
 //                {"Atlantic+Monthly%2c+Vol.+4%2c+no.+25%2c+November+1859.txt"},
-//                {"Atlantic+Monthly%2c+Volume+20%2c+No.+118%2c+August%2c+1887.txt"},
+                {"Atlantic+Monthly%2c+Volume+20%2c+No.+118%2c+August%2c+1887.txt"},
 //                {"Blackbeard.txt"},
 //                {"Book+of+Etiquette.txt"},
 //                {"Chamberss+Edinburgh+Journal%2c+No.+419.txt"},
