@@ -174,7 +174,7 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
                     continue;
                 }
                 if (!connections.get(lastCharacter).containsKey(nextCharacter)) {
-                    connections.get(lastCharacter).put(nextCharacter, 1);
+                    connections.get(lastCharacter).put(nextCharacter, 0);
                 }
                 final Integer count = connections.get(lastCharacter).get(nextCharacter);
                 connections.get(lastCharacter).put(nextCharacter, count + 1);
@@ -204,10 +204,6 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
             }).sum();
             return commonCharacters /
                     (double)Math.min(characters.size(), groupCharacters.size());
-        }
-
-        public Set<Character> getGroupCharacters() {
-            return groupCharacters.keySet();
         }
 
         public Set<Character> getSplitters() {
