@@ -60,7 +60,8 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
         } while (true);
     }
 
-    private List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections, final double limit) {
+    @VisibilityReducedForTestPurposeOnly
+    List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections, final double limit) {
         final List<CharactersGroup> groups = new ArrayList<>();
         connections
                 .keySet()
@@ -72,30 +73,43 @@ class StatGrouper implements ISentenceSeparatorsGrouper {
                             if (connections.get(key).isEmpty()) return;
                             if (connections.get(key).keySet().size() <= 3) return;
 
-                            final Map<Character, Double> characters = new HashMap<>();
-                            connections.get(key).keySet().forEach(key1 -> {
-                                double max = (double)connections.get(key).keySet().stream().mapToInt(key2 -> connections.get(key).get(key2)).max().getAsInt();
-                                characters.put(key1, (double)connections.get(key).get(key1) / max);
-                            });
+                            final Map<Character, Double> characters = convertConnections(connections.get(key));
 
-                            if (groups.isEmpty()) {
-                                final CharactersGroup charactersGroup = new CharactersGroup(characters, key);
-                                groups.add(charactersGroup);
-                                return;
-                            }
-
-                            for (CharactersGroup charactersGroup : groups) {
-                                if (charactersGroup.closeTo(characters) > limit) {
-                                    charactersGroup.addCharacters(characters);
-                                    charactersGroup.addSplitter(key);
-                                    return;
-                                }
-                            }
-                            final CharactersGroup charactersGroup = new CharactersGroup(characters, key);
-                            groups.add(charactersGroup);
+                            addCharactersToGroup(characters, key, groups, limit);
                         }
                 );
         return groups;
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    void addCharactersToGroup(final Map<Character, Double> characters, final Character root, final List<CharactersGroup> groups, final double limit) {
+        if (groups.isEmpty()) {
+            final CharactersGroup charactersGroup = new CharactersGroup(characters, root);
+            groups.add(charactersGroup);
+            return;
+        }
+
+        for (CharactersGroup charactersGroup : groups) {
+            if (charactersGroup.closeTo(characters) > limit) {
+                charactersGroup.addCharacters(characters);
+                charactersGroup.addSplitter(root);
+                return;
+            }
+        }
+
+        final CharactersGroup charactersGroup = new CharactersGroup(characters, root);
+        groups.add(charactersGroup);
+        return;
+    }
+
+    @VisibilityReducedForTestPurposeOnly
+    Map<Character, Double> convertConnections(final Map<Character, Integer> connections) {
+        final Map<Character, Double> convertedConnections = new HashMap<>();
+        connections.keySet().forEach(key1 -> {
+            double max = (double)connections.keySet().stream().mapToInt(key2 -> connections.get(key2)).max().getAsInt();
+            convertedConnections.put(key1, (double)connections.get(key1) / max);
+        });
+        return convertedConnections;
     }
 
     @VisibilityReducedForTestPurposeOnly
