@@ -1,4 +1,4 @@
-package com.aif.language.sentence;
+package com.aif.language.sentence.splitters;
 
 //import com.aif.language.sentence.splitters.SentenceSplitter;
 import org.testng.annotations.Test;
@@ -33,20 +33,20 @@ public class SentenceIteratorTest {
         // expected results
 
         // creating test instance
-//        final SentenceSplitter.SentenceIterator sentenceIterator = new SentenceSplitter.SentenceIterator(INPUT_TOKENS, INPUT_END_POINTS);
-//
-//        // execution test
-//        assertTrue(sentenceIterator.hasNext());
-//        sentenceIterator.next();
-//        assertTrue(sentenceIterator.hasNext());
-//        sentenceIterator.next();
-//        assertTrue(sentenceIterator.hasNext());
-//        sentenceIterator.next();
-//        assertFalse(sentenceIterator.hasNext());
-//
-//        // result assert
-//
-//        // mocks verify
+        final AbstractSentenceSplitter.SentenceIterator sentenceIterator = new AbstractSentenceSplitter.SentenceIterator(INPUT_TOKENS, INPUT_END_POINTS);
+
+        // execution test
+        assertTrue(sentenceIterator.hasNext());
+        sentenceIterator.next();
+        assertTrue(sentenceIterator.hasNext());
+        sentenceIterator.next();
+        assertTrue(sentenceIterator.hasNext());
+        sentenceIterator.next();
+        assertFalse(sentenceIterator.hasNext());
+
+        // result assert
+
+        // mocks verify
     }
 
     @Test(groups = "unit-tests")
@@ -68,19 +68,19 @@ public class SentenceIteratorTest {
         });
 
         // creating test instance
-//        final SentenceSplitter.SentenceIterator sentenceIterator = new SentenceSplitter.SentenceIterator(INPUT_TOKENS, INPUT_END_POINTS);
-//
-//        // execution test
-//        final List<String> actualSentence1 = sentenceIterator.next();
-//        final List<String> actualSentence2 = sentenceIterator.next();
-//        final List<String> actualSentence3 = sentenceIterator.next();
-//
-//        // result assert
-//        assertEquals(expectedSentence1, actualSentence1);
-//        assertEquals(expectedSentence2, actualSentence2);
-//        assertEquals(expectedSentence3, actualSentence3);
-//
-//        // mocks verify
+        final AbstractSentenceSplitter.SentenceIterator sentenceIterator = new AbstractSentenceSplitter.SentenceIterator(INPUT_TOKENS, INPUT_END_POINTS);
+
+        // execution test
+        final List<String> actualSentence1 = sentenceIterator.next();
+        final List<String> actualSentence2 = sentenceIterator.next();
+        final List<String> actualSentence3 = sentenceIterator.next();
+
+        // result assert
+        assertEquals(expectedSentence1, actualSentence1);
+        assertEquals(expectedSentence2, actualSentence2);
+        assertEquals(expectedSentence3, actualSentence3);
+
+        // mocks verify
     }
 
     @Test(groups = "unit-tests")
@@ -94,16 +94,16 @@ public class SentenceIteratorTest {
         // expected results
         final Boolean expectedResult = false;
 
-//        // creating test instance
-//        final SentenceSplitter.SentenceIterator sentenceIterator = new SentenceSplitter.SentenceIterator(inputTokens, inputEndPoints);
-//
-//        // execution test
-//        final Boolean actualResult = sentenceIterator.hasNext();
-//
-//        // result assert
-//        assertEquals(expectedResult, actualResult);
-//
-//        // mocks verify
+        // creating test instance
+        final AbstractSentenceSplitter.SentenceIterator sentenceIterator = new AbstractSentenceSplitter.SentenceIterator(inputTokens, inputEndPoints);
+
+        // execution test
+        final Boolean actualResult = sentenceIterator.hasNext();
+
+        // result assert
+        assertEquals(expectedResult, actualResult);
+
+        // mocks verify
     }
 
 }

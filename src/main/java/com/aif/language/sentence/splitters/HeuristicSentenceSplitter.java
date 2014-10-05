@@ -25,150 +25,110 @@ class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
     }
 
     @Override
-    public List<List<String>> split(final List<String> tokens, final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
-        final Set<Character> sentenceSplitters = splitters.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1);
-        final List<Integer> sentencesSize = new ArrayList<>();
-        final Map<Character, Double> connections = new HashMap<>();
-        int lastPosition = 0;
-        for (int i = 0; i < tokens.size() - 1; i++) {
-            final String token = tokens.get(i);
-            if (sentenceSplitters.contains(token.charAt(0)) || sentenceSplitters.contains(token.charAt(token.length() - 1))) {
-                sentencesSize.add(i - lastPosition);
-                lastPosition = i;
-                final Character nextChar = tokens.get(i + 1).charAt(0);
-                if (connections.containsKey(nextChar)) {
-                    connections.put(nextChar, connections.get(nextChar) + 1.);
-                } else {
-                    connections.put(nextChar, 1.);
-                }
-            }
+    public List<Boolean> split(final List<String> tokens, final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
+        final Map<ISentenceSeparatorGroupsClassificatory.Group, Map<Character, Double>> connections = new HashMap<>();
+        connections.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1, new HashMap<>());
+        connections.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2, new HashMap<>());
+
+
+
+        for (ISentenceSeparatorGroupsClassificatory.Group group : ISentenceSeparatorGroupsClassificatory.Group.values()) {
+            final Map<Character, Double> groupConnections = connections.get(group);
+            double max = groupConnections.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
+            groupConnections.keySet().forEach(key -> groupConnections.put(key, groupConnections.get(key) / max));
         }
-        final int maxV = sentencesSize.stream().max(Integer::compare).get();
-        final double levelM = (double)maxV * .9;
 
-        List<Integer> filtereSizes = sentencesSize.stream().filter(l -> l < levelM).collect(Collectors.toList());
+        final List<Boolean> booleans = new ArrayList<>();
 
-        final double max = connections.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
-
-        final Map<Character, Double> filterdConnections = new HashMap<>();
-        final Double levelM2 = max * .9;
-        connections.keySet().stream().filter(k -> connections.get(k) < levelM2).forEach(k -> filterdConnections.put(k, connections.get(k)));
-        final double max2 = filterdConnections.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
-        filterdConnections.keySet().forEach(k -> filterdConnections.put(k, filterdConnections.get(k) / max2));
-
-        final SummaryStatistics stats = new SummaryStatistics();
-        filtereSizes.forEach(size -> stats.addValue(size));
-
-        // final List<Character> spliitersSorted = new ArrayList<>();
-
-        final List<Boolean> booleans = new ArrayList<>(tokens.size());
-        lastPosition = 0;
         for (int i = 0; i < tokens.size() - 1; i++) {
-            final String token = tokens.get(i);
-            if (sentenceSplitters.contains(token.charAt(0)) || sentenceSplitters.contains(token.charAt(token.length() - 1))) {
-                int size = i - lastPosition;
-                lastPosition = i;
-                int nextSize = toNextTrue(booleans, i);
-                double level = stats.getMean() + stats.getStandardDeviation();
-                if (size > level || nextSize > level) {
-                    booleans.add(true);
-                    continue;
-                }
-                final Character nextChar = tokens.get(i + 1).charAt(0);
-                if (!filterdConnections.containsKey(nextChar)) {
-                    continue;
-                }
+            final String currentToken = tokens.get(i);
+            if (splitters.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1).contains(currentToken.charAt(currentToken.length() - 1))) {
+                final String nextToken = tokens.get(i + 1);
+                final Character nextFirstCharacter = nextToken.charAt(0);
+                if (!connections.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2).keySet().contains(nextFirstCharacter)) {
 
-                final double prob = /*((double)size / level) */ (filterdConnections.get(nextChar));
-                if (prob > 0.01) {
                     booleans.add(true);
                 } else {
-                    booleans.add(false);
+                    final double isSep = connections.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1).get(nextFirstCharacter);
+                    final double isNotSep = connections.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2).get(nextFirstCharacter);
+                    if (isSep >= isNotSep) {
+                        booleans.add(true);
+                    } else {
+                        booleans.add(false);
+                    }
                 }
-
             } else {
                 booleans.add(false);
             }
+
         }
-        booleans.add(true);
-
-        final SentenceIterator sentenceIterator = new SentenceIterator(tokens, booleans);
-
-        final List<List<String>> sentences = new ArrayList<>();
-        while (sentenceIterator.hasNext()) {
-            sentences.add(sentenceIterator.next());
-        }
-
-        super.getLogger().debug(String.format("Founded %d sentences", sentences.size()));
-
-        return sentences;
+        booleans.add(false);
+        return booleans;
     }
 
-    private int toNextTrue(List<Boolean> list, int current) {
-        for (int i = current + 1; i < list.size(); i++) {
-            if (list.get(i)) {
-                return i - current;
-            }
-        }
-        return list.size() - 1 - current;
-    }
 
-    @VisibilityReducedForTestPurposeOnly
-    static class SentenceIterator implements Iterator<List<String>> {
+//    @Override
+//    public List<List<String>> split(final List<String> tokens, final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
+//        final Set<Character> sentenceSplitters = splitters.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1);
+//        final List<Integer> sentencesSize = new ArrayList<>();
+//        final Map<Character, Double> connections = new HashMap<>();
+//        int lastPosition = 0;
+//        for (int i = 0; i < tokens.size() - 1; i++) {
+//            final String token = tokens.get(i);
+//            if (sentenceSplitters.contains(token.charAt(0)) || sentenceSplitters.contains(token.charAt(token.length() - 1))) {
+//                sentencesSize.add(i - lastPosition);
+//                lastPosition = i;
+//                final Character nextChar = tokens.get(i + 1).charAt(0);
+//                if (connections.containsKey(nextChar)) {
+//                    connections.put(nextChar, connections.get(nextChar) + 1.);
+//                } else {
+//                    connections.put(nextChar, 1.);
+//                }
+//            }
+//        }
+//
+//        final double max = connections.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
+//        connections.keySet().forEach(k -> connections.put(k, connections.get(k) / max));
+//
+//        final SummaryStatistics stats = new SummaryStatistics();
+//        sentencesSize.forEach(size -> stats.addValue(size));
+//        final List<Boolean> booleans = new ArrayList<>(tokens.size());
+//        lastPosition = 0;
+//        for (int i = 0; i < tokens.size() - 1; i++) {
+//            final String token = tokens.get(i);
+//            if (sentenceSplitters.contains(token.charAt(0)) || sentenceSplitters.contains(token.charAt(token.length() - 1))) {
+//                int size = i - lastPosition;
+//                double level = stats.getMean() + stats.getStandardDeviation();
+////                if (size > level) {
+////                    booleans.add(true);
+////                    continue;
+////                }
+//                final Character nextChar = tokens.get(i + 1).charAt(0);
+//                final double prob = /*((double)size / level) */ (connections.get(nextChar));
+//                if (prob > 0.1) {
+//                    booleans.add(true);
+//                } else {
+//                    booleans.add(false);
+//                }
+//                lastPosition = i;
+//
+//            } else {
+//                booleans.add(false);
+//            }
+//        }
+//        booleans.add(true);
+//
+//        final SentenceIterator sentenceIterator = new SentenceIterator(tokens, booleans);
+//
+//        final List<List<String>> sentences = new ArrayList<>();
+//        while (sentenceIterator.hasNext()) {
+//            sentences.add(sentenceIterator.next());
+//        }
+//
+//        super.getLogger().debug(String.format("Founded %d sentences", sentences.size()));
+//
+//        return sentences;
+//    }
 
-        private final   List<String>    tokens;
-
-        private final   List<Boolean>   endTokens;
-
-        private         int             currentPosition = 0;
-
-        public SentenceIterator(List<String> tokens, List<Boolean> endTokens) {
-            assert tokens != null;
-            assert endTokens != null;
-            assert tokens.size() == endTokens.size();
-            this.tokens = tokens;
-            this.endTokens = endTokens;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return currentPosition != tokens.size();
-        }
-
-        @Override
-        public List<String> next() {
-            final List<String> sentence = getNextSentence();
-
-            return sentence;
-        }
-
-        private List<String> getNextSentence() {
-            final int oldIndex = currentPosition;
-            currentPosition = getNextTrueIndex();
-            return this.tokens.subList(oldIndex, currentPosition);
-        }
-
-        private int getNextTrueIndex() {
-            int startIndex = currentPosition;
-
-            if (endTokens.size() == startIndex) {
-                return startIndex;
-            }
-
-            if (endTokens.size() == startIndex + 1) {
-                return startIndex + 1;
-            }
-
-            do {
-                if (endTokens.get(startIndex)) {
-                    startIndex++;
-                    return startIndex;
-                }
-                startIndex++;
-            } while(startIndex < endTokens.size() - 1);
-            return startIndex + 1;
-        }
-
-    }
 
 }
