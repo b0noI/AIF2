@@ -1,14 +1,11 @@
 package com.aif.language.sentence.splitters;
 
 
-import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
 

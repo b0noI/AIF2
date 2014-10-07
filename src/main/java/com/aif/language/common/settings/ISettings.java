@@ -4,6 +4,8 @@ public interface ISettings {
 
     public String getVersion();
 
+    public int recommendedMinimumTokensInputCount();
+
     public ISettings SETTINGS = PropertyBasedSettings.createInstance();
 
 }

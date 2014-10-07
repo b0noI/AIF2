@@ -2,6 +2,7 @@ package com.aif.language.sentence.splitters;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.aif.language.common.settings.ISettings;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
@@ -29,6 +30,11 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
     }
 
     public List<List<String>> split(final List<String> tokens) {
+
+        if (tokens.size() <= ISettings.SETTINGS.recommendedMinimumTokensInputCount()) {
+            logger.warn(String.format("Tokens input count is too low: %d, recommend count is: %d. Don't expect good quality of output", tokens.size(), ISettings.SETTINGS.recommendedMinimumTokensInputCount()));
+        }
+
         logger.debug(String.format("Starting sentence extraction for tokens: %d", tokens.size()));
         final Optional<List<Character>> optionalSeparators = sentenceSeparatorExtractor.extract(tokens);
 

@@ -14,10 +14,10 @@ class RecursiveStatSentenceSeparatorExtractor extends StatSentenceSeparatorExtra
 
         final Optional<List<Character>> optSeparators = super.extract(tokensCopy);
         if (!optSeparators.isPresent()) {
-            return optSeparators;
+            return Optional.empty();
         }
         if (optSeparators.get().isEmpty()) {
-            return optSeparators;
+            return Optional.empty();
         }
         final List<Character> separators = optSeparators.get();
         final List<String> filteredTokens = filter(tokensCopy, separators);
