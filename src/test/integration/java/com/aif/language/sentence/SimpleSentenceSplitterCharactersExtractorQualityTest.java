@@ -33,113 +33,204 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
     @DataProvider(name = "eng_books_provider")
     private static String[][] engBooksProvider() {
         return new String[][]{
-                {"A+Defence+of+Poesie+and+Poems.txt"},
-                {"A+General+History+and+Collection+of+Voyages+and+Travels.txt"},
-                {"Address+by+Honorable+William+C.+Redfield%2c+Secretary+of+Commerce+at+Conference+of+Regional+Chairmen.txt"},
-                {"Afloat+on+the+Flood.txt"},
-                {"As+A+Chinaman+Saw+Us.txt"},
-                {"Atlantic+Monthly%2c+Vol.+4%2c+no.+24+October+1859.txt"},
-                {"Atlantic+Monthly%2c+Vol.+4%2c+no.+25%2c+November+1859.txt"},
-                {"Atlantic+Monthly%2c+Volume+20%2c+No.+118%2c+August%2c+1887.txt"},
-                {"Blackbeard.txt"},
-                {"Book+of+Etiquette.txt"},
-                {"Chamberss+Edinburgh+Journal%2c+No.+419.txt"},
-                {"Charaktere+und+Schicksale.txt"},
-                {"Compendio+di+Chimica+Fisiologica.txt"},
-                {"Contos+dAldeia.txt"},
-                {"Cumners+Son+and+Other+South+Sea+Folk.txt"},
-                {"Dan+Merrithew.txt"},
-                {"Darwiniana.txt"},
-                {"Defence+of+Harriet+Shelley.txt"},
-                {"Die+natuerliche+Tochter.txt"},
-                {"Down+the+Mother+Lode.txt"},
-                {"E-books+and+e-publishing.txt"},
-                {"Early+Reviews+of+English+Poets.txt"},
-                {"Emily+Fox-Seton%3a+Being+%22The+Making+of+a+Marchioness%22+and+%22The+Methods+of+Lady+Walderhurst%22.txt"},
-                {"Encyclopaedia+Britannica%2c+11th+Edition.txt"},
-                {"English+to+Bengali+Dectionary+Download.txt"},
-                {"Evidence+as+to+Mans+Place+In+Nature.txt"},
-                {"Farewell.txt"},
-                {"Farm+Ballads.txt"},
-                {"Fen+Zhuang+Lou%2c+chapters+71-80.txt"},
-                {"Four+Girls+at+Chautauqua.txt"},
-                {"From+out+the+Vasty+Deep.txt"},
-                {"G%c3%b6tzen-D%c3%a4mmerung.txt"},
-                {"George+Borrow.txt"},
-                {"Glaucoma.txt"},
-                {"Gullivers+Travels.txt"},
-                {"Hardy+Perennials+and+Old+Fashioned+Flowers.txt"},
-                {"Harvard+Classics%2c+vol+38.txt"},
-                {"Hellenica.txt"},
-                {"Hero+Tales+From+American+History.txt"},
-                {"Il+ritratto+del+diavolo.txt"},
-                {"In+Bohemia+with+Du+Maurier.txt"},
-                {"In+Flanders+Fields.txt"},
-                {"In+Madeira+Place.txt"},
-                {"In+Troubador-Land.txt"},
-                {"In+the+Wrong+Paradise.txt"},
-                {"Indrukken+van+Finland.txt"},
-                {"Jack+Haydons+Quest.txt"},
-                {"Judgments+of+the+Court+of+Appeal+of+New+Zealand+on+Proceedings+to+Review+Aspects+of+the+Report+of+t.txt"},
-                {"Kalli%2c+the+Esquimaux+Christian.txt"},
-                {"Kates+Ordeal.txt"},
-                {"King+Olafs+Kinsman.txt"},
-                {"Kreikkalaisia+satuja.txt"},
-                {"LArrabbiata.txt"},
-                {"La+Zaffetta.txt"},
-                {"La+maison+de+la+courtisane.txt"},
-                {"Laramie+Holds+the+Range.txt"},
-                {"Le+capitaine+Pamphile.txt"},
-                {"Le+dangereux+jeune+homme.txt"},
-                {"Louis+Lambert.txt"},
-                {"Love+Stories.txt"},
-                {"Mga+Dakilang+Pilipino.txt"},
-                {"Molly+McDonald.txt"},
-                {"Monsieur+Bergeret+%c3%a0+Paris.txt"},
-                {"Mor+i+Sutre.txt"},
-                {"Mountain+idylls%2c+and+Other+Poems.txt"},
-                {"Mr+Honeys+Small+Business+Dictionary+German-English.txt"},
-                {"Mutter+und+Kind.txt"},
-                {"Notes+and+Queries%2c+Number+57%2c+November+30%2c+1850.txt"},
-                {"Novelle.txt"},
-                {"Over+Here.txt"},
-                {"Pages+from+a+Journal+with+Other+Papers.txt"},
-                {"Red+Axe.txt"},
-                {"Reprinted+Pieces.txt"},
-                {"Robert+Louis+Stevenson.txt"},
-                {"Ronald+Morton.txt"},
-                {"Ruth+Fielding+at+the+War+Front.txt"},
-                {"Sintram+and+His+Companions.txt"},
-                {"Southern+Arabia.txt"},
-                {"The+Casebook+of+Sherlock+Holmes.txt"},
-                {"The+Centralia+Conspiracy.txt"},
-                {"The+Chronicle+of+the+Canons+Regular+of+Mount+St.+Agnes.txt"},
-                {"The+Cid.txt"},
-                {"The+Coming+Technological+Singularity.txt"},
-                {"The+Deaf.txt"},
-                {"The+Friendly+Road.txt"},
-                {"The+German+Classics+of+The+Nineteenth+and+Twentieth+Centuries%2c+Vol.+II.txt"},
-                {"The+Mafulu.txt"},
-                {"The+Outdoor+Chums.txt"},
-                {"The+Prose+Works+of+Jonathan+Swift%2c+D.D.%2c+Vol.+VII.txt"},
-                {"The+Rise+of+the+Dutch+Republic%2c+1576.txt"},
-                {"The+Shuttle.txt"},
-                {"The+Snow-Drop.txt"},
-                {"The+Sport+of+the+Gods.txt"},
-                {"The+Tattva-Muktavali.txt"},
-                {"The+Three+Mistakes+Of+My+Life.txt"},
-                {"The+Works+of+the+Right+Honourable+Edmund+Burke%2c+Vol.+IV.txt"},
-                {"Three+Years+in+Tristan+da+Cunha.txt"},
-                {"Trilby.txt"},
-                {"Tuomo+sed%c3%a4n+tupa.txt"},
-                {"Under+the+Ocean+to+the+South+Pole.txt"},
-                {"Ved+vejen.txt"},
-                {"Viage+al+Rio+de+La+Plata+y+Paraguay.txt"},
-                {"Whiffet+Squirrel.txt"},
-                {"Wilhelm+Meisters+Wanderjahre%2c+vol+1.txt"},
-                {"Youth+and+Sex.txt"},
-                {"english.txt"},
-                {"sex+stories.txt"},
+                // ENG
+                {"ENG/A+Defence+of+Poesie+and+Poems.txt"},
+                {"ENG/A+General+History+and+Collection+of+Voyages+and+Travels.txt"},
+                {"ENG/Address+by+Honorable+William+C.+Redfield%2c+Secretary+of+Commerce+at+Conference+of+Regional+Chairmen.txt"},
+                {"ENG/Afloat+on+the+Flood.txt"},
+                {"ENG/As+A+Chinaman+Saw+Us.txt"},
+                {"ENG/Atlantic+Monthly%2c+Vol.+4%2c+no.+24+October+1859.txt"},
+                {"ENG/Atlantic+Monthly%2c+Vol.+4%2c+no.+25%2c+November+1859.txt"},
+                {"ENG/Atlantic+Monthly%2c+Volume+20%2c+No.+118%2c+August%2c+1887.txt"},
+                {"ENG/Blackbeard.txt"},
+                {"ENG/Book+of+Etiquette.txt"},
+                {"ENG/Chamberss+Edinburgh+Journal%2c+No.+419.txt"},
+                {"ENG/Charaktere+und+Schicksale.txt"},
+                {"ENG/Compendio+di+Chimica+Fisiologica.txt"},
+                {"ENG/Contos+dAldeia.txt"},
+                {"ENG/Cumners+Son+and+Other+South+Sea+Folk.txt"},
+                {"ENG/Dan+Merrithew.txt"},
+                {"ENG/Darwiniana.txt"},
+                {"ENG/Defence+of+Harriet+Shelley.txt"},
+                {"ENG/Die+natuerliche+Tochter.txt"},
+                {"ENG/Down+the+Mother+Lode.txt"},
+                {"ENG/E-books+and+e-publishing.txt"},
+                {"ENG/Early+Reviews+of+English+Poets.txt"},
+                {"ENG/Emily+Fox-Seton%3a+Being+%22The+Making+of+a+Marchioness%22+and+%22The+Methods+of+Lady+Walderhurst%22.txt"},
+                {"ENG/Encyclopaedia+Britannica%2c+11th+Edition.txt"},
+                {"ENG/English+to+Bengali+Dectionary+Download.txt"},
+                {"ENG/Evidence+as+to+Mans+Place+In+Nature.txt"},
+                {"ENG/Farewell.txt"},
+                {"ENG/Farm+Ballads.txt"},
+                {"ENG/Fen+Zhuang+Lou%2c+chapters+71-80.txt"},
+                {"ENG/Four+Girls+at+Chautauqua.txt"},
+                {"ENG/From+out+the+Vasty+Deep.txt"},
+                {"ENG/G%c3%b6tzen-D%c3%a4mmerung.txt"},
+                {"ENG/George+Borrow.txt"},
+                {"ENG/Glaucoma.txt"},
+                {"ENG/Gullivers+Travels.txt"},
+                {"ENG/Hardy+Perennials+and+Old+Fashioned+Flowers.txt"},
+                {"ENG/Harvard+Classics%2c+vol+38.txt"},
+                {"ENG/Hellenica.txt"},
+                {"ENG/Hero+Tales+From+American+History.txt"},
+                {"ENG/Il+ritratto+del+diavolo.txt"},
+                {"ENG/In+Bohemia+with+Du+Maurier.txt"},
+                {"ENG/In+Flanders+Fields.txt"},
+                {"ENG/In+Madeira+Place.txt"},
+                {"ENG/In+Troubador-Land.txt"},
+                {"ENG/In+the+Wrong+Paradise.txt"},
+                {"ENG/Indrukken+van+Finland.txt"},
+                {"ENG/Jack+Haydons+Quest.txt"},
+                {"ENG/Judgments+of+the+Court+of+Appeal+of+New+Zealand+on+Proceedings+to+Review+Aspects+of+the+Report+of+t.txt"},
+                {"ENG/Kalli%2c+the+Esquimaux+Christian.txt"},
+                {"ENG/Kates+Ordeal.txt"},
+                {"ENG/King+Olafs+Kinsman.txt"},
+                {"ENG/Kreikkalaisia+satuja.txt"},
+                {"ENG/LArrabbiata.txt"},
+                {"ENG/La+Zaffetta.txt"},
+                {"ENG/La+maison+de+la+courtisane.txt"},
+                {"ENG/Laramie+Holds+the+Range.txt"},
+                {"ENG/Le+capitaine+Pamphile.txt"},
+                {"ENG/Le+dangereux+jeune+homme.txt"},
+                {"ENG/Louis+Lambert.txt"},
+                {"ENG/Love+Stories.txt"},
+                {"ENG/Mga+Dakilang+Pilipino.txt"},
+                {"ENG/Molly+McDonald.txt"},
+                {"ENG/Monsieur+Bergeret+%c3%a0+Paris.txt"},
+                {"ENG/Mor+i+Sutre.txt"},
+                {"ENG/Mountain+idylls%2c+and+Other+Poems.txt"},
+                {"ENG/Mr+Honeys+Small+Business+Dictionary+German-English.txt"},
+                {"ENG/Mutter+und+Kind.txt"},
+                {"ENG/Notes+and+Queries%2c+Number+57%2c+November+30%2c+1850.txt"},
+                {"ENG/Novelle.txt"},
+                {"ENG/Over+Here.txt"},
+                {"ENG/Pages+from+a+Journal+with+Other+Papers.txt"},
+                {"ENG/Red+Axe.txt"},
+                {"ENG/Reprinted+Pieces.txt"},
+                {"ENG/Robert+Louis+Stevenson.txt"},
+                {"ENG/Ronald+Morton.txt"},
+                {"ENG/Ruth+Fielding+at+the+War+Front.txt"},
+                {"ENG/Sintram+and+His+Companions.txt"},
+                {"ENG/Southern+Arabia.txt"},
+                {"ENG/The+Casebook+of+Sherlock+Holmes.txt"},
+                {"ENG/The+Centralia+Conspiracy.txt"},
+                {"ENG/The+Chronicle+of+the+Canons+Regular+of+Mount+St.+Agnes.txt"},
+                {"ENG/The+Cid.txt"},
+                {"ENG/The+Coming+Technological+Singularity.txt"},
+                {"ENG/The+Deaf.txt"},
+                {"ENG/The+Friendly+Road.txt"},
+                {"ENG/The+German+Classics+of+The+Nineteenth+and+Twentieth+Centuries%2c+Vol.+II.txt"},
+                {"ENG/The+Mafulu.txt"},
+                {"ENG/The+Outdoor+Chums.txt"},
+                {"ENG/The+Prose+Works+of+Jonathan+Swift%2c+D.D.%2c+Vol.+VII.txt"},
+                {"ENG/The+Rise+of+the+Dutch+Republic%2c+1576.txt"},
+                {"ENG/The+Shuttle.txt"},
+                {"ENG/The+Snow-Drop.txt"},
+                {"ENG/The+Sport+of+the+Gods.txt"},
+                {"ENG/The+Tattva-Muktavali.txt"},
+                {"ENG/The+Three+Mistakes+Of+My+Life.txt"},
+                {"ENG/The+Works+of+the+Right+Honourable+Edmund+Burke%2c+Vol.+IV.txt"},
+                {"ENG/Three+Years+in+Tristan+da+Cunha.txt"},
+                {"ENG/Trilby.txt"},
+                {"ENG/Tuomo+sed%c3%a4n+tupa.txt"},
+                {"ENG/Under+the+Ocean+to+the+South+Pole.txt"},
+                {"ENG/Ved+vejen.txt"},
+                {"ENG/Viage+al+Rio+de+La+Plata+y+Paraguay.txt"},
+                {"ENG/Whiffet+Squirrel.txt"},
+                {"ENG/Wilhelm+Meisters+Wanderjahre%2c+vol+1.txt"},
+                {"ENG/Youth+and+Sex.txt"},
+                {"ENG/english.txt"},
+                {"ENG/sex+stories.txt"},
+
+                // FRA
+                {"FR/Albert Cohen - Belle Du Seigneur - 1968.txt"},
+                {"FR/Boris Akounine - Les aventures d'Eraste Fandorine (integral).txt"},
+                {"FR/Infernaliana.txt"},
+                {"FR/Le temple de Gnide.txt"},
+                {"FR/Un an - Jean Echenoz.txt"},
+
+                // GER
+                {"GER/Biss 1zum Morgengrauen.txt"},
+                {"GER/Biss 2 zur Mittagsstunde.txt"},
+                {"GER/Biss 3 zum Abendrot.txt"},
+                {"GER/Biss 5 Midnightsun.txt"},
+                {"GER/Leopold von Sacher-Masoch Venus im Pelz (Kompletter Text).txt"},
+
+                // ITA
+                {"ITA/Fallaci Oriana - Il sesso inutile (1961).txt"},
+                {"ITA/Fallaci Oriana - Insciallah (1990).txt"},
+                {"ITA/Fallaci Oriana - Intervista con la storia (1974).txt"},
+                {"ITA/Fallaci Oriana - La forza della ragione (2004).txt"},
+                {"ITA/Fallaci Oriana - La rabbia e l'orgoglio (2001).txt"},
+                {"ITA/Fallaci Oriana - Lettera a un bambino mai nato (1975).txt"},
+                {"ITA/Fallaci Oriana - Niente E Così Sia (1969).txt"},
+                {"ITA/Fallaci Oriana - Oriana Fallaci intervista Oriana Fallaci (2004).txt"},
+                {"ITA/Fallaci Oriana - Penelope Alla Guerra (1962).txt"},
+                {"ITA/Fallaci Oriana - Risponde (Social forum a Firenze) (2002).txt"},
+                {"ITA/Fallaci Oriana - Un cappello pieno di ciliege (2005).txt"},
+                {"ITA/Fallaci Oriana - Un uomo (1979).txt"},
+                {"ITA/Fallaci Oriana - Wake Up Occidente Sveglia (2002).txt"},
+
+                //POL
+                {"POL/Chmielewska Joanna - Autobiografia t 3.txt"},
+                {"POL/Chmielewska Joanna - Autobiografia t 4.txt"},
+                {"POL/Chmielewska Joanna - Autobiografia t 5.txt"},
+                {"POL/Chmielewska Joanna - Depozyt.txt"},
+                {"POL/Chmielewska Joanna - Drugi watek.txt"},
+                {"POL/Chmielewska Joanna - Pafnucy.txt"},
+                {"POL/Chmielewska Joanna - Szajka bez konca.txt"},
+                {"POL/Chmielewska Joanna - Wyścigi.txt"},
+                {"POL/Chmielewska Joanna Duża polka.txt"},
+                {"POL/Chmielewska Joanna Dwie glowy i jedna noga.txt"},
+                {"POL/Chmielewska Joanna Dwie trzecie sukcesu.txt"},
+                {"POL/Chmielewska Joanna Klin.txt"},
+                {"POL/Chmielewska Joanna Krokodyl z Kraju Karoliny.txt"},
+                {"POL/Chmielewska Joanna Lekarstwo na miłość.txt"},
+                {"POL/Chmielewska Joanna Zbieg okolicznosci.txt"},
+                {"POL/Chmielewska_Joanna_-_(Nie)boszczyk_maz.txt"},
+                {"POL/Chmielewska_Joanna_-_Babski_motyw.txt"},
+                {"POL/Chmielewska_Joanna_-_Bulgarski_bloczek.txt"},
+                {"POL/Chmielewska_Joanna_-_Pech.txt"},
+                {"POL/Chmielewska_Joanna_-_Trudny_Trup.txt"},
+                {"POL/J. Chmielewska Wielkie zaslugi.txt"},
+                {"POL/J.Chmielewska 1 Wielki diament.txt"},
+                {"POL/J.Chmielewska 2 Wielki diament.txt"},
+                {"POL/J.Chmielewska Skarby.txt"},
+                {"POL/J.Chmielewska Slepe szczescie.txt"},
+                {"POL/JOANNA CHMIELEWSKA.txt"},
+                {"POL/Joanna Chmielewska - Harpie.txt"},
+                {"POL/Joanna Chmielewska Kocie worki.txt"},
+                {"POL/Joanna Chmielewska Lesio.txt"},
+                {"POL/Joanna Chmielewska Wszyscy jestesmy podejrzani.txt"},
+                {"POL/Krowa niebianska.txt"},
+                {"POL/Nawiedzony dom.txt"},
+                {"POL/Przekleta Bariera.txt"},
+                {"POL/Skradziona kolekcja.txt"},
+                {"POL/Wegiel Marta Jak wytrzymac z Joanna Chmielewska.txt"},
+                {"POL/Wszystko Czerwone.txt"},
+                {"POL/Zbieg okolicznosci.txt"},
+                {"POL/Złota mucha.txt"},
+                {"POL/BOCZNE DROGI.txt"},
+                {"POL/Cale zdanie nieboszczyka.txt"},
+                {"POL/Chmielewska J. Jak wytrzymac ze wspolczesna kobieta.txt"},
+                {"POL/Chmielewska Joanna - Autobiografia t 1.txt"},
+                {"POL/Chmielewska Joanna - Autobiografia t 2.txt"},
+
+                //RUS
+                {"RU/17354.txt"},
+                {"RU/18957.txt"},
+                {"RU/19530.txt"},
+                {"RU/27519.txt"},
+                {"RU/46427.txt"},
+                {"RU/46468.txt"},
+                {"RU/46606.txt"},
+                {"RU/46699.txt"},
+                {"RU/46777.txt"},
+                {"RU/47729.txt"},
+                {"RU/49723.txt"},
+                {"RU/70684.txt"},
+                {"RU/79813.txt"},
+                {"RU/9602.txt"},
         } ;
     }
 
@@ -150,7 +241,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
 
         final Map<String, List<String>> totalErrors = new HashMap<>();
         for (String[] path : engBooksProvider()) {
-            try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(String.format("/texts/ENG/%s", path))) {
+            try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(String.format("/texts/%s", path))) {
                 inputText = FileHelper.readAllText(modelResource);
             }
             List<String> errors = qualityTest(inputText);
@@ -159,7 +250,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
             }
         }
 
-        assertTrue(totalErrors.size() <= 18);
+        assertTrue(totalErrors.size() <= 44);
     }
 
     @Test(groups = { "acceptance-tests", "quality-slow" }, dataProvider = "path_provider")
@@ -223,7 +314,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
     public void test1() throws Exception {
         String text;
 
-        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("46800-0_mutated.txt")) {
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("Afloat+on+the+Flood.txt")) {
             text = FileHelper.readAllText(modelResource);
         }
 
@@ -286,12 +377,16 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 .stream()
                 .filter(ch -> expectedResult.contains(ch))
                 .count();
-        if (allCharacters.size() != 0) {
-            double result = (double) correct / (double) allCharacters.size();
-            assertTrue(String.format("result is: %f", result), result >= 0.6);
-        }
 
         final List<String> errors = new ArrayList<>();
+
+        if (allCharacters.size() != 0) {
+            double result = (double) correct / (double) allCharacters.size();
+            if (result < .6) {
+                errors.add(String.format("result is: %f", result));
+            }
+        }
+
 
         mandatoryCharacters.forEach(ch -> {
                 if (!actualResult.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1).contains(ch) &&
@@ -310,12 +405,11 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 });
 
         return errors;
-        // current state: 18/107
-        // . absent at all  10
-        // , absent at all  2
-        // . absent in Gr1  14
-        // other
-        // alhabetic 3
+        // current state: 44/186
+        // . absent at all  17
+        // , absent at all  7
+        // . absent in Gr1  23
+        // alhabetic 24
     }
 
 }

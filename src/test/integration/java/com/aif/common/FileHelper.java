@@ -21,6 +21,8 @@ public abstract class FileHelper {
             }
 
             return buff.toString();
+        } catch (NullPointerException e) {
+            throw e;
         }
     }
 
