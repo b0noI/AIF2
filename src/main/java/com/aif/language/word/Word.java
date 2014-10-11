@@ -1,12 +1,14 @@
 package com.aif.language.word;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class Word extends AbstractWord {
 
     private static final double AVG_THRESHOLD = 0.75;
 
-    private final Map<String, Long> tokensCountMap = new HashMap<>();
+    private final ConcurrentMap<String, Long> tokensCountMap = new ConcurrentHashMap<>();
     private final ITokenComparator comparator;
 
     public Word(String token, ITokenComparator comparator) {
@@ -25,9 +27,28 @@ public class Word extends AbstractWord {
     }
 
     @Override
-    //TODO: What should this method return?
     public String basicToken() {
-        return null;
+        Set<String> tokens = getTokens();
+        long tokensCount = tokens.size();
+
+        String lowestAvgToken = "";
+        Double lowestAvg = Double.MAX_VALUE;
+
+        double tmpAvg;
+        for (String token : getTokens()) {
+            tmpAvg = getTokens()
+                        .stream()
+                        .mapToDouble(tokenIn -> (token == tokenIn) ? 0 : comparator.compare(token, tokenIn))
+                        .average()
+                        .getAsDouble();
+
+            if (lowestAvg > tmpAvg) {
+                lowestAvg = tmpAvg;
+                lowestAvgToken = token;
+            }
+        }
+
+        return lowestAvgToken;
     }
 
     @Override
@@ -55,14 +76,9 @@ public class Word extends AbstractWord {
     }
 
     @Override
-    // TODO: merge should either return new AbstractWord or use thread safe tokensCountMap
-    // (HashMap is not thread safe)
     public void merge(AbstractWord that) {
+        //TODO: Should we not enforce the equal check here so that the words are merged only if they are equal
         that.getTokens()
-            .forEach(token -> {
-                long count = tokensCountMap.getOrDefault(token, 0l) + that.tokenCount(token);
-                tokensCountMap.put(token, count);
-            });
+            .forEach(token -> tokensCountMap.merge(token, that.tokenCount(token), (v1, v2) -> v1 + v2));
     }
-
 }

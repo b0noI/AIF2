@@ -125,4 +125,66 @@ public class WordTest {
         Set<String> actualTokens = word1.getTokens();
         assertEquals(actualTokens, expectedTokens);
     }
+
+    @Test(groups = "unit-tests")
+    public void testBasicTokenWithSingleToken() throws Exception {
+        String expected = "test";
+        final ITokenComparator mockTokenComparator = mock(ITokenComparator.class);
+        Word word = new Word(expected, mockTokenComparator);
+        String actual = word.basicToken();
+        assertEquals(actual, expected);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testBasicTokenWithTwoTokens() throws Exception {
+        String expected1 = "best";
+        String expected2 = "tested";
+        final ITokenComparator mockTokenComparator = mock(ITokenComparator.class);
+        when(mockTokenComparator.compare(anyString(), anyString())).thenReturn(0.1);
+
+        Word word1 = new Word(expected1, mockTokenComparator);
+        Word word2 = new Word(expected2, mockTokenComparator);
+        word1.merge(word2);
+        String actual = word1.basicToken();
+        assertEquals(actual, expected2);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testBasicTokenWithTThreeTokens() throws Exception {
+        String expected1 = "best";
+        String expected2 = "tested";
+        String expected3 = "boost";
+        final ITokenComparator mockTokenComparator = mock(ITokenComparator.class);
+        when(mockTokenComparator.compare(eq(expected3), any())).thenReturn(0.1);
+        when(mockTokenComparator.compare(eq(expected1), any())).thenReturn(0.5);
+        when(mockTokenComparator.compare(eq(expected2), any())).thenReturn(0.5);
+
+        Word word1 = new Word(expected1, mockTokenComparator);
+        word1.merge(new Word(expected2, mockTokenComparator));
+        word1.merge(new Word(expected3, mockTokenComparator));
+        String actual = word1.basicToken();
+        assertEquals(actual, expected3);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testBasicTokenWithMultipleTokens() throws Exception {
+        String expected1 = "best";
+        String expected2 = "tested";
+        String expected3 = "boost";
+        String expected4 = "mate";
+        String expected5 = "health";
+        String expected6 = "brittle";
+        final ITokenComparator mockTokenComparator = mock(ITokenComparator.class);
+        when(mockTokenComparator.compare(any(), any())).thenReturn(0.5);
+        when(mockTokenComparator.compare(eq(expected2), any())).thenReturn(0.1);
+
+        Word word1 = new Word(expected1, mockTokenComparator);
+        word1.merge(new Word(expected2, mockTokenComparator));
+        word1.merge(new Word(expected3, mockTokenComparator));
+        word1.merge(new Word(expected4, mockTokenComparator));
+        word1.merge(new Word(expected5, mockTokenComparator));
+        word1.merge(new Word(expected6, mockTokenComparator));
+        String actual = word1.basicToken();
+        assertEquals(actual, expected2);
+    }
 }

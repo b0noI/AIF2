@@ -4,23 +4,39 @@ import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+/**
+ * Needs to perform 2 operations:
+ *  1) Map tokens to words.
+ *  2) 
+ */
+
 public class WordExtractor implements IWordExtractor {
 
     private ITokenComparator tokenComparator;
+
+    public WordExtractor(ITokenComparator tokenComparator) {
+        this.tokenComparator = tokenComparator;
+    }
 
     @Override
     public List<List<AbstractWord.WordPlaceHolder>> getWords(List<List<String>> sentences) {
         WordList wordList = new WordList();
         List<List<Word>> wordSentences = mapTokensToWords(sentences);
         wordSentences.forEach(words -> wordList.addAll(words));
-        return wordSentences.stream().map(wordSentence -> map(wordSentence, wordList)).collect(Collectors.toList());
+        return wordSentences
+                .stream()
+                .map(wordSentence -> map(wordSentence, wordList))
+                .collect(Collectors.toList());
     }
 
     private List<AbstractWord.WordPlaceHolder> map(List<Word> words, WordList wordList) {
-        return words.stream().map(word -> {
-            Word wlw = wordList.get(wordList.indexOf(word));
-            return wlw.new WordPlaceHolder(wlw.basicToken());
-        }).collect(Collectors.toList());
+        return words
+                .stream()
+                .map(word -> {
+                    Word wlw = wordList.get(wordList.indexOf(word));
+                    return wlw.new WordPlaceHolder(wlw.basicToken());
+                })
+                .collect(Collectors.toList());
     }
 
     private List<List<Word>> mapTokensToWords(List<List<String>> sentences) {
