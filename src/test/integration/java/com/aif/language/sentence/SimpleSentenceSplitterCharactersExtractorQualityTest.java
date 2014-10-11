@@ -62,7 +62,6 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 {"ENG/Evidence+as+to+Mans+Place+In+Nature.txt"},
                 {"ENG/Farewell.txt"},
                 {"ENG/Farm+Ballads.txt"},
-                {"ENG/Fen+Zhuang+Lou%2c+chapters+71-80.txt"},
                 {"ENG/Four+Girls+at+Chautauqua.txt"},
                 {"ENG/From+out+the+Vasty+Deep.txt"},
                 {"ENG/G%c3%b6tzen-D%c3%a4mmerung.txt"},
@@ -149,7 +148,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 {"FR/Le temple de Gnide.txt"},
                 {"FR/Un an - Jean Echenoz.txt"},
 
-                // GER
+                //GER
                 {"GER/Biss 1zum Morgengrauen.txt"},
                 {"GER/Biss 2 zur Mittagsstunde.txt"},
                 {"GER/Biss 3 zum Abendrot.txt"},
@@ -249,6 +248,15 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 totalErrors.put(path[0], errors);
             }
         }
+
+        final Map<String, Integer> errorsCounts = new HashMap<>();
+
+        totalErrors.entrySet().stream().forEach(element -> {
+            element.getValue().forEach(error -> {
+                final int errorCount = errorsCounts.getOrDefault(error, 0);
+                errorsCounts.put(error, errorCount + 1);
+            });
+        });
 
         assertTrue(totalErrors.size() <= 44);
     }
@@ -405,11 +413,12 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 });
 
         return errors;
-        // current state: 44/186
-        // . absent at all  17
-        // , absent at all  7
-        // . absent in Gr1  23
-        // alhabetic 24
+        // current state: 25/186
+        // . absent at all  12
+        // , absent at all  6
+        // . absent in Gr1  17
+        // alhabetic 7
+        // quality 1
     }
 
 }
