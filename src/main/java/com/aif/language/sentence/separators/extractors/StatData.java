@@ -31,7 +31,13 @@ class StatData {
     }
 
     public double getProbabilityThatCharacterIsSplitterCharacter(final Character ch) {
-        return getProbabilityThatCharacterOnEdge(ch) * getProbabilityThatCharacterBeforeIsEdgeCharacter(ch);
+        return getProbabilityThatCharacterOnEdge(ch) *
+                getProbabilityThatCharacterBeforeIsEdgeCharacter(ch) *
+                getProbabilityThatCharacterBeforeIsEdgeCharacter(ch);
+    }
+
+    public int getCharacterCount(final Character ch) {
+        return characters.get(ch);
     }
 
     private Map<Character, Integer> getMapForEdgeCharacter(final Character endCharacter) {
@@ -45,7 +51,7 @@ class StatData {
         return charactersNearEdgeCharacter.getOrDefault(endCharacter, new ConcurrentHashMap<>());
     }
 
-    private double getProbabilityThatCharacterOnEdge(final Character ch) {
+    public double getProbabilityThatCharacterOnEdge(final Character ch) {
         final Character lowCaseCharacter = StatData.prepareCharacter(ch);
         return (double) edgeCharacters.getOrDefault(lowCaseCharacter, 0) /
                 (double) characters.getOrDefault(lowCaseCharacter, 0);

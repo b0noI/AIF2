@@ -10,7 +10,7 @@ public interface ISentenceSeparatorExtractor extends IExtractor<List<String>, Li
 
     public static enum Type {
         PREDEFINED(new PredefinedSentenceSeparatorExtractor()),
-        PROBABILITY(new RecursiveStatSentenceSeparatorExtractor());
+        PROBABILITY(new StatSentenceSeparatorExtractor());
 
         private final ISentenceSeparatorExtractor instance;
 

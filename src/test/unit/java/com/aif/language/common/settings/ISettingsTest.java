@@ -12,7 +12,7 @@ public class ISettingsTest {
         // mocks
 
         // expected result
-        final String expectedResult = "0.0.0-alpha1";
+        final String expectedResult = "1.0.0-alpha2";
 
         // creating instances
         final ISettings testInstance = ISettings.SETTINGS;

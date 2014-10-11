@@ -14,17 +14,17 @@ class RecursiveStatSentenceSeparatorExtractor extends StatSentenceSeparatorExtra
 
         final Optional<List<Character>> optSeparators = super.extract(tokensCopy);
         if (!optSeparators.isPresent()) {
-            return optSeparators;
+            return Optional.empty();
         }
         if (optSeparators.get().isEmpty()) {
-            return optSeparators;
+            return Optional.empty();
         }
         final List<Character> separators = optSeparators.get();
         final List<String> filteredTokens = filter(tokensCopy, separators);
 
         final List<Character> nextSeparators = super.extract(filteredTokens).get();
 
-        for (int i = 0; i < nextSeparators.size() / 2; i++) {
+        for (int i = 0; i < (int)((double)nextSeparators.size() * .75); i++) {
             separators.add(nextSeparators.get(i));
         }
 
@@ -32,10 +32,11 @@ class RecursiveStatSentenceSeparatorExtractor extends StatSentenceSeparatorExtra
     }
 
     private List<String> filter(final List<String> tokens, final List<Character> splitters) {
+        final List<String> filteredTokens = new ArrayList<>(tokens.size());
         for (int i = 0; i < tokens.size(); i++) {
-            tokens.set(i, filter(tokens.get(i), splitters));
+            filteredTokens.add(filter(tokens.get(i), splitters));
         }
-        return tokens
+        return filteredTokens
                 .stream()
                 .filter(token -> !token.isEmpty())
                 .collect(Collectors.toList());

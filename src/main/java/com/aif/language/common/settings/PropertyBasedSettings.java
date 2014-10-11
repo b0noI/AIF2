@@ -8,9 +8,11 @@ import java.util.Properties;
 
 class PropertyBasedSettings implements ISettings {
 
-    private static  final String        VERSION_PROPERTIES_KEY = "version";
+    private static  final String VERSION_PROPERTIES_KEY = "version";
 
-    private static  final String        PROPERTIES_FILE_NAME = "/com/aif/common/settings/main.properties";
+    private static  final String PROPERTIES_FILE_NAME = "/com/aif/common/settings/main.properties";
+
+    private static  final String MINIMUM_TOKENS_INPUT_COUNT_KEY = "minimum_tokens_input_count";
 
     private         final Properties    properties = new Properties();
 
@@ -29,6 +31,11 @@ class PropertyBasedSettings implements ISettings {
     @Override
     public String getVersion() {
         return properties.getProperty(VERSION_PROPERTIES_KEY);
+    }
+
+    @Override
+    public int recommendedMinimumTokensInputCount() {
+        return Integer.valueOf(properties.getProperty(MINIMUM_TOKENS_INPUT_COUNT_KEY));
     }
 
 }
