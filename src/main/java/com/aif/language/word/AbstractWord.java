@@ -29,9 +29,21 @@ public abstract class AbstractWord {
             return token;
         }
 
-        public AbstractWord getWord() {
-            return AbstractWord.this;
-        }
+        public AbstractWord getWord() { return AbstractWord.this; }
 
+        @Override
+        public String toString() { return token; }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            WordPlaceHolder that = (WordPlaceHolder) o;
+
+            if (token != null ? !token.equals(that.token) : that.token != null) return false;
+
+            return true;
+        }
     }
 }
