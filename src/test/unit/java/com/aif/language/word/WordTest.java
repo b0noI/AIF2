@@ -1,5 +1,6 @@
 package com.aif.language.word;
 
+import net.didion.jwnl.data.Exc;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -22,6 +23,16 @@ public class WordTest {
         long actualTokenCount = word.tokenCount(token);
         assertEquals(actualTokens, expectedTokens);
         assertEquals(actualTokenCount, expectedTokenCount);
+    }
+
+    @Test (groups = "unit-tests")
+    public void testEqualityOfSameTokenButDifferentWordObject() throws Exception {
+        String token = "hello";
+        final ITokenComparator mockTokenComparator = mock(ITokenComparator.class);
+        when(mockTokenComparator.compare(token, token)).thenReturn(1.0);
+        Word word1 = new Word(token, mockTokenComparator);
+        Word word2 = new Word(token, mockTokenComparator);
+        assertEquals(word1, word2);
     }
 
     @Test (groups = "unit-tests")
