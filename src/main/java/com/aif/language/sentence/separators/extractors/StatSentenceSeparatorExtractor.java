@@ -55,12 +55,6 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .mapToDouble(CharacterStat::getProbabilityThatEndCharacter)
                 .forEach(item -> stats.addValue(item));
 
-//        final double probabilityLevel = stats.getMean() - stats.getMean() * stats.getStandardDeviation();
-//
-//        return characterStats
-//                .stream()
-//                .filter(stat -> stat.getProbabilityThatEndCharacter() > probabilityLevel)
-//                .collect(Collectors.toList());
         final List<CharacterStat> filteredCharacterStats = characterStats
                 .stream()
                 .sorted((i1, i2) -> i1.getProbabilityThatEndCharacter().compareTo(i2.getProbabilityThatEndCharacter()))
@@ -95,7 +89,8 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
         return new SummaryStatistics();
     }
 
-    private List<Character> postFilter(final List<Character> separators, final List<String> tokens) {
+    @VisibilityReducedForTestPurposeOnly
+    List<Character> postFilter(final List<Character> separators, final List<String> tokens) {
 
         final List<String> filteredTokens = filter(tokens);
 

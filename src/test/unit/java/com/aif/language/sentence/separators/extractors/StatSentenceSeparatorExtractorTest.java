@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 
 public class StatSentenceSeparatorExtractorTest {
 
-    @Test(groups = "unit-tests", enabled = false)
+    @Test(groups = "unit-tests")
     public void testExtract() throws Exception {
         // input arguments
         final List<String> inputTokens = Arrays.asList(new String[]{"token1", "token2"});
@@ -41,6 +41,13 @@ public class StatSentenceSeparatorExtractorTest {
             List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(List<CharacterStat> characterStats) {
                 assertEquals(characterStats, mockCharacterStats);
                 return mockCharacterStats.subList(0, 1);
+            }
+
+            @Override
+            List<Character> postFilter(List<Character> separators, List<String> tokens) {
+                assertEquals(separators, Arrays.asList(new Character[]{'a'}));
+                assertEquals(tokens, inputTokens);
+                return separators;
             }
 
         };

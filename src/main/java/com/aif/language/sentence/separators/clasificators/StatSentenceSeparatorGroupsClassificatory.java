@@ -1,7 +1,5 @@
 package com.aif.language.sentence.separators.clasificators;
 
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
