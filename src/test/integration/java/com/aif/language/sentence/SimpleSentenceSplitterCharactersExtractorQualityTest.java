@@ -184,7 +184,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 {"POL/Chmielewska Joanna Dwie trzecie sukcesu.txt"},
                 {"POL/Chmielewska Joanna Klin.txt"},
                 {"POL/Chmielewska Joanna Krokodyl z Kraju Karoliny.txt"},
-                {"POL/Chmielewska Joanna Lekarstwo na miłość.txt"},
+                {"POL/Chmielewska Joanna L.txt"},
                 {"POL/Chmielewska Joanna Zbieg okolicznosci.txt"},
                 {"POL/Chmielewska_Joanna_-_(Nie)boszczyk_maz.txt"},
                 {"POL/Chmielewska_Joanna_-_Babski_motyw.txt"},
