@@ -27,24 +27,23 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
 
     @Override
     public Optional<List<Character>> extract(final List<String> tokens) {
-        final List<CharacterStat> characterStats = getCharactersStat(tokens);
-
-        final List<Character> filteredCharactersStat = postFilter(filterCharacterStatisticFromNonEndCharacters(characterStats)
-                .stream()
-                .map(CharacterStat::getCharacter)
-                .collect(Collectors.toList()), tokens);
-
-        return Optional.of(filteredCharactersStat);
+        return Optional.of(getCharacters(tokens));
     }
 
     @VisibilityReducedForCLI
-    List<CharacterStat> getCharactersStat(final List<String> tokens) {
+    List<Character> getCharacters(final List<String> tokens) {
         final List<String> filteredTokens = filter(tokens);
 
         final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
         final StatData startCharactersStatData = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
 
-        return getCharactersStatistic(startCharactersStatData, endCharactersStatData);
+        return convertCharacterStatToCharacters(getCharactersStatistic(startCharactersStatData, endCharactersStatData), tokens, endCharactersStatData);
+    }
+
+    List<Character> convertCharacterStatToCharacters(final List<CharacterStat> charactersStats, final List<String> tokens, final StatData endCharactersStatData) {
+        return postFilter(charactersStats.stream()
+                .map(CharacterStat::getCharacter)
+                .collect(Collectors.toList()), endCharactersStatData);
     }
 
     @VisibilityReducedForTestPurposeOnly
@@ -90,17 +89,8 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
     }
 
     @VisibilityReducedForTestPurposeOnly
-    List<Character> postFilter(final List<Character> separators, final List<String> tokens) {
+    List<Character> postFilter(final List<Character> separators, final StatData endCharactersStatData ) {
 
-        final List<String> filteredTokens = filter(tokens);
-
-        final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
-        final StatData startCharactersStatData = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
-
-//        final List<Double> probs = separators.stream().map(splitor -> endCharactersStatData.getProbabilityThatCharacterIsSplitterCharacter2(splitor)).collect(Collectors.toList());
-//        final List<Character> result = separators.stream().filter(splitor -> endCharactersStatData.getProbabilityThatCharacterIsSplitterCharacter2(splitor) > .06).collect(Collectors.toList());
-
-        final List<Double> probs = separators.stream().map(splitor -> endCharactersStatData.getProbabilityThatCharacterOnEdge(splitor)).collect(Collectors.toList());
         final List<Character> result = separators
                 .stream()
                 .filter(splitor -> endCharactersStatData.getProbabilityThatCharacterOnEdge(splitor) > .65)
@@ -108,38 +98,6 @@ class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
                 .collect(Collectors.toList());
 
         return result;
-
-//        final Map<Character, Map<Character, Integer>> connections = new HashMap<>();
-//        tokens.forEach(token -> {
-//            if (token.length() < 3) {
-//                return;
-//            }
-//            final Character last = token.charAt(token.length() - 1);
-//            final Character beforeLast = token.charAt(token.length() - 2);
-//            final Character beforeBeforeLast = token.charAt(token.length() - 3);
-//            if (last.equals(beforeLast) || beforeBeforeLast.equals(beforeLast)) {
-//                return;
-//            }
-//            if (separators.contains(last) && separators.contains(beforeLast) && separators.contains(beforeBeforeLast)) {
-//                if (!connections.keySet().contains(beforeBeforeLast)) {
-//                    connections.put(beforeBeforeLast, new HashMap<>());
-//                }
-//                final Integer level = connections.get(beforeBeforeLast).getOrDefault(last, 0);
-//                connections.get(beforeBeforeLast).put(last, level + 1);
-//            }
-//        });
-//        final Map<Character, Integer> itemWeight = new HashMap<>();
-//        connections.entrySet().forEach(element -> {
-//            final Set<Character> keys = element.getValue().keySet() ;
-//            keys.forEach(key -> {
-//                final int weight = itemWeight.getOrDefault(key, 0);
-//                itemWeight.put(key, weight + element.getValue().get(key));
-//
-//                final int mainWeight = itemWeight.getOrDefault(element.getKey(), 0);
-//                itemWeight.put(element.getKey(), mainWeight - element.getValue().get(key));
-//            });
-//        });
-//        return itemWeight.keySet().stream().filter(key -> itemWeight.get(key) >= 0).collect(Collectors.toList());
     }
 
     @VisibilityReducedForCLI
