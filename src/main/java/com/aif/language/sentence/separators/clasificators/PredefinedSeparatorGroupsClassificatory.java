@@ -2,7 +2,7 @@ package com.aif.language.sentence.separators.clasificators;
 
 import java.util.*;
 
-class PredefinedSentenceSeparatorGroupsClassificatory implements ISentenceSeparatorGroupsClassificatory {
+class PredefinedSeparatorGroupsClassificatory implements ISeparatorGroupsClassificatory {
 
     private static final char DOT_CHARACTER = '.';
 

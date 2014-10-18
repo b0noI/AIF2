@@ -2,7 +2,7 @@ package com.aif.language.sentence;
 
 import com.aif.common.FileHelper;
 import com.aif.language.common.ISplitter;
-import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
+import com.aif.language.sentence.separators.clasificators.ISeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import com.aif.language.token.TokenSplitter;
@@ -367,11 +367,11 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         // creating test instance
         final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();
         ISeparatorsGrouper separatorsGrouper = ISeparatorsGrouper.Type.PROBABILITY.getInstance();
-        ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory = ISentenceSeparatorGroupsClassificatory.Type.PROBABILITY.getInstance();
+        ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory = ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance();
 
         // execution test
         final List<Character> separators = testInstance.extract(inputTokens).get();
-        final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> actualResult = sentenceSeparatorGroupsClassificatory.classify(inputTokens, separatorsGrouper.group(inputTokens, separators));
+        final Map<ISeparatorGroupsClassificatory.Group, Set<Character>> actualResult = sentenceSeparatorGroupsClassificatory.classify(inputTokens, separatorsGrouper.group(inputTokens, separators));
 
         // result assert
 
@@ -397,13 +397,13 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
 
 
         mandatoryCharacters.forEach(ch -> {
-                if (!actualResult.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1).contains(ch) &&
-                    !actualResult.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2).contains(ch))
+                if (!actualResult.get(ISeparatorGroupsClassificatory.Group.GROUP_1).contains(ch) &&
+                    !actualResult.get(ISeparatorGroupsClassificatory.Group.GROUP_2).contains(ch))
                     errors.add(String.format("mandatory character(%s) absent at all!\n", ch));
         });
 
         mandatoryGroup1Characters.forEach(ch -> {
-                    if (!actualResult.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1).contains(ch))
+                    if (!actualResult.get(ISeparatorGroupsClassificatory.Group.GROUP_1).contains(ch))
                         errors.add(String.format("mandatory GROUP 1 character(%s) absent\n", ch));
                 });
 

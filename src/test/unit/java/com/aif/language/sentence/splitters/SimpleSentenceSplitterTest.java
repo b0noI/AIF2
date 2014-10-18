@@ -1,7 +1,7 @@
 package com.aif.language.sentence.splitters;
 
 import com.aif.language.common.ISplitter;
-import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
+import com.aif.language.sentence.separators.clasificators.ISeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import org.testng.annotations.Test;
@@ -40,13 +40,13 @@ public class SimpleSentenceSplitterTest {
         final ISeparatorsGrouper mockSentenceSeparatorsGrouper = mock(ISeparatorsGrouper.class);
         when(mockSentenceSeparatorsGrouper.group(inputTokens, inputCharacters)).thenReturn(mockGroups);
 
-        final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> classifiedGroups = new HashMap<>();
-        classifiedGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1, mockGroup1);
-        classifiedGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2, Collections.emptySet());
-        final ISentenceSeparatorGroupsClassificatory mockSentenceSeparatorGroupsClassificatory = mock(ISentenceSeparatorGroupsClassificatory.class);
-        final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> classGroups = new HashMap<>();
-        classGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1, mockGroup1);
-        classGroups.put(ISentenceSeparatorGroupsClassificatory.Group.GROUP_2, Collections.emptySet());
+        final Map<ISeparatorGroupsClassificatory.Group, Set<Character>> classifiedGroups = new HashMap<>();
+        classifiedGroups.put(ISeparatorGroupsClassificatory.Group.GROUP_1, mockGroup1);
+        classifiedGroups.put(ISeparatorGroupsClassificatory.Group.GROUP_2, Collections.emptySet());
+        final ISeparatorGroupsClassificatory mockSentenceSeparatorGroupsClassificatory = mock(ISeparatorGroupsClassificatory.class);
+        final Map<ISeparatorGroupsClassificatory.Group, Set<Character>> classGroups = new HashMap<>();
+        classGroups.put(ISeparatorGroupsClassificatory.Group.GROUP_1, mockGroup1);
+        classGroups.put(ISeparatorGroupsClassificatory.Group.GROUP_2, Collections.emptySet());
         when(mockSentenceSeparatorGroupsClassificatory.classify(inputTokens, mockGroups)).thenReturn(classGroups);
 
         // expected results
