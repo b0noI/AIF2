@@ -3,7 +3,7 @@ package com.aif.language.sentence.splitters;
 import com.aif.language.common.ISplitter;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
-import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
+import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -37,7 +37,7 @@ public class SimpleSentenceSplitterTest {
         mockGroup1.add('.');
         mockGroups.add(mockGroup1);
         mockGroups.add(Collections.emptySet());
-        final ISentenceSeparatorsGrouper mockSentenceSeparatorsGrouper = mock(ISentenceSeparatorsGrouper.class);
+        final ISeparatorsGrouper mockSentenceSeparatorsGrouper = mock(ISeparatorsGrouper.class);
         when(mockSentenceSeparatorsGrouper.group(inputTokens, inputCharacters)).thenReturn(mockGroups);
 
         final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> classifiedGroups = new HashMap<>();

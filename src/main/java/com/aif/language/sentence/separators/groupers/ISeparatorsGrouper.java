@@ -1,10 +1,9 @@
 package com.aif.language.sentence.separators.groupers;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-public interface ISentenceSeparatorsGrouper {
+public interface ISeparatorsGrouper {
 
     public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters);
 
@@ -13,13 +12,13 @@ public interface ISentenceSeparatorsGrouper {
         PREDEFINED(new PredefinedGrouper()),
         PROBABILITY(new StatGrouper());
 
-        private final ISentenceSeparatorsGrouper instance;
+        private final ISeparatorsGrouper instance;
 
-        Type(ISentenceSeparatorsGrouper instance) {
+        Type(ISeparatorsGrouper instance) {
             this.instance = instance;
         }
 
-        public ISentenceSeparatorsGrouper getInstance() {
+        public ISeparatorsGrouper getInstance() {
             return instance;
         }
 

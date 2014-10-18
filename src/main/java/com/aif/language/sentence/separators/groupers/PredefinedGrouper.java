@@ -2,7 +2,7 @@ package com.aif.language.sentence.separators.groupers;
 
 import java.util.*;
 
-class PredefinedGrouper implements ISentenceSeparatorsGrouper {
+class PredefinedGrouper implements ISeparatorsGrouper {
 
     private static final List<Character> GROUP_1_CHARACTERS = Arrays.asList(new Character[]{
             '.', '!', '?'

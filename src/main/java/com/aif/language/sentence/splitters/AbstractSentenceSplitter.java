@@ -5,7 +5,7 @@ import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import com.aif.language.common.settings.ISettings;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
-import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
+import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import org.apache.log4j.Logger;
 
 import java.util.*;
@@ -17,12 +17,12 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
 
     private         final ISeparatorExtractor sentenceSeparatorExtractor                                                                  ;
 
-    private         final ISentenceSeparatorsGrouper                sentenceSeparatorsGrouper                                                                   ;
+    private         final ISeparatorsGrouper sentenceSeparatorsGrouper                                                                   ;
 
     private         final ISentenceSeparatorGroupsClassificatory    sentenceSeparatorGroupsClassificatory                                                       ;
 
     protected AbstractSentenceSplitter(final ISeparatorExtractor sentenceSeparatorExtractor,
-                                       final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper,
+                                       final ISeparatorsGrouper sentenceSeparatorsGrouper,
                                        final ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
         this.sentenceSeparatorsGrouper = sentenceSeparatorsGrouper;
