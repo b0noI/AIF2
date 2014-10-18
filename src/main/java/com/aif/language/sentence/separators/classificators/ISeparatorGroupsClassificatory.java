@@ -1,4 +1,4 @@
-package com.aif.language.sentence.separators.clasificators;
+package com.aif.language.sentence.separators.classificators;
 
 import java.util.List;
 import java.util.Map;

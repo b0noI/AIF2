@@ -3,7 +3,7 @@ package com.aif.language.sentence.splitters;
 import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import com.aif.language.common.settings.ISettings;
-import com.aif.language.sentence.separators.clasificators.ISeparatorGroupsClassificatory;
+import com.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import org.apache.log4j.Logger;

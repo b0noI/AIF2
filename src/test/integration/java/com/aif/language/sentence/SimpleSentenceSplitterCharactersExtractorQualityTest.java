@@ -2,7 +2,7 @@ package com.aif.language.sentence;
 
 import com.aif.common.FileHelper;
 import com.aif.language.common.ISplitter;
-import com.aif.language.sentence.separators.clasificators.ISeparatorGroupsClassificatory;
+import com.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import com.aif.language.token.TokenSplitter;

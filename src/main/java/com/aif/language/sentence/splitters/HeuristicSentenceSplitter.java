@@ -1,7 +1,7 @@
 package com.aif.language.sentence.splitters;
 
 
-import com.aif.language.sentence.separators.clasificators.ISeparatorGroupsClassificatory;
+import com.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
 import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 
