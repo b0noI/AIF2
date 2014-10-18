@@ -21,7 +21,7 @@ public class StatSentenceSeparatorExtractorTest {
         final Optional<List<Character>> expectedResult = Optional.of(Arrays.asList(new Character[]{'a'}));
 
         // creating test instance
-        final StatSentenceSeparatorExtractor testInstance = new StatSentenceSeparatorExtractor() {
+        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor() {
 
             @Override
             List<Character> getCharacters(List<String> tokens) {
@@ -46,8 +46,8 @@ public class StatSentenceSeparatorExtractorTest {
         final List<String> inputArguments = Arrays.asList(new String[]{"token", "otkne"});
 
         // mocks
-        final StatSentenceSeparatorExtractor.CharacterStat mockCharacterStat = mock(StatSentenceSeparatorExtractor.CharacterStat.class);
-        final List<StatSentenceSeparatorExtractor.CharacterStat> mockCharacterStats = new ArrayList<>();
+        final StatSeparatorExtractor.CharacterStat mockCharacterStat = mock(StatSeparatorExtractor.CharacterStat.class);
+        final List<StatSeparatorExtractor.CharacterStat> mockCharacterStats = new ArrayList<>();
         mockCharacterStats.add(mockCharacterStat);
 
         // expected results
@@ -61,7 +61,7 @@ public class StatSentenceSeparatorExtractorTest {
         final List<Character> expectedResult = new ArrayList<>(characterSet);
 
         // creating test instance
-        final StatSentenceSeparatorExtractor testInstance = new StatSentenceSeparatorExtractor() {
+        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor() {
 
             @Override
             List<String> filter(List<String> tokens) {
@@ -107,9 +107,9 @@ public class StatSentenceSeparatorExtractorTest {
     @Test(groups = "unit-tests")
     public void testFilterCharacterStatisticFromNonEndCharacters() throws Exception {
         // input arguments
-        final StatSentenceSeparatorExtractor.CharacterStat stat1 = new StatSentenceSeparatorExtractor.CharacterStat('t', 0.1);
-        final StatSentenceSeparatorExtractor.CharacterStat stat2 = new StatSentenceSeparatorExtractor.CharacterStat('o', 0.2);
-        final List<StatSentenceSeparatorExtractor.CharacterStat> inputStats = new ArrayList<>();
+        final StatSeparatorExtractor.CharacterStat stat1 = new StatSeparatorExtractor.CharacterStat('t', 0.1);
+        final StatSeparatorExtractor.CharacterStat stat2 = new StatSeparatorExtractor.CharacterStat('o', 0.2);
+        final List<StatSeparatorExtractor.CharacterStat> inputStats = new ArrayList<>();
         inputStats.add(stat1);
         inputStats.add(stat2);
 
@@ -120,14 +120,14 @@ public class StatSentenceSeparatorExtractorTest {
 
 
         // expected results
-        final List<StatSentenceSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
+        final List<StatSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
         expectedResult.add(stat2);
 
         // creating test instance
-        final StatSentenceSeparatorExtractor testInstance = new StatSentenceSeparatorExtractor();
+        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor();
 
         // execution test
-        final List<StatSentenceSeparatorExtractor.CharacterStat> actualResult = testInstance.filterCharacterStatisticFromNonEndCharacters(inputStats);
+        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.filterCharacterStatisticFromNonEndCharacters(inputStats);
 
         // result assert
         assertEquals(actualResult, expectedResult);
@@ -159,18 +159,18 @@ public class StatSentenceSeparatorExtractorTest {
         // mocks
 
         // expected results
-        final List<StatSentenceSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
-        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('n', 0.25));
-        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('e', 0.25));
-        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('t', 0.));
-        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('o', 0.));
-        expectedResult.add(new StatSentenceSeparatorExtractor.CharacterStat('k', 0.));
+        final List<StatSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
+        expectedResult.add(new StatSeparatorExtractor.CharacterStat('n', 0.25));
+        expectedResult.add(new StatSeparatorExtractor.CharacterStat('e', 0.25));
+        expectedResult.add(new StatSeparatorExtractor.CharacterStat('t', 0.));
+        expectedResult.add(new StatSeparatorExtractor.CharacterStat('o', 0.));
+        expectedResult.add(new StatSeparatorExtractor.CharacterStat('k', 0.));
 
         // creating test instance
-        final StatSentenceSeparatorExtractor testInstance = new StatSentenceSeparatorExtractor();
+        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor();
 
         // execution test
-        final List<StatSentenceSeparatorExtractor.CharacterStat> actualResult = testInstance.getCharactersStatistic(startCharacterStatData, endCharacterStatData);
+        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.getCharactersStatistic(startCharacterStatData, endCharacterStatData);
 
         // result assert
         actualResult.forEach(result -> expectedResult.contains(result));
@@ -189,7 +189,7 @@ public class StatSentenceSeparatorExtractorTest {
         final List<String> expectedResult = Arrays.asList(new String[]{"token", "token."});
 
         // creating test instance
-        final StatSentenceSeparatorExtractor testInstance = new StatSentenceSeparatorExtractor();
+        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor();
 
         // execution test
         final List<String> actualResult = testInstance.filter(inputTokens);

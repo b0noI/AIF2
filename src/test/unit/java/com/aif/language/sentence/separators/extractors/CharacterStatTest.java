@@ -1,6 +1,5 @@
 package com.aif.language.sentence.separators.extractors;
 
-import com.aif.language.sentence.separators.extractors.StatSentenceSeparatorExtractor;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
@@ -19,7 +18,7 @@ public class CharacterStatTest {
         final Character expectedResult = inputCharacter;
 
         // creating test instance
-        final StatSentenceSeparatorExtractor.CharacterStat characterStat = new StatSentenceSeparatorExtractor.CharacterStat(inputCharacter, inputProbability);
+        final StatSeparatorExtractor.CharacterStat characterStat = new StatSeparatorExtractor.CharacterStat(inputCharacter, inputProbability);
 
         // execution test
         final Character actualResult = characterStat.getCharacter();
@@ -42,7 +41,7 @@ public class CharacterStatTest {
         final Double expectedResult = inputProbability;
 
         // creating test instance
-        final StatSentenceSeparatorExtractor.CharacterStat characterStat = new StatSentenceSeparatorExtractor.CharacterStat(inputCharacter, inputProbability);
+        final StatSeparatorExtractor.CharacterStat characterStat = new StatSeparatorExtractor.CharacterStat(inputCharacter, inputProbability);
 
         // execution test
         final Double actualResult = characterStat.getProbabilityThatEndCharacter();
@@ -66,8 +65,8 @@ public class CharacterStatTest {
         final Integer expectedResult = 1;
 
         // creating test instance
-        final StatSentenceSeparatorExtractor.CharacterStat characterStat1 = new StatSentenceSeparatorExtractor.CharacterStat(inputCharacter, inputProbability1);
-        final StatSentenceSeparatorExtractor.CharacterStat characterStat2 = new StatSentenceSeparatorExtractor.CharacterStat(inputCharacter, inputProbability2);
+        final StatSeparatorExtractor.CharacterStat characterStat1 = new StatSeparatorExtractor.CharacterStat(inputCharacter, inputProbability1);
+        final StatSeparatorExtractor.CharacterStat characterStat2 = new StatSeparatorExtractor.CharacterStat(inputCharacter, inputProbability2);
 
         // execution test
         final Integer actualResult = characterStat1.compareTo(characterStat2);

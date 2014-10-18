@@ -2,23 +2,21 @@ package com.aif.language.sentence.splitters;
 
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
-import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
-import org.apache.log4j.Logger;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class SimpleSentenceSplitter extends AbstractSentenceSplitter {
 
-    public SimpleSentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor,
+    public SimpleSentenceSplitter(final ISeparatorExtractor sentenceSeparatorExtractor,
                                   final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper,
                                   final ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
         super(sentenceSeparatorExtractor, sentenceSeparatorsGrouper, sentenceSeparatorGroupsClassificatory);
     }
 
     public SimpleSentenceSplitter() {
-        this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance(),
+        this(ISeparatorExtractor.Type.PROBABILITY.getInstance(),
                 ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance(),
                 ISentenceSeparatorGroupsClassificatory.Type.PROBABILITY.getInstance());
     }

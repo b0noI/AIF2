@@ -9,7 +9,7 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class StatSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
+class StatSeparatorExtractor implements ISeparatorExtractor {
 
     private static final IExtractor<String, Character>  END_CHARACTER_EXTRACTOR                     = token -> Optional.of(token.charAt(token.length() - 1));
 

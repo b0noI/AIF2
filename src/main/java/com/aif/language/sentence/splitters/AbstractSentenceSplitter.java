@@ -4,7 +4,7 @@ import com.aif.language.common.ISplitter;
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import com.aif.language.common.settings.ISettings;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
-import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import org.apache.log4j.Logger;
 
@@ -15,13 +15,13 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
 
     private static  final Logger                                    logger                                  = Logger.getLogger(AbstractSentenceSplitter.class)  ;
 
-    private         final ISentenceSeparatorExtractor               sentenceSeparatorExtractor                                                                  ;
+    private         final ISeparatorExtractor sentenceSeparatorExtractor                                                                  ;
 
     private         final ISentenceSeparatorsGrouper                sentenceSeparatorsGrouper                                                                   ;
 
     private         final ISentenceSeparatorGroupsClassificatory    sentenceSeparatorGroupsClassificatory                                                       ;
 
-    protected AbstractSentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor,
+    protected AbstractSentenceSplitter(final ISeparatorExtractor sentenceSeparatorExtractor,
                                        final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper,
                                        final ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;

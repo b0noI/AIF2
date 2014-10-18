@@ -2,21 +2,21 @@ package com.aif.language.sentence.splitters;
 
 
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
-import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 
 import java.util.*;
 
 class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
 
-    public HeuristicSentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor,
+    public HeuristicSentenceSplitter(final ISeparatorExtractor sentenceSeparatorExtractor,
                               final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper,
                               final ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
         super(sentenceSeparatorExtractor, sentenceSeparatorsGrouper, sentenceSeparatorGroupsClassificatory);
     }
 
     public HeuristicSentenceSplitter() {
-        this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance(),
+        this(ISeparatorExtractor.Type.PROBABILITY.getInstance(),
                 ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance(),
                 ISentenceSeparatorGroupsClassificatory.Type.PROBABILITY.getInstance());
     }

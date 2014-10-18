@@ -2,7 +2,7 @@ package com.aif.language.sentence.splitters;
 
 import com.aif.language.common.ISplitter;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
-import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import org.testng.annotations.Test;
 
@@ -27,7 +27,7 @@ public class SimpleSentenceSplitterTest {
         final List<Character> inputCharacters = Arrays.asList(new Character[]{'(', '!', '.'});
 
         // mocks
-        final ISentenceSeparatorExtractor mockSentenceSeparatorExtractor = mock(ISentenceSeparatorExtractor.class);
+        final ISeparatorExtractor mockSentenceSeparatorExtractor = mock(ISeparatorExtractor.class);
         when(mockSentenceSeparatorExtractor.extract(eq(inputTokens))).thenReturn(Optional.of(inputCharacters));
 
         final List<Set<Character>> mockGroups = new ArrayList<>();

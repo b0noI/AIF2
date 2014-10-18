@@ -1,6 +1,5 @@
 package com.aif.language.sentence.separators.extractors;
 
-import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -27,7 +26,7 @@ public class PredefinedSentenceSeparatorExtractorTest {
         }));
 
         // creating test instance
-        final ISentenceSeparatorExtractor sentenceSeparatorExtractor = ISentenceSeparatorExtractor.Type.PREDEFINED.getInstance();
+        final ISeparatorExtractor sentenceSeparatorExtractor = ISeparatorExtractor.Type.PREDEFINED.getInstance();
 
         // execution test
         final Optional<List<Character>> actualResult = sentenceSeparatorExtractor.extract(inputTokens);

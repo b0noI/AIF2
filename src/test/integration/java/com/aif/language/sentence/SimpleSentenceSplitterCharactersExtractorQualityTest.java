@@ -3,7 +3,7 @@ package com.aif.language.sentence;
 import com.aif.common.FileHelper;
 import com.aif.language.common.ISplitter;
 import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
-import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
+import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
 import com.aif.language.token.TokenSplitter;
 import org.testng.annotations.DataProvider;
@@ -295,7 +295,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         });
 
         // creating test instance
-        final ISentenceSeparatorExtractor testInstance = ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance();
+        final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();
 
         // execution test
         final List<Character> actualResult = testInstance.extract(inputTokens).get();
@@ -365,7 +365,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         });
 
         // creating test instance
-        final ISentenceSeparatorExtractor testInstance = ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance();
+        final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();
         ISentenceSeparatorsGrouper separatorsGrouper = ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance();
         ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory = ISentenceSeparatorGroupsClassificatory.Type.PROBABILITY.getInstance();
 

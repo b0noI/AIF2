@@ -1,11 +1,10 @@
 package com.aif.language.sentence.separators.extractors;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-class PredefinedSentenceSeparatorExtractor implements ISentenceSeparatorExtractor {
+class PredefinedSeparatorExtractor implements ISeparatorExtractor {
 
     private static final List<Character> SEPARATORS = Arrays.asList(new Character[]{'.', '!', '?',
                                                                                     '(', ')', '[',
