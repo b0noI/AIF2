@@ -2,13 +2,13 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://Marcon.github.io/blog/archives/</loc>
-    <lastmod>2014-10-20T19:34:22+03:00</lastmod>
+    <lastmod>2014-10-20T19:37:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://Marcon.github.io/</loc>
-    <lastmod>2014-10-20T19:34:22+03:00</lastmod>
+    <lastmod>2014-10-20T19:37:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
