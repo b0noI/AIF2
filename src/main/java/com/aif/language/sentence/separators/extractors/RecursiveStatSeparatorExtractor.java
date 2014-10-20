@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-class RecursiveStatSentenceSeparatorExtractor extends StatSentenceSeparatorExtractor {
+class RecursiveStatSeparatorExtractor extends StatSeparatorExtractor {
 
     @Override
     public Optional<List<Character>> extract(List<String> tokens) {

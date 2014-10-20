@@ -1,32 +1,30 @@
 package com.aif.language.sentence.splitters;
 
 import com.aif.language.common.VisibilityReducedForTestPurposeOnly;
-import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
-import com.aif.language.sentence.separators.extractors.ISentenceSeparatorExtractor;
-import com.aif.language.sentence.separators.groupers.ISentenceSeparatorsGrouper;
-import org.apache.log4j.Logger;
+import com.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
+import com.aif.language.sentence.separators.extractors.ISeparatorExtractor;
+import com.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class SimpleSentenceSplitter extends AbstractSentenceSplitter {
 
-    public SimpleSentenceSplitter(final ISentenceSeparatorExtractor sentenceSeparatorExtractor,
-                                  final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper,
-                                  final ISentenceSeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
+    public SimpleSentenceSplitter(final ISeparatorExtractor sentenceSeparatorExtractor,
+                                  final ISeparatorsGrouper sentenceSeparatorsGrouper,
+                                  final ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
         super(sentenceSeparatorExtractor, sentenceSeparatorsGrouper, sentenceSeparatorGroupsClassificatory);
     }
 
     public SimpleSentenceSplitter() {
-        this(ISentenceSeparatorExtractor.Type.PROBABILITY.getInstance(),
-                ISentenceSeparatorsGrouper.Type.PROBABILITY.getInstance(),
-                ISentenceSeparatorGroupsClassificatory.Type.PROBABILITY.getInstance());
+        this(ISeparatorExtractor.Type.PROBABILITY.getInstance(),
+                ISeparatorsGrouper.Type.PROBABILITY.getInstance(),
+                ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance());
     }
 
     @Override
-    public List<Boolean> split(final List<String> tokens, final Map<ISentenceSeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
+    public List<Boolean> split(final List<String> tokens, final Map<ISeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
 
-        return SimpleSentenceSplitter.mapToBooleans(tokens, splitters.get(ISentenceSeparatorGroupsClassificatory.Group.GROUP_1));
+        return SimpleSentenceSplitter.mapToBooleans(tokens, splitters.get(ISeparatorGroupsClassificatory.Group.GROUP_1));
 
     }
 

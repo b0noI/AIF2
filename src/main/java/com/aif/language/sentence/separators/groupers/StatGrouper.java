@@ -7,7 +7,7 @@ import com.aif.language.token.TokenMappers;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class StatGrouper implements ISentenceSeparatorsGrouper {
+class StatGrouper implements ISeparatorsGrouper {
 
     private static final double START_LIMIT = .4;
 

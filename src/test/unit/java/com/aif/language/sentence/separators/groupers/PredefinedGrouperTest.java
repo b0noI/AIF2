@@ -1,6 +1,5 @@
 package com.aif.language.sentence.separators.groupers;
 
-import com.aif.language.sentence.separators.clasificators.ISentenceSeparatorGroupsClassificatory;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -31,7 +30,7 @@ public class PredefinedGrouperTest {
         }};
 
         // creating test instance
-        final ISentenceSeparatorsGrouper sentenceSeparatorsGrouper = ISentenceSeparatorsGrouper.Type.PREDEFINED.getInstance();
+        final ISeparatorsGrouper sentenceSeparatorsGrouper = ISeparatorsGrouper.Type.PREDEFINED.getInstance();
 
         // execution test
         final List<Set<Character>> actualResult = sentenceSeparatorsGrouper.group(inputTokens, inputSplitters);
