@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[AIF2]]></title>
-  <link href="http://Marcon.github.io/atom.xml" rel="self"/>
-  <link href="http://Marcon.github.io/"/>
-  <updated>2014-10-20T20:23:58+03:00</updated>
-  <id>http://Marcon.github.io/</id>
+  <link href="http://test.atsy.org.ua/atom.xml" rel="self"/>
+  <link href="http://test.atsy.org.ua/"/>
+  <updated>2014-10-20T20:30:25+03:00</updated>
+  <id>http://test.atsy.org.ua/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[test]]></title>
-    <link href="http://Marcon.github.io/blog/2014/10/20/test/"/>
+    <link href="http://test.atsy.org.ua/blog/2014/10/20/test/"/>
     <updated>2014-10-20T19:53:13+03:00</updated>
-    <id>http://Marcon.github.io/blog/2014/10/20/test</id>
+    <id>http://test.atsy.org.ua/blog/2014/10/20/test</id>
     <content type="html"><![CDATA[<p>AIF2 - is <strong>fully language independent</strong> NLP library. AIF2 written in Java 8+.</p>
 
 <h2>How to use it</h2>
@@ -81,7 +81,7 @@
 <h2>MailList</h2>
 
 <ul>
-<li><strong>dev</strong>: <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x61;&#105;&#x66;&#x32;&#x2d;&#100;&#101;&#118;&#x40;&#x79;&#97;&#x68;&#x6f;&#111;&#103;&#x72;&#x6f;&#x75;&#x70;&#115;&#x2e;&#99;&#111;&#x6d;">&#x61;&#x69;&#102;&#50;&#45;&#x64;&#101;&#x76;&#x40;&#121;&#97;&#104;&#111;&#111;&#103;&#x72;&#x6f;&#117;&#112;&#x73;&#x2e;&#99;&#111;&#109;</a> (subscribe: <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x61;&#x69;&#x66;&#x32;&#x2d;&#100;&#101;&#118;&#45;&#115;&#117;&#98;&#115;&#99;&#x72;&#x69;&#98;&#x65;&#x40;&#x79;&#97;&#x68;&#x6f;&#x6f;&#x67;&#114;&#x6f;&#117;&#112;&#115;&#46;&#x63;&#x6f;&#x6d;">&#x61;&#x69;&#102;&#x32;&#x2d;&#100;&#x65;&#118;&#45;&#x73;&#117;&#x62;&#115;&#99;&#x72;&#x69;&#x62;&#x65;&#64;&#121;&#97;&#x68;&#x6f;&#111;&#x67;&#x72;&#111;&#117;&#x70;&#x73;&#x2e;&#99;&#111;&#x6d;</a>)</li>
+<li><strong>dev</strong>: <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x61;&#x69;&#x66;&#50;&#45;&#100;&#x65;&#118;&#64;&#x79;&#97;&#x68;&#111;&#x6f;&#103;&#x72;&#x6f;&#x75;&#x70;&#115;&#x2e;&#99;&#x6f;&#109;">&#97;&#105;&#x66;&#50;&#x2d;&#x64;&#101;&#118;&#64;&#x79;&#97;&#104;&#x6f;&#111;&#103;&#x72;&#x6f;&#117;&#x70;&#x73;&#x2e;&#x63;&#111;&#109;</a> (subscribe: <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x61;&#105;&#x66;&#50;&#45;&#100;&#101;&#118;&#45;&#x73;&#x75;&#x62;&#115;&#x63;&#x72;&#105;&#98;&#101;&#x40;&#x79;&#x61;&#104;&#x6f;&#111;&#x67;&#114;&#x6f;&#117;&#112;&#x73;&#46;&#x63;&#111;&#x6d;">&#x61;&#105;&#x66;&#x32;&#45;&#x64;&#101;&#x76;&#45;&#x73;&#117;&#98;&#x73;&#99;&#114;&#105;&#x62;&#x65;&#64;&#121;&#x61;&#x68;&#x6f;&#111;&#103;&#x72;&#111;&#117;&#112;&#115;&#x2e;&#99;&#111;&#109;</a>)</li>
 </ul>
 
 

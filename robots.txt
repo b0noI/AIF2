@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://Marcon.github.io/sitemap.xml 
+Sitemap: http://test.atsy.org.ua/sitemap.xml 
