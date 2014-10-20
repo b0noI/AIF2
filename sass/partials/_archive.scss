@@ -2,7 +2,6 @@
   #content > div { &, > article { padding-top: 0; } }
 }
 #blog-archives {
-  margin-top: -1.4em;
   article {
     padding: 1em 0 1em;
     position: relative;
@@ -10,12 +9,12 @@
     &:last-child {
       background: none;
     }
-    footer { font-size: 0.9em; padding: 0; margin: 0;}
+    footer { padding: 0; margin: 0;}
   }
   h1 { color: $text-color; margin-bottom: .3em; }
   h2 { display: none; }
   h1 {
-    font-size: 1.1em;
+    font-size: 1.5em;
     a {
       @include hover-link;
       color: inherit;
@@ -45,7 +44,6 @@
       margin-bottom: .3em;
       font-weight: normal;
       display: inline-block;
-      padding-top: 0.70em;
       position: relative; top: -1px;
       float: left;
       &:first-child { padding-top: .75em; }
@@ -54,7 +52,7 @@
       position: absolute;
       text-align: right;
       left: 0em;
-      top: 1.15em;
+      top: 1.8em;
     }
     .year { display: none; }
     article {

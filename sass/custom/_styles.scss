@@ -1,2 +1,81 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+$border-ep: #E0E0E0;
+html {
+     background: image-url('background.png') repeat-x scroll center top $page-bg;
+  }
+
+  #main
+  {
+  border-left: 1px solid $border-ep;
+  border-right: 1px solid $border-ep;
+  border-bottom: 1px solid $border-ep;
+  }
+
+
+  body > footer
+  {
+    background: $page-bg;
+  }
+
+  body > nav {
+    border-top:0px solid #fff;
+    border-bottom:0px solid #fff;
+    padding-top:4px;
+    padding-bottom:3px;
+    background: transparent;
+
+    ul {
+        padding-top:0px;
+    }
+
+    a {
+      @include link-colors($nav-color, $nav-color-hover, $visited: $nav-color);
+      text-shadow: 2px 2px 2px  #0F3B6A;
+      color:#fff;
+      float: left;
+      text-decoration: none;
+      font-size: 1.1em;
+      padding: .1em 0;
+      line-height: 1.5em;
+    }
+
+    li + li {
+      border-left: 0px solid $nav-border-left;
+      margin-left: .8em;
+      a {
+        padding-left: .8em;
+        border-left: 0px solid $nav-border-right;
+      }
+    }
+    form{
+        .search {
+          @include box-shadow(0px);
+        }
+    }
+
+  }
+
+  .blue_dark {
+      color: #5AA6F1;
+      text-shadow: 2px 2px 2px  #0F3B6A;
+      font-size:20px;
+  }
+  .blue_light {
+      text-shadow: 2px 2px 2px  #0F3B6A;
+      color: #A6CCFB;
+      font-size:20px;
+  }
+
+  .gist-highlight {
+      margin-bottom:0;
+  }
+
+  body {
+     > div {
+       border-bottom: 0px solid $page-border-bottom;
+   }
+
+
+}
