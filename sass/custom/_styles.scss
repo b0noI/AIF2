@@ -2,6 +2,9 @@
 // Add styles here to make changes without digging in too much
 
 $border-ep: #E0E0E0;
+.navbar-icon {
+    font-size: 1.5em !important;
+}
 html {
      background: image-url('background.png') repeat-x scroll center top $page-bg;
   }
@@ -76,6 +79,5 @@ html {
      > div {
        border-bottom: 0px solid $page-border-bottom;
    }
-
 
 }
