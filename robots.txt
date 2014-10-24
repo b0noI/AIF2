@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://test.atsy.org.ua/sitemap.xml 
