@@ -1,13 +1,13 @@
 package com.aif.language.word;
 
-import java.util.AbstractMap.SimpleEntry;
+import java.util.Map;
 import java.util.List;
 
 public class CompositeTokenComparator implements ITokenComparator {
 
-    private List<SimpleEntry<ITokenComparator, Double>> comparatorWeightMap;
+    private List<Map.Entry<ITokenComparator, Double>> comparatorWeightMap;
 
-    public CompositeTokenComparator(List<SimpleEntry<ITokenComparator, Double>> comparatorWeightMap) {
+    public CompositeTokenComparator(List<Map.Entry<ITokenComparator, Double>> comparatorWeightMap) {
         this.comparatorWeightMap = comparatorWeightMap;
     }
 

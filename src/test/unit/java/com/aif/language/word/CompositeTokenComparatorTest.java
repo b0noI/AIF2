@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.testng.Assert.*;
 import static org.mockito.Mockito.*;
@@ -21,9 +22,9 @@ public class CompositeTokenComparatorTest {
         when(mockTokenComparator1.compare(any(), any())).thenReturn(1.0);
         when(mockTokenComparator2.compare(any(), any())).thenReturn(1.0);
 
-        List<SimpleEntry<ITokenComparator, Double>> comparatorList = Arrays.asList(
-            new SimpleEntry<ITokenComparator, Double>(mockTokenComparator1, 1.0),
-            new SimpleEntry<ITokenComparator, Double>(mockTokenComparator2, 1.0)
+        List<Map.Entry<ITokenComparator, Double>> comparatorList = Arrays.asList(
+            new SimpleEntry<>(mockTokenComparator1, 1.0),
+            new SimpleEntry<>(mockTokenComparator2, 1.0)
         );
         CompositeTokenComparator comparator = new CompositeTokenComparator(comparatorList);
         Double actual = comparator.compare(t1, t2);
@@ -44,7 +45,7 @@ public class CompositeTokenComparatorTest {
         when(mockTokenComparator1.compare(any(), any())).thenReturn(1.0);
         when(mockTokenComparator2.compare(any(), any())).thenReturn(1.0);
 
-        List<SimpleEntry<ITokenComparator, Double>> comparatorList = Arrays.asList(
+        List<Map.Entry<ITokenComparator, Double>> comparatorList = Arrays.asList(
                 new SimpleEntry<ITokenComparator, Double>(mockTokenComparator1, 1.0),
                 new SimpleEntry<ITokenComparator, Double>(mockTokenComparator2, 2.0)
         );
