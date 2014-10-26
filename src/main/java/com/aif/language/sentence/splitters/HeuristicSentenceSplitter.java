@@ -40,8 +40,8 @@ class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
 
         for (ISeparatorGroupsClassificatory.Group group : ISeparatorGroupsClassificatory.Group.values()) {
             final Map<Character, Double> groupConnections = connections.get(group);
-            double max = groupConnections.entrySet().stream().mapToDouble(Map.Entry::getValue).max().getAsDouble();
-            groupConnections.keySet().forEach(key -> groupConnections.put(key, groupConnections.get(key) / max));
+            final double sum = groupConnections.entrySet().stream().mapToDouble(Map.Entry::getValue).sum();
+            groupConnections.keySet().forEach(key -> groupConnections.put(key, groupConnections.get(key) / sum));
         }
 
         final List<Boolean> booleans = new ArrayList<>();

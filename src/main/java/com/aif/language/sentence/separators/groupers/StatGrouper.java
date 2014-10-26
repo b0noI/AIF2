@@ -106,8 +106,8 @@ class StatGrouper implements ISeparatorsGrouper {
     Map<Character, Double> convertConnections(final Map<Character, Integer> connections) {
         final Map<Character, Double> convertedConnections = new HashMap<>();
         connections.keySet().forEach(key1 -> {
-            final double max = (double)connections.keySet().stream().mapToInt(key2 -> connections.get(key2)).max().getAsInt();
-            convertedConnections.put(key1, (double)connections.get(key1) / max);
+            final double sum = (double)connections.keySet().stream().mapToInt(key2 -> connections.get(key2)).sum();
+            convertedConnections.put(key1, (double)connections.get(key1) / sum);
         });
         return convertedConnections;
     }

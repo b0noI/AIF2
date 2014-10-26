@@ -258,7 +258,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
             });
         });
 
-        assertTrue(totalErrors.size() <= 44);
+        assertTrue(totalErrors.size() <= 25);
     }
 
     @Test(groups = { "acceptance-tests", "quality-slow" }, dataProvider = "path_provider")
@@ -413,7 +413,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                 });
 
         return errors;
-        // current state: 25/186
+        // current state: 22(39)/186
         // . absent at all  12
         // , absent at all  6
         // . absent in Gr1  17
