@@ -1,6 +1,6 @@
 package com.aif.language.word;
 
-import net.didion.jwnl.data.Exc;
+import com.aif.language.comparator.ITokenComparator;
 import org.testng.annotations.Test;
 
 import java.util.*;

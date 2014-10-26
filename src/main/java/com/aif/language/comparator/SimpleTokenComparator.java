@@ -5,7 +5,7 @@ import com.aif.language.comparator.ITokenComparator;
 import java.util.*;
 
 
-public class SimpleTokenComparator implements ITokenComparator {
+class SimpleTokenComparator implements ITokenComparator {
 
     @Override
     public Double compare(String t1, String t2) {

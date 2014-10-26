@@ -1,15 +1,21 @@
 package com.aif.language.comparator;
 
-import com.aif.language.comparator.ITokenComparator;
 
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 
-public class CompositeTokenComparator implements ITokenComparator {
+class CompositeTokenComparator implements ITokenComparator {
 
     private List<Map.Entry<ITokenComparator, Double>> comparatorWeightMap;
 
+    // TODO: This is ugly and there is no point in constructing an empty comparator
+    public CompositeTokenComparator() { }
+
     public CompositeTokenComparator(List<Map.Entry<ITokenComparator, Double>> comparatorWeightMap) {
+        this.comparatorWeightMap = comparatorWeightMap;
+    }
+
+    // TODO: Not very friendly design as the requirement to set comparators in implicit
+    public void setComparators(List<Map.Entry<ITokenComparator, Double>> comparatorWeightMap) {
         this.comparatorWeightMap = comparatorWeightMap;
     }
 

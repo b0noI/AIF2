@@ -1,5 +1,7 @@
 package com.aif.language.word;
 
+import com.aif.language.comparator.ITokenComparator;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;

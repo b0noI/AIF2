@@ -1,9 +1,8 @@
 package com.aif.language.mapper;
 
 
-import com.aif.language.mapper.TokensToWordsMapper;
 import com.aif.language.word.AbstractWord;
-import com.aif.language.word.ITokenComparator;
+import com.aif.language.comparator.ITokenComparator;
 import com.aif.language.word.Word;
 import org.testng.annotations.Test;
 import java.util.*;

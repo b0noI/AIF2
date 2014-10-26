@@ -10,7 +10,7 @@ import com.aif.language.comparator.ITokenComparator;
  *      of the 2 strings
  */
 
-public class RecursiveSubstringComparator implements ITokenComparator {
+class RecursiveSubstringComparator implements ITokenComparator {
 
     @Override
     public Double compare(final String t1, final String t2) {

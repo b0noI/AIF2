@@ -1,7 +1,5 @@
 package com.aif.language.comparator;
 
-import com.aif.language.comparator.ITokenComparator;
-import com.aif.language.comparator.SimpleTokenComparator;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -14,7 +12,7 @@ public class SimpleTokenComparatorTest {
     @Test(groups = "unit-tests")
     public void testCompareSuccessful() {
         Double expected = 0.5;
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         Double actual = comparator.compare("heya", "hoyo");
         assertEquals(expected, actual);
     }
@@ -22,7 +20,7 @@ public class SimpleTokenComparatorTest {
     @Test(groups = "unit-tests")
     public void testCompareWordsWithNoCommonLetters() {
         Double expected = 0.0;
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         Double actual = comparator.compare("Brad", "John");
         assertEquals(actual, expected);
     }
@@ -30,7 +28,7 @@ public class SimpleTokenComparatorTest {
     @Test(groups = "unit-tests")
     public void testCompareTheSameWords() {
         Double expected = 1.0;
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         Double actual = comparator.compare("Brad", "Brad");
         assertEquals(actual, expected);
     }
@@ -38,7 +36,7 @@ public class SimpleTokenComparatorTest {
     @Test(groups = "unit-tests")
     public void testCompareWordsAnagrams() {
         Double expected = 1.0;
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         Double actual = comparator.compare("dera", "dear");
         assertEquals(actual, expected);
     }
@@ -46,14 +44,14 @@ public class SimpleTokenComparatorTest {
     @Test(groups = "unit-tests")
     public void testCompareCaseInsensitive() {
         Double expected = 1.0;
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         Double actual = comparator.compare("d", "D");
         assertEquals(actual, expected);
     }
 
     @Test(groups = "unit-tests")
     public void testCompareNull() {
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         try {
             comparator.compare(null, null);
             fail();
@@ -65,7 +63,7 @@ public class SimpleTokenComparatorTest {
     @Test(groups = "unit-tests")
     public void testRepeatedLetters() {
         Double expected = 0.5;
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         Double actual = comparator.compare("aaaaabcde", "aab");
         assertEquals(actual, expected);
     }
@@ -73,7 +71,7 @@ public class SimpleTokenComparatorTest {
     @Test(groups = "unit-tests")
     public void testCompareAnagrams() throws Exception {
         Double expected = 1.0;
-        ITokenComparator comparator = new SimpleTokenComparator();
+        ITokenComparator comparator = ITokenComparator.Type.SIMPLETOKENCOMPARATOR.getInstance();
         Double actual = comparator.compare("mate", "tame");
         assertEquals(actual, expected);
     }
