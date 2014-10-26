@@ -1,7 +1,7 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
 
-import com.aif.language.word.ITokenComparator;
-import com.aif.language.word.SimpleTokenComparator;
+import com.aif.language.comparator.ITokenComparator;
+import com.aif.language.comparator.SimpleTokenComparator;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;

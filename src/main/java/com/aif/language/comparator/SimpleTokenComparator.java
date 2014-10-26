@@ -1,7 +1,8 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
+
+import com.aif.language.comparator.ITokenComparator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 public class SimpleTokenComparator implements ITokenComparator {

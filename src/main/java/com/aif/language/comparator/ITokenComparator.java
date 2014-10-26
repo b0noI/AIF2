@@ -1,4 +1,4 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
 
 public interface ITokenComparator {
 

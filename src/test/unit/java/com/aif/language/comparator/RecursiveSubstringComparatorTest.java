@@ -1,8 +1,8 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
 
+import com.aif.language.comparator.RecursiveSubstringComparator;
 import org.testng.annotations.Test;
-import com.aif.language.word.ITokenComparator;
-import com.aif.language.word.RecursiveSubstringComparator;
+import com.aif.language.comparator.ITokenComparator;
 
 import static org.testng.Assert.*;
 

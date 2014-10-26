@@ -1,5 +1,7 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
 
+import com.aif.language.comparator.CompositeTokenComparator;
+import com.aif.language.comparator.ITokenComparator;
 import org.testng.annotations.Test;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Arrays;

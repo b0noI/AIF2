@@ -1,4 +1,6 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
+
+import com.aif.language.comparator.ITokenComparator;
 
 import java.util.Map;
 import java.util.List;
