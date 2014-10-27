@@ -1,4 +1,8 @@
-package com.aif.language.word;
+package com.aif.language.mapper;
+
+import com.aif.language.word.AbstractWord;
+import com.aif.language.comparator.ITokenComparator;
+import com.aif.language.word.Word;
 
 import java.util.List;
 import java.util.stream.Collectors;

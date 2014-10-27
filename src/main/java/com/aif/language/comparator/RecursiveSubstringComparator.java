@@ -1,4 +1,4 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
 
 import com.aif.language.common.StringHelper;
 
@@ -9,7 +9,7 @@ import com.aif.language.common.StringHelper;
  *      of the 2 strings
  */
 
-public class RecursiveSubstringComparator implements ITokenComparator {
+class RecursiveSubstringComparator implements ITokenComparator {
 
     @Override
     public Double compare(final String t1, final String t2) {

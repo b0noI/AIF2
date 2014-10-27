@@ -1,4 +1,7 @@
-package com.aif.language.word;
+package com.aif.language.mapper;
+
+import com.aif.language.mapper.IMapper;
+import com.aif.language.word.AbstractWord;
 
 import java.util.ArrayList;
 import java.util.Collection;

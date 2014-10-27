@@ -1,10 +1,9 @@
-package com.aif.language.word;
+package com.aif.language.comparator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
-public class SimpleTokenComparator implements ITokenComparator {
+class SimpleTokenComparator implements ITokenComparator {
 
     @Override
     public Double compare(String t1, String t2) {
