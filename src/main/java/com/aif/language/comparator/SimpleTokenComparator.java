@@ -1,7 +1,5 @@
 package com.aif.language.comparator;
 
-import com.aif.language.comparator.ITokenComparator;
-
 import java.util.*;
 
 

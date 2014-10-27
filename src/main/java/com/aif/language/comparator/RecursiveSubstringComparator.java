@@ -1,7 +1,6 @@
 package com.aif.language.comparator;
 
 import com.aif.language.common.StringHelper;
-import com.aif.language.comparator.ITokenComparator;
 
 /**
  * - Find the biggest substring in the two strings and calculates it's length.
