@@ -11,9 +11,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import com.aif.language.sentence.ISentenceSeparatorExtractor;
-import com.aif.language.sentence.SentenceSplitter;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.testng.annotations.Test;
 import java.io.*;
 import java.net.URISyntaxException;
@@ -57,8 +54,8 @@ public class ITTokenSplitterTest {
     
     
     
-    @Test
-    public void should_get_tokens_from_text_file_with_space_in_the_begining_using_PREDEFINED_separator() {
+    @Test (groups = { "acceptance-tests", "functional-fast" })
+    public void shouldGetTokensFromTextFileWithSpaceInTheBeginingUsingPREDEFINEDSeparator() {
 
         try {
 
@@ -84,8 +81,8 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
-    public void should_split_new_line_words() {
+    @Test (enabled = false, groups = { "acceptance-tests", "functional-fast" })
+    public void shouldSplitNewLineWords() {
 
         try {
 
@@ -110,8 +107,8 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
-    public void should_get_tokens_from_file_using_probability_splitter() {
+    @Test (enabled = false, groups = { "acceptance-tests", "functional-fast" })
+    public void shouldGetTokensFromFileUsingProbabilitySplitter() {
 
         try {
 
@@ -130,9 +127,8 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Ignore
-    //TODO this is not a real test, code below used for generating statistic data for probability splitter
-    public void generate_statistic_for_probability_splitter() {
+    @Test (enabled = false, groups = "help-test")
+    public void generateStatisticForProbabilitySplitter() {
 
         final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
         final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
@@ -152,9 +148,8 @@ public class ITTokenSplitterTest {
         }
     }
 
-    @Test
-    @Ignore
-    public void create_file_set_for_statistic_for_PROBABILITY_based_splitting() {
+    @Test (enabled = false, groups = "help-test")
+    public void createFileSetForStatisticForPROBABILITYBasedSplitting() {
 
         final TextGenerator tg = new TextGenerator();
 

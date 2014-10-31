@@ -6,7 +6,7 @@
 
     <groupId>com.aif</groupId>
     <artifactId>aif</artifactId>
-    <version>0.0.0-Alpha1</version>
+    <version>2.0.0-Alpha2</version>
 
     <dependencies>
         <dependency>
@@ -90,7 +90,7 @@
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>10</threadCount>
-                    <groups>unit-tests,quality-test,functional-fast,integration-tests</groups>
+                    <groups>unit-tests,quality-slow,functional-fast,integration-tests</groups>
                     <enableAssertions>true</enableAssertions>
                 </configuration>
             </plugin>
