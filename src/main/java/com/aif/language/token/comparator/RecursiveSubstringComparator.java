@@ -2,6 +2,8 @@ package com.aif.language.token.comparator;
 
 import com.aif.language.common.StringHelper;
 
+import java.util.Arrays;
+
 /**
  * - Find the biggest substring in the two strings and calculates it's length.
  * - Recursively on the left and right continue finding substrings and get the length.
@@ -9,6 +11,8 @@ import com.aif.language.common.StringHelper;
  *      of the 2 strings
  */
 class RecursiveSubstringComparator implements ITokenComparator {
+
+    private static final Character[] CHARACTERS_FOR_FILTERING = {'?', '*', '[', ']', '(', ')'};
 
     @Override
     public Double compare(final String t1, final String t2) {
@@ -39,7 +43,7 @@ class RecursiveSubstringComparator implements ITokenComparator {
     private String clearString(final String token) {
         final StringBuilder sb = new StringBuilder();
         for (char ch : token.toCharArray()) {
-            if (ch != '?') {
+            if (!Arrays.asList(CHARACTERS_FOR_FILTERING).contains(ch)) {
                 sb.append(ch);
             }
         }
