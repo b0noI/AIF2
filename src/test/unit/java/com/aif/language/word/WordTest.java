@@ -19,7 +19,7 @@ public class WordTest {
         long expectedTokenCount = 1;
 
         Word word = new Word(token, mockTokenComparator);
-        Set<String> actualTokens =  word.getTokens();
+        Set<String> actualTokens =  word.getAllTokens();
         long actualTokenCount = word.tokenCount(token);
         assertEquals(actualTokens, expectedTokens);
         assertEquals(actualTokenCount, expectedTokenCount);
@@ -112,7 +112,7 @@ public class WordTest {
         Word word1 = new Word(t1, mockTokenComparator);
         Word word2 = new Word(t2, mockTokenComparator);
         word1.merge(word2);
-        Set<String> actualTokens = word1.getTokens();
+        Set<String> actualTokens = word1.getAllTokens();
 
         assertEquals(actualTokens, expectedTokens);
     }
@@ -133,7 +133,7 @@ public class WordTest {
         tokens2.forEach(token -> word2.merge(new Word(token, mockTokenComparator)));
 
         word1.merge(word2);
-        Set<String> actualTokens = word1.getTokens();
+        Set<String> actualTokens = word1.getAllTokens();
         assertEquals(actualTokens, expectedTokens);
     }
 
@@ -142,7 +142,7 @@ public class WordTest {
         String expected = "test";
         final ITokenComparator mockTokenComparator = mock(ITokenComparator.class);
         Word word = new Word(expected, mockTokenComparator);
-        String actual = word.basicToken();
+        String actual = word.getRootToken();
         assertEquals(actual, expected);
     }
 
@@ -156,7 +156,7 @@ public class WordTest {
         Word word1 = new Word(expected1, mockTokenComparator);
         Word word2 = new Word(expected2, mockTokenComparator);
         word1.merge(word2);
-        String actual = word1.basicToken();
+        String actual = word1.getRootToken();
         assertEquals(actual, expected2);
     }
 
@@ -173,7 +173,7 @@ public class WordTest {
         Word word1 = new Word(expected1, mockTokenComparator);
         word1.merge(new Word(expected2, mockTokenComparator));
         word1.merge(new Word(expected3, mockTokenComparator));
-        String actual = word1.basicToken();
+        String actual = word1.getRootToken();
         assertEquals(actual, expected3);
     }
 
@@ -195,7 +195,7 @@ public class WordTest {
         word1.merge(new Word(expected4, mockTokenComparator));
         word1.merge(new Word(expected5, mockTokenComparator));
         word1.merge(new Word(expected6, mockTokenComparator));
-        String actual = word1.basicToken();
+        String actual = word1.getRootToken();
         assertEquals(actual, expected2);
     }
 }

@@ -19,7 +19,7 @@ public class Word extends AbstractWord {
     }
 
     @Override
-    public Set<String> getTokens() {
+    public Set<String> getAllTokens() {
         return tokensCountMap.keySet();
     }
 
@@ -29,16 +29,16 @@ public class Word extends AbstractWord {
     }
 
     @Override
-    public String basicToken() {
-        Set<String> tokens = getTokens();
+    public String getRootToken() {
+        Set<String> tokens = getAllTokens();
         long tokensCount = tokens.size();
 
         String lowestAvgToken = "";
         Double lowestAvg = Double.MAX_VALUE;
 
         double tmpAvg;
-        for (String token : getTokens()) {
-            tmpAvg = getTokens()
+        for (String token : getAllTokens()) {
+            tmpAvg = getAllTokens()
                         .stream()
                         .mapToDouble(tokenIn -> (token == tokenIn) ? 0 : comparator.compare(token, tokenIn))
                         .average()
@@ -56,19 +56,23 @@ public class Word extends AbstractWord {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || (getClass() != o.getClass() && o.getClass() != String.class)) return false;
+
+        if (o.getClass() == String.class) {
+            o = new Word((String)o, comparator);
+        }
 
         Word that = (Word) o;
-        Double sum = getTokens()
+        Double sum = getAllTokens()
                 .stream()
-                .mapToDouble(t1 -> that.getTokens()
+                .mapToDouble(t1 -> that.getAllTokens()
                                 .stream()
                                 .mapToDouble(t2 -> comparator.compare(t1, t2))
                                 .sum()
                 )
                 .sum();
 
-        Double avg = sum / (this.getTokens().size() * that.getTokens().size());
+        Double avg = sum / (this.getAllTokens().size() * that.getAllTokens().size());
         return (avg > AVG_THRESHOLD);
     }
 
@@ -80,7 +84,7 @@ public class Word extends AbstractWord {
     @Override
     public void merge(AbstractWord that) {
         //TODO: Should we not enforce the equal check here so that the words are merged only if they are equal
-        that.getTokens()
+        that.getAllTokens()
             .forEach(token -> tokensCountMap.merge(token, that.tokenCount(token), (v1, v2) -> v1 + v2));
     }
 }

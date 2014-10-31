@@ -1,8 +1,11 @@
 package com.aif.language.mapper;
 
+import com.aif.language.common.IMapper;
 import com.aif.language.word.AbstractWord;
 import com.aif.language.comparator.ITokenComparator;
+import com.aif.language.word.stemmer.Stemmer;
 import com.aif.language.word.Word;
+import com.aif.language.word.mapper.WordsToPlaceHoldersMapper;
 import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.*;
@@ -26,13 +29,13 @@ public class WordsToPlaceHoldersMapperTest {
                 .flatMap(list -> list.stream())
                 .forEach(token -> when(mockComparator.compare(token, token)).thenReturn(1.0));
 
-        List<List<AbstractWord>> wordLists = new TokensToWordsMapper(mockComparator).mapAll(tokenizedSentences);
+        List<List<AbstractWord>> wordLists = new Stemmer(mockComparator).mapAll(tokenizedSentences);
 
         List<List<AbstractWord.WordPlaceHolder>> expected = new ArrayList<>();
         for (List<AbstractWord> words : wordLists) {
             List<AbstractWord.WordPlaceHolder> tmp = words
                     .stream()
-                    .map(word -> word.new WordPlaceHolder(word.basicToken()))
+                    .map(word -> word.new WordPlaceHolder(word.getRootToken()))
                     .collect(Collectors.toList())
             ;
             expected.add(tmp);
@@ -64,7 +67,7 @@ public class WordsToPlaceHoldersMapperTest {
         when(mockComparator.compare("to", "to")).thenReturn(1.0);
         when(mockComparator.compare("kandy", "candy")).thenReturn(1.0);
 
-        List<List<AbstractWord>> wordLists = new TokensToWordsMapper(mockComparator).mapAll(tokenizedSentences);
+        List<List<AbstractWord>> wordLists = new Stemmer(mockComparator).mapAll(tokenizedSentences);
 
         AbstractWord wordI = new Word("I", mockComparator);
         AbstractWord wordWent = new Word("went", mockComparator);

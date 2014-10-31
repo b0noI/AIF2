@@ -3,6 +3,7 @@ package com.aif.language.mapper;
 
 import com.aif.language.word.AbstractWord;
 import com.aif.language.comparator.ITokenComparator;
+import com.aif.language.word.stemmer.Stemmer;
 import com.aif.language.word.Word;
 import org.testng.annotations.Test;
 import java.util.*;
@@ -34,7 +35,7 @@ public class TokensToWordsMapperTest {
             expected.add(tmp);
         }
 
-        TokensToWordsMapper mapper = new TokensToWordsMapper(mockComparator);
+        Stemmer mapper = new Stemmer(mockComparator);
         List<List<AbstractWord>> actual = mapper.mapAll(tokenizedSentences);
         verifyZeroInteractions(mockComparator);
         assertEquals(actual, expected);
@@ -46,7 +47,7 @@ public class TokensToWordsMapperTest {
         List<List<String>> input = new ArrayList<>();
         List<List<AbstractWord>> expected = new ArrayList<>();
 
-        TokensToWordsMapper mapper = new TokensToWordsMapper(mockComparator);
+        Stemmer mapper = new Stemmer(mockComparator);
         List<List<AbstractWord>> actual = mapper.mapAll(input);
         verifyZeroInteractions(mockComparator);
         assertEquals(actual, expected);
