@@ -1,6 +1,6 @@
 package com.aif.language.word;
 
-import com.aif.language.comparator.ITokenComparator;
+import com.aif.language.token.comparator.ITokenComparator;
 import org.testng.annotations.Test;
 
 import java.util.*;

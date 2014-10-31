@@ -1,7 +1,6 @@
-package com.aif.language.word.stemmer;
+package com.aif.language.word.dict;
 
-import com.aif.language.common.IExtractor;
-import com.aif.language.comparator.ITokenComparator;
+import com.aif.language.token.comparator.ITokenComparator;
 import com.aif.language.word.AbstractWord;
 import com.aif.language.word.IWord;
 import com.aif.language.word.Word;
@@ -9,24 +8,23 @@ import com.aif.language.word.Word;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
-public class Stemmer implements IExtractor<Collection<String>, List<IWord>> {
+public class DictBuilder implements IDictBuilder<Collection<String>> {
 
     private ITokenComparator comparator;
 
-    public Stemmer() {
+    public DictBuilder() {
         this(ITokenComparator.defaultComparator());
     }
 
-    public Stemmer(final ITokenComparator comparator) {
+    public DictBuilder(final ITokenComparator comparator) {
         this.comparator = comparator;
     }
 
     @Override
-    public Optional<List<IWord>> extract(Collection<String> from) {
+    public List<IWord> build(Collection<String> from) {
         List<AbstractWord> words = from
             .stream()
             .map(token -> new Word(token, comparator))
@@ -34,9 +32,8 @@ public class Stemmer implements IExtractor<Collection<String>, List<IWord>> {
         DistinctWordList wordList = new DistinctWordList();
         wordList.addAll(words);
 
-        return Optional.of(words.stream().map(word -> (IWord) word).collect(Collectors.toList()));
+        return words.stream().map(word -> (IWord) word).collect(Collectors.toList());
     }
-
 
     private static class DistinctWordList extends ArrayList<AbstractWord> {
 
@@ -56,4 +53,5 @@ public class Stemmer implements IExtractor<Collection<String>, List<IWord>> {
             return true;
         }
     }
+
 }

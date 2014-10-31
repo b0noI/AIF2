@@ -1,4 +1,4 @@
-package com.aif.language.comparator;
+package com.aif.language.token.comparator;
 
 import org.testng.annotations.Test;
 

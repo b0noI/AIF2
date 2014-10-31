@@ -1,4 +1,4 @@
-package com.aif.language.comparator;
+package com.aif.language.token.comparator;
 
 import org.testng.annotations.Test;
 import java.util.AbstractMap.SimpleEntry;
@@ -58,11 +58,6 @@ public class CompositeTokenComparatorTest {
     }
 
     @Test(groups = "unit-tests")
-    public void testComparatorConstructionWithoutComparatorsList() throws Exception {
-        new CompositeTokenComparator();
-    }
-
-    @Test(groups = "unit-tests")
     public void testComparatorSetComparators() throws Exception {
         String t1 = "test1";
         String t2 = "test2";
@@ -77,8 +72,7 @@ public class CompositeTokenComparatorTest {
                 new SimpleEntry<>(mockTokenComparator1, 1.0),
                 new SimpleEntry<>(mockTokenComparator2, 2.0)
         );
-        CompositeTokenComparator comparator = new CompositeTokenComparator();
-        comparator.setComparators(comparatorList);
+        ITokenComparator comparator = ITokenComparator.createComposite(comparatorList);
 
         Double actual = comparator.compare(t1, t2);
         assertEquals(actual, expected);

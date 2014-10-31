@@ -1,4 +1,4 @@
-package com.aif.language.comparator;
+package com.aif.language.token.comparator;
 
 import com.aif.language.common.StringHelper;
 
@@ -8,27 +8,42 @@ import com.aif.language.common.StringHelper;
  * - Once the above is completed sum all the lengths of substrings, multiply by 2 and divide by the sum of the lengths
  *      of the 2 strings
  */
-
 class RecursiveSubstringComparator implements ITokenComparator {
 
     @Override
     public Double compare(final String t1, final String t2) {
-        return (double) (sumOfLongestCommonSubstrings(t1, t2) * 2) / (t1.length() + t2.length());
+        final String clearedT1 = clearString(t1);
+        final String clearedT2 = clearString(t2);
+        return (double) (sumOfLongestCommonSubstrings(clearedT1, clearedT2) * 2) / (clearedT1.length() + clearedT2.length());
     }
 
     private int sumOfLongestCommonSubstrings(final String t1, final String t2) {
         if (t1.length() == 0 || t2.length() == 0)
             return 0;
 
-        String longestCommonSubstring = StringHelper.findLongestCommonSubstring(t1, t2);
+        final String longestCommonSubstring = StringHelper.findLongestCommonSubstring(t1, t2);
         if (longestCommonSubstring.length() == 0)
             return 0;
 
-        String t1Parts[] = t1.split(longestCommonSubstring, 2);
-        String t2Parts[] = t2.split(longestCommonSubstring, 2);
+        final String t1Parts[] = t1.split(longestCommonSubstring, 2);
+        final String t2Parts[] = t2.split(longestCommonSubstring, 2);
+
+        if (t1Parts.length <= 1 || t2Parts.length <= 1)
+            return 0;
 
         return longestCommonSubstring.length() +
                 sumOfLongestCommonSubstrings(t1Parts[0], t2Parts[0]) +
                 sumOfLongestCommonSubstrings(t1Parts[1], t2Parts[1]);
     }
+
+    private String clearString(final String token) {
+        final StringBuilder sb = new StringBuilder();
+        for (char ch : token.toCharArray()) {
+            if (ch != '?') {
+                sb.append(ch);
+            }
+        }
+        return sb.toString();
+    }
+
 }
