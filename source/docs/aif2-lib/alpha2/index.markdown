@@ -4,7 +4,7 @@ title:
 footer: false
 ---
 
-AIF2 - is **fully language independent** NLP library. AIF2 written in Java 8+. 
+AIF2 is **fully language independent** NLP library. AIF2 is written in Java 8+. 
 
 ## How to use it
 
@@ -24,28 +24,31 @@ Add repository to pom.xml:
 and add dependency:
 
     <dependency>
-        <groupId>com.aif</groupId>
-        <artifactId>aif</artifactId>
-        <version>0.0.0-Alpha1</version>
+       <groupId>com.aif</groupId>
+       <artifactId>aif</artifactId>
+       <version>2.0.0-Alpha2</version>
     </dependency>
 
-## Wiki navigation
+## Docs navigation
 
 * API documentation:
-  * [Work with tokens](https://github.com/b0noI/AIF2/wiki/v.1.0.0-Work-with-tokens)
-  * [Work with sentences](https://github.com/b0noI/AIF2/wiki/v.1.0.0-Work-with-sentences)
-  * [Stammer](https://github.com/b0noI/AIF2/wiki/v.1.0.0-Stammer)
+  * v.1.0.0:
+    * [Work with tokens](./api/1.0.0/tokens.html)
+    * [Work with sentences](./api/1.0.0/sentences.html)
+  * v.0.0.0:
+    * [Work with tokens](./api/0.0.0/tokens.html)
+    * [Work with sentences](./api/0.0.0/sentences.html)
 * Algorithm documentation:
-  * [Sentence splitting algorithm](https://github.com/b0noI/AIF2/wiki/Sentence-splitting-algorithm)
-  * [Algorithm of tokens separator extraction](https://github.com/b0noI/AIF2/wiki/Algorithm-of-tokens-separator-extraction)
-  * [Main definitions](https://github.com/b0noI/AIF2/wiki/Main-definitions)
+  * [Sentence splitting algorithm](./algorithm/sentence-splitting.html)
+  * [Algorithm of tokens separator extraction](./algorithm/token-separator-extraction.html)
+  * [Main definitions](./algorithm/main-definitions.html)
 * Other documentation:
-  * [ChangeLog](https://github.com/b0noI/AIF2/wiki/ChangeLog)
-  * [Environment](https://github.com/b0noI/AIF2/wiki/Environment)
-  * [How versions number is chosen ](https://github.com/b0noI/AIF2/wiki/How-version-number-is-chosen)
-  * [RoadMap](https://github.com/b0noI/AIF2/wiki/RoadMap)
-  * [Software that using AIF](https://github.com/b0noI/AIF2/wiki/Software-that-use-AIF)
-  * [Tests](https://github.com/b0noI/AIF2/wiki/Tests)
+  * [ChangeLog](./changelog.html)
+  * [Environment](./environment.html)
+  * [How versions number is chosen ](./how-version-number-is-chosen.html)
+  * [RoadMap](./road-map.html)
+  * [Software that uses AIF](./software-that-uses-aif.hmtl)
+  * [Tests](./tests.html)
 
 ## MailList
 
@@ -53,12 +56,18 @@ and add dependency:
 
 ## Current version
 
-- alpha1 
+- alpha2
 
 ## Next versions
 
-- alpha2 (~October)
-- alpha3
+- alpha3 (~midl of December)
+- alpha4 (~midl of January 2015)
+
+## Deprecated versions 
+
+This versions are no longer supported and should not be used:
+
+- alpha1
 
 ## License
 
