@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Work with sentences (v 0.0.0) - AIF2</title>
+  <meta name="author" content="AIF2 Team">
+
+  
+  <meta name="description" content="Work With Sentences (v 0.0.0) This page describes the functions that AIF2 can perform with sentences. Functions There are 2 main functions that can &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/api/0.0.0/sentences.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="AIF2" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS"><i class="fa fa-rss navbar-icon"></i></a></li>
+  
+  <li><a href="https://github.com/b0noI/AIF2"><i class="fa fa-github navbar-icon"></i></a></li>
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:b0noI.github.io/AIF2" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            AIF2
+        </span>
+       
+           <span class="blue_dark">
+             NLP library
+           </span>
+       
+    </a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/docs/">Documentation</a></li>
+  <li><a href="/downloads/">Downloads</a></li>
+  <li><a href="/about">About us</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Work With Sentences (v 0.0.0)</h1>
+    
+  </header>
+  
+  <p>This page describes the functions that AIF2 can perform with sentences.</p>
+
+<h2>Functions</h2>
+
+<p>There are 2 main functions that can be used in AIF2 about tokens:</p>
+
+<ul>
+<li>extract sentence splitters characters from tokens list;</li>
+<li>split tokens list into sentences list.</li>
+</ul>
+
+
+<h2>Extract sentence splitters characters</h2>
+
+<p>This function gives you a possibility to extract a sentence splitters characters list from the input tokens list. This function should be used by using interface: ISentenceSeparatorExtractor (from package: com.aif.language.sentence). To create an instance of this interface you need to select the type of ISentenceSeparatorExtractor and get an instance like this:</p>
+
+<pre><code>ISentenceSeparatorExtractor.Type.PREDEFINED.getInstance()
+</code></pre>
+
+<p>For the difference between separators types see the section below</p>
+
+<h3>Sentence Separators Extractor Types</h3>
+
+<h4>Type.PREDEFINED</h4>
+
+<p>This extractor has <strong>predefined</strong> the characters that will be used for sentence splitting. It means that this extractor type will not parse tokens in any way and will just return the predefined characters.</p>
+
+<h4>Type.STAT</h4>
+
+<p>This extractor will parse input tokens and will extract sentence splitters from tokens. This splitter should be used when the current text has sentence splitters that are not included in Type.PREDEFINED splitter. It&rsquo;s very useful when your text has non-standard encoding, or symbols using strange encoding.</p>
+
+<h2>Sentence splitting</h2>
+
+<p>To split sentences you need to:</p>
+
+<ul>
+<li>create SentenceSplitter instance(from package: com.aif.language.sentence);</li>
+<li>call split method.</li>
+</ul>
+
+
+<h3>Creating SentenceSplitter</h3>
+
+<p>You can initiate it in 2 ways:</p>
+
+<ul>
+<li>setting Sentence Separators Extractor Type;</li>
+<li>using default Sentence Separators Extractor Type.</li>
+</ul>
+
+
+<h3></h3>
+
+<pre><code>ISentenceSeparatorExtractor sentenceSeparatorExtractor = ...
+
+ISplitter&lt;List&lt;String&gt;, List&lt;String&gt;&gt; sentenceSplitter = new SentenceSplitter(sentenceSeparatorExtractor);
+</code></pre>
+
+<p>This will create sentenceSplitter that will use sentenceSeparatorExtractor to split sentences. You can also create SentenceSplitter with default ISentenceSeparatorExtractor like this:</p>
+
+<pre><code>ISplitter&lt;List&lt;String&gt;, List&lt;String&gt;&gt; sentenceSplitter = new SentenceSplitter();
+</code></pre>
+
+<p>By default it will use this ISentenceSeparatorExtractor.Type.STAT.getInstance() sentences separator extractor.</p>
+
+<h3>Splitting tokens with SentenceSplitter</h3>
+
+<p>After you have SentenceSplitter instance, you can split tokens by calling split method like this:</p>
+
+<pre><code>ISplitter&lt;List&lt;String&gt;, List&lt;String&gt;&gt; sentenceSplitter = ...
+
+List&lt;String&gt; tokens = ...
+
+List&lt;List&lt;String&gt;&gt; sentences = sentenceSplitter.split(tokens);
+</code></pre>
+
+<h2>Usage example</h2>
+
+<p>example of real usage can be found <a href="https://github.com/b0noI/aif-cli/blob/master/src/main/java/com/aif/language/sentence/SentenceSplitCommand.java#L33">here</a></p>
+
+<h2>Algorithm</h2>
+
+<p>Information about algorithm can be found <a href="../../algorithm/sentence-splitting.html">here</a></p>
+
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/20/test/">test</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - AIF2 Team -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
