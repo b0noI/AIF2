@@ -5,15 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Main definitions - AIF2</title>
+  <title>Algorithm of classification of text separators groups - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Main Definitions Definitions List tokens separator
-text separators
-text separators groups
-sentence
-word Tokens separator The character that is used &hellip;">
+  <meta name="description" content="Algorithm of Classification of Text Separators Groups Definitions sentence;
+text separators;
+text separator groups; Algorithm The algorithm needs &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +20,7 @@ word Tokens separator The character that is used &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/algorithm/main-definitions.html">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/algorithm/classification-of-text-separators-groups.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -76,48 +74,84 @@ word Tokens separator The character that is used &hellip;">
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Main Definitions</h1>
+    <h1 class="entry-title">Algorithm of Classification of Text Separators Groups</h1>
     
   </header>
   
-  <h2>Definitions List</h2>
+  <h2>Definitions</h2>
 
 <ul>
-<li><a href="#tokens-separator">tokens separator</a></li>
-<li><a href="#text-separators">text separators</a></li>
-<li><a href="#text-separators-groups">text separators groups</a></li>
-<li><a href="#sentence">sentence</a></li>
-<li><a href="#word">word</a></li>
+<li><a href="./main-definitions.html#sentence">sentence</a>;</li>
+<li><a href="./main-definitions.html#text-separators">text separators</a>;</li>
+<li><a href="./main-definitions.html#text-separators-groups">text separator groups</a>;</li>
 </ul>
 
 
-<h2><a id="tokens-separator"></a>Tokens separator</h2>
+<h2>Algorithm</h2>
 
-<p>The character that is used in text for splitting tokens (the most common character that is used for this purpose is space)</p>
+<p>The algorithm needs several groups of text separators and tokens as input parameters. So, to understand this step, <a href="./dividing-text-separators-into-groups.html">algorithm of dividing text separators into groups</a> should be understood first. This step also uses some definitions from the previous step.</p>
 
-<h2><a id="text-separators"></a>Text separators</h2>
+<h3>Step 1</h3>
 
-<p>Characters that are used for logical separation of the text. Some of the characters are used for text separation into sentences, while other characters are used for sentences separation into logical parts. Example of such characters: <code>,.!/?:;"'-()[]</code></p>
+<p>Connections graph like this</p>
 
-<h2><a id="text-separators-groups"></a>Text separators groups</h2>
+<p><code>.</code> connected with:</p>
 
-<p>All text separators divided into 2 groups: Group1 and Group2</p>
+<ul>
+<li>I - 0.3</li>
+<li>M - 0.3</li>
+<li>T - 0.3</li>
+</ul>
 
-<h3>Group1</h3>
 
-<p>This group contains separators that are <em>usually</em> used for splitting text into sentences. Most common characters in this group: <code>.!?</code> . Separators of this group are not always (but usually) used for separation of text into sentences, for example: &ldquo;dear Mr. Max&rdquo;; the dot in the example is not used for sentence separation. In this particular case the dot is used as a separator from Group2</p>
+<p>is built for each unique character that ends a token and is not from any separator groups. For example:</p>
 
-<h3>Group2</h3>
+<p>Input text: &ldquo;Hello! My name is: Max. I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?&rdquo;</p>
 
-<p>This group contains separators that are <em>usually</em> used for splitting sentences into logical sub-sentences. Most common characters in this group: <code>;:,-"'()</code> . Separators of this group are not always (but usually) used for separation of sentences into sub-sentences, for example: &ldquo;- Hi - Hello&rdquo;</p>
+<p>The following graphs are built:</p>
 
-<h2><a id="sentence"></a>Sentence</h2>
+<p><code>y</code> connected with:</p>
 
-<p>Sequence of tokens that contains semantic piece of information and surrounded by text separators. Sentence can include text separators. Usually sentence is surrounded by text separators of Group1 and includes text separators from Group2.</p>
+<ul>
+<li>n - 0.5</li>
+<li>a - 0.5</li>
+</ul>
 
-<h2><a id="word"></a>Word</h2>
 
-<p>Consists of an approximated root token and a list of tokens with similar forms</p>
+<p><code>e</code> connected with:</p>
+
+<ul>
+<li>i - 1.0</li>
+</ul>
+
+
+<p><code>I</code> connected with:</p>
+
+<ul>
+<li>l - 1.0</li>
+</ul>
+
+
+<p><code>n</code> connected with:</p>
+
+<ul>
+<li>K - 1.0</li>
+</ul>
+
+
+<p>and so on.</p>
+
+<h3>Step 2</h3>
+
+<p>All these graphs are merged into one graph (one group).</p>
+
+<h3>Step 3</h3>
+
+<p>Each separator group graph is compared with the result from step 2.</p>
+
+<h3>Result</h3>
+
+<p>The closest graph to the graph from step 2 represents separator characters from Group 2, other graphs represent separators from Group1.</p>
 
   
 </article>

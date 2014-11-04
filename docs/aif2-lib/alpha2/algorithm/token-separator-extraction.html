@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AIF2</title>
+  <title>Algorithm of tokens separator extraction - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content=" Recent Posts test ">
+  <meta name="description" content="Algorithm of Tokens Separator Extraction Definitions tokens separator Algorithm The process of tokens separator extraction counts each unique &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,52 @@
       <div>
 <article role="article">
   
+  <header>
+    <h1 class="entry-title">Algorithm of Tokens Separator Extraction</h1>
+    
+  </header>
   
+  <h2>Definitions</h2>
+
+<ul>
+<li><a href="./main-definitions.html#tokens-separator">tokens separator</a></li>
+</ul>
+
+
+<h2>Algorithm</h2>
+
+<p>The process of tokens separator extraction counts each unique character in the text. One rule is to be applied during calculation: if a unique character occurs more than once in a row, this occurrence is counted as one.</p>
+
+<p>This approach does not work under the following conditions:
+* input text is small;
+* language of input text doesn&rsquo;t have a token separator (some languages don&rsquo;t use token separators at all or in some cases).</p>
+
+<p><strong>Example of input:</strong>
+Token1 token2 eeee4    .</p>
+
+<p><strong>Counting result:</strong></p>
+
+<p>&rsquo;T&#8217; - 1</p>
+
+<p>&rsquo;t&#8217; - 1</p>
+
+<p>&lsquo;o&rsquo; - 2</p>
+
+<p>&lsquo;k&rsquo; - 2</p>
+
+<p>&lsquo;e&rsquo; - 3</p>
+
+<p>&lsquo;n&rsquo; - 2</p>
+
+<p>&lsquo;1&rsquo; - 1</p>
+
+<p>&lsquo;2&rsquo; - 1</p>
+
+<p>&lsquo;4&rsquo; - 1</p>
+
+<p>&lsquo; &rsquo; - 3</p>
+
+<p>&lsquo;.&rsquo; - 1</p>
 
   
 </article>
