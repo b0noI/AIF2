@@ -55,35 +55,6 @@ public class Word extends AbstractWord {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || (getClass() != o.getClass() && o.getClass() != String.class)) return false;
-
-        if (o.getClass() == String.class) {
-            o = new Word((String)o, comparator);
-        }
-
-        Word that = (Word) o;
-
-        if (that.getAllTokens().contains(this.getAllTokens().iterator().next()) ||
-                this.getAllTokens().contains(that.getAllTokens().iterator().next())) {
-            return true;
-        }
-
-        Double sum = getAllTokens()
-                .stream()
-                .mapToDouble(t1 -> that.getAllTokens()
-                                .stream()
-                                .mapToDouble(t2 -> comparator.compare(t1, t2))
-                                .sum()
-                )
-                .sum();
-
-        Double avg = sum / (this.getAllTokens().size() * that.getAllTokens().size());
-        return (avg > AVG_THRESHOLD);
-    }
-
-    @Override
     public int hashCode() {
         return tokensCountMap.hashCode();
     }
