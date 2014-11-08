@@ -12,7 +12,8 @@ import java.util.Arrays;
  */
 class RecursiveSubstringComparator implements ITokenComparator {
 
-    private static final Character[] CHARACTERS_FOR_FILTERING = {'?', '*', '[', ']', '(', ')'};
+    // TODO find correct method of filtering string Regexcharaters
+    private static final Character[] CHARACTERS_FOR_FILTERING = {'?', '*', '[', ']', '(', ')', '$'};
 
     @Override
     public Double compare(final String t1, final String t2) {
@@ -34,10 +35,14 @@ class RecursiveSubstringComparator implements ITokenComparator {
 
         if (t1Parts.length <= 1 || t2Parts.length <= 1)
             return 0;
-
-        return longestCommonSubstring.length() +
-                sumOfLongestCommonSubstrings(t1Parts[0], t2Parts[0]) +
-                sumOfLongestCommonSubstrings(t1Parts[1], t2Parts[1]);
+        // TODO delete try/cath once filtering is complete
+        try {
+            return longestCommonSubstring.length() +
+                    sumOfLongestCommonSubstrings(t1Parts[0], t2Parts[0]) +
+                    sumOfLongestCommonSubstrings(t1Parts[1], t2Parts[1]);
+        } catch (StackOverflowError e) {
+            throw  e;
+        }
     }
 
     private String clearString(final String token) {

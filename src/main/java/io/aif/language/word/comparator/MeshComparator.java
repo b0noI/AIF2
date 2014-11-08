@@ -4,7 +4,9 @@ package io.aif.language.word.comparator;
 import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IWord;
 
-class MeshComparator implements IWordComparator {
+import java.util.Set;
+
+class MeshComparator implements ISetComparator {
 
     private final ITokenComparator tokenComparator;
 
@@ -13,17 +15,17 @@ class MeshComparator implements IWordComparator {
     }
 
     @Override
-    public double compare(final IWord o1, final IWord o2) {
-        final Double sum = o1.getAllTokens()
+    public double compare(final Set<String> o1, final Set<String> o2) {
+        final Double sum = o1
                 .stream()
-                .mapToDouble(t1 -> o2.getAllTokens()
+                .mapToDouble(t1 -> o2
                                 .stream()
                                 .mapToDouble(t2 -> tokenComparator.compare(t1, t2))
                                 .sum()
                 )
                 .sum();
 
-        return sum / (o1.getAllTokens().size() * o2.getAllTokens().size());
+        return sum / (o1.size() * o2.size());
     }
 
 }
