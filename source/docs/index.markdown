@@ -9,5 +9,5 @@ footer: false
 
 ###AIF2 CLI Documentation
 We have command line interface for our library.  
-You can download it from [CLI Download page](downloads/cli.html "CLI Download page"),  
+You can download it from [CLI Download page](/downloads/cli.html "CLI Download page"),  
 and you can find usage instructions on [CLI Documentation page](/docs/aif-cli/ "CLI Documentation page")
