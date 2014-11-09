@@ -47,7 +47,7 @@ and add dependency:
   * [Environment](./environment.html)
   * [How versions number is chosen ](./how-version-number-is-chosen.html)
   * [RoadMap](./road-map.html)
-  * [Software that uses AIF](./software-that-uses-aif.hmtl)
+  * [Software that uses AIF](./software-that-uses-aif.html)
   * [Tests](./tests.html)
 
 ## MailList
