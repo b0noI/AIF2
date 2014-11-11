@@ -9,7 +9,7 @@ public interface ISetComparator {
     public double compare(final Set<String> t1, final Set<String> t2);
 
     public static ISetComparator createDefaultInstance(final ITokenComparator tokenComparator) {
-        return new MeshComparator(tokenComparator);
+        return new OptimisedMeshComparator(tokenComparator);
     }
 
 }

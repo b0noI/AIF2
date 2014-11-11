@@ -10,7 +10,7 @@ public class RecursiveSubstringComparatorTest {
     private void testIt(final String t1, final String t2, double sumOfLettersOfCommonWords) {
         final double expected = (sumOfLettersOfCommonWords * 2) / (t1.length() + t2.length());
 
-        ITokenComparator comparator = ITokenComparator.Type.RECURSIVESUBSTRINGCOMPARATOR.getInstance();
+        ITokenComparator comparator = ITokenComparator.Type.RECURSIVE_SUBSTRING_COMPARATOR.getInstance();
         final double actual = comparator.compare(t1, t2);
         assertEquals(actual, expected);
     }

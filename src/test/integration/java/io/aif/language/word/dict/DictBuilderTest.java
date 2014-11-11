@@ -2,14 +2,17 @@ package io.aif.language.word.dict;
 
 import io.aif.common.FileHelper;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
+import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
 import io.aif.language.token.TokenSplitter;
 import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IDict;
 import io.aif.language.word.comparator.ISetComparator;
+import opennlp.tools.formats.ad.ADSentenceStream;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -26,12 +29,15 @@ public class DictBuilderTest {
         }
 
         TokenSplitter tokenSplitter = new TokenSplitter();
+        AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
         List<String> tokens = tokenSplitter.split(text);
+        List<List<String>> sentences = sentenceSplitter.split(tokens);
+        List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
         ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
         ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
         DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
-        IDict dict = dictBuilder.build(tokens);
+        IDict dict = dictBuilder.build(filteredTokens);
         System.out.println(dict);
     }
 

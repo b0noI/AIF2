@@ -1,7 +1,6 @@
 package io.aif.language.token.comparator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public interface ITokenComparator {
 
@@ -12,17 +11,15 @@ public interface ITokenComparator {
     }
 
     public static ITokenComparator defaultComparator() {
-
-        final List<Map.Entry<ITokenComparator, Double>> comparators = Arrays.asList(Type.values())
-                .stream()
-                .map(comparator -> new AbstractMap.SimpleEntry<ITokenComparator, Double>(comparator.getInstance(), 1.))
-                .collect(Collectors.toList());
-        return createComposite(comparators);
+        final Map<ITokenComparator, Double> comparators = new HashMap<>();
+        comparators.put(Type.RECURSIVE_SUBSTRING_COMPARATOR.getInstance(),  1.);
+        comparators.put(Type.SIMPLE_TOKEN_COMPARATOR.getInstance(),         .5);
+        return createComposite(comparators.entrySet());
     }
 
     public static enum Type {
-        SIMPLETOKENCOMPARATOR           (new SimpleTokenComparator()),
-        RECURSIVESUBSTRINGCOMPARATOR    (new RecursiveSubstringComparator());
+        SIMPLE_TOKEN_COMPARATOR         (new SimpleTokenComparator()),
+        RECURSIVE_SUBSTRING_COMPARATOR  (new RecursiveSubstringComparator());
 
         private final ITokenComparator instance;
 
