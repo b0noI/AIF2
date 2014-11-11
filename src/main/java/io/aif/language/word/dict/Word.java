@@ -26,6 +26,11 @@ class Word implements IWord {
         return tokens;
     }
 
+    @Override
+    public String toString() {
+        return String.format("RootToken: [%s] tokens: [%s]",rootToken ,tokens);
+    }
+
     IWord merge(final IWord word) {
         final Word newWord = new Word(rootToken, tokens);
         newWord.tokens.addAll(word.getAllTokens());

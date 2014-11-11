@@ -21,4 +21,10 @@ class Dict implements IDict {
         return words;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder stringBuilder = new StringBuilder();
+        getWords().forEach(word -> stringBuilder.append(String.format("%s\n", word.toString())));
+        return stringBuilder.toString();
+    }
 }
