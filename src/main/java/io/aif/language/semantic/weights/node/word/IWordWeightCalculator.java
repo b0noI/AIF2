@@ -1,5 +1,6 @@
 package io.aif.language.semantic.weights.node.word;
 
+
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.word.IWord;
 
