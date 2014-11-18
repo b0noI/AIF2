@@ -1,11 +1,10 @@
 package io.aif.language.word.comparator;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 class OptimizedComparatorWrapper implements ISetComparator {
-
-    private static final double THRESHOLD = .3;
 
     private final ISetComparator setComparator;
 
@@ -15,13 +14,14 @@ class OptimizedComparatorWrapper implements ISetComparator {
 
     @Override
     public double compare(final Set<String> t1, final Set<String> t2) {
-        if (t1.isEmpty() || t2.isEmpty()) return .0;
-        if (t1.stream().filter(t2::contains).count() > 0) return 1.0;
-        final double averageSize1 = t1.stream().mapToInt(String::length).average().getAsDouble();
-        final double averageSize2 = t2.stream().mapToInt(String::length).average().getAsDouble();
-        final double delta = 1. - Math.min(averageSize1, averageSize2) / Math.max(averageSize1, averageSize2);
-        if (delta > THRESHOLD) return .0;
-        return setComparator.compare(t1, t2);
+        final Set<String> lowerCaseSet1 = new HashSet<>();
+        final Set<String> lowerCaseSet2 = new HashSet<>();
+        t1.forEach(token -> lowerCaseSet1.add(token.toLowerCase()));
+        t2.forEach(token -> lowerCaseSet2.add(token.toLowerCase()));
+        final double primitiveResult = Type.PRIMITIVE.getComparator().compare(lowerCaseSet1, lowerCaseSet2);
+        if (primitiveResult == 1.) return primitiveResult;
+        if (primitiveResult == .0) return primitiveResult;
+        return setComparator.compare(lowerCaseSet1, lowerCaseSet2);
     }
 
 }

@@ -3,16 +3,16 @@ package io.aif.language.word.dict;
 import io.aif.language.word.comparator.ISetComparator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
-/**
- * Created by b0noI on 08/11/14.
- */
+
 class RecursiveTokenSetMerger extends RecursiveTask<List<Set<String>>> {
+
+    private static final double COMPARATOR_THRESHOLD = .7;
+
+    private static final int TOKENS_SET_PARALLEL_THRESHOLD = 2000;
 
     private final ISetComparator comparator;
 
@@ -25,7 +25,7 @@ class RecursiveTokenSetMerger extends RecursiveTask<List<Set<String>>> {
 
     @Override
     protected List<Set<String>> compute() {
-        if (tokenSets.size() <= 100) {
+        if (tokenSets.size() <= 4000) {
             return merge(tokenSets);
         }
 
@@ -45,13 +45,18 @@ class RecursiveTokenSetMerger extends RecursiveTask<List<Set<String>>> {
     }
 
     private List<Set<String>> merge(final List<Set<String>> leftSet, final List<Set<String>> rightSet) {
+        if (leftSet.size() + rightSet.size() > TOKENS_SET_PARALLEL_THRESHOLD) return parallelMerge(leftSet, rightSet);
+        return lineMerge(leftSet, rightSet);
+    }
+
+    private List<Set<String>> lineMerge(final List<Set<String>> leftSet, final List<Set<String>> rightSet) {
         final List<Set<String>> tmpLeftSet = new ArrayList<>(leftSet);
         final List<Set<String>> tmpRightSet = new ArrayList<>(rightSet);
         for (int i = 0; i < tmpLeftSet.size(); i++) {
             final Set<String> left = tmpLeftSet.get(i);
             for (int j = 0; j < tmpRightSet.size(); j++) {
                 final Set<String> right = tmpRightSet.get(j);
-                if (comparator.compare(left, right) > .85) {
+                if (comparator.compare(left, right) > COMPARATOR_THRESHOLD) {
                     left.addAll(right);
                     tmpRightSet.remove(j);
                     j--;
@@ -62,13 +67,33 @@ class RecursiveTokenSetMerger extends RecursiveTask<List<Set<String>>> {
         return tmpLeftSet;
     }
 
+    private List<Set<String>> parallelMerge(final List<Set<String>> leftSet, final List<Set<String>> rightSet) {
+        final List<Set<String>> tmpLeftSet = new ArrayList<>(leftSet);
+        final List<Set<String>> tmpRightSet = new ArrayList<>(rightSet);
+        tmpLeftSet.stream().forEach(
+                left -> {
+                    tmpRightSet.forEach(right ->{
+                                if (comparator.compare(left, right) > COMPARATOR_THRESHOLD) {
+                                    left.addAll(right);
+                                }
+                    });
+                }
+        );
+        tmpRightSet.stream().filter(
+                right -> leftSet.stream()
+                        .filter(left -> leftSet.containsAll(right))
+                        .count() == 0
+        ).forEach(set -> tmpLeftSet.add(set));
+        return tmpLeftSet;
+    }
+
     private List<Set<String>> merge(final List<Set<String>> tokenSets) {
         final List<Set<String>> tmpSet = new ArrayList<>(tokenSets);
         for (int i = 0; i < tmpSet.size(); i++) {
             final Set<String> left = tmpSet.get(i);
             for (int j = i + 1; j < tmpSet.size(); j++) {
                 final Set<String> right = tmpSet.get(j);
-                if (comparator.compare(left, right) > .75) {
+                if (comparator.compare(left, right) > COMPARATOR_THRESHOLD) {
                     left.addAll(right);
                     tmpSet.remove(j);
                     j--;

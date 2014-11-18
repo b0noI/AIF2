@@ -2,6 +2,7 @@ package io.aif.language.word.dict;
 
 import io.aif.common.FileHelper;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
+import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
 import io.aif.language.token.TokenSplitter;
 import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IDict;
@@ -10,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,13 +27,15 @@ public class DictBuilderTest {
             text = FileHelper.readAllText(modelResource);
         }
 
-        TokenSplitter tokenSplitter = new TokenSplitter();
-        List<String> tokens = tokenSplitter.split(text);
+        final TokenSplitter tokenSplitter = new TokenSplitter();
+        final AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
+        final List<List<String>> sentences = sentenceSplitter.split(tokenSplitter.split(text));
+        final List<String> tokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
-        ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
-        ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
-        DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
-        IDict dict = dictBuilder.build(tokens);
+        final ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
+        final ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
+        final DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
+        final IDict dict = dictBuilder.build(tokens);
         System.out.println(dict);
     }
 
