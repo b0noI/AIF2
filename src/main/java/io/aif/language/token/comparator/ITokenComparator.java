@@ -12,12 +12,10 @@ public interface ITokenComparator {
     }
 
     public static ITokenComparator defaultComparator() {
-
-        final List<Map.Entry<ITokenComparator, Double>> comparators = Arrays.asList(Type.values())
-                .stream()
-                .map(comparator -> new AbstractMap.SimpleEntry<ITokenComparator, Double>(comparator.getInstance(), 1.))
-                .collect(Collectors.toList());
-        return createComposite(comparators);
+        final Map<ITokenComparator, Double> comparators = new HashMap<>();
+        comparators.put(Type.SIMPLETOKENCOMPARATOR.getInstance(), .6);
+        comparators.put(Type.RECURSIVESUBSTRINGCOMPARATOR.getInstance(), 1.);
+        return createComposite(comparators.entrySet());
     }
 
     public static enum Type {
