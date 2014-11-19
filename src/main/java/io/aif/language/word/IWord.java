@@ -8,6 +8,8 @@ public interface IWord {
 
     public Set<String> getAllTokens();
 
+    public Long getCount();
+
     public static interface IWordPlaceholder {
 
         public IWord getWord();

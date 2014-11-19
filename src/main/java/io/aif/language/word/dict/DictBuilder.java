@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 class DictBuilder implements IDictBuilder<Collection<String>> {
 
-    private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
+//    private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
 
     private final ISetComparator comparator;
 
@@ -32,21 +32,23 @@ class DictBuilder implements IDictBuilder<Collection<String>> {
             }})
             .collect(Collectors.toList());
 
-        final RecursiveTokenSetMerger recursiveTokenSetMerger = new RecursiveTokenSetMerger(comparator, tokenSets);
-        final ForkJoinPoolLoggerThread forkJoinPoolLoggerThread = new ForkJoinPoolLoggerThread(FORK_JOIN_POOL);
-        forkJoinPoolLoggerThread.start();
-        FORK_JOIN_POOL.submit(recursiveTokenSetMerger);
-        final List<Set<String>> result = recursiveTokenSetMerger.join();
-        forkJoinPoolLoggerThread.stopThread();
-
+        final SetDict setDict = new SetDict(comparator);
+        tokenSets.parallelStream().forEach(setDict::mergeSet);
         return new Dict(
-                result
+                setDict.getTokens()
                 .parallelStream()
-                        .filter(set -> !set.isEmpty())
-                        .map(set -> new Word(rootTokenExtractor.extract(set).get(), set))
-                        .collect(Collectors.toSet())
-        );
-
+                .filter(set -> !set.isEmpty())
+                .map(set -> {
+                    final Optional<String> rootTokenOpt = rootTokenExtractor.extract(set);
+                    final String rootToken;
+                    if (rootTokenOpt.isPresent()) {
+                        rootToken = rootTokenOpt.get();
+                    } else {
+                        rootToken = set.iterator().next();
+                    }
+                    return new Word(rootToken, set, setDict.getCount(set));
+                })
+                .collect(Collectors.toSet()));
     }
 
 }
