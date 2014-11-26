@@ -6,6 +6,8 @@ public interface ISettings {
 
     public int recommendedMinimumTokensInputCount();
 
+    public boolean useIsAlphabeticMethod();
+
     public ISettings SETTINGS = PropertyBasedSettings.createInstance();
 
 }

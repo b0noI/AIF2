@@ -14,6 +14,8 @@ class PropertyBasedSettings implements ISettings {
 
     private static  final String MINIMUM_TOKENS_INPUT_COUNT_KEY = "minimum_tokens_input_count";
 
+    private static final String USE_IS_ALPHABETIC_METHOD_KEY = "use_is_alphabetic_method";
+
     private         final Properties    properties = new Properties();
 
     public static PropertyBasedSettings createInstance() {
@@ -36,6 +38,11 @@ class PropertyBasedSettings implements ISettings {
     @Override
     public int recommendedMinimumTokensInputCount() {
         return Integer.valueOf(properties.getProperty(MINIMUM_TOKENS_INPUT_COUNT_KEY));
+    }
+
+    @Override
+    public boolean useIsAlphabeticMethod() {
+        return Boolean.valueOf(properties.getProperty(USE_IS_ALPHABETIC_METHOD_KEY));
     }
 
 }
