@@ -15,7 +15,7 @@ class SetDict {
 
     private static final Logger LOGGER = Logger.getLogger(SetDict.class);
 
-    private static final double COMPARATOR_THRESHOLD = .7;
+    private static final double COMPARATOR_THRESHOLD = .75;
 
     private final ISetComparator setComparator;
 
@@ -50,9 +50,11 @@ class SetDict {
         for (int i = 0; i < tokens.size(); i++) {
             final Set<String> targetSet = tokens.get(i);
             if (setComparator.compare(targetSet, set) > COMPARATOR_THRESHOLD) {
-                targetSet.addAll(set);
-                set.forEach(token -> tokensSetCache.put(token, targetSet));
-                return;
+                synchronized (targetSet) {
+                    targetSet.addAll(set);
+                    set.forEach(token -> tokensSetCache.put(token, targetSet));
+                    return;
+                }
             }
         }
         synchronized (tokens) {

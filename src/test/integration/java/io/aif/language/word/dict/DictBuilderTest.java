@@ -38,6 +38,7 @@ public class DictBuilderTest {
         final IDict dict = dictBuilder.build(tokens);
         System.out.println(dict);
         // 180 sec
+        // 122 best
     }
 
 }
