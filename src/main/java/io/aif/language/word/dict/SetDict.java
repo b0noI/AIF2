@@ -29,8 +29,11 @@ class SetDict {
         this.setComparator = setComparator;
     }
 
-    public void mergeSet(final Set<String> set) {
+    public void mergeSet(final SetDict dict) {
+        dict.tokens.forEach(this::mergeSet);
+    }
 
+    public void mergeSet(final Set<String> set) {
         set.forEach(token -> {
             tokensCount.putIfAbsent(token, new AtomicLong());
             tokensCount.get(token).incrementAndGet();
