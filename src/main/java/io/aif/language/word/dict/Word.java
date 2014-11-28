@@ -11,9 +11,12 @@ class Word implements IWord {
 
     private final String rootToken;
 
-    Word(final String rootToken, final Set<String> tokens) {
+    private final Long count;
+
+    Word(final String rootToken, final Set<String> tokens, final Long count) {
         this.tokens = tokens;
         this.rootToken = rootToken;
+        this.count = count;
     }
 
     @Override
@@ -27,14 +30,13 @@ class Word implements IWord {
     }
 
     @Override
-    public String toString() {
-        return String.format("RootToken: [%s] tokens: [%s]",rootToken ,tokens);
+    public Long getCount() {
+        return count;
     }
 
-    IWord merge(final IWord word) {
-        final Word newWord = new Word(rootToken, tokens);
-        newWord.tokens.addAll(word.getAllTokens());
-        return newWord;
+    @Override
+    public String toString() {
+        return String.format("RootToken: [%s] tokens: [%s]",rootToken ,tokens);
     }
 
 }

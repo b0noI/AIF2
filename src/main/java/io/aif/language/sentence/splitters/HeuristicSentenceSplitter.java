@@ -16,7 +16,7 @@ class HeuristicSentenceSplitter extends AbstractSentenceSplitter {
     }
 
     public HeuristicSentenceSplitter() {
-        this(ISeparatorExtractor.Type.PROBABILITY.getInstance(),
+        this(ISeparatorExtractor.Type.getDefault(),
                 ISeparatorsGrouper.Type.PROBABILITY.getInstance(),
                 ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance());
     }

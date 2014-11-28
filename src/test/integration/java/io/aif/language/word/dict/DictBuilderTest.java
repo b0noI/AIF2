@@ -39,6 +39,8 @@ public class DictBuilderTest {
         DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
         IDict dict = dictBuilder.build(filteredTokens);
         System.out.println(dict);
+        // 180 sec
+        // 122 best
     }
 
 }

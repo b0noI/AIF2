@@ -1,13 +1,13 @@
 package io.aif.language.word.dict;
 
+import io.aif.language.common.IExtractor;
 import io.aif.language.token.comparator.ITokenComparator;
 
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Created by vsk on 11/7/14.
- */
-class RootTokenExtractor {
+
+class RootTokenExtractor implements IExtractor<Set<String>, String> {
 
     private final ITokenComparator comparator;
 
@@ -15,24 +15,29 @@ class RootTokenExtractor {
         this.comparator = comparator;
     }
 
-    public String extract(final Set<String> tokens) {
-        String lowestAvgToken = "";
-        Double lowestAvg = Double.MAX_VALUE;
+    public Optional<String> extract(final Set<String> tokens) {
+        if (tokens.isEmpty()) return Optional.empty();
+        if (tokens.size() == 1) return Optional.of(tokens.stream().findAny().get());
+        final Map<String, Double> results = new HashMap<>();
 
-        for (String token : tokens) {
-            final double tmpAvg = tokens
+        tokens.stream().map(token ->
+            results.put(token, tokens
                     .stream()
                     .mapToDouble(tokenIn -> (token == tokenIn) ? 0 : comparator.compare(token, tokenIn))
                     .average()
-                    .getAsDouble();
-
-            if (lowestAvg > tmpAvg) {
-                lowestAvg = tmpAvg;
-                lowestAvgToken = token;
-            }
+                    .getAsDouble())
+        );
+        final Optional<Double> minValueOpt = results.values().stream().min(Double::compare);
+        if (!minValueOpt.isPresent()) {
+            return Optional.empty();
         }
+        final double minValue = minValueOpt.get();
 
-        return lowestAvgToken;
+        return Optional.of(results.keySet()
+                .stream()
+                .filter(key -> results.get(key) == minValue)
+                .findFirst()
+                .get());
     }
 
 }

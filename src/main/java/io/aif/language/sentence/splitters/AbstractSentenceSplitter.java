@@ -67,10 +67,6 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
                 .collect(Collectors.toList());
     }
 
-    public static Logger getLogger() {
-        return logger;
-    }
-
     @VisibilityReducedForTestPurposeOnly
     static List<String> prepareSentences(final List<String> sentence, final List<Character> separators) {
         final List<String> preparedTokens = new ArrayList<>();

@@ -13,7 +13,7 @@ public interface ITokenComparator {
     public static ITokenComparator defaultComparator() {
         final Map<ITokenComparator, Double> comparators = new HashMap<>();
         comparators.put(Type.RECURSIVE_SUBSTRING_COMPARATOR.getInstance(),  1.);
-        comparators.put(Type.SIMPLE_TOKEN_COMPARATOR.getInstance(),         .5);
+        comparators.put(Type.SIMPLE_TOKEN_COMPARATOR.getInstance(),         .8);
         return createComposite(comparators.entrySet());
     }
 
