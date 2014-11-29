@@ -1,7 +1,7 @@
 package io.aif.language.sentence.separators.groupers;
 
 
-import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.token.TokenMappers;
 import org.javatuples.Pair;
 
@@ -28,7 +28,7 @@ class StatGrouper implements ISeparatorsGrouper {
         return convert(groups);
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<Set<Character>> convert(final List<CharactersGroup> groups) {
         return groups
                 .stream()
@@ -36,7 +36,7 @@ class StatGrouper implements ISeparatorsGrouper {
                 .collect(Collectors.toList());
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections) {
         double limit = START_LIMIT;
         double prevLimit = 1.;
@@ -61,7 +61,7 @@ class StatGrouper implements ISeparatorsGrouper {
         } while (true);
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections, final double limit) {
         final List<CharactersGroup> groups = new ArrayList<>();
         connections
@@ -82,7 +82,7 @@ class StatGrouper implements ISeparatorsGrouper {
         return groups;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     void addCharactersToGroup(final Map<Character, Double> characters, final Character root, final List<CharactersGroup> groups, final double limit) {
         final CharactersGroup tmpCharactersGroup = new CharactersGroup(characters, root);
         tmpCharactersGroup.normalize();
@@ -106,7 +106,7 @@ class StatGrouper implements ISeparatorsGrouper {
         groups.add(tmpCharactersGroup);
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     Map<Character, Double> convertConnections(final Map<Character, Integer> connections) {
         final Map<Character, Double> convertedConnections = new HashMap<>();
         connections.keySet().forEach(key1 -> {
@@ -116,7 +116,7 @@ class StatGrouper implements ISeparatorsGrouper {
         return convertedConnections;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     void filterConnections(final Map<Character, Map<Character, Integer>> connections) {
         connections.keySet().forEach(key -> {
             final Map<Character, Integer> currentConnection = connections.get(key);
@@ -139,7 +139,7 @@ class StatGrouper implements ISeparatorsGrouper {
         });
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<String> filterTokens(final List<String> tokens) {
         return tokens
                 .parallelStream()
@@ -153,7 +153,7 @@ class StatGrouper implements ISeparatorsGrouper {
                 .collect(Collectors.toList());
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     Map<Character, Map<Character, Integer>> parsConnections(final List<String> tokens, final List<Character> splitters) {
         final Map<Character, Map<Character, Integer>> connections = new HashMap<>();
 
@@ -184,14 +184,14 @@ class StatGrouper implements ISeparatorsGrouper {
         return connections;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static class CharactersGroup {
 
         private final Map<Character, Double> groupCharacters;
 
         private final Set<Character> splitters = new HashSet<>();
 
-        @VisibilityReducedForTestPurposeOnly
+        @VisibleForTesting
         CharactersGroup(final Map<Character, Double> characters, final Character spliter) {
             this.groupCharacters = characters;
             this.splitters.add(spliter);

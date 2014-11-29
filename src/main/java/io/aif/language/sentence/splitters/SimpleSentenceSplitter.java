@@ -1,6 +1,6 @@
 package io.aif.language.sentence.splitters;
 
-import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
 import io.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import io.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
@@ -28,7 +28,7 @@ class SimpleSentenceSplitter extends AbstractSentenceSplitter {
 
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static List<Boolean> mapToBooleans(final List<String> tokens, final Set<Character> separators) {
         final List<Boolean> result = new ArrayList<>(tokens.size());
 

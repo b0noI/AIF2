@@ -1,7 +1,7 @@
 package io.aif.language.sentence.separators.extractors;
 
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.IExtractor;
-import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +23,7 @@ class StatDataExtractor {
         return endCharacterStatdata;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     void parsToken(final String token, final StatData statData) {
         token.chars().forEach(ch -> statData.addCharacter((char) ch));
 
