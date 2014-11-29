@@ -3,6 +3,7 @@ package io.aif.language.sentence.separators.groupers;
 
 import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import io.aif.language.token.TokenMappers;
+import org.javatuples.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -83,23 +84,26 @@ class StatGrouper implements ISeparatorsGrouper {
 
     @VisibilityReducedForTestPurposeOnly
     void addCharactersToGroup(final Map<Character, Double> characters, final Character root, final List<CharactersGroup> groups, final double limit) {
-        if (groups.isEmpty()) {
-            final CharactersGroup charactersGroup = new CharactersGroup(characters, root);
-            groups.add(charactersGroup);
-            return;
-        }
+        final CharactersGroup tmpCharactersGroup = new CharactersGroup(characters, root);
+        tmpCharactersGroup.normalize();
 
-        for (CharactersGroup charactersGroup : groups) {
-            if (charactersGroup.closeTo(characters) > limit) {
-                charactersGroup.addCharacters(characters);
-                charactersGroup.addSplitter(root);
+        final Optional<Pair<CharactersGroup, Double>> closesGroupOpt = groups.stream()
+                .map(group -> new Pair<>(group, group.closeTo(tmpCharactersGroup.groupCharacters)))
+                .sorted((p1, p2) -> p2.getValue1().compareTo(p1.getValue1()))
+                .findFirst();
+
+        if (closesGroupOpt.isPresent()) {
+            final Pair<CharactersGroup, Double> closesGroupPair = closesGroupOpt.get();
+            if (closesGroupPair.getValue1() > limit) {
+                final CharactersGroup closesGroup = closesGroupPair.getValue0();
+                closesGroup.addCharacters(tmpCharactersGroup.groupCharacters);
+                closesGroup.addSplitter(root);
+                closesGroup.normalize();
                 return;
             }
         }
 
-        final CharactersGroup charactersGroup = new CharactersGroup(characters, root);
-        groups.add(charactersGroup);
-        return;
+        groups.add(tmpCharactersGroup);
     }
 
     @VisibilityReducedForTestPurposeOnly
@@ -219,6 +223,12 @@ class StatGrouper implements ISeparatorsGrouper {
                     groupCharacters.put(element.getKey(), element.getValue());
                 }
             });
+        }
+
+        public void normalize() {
+            final OptionalDouble maxOpt = groupCharacters.keySet().stream().mapToDouble(groupCharacters::get).max();
+            if (!maxOpt.isPresent()) return;
+            groupCharacters.keySet().stream().forEach(key -> groupCharacters.put(key, groupCharacters.get(key) / maxOpt.getAsDouble()));
         }
 
         public void addSplitter(final Character splitter) {

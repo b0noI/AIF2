@@ -363,6 +363,9 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         final List<Character> mandatoryGroup1Characters = Arrays.asList(new Character[]{
                 '.'
         });
+        final List<Character> mandatoryGroup2Characters = Arrays.asList(new Character[]{
+                ','
+        });
 
         // creating test instance
         final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();
@@ -407,12 +410,18 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
                         errors.add(String.format("mandatory GROUP 1 character(%s) absent\n", ch));
                 });
 
+        mandatoryGroup2Characters.forEach(ch -> {
+            if (!actualResult.get(ISeparatorGroupsClassificatory.Group.GROUP_2).contains(ch))
+                errors.add(String.format("mandatory GROUP 2 character(%s) absent\n", ch));
+        });
+
         allCharacters.forEach(ch -> {
                     if (Character.isAlphabetic(ch))
                         errors.add(String.format("Character %s is alphabetic\n", ch));
                 });
 
         return errors;
+        // new 57
         // current state: 22(39)/186
         // . absent at all  12
         // , absent at all  6
