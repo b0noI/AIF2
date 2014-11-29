@@ -365,9 +365,9 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         });
 
         // creating test instance
-        final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();
-        ISeparatorsGrouper separatorsGrouper = ISeparatorsGrouper.Type.PROBABILITY.getInstance();
-        ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory = ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance();
+        final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.NON_ALPHABETIC_CHARACTERS_EXTRACTOR.getInstance();
+        final ISeparatorsGrouper separatorsGrouper = ISeparatorsGrouper.Type.PROBABILITY.getInstance();
+        final ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory = ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance();
 
         // execution test
         final List<Character> separators = testInstance.extract(inputTokens).get();
