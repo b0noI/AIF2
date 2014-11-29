@@ -1,7 +1,7 @@
 package io.aif.language.sentence.splitters;
 
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.ISplitter;
-import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import io.aif.language.common.settings.ISettings;
 import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
 import io.aif.language.sentence.separators.extractors.ISeparatorExtractor;
@@ -67,7 +67,7 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
                 .collect(Collectors.toList());
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static List<String> prepareSentences(final List<String> sentence, final List<Character> separators) {
         final List<String> preparedTokens = new ArrayList<>();
 
@@ -78,7 +78,7 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
         return preparedTokens;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static List<String> prepareToken(final String token, final List<Character> separators) {
         final List<String> tokens = new ArrayList<>(3);
         final int lastPosition = lastNonSeparatorPosition(token, separators);
@@ -97,7 +97,7 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
         return tokens;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static int firstNonSeparatorPosition(final String token, final List<Character> separarors) {
         if (!separarors.contains(token.charAt(0))) {
             return 0;
@@ -112,7 +112,7 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
         return i;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static int lastNonSeparatorPosition(final String token, final List<Character> separators) {
         if (!separators.contains(token.charAt(token.length() - 1))) {
             return token.length();
@@ -147,7 +147,7 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
 
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static class SentenceIterator implements Iterator<List<String>> {
 
         private final   List<String>    tokens;

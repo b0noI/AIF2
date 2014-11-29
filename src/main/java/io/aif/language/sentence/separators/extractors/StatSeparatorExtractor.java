@@ -1,8 +1,8 @@
 package io.aif.language.sentence.separators.extractors;
 
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.IExtractor;
 import io.aif.language.common.VisibilityReducedForCLI;
-import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import io.aif.language.token.TokenMappers;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
@@ -46,7 +46,7 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
                 .collect(Collectors.toList()), endCharactersStatData);
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats) {
         final SummaryStatistics stats = createSummaryStatistics();
         characterStats
@@ -62,7 +62,7 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
         return filteredCharacterStats;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
         final List<CharacterStat> characterStats = new ArrayList<>(startCharacterStatData.getAllCharacters().size());
         for (Character ch : startCharacterStatData.getAllCharacters()) {
@@ -75,7 +75,7 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
         return characterStats;
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<String> filter(final List<String> tokens) {
         return tokens.parallelStream()
                 .map(String::toLowerCase).map(TokenMappers::removeMultipleEndCharacters)
@@ -83,12 +83,12 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
                 .collect(Collectors.toList());
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     SummaryStatistics createSummaryStatistics() {
         return new SummaryStatistics();
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     List<Character> postFilter(final List<Character> separators, final StatData endCharactersStatData ) {
 
         final List<Character> result = separators

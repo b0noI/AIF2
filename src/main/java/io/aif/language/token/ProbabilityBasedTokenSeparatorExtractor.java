@@ -1,6 +1,6 @@
 package io.aif.language.token;
 
-import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
+import com.google.common.annotations.VisibleForTesting;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
@@ -28,7 +28,7 @@ class ProbabilityBasedTokenSeparatorExtractor implements ITokenSeparatorExtracto
         return Optional.of(separators.subList(0, 1));
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static Map<Character, Integer> getCharactersMappedToCount(final List<Character> characters) {
         // we use parallelStream because this list could be HUGE!
         final Map<Character, List<Character>> groupedCharacters = characters.parallelStream()
@@ -41,7 +41,7 @@ class ProbabilityBasedTokenSeparatorExtractor implements ITokenSeparatorExtracto
                 ));
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static List<Character> sortBySeparatorProbability (final Map<Character, Integer> charactersMappedToCount) {
         return charactersMappedToCount.entrySet().parallelStream()
                 .map(Map.Entry::getKey)

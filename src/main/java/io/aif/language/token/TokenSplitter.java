@@ -1,8 +1,8 @@
 package io.aif.language.token;
 
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.ISplitter;
 import io.aif.language.common.RegexpCooker;
-import io.aif.language.common.VisibilityReducedForTestPurposeOnly;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class TokenSplitter implements ISplitter<String, String> {
         this(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance(), new RegexpCooker());
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     TokenSplitter(final ITokenSeparatorExtractor tokenSeparatorExtractor, final RegexpCooker regexpCooker) {
         this.tokenSeparatorExtractor = tokenSeparatorExtractor;
         this.regexpCooker = regexpCooker;
@@ -54,7 +54,7 @@ public class TokenSplitter implements ISplitter<String, String> {
         return TokenSplitter.filterIncorrectTokens(tokens);
     }
 
-    @VisibilityReducedForTestPurposeOnly
+    @VisibleForTesting
     static List<String> filterIncorrectTokens(final List<String> tokens) {
         return tokens.stream()
                 .filter(token -> !token.isEmpty())

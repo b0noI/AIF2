@@ -24,7 +24,7 @@ public interface ISetComparator {
     }
 
     public static ISetComparator createDefaultInstance(final ITokenComparator tokenComparator) {
-        return new OptimizedComparatorWrapper(new MeshComparator(tokenComparator));
+        return new OptimisedMeshComparator(tokenComparator);
     }
 
 }

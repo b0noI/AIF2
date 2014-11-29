@@ -7,6 +7,7 @@ import io.aif.language.token.TokenSplitter;
 import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IDict;
 import io.aif.language.word.comparator.ISetComparator;
+import opennlp.tools.formats.ad.ADSentenceStream;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
@@ -27,15 +28,16 @@ public class DictBuilderTest {
             text = FileHelper.readAllText(modelResource);
         }
 
-        final TokenSplitter tokenSplitter = new TokenSplitter();
-        final AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
-        final List<List<String>> sentences = sentenceSplitter.split(tokenSplitter.split(text));
-        final List<String> tokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
+        TokenSplitter tokenSplitter = new TokenSplitter();
+        AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
+        List<String> tokens = tokenSplitter.split(text);
+        List<List<String>> sentences = sentenceSplitter.split(tokens);
+        List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
-        final ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
-        final ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
-        final DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
-        final IDict dict = dictBuilder.build(tokens);
+        ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
+        ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
+        DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
+        IDict dict = dictBuilder.build(filteredTokens);
         System.out.println(dict);
         // 180 sec
         // 122 best
