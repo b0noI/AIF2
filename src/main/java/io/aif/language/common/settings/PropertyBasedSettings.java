@@ -16,6 +16,8 @@ class PropertyBasedSettings implements ISettings {
 
     private static final String USE_IS_ALPHABETIC_METHOD_KEY = "use_is_alphabetic_method";
 
+    private static final String SEPARATOR_PROBABILITY_THRESHOLD_KEY = "separator_probability_threshold";
+
     private         final Properties    properties = new Properties();
 
     public static PropertyBasedSettings createInstance() {
@@ -43,6 +45,11 @@ class PropertyBasedSettings implements ISettings {
     @Override
     public boolean useIsAlphabeticMethod() {
         return Boolean.valueOf(properties.getProperty(USE_IS_ALPHABETIC_METHOD_KEY));
+    }
+
+    @Override
+    public double separatorProbabilityThreshold() {
+        return Double.valueOf(properties.getProperty(SEPARATOR_PROBABILITY_THRESHOLD_KEY));
     }
 
 }

@@ -49,8 +49,8 @@ class SetDict {
         }
         for (int i = 0; i < tokens.size(); i++) {
             final Set<String> targetSet = tokens.get(i);
-            if (setComparator.compare(targetSet, set) > COMPARATOR_THRESHOLD) {
-                synchronized (targetSet) {
+            synchronized (targetSet) {
+                if (setComparator.compare(targetSet, set) > COMPARATOR_THRESHOLD) {
                     targetSet.addAll(set);
                     set.forEach(token -> tokensSetCache.put(token, targetSet));
                     return;

@@ -57,7 +57,7 @@ class StatData {
                 (double) characters.getOrDefault(lowCaseCharacter, 0);
     }
 
-    private double getProbabilityThatCharacterBeforeIsEdgeCharacter(final Character ch) {
+    public double getProbabilityThatCharacterBeforeIsEdgeCharacter(final Character ch) {
         final Character lowCaseCharacter = StatData.prepareCharacter(ch);
         final Map<Character, Integer> beforeCharacters = charactersNearEdgeCharacter.getOrDefault(lowCaseCharacter, new HashMap<>());
 
