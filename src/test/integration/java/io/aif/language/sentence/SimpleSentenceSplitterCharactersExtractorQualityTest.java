@@ -258,7 +258,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
             });
         });
 
-        assertTrue(totalErrors.size() <= 25);
+        assertTrue(totalErrors.size() <= 30);
     }
 
     @Test(groups = { "acceptance-tests", "quality-slow" }, dataProvider = "path_provider")
