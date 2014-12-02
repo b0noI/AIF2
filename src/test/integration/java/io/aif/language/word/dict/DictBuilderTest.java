@@ -23,7 +23,7 @@ public class DictBuilderTest {
     @Test(groups = "experimental")
     public void test1() throws Exception {
         String text;
-
+        long before = System.nanoTime();
         try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("Afloat+on+the+Flood_small.txt")) {
             text = FileHelper.readAllText(modelResource);
         }
@@ -38,6 +38,9 @@ public class DictBuilderTest {
         ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
         DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
         IDict dict = dictBuilder.build(filteredTokens);
+
+        long after = System.nanoTime();
+        long delta = (after - before) / 1000_000_000;
         System.out.println(dict);
         // 180 sec
         // 122 best

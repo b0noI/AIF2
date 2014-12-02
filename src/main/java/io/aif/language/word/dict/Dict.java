@@ -30,4 +30,5 @@ class Dict implements IDict {
                 .forEach(word -> stringBuilder.append(String.format("%s\n", word.toString())));
         return stringBuilder.toString();
     }
+
 }

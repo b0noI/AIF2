@@ -104,35 +104,35 @@ public class StatSentenceSeparatorExtractorTest {
         // mocks verify
     }
 
-    @Test(groups = "unit-tests")
-    public void testFilterCharacterStatisticFromNonEndCharacters() throws Exception {
-        // input arguments
-        final StatSeparatorExtractor.CharacterStat stat1 = new StatSeparatorExtractor.CharacterStat('t', 0.1);
-        final StatSeparatorExtractor.CharacterStat stat2 = new StatSeparatorExtractor.CharacterStat('o', 0.2);
-        final List<StatSeparatorExtractor.CharacterStat> inputStats = new ArrayList<>();
-        inputStats.add(stat1);
-        inputStats.add(stat2);
-
-        // mocks
-        final SummaryStatistics mockSummaryStatistics = mock(SummaryStatistics.class);
-        when(mockSummaryStatistics.getMean()).thenReturn(0.1);
-        when(mockSummaryStatistics.getStandardDeviation()).thenReturn(0.05);
-
-
-        // expected results
-        final List<StatSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
-        expectedResult.add(stat2);
-
-        // creating test instance
-        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor();
-
-        // execution test
-        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.filterCharacterStatisticFromNonEndCharacters(inputStats);
-
-        // result assert
-        assertEquals(actualResult, expectedResult);
-
-    }
+//    @Test(groups = "unit-tests")
+//    public void testFilterCharacterStatisticFromNonEndCharacters() throws Exception {
+//        // input arguments
+//        final StatSeparatorExtractor.CharacterStat stat1 = new StatSeparatorExtractor.CharacterStat('t', 0.1);
+//        final StatSeparatorExtractor.CharacterStat stat2 = new StatSeparatorExtractor.CharacterStat('o', 0.2);
+//        final List<StatSeparatorExtractor.CharacterStat> inputStats = new ArrayList<>();
+//        inputStats.add(stat1);
+//        inputStats.add(stat2);
+//
+//        // mocks
+//        final SummaryStatistics mockSummaryStatistics = mock(SummaryStatistics.class);
+//        when(mockSummaryStatistics.getMean()).thenReturn(0.1);
+//        when(mockSummaryStatistics.getStandardDeviation()).thenReturn(0.05);
+//
+//
+//        // expected results
+//        final List<StatSeparatorExtractor.CharacterStat> expectedResult = new ArrayList<>();
+//        expectedResult.add(stat2);
+//
+//        // creating test instance
+//        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor();
+//
+//        // execution test
+//        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.filterCharacterStatisticFromNonEndCharacters(inputStats);
+//
+//        // result assert
+//        assertEquals(actualResult, expectedResult);
+//
+//    }
 
     @Test(groups = "unit-tests")
     public void testGetCharactersStatistic() throws Exception {

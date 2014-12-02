@@ -17,7 +17,7 @@ class MeshComparator implements ISetComparator {
     @Override
     public double compare(final Set<String> o1, final Set<String> o2) {
         final Double sum = o1
-                .stream()
+                .parallelStream()
                 .mapToDouble(t1 -> o2
                                 .stream()
                                 .mapToDouble(t2 -> tokenComparator.compare(t1, t2))

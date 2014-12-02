@@ -4,33 +4,28 @@ package io.aif.language.word.dict;
 import io.aif.language.word.comparator.ISetComparator;
 import org.apache.log4j.Logger;
 
-import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
-class SetDict {
+class WordSetDict {
 
-    private static final Logger LOGGER = Logger.getLogger(SetDict.class);
+    private static final Logger LOGGER = Logger.getLogger(WordSetDict.class);
 
     private static final double COMPARATOR_THRESHOLD = .75;
 
     private final ISetComparator setComparator;
 
-    private ConcurrentMap<String, Set<String>> tokensSetCache = new ConcurrentHashMap<>();
+    private Map<String, Set<String>> tokensSetCache = new HashMap<>();
 
-    private List<Set<String>> tokens = new CopyOnWriteArrayList<>();
+    private List<Set<String>> tokens = new ArrayList<>();
 
-    private ConcurrentMap<String, AtomicLong> tokensCount = new ConcurrentHashMap<>();
+    private Map<String, AtomicLong> tokensCount = new HashMap<>();
 
-    SetDict(ISetComparator setComparator) {
+    WordSetDict(ISetComparator setComparator) {
         this.setComparator = setComparator;
-    }
-
-    public void mergeSet(final SetDict dict) {
-        dict.tokens.forEach(this::mergeSet);
     }
 
     public void mergeSet(final Set<String> set) {
@@ -50,20 +45,16 @@ class SetDict {
         for (int i = 0; i < tokens.size(); i++) {
             final Set<String> targetSet = tokens.get(i);
             if (setComparator.compare(targetSet, set) > COMPARATOR_THRESHOLD) {
-                synchronized (targetSet) {
-                    targetSet.addAll(set);
-                    set.forEach(token -> tokensSetCache.put(token, targetSet));
-                    return;
-                }
+                targetSet.addAll(set);
+                set.forEach(token -> tokensSetCache.put(token, targetSet));
+                return;
             }
         }
-        synchronized (tokens) {
-            if (tokens.size() != tokensSize) {
-                mergeSet(set);
-            } else {
-                tokens.add(set);
-                set.forEach(token -> tokensSetCache.put(token, set));
-            }
+        if (tokens.size() != tokensSize) {
+            mergeSet(set);
+        } else {
+            tokens.add(set);
+            set.forEach(token -> tokensSetCache.put(token, set));
         }
         LOGGER.debug(String.format("words count is: %d", tokens.size()));
     }
