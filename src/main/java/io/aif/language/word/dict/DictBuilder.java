@@ -11,8 +11,6 @@ import java.util.stream.Collectors;
 
 class DictBuilder implements IDictBuilder<Collection<String>> {
 
-    private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
-
     private final ISetComparator comparator;
 
     private final RootTokenExtractor rootTokenExtractor;
@@ -33,16 +31,6 @@ class DictBuilder implements IDictBuilder<Collection<String>> {
 
         final WordSetDict wordSetDict = new WordSetDict(comparator);
         tokenSets.stream().forEach(wordSetDict::mergeSet);
-//        final SetDict setDict;
-//        try {
-//            ForkJoinPoolLoggerThread logger = new ForkJoinPoolLoggerThread(FORK_JOIN_POOL);
-//            logger.start();
-//            setDict = FORK_JOIN_POOL.submit(new RecursiveSetMerger(tokenSets, 0 ,tokenSets.size(), comparator)).get();
-//            logger.stopThread();
-//        } catch (InterruptedException | ExecutionException e) {
-//            e.printStackTrace();
-//            throw new RuntimeException(e);
-//        }
         return new Dict(
                 wordSetDict.getTokens()
                 .parallelStream()
@@ -59,45 +47,5 @@ class DictBuilder implements IDictBuilder<Collection<String>> {
                 })
                 .collect(Collectors.toSet()));
     }
-
-//    static class RecursiveSetMerger extends RecursiveTask<SetDict> {
-//
-//        private final List<Set<String>> set;
-//
-//        private final int from;
-//
-//        private final int to;
-//
-//        private final ISetComparator setComparator;
-//
-//        RecursiveSetMerger(final List<Set<String>> set,
-//                           final int from,
-//                           final int to,
-//                           final ISetComparator setComparator) {
-//            this.set = set;
-//            this.from = from;
-//            this.to = to;
-//            this.setComparator = setComparator;
-//        }
-//
-//        @Override
-//        protected SetDict compute() {
-//            if (to - from < 500) {
-//                final SetDict setDict = new SetDict(setComparator);
-//                IntStream.range(from, to).forEach(i -> setDict.mergeSet(set.get(i)));
-//                return setDict;
-//            }
-//            final int mid = (to + from) / 2;
-//            final RecursiveSetMerger leftTask = new RecursiveSetMerger(set, from, mid, setComparator);
-//            final RecursiveSetMerger rightTask = new RecursiveSetMerger(set, mid, to, setComparator);
-//
-//            leftTask.fork();
-//            rightTask.fork();
-//            final SetDict setDict = leftTask.join();
-//            setDict.mergeSet(rightTask.join());
-//            return setDict;
-//        }
-//
-//    }
 
 }
