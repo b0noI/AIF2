@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 class StatGrouper implements ISeparatorsGrouper {
 
-    private static final double START_LIMIT = .6;
+    private static final double START_LIMIT = .65;
 
-    private static final double QUALITY_STEP = 0.005;
+    private static final double QUALITY_STEP = 0.0005;
 
     @Override
     public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
