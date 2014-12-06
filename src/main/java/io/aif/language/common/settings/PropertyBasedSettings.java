@@ -32,8 +32,11 @@ class PropertyBasedSettings implements ISettings {
     private static final String         THRESHOLD_P_FOR_FIRST_FILTER_SEPARATOR_CHARACTER_KEY
             = "threshold_p_for_first_filter_separator_character";
 
-    private static final String         SPERATORS_CHARACTERS_COMPARATION_MINIMUM_LIMIT_KEY
-            = "sperators_characters_comparation_minimum_limit";
+    private static final String         SPLITTER_CHARACTERS_GROUPER_SEARCH_STEP_KEY
+            = "splitter_characters_grouper_search_step";
+
+    private static final String         SPLITTER_CHARACTERS_GROUPER_INIT_SEARCH_P_VALUE_KEY
+            = "splitter_characters_grouper_init_search_P_value";
 
     private        final Properties     properties
             = new Properties();
@@ -83,6 +86,16 @@ class PropertyBasedSettings implements ISettings {
     @Override
     public double thresholdPFirstFilterForSeparatorCharacter() {
         return Double.valueOf(properties.getProperty(THRESHOLD_P_FOR_FIRST_FILTER_SEPARATOR_CHARACTER_KEY));
+    }
+
+    @Override
+    public double splitterCharactersGrouperSearchStep() {
+        return Double.valueOf(properties.getProperty(SPLITTER_CHARACTERS_GROUPER_SEARCH_STEP_KEY));
+    }
+
+    @Override
+    public double splitterCharactersGrouperInitSearchPValue() {
+        return Double.valueOf(properties.getProperty(SPLITTER_CHARACTERS_GROUPER_INIT_SEARCH_P_VALUE_KEY));
     }
 
 }

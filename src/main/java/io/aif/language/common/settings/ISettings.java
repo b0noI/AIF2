@@ -18,4 +18,8 @@ public interface ISettings {
 
     public double thresholdPFirstFilterForSeparatorCharacter();
 
+    public double splitterCharactersGrouperSearchStep();
+
+    public double splitterCharactersGrouperInitSearchPValue();
+
 }
