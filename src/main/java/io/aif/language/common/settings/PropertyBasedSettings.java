@@ -32,6 +32,9 @@ class PropertyBasedSettings implements ISettings {
     private static final String         THRESHOLD_P_FOR_FIRST_FILTER_SEPARATOR_CHARACTER_KEY
             = "threshold_p_for_first_filter_separator_character";
 
+    private static final String         SPERATORS_CHARACTERS_COMPARATION_MINIMUM_LIMIT_KEY
+            = "sperators_characters_comparation_minimum_limit";
+
     private        final Properties     properties
             = new Properties();
 
