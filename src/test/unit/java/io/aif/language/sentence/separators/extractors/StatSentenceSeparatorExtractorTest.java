@@ -1,6 +1,5 @@
 package io.aif.language.sentence.separators.extractors;
 
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -70,7 +69,7 @@ public class StatSentenceSeparatorExtractorTest {
             }
 
             @Override
-            List<CharacterStat> getCharactersStatistic(StatData startCharacterStatData, StatData endCharactersStatData) {
+            List<CharacterStat> getNormalizedCharactersStatistic(StatData startCharacterStatData, StatData endCharactersStatData) {
                 assertEquals(startCharacterStatData.getAllCharacters(), characterSet);
                 assertEquals(endCharactersStatData.getAllCharacters(), characterSet);
                 assertEquals(startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter('t'), 0.125);
@@ -87,9 +86,8 @@ public class StatSentenceSeparatorExtractorTest {
             }
 
             @Override
-            List<Character> convertCharacterStatToCharacters(List<CharacterStat> charactersStats, List<String> tokens, StatData endCharactersStatData) {
+            List<Character> convertCharacterStatToCharacters(List<CharacterStat> charactersStats) {
                 assertEquals(charactersStats, mockCharacterStats);
-                assertEquals(tokens, inputArguments);
                 return expectedResult;
             }
 
@@ -127,7 +125,7 @@ public class StatSentenceSeparatorExtractorTest {
 //        final StatSeparatorExtractor testInstance = new StatSeparatorExtractor();
 //
 //        // execution test
-//        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.filterCharacterStatisticFromNonEndCharacters(inputStats);
+//        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.firstFilter(inputStats);
 //
 //        // result assert
 //        assertEquals(actualResult, expectedResult);
@@ -170,7 +168,7 @@ public class StatSentenceSeparatorExtractorTest {
         final StatSeparatorExtractor testInstance = new StatSeparatorExtractor();
 
         // execution test
-        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.getCharactersStatistic(startCharacterStatData, endCharacterStatData);
+        final List<StatSeparatorExtractor.CharacterStat> actualResult = testInstance.getNormalizedCharactersStatistic(startCharacterStatData, endCharacterStatData);
 
         // result assert
         actualResult.forEach(result -> expectedResult.contains(result));

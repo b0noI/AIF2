@@ -10,7 +10,7 @@ class StatDataExtractor {
 
     private final IExtractor<String, Character> edgeCharacterExtractor;
 
-    private final IExtractor<String, Character>             characterNearEdgeCharacterExtractor;
+    private final IExtractor<String, Character> characterNearEdgeCharacterExtractor;
 
     StatDataExtractor(IExtractor<String, Character> edgeCharacterExtractor, IExtractor<String, Character> characterNearEdgeCharacterExtractor) {
         this.edgeCharacterExtractor = edgeCharacterExtractor;

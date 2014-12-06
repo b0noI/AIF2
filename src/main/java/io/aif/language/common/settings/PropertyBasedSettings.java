@@ -8,17 +8,32 @@ import java.util.Properties;
 
 class PropertyBasedSettings implements ISettings {
 
-    private static  final String VERSION_PROPERTIES_KEY = "version";
+    private static final String        VERSION_PROPERTIES_KEY
+            = "version";
 
-    private static  final String PROPERTIES_FILE_NAME = "/io/aif/common/settings/main.properties";
+    private static final String        PROPERTIES_FILE_NAME
+            = "/io/aif/common/settings/main.properties";
 
-    private static  final String MINIMUM_TOKENS_INPUT_COUNT_KEY = "minimum_tokens_input_count";
+    private static final String        MINIMUM_TOKENS_INPUT_COUNT_KEY
+            = "minimum_tokens_input_count";
 
-    private static final String USE_IS_ALPHABETIC_METHOD_KEY = "use_is_alphabetic_method";
+    private static final String        USE_IS_ALPHABETIC_METHOD_KEY
+            = "use_is_alphabetic_method";
 
-    private static final String SEPARATOR_PROBABILITY_THRESHOLD_KEY = "separator_probability_threshold";
+    private static final String         THRESHOLD_P_FOR_SECOND_FILTER_SEPARATOR_CHARACTER_KEY
+            = "threshold_p_for_second_filter_separator_character";
 
-    private         final Properties    properties = new Properties();
+    private static final String         MINIMAL_VALUABLE_TOKEN_SIZE_DURING_SENTENCE_SPLITTING_KEY
+            = "minimal_valuable_token_size_during_sentence_splitting";
+
+    private static final String         MINIMUM_CHARACTER_OBERVATIONS_COUNT_FOR_MAKE_CHARATCER_VALUABLE_DURING_SENTENCE_SPLITTING_KEY
+            = "minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting";
+
+    private static final String         THRESHOLD_P_FOR_FIRST_FILTER_SEPARATOR_CHARACTER_KEY
+            = "threshold_p_for_first_filter_separator_character";
+
+    private        final Properties     properties
+            = new Properties();
 
     public static PropertyBasedSettings createInstance() {
         try (final InputStream is = ISettings.class.getClass().getResourceAsStream(PROPERTIES_FILE_NAME)) {
@@ -48,8 +63,23 @@ class PropertyBasedSettings implements ISettings {
     }
 
     @Override
-    public double separatorProbabilityThreshold() {
-        return Double.valueOf(properties.getProperty(SEPARATOR_PROBABILITY_THRESHOLD_KEY));
+    public double thresholdPSecondFilterForSeparatorCharacter() {
+        return Double.valueOf(properties.getProperty(THRESHOLD_P_FOR_SECOND_FILTER_SEPARATOR_CHARACTER_KEY));
+    }
+
+    @Override
+    public int minimalValuableTokenSizeForSentenceSplit() {
+        return Integer.valueOf(properties.getProperty(MINIMAL_VALUABLE_TOKEN_SIZE_DURING_SENTENCE_SPLITTING_KEY));
+    }
+
+    @Override
+    public int minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting() {
+        return Integer.valueOf(properties.getProperty(MINIMUM_CHARACTER_OBERVATIONS_COUNT_FOR_MAKE_CHARATCER_VALUABLE_DURING_SENTENCE_SPLITTING_KEY));
+    }
+
+    @Override
+    public double thresholdPFirstFilterForSeparatorCharacter() {
+        return Double.valueOf(properties.getProperty(THRESHOLD_P_FOR_FIRST_FILTER_SEPARATOR_CHARACTER_KEY));
     }
 
 }

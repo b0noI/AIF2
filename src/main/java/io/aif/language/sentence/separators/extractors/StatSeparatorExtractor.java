@@ -5,7 +5,6 @@ import io.aif.language.common.IExtractor;
 import io.aif.language.common.VisibilityReducedForCLI;
 import io.aif.language.common.settings.ISettings;
 import io.aif.language.token.TokenMappers;
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -24,8 +23,6 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
 
     private static final StatDataExtractor              START_CHARACTER_STAT_DATA_EXTRACTOR         = new StatDataExtractor(START_CHARACTER_EXTRACTOR, CHARACTER_AFTER_START_CHARACTER_EXTRACTOR);
 
-    private static final int                            MINIMUM_TOKEN_SIZE                          = 3;
-
     private static final ISettings                      SETTINGS                                    = ISettings.SETTINGS;
 
     @Override
@@ -40,57 +37,63 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
         final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
         final StatData startCharactersStatData = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
 
-        return convertCharacterStatToCharacters(filterCharacterStatisticFromNonEndCharacters(getCharactersStatistic(startCharactersStatData, endCharactersStatData), endCharactersStatData), tokens, endCharactersStatData);
+        final List<CharacterStat> characterStats = getNormalizedCharactersStatistic(startCharactersStatData, endCharactersStatData);
+        final List<CharacterStat> characterStatsAfterFirstFilter = firstFilter(characterStats, endCharactersStatData);
+        final List<CharacterStat> characterStatsAfterSecondFilter = secondFilter(characterStatsAfterFirstFilter, endCharactersStatData);
+        return convertCharacterStatToCharacters(characterStatsAfterSecondFilter);
     }
 
-    List<Character> convertCharacterStatToCharacters(final List<CharacterStat> charactersStats, final List<String> tokens, final StatData endCharactersStatData) {
-//        return charactersStats.stream()
-//                .map(CharacterStat::getCharacter)
-//                .collect(Collectors.toList());
-        return postFilter(charactersStats.stream()
+    List<Character> convertCharacterStatToCharacters(final List<CharacterStat> charactersStats) {
+        return charactersStats.stream()
                 .map(CharacterStat::getCharacter)
-                .collect(Collectors.toList()), endCharactersStatData);
+                .collect(Collectors.toList());
     }
 
     @VisibleForTesting
-    List<CharacterStat> filterCharacterStatisticFromNonEndCharacters(final List<CharacterStat> characterStats, final StatData endCharactersStatData) {
-
+    List<CharacterStat> firstFilter(final List<CharacterStat> characterStats,
+                                    final StatData endCharactersStatData) {
         final List<CharacterStat> filteredCharacterStats = characterStats
                 .stream()
                 .sorted((i1, i2) -> i1.getProbabilityThatEndCharacter().compareTo(i2.getProbabilityThatEndCharacter()))
-                .filter(stat -> endCharactersStatData.getProbabilityThatCharacterBeforeIsEdgeCharacter(stat.getCharacter()) >= 0.05)
+                .filter(stat -> endCharactersStatData.getProbabilityThatCharacterBeforeIsEdgeCharacter(stat.getCharacter()) >= SETTINGS.thresholdPFirstFilterForSeparatorCharacter())
                 .collect(Collectors.toList());
-//                .subList((int) ((double) characterStats.size() * .7), characterStats.size());
         return filteredCharacterStats;
     }
 
     @VisibleForTesting
-    List<CharacterStat> getCharactersStatistic(final StatData startCharacterStatData, final StatData endCharactersStatData) {
-        final List<CharacterStat> characterStats = new ArrayList<>(startCharacterStatData.getAllCharacters().size());
-        for (Character ch : startCharacterStatData.getAllCharacters()) {
-            final double probability1 = startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
-            final double probability2 = endCharactersStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
-            final CharacterStat characterStat = new CharacterStat(ch, Collections.max(Arrays.asList(probability1, probability2)));
-            characterStats.add(characterStat);
-        }
+    List<CharacterStat> getNormalizedCharactersStatistic(final StatData startCharacterStatData,
+                                                         final StatData endCharactersStatData) {
+
+        final List<CharacterStat> characterStats =
+                startCharacterStatData
+                        .getAllCharacters()
+                        .stream()
+                        .map(ch -> {
+                            final double probability1 = startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
+                            final double probability2 = endCharactersStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
+                            return new CharacterStat(ch, Math.max(probability1, probability2));
+                        }).collect(Collectors.toList());
+
+        final List<CharacterStat> normalizedCharacterStats = normilize(characterStats);
+
+        Collections.sort(normalizedCharacterStats);
+        return normalizedCharacterStats;
+    }
+
+    private List<CharacterStat> normilize(final List<CharacterStat> characterStats) {
         final OptionalDouble maxOpt = characterStats
                 .stream()
                 .mapToDouble(CharacterStat::getProbabilityThatEndCharacter)
                 .max();
 
-        final List<CharacterStat> result;
-        if (maxOpt.isPresent()) {
-            final double max = maxOpt.getAsDouble();
-            result = characterStats
-                    .stream()
-                    .map(stat -> new CharacterStat(stat.getCharacter(), stat.getProbabilityThatEndCharacter() / max))
-                    .collect(Collectors.toList());
-        } else {
-            result = characterStats;
+        if (!maxOpt.isPresent()) {
+            return characterStats;
         }
-
-        Collections.sort(result);
-        return result;
+        final double max = maxOpt.getAsDouble();
+        return characterStats
+                .stream()
+                .map(stat -> new CharacterStat(stat.getCharacter(), stat.getProbabilityThatEndCharacter() / max))
+                .collect(Collectors.toList());
     }
 
     @VisibleForTesting
@@ -99,20 +102,18 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
                 .map(String::toLowerCase)
                 .map(TokenMappers::removeMultipleEndCharacters)
                 .distinct()
-                .filter(token -> token.length() > MINIMUM_TOKEN_SIZE)
+                .filter(token -> token.length() > SETTINGS.minimalValuableTokenSizeForSentenceSplit())
                 .collect(Collectors.toList());
     }
 
     @VisibleForTesting
-    List<Character> postFilter(final List<Character> separators, final StatData endCharactersStatData ) {
+    List<CharacterStat> secondFilter(final List<CharacterStat> separators, final StatData endCharactersStatData) {
 
-        final List<Character> result = separators
+        return separators
                 .stream()
-                .filter(splitter -> endCharactersStatData.getProbabilityThatCharacterOnEdge(splitter) > SETTINGS.separatorProbabilityThreshold())
-                .filter(ch -> endCharactersStatData.getCharacterCount(ch) > 10)
+                .filter(splitter -> endCharactersStatData.getProbabilityThatCharacterOnEdge(splitter.getCharacter()) > SETTINGS.thresholdPSecondFilterForSeparatorCharacter())
+                .filter(splitter -> endCharactersStatData.getCharacterCount(splitter.getCharacter()) > SETTINGS.minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting())
                 .collect(Collectors.toList());
-
-        return result;
     }
 
     @VisibilityReducedForCLI
