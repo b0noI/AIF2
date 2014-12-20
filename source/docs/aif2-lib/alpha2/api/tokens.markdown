@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Work with tokens (v 1.0.0)
+title: Work with tokens 
 footer: false
 ---
 

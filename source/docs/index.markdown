@@ -4,8 +4,22 @@ title: Documentation
 footer: false
 ---
  
-###AIF2 Documentation
-* [AIF2: v0.0.0-alpha2](/docs/aif2-lib/alpha2/ "Library version alpha2 documentation")
+###AIF2 API
+* [AIF2: v0.0.0-alpha1](/docs/aif2-lib/alpha1/)
+* [AIF2: v1.0.0-alpha2](/docs/aif2-lib/alpha2/)
+* [AIF2: v1.1.0-alpha3](/docs/aif2-lib/alpha3/)
+
+###Algorithms
+* [Main definitions](./algorithm/main-definitions.html)
+* [Sentence splitting algorithm](./algorithm/sentence-splitting.html)
+* [Algorithm of tokens separator extraction](./algorithm/token-separator-extraction.html)
+
+### Other AIF documentation
+* [Road map](./common/road-map.html)
+* [ChangeLog](./common/changelog.html)
+* [Environment](./common/environment.html)
+* [How version number is chosen](./common/how-version-number-is-chosen.htrml)
+* [Software that uses aif](./common/software-that-uses-aif.html)
 
 ###AIF2 CLI Documentation
 We have command line interface for our library.  

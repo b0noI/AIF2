@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Work with sentences (v 0.0.0)
+title: Work with sentences 
 footer: false
 ---
 

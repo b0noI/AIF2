@@ -45,7 +45,3 @@ src/test/resources/texts/<language>
 ### NLP models for 3d part engines
 
 src/test/resources/models/<engine_name>
-
-### Test settings
-
-TODO
