@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Algorithm of dividing text separators into groups - AIF2</title>
+  <meta name="author" content="AIF2 Team">
+
+  
+  <meta name="description" content="Algorithm of Dividing Text Separators Into Groups Definitions text separators
+text separators groups Preamble The main goal of this algorithm is to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/algorithm/dividing-text-separators-into-groups.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="AIF2" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS"><i class="fa fa-rss navbar-icon"></i></a></li>
+  
+  <li><a href="https://github.com/b0noI/AIF2"><i class="fa fa-github navbar-icon"></i></a></li>
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:b0noI.github.io/AIF2" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            AIF2
+        </span>
+       
+           <span class="blue_dark">
+             NLP library
+           </span>
+       
+    </a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/docs/">Documentation</a></li>
+  <li><a href="/downloads/">Downloads</a></li>
+  <li><a href="/about.html">About us</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Algorithm of Dividing Text Separators Into Groups</h1>
+    
+  </header>
+  
+  <h2>Definitions</h2>
+
+<ul>
+<li><a href="./main-definitions.html#text-separators">text separators</a></li>
+<li><a href="./main-definitions.html#text-separators-groups">text separators groups</a></li>
+</ul>
+
+
+<h2>Preamble</h2>
+
+<p>The main goal of this algorithm is to divide all text separators into 2 groups. One of the groups is Group1 and the other is Group2. However, the peculiarity of this algorithm is that it&rsquo;s not known which of the groups is Group1 and which is Group2.</p>
+
+<h2>Algorithm</h2>
+
+<p>The algorithm contains 2 steps:</p>
+
+<ol>
+<li><a href="#create-graph-of-text-separators-connections">Create graphs of text separators connections</a>;</li>
+<li><a href="#merging-all-of-graphs-into-2">Merge all graphs into 2 graphs</a>;</li>
+</ol>
+
+
+<h3><a id="create-graph-of-text-separators-connections"></a>Create graphs of text separators connections</h3>
+
+<p>A graph of connections with other characters is built for each text separator. Weight of connections with other characters equals the times other characters are observed as the first character that starts the token after the token ending with the text splitter character.</p>
+
+<p>This can be illustrated in the example below.</p>
+
+<p>Input text: &ldquo;Hello! My name is: Max. I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?&rdquo;
+Input text separators: <code>!:.?</code></p>
+
+<p>Connections that would be extracted from this text:</p>
+
+<p><code>!</code> connected with:</p>
+
+<ul>
+<li>M - 1</li>
+<li>A - 1</li>
+</ul>
+
+
+<p><code>:</code> connected with:</p>
+
+<ul>
+<li>M - 1</li>
+</ul>
+
+
+<p><code>.</code> connected with:</p>
+
+<ul>
+<li>I - 1</li>
+<li>M - 1</li>
+<li>T - 1</li>
+</ul>
+
+
+<p>These graphs should be converted from absolute value to probability:</p>
+
+<p><code>!</code> connected with:</p>
+
+<ul>
+<li>M - &frac12; = 0.5</li>
+<li>A - &frac12; = 0.5</li>
+</ul>
+
+
+<p><code>:</code> connected with:</p>
+
+<ul>
+<li>M - 1/1 = 1.0</li>
+</ul>
+
+
+<p><code>.</code> connected with:</p>
+
+<ul>
+<li>I - 1/3 = 0.(3)</li>
+<li>M - 1/3 = 0.(3)</li>
+<li>T - 1/3 = 0.(3)</li>
+</ul>
+
+
+<p>After creating the graphs for all of the text separators they can be merged into 2 graphs.</p>
+
+<h3><a id="merging-all-of-graphs-into-2"></a>Merging all of the graphs into 2</h3>
+
+<p>To merge graphs algorithm of two graphs comparison should be defined.</p>
+
+<p>Let&rsquo;s illustrate algorithm of two graphs comparison in the example below. In input there are the following 2 graphs:</p>
+
+<p><code>!</code> connected with:</p>
+
+<ul>
+<li>M - 0.5</li>
+<li>A - 0.5</li>
+</ul>
+
+
+<p><code>.</code> connected with:</p>
+
+<ul>
+<li>I - 0.3</li>
+<li>M - 0.3</li>
+<li>T - 0.3</li>
+</ul>
+
+
+<h4>Step 1 creating merged graph</h4>
+
+<p><code>!</code> &amp;&amp; <code>.</code> connected with:</p>
+
+<ul>
+<li>M</li>
+<li>A</li>
+<li>I</li>
+<li>T</li>
+</ul>
+
+
+<h4>Step 2 calculating connections values for merged graph</h4>
+
+<p>connection value should be equal to the module of the difference between the two values that are divided by the maximum value</p>
+
+<p><code>!</code> &amp;&amp; <code>.</code> connected with:</p>
+
+<ul>
+<li>M - |0.3 - 0.5| / 0.5 = 0.2 / 0.5 = 0.4</li>
+<li>A - |0.0 - 0.5| / 0.5 = 0.5 / 0.5 = 1.0</li>
+<li>I - |0.0 - 0.3| / 0.3 = 0.3 / 0.3 = 1.0</li>
+<li>T - |0.0 - 0.3| / 0.3 = 0.3 / 0.3 = 1.0</li>
+</ul>
+
+
+<h4>Step 3 calculating graphs distances with merged graphs values</h4>
+
+<p>To calculate graphs distances average value of merged graph connections should be calculated:
+(0.4 + 1.0 + 1.0 + 1.0) / 4.0 = 3.4 / 4.0 = 0.85</p>
+
+<p>Graphs distances would be one minus previous value:</p>
+
+<p>1.0 - 0.85 = <strong>0.15</strong></p>
+
+<hr />
+
+<p>With distances calculation algorithm all graphs can be divided into 2 clusters. To do this 2 graphs that have the shortest distance between each other should be obtained. These two graphs would create 2 base clusters. Each next graph should be compared with each of the two clusters and merged into the closest one.</p>
+
+<p>Let&rsquo;s illustrate this with the previous example:</p>
+
+<h4>Calculating all distances</h4>
+
+<p>dist(&lsquo;.&rsquo;, &lsquo;!&rsquo;) = 0.15
+dist(&lsquo;.&rsquo;, &lsquo;:&rsquo;) = 1.0 - 0.43 = 0.57
+dist(&lsquo;!&rsquo;, &lsquo;:&rsquo;) = 1.0 - 0.75 = 0.25</p>
+
+<h4>Creating two base clusters</h4>
+
+<p>two base clusters would be: . and !
+because these two graphs have the shortest distance between each other: <strong>0.15</strong></p>
+
+<h4>Choosing cluster for :</h4>
+
+<dl>
+<dt>dist(&lsquo;.&rsquo;, &lsquo;:&rsquo;) = 0.57</dt>
+<dt>dist(&lsquo;!&rsquo;, &lsquo;:&rsquo;) = 0.25</dt>
+<dd><p>should be merged with .</p></dd>
+</dl>
+
+<h4>Result</h4>
+
+<p>As a result we have 2 clusters:</p>
+
+<ul>
+<li>cluster1: .:</li>
+<li>cluster2: !</li>
+</ul>
+
+
+<h2>Algorithm limitation</h2>
+
+<p>As we can see from above, algorithm requires a big text in the output. Otherwise, the quality of the result would be low. Also this algorithm works much better with languages that are case-sensitive. Algorithm shows some quality degradation in case-insensitive texts.</p>
+
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/20/test/">initial</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - AIF2 Team -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

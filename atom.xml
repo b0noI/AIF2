@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[AIF2]]></title>
+  <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
+  <link href="http://b0noI.github.io/AIF2/"/>
+  <updated>2014-12-20T21:42:40+00:00</updated>
+  <id>http://b0noI.github.io/AIF2/</id>
+  <author>
+    <name><![CDATA[AIF2 Team]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[initial]]></title>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/10/20/test/"/>
+    <updated>2014-10-20T17:53:13+01:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2014/10/20/test</id>
+    <content type="html"><![CDATA[<p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
+]]></content>
+  </entry>
+  
+</feed>

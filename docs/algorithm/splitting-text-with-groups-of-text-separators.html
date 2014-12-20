@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Algorithm of splitting text with groups of text separators - AIF2</title>
+  <meta name="author" content="AIF2 Team">
+
+  
+  <meta name="description" content="Algorithm of Splitting Text With Groups of Text Separators Definitions sentence;
+text separators;
+text separators groups; Algorithm Connections &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/algorithm/splitting-text-with-groups-of-text-separators.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="AIF2" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS"><i class="fa fa-rss navbar-icon"></i></a></li>
+  
+  <li><a href="https://github.com/b0noI/AIF2"><i class="fa fa-github navbar-icon"></i></a></li>
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:b0noI.github.io/AIF2" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            AIF2
+        </span>
+       
+           <span class="blue_dark">
+             NLP library
+           </span>
+       
+    </a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/docs/">Documentation</a></li>
+  <li><a href="/downloads/">Downloads</a></li>
+  <li><a href="/about.html">About us</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Algorithm of Splitting Text With Groups of Text Separators</h1>
+    
+  </header>
+  
+  <h2>Definitions</h2>
+
+<ul>
+<li><a href="./main-definitions.html#sentence">sentence</a>;</li>
+<li><a href="./main-definitions.html#text-separators">text separators</a>;</li>
+<li><a href="./main-definitions.html#text-separators-groups">text separators groups</a>;</li>
+</ul>
+
+
+<h2>Algorithm</h2>
+
+<p>Connections graphs for characters from Group1 and characters from Group2 should be provided for the given algorithm. The way for obtaining this graph is described here:</p>
+
+<ul>
+<li><a href="./text-separators-extraction.html">Algorithm of text separators extraction</a></li>
+<li><a href="./dividing-text-separators-into-groups.html">Algorithm of dividing text separators into groups</a>;</li>
+<li><a href="./classification-of-text-separators-groups.html">Algorithm of classification of text separators groups</a>;</li>
+</ul>
+
+
+<h3>Step 1 : Calculate average sentence size (in tokens)</h3>
+
+<p>Average sentence size can be calculated by counting distances between characters from Group1. For example:</p>
+
+<p>Input tokens:</p>
+
+<pre><code>Hello! My name is: Max. I live in Kiev. My age is 18 years. This summer i'll go to Paris! And what about you?
+</code></pre>
+
+<p>Group1 characters: <code>.!?</code>
+Distances would be:</p>
+
+<ul>
+<li>1 - <strong>Hello!</strong> My name is: Max. I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?</li>
+<li>4 - Hello! <strong>My name is: Max.</strong> I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?</li>
+<li>4 - Hello! My name is: Max. <strong>I live in Kiev.</strong> My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?</li>
+<li>5 - Hello! My name is: Max. I live in Kiev. <strong>My age is 18 years.</strong> This summer i&rsquo;ll go to Paris! And what about you?</li>
+<li>6 - Hello! My name is: Max. I live in Kiev. My age is 18 years. <strong>This summer i&rsquo;ll go to Paris!</strong> And what about you?</li>
+<li>4 - Hello! My name is: Max. I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! <strong>And what about you?</strong></li>
+</ul>
+
+
+<p>average size in this case would be: (1 + 4 + 4 + 5 + 6 + 4) / 6 = 4</p>
+
+<h3>Step 2 : Splitting sentences</h3>
+
+<p>Rules to be applied in the text for each splitter from Group 1:</p>
+
+<ol>
+<li>If the size of previous or next Group 1 character is bigger by more than 20% than the average sentence size, this splitter character is used for splitting sentences; otherwise, go to the next check.</li>
+<li>Calculating distance to connections graphs:
+
+<ol>
+<li>Creating one-character connection graph consisting of the splitter character and the first character of the next token;</li>
+<li>Calculating distances between one-character connection graph and Group1/2 connections graphs;</li>
+<li>If one-character graph is closer to Group 1 characters connections graph, this character is used for sentence splitting;</li>
+<li>If one-character graph is closer to Group 2 characters connections graph, this character is NOT used for sentence splitting.</li>
+</ol>
+</li>
+</ol>
+
+
+<hr />
+
+<p>By applying the two steps above to each Group 1 character in the text, the text can be split into sentences. Applying the algorithm to the next example input:</p>
+
+<pre><code>... He was born in the U.S.S.R. during the second world war...
+</code></pre>
+
+<p>will allow to split this sentence correctly.</p>
+
+<p>Here are two examples from real books where Group 1 character usage is recognized as usage for non- sentence splitting purpose:</p>
+
+<ul>
+<li>&hellip; by <strong>U.S.</strong> federal laws and &hellip;</li>
+<li>&hellip; the <strong>U.S.</strong> unless a copyright &hellip;</li>
+</ul>
+
+
+<h2>Research problems for this step</h2>
+
+<ul>
+<li>Magic number - 20%?</li>
+<li>There has to be one formula that represents the probability that this particular Group 1 character is used for sentence splitting. If such a formula is created, the last question will be to find the correct threshold.</li>
+</ul>
+
+
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/20/test/">initial</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - AIF2 Team -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
