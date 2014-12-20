@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-class StatSeparatorGroupsClassificatory implements ISeparatorGroupsClassificatory {
+class StatSeparatorGroupsClassifier implements ISeparatorGroupsClassifier {
 
     @Override
     public Map<Group, Set<Character>> classify(final List<String> tokens, final List<Set<Character>> separatorsGroups) {
