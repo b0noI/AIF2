@@ -9,10 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Documentation AIF2 API AIF2: v0.0.0-alpha1
-AIF2: v1.0.0-alpha2
-AIF2: v1.1.0-alpha3 Algorithms Main definitions
-Sentence splitting algorithm &hellip;">
+  <meta name="description" content="Documentation AIF2 is fully language independent NLP library. AIF2 is written in Java 8+. How to use it You can use it by pulling artifact. Add &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,7 +76,34 @@ Sentence splitting algorithm &hellip;">
     
   </header>
   
-  <h3>AIF2 API</h3>
+  <p>AIF2 is <strong>fully language independent</strong> NLP library. AIF2 is written in Java 8+.</p>
+
+<h2>How to use it</h2>
+
+<p>You can use it by pulling artifact.</p>
+
+<p>Add repository to pom.xml:</p>
+
+<pre><code>&lt;project ...&gt;
+    &lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;aif.com&lt;/id&gt;
+            &lt;url&gt;http://192.241.238.122:8081/artifactory/libs-release-local/&lt;/url&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+&lt;/project&gt;
+</code></pre>
+
+<p>and add dependency:</p>
+
+<pre><code>&lt;dependency&gt;
+   &lt;groupId&gt;com.aif&lt;/groupId&gt;
+   &lt;artifactId&gt;aif&lt;/artifactId&gt;
+   &lt;version&gt;2.0.0-Alpha2&lt;/version&gt;
+&lt;/dependency&gt; 
+</code></pre>
+
+<h3>AIF2 API</h3>
 
 <ul>
 <li><a href="/docs/aif2-lib/alpha1/">AIF2: v0.0.0-alpha1</a></li>
