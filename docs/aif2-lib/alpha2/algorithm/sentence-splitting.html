@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AIF2</title>
+  <title>Sentence splitting algorithm - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="AIF finally moved to it&rsquo;s own web-site! For documentation check our documentation page
-">
+  <meta name="description" content="Sentence Splitting Algorithm Definitions Text separators
+Sentence Sentence splitting process Process of sentence splitting can be done in 4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://aif.io//github/">
+  <link rel="canonical" href="http://aif.io//github/docs/aif2-lib/alpha2/algorithm/sentence-splitting.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,51 +69,41 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/20/test/">Initial</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-20T17:53:13+01:00" pubdate data-updated="true"></time>
-        
-      </p>
+    <h1 class="entry-title">Sentence Splitting Algorithm</h1>
     
   </header>
+  
+  <h2>Definitions</h2>
+
+<ul>
+<li><a href="./main-definitions.html#text-separators">Text separators</a></li>
+<li><a href="./main-definitions.html#sentence">Sentence</a></li>
+</ul>
 
 
-  <div class="entry-content"><p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
+<h2>Sentence splitting process</h2>
+
+<p>Process of sentence splitting can be done in 4 independent steps:</p>
+
+<ol>
+<li><a href="./text-separators-extraction.html">Extract text separators from tokens</a>;</li>
+<li><a href="./dividing-text-separators-into-groups.html">Divide text separators into groups</a>;</li>
+<li><a href="./classification-of-text-separators-groups.html">Classify text separators groups</a>;</li>
+<li><a href="./splitting-text-with-groups-of-text-separators.html">Split text with text separators groups</a>;</li>
+</ol>
+
+
+<p>Each step is described independently.</p>
+
+  
+</article>
+
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -133,6 +123,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

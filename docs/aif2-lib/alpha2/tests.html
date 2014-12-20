@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AIF2</title>
+  <title>Tests - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="AIF finally moved to it&rsquo;s own web-site! For documentation check our documentation page
-">
+  <meta name="description" content="Tests AIF uses TestNG Tests groups BASIC: (conditions of running) &ldquo;unit-tests&rdquo; - method level tests without any additional logic checks &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://aif.io//github/">
+  <link rel="canonical" href="http://aif.io//github/docs/aif2-lib/alpha2/tests.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,51 +68,78 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/20/test/">Initial</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-20T17:53:13+01:00" pubdate data-updated="true"></time>
-        
-      </p>
+    <h1 class="entry-title">Tests</h1>
     
   </header>
+  
+  <p>AIF uses TestNG</p>
+
+<h2>Tests groups</h2>
+
+<p><strong>BASIC:</strong> (conditions of running)</p>
+
+<ol>
+<li><em>&ldquo;unit-tests&rdquo;</em> - method level tests without any additional logic checks. Every class method should be covered by at least one positive unit-test and one negative unit test. Must be run at every method change.</li>
+<li><em>«integration-tests»</em> - test for checking communication between different parts of the system. Must be run at every change of the module(class) logic.</li>
+<li><em>«acceptance-tests»</em> - tests which test general quality and compare with set acceptance level. Must be run before every version release.</li>
+</ol>
 
 
-  <div class="entry-content"><p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
+<p><strong>DETAILED:</strong> (what they test)</p>
+
+<ol>
+<li><em>«functional-fast»</em> - functional test with runtime not longer than predefined time duration</li>
+<li><em>«functional-slow»</em> - functional test with runtime longer than predefined time duration</li>
+<li><em>«quality-fast»</em> - quality test with runtime not longer than predefined time duration</li>
+<li><em>«quality-slow»</em> - quality test with runtime longer than predefined time duration</li>
+</ol>
+
+
+<p><strong>OPTIONAL:</strong></p>
+
+<ol>
+<li><em>«experimental»</em> - special test without any predefined test target. Just one experiment on the system</li>
+<li><em>«help-test»</em> - not a test in general, but a test method used to generate or save test data etc. Must be @Ignore by default - start it manually.</li>
+</ol>
+
+
+<h2>Test sources</h2>
+
+<p>Test sources are divided into 2 parts:</p>
+
+<ul>
+<li>functional/integration/quality tests</li>
+<li>unit tests</li>
+</ul>
+
+
+<p>functional/integration/quality tests can be found here:  src/test/unit/java
+unit tests can be found here: src/test/integration/java</p>
+
+<h2>Test resources</h2>
+
+<h3>Text corpuses</h3>
+
+<p>All RAW texts can be found at:
+src/test/resources/texts/<language></p>
+
+<h3>NLP models for 3d part engines</h3>
+
+<p>src/test/resources/models/<engine_name></p>
+
+<h3>Test settings</h3>
+
+<p>TODO</p>
+
+  
+</article>
+
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -133,6 +159,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

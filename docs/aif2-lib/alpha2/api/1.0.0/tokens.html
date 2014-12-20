@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AIF2</title>
+  <title>Work with tokens (v 1.0.0) - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="AIF finally moved to it&rsquo;s own web-site! For documentation check our documentation page
-">
+  <meta name="description" content="Work With Tokens (v 1.0.0) This page describes the functions that AIF2 can perform with tokens. Functions There are 2 main functions that can be &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://aif.io//github/">
+  <link rel="canonical" href="http://aif.io//github/docs/aif2-lib/alpha2/api/1.0.0/tokens.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,51 +68,81 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/20/test/">Initial</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-20T17:53:13+01:00" pubdate data-updated="true"></time>
-        
-      </p>
+    <h1 class="entry-title">Work With Tokens (v 1.0.0)</h1>
     
   </header>
+  
+  <p>This page <strong><em>describes</em></strong> the functions that AIF2 can perform with tokens.</p>
 
+<h2>Functions</h2>
 
-  <div class="entry-content"><p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
+<p>There are 2 main functions that can be used in AIF2 about tokens:
+* extract tokens splitter characters from the text;
+* split the text into tokens.</p>
+
+<h2>Extract tokens</h2>
+
+<p>This function gives you a possibility to extract the token separators list from the input text. This function should be used by using interface: ITokenSeparatorExtractor (from package: com.aif.language.token). If you want to create an instance of this interface, you need to select the type of TokenSeparatorExtractor and get instance, like this:</p>
+
+<pre><code>ITokenSeparatorExtractor.Type.PREDEFINED.getInstance()
+</code></pre>
+
+<p>For the difference between separators types see the section below</p>
+
+<h3>Token Separators Extractor Types</h3>
+
+<h4>Type.PREDEFINED</h4>
+
+<p>This extractor has <strong>predefined</strong> characters that will be used for token splitting. It means that the extractor type will not parse the text in any way and will just return predefined characters.</p>
+
+<h2>Token splitting</h2>
+
+<p>If you want to split tokens, you need to:
+* create a TokenSplitter instance(from package: com.aif.language.token);
+* call the &ldquo;split&rdquo; method.</p>
+
+<h3>Creating TokenSplitter</h3>
+
+<p>You can initiate it in 2 ways:
+* setting Token Separators Extractor Type;
+* using default Token Separators Extractor Type.</p>
+
+<pre><code> ITokenSeparatorExtractor tokenSeparatorExtractor = ...
+
+ ISplitter&lt;String, String&gt; tokenSplitter = new TokenSplitter(tokenSeparatorExtractor);
+</code></pre>
+
+<p>This will create tokenSplitter that will use tokenSeparatorExtractor for splitting the text into tokens. Also, you can create TokenSplitter with default ITokenSeparatorExtractor like this:</p>
+
+<pre><code> ISplitter&lt;String, String&gt; tokenSplitter = new TokenSplitter();
+</code></pre>
+
+<p>By default it will use this ITokenSeparatorExtractor.Type.PREDEFINED.getInstance() token separator extractor.</p>
+
+<h3>Splitting the text with TokenSplitter</h3>
+
+<p>After you have a TokenSplitter instance, you can split the text by calling the &ldquo;split&rdquo; method like this:</p>
+
+<pre><code> ISplitter&lt;String, String&gt; tokenSplitter = ...
+
+ String text = ...
+
+ List&lt;String&gt; tokens = tokenSplitter.split(text);
+</code></pre>
+
+<h2>Usage example</h2>
+
+<p><a href="https://github.com/b0noI/aif-cli/blob/master/src/main/java/com/aif/language/sentence/TokenSplitCommand.java">Here</a> you can find usage example.</p>
+
+  
+</article>
+
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -133,6 +162,7 @@
 
   
 </aside>
+
 
     </div>
   </div>
