@@ -6,7 +6,7 @@ footer: false
 
 ## Permanent team
 
-* Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (viacheslav@b0noi.com / @b0noi);
+* Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (viacheslav@b0noi.com / [@b0noi](http://twiter.com/b0noi));
 * Ifthikhan Nazeem – algorithm designer, architecture design, developer;
 * Sviatoslav Glushchenko — REST design and implementation, developer;
 * Oleg Kozlovskyi QA (integration and qaulity testing), developer;
