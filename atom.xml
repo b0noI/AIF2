@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[AIF2]]></title>
-  <link href="http://aif.io//github/atom.xml" rel="self"/>
-  <link href="http://aif.io//github/"/>
-  <updated>2014-12-20T12:04:28+00:00</updated>
-  <id>http://aif.io//github/</id>
+  <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
+  <link href="http://b0noI.github.io/AIF2/"/>
+  <updated>2014-12-20T12:06:36+00:00</updated>
+  <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[initial]]></title>
-    <link href="http://aif.io//github/blog/2014/10/20/test/"/>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/10/20/test/"/>
     <updated>2014-10-20T17:53:13+01:00</updated>
-    <id>http://aif.io//github/blog/2014/10/20/test</id>
+    <id>http://b0noI.github.io/AIF2/blog/2014/10/20/test</id>
     <content type="html"><![CDATA[<p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
 ]]></content>
   </entry>
