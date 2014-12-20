@@ -80,14 +80,18 @@
 
 <h2>Functions</h2>
 
-<p>There are 2 main functions that can be used in Alpha3 about words:
-* generate words dictionary for the text;
-* find all tokens that represnet the Word;
-* find the root token of the word.</p>
+<p>There are 2 main functions that can be used in Alpha3 about words:</p>
+
+<ul>
+<li>generate words dictionary for the text;</li>
+<li>find all tokens that represent the Word;</li>
+<li>find the root token of the word.</li>
+</ul>
+
 
 <h2>Dictionary generating</h2>
 
-<p>For extracting words from text IDictBuilder instance should be instanciated:</p>
+<p>For extracting words from text IDictBuilder instance should be instantiated:</p>
 
 <pre><code>final List&lt;String&gt; tokens = ...
 
@@ -98,17 +102,35 @@ final IDictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator)
 final IDict dict = dictBuilder.build(tokens);
 </code></pre>
 
-<p>It could be also instanciated with default values:</p>
+<p>It could be also instantiated with default values:</p>
 
 <pre><code>final List&lt;String&gt; tokens = ...
 
 final IDictBuilder dictBuilder = new DictBuilder();
-final IDict dict = dictBuilder.build(filteredTokens);
+final IDict dict = dictBuilder.build(tokens);
 </code></pre>
 
-<h2>Text dict building</h2>
+<h2>Working with text dictionary</h2>
 
-<p>TODO</p>
+<p>For building dictionary that includes all words from text next methods need to be called:</p>
+
+<pre><code>final List&lt;String&gt; tokens = ...
+
+final IDictBuilder dictBuilder = new DictBuilder();
+final IDict dict = dictBuilder.build(tokens);
+final IDict dict = dictBuilder.build(filteredTokens);
+final Set&lt;IWord&gt; words = dict.getWords();
+</code></pre>
+
+<p>Each word has set of tokens that this word represents:</p>
+
+<pre><code>final Set&lt;String&gt; tokens = word.getAllTokens();
+</code></pre>
+
+<p>And root token:</p>
+
+<pre><code>final String rootToken = word.getRootToken();
+</code></pre>
 
   
 </article>
