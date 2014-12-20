@@ -9,13 +9,14 @@ This page ***describes*** the functions that AIF2 can perform with Words.
 ## Functions
 
 There are 2 main functions that can be used in Alpha3 about words:
+
 * generate words dictionary for the text;
-* find all tokens that represnet the Word;
+* find all tokens that represent the Word;
 * find the root token of the word. 
 
 ## Dictionary generating
 
-For extracting words from text IDictBuilder instance should be instanciated:
+For extracting words from text IDictBuilder instance should be instantiated:
    
     final List<String> tokens = ...
     
@@ -25,13 +26,29 @@ For extracting words from text IDictBuilder instance should be instanciated:
     final IDictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
     final IDict dict = dictBuilder.build(tokens);
 
-It could be also instanciated with default values:
+It could be also instantiated with default values:
     
     final List<String> tokens = ...
     
     final IDictBuilder dictBuilder = new DictBuilder();
+    final IDict dict = dictBuilder.build(tokens);
+
+## Working with text dictionary
+
+For building dictionary that includes all words from text next methods need to be called:
+
+    final List<String> tokens = ...
+    
+    final IDictBuilder dictBuilder = new DictBuilder();
+    final IDict dict = dictBuilder.build(tokens);
     final IDict dict = dictBuilder.build(filteredTokens);
+    final Set<IWord> words = dict.getWords();
 
-## Text dict building
+Each word has set of tokens that this word represents:
 
-TODO
+    final Set<String> tokens = word.getAllTokens();
+ 
+And root token:
+
+    final String rootToken = word.getRootToken();
+
