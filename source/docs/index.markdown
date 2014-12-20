@@ -43,7 +43,7 @@ and add dependency:
 * [Road map](./common/road-map.html)
 * [ChangeLog](./common/changelog.html)
 * [Environment](./common/environment.html)
-* [How version number is chosen](./common/how-version-number-is-chosen.htrml)
+* [How version number is chosen](./common/how-version-number-is-chosen.html)
 * [Software that uses aif](./common/software-that-uses-aif.html)
 
 ###AIF2 CLI Documentation
