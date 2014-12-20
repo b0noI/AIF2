@@ -20,6 +20,14 @@ class DictBuilder implements IDictBuilder<Collection<String>> {
         this.rootTokenExtractor = new RootTokenExtractor(tokenComparator);
     }
 
+    public DictBuilder(final ITokenComparator tokenComparator) {
+        this(ISetComparator.createDefaultInstance(tokenComparator), tokenComparator);
+    }
+
+    public DictBuilder() {
+        this(ITokenComparator.defaultComparator());
+    }
+
     @Override
     public IDict build(final Collection<String> from) {
         final List<Set<String>> tokenSets = from
