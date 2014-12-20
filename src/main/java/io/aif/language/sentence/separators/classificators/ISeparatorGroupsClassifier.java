@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public interface ISeparatorGroupsClassificatory {
+public interface ISeparatorGroupsClassifier {
 
     public Map<Group, Set<Character>> classify(final List<String> tokens, final List<Set<Character>> separatorsGroups);
 
@@ -17,16 +17,16 @@ public interface ISeparatorGroupsClassificatory {
 
     public enum Type {
 
-        PREDEFINED(new PredefinedSeparatorGroupsClassificatory()),
-        PROBABILITY(new StatSeparatorGroupsClassificatory());
+        PREDEFINED(new PredefinedSeparatorGroupsClassifier()),
+        PROBABILITY(new StatSeparatorGroupsClassifier());
 
-        private final ISeparatorGroupsClassificatory instance;
+        private final ISeparatorGroupsClassifier instance;
 
-        Type(ISeparatorGroupsClassificatory instance) {
+        Type(ISeparatorGroupsClassifier instance) {
             this.instance = instance;
         }
 
-        public ISeparatorGroupsClassificatory getInstance() {
+        public ISeparatorGroupsClassifier getInstance() {
             return instance;
         }
 

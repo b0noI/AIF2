@@ -1,7 +1,7 @@
 package io.aif.language.sentence.splitters;
 
 import com.google.common.annotations.VisibleForTesting;
-import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
+import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassifier;
 import io.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import io.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 
@@ -11,20 +11,20 @@ class SimpleSentenceSplitter extends AbstractSentenceSplitter {
 
     public SimpleSentenceSplitter(final ISeparatorExtractor sentenceSeparatorExtractor,
                                   final ISeparatorsGrouper sentenceSeparatorsGrouper,
-                                  final ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
+                                  final ISeparatorGroupsClassifier sentenceSeparatorGroupsClassificatory) {
         super(sentenceSeparatorExtractor, sentenceSeparatorsGrouper, sentenceSeparatorGroupsClassificatory);
     }
 
     public SimpleSentenceSplitter() {
         this(ISeparatorExtractor.Type.PROBABILITY.getInstance(),
                 ISeparatorsGrouper.Type.PROBABILITY.getInstance(),
-                ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance());
+                ISeparatorGroupsClassifier.Type.PROBABILITY.getInstance());
     }
 
     @Override
-    public List<Boolean> split(final List<String> tokens, final Map<ISeparatorGroupsClassificatory.Group, Set<Character>> splitters) {
+    public List<Boolean> split(final List<String> tokens, final Map<ISeparatorGroupsClassifier.Group, Set<Character>> splitters) {
 
-        return SimpleSentenceSplitter.mapToBooleans(tokens, splitters.get(ISeparatorGroupsClassificatory.Group.GROUP_1));
+        return SimpleSentenceSplitter.mapToBooleans(tokens, splitters.get(ISeparatorGroupsClassifier.Group.GROUP_1));
 
     }
 

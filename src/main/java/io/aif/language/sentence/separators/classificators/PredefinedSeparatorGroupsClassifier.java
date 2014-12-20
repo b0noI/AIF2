@@ -2,7 +2,7 @@ package io.aif.language.sentence.separators.classificators;
 
 import java.util.*;
 
-class PredefinedSeparatorGroupsClassificatory implements ISeparatorGroupsClassificatory {
+class PredefinedSeparatorGroupsClassifier implements ISeparatorGroupsClassifier {
 
     private static final char DOT_CHARACTER = '.';
 
@@ -23,5 +23,4 @@ class PredefinedSeparatorGroupsClassificatory implements ISeparatorGroupsClassif
         result.put(Group.GROUP_2, group2);
         return result;
     }
-
 }

@@ -3,7 +3,7 @@ package io.aif.language.sentence.splitters;
 import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.ISplitter;
 import io.aif.language.common.settings.ISettings;
-import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassificatory;
+import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassifier;
 import io.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import io.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import org.apache.log4j.Logger;
@@ -19,11 +19,11 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
 
     private         final ISeparatorsGrouper sentenceSeparatorsGrouper                                                                   ;
 
-    private         final ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory                                                       ;
+    private         final ISeparatorGroupsClassifier sentenceSeparatorGroupsClassificatory                                                       ;
 
     protected AbstractSentenceSplitter(final ISeparatorExtractor sentenceSeparatorExtractor,
                                        final ISeparatorsGrouper sentenceSeparatorsGrouper,
-                                       final ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory) {
+                                       final ISeparatorGroupsClassifier sentenceSeparatorGroupsClassificatory) {
         this.sentenceSeparatorExtractor = sentenceSeparatorExtractor;
         this.sentenceSeparatorsGrouper = sentenceSeparatorsGrouper;
         this.sentenceSeparatorGroupsClassificatory = sentenceSeparatorGroupsClassificatory;
@@ -48,7 +48,7 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
 
         final List<Set<Character>> separatorsGroups = sentenceSeparatorsGrouper.group(tokens, separators);
 
-        final Map<ISeparatorGroupsClassificatory.Group, Set<Character>> separatorsGroupsClassified = sentenceSeparatorGroupsClassificatory.classify(tokens, separatorsGroups);
+        final Map<ISeparatorGroupsClassifier.Group, Set<Character>> separatorsGroupsClassified = sentenceSeparatorGroupsClassificatory.classify(tokens, separatorsGroups);
 
         final List<Boolean> booleans = split(tokens, separatorsGroupsClassified);
 
@@ -128,7 +128,7 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
         return i;
     }
 
-    public abstract List<Boolean> split(final List<String> target, final Map<ISeparatorGroupsClassificatory.Group, Set<Character>> splitters);
+    public abstract List<Boolean> split(final List<String> target, final Map<ISeparatorGroupsClassifier.Group, Set<Character>> splitters);
 
     public enum Type {
 
