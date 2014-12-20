@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2014-12-20T22:06:19+00:00</updated>
+  <updated>2014-12-20T22:17:43+00:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[aif.io is alive]]></title>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive/"/>
+    <updated>2014-12-20T22:11:13+00:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive</id>
+    <content type="html"><![CDATA[<h2>Long live aif.io!</h2>
+
+<p>Today, AIF community os proud to announce AIF web site: <a href="aif.io">aif.io</a></p>
+
+<p>With this site, old <a href="https://github.com/b0noI/AIF2/wiki">wiki</a> is deprecated and will not be maintained from very this moment. Each old wiki page has been updated with the link to new web site.</p>
+
+<p>Big thanks to Evgeniy Dolgikh (Marcon) who was in charge of creating this site and porting all documentation from old wiki! This web-site will be impossible without his work!</p>
+
+<p>In nearest plans to have:</p>
+
+<ul>
+<li>IRC channel</li>
+<li>forum</li>
+</ul>
+
+
+<p>And of course we are about to release Alpha3, so stay touched</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[initial]]></title>
