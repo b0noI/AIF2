@@ -1,67 +1,9 @@
 ---
 layout: post
-title: "test"
+title: "initial"
 date: 2014-10-20 19:53:13 +0300
 comments: true
 categories: 
 ---
 
-AIF2 - is **fully language independent** NLP library. AIF2 written in Java 8+. 
-
-## How to use it
-
-You can use it by pulling artifact. 
-
-Add repository to pom.xml:
-
-    <project ...>
-        <repositories>
-            <repository>
-                <id>aif.com</id>
-                <url>http://192.241.238.122:8081/artifactory/libs-release-local/</url>
-            </repository>
-        </repositories>
-    </project>
-
-and add dependency:
-
-    <dependency>
-        <groupId>com.aif</groupId>
-        <artifactId>aif</artifactId>
-        <version>0.0.0-Alpha1</version>
-    </dependency>
-
-## Wiki navigation
-
-* API documentation:
-  * [Work with tokens](https://github.com/b0noI/AIF2/wiki/v.1.0.0-Work-with-tokens)
-  * [Work with sentences](https://github.com/b0noI/AIF2/wiki/v.1.0.0-Work-with-sentences)
-  * [Stammer](https://github.com/b0noI/AIF2/wiki/v.1.0.0-Stammer)
-* Algorithm documentation:
-  * [Sentence splitting algorithm](https://github.com/b0noI/AIF2/wiki/Sentence-splitting-algorithm)
-  * [Algorithm of tokens separator extraction](https://github.com/b0noI/AIF2/wiki/Algorithm-of-tokens-separator-extraction)
-  * [Main definitions](https://github.com/b0noI/AIF2/wiki/Main-definitions)
-* Other documentation:
-  * [ChangeLog](https://github.com/b0noI/AIF2/wiki/ChangeLog)
-  * [Environment](https://github.com/b0noI/AIF2/wiki/Environment)
-  * [How versions number is chosen ](https://github.com/b0noI/AIF2/wiki/How-version-number-is-chosen)
-  * [RoadMap](https://github.com/b0noI/AIF2/wiki/RoadMap)
-  * [Software that using AIF](https://github.com/b0noI/AIF2/wiki/Software-that-use-AIF)
-  * [Tests](https://github.com/b0noI/AIF2/wiki/Tests)
-
-## MailList
-
-- **dev**: aif2-dev@yahoogroups.com (subscribe: aif2-dev-subscribe@yahoogroups.com)
-
-## Current version
-
-- alpha1 
-
-## Next versions
-
-- alpha2 (~October)
-- alpha3
-
-## License
-
-AIF2 is distributed under [MIT license](http://choosealicense.com/licenses/mit/)
+AIF finally moved to it's own web-site! For documentation check our [documentation page](http://aif.io/docs/)
