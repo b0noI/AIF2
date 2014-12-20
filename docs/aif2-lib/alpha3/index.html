@@ -9,8 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content=" version: 1.0.0 Docs navigation API documentation: Work with tokens
-Work with sentences Tests documentation Recent Posts initial ">
+  <meta name="description" content="AIF2 is fully language independent NLP library. AIF2 is written in Java 8+. How to use it You can use it by pulling artifact. Add repository to pom. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ Work with sentences Tests documentation Recent Posts initial ">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -72,7 +71,32 @@ Work with sentences Tests documentation Recent Posts initial ">
       <div>
 <article role="article">
   
-  <p><strong>version</strong>: 1.0.0</p>
+  <p>AIF2 is <strong>fully language independent</strong> NLP library. AIF2 is written in Java 8+.</p>
+
+<h2>How to use it</h2>
+
+<p>You can use it by pulling artifact.</p>
+
+<p>Add repository to pom.xml:</p>
+
+<pre><code>&lt;project ...&gt;
+    &lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;aif.com&lt;/id&gt;
+            &lt;url&gt;http://192.241.238.122:8081/artifactory/libs-release-local/&lt;/url&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+&lt;/project&gt;
+</code></pre>
+
+<p>and add dependency:</p>
+
+<pre><code>&lt;dependency&gt;
+   &lt;groupId&gt;com.aif&lt;/groupId&gt;
+   &lt;artifactId&gt;aif&lt;/artifactId&gt;
+   &lt;version&gt;2.0.0-Alpha2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
 
 <h2>Docs navigation</h2>
 
@@ -80,13 +104,78 @@ Work with sentences Tests documentation Recent Posts initial ">
 <li>API documentation:
 
 <ul>
-<li><a href="./api/tokens.html">Work with tokens</a></li>
-<li><a href="./api/sentences.html">Work with sentences</a></li>
+<li>v.1.0.0:
+
+<ul>
+<li><a href="./api/1.0.0/tokens.html">Work with tokens</a></li>
+<li><a href="./api/1.0.0/sentences.html">Work with sentences</a></li>
 </ul>
 </li>
-<li><a href="./tests.html">Tests documentation</a></li>
+<li>v.0.0.0:
+
+<ul>
+<li><a href="./api/0.0.0/tokens.html">Work with tokens</a></li>
+<li><a href="./api/0.0.0/sentences.html">Work with sentences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Algorithm documentation:
+
+<ul>
+<li><a href="./algorithm/sentence-splitting.html">Sentence splitting algorithm</a></li>
+<li><a href="./algorithm/token-separator-extraction.html">Algorithm of tokens separator extraction</a></li>
+<li><a href="./algorithm/main-definitions.html">Main definitions</a></li>
+</ul>
+</li>
+<li>Other documentation:
+
+<ul>
+<li><a href="./changelog.html">ChangeLog</a></li>
+<li><a href="./environment.html">Environment</a></li>
+<li><a href="./how-version-number-is-chosen.html">How versions number is chosen </a></li>
+<li><a href="./road-map.html">RoadMap</a></li>
+<li><a href="./software-that-uses-aif.html">Software that uses AIF</a></li>
+<li><a href="./tests.html">Tests</a></li>
+</ul>
+</li>
 </ul>
 
+
+<h2>MailList</h2>
+
+<ul>
+<li><strong>dev</strong>: <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x69;&#x66;&#50;&#x2d;&#x64;&#101;&#118;&#x40;&#121;&#x61;&#x68;&#111;&#111;&#103;&#x72;&#111;&#x75;&#x70;&#115;&#46;&#99;&#111;&#x6d;">&#x61;&#105;&#x66;&#50;&#x2d;&#100;&#101;&#x76;&#x40;&#x79;&#x61;&#x68;&#x6f;&#x6f;&#x67;&#114;&#111;&#117;&#112;&#115;&#46;&#99;&#x6f;&#109;</a> (subscribe: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#x3a;&#x61;&#x69;&#102;&#50;&#45;&#x64;&#101;&#x76;&#45;&#x73;&#117;&#x62;&#115;&#99;&#114;&#x69;&#98;&#101;&#x40;&#121;&#x61;&#x68;&#111;&#x6f;&#x67;&#114;&#111;&#x75;&#x70;&#115;&#46;&#99;&#x6f;&#x6d;">&#97;&#105;&#102;&#50;&#x2d;&#100;&#101;&#118;&#45;&#115;&#117;&#98;&#x73;&#99;&#x72;&#105;&#98;&#101;&#64;&#121;&#x61;&#x68;&#x6f;&#x6f;&#x67;&#114;&#111;&#x75;&#112;&#x73;&#46;&#x63;&#x6f;&#109;</a>)</li>
+</ul>
+
+
+<h2>Current version</h2>
+
+<ul>
+<li>alpha2</li>
+</ul>
+
+
+<h2>Next versions</h2>
+
+<ul>
+<li>alpha3 (~midl of December)</li>
+<li>alpha4 (~midl of January 2015)</li>
+</ul>
+
+
+<h2>Deprecated versions</h2>
+
+<p>This versions are no longer supported and should not be used:</p>
+
+<ul>
+<li>alpha1</li>
+</ul>
+
+
+<h2>License</h2>
+
+<p>AIF2 is distributed under <a href="http://choosealicense.com/licenses/mit/">MIT license</a></p>
 
   
 </article>

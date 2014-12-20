@@ -5,12 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Environment - AIF2</title>
+  <title>Main definitions - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Environment Issue tracker issue tracker Branches master - branch with current production code;
-develop - branch with stable code of next version; &hellip;">
+  <meta name="description" content="Main Definitions Definitions List tokens separator
+text separators
+text separators groups
+sentence
+word Tokens separator The character that is used &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +22,7 @@ develop - branch with stable code of next version; &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/environment.html">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/algorithm/main-definitions.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -73,26 +76,48 @@ develop - branch with stable code of next version; &hellip;">
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Environment</h1>
+    <h1 class="entry-title">Main Definitions</h1>
     
   </header>
   
-  <h2>Issue tracker</h2>
-
-<p><a href="https://github.com/b0noI/AIF2/issues">issue tracker</a></p>
-
-<h2>Branches</h2>
+  <h2>Definitions List</h2>
 
 <ul>
-<li><strong>master</strong> - branch with current production code;</li>
-<li><strong>develop</strong> - branch with stable code of next version;</li>
-<li><strong>unstable</strong> - branch with unstable code of next version;</li>
+<li><a href="#tokens-separator">tokens separator</a></li>
+<li><a href="#text-separators">text separators</a></li>
+<li><a href="#text-separators-groups">text separators groups</a></li>
+<li><a href="#sentence">sentence</a></li>
+<li><a href="#word">word</a></li>
 </ul>
 
 
-<h2>Continues integration</h2>
+<h2><a id="tokens-separator"></a>Tokens separator</h2>
 
-<p><a href="http://192.241.238.122:8111/project.html?projectId=AIF2&amp;tab=projectOverview">http://192.241.238.122:8111/project.html?projectId=AIF2&amp;tab=projectOverview</a></p>
+<p>The character that is used in text for splitting tokens (the most common character that is used for this purpose is space)</p>
+
+<h2><a id="text-separators"></a>Text separators</h2>
+
+<p>Characters that are used for logical separation of the text. Some of the characters are used for text separation into sentences, while other characters are used for sentences separation into logical parts. Example of such characters: <code>,.!/?:;"'-()[]</code></p>
+
+<h2><a id="text-separators-groups"></a>Text separators groups</h2>
+
+<p>All text separators divided into 2 groups: Group1 and Group2</p>
+
+<h3>Group1</h3>
+
+<p>This group contains separators that are <em>usually</em> used for splitting text into sentences. Most common characters in this group: <code>.!?</code> . Separators of this group are not always (but usually) used for separation of text into sentences, for example: &ldquo;dear Mr. Max&rdquo;; the dot in the example is not used for sentence separation. In this particular case the dot is used as a separator from Group2</p>
+
+<h3>Group2</h3>
+
+<p>This group contains separators that are <em>usually</em> used for splitting sentences into logical sub-sentences. Most common characters in this group: <code>;:,-"'()</code> . Separators of this group are not always (but usually) used for separation of sentences into sub-sentences, for example: &ldquo;- Hi - Hello&rdquo;</p>
+
+<h2><a id="sentence"></a>Sentence</h2>
+
+<p>Sequence of tokens that contains semantic piece of information and surrounded by text separators. Sentence can include text separators. Usually sentence is surrounded by text separators of Group1 and includes text separators from Group2.</p>
+
+<h2><a id="word"></a>Word</h2>
+
+<p>Consists of an approximated root token and a list of tokens with similar forms</p>
 
   
 </article>
