@@ -4,10 +4,14 @@ title: Changelog (alpha2)
 footer: false
 ---
 
+## alpha3 (1.1.0)
+
+1. [text dictionary builder/words API](http://aif.io/docs/aif2-lib/alpha3/api/words.html)
+2. quality improvements
+
 ## alpha2 (1.0.0)
 
 1. Text separators group extraction. See:
-
     * [Algorithm of classification of text separators groups](algorithm/classification-of-text-separators-groups.html)
     * [Algorithm of dividing text separators into groups](algorithm/dividing-text-separators-into-groups.html)
 2. [New sentence splitting](algorithm/splitting-text-with-groups-of-text-separators.html)
