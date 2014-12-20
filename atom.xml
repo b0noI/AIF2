@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2014-12-20T22:43:19+00:00</updated>
+  <updated>2014-12-21T02:09:51+03:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[aif.io is alive]]></title>
-    <link href="http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive/"/>
-    <updated>2014-12-20T22:11:13+00:00</updated>
-    <id>http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive</id>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/12/21/aif-dot-io-is-alive/"/>
+    <updated>2014-12-21T01:11:13+03:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2014/12/21/aif-dot-io-is-alive</id>
     <content type="html"><![CDATA[<h2>Long live aif.io!</h2>
 
 <p>Today, AIF community os proud to announce AIF web site: <a href="aif.io">aif.io</a></p>
@@ -41,7 +41,7 @@
   <entry>
     <title type="html"><![CDATA[initial]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/10/20/test/"/>
-    <updated>2014-10-20T17:53:13+01:00</updated>
+    <updated>2014-10-20T19:53:13+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/10/20/test</id>
     <content type="html"><![CDATA[<p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
 ]]></content>
