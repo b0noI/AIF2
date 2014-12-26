@@ -9,7 +9,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
 
 
-class DictBuilder implements IDictBuilder<Collection<String>> {
+public class DictBuilder implements IDictBuilder<Collection<String>> {
 
     private final ISetComparator comparator;
 

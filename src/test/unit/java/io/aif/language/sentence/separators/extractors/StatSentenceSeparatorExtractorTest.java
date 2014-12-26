@@ -39,7 +39,7 @@ public class StatSentenceSeparatorExtractorTest {
         // mocks verify
     }
 
-    @Test(groups = "unit-tests")
+    @Test(groups = "unit-tests", enabled = false)
     public void testGetCharacters() throws Exception {
         // input arguments
         final List<String> inputArguments = Arrays.asList(new String[]{"token", "otkne"});
