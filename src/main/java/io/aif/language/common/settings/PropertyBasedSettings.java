@@ -38,6 +38,9 @@ class PropertyBasedSettings implements ISettings {
     private static final String         SPLITTER_CHARACTERS_GROUPER_INIT_SEARCH_P_VALUE_KEY
             = "splitter_characters_grouper_init_search_P_value";
 
+    private static final String         WORD_SET_DICT_COMPARATOR_THRESHOLD
+            = "word_set_dict_comparator_treshold";
+
                    final Properties     properties
             = new Properties();
 
@@ -96,6 +99,11 @@ class PropertyBasedSettings implements ISettings {
     @Override
     public double splitterCharactersGrouperInitSearchPValue() {
         return Double.valueOf(properties.getProperty(SPLITTER_CHARACTERS_GROUPER_INIT_SEARCH_P_VALUE_KEY));
+    }
+
+    @Override
+    public double WordSetDictComparatorThreshold() {
+        return Double.valueOf(properties.getProperty(WORD_SET_DICT_COMPARATOR_THRESHOLD));
     }
 
 }

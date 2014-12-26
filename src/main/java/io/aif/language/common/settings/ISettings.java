@@ -22,4 +22,6 @@ public interface ISettings {
 
     public double splitterCharactersGrouperInitSearchPValue();
 
+    public double WordSetDictComparatorThreshold();
+
 }

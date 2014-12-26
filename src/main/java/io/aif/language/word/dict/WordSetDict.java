@@ -1,6 +1,7 @@
 package io.aif.language.word.dict;
 
 
+import io.aif.language.common.settings.ISettings;
 import io.aif.language.word.comparator.ISetComparator;
 import org.apache.log4j.Logger;
 
@@ -14,7 +15,7 @@ class WordSetDict {
 
     private static final Logger LOGGER = Logger.getLogger(WordSetDict.class);
 
-    private static final double COMPARATOR_THRESHOLD = .75;
+    private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.WordSetDictComparatorThreshold();
 
     private final ISetComparator setComparator;
 
