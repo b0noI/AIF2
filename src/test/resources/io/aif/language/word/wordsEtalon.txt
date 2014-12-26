@@ -1,0 +1,645 @@
+A
+RootToken: [A] tokens: [["A], ["a], [(a)], [A]]
+
+RootToken: [About] tokens: [["About], [About]]
+RootToken: [Above] tokens: [[Above]]
+
+RootToken: [According] tokens: [["According], [Accordingly]]
+RootToken: [ACTIONS] tokens: [[ACTIONS], [Acting]]
+RootToken: [ACTUAL] tokens: [[ACTUAL]]
+
+RootToken: [Additional] tokens: [[Additional]]
+RootToken: [Adhesive] tokens: [[Adhesive]]
+RootToken: [Advancing] tokens: [[Advancing]]
+RootToken: [Adventures] tokens: [[Adventures]]
+
+RootToken: [After] tokens: [["After], [After]]
+RootToken: [Afterwards] tokens: [[Afterwards]]
+RootToken: [AFLOAT] tokens: [[AFLOAT], [Afloat]]
+
+RootToken: [AGREE] tokens: [[AGREE], [AGREEMENT]]
+
+RootToken: [AK] tokens: [[AK]]
+
+RootToken: [All] tokens: [["All], [All], [Al]]
+RootToken: [ALAN] tokens: [[ALAN], [Alan]]
+RootToken: [ALARM] tokens: [[ALARM]]
+RootToken: [Already] tokens: [["Already], ["already]]
+RootToken: [Almost] tokens: [[Almost]]
+RootToken: [Alexandria] tokens: [[Alexandria]]
+RootToken: [Although] tokens: [[Although]]
+RootToken: [Altogether] tokens: [[Altogether]]
+
+RootToken: [Ameanin'] tokens: [[Ameanin']]
+RootToken: [American] tokens: [[American]]
+
+RootToken: [an] tokens: [["an'], [An], [An']]
+RootToken: [any] tokens: [[(any], [ANY], [Any]]
+RootToken: [And] tokens: [["And], ["And,"], ["and], [(and], [AND], [And]]
+RootToken: [Another] tokens: [[Another]]
+RootToken: [Anthony] tokens: [[Anthony]]
+RootToken: [Anybody] tokens: [["Anybody'd]]
+RootToken: [ANYTHING] tokens: [[ANYTHING]]
+RootToken: [Anyway] tokens: [[Anyway]]
+
+RootToken: [Apparently] tokens: [[Apparently]]
+
+RootToken: [Arab] tokens: [[Arab]]
+RootToken: [Archive] tokens: [[Archive]]
+RootToken: [Are] tokens: [["Are]]
+RootToken: [Armitage] tokens: [[Armitage]]
+RootToken: [Art] tokens: [[Art]]
+RootToken: [Artha] tokens: [[Artha], [Artha's], [Artha,"], [Artha--don't], [Artha;"], [Artha?"]]
+RootToken: [Arthur] tokens: [[Arthur]]
+
+RootToken: [As] tokens: [["As], ["as], [As]]
+RootToken: [AS-IS] tokens: [[AS-IS]]
+RootToken: [ASCII] tokens: [[ASCII], [ASCII"]]
+RootToken: [Ask] tokens: [["Ask]]
+
+RootToken: [At] tokens: [["At], [At]]
+
+RootToken: [August] tokens: [[August]]
+RootToken: [Author] tokens: [[Author]]
+
+RootToken: [available] tokens: [[(available]]
+
+RootToken: [aw] tokens: [["aw!]]
+
+B
+RootToken: [b] tokens: [[(b)], [B]]
+
+RootToken: [Back] tokens: [[Back]]
+RootToken: [Bay] tokens: [[Bay]]
+
+RootToken: [Be] tokens: [["Be], [BE], [Being]]
+RootToken: [Beaver] tokens: [[Beaver]]
+RootToken: [because] tokens: [["because], ["becauth]]
+RootToken: [BEFORE] tokens: [[BEFORE], [Before]]
+RootToken: [Behind] tokens: [[Behind]]
+RootToken: [Ben] tokens: [[Ben]]
+RootToken: [Bending] tokens: [[Bending]]
+RootToken: [bent] tokens: [["bent]]
+RootToken: [Besides] tokens: [[Besides]]
+RootToken: [Better] tokens: [["Better], ["'Better], [Better]]
+
+RootToken: [Big] tokens: [[Big], [Biggest]]
+RootToken: [Billings] tokens: [[Billings]]
+RootToken: [BIRDS] tokens: [[BIRDS]]
+
+RootToken: [Blind] tokens: [["Blind]]
+
+RootToken: [Boone's] tokens: [[Boone's]]
+RootToken: [Book] tokens: [[Book]]
+RootToken: [Both] tokens: [["Both], ["both]]
+RootToken: [BOUND] tokens: [[BOUND]]
+RootToken: [Boys] tokens: [["Boys], [Boy], [Boys]]
+
+RootToken: [BREACH] tokens: [[BREACH]]
+RootToken: [breakfast,"] tokens: [["breakfast,"]]
+RootToken: [Bruin] tokens: [[Bruin]]
+
+RootToken: [BUCKHORN] tokens: [[BUCKHORN]]
+RootToken: [Bully] tokens: [["Bully]]
+RootToken: [Burgoyne] tokens: [[Burgoyne]]
+RootToken: [But] tokens: [["But], ["but], [BUT], [But]]
+RootToken: [bus] tokens: [['bus,"]]
+
+RootToken: [BY] tokens: [[BY], [By]]
+
+C
+RootToken: [c] tokens: [[(c)]]
+
+
+RootToken: [Can] tokens: [["Can], [Can]]
+RootToken: [Canadian] tokens: [[Canadian]]
+RootToken: [Canal] tokens: [[Canal]]
+RootToken: [Caesar!"] tokens: [[Caesar!"]]
+RootToken: [CAPTAIN] tokens: [[CAPTAIN]]
+RootToken: [Caught] tokens: [["Caught]]
+RootToken: [cause] tokens: [["'cause], ['cause]]
+
+RootToken: [Chances] tokens: [[Chances]]
+RootToken: [Channels] tokens: [[Channels]]
+RootToken: [CHAPTER] tokens: [[CHAPTER]]
+RootToken: [Character] tokens: [[Character]]
+RootToken: [Charlie] tokens: [[Charlie]]
+RootToken: [Chatz] tokens: [["Chatz."], [Chatz], [Chatz,"], [Chatz?"]]
+RootToken: [Cheer] tokens: [["Cheer]]
+RootToken: [Chenowith] tokens: [[Chenowith]]
+RootToken: [chewing] tokens: [["chewing]]
+RootToken: [Chief] tokens: [[Chief], [Chief'], [Chief's], [Chief,"], [Chief."]]
+RootToken: [CHICAGO] tokens: [[CHICAGO], [Chicago."]]
+RootToken: [CHICKEN] tokens: [[CHICKEN]]
+RootToken: [Christmas] tokens: [[Christmas]]
+
+RootToken: [City] tokens: [[City]]
+RootToken: [Civil] tokens: [[Civil]]
+
+RootToken: [close] tokens: [["close]]
+RootToken: [CLUE] tokens: [[CLUE], [CLUES]]
+
+RootToken: [Co] tokens: [[Co]]
+RootToken: [Collins] tokens: [[Collins]]
+RootToken: [Colonel] tokens: [[Colonel]]
+RootToken: [Comes,"] tokens: [[Comes,"]]
+RootToken: [COMPANY] tokens: [[COMPANY]]
+RootToken: [Complete] tokens: [[Complete]]
+RootToken: [Compliance] tokens: [[Compliance]]
+RootToken: [CONCLUSION] tokens: [[CONCLUSION]]
+RootToken: [CONDIT] tokens: [[CONDIT], [CONDIT'S], [Condit], [Condit!], [Condit!"], [Condit's], [Condit,"]]
+RootToken: [Confederate] tokens: [[Confederate]]
+RootToken: [Conquering] tokens: [[Conquering]]
+RootToken: [CONSEQUENTIAL] tokens: [[CONSEQUENTIAL]]
+RootToken: [Contact] tokens: [[Contact]]
+RootToken: [CONTENTS] tokens: [[CONTENTS]]
+RootToken: [CONTRACT] tokens: [[CONTRACT]]
+RootToken: [Contributions] tokens: [[Contributions]]
+RootToken: [coon] tokens: [['coon], ['coons]]
+RootToken: [cops] tokens: [["cops;"]]
+RootToken: [Copyright] tokens: [[Copyright]]
+RootToken: [Correct] tokens: [["Correct]]
+RootToken: [Couldn't] tokens: [["Couldn't]]
+RootToken: [Counting] tokens: [[Counting]]
+RootToken: [Course] tokens: [["Course], [Course]]
+RootToken: [Covered] tokens: [[Covered]]
+
+RootToken: [Creating] tokens: [[Creating]]
+RootToken: [Cropsey] tokens: [[Cropsey]]
+RootToken: [Crows] tokens: [[Crows]]
+
+RootToken: [Cummings] tokens: [[Cummings]]
+RootToken: [Cut] tokens: [["Cut]]
+
+D
+RootToken: [Dale] tokens: [[Dale]]
+RootToken: [DAMAGE] tokens: [[DAMAGE], [DAMAGES]]
+RootToken: [Daniel] tokens: [[Daniel]]
+RootToken: [Darius] tokens: [[Darius]]
+RootToken: [Date] tokens: [[Date]]
+
+RootToken: [Defects] tokens: [["Defects,"], [Defect]]
+RootToken: [Despite] tokens: [[Despite]]
+
+RootToken: [Did] tokens: [["Did], ["Didn't], ["didn't]]
+RootToken: [DIRECT] tokens: [[DIRECT], [Director]]
+RootToken: [DISCLAIMER] tokens: [[DISCLAIMER]]
+RootToken: [DISTRIBUTE] tokens: [[DISTRIBUTE], [DISTRIBUTOR]]
+RootToken: [Dixie] tokens: [[Dixie]]
+RootToken: [Dixon's] tokens: [[Dixon's]]
+
+RootToken: [Do] tokens: [["Do], ["Don't], ["do], ["don't], [Do], [Don't]]
+RootToken: [Doctor] tokens: [["Doctor]]
+RootToken: [Dog-gone] tokens: [["Dog-gone], [Dogs]]
+RootToken: [Domain] tokens: [[Domain]]
+RootToken: [DONATIONS] tokens: [[DONATIONS]]
+RootToken: [DONOHUE] tokens: [[DONOHUE]]
+RootToken: [DOUGLAS] tokens: [[DOUGLAS]]
+RootToken: [Doubting] tokens: [["Doubting], [Doubtless]]
+RootToken: [does] tokens: [[(does]]
+
+RootToken: [Dr] tokens: [[Dr]]
+
+E
+RootToken: [Each] tokens: [[Each]]
+RootToken: [Eager] tokens: [[Eager], [Eagerly]]
+RootToken: [Eagle] tokens: [[Eagle]]
+RootToken: [Easy] tokens: [[Easy], [Easiest]]
+
+RootToken: [EBOOK] tokens: [[EBOOK], [EBook]]
+
+RootToken: [Eggleston] tokens: [[Eggleston]]
+
+RootToken: [EIN] tokens: [[EIN]]
+RootToken: [either] tokens: [["either], [Either]]
+
+RootToken: [Ellsworth] tokens: [[Ellsworth]]
+RootToken: [Elmer] tokens: [[Elmer], ["Elmer], [Elmer!], [Elmer!"], [Elmer's], [Elmer,"], [Elmer."], [Elmer?"]]
+
+RootToken: [em] tokens: [['em], ['em!"]]
+RootToken: [Email] tokens: [[Email]]
+
+RootToken: [END] tokens: [[END], [End]]
+RootToken: [English] tokens: [[English]]
+RootToken: [enough] tokens: [["enough]]
+
+RootToken: [Even] tokens: [["Even], ["even], [EVEN], [Even]]
+RootToken: [Every] tokens: [["Every], ["every], [Every]]
+RootToken: [Everybody] tokens: [["Everybody],  [Everybody]]
+RootToken: [Evidently] tokens: [["Evidently], [Evidently]]
+
+RootToken: [EXCEPT] tokens: [[EXCEPT], [Except]]
+RootToken: [Executive] tokens: [[Executive]]
+RootToken: [EXPRESS] tokens: [[EXPRESS]]
+
+F
+RootToken: [F3] tokens: [[F3]]
+
+RootToken: [Fairbanks] tokens: [[Fairbanks]]
+RootToken: [Fakes] tokens: [["Fakes]]
+RootToken: [Fall] tokens: [[Fall]]
+RootToken: [farmers] tokens: [["farmers], [Farm], [Farmer]]
+
+RootToken: [Feathers] tokens: [["Feathers]]
+RootToken: [February] tokens: [[February]]
+RootToken: [Fellows] tokens: [["Fellows]]
+
+RootToken: [Figuring] tokens: [[Figuring]]
+RootToken: [Filled] tokens: [[Filled]]
+RootToken: [Finally] tokens: [[Finally]]
+RootToken: [First] tokens: [["First], [First]]
+RootToken: [Fish] tokens: [[Fish]]
+RootToken: [FITNESS] tokens: [[FITNESS]]
+RootToken: [fixed] tokens: [["fixed."]]
+
+RootToken: [Foller] tokens: [["Foller]]
+RootToken: [Following] tokens: [[Following]]
+RootToken: [For] tokens: [["For], ["for], [FOR], [For]]
+RootToken: [Fortunately] tokens: [[Fortunately]]
+RootToken: [Foundation] tokens: [[Foundation], [FOUNDATION], [Foundation"], [Foundation's], [Foundation."]]
+RootToken: [Fox] tokens: [[Fox]]
+
+RootToken: [Frequent] tokens: [[Frequent]]
+RootToken: [Friday] tokens: [[Friday]]
+RootToken: [From] tokens: [["From], [From]]
+
+RootToken: [FULL] tokens: [[FULL],  [Full]]
+RootToken: [funny] tokens: [["funny"]]
+
+G
+RootToken: [Garrabrant] tokens: [[Garrabrant]]
+RootToken: [Gather] tokens: [["Gather]]
+
+RootToken: [Gee] tokens: [["Gee]]
+RootToken: [General] tokens: [[General]]
+RootToken: [George"] tokens: [[George"]]
+RootToken: [Get] tokens: [["Get], ["get], [Get]]
+
+RootToken: [Ginger!] tokens: [["Ginger!]]
+RootToken: [give-away] tokens: [["give-away"], [GIVE]]
+
+RootToken: [Gliding] tokens: [[Gliding]]
+
+RootToken: [Go] tokens: [["Go], [Go]]
+RootToken: [Good] tokens: [["Good]]
+RootToken: [Good-bye] tokens: [["Good-bye]]
+RootToken: [Gosh] tokens: [["Gosh!"]]
+RootToken: [Government] tokens: [[Government]]
+
+RootToken: [Grand] tokens: [[Grand], [Grant]]
+RootToken: [Grandaddy] tokens: [[Grandaddy]]
+RootToken: [Great] tokens: [["Great], ['Great], [Great]]
+RootToken: [Green] tokens: [[Green]]
+RootToken: [Gregory] tokens: [[Gregory]]
+
+RootToken: [Guess] tokens: [["Guess], ["guess], [Guess]]
+RootToken: [GUTENBERG] tokens: [[GUTENBERG], [GUTENBERG-tm], [Gutenberg], [Gutenberg"], [Gutenberg")], [Gutenberg-tm], [Gutenberg-tm's]]
+
+H
+RootToken: [H'm] tokens: [["H'm!]]
+
+RootToken: [Hail] tokens: [['Hail]]
+RootToken: [Haines] tokens: [[Haines]]
+RootToken: [HANDLE] tokens: [[HANDLE]]
+RootToken: [Hardly] tokens: [["Hardly], [Hardly]]
+RootToken: [Hart] tokens: [[Hart]]
+RootToken: [Has] tokens: [["Has]]
+RootToken: [Have] tokens: [["Have], ["haven't], [HAVE], [Having], [Haven't]]
+RootToken: [Hay] tokens: [["Hay]]
+
+RootToken: [He] tokens: [["He], ["he], ["he's], ['he'], [He], [He's], [His]]
+RootToken: [Head] tokens: [["Head]]
+RootToken: [Headquarters] tokens: [[Headquarters]]
+RootToken: [Heedless] tokens: [[Heedless]]
+RootToken: [Hear] tokens: [["Hear!], [HEAR]]
+RootToken: [Hello] tokens: [["Hello!]]
+RootToken: [Hemlock] tokens: [["Hemlock]]
+RootToken: [Hen] tokens: [["Hen], ["Hen,"], [hen-tracks], [HEN], [Hen], [Hen"], [Hen's], [Hen,"], [Hen."], [Hen?"]]
+RootToken: [Hennery] tokens: [["Hennery,"], [Henry]]
+RootToken: [Here] tokens: [["Here], ["Here's], [Here]]
+RootToken: [Hero] tokens: [[Hero]]
+RootToken: [Hey] tokens: [["Hey!]]
+
+RootToken: [Hickory] tokens: [[Hickory]]
+RootToken: [High] tokens: [[High]]
+RootToken: [Hit] tokens: [["Hit], ["hist"]]
+
+RootToken: [Hobson's] tokens: [[Hobson's]]
+RootToken: [Hold] tokens: [["Hold], [Hold]]
+RootToken: [Hope] tokens: [["Hope], ["hopes,"]]
+RootToken: [horse] tokens: [["horse"]]
+RootToken: [How] tokens: [["How], [How]]
+RootToken: [However] tokens: [[However]]
+
+RootToken: [Huh] tokens: [["Huh!]]
+RootToken: [Huggins] tokens: [[Huggins]]
+
+I
+RootToken: [I] tokens: [["I], ["I'd], ["I'd], ["I'll], ["I'm], ["I've], [I], [I!"], [I'd], [I'll], [I'm], [I've], [I?]]
+
+RootToken: [If] tokens: [["If], ["if], [(if], [IF], [If]]
+
+RootToken: [Imagine] tokens: [[Imagine]]
+RootToken: [Immediately] tokens: [[Immediately]]
+RootToken: [IMPLIED] tokens: [[IMPLIED]]
+
+RootToken: [In] tokens: [["In], ["in], [IN], [In]]
+RootToken: [INCIDENTAL] tokens: [[INCIDENTAL]]
+RootToken: [INCLUDING] tokens: [[INCLUDING]]
+
+RootToken: [INDEMNITY] tokens: [[INDEMNITY]]
+RootToken: [Indeed] tokens: [[Indeed]]
+RootToken: [Indian] tokens: [[Indian], [Indians]]
+RootToken: [INDIRECT] tokens: [[INDIRECT]]
+RootToken: [Information] tokens: [["Information], [Information]]
+RootToken: [Ingersols] tokens: [[Ingersols]]
+RootToken: [inside] tokens: [['inside]]
+RootToken: [Instead] tokens: [[Instead]]
+RootToken: [Internal] tokens: [[Internal], [International]]
+
+RootToken: [IRS] tokens: [[IRS]]
+
+RootToken: [Is] tokens: [["Is], [Is]]
+
+RootToken: [It] tokens: [["It], ["It's], ["it], ["it's], ["ith], [It], [Its], [Ith], [It'd], [It's]]
+RootToken: [Italian] tokens: [[Italian]]
+
+J
+RootToken: [Jack] tokens: [[Jack]]
+RootToken: [Jasper] tokens: [[Jasper]]
+
+RootToken: [Jes] tokens: [["Jes']]
+RootToken: [Jest] tokens: [["Jest], ["jest]]
+
+RootToken: [Jim] tokens: [[Jim]]
+
+RootToken: [Joe] tokens: [["Joe"], ["Joe,"], [Joe], [Joe!"], [Joe,"], [Joe?"]]
+
+RootToken: [Johnny] tokens: [["Johnny], [Johnny], [JOHNNY'S], [Johnny!"], [Johnny's], [Johnny,"], [Johnny."], [Johnny?"]]
+RootToken: [Johnny-on-the-spot] tokens: [["Johnny-on-the-spot,"]]
+
+RootToken: [Jones] tokens: [[Jones], [Jones?], [Joneses]]
+RootToken: [Joseph] tokens: [[Joseph]]
+RootToken: [Josh] tokens: [[Josh]]
+
+RootToken: [Just] tokens: [["Just], ["just]], [Just], [Justice]
+
+RootToken: [Jutht] tokens: [["Jutht]]
+
+K
+RootToken: [Keep] tokens: [["Keep], [Keep]]
+
+RootToken: [KIND] tokens: [[KIND]]
+
+RootToken: [KNIFE] tokens: [[KNIFE]]
+RootToken: [Knocks] tokens: [[Knocks]]
+RootToken: [knowing] tokens: [["knowing]]
+
+L
+RootToken: [LABYRINTH] tokens: [[LABYRINTH]]
+RootToken: [Lake] tokens: [[Lake]]
+RootToken: [Landy] tokens: [["Landy], [Landy], [LANDY], [Landy!], [Landy!"], [Landy's], [Landy,"], [Landy."], [Landy?"]]
+RootToken: [Language] tokens: [[Language]]
+RootToken: [Larkins] tokens: [[Larkins]]
+RootToken: [Larry] tokens: [[Larry]]
+RootToken: [Later] tokens: [[Later]]
+RootToken: [last] tokens: [["last]]
+
+RootToken: [Lee] tokens: [[Lee]]
+RootToken: [LEFT] tokens: [[LEFT]]
+RootToken: [Let] tokens: [["Let], ["Let's], ["let], ["let's], ["letting], [Let's]]
+
+RootToken: [LIABILITY] tokens: [[LIABILITY], [LIABLE]]
+RootToken: [License] tokens: [[License], [LICENSE]]
+RootToken: [lie] tokens: [["lie]]
+RootToken: [like] tokens: [["like], [Like]]
+RootToken: [Lil] tokens: [["Lil], [Lil]]
+RootToken: [LIMITED] tokens: [[LIMITED]]
+RootToken: [Listen] tokens: [["Listen]]
+RootToken: [Literary] tokens: [[Literary]]
+
+RootToken: [Lo] tokens: [["Lo!]]
+RootToken: [Long] tokens: [[Long]]
+RootToken: [Looks] tokens: [["Looks], ["looks], [Look], [Looking]]
+RootToken: [Looky] tokens: [["Looky], [Looky]]
+RootToken: [Lots] tokens: [["Lots]]
+
+RootToken: [luring] tokens: [["luring]]
+
+M
+RootToken: [Me] tokens: [["Me]]
+RootToken: [Meaning] tokens: [["Meaning]]
+RootToken: [Mebbe] tokens: [["Mebbe]]
+RootToken: [More] tokens: [["More], ["more]]
+RootToken: [Mr] tokens: [["Mr]]
+RootToken: [My] tokens: [["My], ["My!]]
+RootToken: [ma] tokens: [["ma]]
+RootToken: [man] tokens: [["man]]
+RootToken: [mounted] tokens: [["mounted]]
+RootToken: [much] tokens: [["much]]
+
+N
+RootToken: [Never] tokens: [["Never]]
+RootToken: [No] tokens: [["No]]
+RootToken: [Not] tokens: [["Not]]
+RootToken: [Nothing] tokens: [["Nothing]]
+RootToken: [Notice] tokens: [["Notice]]
+RootToken: [Now] tokens: [["Now], ["Now,"], ["now]]
+RootToken: [nobody] tokens: [["nobody]]
+RootToken: [none] tokens: [["none]]
+
+O
+RootToken: [Of] tokens: [["Of], ["of]]
+RootToken: [Oh] tokens: [["Oh!]]
+RootToken: [Old] tokens: [["Old]]
+RootToken: [Once] tokens: [["Once], ["One]]
+RootToken: [Only] tokens: [["Only], ["only]]
+RootToken: [Or] tokens: [["Or], [(or]]
+RootToken: [Out] tokens: [["Out]]
+RootToken: [on] tokens: [["on]]
+
+P
+RootToken: [P'raps] tokens: [["P'raps]]
+RootToken: [Plain] tokens: [["Plain]]
+RootToken: [Please] tokens: [["Please]]
+RootToken: [Pleath] tokens: [["Pleath]]
+RootToken: [Plenty] tokens: [["Plenty]]
+RootToken: [Project] tokens: [["Project]]
+RootToken: [pretty] tokens: [["pretty]]
+RootToken: [prime] tokens: [["prime."]]
+RootToken: [pump] tokens: [["pump"]]
+RootToken: [phoned] tokens: [['phoned]]
+RootToken: [possum] tokens: [['possum]]
+
+Q
+RootToken: [Quite] tokens: [["Quite]]
+
+R
+RootToken: [Rats] tokens: [["Rats!]]
+RootToken: [Red] tokens: [["Red"]]
+RootToken: [Right] tokens: [["Right]]
+RootToken: [remember] tokens: [["remember]]
+RootToken: [repeat] tokens: [["repeat."]]
+RootToken: [ringing] tokens: [["ringing]]
+RootToken: [raound] tokens: [['raound], ['round]]
+
+S
+RootToken: [Say] tokens: [["Say]]
+RootToken: [See] tokens: [["See], ["See?"], ["Seems]]
+RootToken: [Sherman's] tokens: [["Sherman's]]
+RootToken: [Shucks] tokens: [["Shucks!]]
+RootToken: [Silence] tokens: [["Silence]]
+RootToken: [Skipped] tokens: [["Skipped]]
+RootToken: [So] tokens: [["So], ["so]]
+RootToken: [Steady] tokens: [["Steady], ['stead]]
+RootToken: [Stop] tokens: [["Stop]]
+RootToken: [Such] tokens: [["Such]]
+RootToken: [Suppose] tokens: [["Suppose], ["Supposing], ["supposing]]
+RootToken: [Sure] tokens: [["Sure]]
+RootToken: [Swamps] tokens: [["Swamps]]
+RootToken: [side] tokens: [["side]]
+RootToken: [some] tokens: [["some]]
+RootToken: [something] tokens: [["something]]
+RootToken: [spell] tokens: [["spell"]]
+RootToken: [standing] tokens: [["standing]]
+RootToken: [strip] tokens: [["strip]]
+RootToken: [swimmin] tokens: [["swimmin']]
+
+T
+RootToken: [Talk] tokens: [["Talk], ["talking]]
+RootToken: [Tell] tokens: [["Tell]]
+RootToken: [Terrible] tokens: [["Terrible]]
+RootToken: [Thank] tokens: [["Thank]]
+RootToken: [That] tokens: [["That], ["That's], ["that]]
+RootToken: [The] tokens: [["The], ["the], [("the]]
+RootToken: [Them] tokens: [["Them], ['them']]
+RootToken: [Then] tokens: [["Then]]
+RootToken: [There] tokens: [["There], ["There's], ["there]]
+RootToken: [They] tokens: [["They], ["They're], ["they], ["they'll]]
+RootToken: [Think] tokens: [["Think]]
+RootToken: [This] tokens: [["This], ["this]]
+RootToken: [Thith] tokens: [["Thith]]
+RootToken: [To] tokens: [["To]]
+RootToken: [Toby] tokens: [["Toby]]
+RootToken: [Too] tokens: [["Too]]
+RootToken: [Trotter] tokens: [["Trotter,"]]
+RootToken: [Trust] tokens: [["Trust]]
+RootToken: [Two] tokens: [["Two]]
+RootToken: [ten] tokens: [["ten]]
+RootToken: [tho] tokens: [["tho]]
+RootToken: [thoft] tokens: [["thoft]]
+RootToken: [though] tokens: [["though]]
+RootToken: [tote] tokens: [["tote"]]
+RootToken: [tain't] tokens: [['tain't]]
+
+U
+RootToken: [Unless] tokens: [["Unless]]
+RootToken: [Use] tokens: [["Use]]
+
+W
+RootToken: [We] tokens: [["We], ["We'd], ["We'll], ["We're], ["We've], ["'we'll], ["we], ["we've]]
+RootToken: [Well] tokens: [["Well], ["Well,"], ["well]]
+RootToken: [What] tokens: [["What], ["What!], ["What's], ["what]]
+RootToken: [When] tokens: [["When], ["when]]
+RootToken: [Whew] tokens: [["Whew!], ["Whew!"], ["whew"]]
+RootToken: [Which] tokens: [["Which], ["which]]
+RootToken: [While] tokens: [["While]]
+RootToken: [Why] tokens: [["Why], ["why]]
+RootToken: [Wolf] tokens: [["Wolf]]
+RootToken: [Wow] tokens: [["Wow!]]
+RootToken: [whether] tokens: [["whether]]
+RootToken: [wind] tokens: [["wind]]
+RootToken: [wun] tokens: [["wun]]
+RootToken: [way] tokens: [['way]]
+
+Y
+RootToken: [Yep] tokens: [["Yep]]
+RootToken: [Yes] tokens: [["Yes], ["Yes,"], ["yes]]
+RootToken: [Yeth] tokens: [["Yeth], ["Yeth,"]]
+RootToken: [You] tokens: [["You], ["You're], ["You've], ["you], ["you'll], ["your]]
+RootToken: [Yuh] tokens: [["Yuh]]
+
+NUMBERS
+RootToken: [II] tokens: [[II]]
+RootToken: [III] tokens: [[III]]
+RootToken: [IV] tokens: [[IV]]
+RootToken: [IX] tokens: [[IX]]
+RootToken: [1] tokens: [[1]]
+RootToken: [801] tokens: [[(801)]]
+RootToken: [1500] tokens: [[1500]]
+RootToken: [1917] tokens: [[1917]]
+RootToken: [2] tokens: [[2]]
+RootToken: [2001] tokens: [[2001]]
+RootToken: [2007] tokens: [[2007]]
+RootToken: [3] tokens: [[3]]
+RootToken: [30] tokens: [[30]]
+RootToken: [4] tokens: [[4]]
+RootToken: [4557] tokens: [[4557]]
+RootToken: [5] tokens: [[5]]
+RootToken: [50] tokens: [[50]]
+RootToken: [60] tokens: [[60]]
+RootToken: [809] tokens: [[809]]
+RootToken: [84116] tokens: [[84116]]
+RootToken: [90] tokens: [[90]]
+RootToken: [99712] tokens: [[99712]]
+
+CHARACTERS
+RootToken: [#20499]] tokens: [[#20499]]]
+RootToken: [$5,000)] tokens: [[$5,000)]]
+RootToken: [&] tokens: [[&]]
+RootToken: [($1] tokens: [[($1]]
+RootToken: [***] tokens: [[***], [*****]]
+RootToken: [,] tokens: [[,]]
+RootToken: [-] tokens: [[-]]
+RootToken: [.] tokens: [[.]]
+RootToken: [.,] tokens: [[.,]]
+RootToken: [:] tokens: [[:]]
+RootToken: [;] tokens: [[;]]
+
+OTHER:
+RootToken: [(trademark/copyright)] tokens: [[(trademark/copyright)]]
+RootToken: [(www.gutenberg.org)] tokens: [[(www.gutenberg.org)]]
+RootToken: [---umnet.com,mobile] tokens: [[---umnet.com,mobile]]
+RootToken: [64-6221541] tokens: [[64-6221541]]
+RootToken: [501(c)(3)] tokens: [[501(c)(3)]]
+RootToken: [596-1887] tokens: [[596-1887]]
+RootToken: [20499.txt] tokens: [[20499.txt]]
+RootToken: [20499.zip] tokens: [[20499.zip]]
+RootToken: [20%] tokens: [[20%]]
+RootToken: [1.A] tokens: [[1.A]]
+RootToken: [1.B] tokens: [[1.B]]
+RootToken: [1.C] tokens: [[1.C]]
+RootToken: [1.D] tokens: [[1.D]]
+RootToken: [1.E] tokens: [[1.E]]
+RootToken: [1.E.1] tokens: [[1.E.1]]
+RootToken: [1.E.2] tokens: [[1.E.2]]
+RootToken: [1.E.3] tokens: [[1.E.3]]
+RootToken: [1.E.4] tokens: [[1.E.4]]
+RootToken: [1.E.5] tokens: [[1.E.5]]
+RootToken: [1.E.6] tokens: [[1.E.6]]
+RootToken: [1.E.7] tokens: [[1.E.7]]
+RootToken: [1.E.8] tokens: [[1.E.8]]
+RootToken: [1.E.9] tokens: [[1.E.9]]
+RootToken: [1.F] tokens: [[1.F]]
+RootToken: [1.F.1] tokens: [[1.F.1]]
+RootToken: [1.F.2] tokens: [[1.F.2]]
+RootToken: [1.F.3] tokens: [[1.F.3]]
+RootToken: [1.F.4] tokens: [[1.F.4]]
+RootToken: [1.F.5] tokens: [[1.F.5]]
+RootToken: [1.F.6] tokens: [[1.F.6]]
+
+====
+
+
+
+
+
+
+
+
+
+
+
+
+
+
