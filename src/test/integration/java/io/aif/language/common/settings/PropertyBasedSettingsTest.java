@@ -22,7 +22,7 @@ public class PropertyBasedSettingsTest {
         final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
 
         System.out.println("splitter_characters_grouper_search_step: [");
-        for (Double splitter_characters_grouper_search_step = 0.00005; splitter_characters_grouper_search_step < 1.; splitter_characters_grouper_search_step += 0.0005) {
+        for (Double splitter_characters_grouper_search_step = 0.00005; splitter_characters_grouper_search_step < 0.2; splitter_characters_grouper_search_step += 0.000005) {
             propertyBasedSettings.properties.setProperty("splitter_characters_grouper_search_step", String.valueOf(splitter_characters_grouper_search_step));
             final Map<String, List<String>> testResult = SimpleSentenceSplitterCharactersExtractorQualityTest.executeTest();
             System.out.println(String.format("{value: %f, errors: %d},", splitter_characters_grouper_search_step, testResult.keySet().stream().mapToInt(key -> testResult.get(key).size()).sum()));
