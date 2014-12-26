@@ -3,27 +3,17 @@ layout: page
 title: Road Map
 footer: false
 ---
-## alpha3 (2.0.0)
+## alpha4 (1.3.0)
 
-1. Bug fixing
-2. Quality improvements
-3. Speed improvements
-4. Documentation improvements
-5. Move wiki to stand-alone site
-6. Change package root id from com.aif to io.aif
-7. Dict builder
+1. Semantic graph builder
+2. Semantic dict builder
 
-## alpha4 (2.1.0)
-
-1. Semantic connections extraction
-2. Words weight analyzing
-
-## alpha5
+## alpha5 (1.4.0)
 
 1. Lemmatization support
 2. Object extraction support
 
-## alpha6
+## alpha6 (1.5.0)
 
 1. Object relations extraction
 2. Facts extraction
