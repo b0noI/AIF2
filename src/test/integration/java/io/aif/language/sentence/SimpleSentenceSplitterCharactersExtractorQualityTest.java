@@ -9,6 +9,7 @@ import io.aif.language.token.TokenSplitter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.io.InputStream;
 import java.util.*;
 
@@ -233,32 +234,16 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         } ;
     }
 
+    public static void main(String[] args) throws Exception {
+        final Map<String, List<String>> errors = executeTest();
+        System.out.println(
+                errors.keySet().stream().mapToDouble(key -> (double)errors.get(key).size()).sum()
+                /(double)engBooksProvider().length * 5.);
+    }
+
     @Test(groups = { "acceptance-tests", "quality-fast" })
     public void testSeparatorGroupingQualityBig() throws Exception {
-        // input arguments
-        String inputText;
-
-        final Map<String, List<String>> totalErrors = new HashMap<>();
-        for (String[] path : engBooksProvider()) {
-            try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(String.format("/texts/%s", path))) {
-                inputText = FileHelper.readAllText(modelResource);
-            }
-            List<String> errors = qualityTest(inputText);
-            if (errors.size() > 0) {
-                totalErrors.put(path[0], errors);
-            }
-        }
-
-        final Map<String, Integer> errorsCounts = new HashMap<>();
-
-        totalErrors.entrySet().stream().forEach(element -> {
-            element.getValue().forEach(error -> {
-                final int errorCount = errorsCounts.getOrDefault(error, 0);
-                errorsCounts.put(error, errorCount + 1);
-            });
-        });
-
-        assertTrue(totalErrors.size() <= 22);
+        assertTrue(executeTest().size() <= 22);
     }
 
     @Test(groups = { "acceptance-tests", "quality-slow" }, dataProvider = "path_provider")
@@ -344,8 +329,34 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         List<List<String>> sentences2 = aif2NLPSentenceSplitter.split(text);
         assertTrue(sentences2.size() > 0);
     }
+    
+    public static Map<String, List<String>> executeTest() throws Exception {
+        // input arguments
+        String inputText;
 
-    private List<String> qualityTest(final String inputText) {
+        final Map<String, List<String>> totalErrors = new HashMap<>();
+        for (String[] path : engBooksProvider()) {
+            try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(String.format("/texts/%s", path))) {
+                inputText = FileHelper.readAllText(modelResource);
+            }
+            List<String> errors = qualityTest(inputText);
+            if (errors.size() > 0) {
+                totalErrors.put(path[0], errors);
+            }
+        }
+
+        final Map<String, Integer> errorsCounts = new HashMap<>();
+
+        totalErrors.entrySet().stream().forEach(element -> {
+            element.getValue().forEach(error -> {
+                final int errorCount = errorsCounts.getOrDefault(error, 0);
+                errorsCounts.put(error, errorCount + 1);
+            });
+        });
+        return totalErrors;
+    }
+
+    private static List<String> qualityTest(final String inputText) {
         final TokenSplitter tokenSplitter = new TokenSplitter();
         final List<String> inputTokens = tokenSplitter.split(inputText);
 

@@ -38,7 +38,7 @@ class PropertyBasedSettings implements ISettings {
     private static final String         SPLITTER_CHARACTERS_GROUPER_INIT_SEARCH_P_VALUE_KEY
             = "splitter_characters_grouper_init_search_P_value";
 
-    private        final Properties     properties
+                   final Properties     properties
             = new Properties();
 
     public static PropertyBasedSettings createInstance() {
