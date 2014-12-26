@@ -38,17 +38,18 @@ and add dependency:
 
 ## Current version
 
-- alpha2
+- alpha3
 
 ## Next versions
 
-- alpha3 (~midl of December)
-- alpha4 (~midl of January 2015)
+- alpha4 (~end of January 2015)
+- alpha5 (~end of February 2015)
 
 ## Deprecated versions 
 
 This versions are no longer supported and should not be used:
 
+- alpha2
 - alpha1
 
 ## License
