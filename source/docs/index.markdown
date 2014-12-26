@@ -24,9 +24,9 @@ Add repository to pom.xml:
 and add dependency:
 
     <dependency>
-       <groupId>com.aif</groupId>
+       <groupId>io.aif</groupId>
        <artifactId>aif</artifactId>
-       <version>2.0.0-Alpha2</version>
+       <version>1.1.0-Alpha3</version>
     </dependency> 
  
 ###AIF2 API

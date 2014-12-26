@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Work with tokens 
+title: Work with words 
 footer: false
 ---
 
