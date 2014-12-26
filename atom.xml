@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2014-12-26T13:44:30+00:00</updated>
+  <updated>2014-12-26T13:56:39+00:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AIF Alpha3 is out]]></title>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/12/26/aif-alpha3-is-out/"/>
+    <updated>2014-12-26T13:48:56+00:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2014/12/26/aif-alpha3-is-out</id>
+    <content type="html"><![CDATA[<p>Today our community is happy to announce next version of AIF: Alpha3</p>
+
+<p>Main focus in Alpha3 was on the next 2 points:</p>
+
+<ul>
+<li>quality improvements;</li>
+<li>text dictionary building;</li>
+</ul>
+
+
+<p>And we are proudly announcing that both of the goals are achieved!</p>
+
+<p><a href="http://aif.io/docs/aif2-lib/alpha3/">Alpha3 documentation page</a></p>
+
+<p><a href="http://aif.io/docs/aif2-lib/alpha3/api/words.html">Dictionary building documentation</a></p>
+
+<p>big thanks to all of you who participate in this long, but important release. Our team that make this release possible:</p>
+
+<ul>
+<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x76;&#105;&#97;&#99;&#104;&#101;&#x73;&#x6c;&#x61;&#x76;&#64;&#x62;&#x30;&#x6e;&#x6f;&#x69;&#x2e;&#x63;&#x6f;&#109;">&#x76;&#105;&#97;&#99;&#x68;&#x65;&#115;&#x6c;&#97;&#x76;&#64;&#x62;&#48;&#110;&#111;&#105;&#46;&#x63;&#111;&#x6d;</a> / b0noi)</li>
+<li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
+<li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
+<li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
+<li>Balenko Aleksey (<a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#x70;&#111;&#100;&#x6f;&#114;&#x6f;&#122;&#104;&#110;&#x69;&#99;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#112;&#111;&#100;&#111;&#x72;&#111;&#122;&#104;&#x6e;&#x69;&#x63;&#107;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
+<li>Evgeniy Dolgikh — QA assistance, junior developer</li>
+</ul>
+
+
+<p>Our next release (Alpha4) will be dedicated to the core component of semantic analyze. So it would be fun, stay tinned!</p>
+
+<p>Please note that Alpha2 is deprecated from very this moment and will not be supported.</p>
+
+<p>Also Alpha3 is the first release that taking place on the brand new AIF.IO site!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[aif.io is alive]]></title>
