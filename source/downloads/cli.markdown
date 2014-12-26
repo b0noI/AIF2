@@ -6,6 +6,12 @@ footer: false
 
 ##AIF2 Command Line Interface
 
+####1.2
+[aif-cli.jar](https://s3.amazonaws.com/aif2/aif-cli/1.2/aif-cli-1.2-jar-with-dependencies.jar"Download aif-cli.jar version 1.0")
+
+####1.1
+[aif-cli.jar](https://s3.amazonaws.com/aif2/aif-cli/1.1/aif-cli-1.1-jar-with-dependencies.jar"Download aif-cli.jar version 1.0")
+
 ####1.0
 [aif-cli.jar](https://s3.amazonaws.com/aif2/aif-cli/1.0/aif-cli.jar "Download aif-cli.jar version 1.0")
 
