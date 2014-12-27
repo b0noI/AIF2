@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2014-12-27T14:23:50+00:00</updated>
+  <updated>2014-12-27T20:47:55+00:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[splitter_characters_grouper_search_step parameter tuning]]></title>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/"/>
+    <updated>2014-12-27T16:08:46+00:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning</id>
+    <content type="html"><![CDATA[<p>In last <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">article</a> we discussed our plan about searching optimal values for splitter_characters_grouper_search_step. This time we will show how we were able to find optimal value and prove that this value is optimal.</p>
+
+<h2>Some theory about splitter_characters_grouper_search_step value</h2>
+
+<p>This value is used by Sentence splitting module. At some point our algorithm doing gradient search of the sentence splitters (we are not going to dive to the algorithm right now). Point is that this value is compromise between accuracy and speed. We can have as accurate result as small value we can set, on the other side of coin, this value have dramatic impact on the algorithm speed. As low we set this value as much slow we will make our algorithm.</p>
+
+<p>When choosing value for this parameter, you always need to ask:</p>
+
+<ul>
+<li>is there are highest level of accuracy that you can get with this algorithm? - if this limit exists you can&rsquo;t get more accurate result even by making value splitter_characters_grouper_search_step lower;</li>
+<li>if accuracy limit exists, what maximum value of splitter_characters_grouper_search_step we can set to achieve this level of accuracy? Knowing this information will give us compromise between best accuracy and algorithm speed;</li>
+</ul>
+
+
+<p>In <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">prev</a> article we already collected enough experiments results for visualizing and building function:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+12.42.51.png" alt="img" /></p>
+
+<p>now we can proceed with function building</p>
+
+<h2>Building function for splitter_characters_grouper_search_step vs quality</h2>
+
+<p>We decided to use least squares method for building polynomial. By quick first look on plot you may think that we should use polynomial with max power 2 (3 elements polynomial) like this one:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+17.54.28.png" alt="img" /></p>
+
+<p>Here is the plot of the final function:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+16.01.47.png" alt="img" /></p>
+
+<p>As you can see from this plot count of errors start decreasing after some point. This could not be correct. But this chart could be pretty close to the target one. Also here is target limit for this function:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.00.21.png" alt="img" /></p>
+
+<p>so the top quality that we can get is 54 errors. That is not true, because we have our experiment that shows 53 errors. Let&rsquo;s increase size of the polynomial to 5 (size 4 is similar to 3).</p>
+
+<p>Resulted chart:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+16.02.08.png" alt="img" /></p>
+
+<p>and new limit:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.04.46.png" alt="img" /></p>
+
+<p>this result is much more accurate and consistent with real life.</p>
+
+<h2>Conclusion</h2>
+
+<p>As you can see, 53 errors is the best value of quality that can be achieved by setting different values to the variable. This means that we need to find biggest value of this variable that still gives us 53 error. And the value is:</p>
+
+<p>{&ldquo;value&rdquo;: 0.0031, &ldquo;errors&rdquo;: 53},</p>
+
+<p>this is 6x times bigger than previous value (0.0005), so we improve algorithm speed in 6x time without losing accuracy!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[First IPython Usage for analyzing quality ]]></title>
@@ -231,11 +292,11 @@
 <p>big thanks to all of you who participate in this long, but important release. Our team that make this release possible:</p>
 
 <ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#118;&#105;&#x61;&#99;&#x68;&#101;&#x73;&#x6c;&#97;&#118;&#x40;&#x62;&#x30;&#x6e;&#x6f;&#105;&#46;&#99;&#111;&#109;">&#118;&#105;&#x61;&#x63;&#104;&#101;&#115;&#108;&#x61;&#118;&#64;&#x62;&#48;&#110;&#x6f;&#105;&#46;&#x63;&#x6f;&#x6d;</a> / b0noi)</li>
+<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x76;&#x69;&#97;&#99;&#104;&#101;&#x73;&#x6c;&#97;&#x76;&#64;&#x62;&#x30;&#x6e;&#x6f;&#x69;&#46;&#99;&#111;&#109;">&#x76;&#x69;&#x61;&#x63;&#104;&#x65;&#x73;&#x6c;&#x61;&#x76;&#64;&#98;&#48;&#110;&#x6f;&#105;&#46;&#99;&#111;&#x6d;</a> / b0noi)</li>
 <li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
 <li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
 <li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
-<li>Balenko Aleksey (<a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#x70;&#111;&#100;&#x6f;&#x72;&#x6f;&#122;&#104;&#x6e;&#105;&#x63;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#x70;&#x6f;&#100;&#111;&#114;&#111;&#122;&#104;&#x6e;&#x69;&#99;&#x6b;&#64;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
+<li>Balenko Aleksey (<a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x70;&#x6f;&#100;&#111;&#x72;&#x6f;&#x7a;&#104;&#x6e;&#105;&#x63;&#107;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#112;&#111;&#100;&#111;&#x72;&#x6f;&#x7a;&#104;&#x6e;&#105;&#99;&#x6b;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
 <li>Evgeniy Dolgikh — QA assistance, junior developer</li>
 </ul>
 

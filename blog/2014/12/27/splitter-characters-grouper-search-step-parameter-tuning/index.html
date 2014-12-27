@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>splitter_characters_grouper_search_step parameter tuning - AIF2</title>
+  <meta name="author" content="AIF2 Team">
+
+  
+  <meta name="description" content="In last article we discussed our plan about searching optimal values for splitter_characters_grouper_search_step. This time we will show how we were &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="AIF2" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS"><i class="fa fa-rss navbar-icon"></i></a></li>
+  
+  <li><a href="https://github.com/b0noI/AIF2"><i class="fa fa-github navbar-icon"></i></a></li>
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:b0noI.github.io/AIF2" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            AIF2
+        </span>
+       
+           <span class="blue_dark">
+             NLP library
+           </span>
+       
+    </a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/docs/">Documentation</a></li>
+  <li><a href="/downloads/">Downloads</a></li>
+  <li><a href="/about.html">About us</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Splitter_characters_grouper_search_step Parameter Tuning</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-27T16:08:46+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In last <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">article</a> we discussed our plan about searching optimal values for splitter_characters_grouper_search_step. This time we will show how we were able to find optimal value and prove that this value is optimal.</p>
+
+<h2>Some theory about splitter_characters_grouper_search_step value</h2>
+
+<p>This value is used by Sentence splitting module. At some point our algorithm doing gradient search of the sentence splitters (we are not going to dive to the algorithm right now). Point is that this value is compromise between accuracy and speed. We can have as accurate result as small value we can set, on the other side of coin, this value have dramatic impact on the algorithm speed. As low we set this value as much slow we will make our algorithm.</p>
+
+<p>When choosing value for this parameter, you always need to ask:</p>
+
+<ul>
+<li>is there are highest level of accuracy that you can get with this algorithm? - if this limit exists you can&rsquo;t get more accurate result even by making value splitter_characters_grouper_search_step lower;</li>
+<li>if accuracy limit exists, what maximum value of splitter_characters_grouper_search_step we can set to achieve this level of accuracy? Knowing this information will give us compromise between best accuracy and algorithm speed;</li>
+</ul>
+
+
+<p>In <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">prev</a> article we already collected enough experiments results for visualizing and building function:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+12.42.51.png" alt="img" /></p>
+
+<p>now we can proceed with function building</p>
+
+<h2>Building function for splitter_characters_grouper_search_step vs quality</h2>
+
+<p>We decided to use least squares method for building polynomial. By quick first look on plot you may think that we should use polynomial with max power 2 (3 elements polynomial) like this one:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+17.54.28.png" alt="img" /></p>
+
+<p>Here is the plot of the final function:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+16.01.47.png" alt="img" /></p>
+
+<p>As you can see from this plot count of errors start decreasing after some point. This could not be correct. But this chart could be pretty close to the target one. Also here is target limit for this function:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.00.21.png" alt="img" /></p>
+
+<p>so the top quality that we can get is 54 errors. That is not true, because we have our experiment that shows 53 errors. Let&rsquo;s increase size of the polynomial to 5 (size 4 is similar to 3).</p>
+
+<p>Resulted chart:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+16.02.08.png" alt="img" /></p>
+
+<p>and new limit:</p>
+
+<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.04.46.png" alt="img" /></p>
+
+<p>this result is much more accurate and consistent with real life.</p>
+
+<h2>Conclusion</h2>
+
+<p>As you can see, 53 errors is the best value of quality that can be achieved by setting different values to the variable. This means that we need to find biggest value of this variable that still gives us 53 error. And the value is:</p>
+
+<p>{&ldquo;value&rdquo;: 0.0031, &ldquo;errors&rdquo;: 53},</p>
+
+<p>this is 6x times bigger than previous value (0.0005), so we improve algorithm speed in 6x time without losing accuracy!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">AIF2 Team</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-27T16:08:46+00:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/" data-via="" data-counturl="http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/12/27/first-ipython-usage-for-quality-analyze/" title="Previous Post: First IPython Usage for analyzing quality ">&laquo; First IPython Usage for analyzing quality </a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/">splitter_characters_grouper_search_step parameter tuning</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">First IPython Usage for analyzing quality </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/26/aif-alpha3-is-out/">AIF Alpha3 is out</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/20/aif-dot-io-is-alive/">aif.io is alive</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/20/test/">initial</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - AIF2 Team -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
