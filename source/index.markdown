@@ -11,7 +11,7 @@ AIF2 is **fully language independent** NLP library. AIF2 is written in Java 8+.
 You can use it by pulling artifact. 
 
 Add repository to pom.xml:
-
+``` xml
     <project ...>
         <repositories>
             <repository>
@@ -20,14 +20,15 @@ Add repository to pom.xml:
             </repository>
         </repositories>
     </project>
-
+```
 and add dependency:
-
+``` xml
     <dependency>
        <groupId>io.aif</groupId>
        <artifactId>aif</artifactId>
        <version>1.1.0-Alpha3</version>
     </dependency> 
+```
 ## Docs
 
 [AIF docs](./docs)
