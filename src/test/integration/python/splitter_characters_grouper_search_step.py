@@ -309,8 +309,6 @@ import matplotlib.pyplot as plt
 from pandas.tools.rplot import *
 
 plt.plot(x, y, 'ro')
-# plt.figure(figsize=(12,12))
-#bbp = RPlot(df, x='values', y='errors')
-#bbp.add(GeomScatter())
-#bbp.add(GeomPolyFit(degree=2))
-#_ = bbp.render(gcf())
+plt.ylabel('errors')
+plt.xlabel('splitter_characters_grouper_search_step')
+plt.title('splitter_characters_grouper_search_step vs errors count')
