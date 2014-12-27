@@ -111,7 +111,7 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
 
         return separators
                 .stream()
-                .filter(splitter -> endCharactersStatData.getProbabilityThatCharacterOnEdge(splitter.getCharacter()) > SETTINGS.thresholdPSecondFilterForSeparatorCharacter())
+                .filter(splitter -> endCharactersStatData.getProbabilityThatCharacterOnEdge(splitter.getCharacter()) > SETTINGS.thresholdPForSeparatorCharacterInSecondFilter())
                 .filter(splitter -> endCharactersStatData.getCharacterCount(splitter.getCharacter()) > SETTINGS.minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting())
                 .collect(Collectors.toList());
     }

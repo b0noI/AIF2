@@ -72,7 +72,7 @@ class PropertyBasedSettings implements ISettings {
     }
 
     @Override
-    public double thresholdPSecondFilterForSeparatorCharacter() {
+    public double thresholdPForSeparatorCharacterInSecondFilter() {
         return Double.valueOf(properties.getProperty(THRESHOLD_P_FOR_SECOND_FILTER_SEPARATOR_CHARACTER_KEY));
     }
 

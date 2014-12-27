@@ -1,6 +1,7 @@
 # data collected by PropertyBasedSettingsTest.experimentWith_splitter_characters_grouper_search_step
 
-data = [{"value": 0.000050, "errors": 53},
+data = [
+{"value": 0.000050, "errors": 53},
 {"value": 0.000550, "errors": 53},
 {"value": 0.001050, "errors": 53},
 {"value": 0.001550, "errors": 53},
@@ -312,3 +313,16 @@ plt.plot(x, y, 'ro')
 plt.ylabel('errors')
 plt.xlabel('splitter_characters_grouper_search_step')
 plt.title('splitter_characters_grouper_search_step vs errors count')
+
+polynomial = Polynomial(x, y, 5)
+
+new_x = []
+new_y = []
+current_x = 0.
+while current_x < 0.15:
+    new_x.append(current_x)
+    new_y.append(polynomial.getval(current_x))
+    current_x += 0.00005
+
+plt.plot(new_x, new_y, 'ro')
+print (polynomial.getval(0.))

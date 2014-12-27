@@ -10,7 +10,7 @@ public interface ISettings {
 
     public boolean useIsAlphabeticMethod();
 
-    public double thresholdPSecondFilterForSeparatorCharacter();
+    public double thresholdPForSeparatorCharacterInSecondFilter();
 
     public int minimalValuableTokenSizeForSentenceSplit();
 
