@@ -93,44 +93,68 @@
 
 <p>For extracting words from text IDictBuilder instance should be instantiated:</p>
 
-<pre><code>final List&lt;String&gt; tokens = ...
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">ITokenComparator</span> <span class="n">tokenComparator</span> <span class="o">=</span> <span class="n">ITokenComparator</span><span class="o">.</span><span class="na">defaultComparator</span><span class="o">();</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">ISetComparator</span> <span class="n">setComparator</span> <span class="o">=</span> <span class="n">ISetComparator</span><span class="o">.</span><span class="na">createDefaultInstance</span><span class="o">(</span><span class="n">tokenComparator</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">(</span><span class="n">setComparator</span><span class="o">,</span> <span class="n">tokenComparator</span><span class="o">);</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-final ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
-final ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
-
-final IDictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
-final IDict dict = dictBuilder.build(tokens);
-</code></pre>
 
 <p>It could be also instantiated with default values:</p>
 
-<pre><code>final List&lt;String&gt; tokens = ...
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-final IDictBuilder dictBuilder = new DictBuilder();
-final IDict dict = dictBuilder.build(tokens);
-</code></pre>
 
 <h2>Working with text dictionary</h2>
 
 <p>For building dictionary that includes all words from text next methods need to be called:</p>
 
-<pre><code>final List&lt;String&gt; tokens = ...
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">filteredTokens</span><span class="o">);</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="n">dict</span><span class="o">.</span><span class="na">getWords</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-final IDictBuilder dictBuilder = new DictBuilder();
-final IDict dict = dictBuilder.build(tokens);
-final IDict dict = dictBuilder.build(filteredTokens);
-final Set&lt;IWord&gt; words = dict.getWords();
-</code></pre>
 
 <p>Each word has set of tokens that this word represents:</p>
 
-<pre><code>final Set&lt;String&gt; tokens = word.getAllTokens();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="na">getAllTokens</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>And root token:</p>
 
-<pre><code>final String rootToken = word.getRootToken();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">String</span> <span class="n">rootToken</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="na">getRootToken</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
   
 </article>
