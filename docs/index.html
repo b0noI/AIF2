@@ -84,24 +84,39 @@
 
 <p>Add repository to pom.xml:</p>
 
-<pre><code>&lt;project ...&gt;
-    &lt;repositories&gt;
-        &lt;repository&gt;
-            &lt;id&gt;aif.com&lt;/id&gt;
-            &lt;url&gt;http://192.241.238.122:8081/artifactory/libs-release-local/&lt;/url&gt;
-        &lt;/repository&gt;
-    &lt;/repositories&gt;
-&lt;/project&gt;
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;project</span> <span class="err">...</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;repositories&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;repository&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;id&gt;</span>aif.com<span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;url&gt;</span>http://192.241.238.122:8081/artifactory/libs-release-local/<span class="nt">&lt;/url&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/repository&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/repositories&gt;</span>
+</span><span class='line'><span class="nt">&lt;/project&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>and add dependency:</p>
 
-<pre><code>&lt;dependency&gt;
-   &lt;groupId&gt;io.aif&lt;/groupId&gt;
-   &lt;artifactId&gt;aif&lt;/artifactId&gt;
-   &lt;version&gt;1.1.0-Alpha3&lt;/version&gt;
-&lt;/dependency&gt; 
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;dependency&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;groupId&gt;</span>io.aif<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;artifactId&gt;</span>aif<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;version&gt;</span>1.1.0-Alpha3<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>AIF2 API</h3>
 
