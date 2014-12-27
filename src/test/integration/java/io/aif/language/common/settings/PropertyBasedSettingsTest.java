@@ -13,7 +13,7 @@ import static org.testng.Assert.*;
 public class PropertyBasedSettingsTest {
 
     public static void main(String[] args) throws Exception {
-        experimentWith_splitter_characters_grouper_search_step();
+        experimentWith_splitter_characters_grouper_init_search_P_value();
     }
     
     private static void experimentWith_splitter_characters_grouper_search_step() throws Exception {
@@ -30,5 +30,22 @@ public class PropertyBasedSettingsTest {
         System.out.println("]");
         
     }
+
+    private static void experimentWith_splitter_characters_grouper_init_search_P_value() throws Exception {
+        Logger logger = Logger.getRootLogger();
+        logger.setLevel(Level.OFF);
+        final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
+
+        System.out.println("splitter_characters_grouper_init_search_P_value: [");
+        for (Double splitter_characters_grouper_search_step = 0.; splitter_characters_grouper_search_step < 1.; splitter_characters_grouper_search_step += 0.005) {
+            propertyBasedSettings.properties.setProperty("splitter_characters_grouper_init_search_P_value", String.valueOf(splitter_characters_grouper_search_step));
+            final Map<String, List<String>> testResult = SimpleSentenceSplitterCharactersExtractorQualityTest.executeTest();
+            System.out.println(String.format("{\"value\": %f, \"errors\": %d},", splitter_characters_grouper_search_step, testResult.keySet().stream().mapToInt(key -> testResult.get(key).size()).sum()));
+        }
+        System.out.println("]");
+
+    }
+    
+    // splitter_characters_grouper_init_search_P_value 0.65
 
 }
