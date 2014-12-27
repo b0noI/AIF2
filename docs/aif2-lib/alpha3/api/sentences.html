@@ -95,8 +95,10 @@
 <p>This function gives you a possibility to extract the splitter characters list from the input tokens list.
 This function should be used by using interface: ISeparatorExtractor (from package: com.aif.language.sentence.separators.extractors). To create an instance of this interface you need to select the type of ISeparatorExtractor and get an instance like this:</p>
 
-<pre><code>ISeparatorExtractor.Type.PROBABILITY.getInstance()
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">ISeparatorExtractor</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>The currently supported types are:</p>
 
@@ -124,19 +126,27 @@ This function should be used by using interface: ISeparatorExtractor (from packa
 
 <p>Example of extracting separators:</p>
 
-<pre><code>final List&lt;String&gt; inputTokens = ...;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">inputTokens</span> <span class="o">=</span> <span class="o">...;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">ISeparatorExtractor</span> <span class="n">separatorsExtractor</span> <span class="o">=</span> <span class="n">ISeparatorExtractor</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Optional</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;&gt;</span> <span class="n">optionalSeparators</span> <span class="o">=</span> <span class="n">testInstance</span><span class="o">.</span><span class="na">extract</span><span class="o">(</span><span class="n">inputTokens</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-final ISeparatorExtractor separatorsExtractor = ISeparatorExtractor.Type.PROBABILITY.getInstance();
-
-Optional&lt;List&lt;Character&gt;&gt; optionalSeparators = testInstance.extract(inputTokens);
-</code></pre>
 
 <h2><a id="divide-splitters-characters-on-groups"></a>Divide splitters characters into groups</h2>
 
 <p>This function gives you a possibility to divide all separators into groups. This function should be used by using interface: ISeparatorsGrouper (from the package: com.aif.language.sentence.separators.groupers). To create an instance of this interface you need to select the type of ISeparatorsGrouper and get an instance like this:</p>
 
-<pre><code>ISeparatorsGrouper.Type.PROBABILITY.getInstance()
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">ISeparatorsGrouper</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>The currently supported types are:</p>
 
@@ -174,14 +184,22 @@ Optional&lt;List&lt;Character&gt;&gt; optionalSeparators = testInstance.extract(
 
 <p>The example of grouping separators:</p>
 
-<pre><code>final List&lt;String&gt; inputTokens = ...;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">inputTokens</span> <span class="o">=</span> <span class="o">...;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;</span> <span class="n">separators</span> <span class="o">=</span> <span class="o">...;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">ISeparatorsGrouper</span> <span class="n">separatorsGrouper</span> <span class="o">=</span> <span class="n">ISeparatorsGrouper</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;&gt;</span> <span class="n">separatorsGroups</span> <span class="o">=</span> <span class="n">separatorsGrouper</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">inputTokens</span><span class="o">,</span> <span class="n">separators</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-final List&lt;Character&gt; separators = ...; 
-
-final ISeparatorsGrouper separatorsGrouper = ISeparatorsGrouper.Type.PROBABILITY.getInstance();
-
-final List&lt;Set&lt;Character&gt;&gt; separatorsGroups = separatorsGrouper.group(inputTokens, separators)
-</code></pre>
 
 <h2><a id="classify-splitters-groups"></a>Classify splitters groups</h2>
 
@@ -195,8 +213,10 @@ final List&lt;Set&lt;Character&gt;&gt; separatorsGroups = separatorsGrouper.grou
 
 <p>This function gives you a possibility to classify the separators group. This function should be used by using the interface: ISeparatorGroupsClassificatory (from package: com.aif.language.sentence.separators.classificators). To create an instance of this interface you need to select the type of ISeparatorGroupsClassificatory end get an instance like this:</p>
 
-<pre><code>ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance()
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">ISeparatorGroupsClassificatory</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>The currently supported types are:</p>
 
@@ -234,14 +254,22 @@ final List&lt;Set&lt;Character&gt;&gt; separatorsGroups = separatorsGrouper.grou
 
 <p>An example of classifying separators groups:</p>
 
-<pre><code>final List&lt;String&gt; inputTokens = ...;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">inputTokens</span> <span class="o">=</span> <span class="o">...;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;&gt;</span> <span class="n">separatorsGroups</span> <span class="o">=</span> <span class="o">...;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">ISeparatorGroupsClassificatory</span> <span class="n">sentenceSeparatorGroupsClassificatory</span> <span class="o">=</span> <span class="n">ISeparatorGroupsClassificatory</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">ISeparatorGroupsClassificatory</span><span class="o">.</span><span class="na">Group</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sentenceSeparatorGroupsClassificatory</span><span class="o">.</span><span class="na">classify</span><span class="o">(</span><span class="n">inputTokens</span><span class="o">,</span> <span class="n">separatorGroups</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-final List&lt;Set&lt;Character&gt;&gt; separatorsGroups = ...; 
-
-final ISeparatorGroupsClassificatory sentenceSeparatorGroupsClassificatory = ISeparatorGroupsClassificatory.Type.PROBABILITY.getInstance();
-
-final Map&lt;ISeparatorGroupsClassificatory.Group, Set&lt;Character&gt;&gt; result = sentenceSeparatorGroupsClassificatory.classify(inputTokens, separatorGroups);
-</code></pre>
 
 <h2><a id="sentence-splitting"></a>Sentence splitting</h2>
 
@@ -255,8 +283,10 @@ final Map&lt;ISeparatorGroupsClassificatory.Group, Set&lt;Character&gt;&gt; resu
 
 <h3>Creating AbstractSentenceSplitter</h3>
 
-<pre><code>final AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">AbstractSentenceSplitter</span> <span class="n">sentenceSplitter</span> <span class="o">=</span> <span class="n">AbstractSentenceSplitter</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">HEURISTIC</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Supported types:</p>
 
@@ -278,12 +308,18 @@ final Map&lt;ISeparatorGroupsClassificatory.Group, Set&lt;Character&gt;&gt; resu
 
 <p>After you have got AbstractSentenceSplitter instance, you can split tokens by calling the split method like this:</p>
 
-<pre><code>ISplitter&lt;List&lt;String&gt;, List&lt;String&gt;&gt; sentenceSplitter = ...
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">ISplitter</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">sentenceSplitter</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">sentences</span> <span class="o">=</span> <span class="n">sentenceSplitter</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-List&lt;String&gt; tokens = ...
-
-List&lt;List&lt;String&gt;&gt; sentences = sentenceSplitter.split(tokens);
-</code></pre>
 
 <h2>Usage example</h2>
 
