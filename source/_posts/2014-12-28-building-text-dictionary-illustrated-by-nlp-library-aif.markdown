@@ -5,10 +5,10 @@ date: 2014-12-28 20:42:34 +0000
 comments: true
 categories: 
 ---
-It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) about two previous releases of Alpha1 and Alpha2 can be found [here](http://habrahabr.ru/post/238359/) and [here](http://habrahabr.ru/post/242147/) (text might be translated later). The current release of Alpha3 with its new feature of building a token dictionary for the entry text is no exception. The matter in question today is how everything works and how that can be applied in your project.
+It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) on the two previous releases of Alpha1 and Alpha2 can be found [here](http://habrahabr.ru/post/238359/) and [here](http://habrahabr.ru/post/242147/) (text might be translated later). The current release i.e Alpha3 with its new feature of building a token dictionary from the entry text is no exception. We will describe how the token dictionary building process and how it can be applied to your project.
 
 # A few terms
-The terms introduced are not quite in accordance with their common meanings but with the sense they have in this text (and on the [project website](http://aif.io)). Find the complete list of terms [here](http://aif.io/docs/algorithm/main-definitions.html).
+The following terms although common does not necessarily mean the same in the context of NLP and specifically our library. Find the complete list of terms [here](http://aif.io/docs/algorithm/main-definitions.html).
 
 * Token is a sequence of alphabetic characters, bounded by separators on both sides.
 * Language is the whole set of unique tokens.
@@ -17,11 +17,15 @@ The terms introduced are not quite in accordance with their common meanings but 
 * Semantic word is a language subset containing tokens with a similar context of use.
 * Text vocabulary is a set of all possible words built on the basis of text language.
 
-Today we are speaking about a “common” word, not a semantic one. Building semantic connections in text and a dictionary of semantic words of the text is the task of the next release.
+Today we will be speaking of a “common” word, not a semantic one. Building semantic connections in text and a dictionary of semantic words of the text is the task of the next release.
 
 # “Similarity” of tokens
 
 It can be easily noticed that some terms are incomplete and require some clarification in order to be practically used. For instance, “word” requires clarification on the token similarity notion. In our article we will calculate token similarity using formula [1]. The formula shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].
+
+ifthen: Token similarity tries to infer whether a given token is similar to another execlusively based on it's form. For an instance we consider the tokens "see" and "seemed" similar. 
+
+Token similarity is computed using the formula [1]. It shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2]. 
 
 [1] 
 ![img](http://hsto.org/files/e7f/7ff/efa/e7f7ffefad8b4710948f5ea4a9c22890.png)
@@ -29,7 +33,7 @@ It can be easily noticed that some terms are incomplete and require some clarifi
 where:
 
 * ![img](http://hsto.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on common characters calculation (see formula 1.1)
-* ![img](http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png) - weight of formula of token similarity based on common characters calculation (can take on a value from 0. to 1.). The given parameter is hardcoded and has a value of [0.8](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16). Unfortunately, the change of this situation is not included in Alpha4 release plan. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.
+* ![img](http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png) - weight of formula of token similarity is based on common characters calculation (ranges 0. to 1.). The given parameter is hardcoded (yuck!) and has a value of [0.8](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16). This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.
 * ![img](http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on recursive calculation of the longest common strings (see formula 1.2).
 * ![img](http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png) - weight of formula of token similarity based on recursive calculation of the longest common strings. This weight is a bummer as well as the previous one in terms of no configuration through a config file, the value of 1 is hardcoded.
 # Formula of token similarity based on common characters calculation
