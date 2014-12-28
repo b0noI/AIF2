@@ -9,7 +9,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
 
 
-class DictBuilder implements IDictBuilder<Collection<String>> {
+public class DictBuilder implements IDictBuilder<Collection<String>> {
 
     private final ISetComparator comparator;
 
@@ -18,6 +18,14 @@ class DictBuilder implements IDictBuilder<Collection<String>> {
     public DictBuilder(final ISetComparator comparator, final ITokenComparator tokenComparator) {
         this.comparator = comparator;
         this.rootTokenExtractor = new RootTokenExtractor(tokenComparator);
+    }
+
+    public DictBuilder(final ITokenComparator tokenComparator) {
+        this(ISetComparator.createDefaultInstance(tokenComparator), tokenComparator);
+    }
+
+    public DictBuilder() {
+        this(ITokenComparator.defaultComparator());
     }
 
     @Override

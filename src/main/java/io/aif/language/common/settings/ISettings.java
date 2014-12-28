@@ -10,6 +10,18 @@ public interface ISettings {
 
     public boolean useIsAlphabeticMethod();
 
-    public double separatorProbabilityThreshold();
+    public double thresholdPForSeparatorCharacterInSecondFilter();
+
+    public int minimalValuableTokenSizeForSentenceSplit();
+
+    public int minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting();
+
+    public double thresholdPFirstFilterForSeparatorCharacter();
+
+    public double splitterCharactersGrouperSearchStep();
+
+    public double splitterCharactersGrouperInitSearchPValue();
+
+    public double WordSetDictComparatorThreshold();
 
 }

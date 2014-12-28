@@ -2,6 +2,7 @@ package io.aif.language.sentence.separators.groupers;
 
 
 import com.google.common.annotations.VisibleForTesting;
+import io.aif.language.common.settings.ISettings;
 import io.aif.language.token.TokenMappers;
 import org.javatuples.Pair;
 
@@ -10,9 +11,7 @@ import java.util.stream.Collectors;
 
 class StatGrouper implements ISeparatorsGrouper {
 
-    private static final double START_LIMIT = .4;
-
-    private static final double QUALITY_STEP = 0.05;
+    private static final double START_LIMIT  = ISettings.SETTINGS.splitterCharactersGrouperInitSearchPValue();
 
     @Override
     public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
@@ -43,16 +42,16 @@ class StatGrouper implements ISeparatorsGrouper {
         List<CharactersGroup> lastCorrectResult = null;
         do {
             final List<CharactersGroup> result = parsGroup(connections, limit);
-            if (Math.abs(prevLimit - limit) < QUALITY_STEP) {
+            if (Math.abs(prevLimit - limit) < ISettings.SETTINGS.splitterCharactersGrouperSearchStep()) {
                 if (lastCorrectResult != null) {
                     return lastCorrectResult;
                 }
                 return result;
             }
-            if (result.size() == 2) {
-                lastCorrectResult = result;
-            }
             if (result.size() >= 2) {
+                if (result.size() == 2) {
+                    lastCorrectResult = result;
+                }
                 prevLimit = limit;
                 limit /= 2.;
             } else if (result.size() < 2) {

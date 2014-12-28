@@ -100,7 +100,7 @@ public class StatGrouperTest {
         // mocks verify
     }
 
-    @Test(groups = "unit-tests")
+    @Test(groups = "unit-tests", enabled = false)
     public void testParsGroup() throws Exception {
         // input arguments
         final Map<Character, Map<Character, Integer>> inputConnections = new HashMap<>();
