@@ -4,6 +4,7 @@ import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 import java.util.Properties;
 
 class PropertyBasedSettings implements ISettings {
@@ -45,11 +46,25 @@ class PropertyBasedSettings implements ISettings {
             = new Properties();
 
     public static PropertyBasedSettings createInstance() {
+        
+        final Optional<PropertyBasedSettings> userSettings = checkUserSettings();
+        
+        if (userSettings.isPresent()) return userSettings.get();
+        
         try (final InputStream is = ISettings.class.getClass().getResourceAsStream(PROPERTIES_FILE_NAME)) {
             return new PropertyBasedSettings(is);
         } catch (IOException e) {
             throw new ValueException(e.getMessage());
         }
+    }
+    
+    private static Optional<PropertyBasedSettings> checkUserSettings() {
+        try (final InputStream is = ISettings.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE_NAME)) {
+            if (is != null) return Optional.of(new PropertyBasedSettings(is));
+        } catch (IOException e) {
+            throw new ValueException(e.getMessage());
+        }     
+        return Optional.empty();
     }
 
     private PropertyBasedSettings(final InputStream is) throws IOException {

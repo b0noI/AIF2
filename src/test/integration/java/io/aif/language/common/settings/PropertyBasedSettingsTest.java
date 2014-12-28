@@ -13,7 +13,7 @@ import static org.testng.Assert.*;
 public class PropertyBasedSettingsTest {
 
     public static void main(String[] args) throws Exception {
-        experimentWith_minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting();
+        experimentWith_threshold_p_for_second_filter_separator_character();
     }
     
     private static void experimentWith_splitter_characters_grouper_search_step() throws Exception {
@@ -32,7 +32,12 @@ public class PropertyBasedSettingsTest {
     }
 
     private static void experimentWith_minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting() throws Exception {
-        experiment("minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting", 0, 1000, 1, true);
+        experiment("minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting", 96, 1000, 1, true);
+
+    }
+
+    private static void experimentWith_threshold_p_for_second_filter_separator_character() throws Exception {
+        experiment("threshold_p_for_second_filter_separator_character", 0., 0.9, 0.005, false);
 
     }
 
@@ -57,6 +62,6 @@ public class PropertyBasedSettingsTest {
 
     }
     
-    // minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting 10
+    // threshold_p_for_second_filter_separator_character 0.65
 
 }
