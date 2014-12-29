@@ -23,7 +23,7 @@ Today we will be speaking of a “common” word, not a semantic one. Building s
 
 It can be easily noticed that some terms are incomplete and require some clarification in order to be practically used. For instance, “word” requires clarification on the token similarity notion. In our article we will calculate token similarity using formula [1]. The formula shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].
 
-ifthen: Token similarity tries to infer whether a given token is similar to another execlusively based on it's form. For an instance we consider the tokens "see" and "seemed" similar. 
+ifthen: Token similarity tries to infer whether a given token is similar to another. It's execlusively based on form, for an instance we consider the tokens "see" and "seemed" similar. 
 
 Token similarity is computed using the formula [1]. It shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2]. 
 
@@ -33,20 +33,20 @@ Token similarity is computed using the formula [1]. It shows the probability tha
 where:
 
 * ![img](http://hsto.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on common characters calculation (see formula 1.1)
-* ![img](http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png) - weight of formula of token similarity is based on common characters calculation (ranges 0. to 1.). The given parameter is hardcoded (yuck!) and has a value of [0.8](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16). This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.
-* ![img](http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on recursive calculation of the longest common strings (see formula 1.2).
-* ![img](http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png) - weight of formula of token similarity based on recursive calculation of the longest common strings. This weight is a bummer as well as the previous one in terms of no configuration through a config file, the value of 1 is hardcoded.
-# Formula of token similarity based on common characters calculation
-The formula has a noble name of … sorry, can’t remember and there’s no thesis with all its links at hand. But I’m just sure that a valiant reader will enlighten me with the right answer, taking time to post some biting remarks concerning this paragraph and the text in general :)
+* ![img](http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png) - weight of formula of token similarity is based on common characters calculation (ranges 0.0 to 1.0). The given parameter is hardcoded (yuck!) and has a value of [0.8](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16). This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.
+* ![img](http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on recursively calculating the longest common substrings (see formula 1.2).
+* ![img](http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png) - weight of formula of token similarity based on recursive calculation of the longest common strings. This value is hardcoded as 1 and will be configurable from the next release.
+
+# Formula for token similarity based on common characters calculation has a noble name of which I can’t remember. There’s no thesis with all its links at hand. But I’m sure that a valiant reader will enlighten us.
 
 [1.1] ![img](http://habrastorage.org/files/925/d01/ecf/925d01ecf6c143829dafe523e4598b9b.png)
 
 where:
 
-* ![img](http://habrastorage.org/files/389/acf/60b/389acf60b8cf4bf4a9508c2b42b79e62.png) - length of token,
-* ![img](http://habrastorage.org/files/cab/a83/ca0/caba83ca082c416ca8ba1b98f8654e85.png) - the number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.
+* ![img](http://habrastorage.org/files/389/acf/60b/389acf60b8cf4bf4a9508c2b42b79e62.png) - Length of token.
+* ![img](http://habrastorage.org/files/cab/a83/ca0/caba83ca082c416ca8ba1b98f8654e85.png) - The number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.
 
-The formula is very simple. We just calculate the characters that are included in both tokens without regard to the position of these characters in the tokens.
+The formula is very simple. We calculate the characters that are included in both tokens without regard to the position of these characters in the tokens.
 
 # Formula of token similarity based on recursive calculation of the longest common strings
 
