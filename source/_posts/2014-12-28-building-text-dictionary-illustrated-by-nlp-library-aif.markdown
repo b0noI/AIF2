@@ -37,7 +37,8 @@ where:
 * ![img](http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on recursively calculating the longest common substrings (see formula 1.2).
 * ![img](http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png) - weight of formula of token similarity based on recursive calculation of the longest common strings. This value is hardcoded as 1 and will be configurable from the next release.
 
-# Formula for token similarity based on common characters calculation has a noble name of which I can’t remember. There’s no thesis with all its links at hand. But I’m sure that a valiant reader will enlighten us.
+# Formula for token similarity based on common characters calculation
+It has a noble name of which I can’t remember. There’s no thesis with all its links at hand. But I’m sure that a valiant reader will enlighten us.
 
 [1.1] ![img](http://habrastorage.org/files/925/d01/ecf/925d01ecf6c143829dafe523e4598b9b.png)
 
@@ -56,31 +57,31 @@ Here’s more fun, the formula is recursive and is also named after its author :
 
 where:
 
-* ![img](http://habrastorage.org/files/06f/11c/bc9/06f11cbc997144da8265c7341db79bf4.png) - the maximum string that is included in both tokens;
-* ![img](http://habrastorage.org/files/05f/528/038/05f528038b134e5b8116861220f706b7.png) - recursive call of formula 1.2 for the left substring, see formula 1.2.1;
-* ![img](http://habrastorage.org/files/102/be4/a0b/102be4a0b3024d89a358e4fc8cd30728.png) - recursive call of formula 1.2 for the right substring, see formula 1.2.2;
+* ![img](http://habrastorage.org/files/06f/11c/bc9/06f11cbc997144da8265c7341db79bf4.png) - The maximum string that is included in both tokens;
+* ![img](http://habrastorage.org/files/05f/528/038/05f528038b134e5b8116861220f706b7.png) - Recursive call of formula 1.2 for the left substring, see formula 1.2.1;
+* ![img](http://habrastorage.org/files/102/be4/a0b/102be4a0b3024d89a358e4fc8cd30728.png) - Recursive call of formula 1.2 for the right substring, see formula 1.2.2;
 
 [1.2.1] ![img](http://habrastorage.org/files/8dd/f03/f84/8ddf03f840f544439314f61a0a0aada6.png)
 
 where:
 
-* ![img](http://habrastorage.org/files/17f/1d9/72d/17f1d972d73248e88f209d635a7160e0.png) - the given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”
+* ![img](http://habrastorage.org/files/17f/1d9/72d/17f1d972d73248e88f209d635a7160e0.png) - The given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”
 
 [1.2.2] ![img](http://habrastorage.org/files/e15/d00/072/e15d000729564edbb21e40926a8f9cfd.png)
 
 where:
 
-* ![img](http://habrastorage.org/files/d34/102/ed3/d34102ed3f01481eac24a8be1ece5f04.png) - the given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.
+* ![img](http://habrastorage.org/files/d34/102/ed3/d34102ed3f01481eac24a8be1ece5f04.png) - The given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.
 
 [2] ![img](http://habrastorage.org/files/46f/85b/800/46f85b800a9046b18a78b411287c9004.png)
 
-The threshold used in this inequality was chosen empirically: 0.75. In the current Alpha3 release this parameter is devilishly hardcoded [here](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/word/dict/WordSetDict.java#L17). So, in order to change this value the entire project must be gone through. :(
+The threshold used in this inequality was chosen empirically: 0.75. In the current Alpha3 release this parameter is devilishly hardcoded [here](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/word/dict/WordSetDict.java#L17).
 
-Fixing this absurdity is already planned in [Alpha4](https://github.com/b0noI/AIF2/issues/162).
+Fixing this major sin :) is already planned in [Alpha4](https://github.com/b0noI/AIF2/issues/162).
 
 # Comparison of words
 
-In fact, the word is nothing more than a set of tokens connected by a certain rule. The rule has been already specified (meeting the condition of inequality 2). So the comparison of two words is solved easily ([3]).
+In fact, the word is nothing more than a set of tokens grouped by a certain rule. The rule has been already specified (meeting the condition of inequality 2). So the comparison of two words is solved easily ([3]).
 
 [3] ![img](http://habrastorage.org/files/bb2/205/237/bb22052377ae4aeaae3570bdc250b376.png)
 
@@ -155,7 +156,7 @@ and add a dependency:
 
 # Example of using AIF-CLI 1.2 command line utility
 
-Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on [this page](http://aif.io/docs/aif-cli/1.2/). If you try to build a dictionary of the whole book, please, be patient. Unfortunately, the current implementation is quite slow. It’s a big question when we get down to fixing [the issue](https://github.com/b0noI/AIF2/issues/166).
+Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on [this page](http://aif.io/docs/aif-cli/1.2/). Building a dictionary of a huge book can take a while (VSK provide some comparison). We are continually working towards improving the performance [the issue](https://github.com/b0noI/AIF2/issues/166).
 
 Here is how the program set on the text of the article works (only a part of the program output is shown):
 
@@ -210,20 +211,19 @@ result:
     Press 'Enter' to continue or 'q' command to quit. There are -102 entities to show
 # Now a word about the next release
 
-If everything goes according to the plan, we will have the 4th AIF release at the end of January. The following features will be introduced:
+The next release (Alpha 4) is scheduled for the end of January and we anticipate to release the following features:
+* Building a dictionary of semantic words
+* Searching for synonyms in text
+* Building a graph of relations of semantic words in text
 
-* building a dictionary of semantic words
-* searching for synonyms in text
-* building a graph of relations of semantic words in text
+Perhaps, even more features ;).
 
-Perhaps, even more features, if have enough time ;)
-
-And again, if you want to help the project, write to us. If you have interesting tasks in the field of NLP, write to us. If you do not want to help us and have no tasks but you have something to say, write to us. We will be pleased :)
+As parting note any feedback is welcome, If you would like to help us moving the project forward write to us or if you have interesting use case in the field of NLP do let us know. Please keep the comments flowing and help AIF make a small dent (we love big bangs too :)) in the world of NLP!
 
 # Our team
 
 * Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (viacheslav@b0noi.com / @b0noi)
-* Ifthikhan Nazeem – algorithm designer, architecture design, developer
+* Ifthikhan Nazeem (@ifthikhan) – algorithm designer, architecture design, developer
 * Sviatoslav Glushchenko — REST design and implementation, developer
 * Oleg Kozlovskyi QA (integration and qaulity testing), developer.
 * Evgenia Kozlovska, English teacher and translator (who translated this article!).
@@ -232,9 +232,9 @@ And again, if you want to help the project, write to us. If you have interesting
 
 # Links on the project and details
 
-* project language: Java 8
-* license: MIT license
-* issue tracker: github.com/b0noI/AIF2/issues
-* wiki: github.com/b0noI/AIF2/wiki
-* source code: github.com/b0noI/AIF2
-* developers mail list: aif2-dev@yahoogroups.com (subscribe: aif2-dev-subscribe@yahoogroups.com)
+* Project language: Java 8
+* License: MIT license
+* Issue tracker: github.com/b0noI/AIF2/issues
+* Wiki: github.com/b0noI/AIF2/wiki
+* Source code: github.com/b0noI/AIF2
+* Developers mail list: aif2-dev@yahoogroups.com (subscribe: aif2-dev-subscribe@yahoogroups.com)
