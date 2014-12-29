@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2014-12-28T21:32:49+00:00</updated>
+  <updated>2014-12-29T22:34:32+00:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -18,11 +18,11 @@
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif/"/>
     <updated>2014-12-28T20:42:34+00:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif</id>
-    <content type="html"><![CDATA[<p>It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) about two previous releases of Alpha1 and Alpha2 can be found <a href="http://habrahabr.ru/post/238359/">here</a> and <a href="http://habrahabr.ru/post/242147/">here</a> (text might be translated later). The current release of Alpha3 with its new feature of building a token dictionary for the entry text is no exception. The matter in question today is how everything works and how that can be applied in your project.</p>
+    <content type="html"><![CDATA[<p>It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) on the two previous releases of Alpha1 and Alpha2 can be found <a href="http://habrahabr.ru/post/238359/">here</a> and <a href="http://habrahabr.ru/post/242147/">here</a> (text might be translated later). The current release i.e Alpha3 with its new feature of building a token dictionary from the entry text is no exception. We will describe how the token dictionary building process and how it can be applied to your project.</p>
 
 <h1>A few terms</h1>
 
-<p>The terms introduced are not quite in accordance with their common meanings but with the sense they have in this text (and on the <a href="http://aif.io">project website</a>). Find the complete list of terms <a href="http://aif.io/docs/algorithm/main-definitions.html">here</a>.</p>
+<p>The following terms although common does not necessarily mean the same in the context of NLP and specifically our library. Find the complete list of terms <a href="http://aif.io/docs/algorithm/main-definitions.html">here</a>.</p>
 
 <ul>
 <li>Token is a sequence of alphabetic characters, bounded by separators on both sides.</li>
@@ -34,11 +34,15 @@
 </ul>
 
 
-<p>Today we are speaking about a “common” word, not a semantic one. Building semantic connections in text and a dictionary of semantic words of the text is the task of the next release.</p>
+<p>Today we will be speaking of a “common” word, not a semantic one. Building semantic connections in text and a dictionary of semantic words of the text is the task of the next release.</p>
 
 <h1>“Similarity” of tokens</h1>
 
 <p>It can be easily noticed that some terms are incomplete and require some clarification in order to be practically used. For instance, “word” requires clarification on the token similarity notion. In our article we will calculate token similarity using formula [1]. The formula shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].</p>
+
+<p>Token similarity tries to infer whether a given token is similar to another. It&rsquo;s execlusively based on form, for an instance we consider the tokens &ldquo;see&rdquo; and &ldquo;seemed&rdquo; similar.</p>
+
+<p>Token similarity is computed using the formula [1]. It shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].</p>
 
 <p>[1]
 <img src="http://hsto.org/files/e7f/7ff/efa/e7f7ffefad8b4710948f5ea4a9c22890.png" alt="img" /></p>
@@ -47,27 +51,27 @@
 
 <ul>
 <li><img src="http://hsto.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png" alt="img" /> - formula of token similarity based on common characters calculation (see formula 1.1)</li>
-<li><img src="http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png" alt="img" /> - weight of formula of token similarity based on common characters calculation (can take on a value from 0. to 1.). The given parameter is hardcoded and has a value of <a href="https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16">0.8</a>. Unfortunately, the change of this situation is not included in Alpha4 release plan. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.</li>
-<li><img src="http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png" alt="img" /> - formula of token similarity based on recursive calculation of the longest common strings (see formula 1.2).</li>
-<li><img src="http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png" alt="img" /> - weight of formula of token similarity based on recursive calculation of the longest common strings. This weight is a bummer as well as the previous one in terms of no configuration through a config file, the value of 1 is hardcoded.
-
-<h1>Formula of token similarity based on common characters calculation</h1>
-
-<p>The formula has a noble name of … sorry, can’t remember and there’s no thesis with all its links at hand. But I’m just sure that a valiant reader will enlighten me with the right answer, taking time to post some biting remarks concerning this paragraph and the text in general :)</p></li>
+<li><img src="http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png" alt="img" /> - weight of formula of token similarity is based on common characters calculation (ranges 0.0 to 1.0). The given parameter is hardcoded (yuck!) and has a value of <a href="https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16">0.8</a>. This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.</li>
+<li><img src="http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png" alt="img" /> - formula of token similarity based on recursively calculating the longest common substrings (see formula 1.2).</li>
+<li><img src="http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png" alt="img" /> - weight of formula of token similarity based on recursive calculation of the longest common strings. This value is hardcoded as 1 and will be configurable from the next release.</li>
 </ul>
 
+
+<h1>Formula for token similarity based on common characters calculation</h1>
+
+<p>It has a noble name of which I can’t remember. There’s no thesis with all its links at hand. But I’m sure that a valiant reader will enlighten us.</p>
 
 <p>[1.1] <img src="http://habrastorage.org/files/925/d01/ecf/925d01ecf6c143829dafe523e4598b9b.png" alt="img" /></p>
 
 <p>where:</p>
 
 <ul>
-<li><img src="http://habrastorage.org/files/389/acf/60b/389acf60b8cf4bf4a9508c2b42b79e62.png" alt="img" /> - length of token,</li>
-<li><img src="http://habrastorage.org/files/cab/a83/ca0/caba83ca082c416ca8ba1b98f8654e85.png" alt="img" /> - the number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.</li>
+<li><img src="http://habrastorage.org/files/389/acf/60b/389acf60b8cf4bf4a9508c2b42b79e62.png" alt="img" /> - Length of token.</li>
+<li><img src="http://habrastorage.org/files/cab/a83/ca0/caba83ca082c416ca8ba1b98f8654e85.png" alt="img" /> - The number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.</li>
 </ul>
 
 
-<p>The formula is very simple. We just calculate the characters that are included in both tokens without regard to the position of these characters in the tokens.</p>
+<p>The formula is very simple. We calculate the characters that are included in both tokens without regard to the position of these characters in the tokens.</p>
 
 <h1>Formula of token similarity based on recursive calculation of the longest common strings</h1>
 
@@ -78,9 +82,9 @@
 <p>where:</p>
 
 <ul>
-<li><img src="http://habrastorage.org/files/06f/11c/bc9/06f11cbc997144da8265c7341db79bf4.png" alt="img" /> - the maximum string that is included in both tokens;</li>
-<li><img src="http://habrastorage.org/files/05f/528/038/05f528038b134e5b8116861220f706b7.png" alt="img" /> - recursive call of formula 1.2 for the left substring, see formula 1.2.1;</li>
-<li><img src="http://habrastorage.org/files/102/be4/a0b/102be4a0b3024d89a358e4fc8cd30728.png" alt="img" /> - recursive call of formula 1.2 for the right substring, see formula 1.2.2;</li>
+<li><img src="http://habrastorage.org/files/06f/11c/bc9/06f11cbc997144da8265c7341db79bf4.png" alt="img" /> - The maximum string that is included in both tokens;</li>
+<li><img src="http://habrastorage.org/files/05f/528/038/05f528038b134e5b8116861220f706b7.png" alt="img" /> - Recursive call of formula 1.2 for the left substring, see formula 1.2.1;</li>
+<li><img src="http://habrastorage.org/files/102/be4/a0b/102be4a0b3024d89a358e4fc8cd30728.png" alt="img" /> - Recursive call of formula 1.2 for the right substring, see formula 1.2.2;</li>
 </ul>
 
 
@@ -89,7 +93,7 @@
 <p>where:</p>
 
 <ul>
-<li><img src="http://habrastorage.org/files/17f/1d9/72d/17f1d972d73248e88f209d635a7160e0.png" alt="img" /> - the given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”</li>
+<li><img src="http://habrastorage.org/files/17f/1d9/72d/17f1d972d73248e88f209d635a7160e0.png" alt="img" /> - The given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”</li>
 </ul>
 
 
@@ -98,19 +102,19 @@
 <p>where:</p>
 
 <ul>
-<li><img src="http://habrastorage.org/files/d34/102/ed3/d34102ed3f01481eac24a8be1ece5f04.png" alt="img" /> - the given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.</li>
+<li><img src="http://habrastorage.org/files/d34/102/ed3/d34102ed3f01481eac24a8be1ece5f04.png" alt="img" /> - The given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.</li>
 </ul>
 
 
 <p>[2] <img src="http://habrastorage.org/files/46f/85b/800/46f85b800a9046b18a78b411287c9004.png" alt="img" /></p>
 
-<p>The threshold used in this inequality was chosen empirically: 0.75. In the current Alpha3 release this parameter is devilishly hardcoded <a href="https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/word/dict/WordSetDict.java#L17">here</a>. So, in order to change this value the entire project must be gone through. :(</p>
+<p>The threshold used in this inequality was chosen empirically: 0.75. In the current Alpha3 release this parameter is devilishly hardcoded <a href="https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/word/dict/WordSetDict.java#L17">here</a>.</p>
 
-<p>Fixing this absurdity is already planned in <a href="https://github.com/b0noI/AIF2/issues/162">Alpha4</a>.</p>
+<p>Fixing this major sin :) is already planned in <a href="https://github.com/b0noI/AIF2/issues/162">Alpha4</a>.</p>
 
 <h1>Comparison of words</h1>
 
-<p>In fact, the word is nothing more than a set of tokens connected by a certain rule. The rule has been already specified (meeting the condition of inequality 2). So the comparison of two words is solved easily ([3]).</p>
+<p>In fact, the word is nothing more than a set of tokens grouped by a certain rule. The rule has been already specified (meeting the condition of inequality 2). So the comparison of two words is solved easily ([3]).</p>
 
 <p>[3] <img src="http://habrastorage.org/files/bb2/205/237/bb22052377ae4aeaae3570bdc250b376.png" alt="img" /></p>
 
@@ -135,7 +139,39 @@
 <p>And now IWord interface itself:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IWord</span> <span class="o">{</span>     <span class="kd">public</span> <span class="n">String</span> <span class="nf">getRootToken</span><span class="o">();</span>     <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getAllTokens</span><span class="o">();</span>     <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getCount</span><span class="o">();</span>     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">interface</span> <span class="nc">IWordPlaceholder</span> <span class="o">{</span>         <span class="kd">public</span> <span class="n">IWord</span> <span class="nf">getWord</span><span class="o">();</span>         <span class="kd">public</span> <span class="n">String</span> <span class="nf">getToken</span><span class="o">();</span>     <span class="o">}</span>  <span class="o">}</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IWord</span> <span class="o">{</span>    
+</span><span class='line'> 
+</span><span class='line'>      <span class="kd">public</span> <span class="n">String</span> <span class="nf">getRootToken</span><span class="o">();</span>     
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getAllTokens</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getCount</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="kd">static</span> <span class="kd">interface</span> <span class="nc">IWordPlaceholder</span> <span class="o">{</span> 
+</span><span class='line'>
+</span><span class='line'>         <span class="kd">public</span> <span class="n">IWord</span> <span class="nf">getWord</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>         <span class="kd">public</span> <span class="n">String</span> <span class="nf">getToken</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">}</span>  
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -159,18 +195,46 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
 </pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Void</span> <span class="nf">apply</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
 </span><span class='line'>        <span class="kd">final</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
+</span><span class='line'>
 </span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>
 </span><span class='line'>            <span class="n">text</span> <span class="o">=</span> <span class="n">FileHelper</span><span class="o">.</span><span class="na">readAllTextFromFile</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+</span><span class='line'>
 </span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
 </span><span class='line'>            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>
 </span><span class='line'>            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'>        <span class="o">}</span>        <span class="kd">final</span> <span class="n">TokenSplitter</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TokenSplitter</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">final</span> <span class="n">TokenSplitter</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TokenSplitter</span><span class="o">();</span>
+</span><span class='line'>
 </span><span class='line'>        <span class="kd">final</span> <span class="n">IDictBuilder</span><span class="o">&lt;</span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">stemmer</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
+</span><span class='line'>
 </span><span class='line'>        <span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">stemmer</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokenSplitter</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="n">text</span><span class="o">)).</span><span class="na">getWords</span><span class="o">();</span>
+</span><span class='line'>
 </span><span class='line'>        <span class="n">ResultPrinter</span><span class="o">.</span><span class="na">PrintStammerExtrctResult</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+</span><span class='line'>
 </span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>
 </span><span class='line'>    <span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -215,7 +279,7 @@
 
 <h1>Example of using AIF-CLI 1.2 command line utility</h1>
 
-<p>Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on <a href="http://aif.io/docs/aif-cli/1.2/">this page</a>. If you try to build a dictionary of the whole book, please, be patient. Unfortunately, the current implementation is quite slow. It’s a big question when we get down to fixing <a href="https://github.com/b0noI/AIF2/issues/166">the issue</a>.</p>
+<p>Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on <a href="http://aif.io/docs/aif-cli/1.2/">this page</a>. Building a dictionary of a huge book can take a while (up to 8-10 minutes for the book with 10k words). We are continually working towards improving the performance <a href="https://github.com/b0noI/AIF2/issues/166">the issue</a>.</p>
 
 <p>Here is how the program set on the text of the article works (only a part of the program output is shown):</p>
 
@@ -274,28 +338,24 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
 
 <h1>Now a word about the next release</h1>
 
-<p>If everything goes according to the plan, we will have the 4th AIF release at the end of January. The following features will be introduced:</p>
+<p>The next release (Alpha 4) is scheduled for the end of January and we anticipate to release the following features:
+* Building a dictionary of semantic words
+* Searching for synonyms in text
+* Building a graph of relations of semantic words in text</p>
 
-<ul>
-<li>building a dictionary of semantic words</li>
-<li>searching for synonyms in text</li>
-<li>building a graph of relations of semantic words in text</li>
-</ul>
+<p>Perhaps, even more features ;).</p>
 
-
-<p>Perhaps, even more features, if have enough time ;)</p>
-
-<p>And again, if you want to help the project, write to us. If you have interesting tasks in the field of NLP, write to us. If you do not want to help us and have no tasks but you have something to say, write to us. We will be pleased :)</p>
+<p>As parting note any feedback is welcome, If you would like to help us moving the project forward write to us or if you have interesting use case in the field of NLP do let us know. Please keep the comments flowing and help AIF make a small dent (we love big bangs too :)) in the world of NLP!</p>
 
 <h1>Our team</h1>
 
 <ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x76;&#x69;&#x61;&#x63;&#104;&#x65;&#115;&#108;&#x61;&#x76;&#x40;&#x62;&#48;&#110;&#111;&#x69;&#x2e;&#99;&#x6f;&#x6d;">&#118;&#105;&#x61;&#x63;&#104;&#101;&#115;&#108;&#x61;&#x76;&#x40;&#98;&#x30;&#x6e;&#x6f;&#x69;&#46;&#99;&#x6f;&#x6d;</a> / @b0noi)</li>
-<li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
+<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#x69;&#97;&#99;&#x68;&#101;&#115;&#x6c;&#97;&#118;&#64;&#x62;&#48;&#110;&#x6f;&#105;&#46;&#99;&#111;&#109;">&#118;&#105;&#97;&#99;&#x68;&#x65;&#x73;&#x6c;&#x61;&#x76;&#x40;&#x62;&#x30;&#x6e;&#111;&#105;&#46;&#99;&#x6f;&#109;</a> / @b0noi)</li>
+<li>Ifthikhan Nazeem (@ifthikhan) – algorithm designer, architecture design, developer</li>
 <li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
 <li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
 <li>Evgenia Kozlovska, English teacher and translator (who translated this article!).</li>
-<li>Balenko Aleksey (<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#112;&#x6f;&#x64;&#111;&#x72;&#111;&#x7a;&#104;&#110;&#x69;&#x63;&#107;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x70;&#111;&#100;&#111;&#x72;&#x6f;&#x7a;&#x68;&#x6e;&#x69;&#99;&#107;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a>) – added stammer support to CLI, junior developer</li>
+<li>Balenko Aleksey (<a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#112;&#x6f;&#x64;&#111;&#x72;&#x6f;&#x7a;&#x68;&#110;&#105;&#99;&#107;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#x6f;&#x64;&#111;&#114;&#x6f;&#122;&#x68;&#110;&#x69;&#99;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
 <li>Evgeniy Dolgikh — QA assistance, junior developer</li>
 </ul>
 
@@ -303,12 +363,12 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
 <h1>Links on the project and details</h1>
 
 <ul>
-<li>project language: Java 8</li>
-<li>license: MIT license</li>
-<li>issue tracker: github.com/b0noI/AIF2/issues</li>
-<li>wiki: github.com/b0noI/AIF2/wiki</li>
-<li>source code: github.com/b0noI/AIF2</li>
-<li>developers mail list: <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x61;&#x69;&#x66;&#x32;&#x2d;&#x64;&#101;&#118;&#64;&#121;&#x61;&#104;&#111;&#x6f;&#x67;&#114;&#111;&#117;&#x70;&#115;&#x2e;&#99;&#x6f;&#109;">&#97;&#105;&#x66;&#50;&#45;&#x64;&#101;&#x76;&#64;&#x79;&#x61;&#x68;&#x6f;&#x6f;&#x67;&#x72;&#x6f;&#117;&#x70;&#115;&#46;&#x63;&#111;&#109;</a> (subscribe: <a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#97;&#105;&#102;&#50;&#x2d;&#100;&#101;&#118;&#45;&#115;&#x75;&#98;&#x73;&#x63;&#x72;&#105;&#98;&#101;&#64;&#121;&#97;&#x68;&#x6f;&#111;&#103;&#114;&#111;&#x75;&#112;&#115;&#46;&#x63;&#x6f;&#109;">&#x61;&#105;&#102;&#50;&#45;&#x64;&#101;&#118;&#x2d;&#x73;&#x75;&#98;&#x73;&#x63;&#114;&#x69;&#98;&#101;&#64;&#x79;&#97;&#x68;&#x6f;&#x6f;&#103;&#114;&#x6f;&#117;&#x70;&#115;&#46;&#99;&#111;&#x6d;</a>)</li>
+<li>Project language: Java 8</li>
+<li>License: MIT license</li>
+<li>Issue tracker: github.com/b0noI/AIF2/issues</li>
+<li>Wiki: github.com/b0noI/AIF2/wiki</li>
+<li>Source code: github.com/b0noI/AIF2</li>
+<li>Developers mail list: <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#97;&#x69;&#x66;&#x32;&#45;&#x64;&#101;&#x76;&#64;&#x79;&#97;&#x68;&#111;&#x6f;&#103;&#x72;&#111;&#x75;&#112;&#x73;&#x2e;&#99;&#111;&#x6d;">&#x61;&#105;&#102;&#50;&#45;&#100;&#101;&#118;&#x40;&#x79;&#97;&#x68;&#111;&#111;&#x67;&#114;&#x6f;&#x75;&#x70;&#x73;&#46;&#99;&#x6f;&#109;</a> (subscribe: <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x61;&#105;&#102;&#x32;&#45;&#x64;&#x65;&#118;&#45;&#115;&#117;&#98;&#115;&#99;&#x72;&#x69;&#98;&#101;&#64;&#x79;&#97;&#104;&#111;&#x6f;&#x67;&#114;&#111;&#117;&#x70;&#115;&#46;&#99;&#111;&#109;">&#x61;&#105;&#x66;&#50;&#45;&#100;&#101;&#x76;&#45;&#x73;&#x75;&#x62;&#115;&#x63;&#x72;&#105;&#x62;&#x65;&#x40;&#x79;&#97;&#104;&#x6f;&#x6f;&#103;&#x72;&#x6f;&#117;&#x70;&#x73;&#x2e;&#x63;&#x6f;&#109;</a>)</li>
 </ul>
 
 ]]></content>
@@ -593,11 +653,11 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
 <p>big thanks to all of you who participate in this long, but important release. Our team that make this release possible:</p>
 
 <ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x76;&#x69;&#x61;&#x63;&#x68;&#101;&#115;&#x6c;&#97;&#x76;&#x40;&#98;&#x30;&#110;&#x6f;&#x69;&#46;&#x63;&#x6f;&#109;">&#118;&#105;&#97;&#x63;&#x68;&#101;&#115;&#x6c;&#97;&#x76;&#64;&#98;&#x30;&#x6e;&#x6f;&#105;&#46;&#x63;&#x6f;&#109;</a> / b0noi)</li>
+<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x76;&#105;&#x61;&#x63;&#x68;&#101;&#x73;&#108;&#x61;&#118;&#64;&#x62;&#48;&#110;&#111;&#x69;&#46;&#x63;&#x6f;&#109;">&#118;&#105;&#x61;&#x63;&#104;&#101;&#x73;&#x6c;&#x61;&#118;&#x40;&#x62;&#48;&#110;&#111;&#105;&#46;&#x63;&#111;&#109;</a> / b0noi)</li>
 <li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
 <li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
 <li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
-<li>Balenko Aleksey (<a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x70;&#111;&#100;&#x6f;&#114;&#x6f;&#122;&#x68;&#110;&#105;&#99;&#107;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#112;&#111;&#x64;&#x6f;&#114;&#111;&#122;&#x68;&#x6e;&#x69;&#99;&#107;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
+<li>Balenko Aleksey (<a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x6f;&#x64;&#111;&#x72;&#111;&#x7a;&#104;&#110;&#x69;&#x63;&#x6b;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#112;&#x6f;&#100;&#111;&#114;&#111;&#122;&#104;&#110;&#105;&#x63;&#107;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
 <li>Evgeniy Dolgikh — QA assistance, junior developer</li>
 </ul>
 
