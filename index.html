@@ -9,7 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things &hellip;">
+  <meta name="description" content="AIF2 is fully language independent NLP library. AIF2 is written in Java 8+. How to use it You can use it by pulling artifact. Add repository to pom. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,261 +68,16 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif/">Building Text Dictionary Illustrated by NLP Library AIF</a></h1>
-    
-    
-      <p class="meta">
-        
+  <p>AIF2 is <strong>fully language independent</strong> NLP library. AIF2 is written in Java 8+.</p>
 
+<h2>How to use it</h2>
 
+<p>You can use it by pulling artifact.</p>
 
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-28T20:42:34+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) on the two previous releases of Alpha1 and Alpha2 can be found <a href="http://habrahabr.ru/post/238359/">here</a> and <a href="http://habrahabr.ru/post/242147/">here</a> (text might be translated later). The current release i.e Alpha3 with its new feature of building a token dictionary from the entry text is no exception. We will describe how the token dictionary building process and how it can be applied to your project.</p>
-
-<h1>A few terms</h1>
-
-<p>The following terms although common does not necessarily mean the same in the context of NLP and specifically our library. Find the complete list of terms <a href="http://aif.io/docs/algorithm/main-definitions.html">here</a>.</p>
-
-<ul>
-<li>Token is a sequence of alphabetic characters, bounded by separators on both sides.</li>
-<li>Language is the whole set of unique tokens.</li>
-<li>Text language is a set of all possible unique tokens present in text.</li>
-<li>Word is a language subset containing similar tokens.</li>
-<li>Semantic word is a language subset containing tokens with a similar context of use.</li>
-<li>Text vocabulary is a set of all possible words built on the basis of text language.</li>
-</ul>
-
-
-<p>Today we will be speaking of a “common” word, not a semantic one. Building semantic connections in text and a dictionary of semantic words of the text is the task of the next release.</p>
-
-<h1>“Similarity” of tokens</h1>
-
-<p>It can be easily noticed that some terms are incomplete and require some clarification in order to be practically used. For instance, “word” requires clarification on the token similarity notion. In our article we will calculate token similarity using formula [1]. The formula shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].</p>
-
-<p>Token similarity tries to infer whether a given token is similar to another. It&rsquo;s execlusively based on form, for an instance we consider the tokens &ldquo;see&rdquo; and &ldquo;seemed&rdquo; similar.</p>
-
-<p>Token similarity is computed using the formula [1]. It shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].</p>
-
-<p>[1]
-<img src="http://hsto.org/files/e7f/7ff/efa/e7f7ffefad8b4710948f5ea4a9c22890.png" alt="img" /></p>
-
-<p>where:</p>
-
-<ul>
-<li><img src="http://hsto.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png" alt="img" /> - formula of token similarity based on common characters calculation (see formula 1.1)</li>
-<li><img src="http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png" alt="img" /> - weight of formula of token similarity is based on common characters calculation (ranges 0.0 to 1.0). The given parameter is hardcoded (yuck!) and has a value of <a href="https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16">0.8</a>. This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.</li>
-<li><img src="http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png" alt="img" /> - formula of token similarity based on recursively calculating the longest common substrings (see formula 1.2).</li>
-<li><img src="http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png" alt="img" /> - weight of formula of token similarity based on recursive calculation of the longest common strings. This value is hardcoded as 1 and will be configurable from the next release.</li>
-</ul>
-
-
-<h1>Formula for token similarity based on common characters calculation</h1>
-
-<p>It has a noble name of which I can’t remember. There’s no thesis with all its links at hand. But I’m sure that a valiant reader will enlighten us.</p>
-
-<p>[1.1] <img src="http://habrastorage.org/files/925/d01/ecf/925d01ecf6c143829dafe523e4598b9b.png" alt="img" /></p>
-
-<p>where:</p>
-
-<ul>
-<li><img src="http://habrastorage.org/files/389/acf/60b/389acf60b8cf4bf4a9508c2b42b79e62.png" alt="img" /> - Length of token.</li>
-<li><img src="http://habrastorage.org/files/cab/a83/ca0/caba83ca082c416ca8ba1b98f8654e85.png" alt="img" /> - The number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.</li>
-</ul>
-
-
-<p>The formula is very simple. We calculate the characters that are included in both tokens without regard to the position of these characters in the tokens.</p>
-
-<h1>Formula of token similarity based on recursive calculation of the longest common strings</h1>
-
-<p>Here’s more fun, the formula is recursive and is also named after its author :)</p>
-
-<p>[1.2] <img src="http://habrastorage.org/files/14b/a2d/37e/14ba2d37ebd5484c89cc7b5f36b0570b.png" alt="img" /></p>
-
-<p>where:</p>
-
-<ul>
-<li><img src="http://habrastorage.org/files/06f/11c/bc9/06f11cbc997144da8265c7341db79bf4.png" alt="img" /> - The maximum string that is included in both tokens;</li>
-<li><img src="http://habrastorage.org/files/05f/528/038/05f528038b134e5b8116861220f706b7.png" alt="img" /> - Recursive call of formula 1.2 for the left substring, see formula 1.2.1;</li>
-<li><img src="http://habrastorage.org/files/102/be4/a0b/102be4a0b3024d89a358e4fc8cd30728.png" alt="img" /> - Recursive call of formula 1.2 for the right substring, see formula 1.2.2;</li>
-</ul>
-
-
-<p>[1.2.1] <img src="http://habrastorage.org/files/8dd/f03/f84/8ddf03f840f544439314f61a0a0aada6.png" alt="img" /></p>
-
-<p>where:</p>
-
-<ul>
-<li><img src="http://habrastorage.org/files/17f/1d9/72d/17f1d972d73248e88f209d635a7160e0.png" alt="img" /> - The given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”</li>
-</ul>
-
-
-<p>[1.2.2] <img src="http://habrastorage.org/files/e15/d00/072/e15d000729564edbb21e40926a8f9cfd.png" alt="img" /></p>
-
-<p>where:</p>
-
-<ul>
-<li><img src="http://habrastorage.org/files/d34/102/ed3/d34102ed3f01481eac24a8be1ece5f04.png" alt="img" /> - The given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.</li>
-</ul>
-
-
-<p>[2] <img src="http://habrastorage.org/files/46f/85b/800/46f85b800a9046b18a78b411287c9004.png" alt="img" /></p>
-
-<p>The threshold used in this inequality was chosen empirically: 0.75. In the current Alpha3 release this parameter is devilishly hardcoded <a href="https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/word/dict/WordSetDict.java#L17">here</a>.</p>
-
-<p>Fixing this major sin :) is already planned in <a href="https://github.com/b0noI/AIF2/issues/162">Alpha4</a>.</p>
-
-<h1>Comparison of words</h1>
-
-<p>In fact, the word is nothing more than a set of tokens grouped by a certain rule. The rule has been already specified (meeting the condition of inequality 2). So the comparison of two words is solved easily ([3]).</p>
-
-<p>[3] <img src="http://habrastorage.org/files/bb2/205/237/bb22052377ae4aeaae3570bdc250b376.png" alt="img" /></p>
-
-<h1>A word about practical application</h1>
-
-<p>The practice of building a dictionary is described on <a href="http://aif.io/docs/aif2-lib/alpha3/api/words.html">this page</a>. The process is very simple and takes no more than a few lines of code:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>  <span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
-</span><span class='line'> <span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>IDict interface:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IDict</span> <span class="o">{</span>     <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="nf">getWords</span><span class="o">();</span>  <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And now IWord interface itself:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IWord</span> <span class="o">{</span>    
-</span><span class='line'> 
-</span><span class='line'>      <span class="kd">public</span> <span class="n">String</span> <span class="nf">getRootToken</span><span class="o">();</span>     
-</span><span class='line'>
-</span><span class='line'>      <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getAllTokens</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getCount</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="kd">public</span> <span class="kd">static</span> <span class="kd">interface</span> <span class="nc">IWordPlaceholder</span> <span class="o">{</span> 
-</span><span class='line'>
-</span><span class='line'>         <span class="kd">public</span> <span class="n">IWord</span> <span class="nf">getWord</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>         <span class="kd">public</span> <span class="n">String</span> <span class="nf">getToken</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="o">}</span>  
-</span><span class='line'>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>By the way, all the documentation of Alpha3 release is <a href="http://aif.io/docs/aif2-lib/alpha3/">here</a>
-<a href="http://aif.io/docs/aif2-lib/alpha3/api/tokens.html">There</a> you can find the description of API to work with tokens</p>
-
-<p>and <a href="http://aif.io/docs/aif2-lib/alpha3/api/sentences.html">sentences</a></p>
-
-<p>Let’s get back to the task of building a vocabulary though. An example of using this function can be seen in <a href="https://github.com/b0noI/aif-cli/blob/8186538600d64c3eed8099ec6a94242d4eb8248d/src/main/java/com/aif/language/sentence/DictBuildCommand.java#L25">the code of command line utility of the given library</a>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Void</span> <span class="nf">apply</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="kd">final</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="n">text</span> <span class="o">=</span> <span class="n">FileHelper</span><span class="o">.</span><span class="na">readAllTextFromFile</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="kd">final</span> <span class="n">TokenSplitter</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TokenSplitter</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="kd">final</span> <span class="n">IDictBuilder</span><span class="o">&lt;</span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">stemmer</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">stemmer</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokenSplitter</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="n">text</span><span class="o">)).</span><span class="na">getWords</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">ResultPrinter</span><span class="o">.</span><span class="na">PrintStammerExtrctResult</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>How to start using AIF in your project</h1>
-
-<p>Everything is quite easy, you need to connect our repository to your project like this:</p>
+<p>Add repository to pom.xml:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -333,603 +88,76 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;project</span> <span class="err">...</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;repositories&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;repository&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;id&gt;</span>aif.com<span class="nt">&lt;/id&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;url&gt;</span>http://192.241.238.122:8081/artifactory/libs-release-local/<span class="nt">&lt;/url&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/repository&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/repositories&gt;</span>
-</span><span class='line'> <span class="nt">&lt;/project&gt;</span>  
+</span><span class='line'>    <span class="nt">&lt;repositories&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;repository&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;id&gt;</span>aif.com<span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;url&gt;</span>http://192.241.238.122:8081/artifactory/libs-release-local/<span class="nt">&lt;/url&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/repository&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/repositories&gt;</span>
+</span><span class='line'><span class="nt">&lt;/project&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>and add a dependency:</p>
+<p>and add dependency:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">io</span><span class="o">.</span><span class="na">aif</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">aif</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">Alpha3</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
-</span><span class='line'> <span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;dependency&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;groupId&gt;</span>io.aif<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;artifactId&gt;</span>aif<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;version&gt;</span>1.1.0-Alpha3<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'><span class="nt">&lt;/dependency&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>Example of using AIF-CLI 1.2 command line utility</h1>
+<h2>Docs</h2>
 
-<p>Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on <a href="http://aif.io/docs/aif-cli/1.2/">this page</a>. Building a dictionary of a huge book can take a while (up to 8-10 minutes for the book with 10k words). We are continually working towards improving the performance <a href="https://github.com/b0noI/AIF2/issues/166">the issue</a>.</p>
+<p><a href="./docs">AIF docs</a></p>
 
-<p>Here is how the program set on the text of the article works (only a part of the program output is shown):</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>java -jar aif-cli-1.2-jar-with-dependencies.jar -dbuild ~/tmp/text1.txt
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>result:</p>
-
-<pre><code>Basic token: something tokens: [ [something] ]
-Basic token: where: tokens: [ [where:] ]
-Basic token: repository tokens: [ [repository] ]
-Basic token: can tokens: [ [can, (can] ]
-Basic token: your tokens: [ [your, our] ]
-Basic token: library tokens: [ [library, library.] ]
-Basic token: synonyms tokens: [ [synonyms] ]
-Basic token: two tokens: [ [two] ]
-Basic token: few tokens: [ [few] ]
-Basic token: documentation tokens: [ [documentation] ]
-Basic token: characters tokens: [ [characters, character, characters,] ]
-Basic token: implementation, tokens: [ [implementation,, implementation] ]
-Basic token: today tokens: [ [today] ]
-Basic token: has tokens: [ [has] ]
-Basic token: word, tokens: [ [word,, words, word] ]
-Basic token: input tokens: [ [input] ]
-Basic token: works tokens: [ [works, work] ]
-Basic token: token, tokens: [ [token,, token., tokens, token] ]
-Basic token: complement tokens: [ [complement] ]
-Basic token: easily tokens: [ [easily] ]
-Basic token: use. tokens: [ [use., used.] ]
-Basic token: AIF tokens: [ [AIF] ]
-Basic token: connected tokens: [ [connected, connect] ]
-Basic token: sense tokens: [ [sense] ]
-Basic token: Alpha2 tokens: [ [Alpha2] ]
-Basic token: searching tokens: [ [searching] ]
-Basic token: calculation tokens: [ [calculation] ]
-Basic token: shows tokens: [ [shows] ]
-Basic token: pleased tokens: [ [pleased, passed] ]
-Basic token: last tokens: [ [last] ]
-Basic token: developers tokens: [ [developers, developer., developer, developer,] ]
-Basic token: already tokens: [ [already] ]
-Basic token: context tokens: [ [context] ]
-Basic token: back tokens: [ [back] ]
-Basic token: named tokens: [ [named, name] ]
-Basic token: next tokens: [ [next] ]
-Basic token: practice tokens: [ [practice] ]
-Basic token: uses tokens: [ [uses, used] ]
-Basic token: weight tokens: [ [weight] ]
-Basic token: connections tokens: [ [connections] ]
-Basic token: length tokens: [ [length] ]
-Basic token: clarification tokens: [ [clarification] ]
-Basic token: hardcoded. tokens: [ [hardcoded., hardcoded] ] 
-Press 'Enter' to continue or 'q' command to quit. There are -102 entities to show
-</code></pre>
-
-<h1>Now a word about the next release</h1>
-
-<p>The next release (Alpha 4) is scheduled for the end of January and we anticipate to release the following features:
-* Building a dictionary of semantic words
-* Searching for synonyms in text
-* Building a graph of relations of semantic words in text</p>
-
-<p>Perhaps, even more features ;).</p>
-
-<p>As parting note any feedback is welcome, If you would like to help us moving the project forward write to us or if you have interesting use case in the field of NLP do let us know. Please keep the comments flowing and help AIF make a small dent (we love big bangs too :)) in the world of NLP!</p>
-
-<h1>Our team</h1>
+<h2>MailList</h2>
 
 <ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#x69;&#97;&#99;&#x68;&#101;&#115;&#x6c;&#97;&#118;&#64;&#x62;&#48;&#110;&#x6f;&#105;&#46;&#99;&#111;&#109;">&#118;&#105;&#97;&#99;&#x68;&#x65;&#x73;&#x6c;&#x61;&#x76;&#x40;&#x62;&#x30;&#x6e;&#111;&#105;&#46;&#99;&#x6f;&#109;</a> / @b0noi)</li>
-<li>Ifthikhan Nazeem (@ifthikhan) – algorithm designer, architecture design, developer</li>
-<li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
-<li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
-<li>Evgenia Kozlovska, English teacher and translator (who translated this article!).</li>
-<li>Balenko Aleksey (<a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#112;&#x6f;&#x64;&#111;&#x72;&#x6f;&#x7a;&#x68;&#110;&#105;&#99;&#107;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#x6f;&#x64;&#111;&#114;&#x6f;&#122;&#x68;&#110;&#x69;&#99;&#x6b;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
-<li>Evgeniy Dolgikh — QA assistance, junior developer</li>
+<li><strong>dev</strong>: <a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#97;&#x69;&#x66;&#50;&#45;&#100;&#101;&#x76;&#64;&#121;&#x61;&#x68;&#111;&#x6f;&#x67;&#x72;&#x6f;&#x75;&#112;&#115;&#x2e;&#x63;&#x6f;&#109;">&#97;&#x69;&#x66;&#x32;&#x2d;&#x64;&#101;&#x76;&#64;&#x79;&#x61;&#104;&#x6f;&#111;&#x67;&#114;&#111;&#x75;&#x70;&#115;&#46;&#x63;&#111;&#x6d;</a> (subscribe: <a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#97;&#105;&#x66;&#x32;&#x2d;&#100;&#x65;&#118;&#45;&#115;&#117;&#x62;&#x73;&#99;&#114;&#x69;&#98;&#x65;&#x40;&#x79;&#97;&#104;&#x6f;&#x6f;&#103;&#x72;&#x6f;&#117;&#x70;&#115;&#46;&#x63;&#111;&#x6d;">&#97;&#x69;&#102;&#x32;&#45;&#100;&#x65;&#118;&#x2d;&#115;&#117;&#98;&#115;&#99;&#x72;&#x69;&#x62;&#x65;&#x40;&#121;&#x61;&#x68;&#111;&#111;&#x67;&#x72;&#x6f;&#x75;&#112;&#x73;&#x2e;&#99;&#x6f;&#x6d;</a>)</li>
 </ul>
 
 
-<h1>Links on the project and details</h1>
+<h2>Current version</h2>
 
 <ul>
-<li>Project language: Java 8</li>
-<li>License: MIT license</li>
-<li>Issue tracker: github.com/b0noI/AIF2/issues</li>
-<li>Wiki: github.com/b0noI/AIF2/wiki</li>
-<li>Source code: github.com/b0noI/AIF2</li>
-<li>Developers mail list: <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#97;&#x69;&#x66;&#x32;&#45;&#x64;&#101;&#x76;&#64;&#x79;&#97;&#x68;&#111;&#x6f;&#103;&#x72;&#111;&#x75;&#112;&#x73;&#x2e;&#99;&#111;&#x6d;">&#x61;&#105;&#102;&#50;&#45;&#100;&#101;&#118;&#x40;&#x79;&#97;&#x68;&#111;&#111;&#x67;&#114;&#x6f;&#x75;&#x70;&#x73;&#46;&#99;&#x6f;&#109;</a> (subscribe: <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x61;&#105;&#102;&#x32;&#45;&#x64;&#x65;&#118;&#45;&#115;&#117;&#98;&#115;&#99;&#x72;&#x69;&#98;&#101;&#64;&#x79;&#97;&#104;&#111;&#x6f;&#x67;&#114;&#111;&#117;&#x70;&#115;&#46;&#99;&#111;&#109;">&#x61;&#105;&#x66;&#50;&#45;&#100;&#101;&#x76;&#45;&#x73;&#x75;&#x62;&#115;&#x63;&#x72;&#105;&#x62;&#x65;&#x40;&#x79;&#97;&#104;&#x6f;&#x6f;&#103;&#x72;&#x6f;&#117;&#x70;&#x73;&#x2e;&#x63;&#x6f;&#109;</a>)</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/">Splitter_characters_grouper_search_step Parameter Tuning</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-27T16:08:46+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In last <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">article</a> we discussed our plan about searching optimal values for splitter_characters_grouper_search_step. This time we will show how we were able to find optimal value and prove that this value is optimal.</p>
-
-<h2>Some theory about splitter_characters_grouper_search_step value</h2>
-
-<p>This value is used by Sentence splitting module. At some point our algorithm doing gradient search of the sentence splitters (we are not going to dive to the algorithm right now). Point is that this value is compromise between accuracy and speed. We can have as accurate result as small value we can set, on the other side of coin, this value have dramatic impact on the algorithm speed. As low we set this value as much slow we will make our algorithm.</p>
-
-<p>When choosing value for this parameter, you always need to ask:</p>
-
-<ul>
-<li>is there are highest level of accuracy that you can get with this algorithm? - if this limit exists you can&rsquo;t get more accurate result even by making value splitter_characters_grouper_search_step lower;</li>
-<li>if accuracy limit exists, what maximum value of splitter_characters_grouper_search_step we can set to achieve this level of accuracy? Knowing this information will give us compromise between best accuracy and algorithm speed;</li>
+<li>alpha3</li>
 </ul>
 
 
-<p>In <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">prev</a> article we already collected enough experiments results for visualizing and building function:</p>
-
-<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+12.42.51.png" alt="img" /></p>
-
-<p>now we can proceed with function building</p>
-
-<h2>Building function for splitter_characters_grouper_search_step vs quality</h2>
-
-<p>We decided to use least squares method for building polynomial. By quick first look on plot you may think that we should use polynomial with max power 2 (3 elements polynomial) like this one:</p>
-
-<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+17.54.28.png" alt="img" /></p>
-
-<p>Here is the plot of the final function:</p>
-
-<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+16.01.47.png" alt="img" /></p>
-
-<p>As you can see from this plot count of errors start decreasing after some point. This could not be correct. But this chart could be pretty close to the target one. Also here is target limit for this function:</p>
-
-<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.00.21.png" alt="img" /></p>
-
-<p>so the top quality that we can get is 54 errors. That is not true, because we have our experiment that shows 53 errors. Let&rsquo;s increase size of the polynomial to 5 (size 4 is similar to 3).</p>
-
-<p>Resulted chart:</p>
-
-<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+16.02.08.png" alt="img" /></p>
-
-<p>and new limit:</p>
-
-<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.04.46.png" alt="img" /></p>
-
-<p>this result is much more accurate and consistent with real life.</p>
-
-<h2>Conclusion</h2>
-
-<p>As you can see, 53 errors is the best value of quality that can be achieved by setting different values to the variable. This means that we need to find biggest value of this variable that still gives us 53 error. And the value is:</p>
-
-<p>{&ldquo;value&rdquo;: 0.0031, &ldquo;errors&rdquo;: 53},</p>
-
-<p>this is 6x times bigger than previous value (0.0005), so we improve algorithm speed in 6x time without losing accuracy!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">First IPython Usage for Analyzing Quality</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-27T13:14:33+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Today is the first day of work with Alpha4. One of the main improvements that we’ve done is the way how we tune AIF settings. AIF has a lot of different variables in settings and we need to prove which value is best for quality.</p>
-
-<p><em>note</em>: in this post we left measuring quality process out of our scope. Quality measurement is the question of other article.</p>
-
-<p>Here is config example of current revision:</p>
-
-<figure class='code'><figcaption><span>properties</span><a href='https://github.com/b0noI/AIF2/blob/master/src/main/resources/io/aif/common/settings/main.properties'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='basic'><span class='line'><span class="vg">version</span><span class="o">=</span><span class="mf">1.1.0</span><span class="o">-</span><span class="vg">alpha3</span>
-</span><span class='line'><span class="err"> </span><span class="vg">minimum_tokens_input_count</span><span class="o">=</span><span class="il">600</span>
-</span><span class='line'><span class="err"> </span><span class="vg">use_is_alphabetic_method</span><span class="o">=</span><span class="vg">true</span>
-</span><span class='line'><span class="err"> </span><span class="vg">threshold_p_for_second_filter_separator_character</span><span class="o">=</span><span class="mf">.65</span>
-</span><span class='line'><span class="err"> </span><span class="vg">minimal_valuable_token_size_during_sentence_splitting</span><span class="o">=</span><span class="il">3</span>
-</span><span class='line'><span class="err"> </span><span class="vg">minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting</span><span class="o">=</span><span class="il">10</span>
-</span><span class='line'><span class="err"> </span><span class="vg">threshold_p_for_first_filter_separator_character</span><span class="o">=</span><span class="mf">0.05</span>
-</span><span class='line'><span class="err"> </span><span class="vg">splitter_characters_grouper_search_step</span><span class="o">=</span><span class="mf">0.0005</span>
-</span><span class='line'><span class="err"> </span><span class="vg">splitter_characters_grouper_init_search_P_value</span><span class="o">=</span><span class="mf">0.65</span>
-</span><span class='line'><span class="err"> </span><span class="vg">word_set_dict_comparator_treshold</span><span class="o">=</span><span class="mf">0.75</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>each of these variables can impact quality. So we need to have a way of building function that correlates each of these variables with output quality. In the perfect world with pony we should have the one big function that correlates all variables from settings with the quality. Unfortunately building the one global function is hard task. So we decided to build function for each variable independly to see how this particular variable impacts the quality.</p>
-
-<p>Today we will show the small step that was done with the &ldquo;splitter_characters_grouper_search_step&rdquo; variable.</p>
-
-<p>Our experiment is very simple:</p>
+<h2>Next versions</h2>
 
 <ul>
-<li>execute a lot of quality tests with different &ldquo;splitter_characters_grouper_search_step&rdquo; values;</li>
-<li>plot the results;</li>
-<li>build the function that based on the data from first step;</li>
-<li>find global extremum of the function and set configuration to that extremum.</li>
+<li>alpha4 (~end of January 2015)</li>
+<li>alpha5 (~end of February 2015)</li>
 </ul>
 
 
-<p>So, basically, we need to find value of &ldquo;splitter_characters_grouper_search_step&rdquo; that gives the best quality.</p>
+<h2>Deprecated versions</h2>
 
-<h2>Executing a lot of quality tests</h2>
-
-<p>Done with the simple implementation (may be refactored in future):</p>
-
-<figure class='code'><figcaption><span>experimentWith_splitter_characters_grouper_search_step</span><a href='https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/java/io/aif/language/common/settings/PropertyBasedSettingsTest.java'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">experimentWith_splitter_characters_grouper_search_step</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getRootLogger</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">logger</span><span class="o">.</span><span class="na">setLevel</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">OFF</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="kd">final</span> <span class="n">PropertyBasedSettings</span> <span class="n">propertyBasedSettings</span> <span class="o">=</span> <span class="o">(</span><span class="n">PropertyBasedSettings</span><span class="o">)</span> <span class="n">ISettings</span><span class="o">.</span><span class="na">SETTINGS</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;splitter_characters_grouper_search_step: [&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="n">Double</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">=</span> <span class="mf">0.00005</span><span class="o">;</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="o">;</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">+=</span> <span class="mf">0.0005</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="n">propertyBasedSettings</span><span class="o">.</span><span class="na">properties</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">&quot;splitter_characters_grouper_search_step&quot;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">splitter_characters_grouper_search_step</span><span class="o">));</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">testResult</span> <span class="o">=</span> <span class="n">SimpleSentenceSplitterCharactersExtractorQualityTest</span><span class="o">.</span><span class="na">executeTest</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;{value: %f, errors: %d},&quot;</span><span class="o">,</span> <span class="n">splitter_characters_grouper_search_step</span><span class="o">,</span> <span class="n">testResult</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">key</span> <span class="o">-&gt;</span> <span class="n">testResult</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">).</span><span class="na">size</span><span class="o">()).</span><span class="na">sum</span><span class="o">()));</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;]&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>    <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This code will generate Python array with data. Using this we can use Python for visualizing data to see the shape of the function.</p>
-
-<p><em>note</em>: this variable was chosen as the first to be analyzed because we expecting it to has simple function without local extremums at all with 1 global extremum that we are searching for.</p>
-
-<h2>Visualizing data with Python</h2>
-
-<p>After we have all the data we can plot it to see how quality chart is looks like. Here is Python code that is doing exactly this:</p>
-
-<figure class='code'><figcaption><span>splitter_characters_grouper_search_step.py</span><a href='https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/python/splitter_characters_grouper_search_step.py'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># data collected by PropertyBasedSettingsTest.experimentWith_splitter_characters_grouper_search_step</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.000050</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">53</span><span class="p">},</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.000550</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">53</span><span class="p">},</span>
-</span><span class='line'><span class="c"># ... lines removed</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.144550</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">},</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.145050</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">},</span>
-</span><span class='line'><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">&quot;value&quot;</span><span class="p">])</span>
-</span><span class='line'>    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">&quot;errors&quot;</span><span class="p">])</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
-</span><span class='line'><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">pandas.tools.rplot</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;ro&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;errors&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;splitter_characters_grouper_search_step&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;splitter_characters_grouper_search_step vs errors count&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>result of execution  is:</p>
-
-<p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+12.42.51.png" alt="img" /></p>
-
-<h2>Next steps</h2>
-
-<p>Now we can try to build function that represents the plot. It will give us the answers, can we improve quality by reducing value even more or we already reach the limit of this function. For this we will have to find lim(f(x)) of our function.</p>
-
-<p>We will create a new blog entry when we have new data to show!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/26/aif-alpha3-is-out/">AIF Alpha3 Is Out</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-26T13:48:56+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Today our community is happy to announce next version of AIF: Alpha3</p>
-
-<p>Main focus in Alpha3 was on the next 2 points:</p>
+<p>This versions are no longer supported and should not be used:</p>
 
 <ul>
-<li>quality improvements;</li>
-<li>text dictionary building;</li>
+<li>alpha2</li>
+<li>alpha1</li>
 </ul>
 
 
-<p>And we are proudly announcing that both of the goals are achieved!</p>
+<h2>License</h2>
 
-<p><a href="http://aif.io/docs/aif2-lib/alpha3/">Alpha3 documentation page</a></p>
+<p>AIF2 is distributed under <a href="http://choosealicense.com/licenses/mit/">MIT license</a></p>
 
-<p><a href="http://aif.io/docs/aif2-lib/alpha3/api/words.html">Dictionary building documentation</a></p>
+  
+</article>
 
-<p>big thanks to all of you who participate in this long, but important release. Our team that make this release possible:</p>
-
-<ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x76;&#105;&#x61;&#x63;&#x68;&#101;&#x73;&#108;&#x61;&#118;&#64;&#x62;&#48;&#110;&#111;&#x69;&#46;&#x63;&#x6f;&#109;">&#118;&#105;&#x61;&#x63;&#104;&#101;&#x73;&#x6c;&#x61;&#118;&#x40;&#x62;&#48;&#110;&#111;&#105;&#46;&#x63;&#111;&#109;</a> / b0noi)</li>
-<li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
-<li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
-<li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
-<li>Balenko Aleksey (<a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#x6f;&#x64;&#111;&#x72;&#111;&#x7a;&#104;&#110;&#x69;&#x63;&#x6b;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#112;&#x6f;&#100;&#111;&#114;&#111;&#122;&#104;&#110;&#105;&#x63;&#107;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
-<li>Evgeniy Dolgikh — QA assistance, junior developer</li>
-</ul>
-
-
-<p>Our next release (Alpha4) will be dedicated to the core component of semantic analyze. So it would be fun, stay tinned!</p>
-
-<p>Please note that Alpha2 is deprecated from very this moment and will not be supported.</p>
-
-<p>Also Alpha3 is the first release that taking place on the brand new AIF.IO site!</p>
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/20/aif-dot-io-is-alive/">aif.io Is Alive</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-20T22:11:13+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Long live aif.io!</h2>
-
-<p>Today, AIF community os proud to announce AIF web site: <a href="aif.io">aif.io</a></p>
-
-<p>With this site, old <a href="https://github.com/b0noI/AIF2/wiki">wiki</a> is deprecated and will not be maintained from very this moment. Each old wiki page has been updated with the link to new web site.</p>
-
-<p>Big thanks to Evgeniy Dolgikh (Marcon) who was in charge of creating this site and porting all documentation from old wiki! This web-site will be impossible without his work!</p>
-
-<p>In nearest plans to have:</p>
-
-<ul>
-<li>IRC channel</li>
-<li>forum</li>
-</ul>
-
-
-<p>And of course we are about to release Alpha3, so stay touched</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/20/test/">Initial</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-20T17:53:13+01:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -965,6 +193,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
 
   
 </aside>
+
 
     </div>
   </div>
