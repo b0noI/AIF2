@@ -23,7 +23,7 @@ Today we will be speaking of a “common” word, not a semantic one. Building s
 
 It can be easily noticed that some terms are incomplete and require some clarification in order to be practically used. For instance, “word” requires clarification on the token similarity notion. In our article we will calculate token similarity using formula [1]. The formula shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].
 
-ifthen: Token similarity tries to infer whether a given token is similar to another. It's execlusively based on form, for an instance we consider the tokens "see" and "seemed" similar. 
+Token similarity tries to infer whether a given token is similar to another. It's execlusively based on form, for an instance we consider the tokens "see" and "seemed" similar. 
 
 Token similarity is computed using the formula [1]. It shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2]. 
 
@@ -103,7 +103,23 @@ public interface IDict {     public Set<IWord> getWords();  }
 And now IWord interface itself:
 
 ``` java
-public interface IWord {     public String getRootToken();     public Set<String> getAllTokens();     public Long getCount();     public static interface IWordPlaceholder {         public IWord getWord();         public String getToken();     }  }
+public interface IWord {    
+ 
+      public String getRootToken();     
+
+      public Set<String> getAllTokens();
+
+      public Long getCount();
+
+      public static interface IWordPlaceholder { 
+
+         public IWord getWord();
+
+         public String getToken();
+
+      }  
+
+}
 ```
 
 By the way, all the documentation of Alpha3 release is [here](http://aif.io/docs/aif2-lib/alpha3/)
@@ -115,17 +131,31 @@ Let’s get back to the task of building a vocabulary though. An example of usin
 
 ``` java
 public Void apply(String... args) {
+
         final String text;
+
         try {
+
             text = FileHelper.readAllTextFromFile(args[0]);
+
         } catch (IOException e) {
+
             e.printStackTrace();
+
             return null;
-        }        final TokenSplitter tokenSplitter = new TokenSplitter();
+
+        }
+
+        final TokenSplitter tokenSplitter = new TokenSplitter();
+
         final IDictBuilder<Collection<String>> stemmer = new DictBuilder();
+
         final Set<IWord> result = stemmer.build(tokenSplitter.split(text)).getWords();
+
         ResultPrinter.PrintStammerExtrctResult(result);
+
         return null;
+
     }
 ```
 
@@ -156,7 +186,7 @@ and add a dependency:
 
 # Example of using AIF-CLI 1.2 command line utility
 
-Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on [this page](http://aif.io/docs/aif-cli/1.2/). Building a dictionary of a huge book can take a while (VSK provide some comparison). We are continually working towards improving the performance [the issue](https://github.com/b0noI/AIF2/issues/166).
+Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on [this page](http://aif.io/docs/aif-cli/1.2/). Building a dictionary of a huge book can take a while (up to 8-10 minutes for the book with 10k words). We are continually working towards improving the performance [the issue](https://github.com/b0noI/AIF2/issues/166).
 
 Here is how the program set on the text of the article works (only a part of the program output is shown):
 
