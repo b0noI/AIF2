@@ -17,6 +17,8 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static org.testng.AssertJUnit.assertTrue;
+
 
 /**
  * Created by b0noI on 31/10/14.
@@ -27,6 +29,12 @@ public class DictBuilderIntegTest {
 
     @Test(groups = "experimental")
     public void testQuality() throws Exception {
+        final ExperimentResult experimentResult = runExperiment();
+        assertTrue(experimentResult.getRootTokenErrors()    <= 21);
+        assertTrue(experimentResult.getTokensErrors()       <= 19);
+    }
+    
+    private static ExperimentResult runExperiment() throws IOException {
         String text;
         long before = System.nanoTime();
         try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("aif_article.txt")) {
@@ -49,24 +57,17 @@ public class DictBuilderIntegTest {
 
         long after = System.nanoTime();
         long delta = (after - before) / 1000_000_000;
-        
+
         final IdealDict idealDict = loadIdealDict();
-        
-        final int rootTokenErrors = (int)dict.getWords().stream().filter(word -> 
-            rootTokenError(word, idealDict)
+
+        final int rootTokenErrors = (int)dict.getWords().stream().filter(word ->
+                        rootTokenError(word, idealDict)
         ).count();
         final int tokensErrors = dict.getWords().stream().mapToInt(word ->
-            tokensErrors(word, idealDict)
+                        tokensErrors(word, idealDict)
         ).sum();
+        return new ExperimentResult(rootTokenErrors, tokensErrors);
 
-
-        dict.getWords().stream().filter(word ->
-                        tokensErrors(word, idealDict) > 0
-        ).forEach(System.out::println);
-        System.out.println(dict);
-        System.out.println("Completed in: " + delta);
-        // 180 sec
-        // 122 best
     }
     
     private static IdealDict loadIdealDict() throws IOException {
@@ -102,6 +103,27 @@ public class DictBuilderIntegTest {
             return word.getAllTokens().size();
         }
         return (int)word.getAllTokens().stream().filter(token -> !idealResult.get().getValue().contains(token)).count();
+    }
+    
+    public static class ExperimentResult {
+        
+        private final int rootTokenErrors;
+        
+        private final int tokensErrors;
+
+        public ExperimentResult(int rootTokenErrors, int tokensErrors) {
+            this.rootTokenErrors = rootTokenErrors;
+            this.tokensErrors = tokensErrors;
+        }
+
+        public int getRootTokenErrors() {
+            return rootTokenErrors;
+        }
+
+        public int getTokensErrors() {
+            return tokensErrors;
+        }
+        
     }
 
 }
