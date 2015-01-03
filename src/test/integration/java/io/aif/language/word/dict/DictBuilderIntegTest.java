@@ -2,15 +2,14 @@ package io.aif.language.word.dict;
 
 import com.google.gson.Gson;
 import io.aif.common.FileHelper;
-import io.aif.language.common.settings.ISettings;
+import io.aif.language.common.IGrouper;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
 import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
 import io.aif.language.token.TokenSplitter;
 import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IDict;
+import io.aif.language.word.comparator.IGroupComparator;
 import io.aif.language.word.IWord;
-import io.aif.language.word.comparator.ISetComparator;
-import opennlp.tools.formats.ad.ADSentenceStream;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -22,8 +21,8 @@ import java.util.stream.Collectors;
 /**
  * Created by b0noI on 31/10/14.
  */
-public class DictBuilderTest {
-    
+public class DictBuilderIntegTest {
+
     private static final Gson GSON = new Gson();
 
     @Test(groups = "experimental")
@@ -40,10 +39,13 @@ public class DictBuilderTest {
         final List<List<String>> sentences = sentenceSplitter.split(tokens);
         final List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
-        final ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
-        final ISetComparator setComparator = ISetComparator.createDefaultInstance(tokenComparator);
-        final DictBuilder dictBuilder = new DictBuilder(setComparator, tokenComparator);
-        final IDict dict = dictBuilder.build(filteredTokens);
+        ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
+        IGroupComparator setComparator = IGroupComparator.createDefaultInstance(tokenComparator);
+        WordMapper groupToWordMapper = new WordMapper(new RootTokenExtractor(tokenComparator));
+        IGrouper grouper = new FormGrouper(setComparator);
+
+        IDictBuilder dictBuilder = new DictBuilder(grouper, groupToWordMapper);
+        IDict dict = dictBuilder.build(filteredTokens);
 
         long after = System.nanoTime();
         long delta = (after - before) / 1000_000_000;
@@ -62,6 +64,7 @@ public class DictBuilderTest {
                         tokensErrors(word, idealDict) > 0
         ).forEach(System.out::println);
         System.out.println(dict);
+        System.out.println("Completed in: " + delta);
         // 180 sec
         // 122 best
     }

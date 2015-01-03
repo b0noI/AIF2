@@ -1,6 +1,7 @@
 package io.aif.language.word.dict;
 
 import io.aif.language.word.IWord;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +13,7 @@ public class WordTest {
     private final String ROOT_TOKEN = "hey";
     private final Set<String> TOKENS = new HashSet<>();
 
+    @BeforeMethod
     public void setUp() {
         TOKENS.add("hey");
         TOKENS.add("heya");

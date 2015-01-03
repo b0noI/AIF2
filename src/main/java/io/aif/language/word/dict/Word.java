@@ -3,6 +3,8 @@ package io.aif.language.word.dict;
 
 import io.aif.language.word.IWord;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 class Word implements IWord {
@@ -13,8 +15,9 @@ class Word implements IWord {
 
     private final Long count;
 
-    Word(final String rootToken, final Set<String> tokens, final Long count) {
-        this.tokens = tokens;
+    //TODO What's the purpose of the count, assinging a LAME value to it.
+    Word(final String rootToken, final Collection<String> tokens, final Long count) {
+        this.tokens = new HashSet<>(tokens);
         this.rootToken = rootToken;
         this.count = count;
     }

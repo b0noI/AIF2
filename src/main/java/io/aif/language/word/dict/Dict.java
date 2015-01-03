@@ -10,6 +10,7 @@ class Dict implements IDict {
 
     private final Set<IWord> words;
 
+    //TODO Does it need to be sets.
     Dict(final Set<IWord> words) {
         this.words = words;
     }
