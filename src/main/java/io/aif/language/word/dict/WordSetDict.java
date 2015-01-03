@@ -6,16 +6,13 @@ import io.aif.language.word.comparator.ISetComparator;
 import org.apache.log4j.Logger;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 class WordSetDict {
 
     private static final Logger LOGGER = Logger.getLogger(WordSetDict.class);
 
-    private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.WordSetDictComparatorThreshold();
+    private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.wordSetDictComparatorThreshold();
 
     private final ISetComparator setComparator;
 

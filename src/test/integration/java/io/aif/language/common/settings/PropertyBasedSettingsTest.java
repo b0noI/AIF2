@@ -4,11 +4,8 @@ import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQuality
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
-
-import static org.testng.Assert.*;
 
 public class PropertyBasedSettingsTest {
 
@@ -32,7 +29,7 @@ public class PropertyBasedSettingsTest {
     }
 
     private static void experimentWith_minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting() throws Exception {
-        experiment("minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting", 96, 1000, 1, true);
+        experiment("minimum_character_observations_count_for_make_character_valuable_during_sentence_splitting", 96, 1000, 1, true);
 
     }
 
