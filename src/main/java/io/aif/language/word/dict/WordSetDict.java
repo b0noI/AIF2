@@ -12,7 +12,7 @@ class WordSetDict {
 
     private static final Logger LOGGER = Logger.getLogger(WordSetDict.class);
 
-    private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.WordSetDictComparatorThreshold();
+    private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.wordSetDictComparatorThreshold();
 
     private final IGroupComparator setComparator;
 

@@ -1,0 +1,111 @@
+
+Building Text Dictionary Illustrated by NLP Library AIF
+
+It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) on the two previous releases of Alpha1 and Alpha2 can be found here and here (text might be translated later). The current release i.e Alpha3 with its new feature of building a token dictionary from the entry text is no exception. We will describe how the token dictionary building process and how it can be applied to your project.
+A few terms
+
+The following terms although common does not necessarily mean the same in the context of NLP and specifically our library. Find the complete list of terms here.
+
+    Token is a sequence of alphabetic characters, bounded by separators on both sides.
+    Language is the whole set of unique tokens.
+    Text language is a set of all possible unique tokens present in text.
+    Word is a language subset containing similar tokens.
+    Semantic word is a language subset containing tokens with a similar context of use.
+    Text vocabulary is a set of all possible words built on the basis of text language.
+
+Today we will be speaking of a “common” word, not a semantic one. Building semantic connections in text and a dictionary of semantic words of the text is the task of the next release.
+“Similarity” of tokens
+
+It can be easily noticed that some terms are incomplete and require some clarification in order to be practically used. For instance, “word” requires clarification on the token similarity notion. In our article we will calculate token similarity using formula [1]. The formula shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].
+
+Token similarity tries to infer whether a given token is similar to another. It’s execlusively based on form, for an instance we consider the tokens “see” and “seemed” similar.
+
+Token similarity is computed using the formula [1]. It shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2].
+
+[1] img
+
+where:
+
+    img - formula of token similarity based on common characters calculation (see formula 1.1)
+    img - weight of formula of token similarity is based on common characters calculation (ranges 0.0 to 1.0). The given parameter is hardcoded (yuck!) and has a value of 0.8. This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.
+    img - formula of token similarity based on recursively calculating the longest common substrings (see formula 1.2).
+    img - weight of formula of token similarity based on recursive calculation of the longest common strings. This value is hardcoded as 1 and will be configurable from the next release.
+
+Formula for token similarity based on common characters calculation
+
+It has a noble name of which I can’t remember. There’s no thesis with all its links at hand. But I’m sure that a valiant reader will enlighten us.
+
+[1.1] img
+
+where:
+
+    img - Length of token.
+    img - The number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.
+
+The formula is very simple. We calculate the characters that are included in both tokens without regard to the position of these characters in the tokens.
+Formula of token similarity based on recursive calculation of the longest common strings
+
+Here’s more fun, the formula is recursive and is also named after its author :)
+
+[1.2] img
+
+where:
+
+    img - The maximum string that is included in both tokens;
+    img - Recursive call of formula 1.2 for the left substring, see formula 1.2.1;
+    img - Recursive call of formula 1.2 for the right substring, see formula 1.2.2;
+
+[1.2.1] img
+
+where:
+
+    img - The given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”
+
+[1.2.2] img
+
+where:
+
+    img - The given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.
+
+[2] img
+
+The threshold used in this inequality was chosen empirically: 0.75. In the current Alpha3 release this parameter is devilishly hardcoded here.
+
+Fixing this major sin :) is already planned in Alpha4.
+Comparison of words
+
+In fact, the word is nothing more than a set of tokens grouped by a certain rule. The rule has been already specified (meeting the condition of inequality 2). So the comparison of two words is solved easily ([3]).
+
+[3] img
+A word about practical application
+
+The practice of building a dictionary is described on this page. The process is very simple and takes no more than a few lines of code:
+
+By the way, all the documentation of Alpha3 release is here There you can find the description of API to work with tokens
+
+and sentences
+
+Let’s get back to the task of building a vocabulary though. An example of using this function can be seen in the code of command line utility of the given library.
+
+
+How to start using AIF in your project
+
+Everything is quite easy, you need to connect our repository to your project like this:
+
+
+
+Example of using AIF-CLI 1.2 command line utility
+
+Let’s examine the actual work of the algorithm by the example of command line utility that uses AIF Alpha3 engine. You can read about using the utility on this page. Building a dictionary of a huge book can take a while (up to 8-10 minutes for the book with 10k words). We are continually working towards improving the performance the issue.
+
+Here is how the program set on the text of the article works (only a part of the program output is shown):
+
+
+
+Now a word about the next release
+
+The next release (Alpha 4) is scheduled for the end of January and we anticipate to release the following features: * Building a dictionary of semantic words * Searching for synonyms in text * Building a graph of relations of semantic words in text
+
+Perhaps, even more features ;).
+
+As parting note any feedback is welcome, If you would like to help us moving the project forward write to us or if you have interesting use case in the field of NLP do let us know. Please keep the comments flowing and help AIF make a small dent (we love big bangs too :)) in the world of NLP!
