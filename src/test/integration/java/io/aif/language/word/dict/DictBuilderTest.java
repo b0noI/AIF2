@@ -2,6 +2,7 @@ package io.aif.language.word.dict;
 
 import com.google.gson.Gson;
 import io.aif.common.FileHelper;
+import io.aif.language.common.settings.ISettings;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
 import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
 import io.aif.language.token.TokenSplitter;
@@ -14,9 +15,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -28,7 +27,7 @@ public class DictBuilderTest {
     private static final Gson GSON = new Gson();
 
     @Test(groups = "experimental")
-    public void test1() throws Exception {
+    public void testQuality() throws Exception {
         String text;
         long before = System.nanoTime();
         try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("aif_article.txt")) {
@@ -57,7 +56,11 @@ public class DictBuilderTest {
         final int tokensErrors = dict.getWords().stream().mapToInt(word ->
             tokensErrors(word, idealDict)
         ).sum();
-        
+
+
+        dict.getWords().stream().filter(word ->
+                        tokensErrors(word, idealDict) > 0
+        ).forEach(System.out::println);
         System.out.println(dict);
         // 180 sec
         // 122 best
@@ -84,12 +87,18 @@ public class DictBuilderTest {
     
     private static boolean rootTokenError(final IWord word, final IdealDict idealDict) {
         final Optional<Map.Entry<String, List<String>>> idealResult = idealDict.findTarget(word.getRootToken());
-        return idealResult.get().getKey().equals(word.getRootToken());
+        if (!idealResult.isPresent()) {
+            return true;
+        }
+        return !idealResult.get().getKey().toLowerCase().equals(word.getRootToken().toLowerCase());
     }
     
     private static int tokensErrors(final IWord word, final IdealDict idealDict) {
-        final Map.Entry<String, List<String>> idealResult = idealDict.findTarget(word.getRootToken()).get();  
-        return (int)word.getAllTokens().stream().filter(token -> idealResult.getValue().contains(token)).count();
+        final Optional<Map.Entry<String, List<String>>> idealResult = idealDict.findTarget(word.getRootToken());  
+        if (!idealResult.isPresent()) {
+            return word.getAllTokens().size();
+        }
+        return (int)word.getAllTokens().stream().filter(token -> !idealResult.get().getValue().contains(token)).count();
     }
 
 }

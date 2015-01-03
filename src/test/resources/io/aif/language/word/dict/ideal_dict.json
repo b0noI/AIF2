@@ -1,403 +1,416 @@
+{
+"words": {
+    "": [],
+    "1": ["1"],
+    "2": ["2", "2)"],
+    "3": ["3", "([3])", "3"],
+    "4": ["4"],
+    "8-10": ["8-10"],
+    "1.0": ["1.0"],
+    "1.1": ["1.2.1", "1.1"],
+    "1.2": ["1.2.2", "1.2"],
+    "10k": ["10k"],
+    "0.0": ["0.0"],
+    "0.75": ["0.75"],
+    "0.8": ["0.8"],
+    
+    "y": ["y"],
+    "y,": ["y,"],
+    "y.": ["y."],
+    "y”": ["y”"],
+    "ll": ["ll"],
+    "o": ["o"],
+    
+    "aabbcc": ["aabbcc"],
+    "aadddc": ["aadddc"],
+    
+    "”": ["”"],
+    "“": ["“"],
+    "”,": ["”,"],
+    "”.": ["”."],
+    ":))": [":))", ":)"],
+    "))": ["))"],
+    ";)": [";)"],
+    "*": ["*"],
+    ";": [";"],
+    ",": [","],
+    "-": ["-"],
+    ".": [".", "[]).", ").", "."],
+    ".,": [".,"],
+    "]).": ["])."],
+    "):": ["):"],
+    ")": [")"],
+    "(": ["("],
+    "].": ["]."],
+    "]": ["]"],
+    "[": ["["],
+    "!": ["!", "1)"],
+    "([": ["(["],
+    ":": [":", "):"],
 
-RootToken: [[1]] tokens: [[[1]]]
-RootToken: [[2]] tokens: [[[2, 2)]]]
-RootToken: [3] tokens: [[3]]
-RootToken: [3] tokens: [[([3]), [3]]]
-RootToken: [4)] tokens: [[4)]]
-RootToken: [8-10] tokens: [[8-10]]
-RootToken: [1.0)] tokens: [[1.0)]]
-RootToken: [1.1)] tokens: [[1.1), [1.1]]]
-RootToken: [1.2)] tokens: [[1.2), [1.2.1], 1.2, [1.2], [1.2.2]]]
-RootToken: [1.2.1;] tokens: [[1.2.1;, 1.2.2;]]
-RootToken: [10k] tokens: [[10k]]
-RootToken: [0.0] tokens: [[0.0]]
-RootToken: [0.75] tokens: [[0.75]]
-RootToken: [0.8] tokens: [[0.8]]
-
-RootToken: [y] tokens: [[y]]
-RootToken: [y,] tokens: [[y,]]
-RootToken: [y.] tokens: [[y.]]
-RootToken: [y”] tokens: [[y”]]
-RootToken: [“ll] tokens: [[“ll]]
-RootToken: [“o] tokens: [[“o]]
-
-RootToken: [“aabbcc] tokens: [[“aabbcc]]
-RootToken: [“aadddc] tokens: [[“aadddc]]
-RootToken: [(onl] tokens: [[(onl]]
-
-RootToken: [”] tokens: [[”]]
-RootToken: [”,] tokens: [[”,]]
-RootToken: [”.] tokens: [[”.]]
-RootToken: [:))] tokens: [[:)), :)]]
-RootToken: [;)] tokens: [[;)]]
-RootToken: [*] tokens: [[*]]
-RootToken: [,] tokens: [[,]]
-RootToken: [-] tokens: [[-]]
-RootToken: [.] tokens: [[.]]
-RootToken: [.,] tokens: [[.,]]
-
-### A
-RootToken: [a] tokens: [[A, a, [a]]
-RootToken: [AIF] tokens: [[AIF]]
-RootToken: [AIF-CLI] tokens: [[AIF-CLI]]
-RootToken: [API] tokens: [[API]]
-RootToken: [Accordingl] tokens: [[Accordingl]]
-RootToken: [Alpha] tokens: [[Alpha1, Alpha2, Alpha3, Alpha4, Alpha]]
-RootToken: [As] tokens: [[As, as]]
-RootToken: [about] tokens: [[about]]
-RootToken: [actual] tokens: [[actual]]
-RootToken: [after] tokens: [[after]]
-RootToken: [algorithm] tokens: [[algorithm]]
-RootToken: [all] tokens: [[all]]
-RootToken: [alphabetic] tokens: [[alphabetic]]
-RootToken: [alread] tokens: [[alread]]
-RootToken: [also] tokens: [[also]]
-RootToken: [although] tokens: [[although, though]]
-RootToken: [an] tokens: [[an, An]]
-RootToken: [and] tokens: [[and]]
-RootToken: [another] tokens: [[another]]
-RootToken: [anticipate] tokens: [[anticipate]]
-RootToken: [application] tokens: [[application]]
-RootToken: [applied] tokens: [[applied]]
-RootToken: [are] tokens: [[are]]
-RootToken: [argument] tokens: [[argument]]
-RootToken: [article] tokens: [[article]]
-RootToken: [assume] tokens: [[assume]]
-RootToken: [at] tokens: [[at]]
-RootToken: [author] tokens: [[author]]
-
-### B
-RootToken: [B] tokens: [[B, b]]
-RootToken: [Building] tokens: [[Building]]
-RootToken: [But] tokens: [[But, but, (but]]
-RootToken: [back] tokens: [[back]]
-RootToken: [bangs] tokens: [[bangs]]
-RootToken: [based] tokens: [[based]]
-RootToken: [basis] tokens: [[basis]]
-RootToken: [be] tokens: [[be, been]]
-RootToken: [big] tokens: [[big]]
-RootToken: [book] tokens: [[book]]
-RootToken: [both] tokens: [[both]]
-RootToken: [bounded] tokens: [[bounded]]
-RootToken: [built] tokens: [[building, built]]
-
-
-### C
-RootToken: [Comparison] tokens: [[Comparison]]
-RootToken: [c]] tokens: [[c]]]
-RootToken: [calculate] tokens: [[calculate, calculation, calculating]]
-RootToken: [call] tokens: [[call]]
-RootToken: [can] tokens: [[can, can’t]]
-RootToken: [case] tokens: [[case]]
-RootToken: [certain] tokens: [[certain]]
-RootToken: [characters] tokens: [[characters, character]]
-RootToken: [chosen] tokens: [[chosen]]
-RootToken: [clarification] tokens: [[clarification]]
-RootToken: [code] tokens: [[code, code:]]
-RootToken: [common] tokens: [[“common, common]]
-RootToken: [command] tokens: [[command]]
-RootToken: [comments] tokens: [[comments]]
-RootToken: [comparison] tokens: [[comparison]]
-RootToken: [complement] tokens: [[complement]]
-RootToken: [computed] tokens: [[computed]]
-RootToken: [condition] tokens: [[condition]]
-RootToken: [configurable] tokens: [[configurable]]
-RootToken: [connect] tokens: [[connect, connections]]
-RootToken: [consider] tokens: [[consider]]
-RootToken: [containing] tokens: [[containing]]
-RootToken: [context] tokens: [[context]]
-RootToken: [continuall] tokens: [[continuall]]
-RootToken: [current] tokens: [[current]]
-RootToken: [custom] tokens: [[custom]]
-RootToken: [complete] tokens: [[complete, incomplete]]
-
-
-### D
-RootToken: [Dictionar] tokens: [[Dictionar]]
-RootToken: [dent] tokens: [[dent]]
-RootToken: [describe] tokens: [[describe, described]]
-RootToken: [description] tokens: [[description]]
-RootToken: [devilishl] tokens: [[devilishl]]
-RootToken: [dictionar] tokens: [[dictionar]]
-RootToken: [digging] tokens: [[digging]]
-RootToken: [do] tokens: [[do, does, done]]
-RootToken: [documentation] tokens: [[documentation]]
-
-### E
-RootToken: [E.g] tokens: [[E.g]]
-RootToken: [Everything] tokens: [[Everything]]
-RootToken: [Example] tokens: [[Example]]
-RootToken: [eas] tokens: [[eas]]
-RootToken: [easil] tokens: [[easil]]
-RootToken: [empirically:] tokens: [[empirically:]]
-RootToken: [end] tokens: [[end]]
-RootToken: [engine] tokens: [[engine]]
-RootToken: [enlighten] tokens: [[enlighten]]
-RootToken: [entr] tokens: [[entr]]
-RootToken: [even] tokens: [[even]]
-RootToken: [ever] tokens: [[ever]]
-RootToken: [examine] tokens: [[examine]]
-RootToken: [example] tokens: [[example]]
-RootToken: [exception] tokens: [[exception]]
-RootToken: [execlusivel] tokens: [[execlusivel]]
-
-### F
-RootToken: [Find] tokens: [[Find]]
-RootToken: [Fixing] tokens: [[Fixing]]
-RootToken: [For] tokens: [[For]]
-RootToken: [Formula] tokens: [[Formula]]
-RootToken: [fact] tokens: [[fact]]
-RootToken: [features] tokens: [[features, features:, feature]]
-RootToken: [feedback] tokens: [[feedback]]
-RootToken: [few] tokens: [[few]]
-RootToken: [fiddle] tokens: [[fiddle]]
-RootToken: [field] tokens: [[field]]
-RootToken: [find] tokens: [[find]]
-RootToken: [first] tokens: [[first]]
-RootToken: [following] tokens: [[following]]
-RootToken: [flowing] tokens: [[flowing]]
-RootToken: [for] tokens: [[for]]
-RootToken: [form] tokens: [[form]]
-RootToken: [from] tokens: [[from]]
-RootToken: [formula] tokens: [[formula]]
-RootToken: [forward] tokens: [[forward]]
-RootToken: [found] tokens: [[found]]
-RootToken: [fun] tokens: [[fun]]
-RootToken: [function] tokens: [[function]]
-
-### G
-RootToken: [get] tokens: [[get]]
-RootToken: [given] tokens: [[given]]
-RootToken: [graph] tokens: [[graph]]
-RootToken: [grouped] tokens: [[grouped]]
-
-### H
-RootToken: [he] tokens: [[“he]]
-RootToken: [hello] tokens: [[“hello]]
-RootToken: [Here] tokens: [[Here, Here’s, here]]
-RootToken: [How] tokens: [[How]]
-RootToken: [However] tokens: [[However]]
-RootToken: [hardcoded] tokens: [[hardcoded]]
-RootToken: [have] tokens: [[have, has]]
-RootToken: [hand] tokens: [[hand]]
-RootToken: [help] tokens: [[help]]
-RootToken: [how] tokens: [[how]]
-RootToken: [huge] tokens: [[huge]]
-
-### I
-RootToken: [I] tokens: [[I]]
-RootToken: [If] tokens: [[If, if]]
-RootToken: [Illustrated] tokens: [[Illustrated]]
-RootToken: [In] tokens: [[In, in]]
-RootToken: [It] tokens: [[It, it]]
-RootToken: [It’s] tokens: [[It’s]]
-RootToken: [I’m] tokens: [[I’m]]
-RootToken: [i.e] tokens: [[i.e]]
-RootToken: [img] tokens: [[img]]
-RootToken: [improving] tokens: [[improving]]
-RootToken: [included] tokens: [[included]]
-RootToken: [independent] tokens: [[independent]]
-RootToken: [inequalit] tokens: [[inequalit]]
-RootToken: [infer] tokens: [[infer]]
-RootToken: [input] tokens: [[input]]
-RootToken: [instance] tokens: [[instance]]
-RootToken: [interesting] tokens: [[interesting]]
-RootToken: [into] tokens: [[into]]
-RootToken: [is] tokens: [[is]]
-RootToken: [issue] tokens: [[issue]]
-RootToken: [its] tokens: [[its]]
-
-### J
-RootToken: [Januar] tokens: [[Januar]]
-
-### K
-RootToken: [keep] tokens: [[keep]]
-RootToken: [know] tokens: [[know]]
-
-### L
-RootToken: [Language] tokens: [[Language]]
-RootToken: [Length] tokens: [[Length]]
-RootToken: [Let’s] tokens: [[let, Let’s]]
-RootToken: [Librar] tokens: [[Librar]]
-RootToken: [language] tokens: [[language]]
-RootToken: [last] tokens: [[last]]
-RootToken: [later)] tokens: [[later)]]
-RootToken: [left] tokens: [[left]]
-RootToken: [librar] tokens: [[librar]]
-RootToken: [like] tokens: [[like]]
-RootToken: [line] tokens: [[line, lines]]
-RootToken: [links] tokens: [[links]]
-RootToken: [list] tokens: [[list]]
-RootToken: [longest] tokens: [[longest]]
-RootToken: [love] tokens: [[love]]
-
-### M
-RootToken: [major] tokens: [[major]]
-RootToken: [make] tokens: [[make]]
-RootToken: [maximum] tokens: [[maximum]]
-RootToken: [mean] tokens: [[mean]]
-RootToken: [method] tokens: [[method]]
-RootToken: [might] tokens: [[might]]
-RootToken: [minutes] tokens: [[minutes]]
-RootToken: [more] tokens: [[more]]
-RootToken: [moving] tokens: [[moving]]
-RootToken: [meeting] tokens: [[(meeting]]
-
-
-### N
-RootToken: [NLP] tokens: [[NLP, NLP!]]
-RootToken: [Now] tokens: [[Now]]
-RootToken: [named] tokens: [[named, name]]
-RootToken: [natural] tokens: [[natural]]
-RootToken: [necessaril] tokens: [[necessaril]]
-RootToken: [need] tokens: [[need]]
-RootToken: [new] tokens: [[new]]
-RootToken: [next] tokens: [[next]]
-RootToken: [no] tokens: [[no]]
-RootToken: [noble] tokens: [[noble]]
-RootToken: [note] tokens: [[note]]
-RootToken: [not] tokens: [[not]]
-RootToken: [nothing] tokens: [[nothing]]
-RootToken: [noticed] tokens: [[noticed]]
-RootToken: [notion] tokens: [[notion]]
-RootToken: [number] tokens: [[number]]
-
-### O
-RootToken: [of] tokens: [[of]]
-RootToken: [on] tokens: [[on]]
-RootToken: [one] tokens: [[one]]
-RootToken: [open] tokens: [[open]]
-RootToken: [or] tokens: [[or]]
-RootToken: [order] tokens: [[order]]
-RootToken: [our] tokens: [[our]]
-RootToken: [output] tokens: [[output]]
-
-### P
-RootToken: [Perhaps] tokens: [[Perhaps]]
-RootToken: [Please] tokens: [[Please]]
-RootToken: [page] tokens: [[page]]
-RootToken: [parameter] tokens: [[parameter]]
-RootToken: [part] tokens: [[part, parting]]
-RootToken: [passed] tokens: [[passed]]
-RootToken: [performance] tokens: [[performance]]
-RootToken: [planned] tokens: [[planned]]
-RootToken: [position] tokens: [[position]]
-RootToken: [possible] tokens: [[possible]]
-RootToken: [practice] tokens: [[practice, practical, practicall]]
-RootToken: [present] tokens: [[present]]
-RootToken: [previous] tokens: [[previous]]
-RootToken: [probabilit] tokens: [[probabilit]]
-RootToken: [process] tokens: [[process]]
-RootToken: [processing] tokens: [[processing]]
-RootToken: [program] tokens: [[program]]
-RootToken: [project] tokens: [[project]]
-
-### Q
-RootToken: [quite] tokens: [[quite]]
-
-### R
-RootToken: [range] tokens: [[(ranges, range]]
-RootToken: [recursive] tokens: [[Recursive, recursivel, recursive]]
-RootToken: [Russian)] tokens: [[Russian)]]
-RootToken: [read] tokens: [[read, reader]]
-RootToken: [regard] tokens: [[regard]]
-RootToken: [relations] tokens: [[relations]]
-RootToken: [release] tokens: [[release, releases]]
-RootToken: [remember] tokens: [[remember]]
-RootToken: [repositor] tokens: [[repositor]]
-RootToken: [require] tokens: [[require, requires]]
-RootToken: [result] tokens: [[result]]
-RootToken: [returns] tokens: [[returns]]
-RootToken: [right] tokens: [[right]]
-RootToken: [rule] tokens: [[rule]]
-
-### S
-RootToken: [Searching] tokens: [[Searching]]
-RootToken: [Semantic] tokens: [[Semantic, semantic]]
-RootToken: [seem] tokens: [[“seemed]]
-RootToken: [Similar] tokens: [[Similar, similar, similarit, “Similarit]]
-RootToken: [So] tokens: [[So]]
-RootToken: [same] tokens: [[same]]
-RootToken: [scheduled] tokens: [[scheduled]]
-RootToken: [second] tokens: [[second]]
-RootToken: [see] tokens: [[see, “see, seen, (see]]
-RootToken: [sentences] tokens: [[sentences]]
-RootToken: [separators] tokens: [[separators]]
-RootToken: [sequence] tokens: [[sequence]]
-RootToken: [set] tokens: [[set]]
-RootToken: [shown] tokens: [[shown):, shows]]
-RootToken: [sides] tokens: [[sides]]
-RootToken: [simple] tokens: [[simple]]
-RootToken: [sin] tokens: [[sin]]
-RootToken: [since] tokens: [[since]]
-RootToken: [small] tokens: [[small]]
-RootToken: [solve] tokens: [[solved]]
-RootToken: [some] tokens: [[some]]
-RootToken: [speak] tokens: [[speaking]]
-RootToken: [specificall] tokens: [[specificall]]
-RootToken: [specified] tokens: [[specified]]
-RootToken: [start] tokens: [[start]]
-RootToken: [string] tokens: [[string, strings, things]]
-RootToken: [subset] tokens: [[subset]]
-RootToken: [substrings] tokens: [[substrings, substring]]
-RootToken: [sure] tokens: [[sure]]
-RootToken: [synonyms] tokens: [[synonyms]]
-
-### T
-RootToken: [Text] tokens: [[Text]]
-RootToken: [The] tokens: [[The, this, this:, that, the, This, these]]
-RootToken: [There’s] tokens: [[There’s, There]]
-RootToken: [Toda] tokens: [[Toda]]
-RootToken: [take] tokens: [[take, takes]]
-RootToken: [task] tokens: [[task]]
-RootToken: [terms] tokens: [[terms]]
-RootToken: [texts] tokens: [[texts, text, (text]]
-RootToken: [than] tokens: [[than]]
-RootToken: [thesis] tokens: [[thesis]]
-RootToken: [threshold] tokens: [[threshold]]
-RootToken: [token] tokens: [[tokens:, tokens;, tokens, token, Token]]
-RootToken: [too] tokens: [[too, to]]
-RootToken: [towards] tokens: [[towards]]
-RootToken: [translated] tokens: [[translated]]
-RootToken: [tries] tokens: [[tries]]
-RootToken: [two] tokens: [[two]]
-
-### U
-RootToken: [unique] tokens: [[unique]]
-RootToken: [us] tokens: [[us]]
-RootToken: [use] tokens: [[use, uses, used, using]]
-RootToken: [utilit] tokens: [[utilit]]
-RootToken: [up] tokens: [[(up]]
-
-### V
-RootToken: [ver] tokens: [[ver]]
-RootToken: [valiant] tokens: [[valiant]]
-RootToken: [value] tokens: [[value]]
-RootToken: [vocabular] tokens: [[vocabular]]
-
-### W
-RootToken: [We] tokens: [[We, (we, we]]
-RootToken: [wa] tokens: [[wa]]
-RootToken: [want] tokens: [[want]]
-RootToken: [was] tokens: [[was]]
-RootToken: [weight] tokens: [[weight]]
-RootToken: [welcome] tokens: [[welcome]]
-RootToken: [where] tokens: [[where:]]
-RootToken: [whether] tokens: [[whether]]
-RootToken: [which] tokens: [[which]]
-RootToken: [while] tokens: [[while]]
-RootToken: [whole] tokens: [[whole]]
-RootToken: [will] tokens: [[will]]
-RootToken: [with] tokens: [[with]]
-RootToken: [without] tokens: [[without]]
-RootToken: [words)] tokens: [[words), “word, words, word, Word]]
-RootToken: [work] tokens: [[works, work, working]]
-RootToken: [world] tokens: [[world]]
-RootToken: [would] tokens: [[would]]
-RootToken: [write] tokens: [[write]]
-
-### Y
-RootToken: [You] tokens: [[You]]
-RootToken: [yuck] tokens: [[(yuck!)]]
+    // ### A
+    "a": ["A", "a", "a"],
+    "AIF": ["AIF"],
+    "AIF-CLI": ["AIF-CLI"],
+    "API": ["API"],
+    "Accordingly": ["Accordingly"],
+    "Alpha": ["Alpha1", "Alpha2", "Alpha3", "Alpha4", "Alpha"],
+    "As": ["As", "as"],
+    "about": ["about"],
+    "actual": ["actual"],
+    "after": ["after"],
+    "algorithm": ["algorithm"],
+    "all": ["all"],
+    "alphabetic": ["alphabetic"],
+    "already": ["already"],
+    "also": ["also"],
+    "though": ["although", "though"],
+    "An": ["an", "An"],
+    "and": ["and"],
+    "another": ["another"],
+    "anticipate": ["anticipate"],
+    "application": ["application"],
+    "applied": ["applied"],
+    "are": ["are"],
+    "argument": ["argument"],
+    "article": ["article"],
+    "assume": ["assume"],
+    "at": ["at"],
+    "author": ["author"],
+    "any": ["any"],
+    
+    // ### B
+    "B": ["B", "b"],
+    "But": ["But", "but"],
+    "back": ["back"],
+    "bangs": ["bangs"],
+    "based": ["based"],
+    "basis": ["basis"],
+    "be": ["be", "been"],
+    "big": ["big"],
+    "book": ["book"],
+    "both": ["both"],
+    "bounded": ["bounded"],
+    "by": ["by", "By"],
+    "built": ["built"],
+    "building": ["building", "Building"],
+    
+    
+    // ### C
+    "Comparison": ["Comparison", "comparison"],
+    "c": ["c"],
+    "calculation": ["calculate", "calculation", "calculating"],
+    "call": ["call"],
+    "can": ["can", "can’t"],
+    "case": ["case"],
+    "certain": ["certain"],
+    "character": ["characters", "character"],
+    "chosen": ["chosen"],
+    "clarification": ["clarification"],
+    "code": ["code", "code:"],
+    "common": ["“common", "common"],
+    "command": ["command"],
+    "comments": ["comments"],
+    "complement": ["complement"],
+    "computed": ["computed"],
+    "condition": ["condition"],
+    "configurable": ["configurable"],
+    "connect": ["connect", "connections"],
+    "consider": ["consider"],
+    "containing": ["containing"],
+    "context": ["context"],
+    "continually": ["continually"],
+    "current": ["current"],
+    "custom": ["custom"],
+    "complete": ["complete", "incomplete"],
+    
+    
+    // ### D
+    "Dictionary": ["Dictionary", "dictionary"],
+    "dent": ["dent"],
+    "describe": ["describe", "described"],
+    "description": ["description"],
+    "devilishly": ["devilishly"],
+    "digging": ["digging"],
+    "do": ["do", "does", "done"],
+    "documentation": ["documentation"],
+    
+    // ### E
+    "E.g": ["E.g"],
+    "Everything": ["Everything"],
+    "Example": ["Example", "example"],
+    "easy": ["easy", "easily"],
+    "empirically": ["empirically", "empirically:"],
+    "end": ["end"],
+    "engine": ["engine"],
+    "enlighten": ["enlighten"],
+    "entry": ["entry"],
+    "even": ["even"],
+    "ever": ["ever"],
+    "every": ["every"],
+    "examine": ["examine"],
+    "exception": ["exception"],
+    "execlusively": ["execlusively"],
+    
+    // ### F
+    "Find": ["Find", "find"],
+    "Fixing": ["Fixing"],
+    "For": ["For", "for"],
+    "Formula": ["Formula", "formula"],
+    "fact": ["fact"],
+    "feature": ["features", "feature"],
+    "feedback": ["feedback"],
+    "few": ["few"],
+    "fiddle": ["fiddle"],
+    "field": ["field"],
+    "first": ["first"],
+    "following": ["following"],
+    "flowing": ["flowing"],
+    "form": ["form"],
+    "from": ["from"],
+    "forward": ["forward"],
+    "found": ["found"],
+    "fun": ["fun"],
+    "function": ["function"],
+    
+    // ### G
+    "get": ["get"],
+    "given": ["given"],
+    "graph": ["graph"],
+    "grouped": ["grouped"],
+    
+    // ### H
+    "he": ["he"],
+    "hello": ["hello"],
+    "here": ["Here", "Here’s", "here"],
+    "How": ["How", "how"],
+    "However": ["However"],
+    "hardcoded": ["hardcoded"],
+    "have": ["have", "has"],
+    "hand": ["hand"],
+    "help": ["help"],
+    "huge": ["huge"],
+    
+    // ### I
+    "I": ["I"],
+    "If": ["If", "if"],
+    "Illustrated": ["Illustrated"],
+    "in": ["In", "in"],
+    "it": ["It", "it", "It’s"],
+    "I’m": ["I’m"],
+    "i.e": ["i.e"],
+    "img": ["img"],
+    "improving": ["improving"],
+    "included": ["included"],
+    "independent": ["independent"],
+    "inequality": ["inequality"],
+    "infer": ["infer"],
+    "input": ["input"],
+    "instance": ["instance"],
+    "interesting": ["interesting"],
+    "into": ["into"],
+    "is": ["is"],
+    "issue": ["issue"],
+    "its": ["its", "It’s"],
+    
+    // ### J
+    "January": ["January"],
+    
+     /// ### K
+    "keep": ["keep"],
+    "know": ["know"],
+    
+     /// ### L
+    "Language": ["Language", "language"],
+    "Length": ["Length"],
+    "let": ["let", "Let’s"],
+    "library": ["Library", "library"],
+    "last": ["last"],
+    "later": ["later)", "later"],
+    "left": ["left"],
+    "like": ["like"],
+    "line": ["line", "lines"],
+    "links": ["links"],
+    "list": ["list"],
+    "longest": ["longest"],
+    "love": ["love"],
+    
+     /// ### M
+    "major": ["major"],
+    "make": ["make"],
+    "maximum": ["maximum"],
+    "mean": ["mean"],
+    "method": ["method"],
+    "might": ["might"],
+    "minutes": ["minutes"],
+    "more": ["more"],
+    "moving": ["moving"],
+    "meeting": ["meeting"],
+    
+    
+     /// ### N
+    "NLP": ["NLP", "NLP!"],
+    "Now": ["Now"],
+    "name": ["named", "name"],
+    "natural": ["natural"],
+    "necessarily": ["necessarily"],
+    "need": ["need"],
+    "new": ["new"],
+    "next": ["next"],
+    "no": ["no"],
+    "noble": ["noble"],
+    "note": ["note"],
+    "not": ["not"],
+    "nothing": ["nothing"],
+    "noticed": ["noticed"],
+    "notion": ["notion"],
+    "number": ["number"],
+    
+     /// ### O
+    "of": ["of"],
+    "on": ["on"],
+    "one": ["one"],
+    "open": ["open"],
+    "or": ["or"],
+    "order": ["order"],
+    "our": ["our"],
+    "output": ["output"],
+    "only": ["only"],
+    
+     /// ### P
+    "Perhaps": ["Perhaps"],
+    "Please": ["Please"],
+    "page": ["page"],
+    "parameter": ["parameter"],
+    "part": ["part", "parting"],
+    "passed": ["passed"],
+    "performance": ["performance"],
+    "planned": ["planned"],
+    "position": ["position"],
+    "possible": ["possible"],
+    "practice": ["practice", "practical", "practically"],
+    "present": ["present"],
+    "previous": ["previous"],
+    "probability": ["probability"],
+    "process": ["process"],
+    "processing": ["processing"],
+    "program": ["program"],
+    "project": ["project"],
+    
+     /// ### Q
+    "quite": ["quite"],
+    
+     /// ### R
+    "range": ["ranges", "range"],
+    "recursive": ["Recursive", "recursively", "recursive"],
+    "Russian": ["Russian", "Russian)"],
+    "read": ["read", "reader"],
+    "regard": ["regard"],
+    "relations": ["relations"],
+    "release": ["release", "releases"],
+    "remember": ["remember"],
+    "repository": ["repository"],
+    "require": ["require", "requires"],
+    "result": ["result"],
+    "returns": ["returns"],
+    "right": ["right"],
+    "rule": ["rule"],
+    
+     /// ### S
+    "Searching": ["Searching"],
+    "Semantic": ["Semantic", "semantic"],
+    "seem": ["seem", "seemed"],
+    "similar": ["Similar", "similar", "similarity", "Similarity"],
+    "So": ["So"],
+    "same": ["same"],
+    "scheduled": ["scheduled"],
+    "second": ["second"],
+    "see": ["see", "“see", "seen", "(see"],
+    "sentences": ["sentences"],
+    "separators": ["separators"],
+    "sequence": ["sequence"],
+    "set": ["set"],
+    "shows": ["shown", "shows"],
+    "sides": ["sides"],
+    "simple": ["simple"],
+    "sin": ["sin"],
+    "since": ["since"],
+    "small": ["small"],
+    "solved": ["solved"],
+    "some": ["some"],
+    "speak": ["speak", "speaking"],
+    "specifically": ["specifically"],
+    "specified": ["specified"],
+    "start": ["start"],
+    "string": ["string", "strings"],
+    "subset": ["subset"],
+    "substrings": ["substrings", "substring"],
+    "sure": ["sure"],
+    "synonyms": ["synonyms"],
+    
+     /// ### T
+    "Text": ["Text", "texts", "text"],
+    "the": ["The", "the"],
+    "this": ["this", "This"],
+    "that": ["that"],
+    "these": ["these"],
+    "they": ["they"],
+    "There": ["There’s", "There"],
+    "Today": ["Today"],
+    "take": ["take", "takes"],
+    "task": ["task"],
+    "terms": ["terms"],
+    "than": ["than"],
+    "thesis": ["thesis"],
+    "threshold": ["threshold"],
+    "token": ["tokens:", "tokens;", "tokens", "token", "Token"],
+    "to": ["too", "to"],
+    "towards": ["towards"],
+    "translated": ["translated"],
+    "tries": ["tries"],
+    "two": ["two"],
+    "things": ["things"],
+    
+     /// ### U
+    "unique": ["unique"],
+    "us": ["us"],
+    "use": ["use", "uses", "used", "using"],
+    "utility": ["utility"],
+    "up": ["up"],
+    
+     /// ### V
+    "ver": ["ver"],
+    "valiant": ["valiant"],
+    "value": ["value"],
+    "vocabulary": ["vocabulary"],
+    "very": ["very"],
+    
+     /// ### W
+    "We": ["We", "we"],
+    "wa": ["wa"],
+    "want": ["want"],
+    "was": ["was"],
+    "way": ["way"],
+    "weight": ["weight"],
+    "welcome": ["welcome"],
+    "where": ["where:"],
+    "whether": ["whether"],
+    "which": ["which"],
+    "while": ["while"],
+    "whole": ["whole"],
+    "will": ["will"],
+    "with": ["with"],
+    "without": ["without"],
+    "Word": ["words", "word", "Word"],
+    "work": ["works", "work", "working"],
+    "world": ["world"],
+    "would": ["would"],
+    "write": ["write"],
+    
+     /// ### Y
+    "You": ["You", "you", "your"],
+    "yuck": ["yuck"]
+  }
+}
 
 

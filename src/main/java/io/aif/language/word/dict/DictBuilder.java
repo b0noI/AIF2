@@ -49,7 +49,7 @@ public class DictBuilder implements IDictBuilder<Collection<String>> {
                     if (rootTokenOpt.isPresent()) {
                         rootToken = rootTokenOpt.get();
                     } else {
-                        rootToken = set.iterator().next();
+                        rootToken = set.stream().sorted(Comparator.comparing(String::length)).findFirst().get();
                     }
                     return new Word(rootToken, set, wordSetDict.getCount(set));
                 })
