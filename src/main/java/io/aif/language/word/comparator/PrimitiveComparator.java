@@ -1,14 +1,13 @@
 package io.aif.language.word.comparator;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collection;
 
-class PrimitiveComparator implements ISetComparator {
+class PrimitiveComparator implements IGroupComparator {
 
     private static final double THRESHOLD = .45;
 
     @Override
-    public double compare(Set<String> t1, Set<String> t2) {
+    public double compare(Collection<String> t1, Collection<String> t2) {
         if (t1.isEmpty() || t2.isEmpty()) return .0;
         if (t1.stream().filter(t2::contains).count() > 0) return 1.0;
         final double averageSize1 = t1.stream().mapToInt(String::length).average().getAsDouble();

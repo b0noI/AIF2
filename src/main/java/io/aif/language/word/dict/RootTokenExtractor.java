@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-class RootTokenExtractor implements IExtractor<Set<String>, String> {
+class RootTokenExtractor implements IExtractor<Collection<String>, String> {
 
     private final ITokenComparator comparator;
 
@@ -15,7 +15,7 @@ class RootTokenExtractor implements IExtractor<Set<String>, String> {
         this.comparator = comparator;
     }
 
-    public Optional<String> extract(final Set<String> tokens) {
+    public Optional<String> extract(final Collection<String> tokens) {
         if (tokens.isEmpty()) return Optional.empty();
         if (tokens.size() == 1) return Optional.of(tokens.stream().findAny().get());
         final Map<String, Double> results = new HashMap<>();

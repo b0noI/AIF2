@@ -1,29 +1,32 @@
 package io.aif.language.word.dict;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 import io.aif.language.common.IMapper;
-import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IWord;
+import org.apache.log4j.Logger;
 
-public class WordMapper implements IMapper<Set<String>, IWord> {
+public class WordMapper implements IMapper<Collection<String>, IWord> {
+
+    private static final Logger LOGGER = Logger.getLogger(WordMapper.class);
 
     private final RootTokenExtractor rootTokenExtractor;
 
-    WordMapper(ITokenComparator tokenComparator) {
-        rootTokenExtractor = new RootTokenExtractor(ITokenComparator tokenComparator);
+    WordMapper(RootTokenExtractor rootTokenExtractor) {
+        this.rootTokenExtractor = rootTokenExtractor;
     }
 
     @Override
-    public IWord map(Set<String> set) {
-        final Optional<String> rootTokenOpt = rootTokenExtractor.extract(set);
+    public IWord map(Collection<String> data) {
+        LOGGER.debug(String.format("Map %s", data));
+        final Optional<String> rootTokenOpt = rootTokenExtractor.extract(data);
         final String rootToken;
         if (rootTokenOpt.isPresent()) {
             rootToken = rootTokenOpt.get();
         } else {
-            rootToken = set.iterator().next();
+            rootToken = data.iterator().next();
         }
-        return new Word(rootToken, set, (long) set.size());
+        return new Word(rootToken, data, (long) data.size());
     }
 }

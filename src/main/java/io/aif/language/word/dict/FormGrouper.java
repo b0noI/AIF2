@@ -2,16 +2,20 @@ package io.aif.language.word.dict;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import io.aif.language.common.settings.ISettings;
-import io.aif.language.word.comparator.ISetComparator;
 
-public class Grouper implements IGroupable {
+import io.aif.language.common.IGrouper;
+import io.aif.language.word.comparator.IGroupComparator;
 
-    private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.WordSetDictComparatorThreshold();
+public class FormGrouper implements IGrouper {
+
+    private final IGroupComparator groupComparator;
+
+    FormGrouper(final IGroupComparator groupComparator) {
+        this.groupComparator = groupComparator;
+    }
 
     @Override
-    // SetComparator should be named GroupComparator
-    public List<Set<String>> group(Collection<String> tokens, ISetComparator groupComparator) {
+    public List<Set<String>> group(final Collection<String> tokens) {
         List<Set<String>> tokenSets = tokens
                 .stream()
                 .map(token -> new HashSet<String>() {{

@@ -2,13 +2,10 @@ package io.aif.language.word.dict;
 
 
 import io.aif.language.common.settings.ISettings;
-import io.aif.language.word.comparator.ISetComparator;
+import io.aif.language.word.comparator.IGroupComparator;
 import org.apache.log4j.Logger;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 class WordSetDict {
@@ -17,7 +14,7 @@ class WordSetDict {
 
     private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.WordSetDictComparatorThreshold();
 
-    private final ISetComparator setComparator;
+    private final IGroupComparator setComparator;
 
     private Map<String, Set<String>> tokensSetCache = new HashMap<>();
 
@@ -25,7 +22,7 @@ class WordSetDict {
 
     private Map<String, AtomicLong> tokensCount = new HashMap<>();
 
-    WordSetDict(ISetComparator setComparator) {
+    WordSetDict(IGroupComparator setComparator) {
         this.setComparator = setComparator;
     }
 
@@ -36,7 +33,11 @@ class WordSetDict {
         });
 
         final int tokensSize = tokens.size();
-        final Optional<Set<String>> tokensSetOpt = set.stream().filter(token -> getSet(token).isPresent()).map(token -> getSet(token).get()).findFirst();
+        final Optional<Set<String>> tokensSetOpt = set
+                .stream()
+                .filter(token -> getSet(token).isPresent())
+                .map(token -> getSet(token).get())
+                .findFirst();
         if (tokensSetOpt.isPresent()) {
             final Set<String> tokensSet = tokensSetOpt.get();
             tokensSet.addAll(set);
