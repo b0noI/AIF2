@@ -19,7 +19,7 @@ class MeshComparator implements IGroupComparator {
                 .parallelStream()
                 .mapToDouble(t1 -> o2
                                 .stream()
-                                .mapToDouble(t2 -> tokenComparator.compare(t1, t2))
+                                .mapToDouble(t2 -> tokenComparator.compare(t1.toLowerCase(), t2.toLowerCase()))
                                 .sum()
                 )
                 .sum();

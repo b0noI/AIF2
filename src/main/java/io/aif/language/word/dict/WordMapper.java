@@ -1,6 +1,7 @@
 package io.aif.language.word.dict;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
 import io.aif.language.common.IMapper;
@@ -25,7 +26,7 @@ public class WordMapper implements IMapper<Collection<String>, IWord> {
         if (rootTokenOpt.isPresent()) {
             rootToken = rootTokenOpt.get();
         } else {
-            rootToken = data.iterator().next();
+            rootToken = data.stream().sorted(Comparator.comparing(String::length)).findFirst().get();
         }
         return new Word(rootToken, data, (long) data.size());
     }

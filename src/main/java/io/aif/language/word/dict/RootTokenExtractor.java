@@ -5,6 +5,7 @@ import io.aif.language.token.comparator.ITokenComparator;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 
 class RootTokenExtractor implements IExtractor<Collection<String>, String> {
@@ -28,6 +29,7 @@ class RootTokenExtractor implements IExtractor<Collection<String>, String> {
                     .getAsDouble())
         );
         final Optional<Double> minValueOpt = results.values().stream().min(Double::compare);
+        
         if (!minValueOpt.isPresent()) {
             return Optional.empty();
         }
@@ -36,6 +38,9 @@ class RootTokenExtractor implements IExtractor<Collection<String>, String> {
         return Optional.of(results.keySet()
                 .stream()
                 .filter(key -> results.get(key) == minValue)
+                .sorted((str1, str2) ->
+                    ((Integer) str2.length()).compareTo(str1.length())
+                )
                 .findFirst()
                 .get());
     }

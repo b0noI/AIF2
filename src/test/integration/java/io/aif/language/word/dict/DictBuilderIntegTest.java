@@ -10,15 +10,14 @@ import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IDict;
 import io.aif.language.word.comparator.IGroupComparator;
 import io.aif.language.word.IWord;
-import opennlp.tools.formats.ad.ADSentenceStream;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static org.testng.AssertJUnit.assertTrue;
 
 
 /**
@@ -28,8 +27,14 @@ public class DictBuilderIntegTest {
 
     private static final Gson GSON = new Gson();
 
-    @Test(groups = "experimental")
-    public void test1() throws Exception {
+    @Test(groups = {"integration-tests", "quality-fast"})
+    public void testQuality() throws Exception {
+        final ExperimentResult experimentResult = runExperiment();
+        assertTrue(experimentResult.getRootTokenErrors()    <= 21);
+        assertTrue(experimentResult.getTokensErrors()       <= 19);
+    }
+    
+    private static ExperimentResult runExperiment() throws IOException {
         String text;
         long before = System.nanoTime();
         try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("aif_article.txt")) {
@@ -52,20 +57,17 @@ public class DictBuilderIntegTest {
 
         long after = System.nanoTime();
         long delta = (after - before) / 1000_000_000;
-        
+
         final IdealDict idealDict = loadIdealDict();
-        
-        final int rootTokenErrors = (int)dict.getWords().stream().filter(word -> 
-            rootTokenError(word, idealDict)
+
+        final int rootTokenErrors = (int)dict.getWords().stream().filter(word ->
+                        rootTokenError(word, idealDict)
         ).count();
         final int tokensErrors = dict.getWords().stream().mapToInt(word ->
-            tokensErrors(word, idealDict)
+                        tokensErrors(word, idealDict)
         ).sum();
-        
-        System.out.println(dict);
-        System.out.println("Completed in: " + delta);
-        // 180 sec
-        // 122 best
+        return new ExperimentResult(rootTokenErrors, tokensErrors);
+
     }
     
     private static IdealDict loadIdealDict() throws IOException {
@@ -89,12 +91,39 @@ public class DictBuilderIntegTest {
     
     private static boolean rootTokenError(final IWord word, final IdealDict idealDict) {
         final Optional<Map.Entry<String, List<String>>> idealResult = idealDict.findTarget(word.getRootToken());
-        return idealResult.get().getKey().equals(word.getRootToken());
+        if (!idealResult.isPresent()) {
+            return true;
+        }
+        return !idealResult.get().getKey().toLowerCase().equals(word.getRootToken().toLowerCase());
     }
     
     private static int tokensErrors(final IWord word, final IdealDict idealDict) {
-        final Map.Entry<String, List<String>> idealResult = idealDict.findTarget(word.getRootToken()).get();  
-        return (int)word.getAllTokens().stream().filter(token -> idealResult.getValue().contains(token)).count();
+        final Optional<Map.Entry<String, List<String>>> idealResult = idealDict.findTarget(word.getRootToken());  
+        if (!idealResult.isPresent()) {
+            return word.getAllTokens().size();
+        }
+        return (int)word.getAllTokens().stream().filter(token -> !idealResult.get().getValue().contains(token)).count();
+    }
+    
+    public static class ExperimentResult {
+        
+        private final int rootTokenErrors;
+        
+        private final int tokensErrors;
+
+        public ExperimentResult(int rootTokenErrors, int tokensErrors) {
+            this.rootTokenErrors = rootTokenErrors;
+            this.tokensErrors = tokensErrors;
+        }
+
+        public int getRootTokenErrors() {
+            return rootTokenErrors;
+        }
+
+        public int getTokensErrors() {
+            return tokensErrors;
+        }
+        
     }
 
 }
