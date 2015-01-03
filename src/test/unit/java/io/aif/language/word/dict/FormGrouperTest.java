@@ -13,8 +13,8 @@ import static org.mockito.Mockito.*;
 
 public class FormGrouperTest {
 
-    private static final double GT_COMPARATOR_THRESHOLD = ISettings.SETTINGS.WordSetDictComparatorThreshold() + .1;
-    private static final double LT_COMPARATOR_THRESHOLD = ISettings.SETTINGS.WordSetDictComparatorThreshold() - .1;
+    private static final double GT_COMPARATOR_THRESHOLD = ISettings.SETTINGS.wordSetDictComparatorThreshold() + .1;
+    private static final double LT_COMPARATOR_THRESHOLD = ISettings.SETTINGS.wordSetDictComparatorThreshold() - .1;
 
     @Test
     public void testGroupAllTokensAreSimilar() throws Exception {
