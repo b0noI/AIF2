@@ -28,7 +28,7 @@ class PropertyBasedSettings implements ISettings {
             = "minimal_valuable_token_size_during_sentence_splitting";
 
     private static final String         MINIMUM_CHARACTER_OBERVATIONS_COUNT_FOR_MAKE_CHARATCER_VALUABLE_DURING_SENTENCE_SPLITTING_KEY
-            = "minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting";
+            = "minimum_character_observations_count_for_make_character_valuable_during_sentence_splitting";
 
     private static final String         THRESHOLD_P_FOR_FIRST_FILTER_SEPARATOR_CHARACTER_KEY
             = "threshold_p_for_first_filter_separator_character";
@@ -40,7 +40,13 @@ class PropertyBasedSettings implements ISettings {
             = "splitter_characters_grouper_init_search_P_value";
 
     private static final String         WORD_SET_DICT_COMPARATOR_THRESHOLD
-            = "word_set_dict_comparator_treshold";
+            = "word_set_dict_comparator_threshold";
+    
+    private static final String         RECURSIVE_SUBSTRING_COMPARATOR_WEIGHT_KEY
+            = "recursive_substring_comparator_weight";
+    
+    private static final String         SIMPLE_TOKEN_COMPARATOR_WEIGHT_KEY 
+            = "simple_token_comparator_weight";
 
                    final Properties     properties
             = new Properties();
@@ -117,8 +123,18 @@ class PropertyBasedSettings implements ISettings {
     }
 
     @Override
-    public double WordSetDictComparatorThreshold() {
+    public double wordSetDictComparatorThreshold() {
         return Double.valueOf(properties.getProperty(WORD_SET_DICT_COMPARATOR_THRESHOLD));
+    }
+
+    @Override
+    public double recursiveSubstringComparatorWeight() {
+        return Double.valueOf(properties.getProperty(RECURSIVE_SUBSTRING_COMPARATOR_WEIGHT_KEY));
+    }
+
+    @Override
+    public double simpleTokenComparatorWeight() {
+        return Double.valueOf(properties.getProperty(SIMPLE_TOKEN_COMPARATOR_WEIGHT_KEY));
     }
 
 }

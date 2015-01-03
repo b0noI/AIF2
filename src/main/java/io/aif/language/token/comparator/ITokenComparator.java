@@ -1,5 +1,7 @@
 package io.aif.language.token.comparator;
 
+import io.aif.language.common.settings.ISettings;
+
 import java.util.*;
 
 public interface ITokenComparator {
@@ -12,8 +14,8 @@ public interface ITokenComparator {
 
     public static ITokenComparator defaultComparator() {
         final Map<ITokenComparator, Double> comparators = new HashMap<>();
-        comparators.put(Type.RECURSIVE_SUBSTRING_COMPARATOR.getInstance(),  1.);
-        comparators.put(Type.SIMPLE_TOKEN_COMPARATOR.getInstance(),         .8);
+        comparators.put(Type.RECURSIVE_SUBSTRING_COMPARATOR.getInstance(), ISettings.SETTINGS.recursiveSubstringComparatorWeight());
+        comparators.put(Type.SIMPLE_TOKEN_COMPARATOR.getInstance(),        ISettings.SETTINGS.simpleTokenComparatorWeight());
         return createComposite(comparators.entrySet());
     }
 
