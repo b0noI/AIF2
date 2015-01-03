@@ -27,7 +27,7 @@ public class DictBuilderIntegTest {
 
     private static final Gson GSON = new Gson();
 
-    @Test(groups = "experimental")
+    @Test(groups = {"integration-tests", "quality-fast"})
     public void testQuality() throws Exception {
         final ExperimentResult experimentResult = runExperiment();
         assertTrue(experimentResult.getRootTokenErrors()    <= 21);
