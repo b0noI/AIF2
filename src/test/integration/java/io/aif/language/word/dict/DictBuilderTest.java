@@ -24,7 +24,7 @@ public class DictBuilderTest {
     public void test1() throws Exception {
         String text;
         long before = System.nanoTime();
-        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("Afloat+on+the+Flood_small.txt")) {
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("aif_article.txt")) {
             text = FileHelper.readAllText(modelResource);
         }
 
