@@ -5,6 +5,7 @@ import io.aif.language.word.IDict;
 import io.aif.language.word.IWord;
 import org.apache.log4j.Logger;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DictBuilder implements IDictBuilder<Collection<String>> {
 
@@ -25,8 +26,10 @@ public class DictBuilder implements IDictBuilder<Collection<String>> {
         List<Set<String>> groups = grouper.group(from);
         LOGGER.debug(String.format("Tokens after grouping: %s", groups));
 
-        List<Collection<String>> converted = new ArrayList<>();
-        groups.forEach(group -> converted.add((Collection) group));
+        //TODO Ugly casting here!
+        List<Collection<String>> converted = groups
+                .stream()
+                .collect(Collectors.toList());
         List<IWord> iWords = groupToWordMapper.mapAll(converted);
         LOGGER.debug(String.format("IWords created: %s", iWords));
 
