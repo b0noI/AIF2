@@ -27,14 +27,14 @@ public class DictBuilderIntegTest {
 
     private static final Gson GSON = new Gson();
 
-    @Test(groups = {"integration-tests", "quality-fast"})
+    @Test(enabled = false, groups = {"integration-tests", "quality-fast"})
     public void testQuality() throws Exception {
         final ExperimentResult experimentResult = runExperiment();
         assertTrue(experimentResult.getRootTokenErrors()    <= 21);
         assertTrue(experimentResult.getTokensErrors()       <= 19);
     }
     
-    private static ExperimentResult runExperiment() throws IOException {
+    public static ExperimentResult runExperiment() throws IOException {
         String text;
         long before = System.nanoTime();
         try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("aif_article.txt")) {
@@ -122,6 +122,10 @@ public class DictBuilderIntegTest {
 
         public int getTokensErrors() {
             return tokensErrors;
+        }
+        
+        public int totalErrorsCount() {
+            return getRootTokenErrors() + getTokensErrors();
         }
         
     }

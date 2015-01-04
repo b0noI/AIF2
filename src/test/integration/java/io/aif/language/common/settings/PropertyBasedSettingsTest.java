@@ -1,6 +1,7 @@
 package io.aif.language.common.settings;
 
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
+import io.aif.language.word.dict.DictBuilderIntegTest;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -10,7 +11,7 @@ import java.util.Map;
 public class PropertyBasedSettingsTest {
 
     public static void main(String[] args) throws Exception {
-        experimentWith_threshold_p_for_second_filter_separator_character();
+        experimentWithDictBuilding3D();
     }
     
     private static void experimentWith_splitter_characters_grouper_search_step() throws Exception {
@@ -59,26 +60,26 @@ public class PropertyBasedSettingsTest {
 
     }
 
-//    private static void experimentWithDectBuilding3D() throws Exception {
-//        Logger logger = Logger.getRootLogger();
-//        logger.setLevel(Level.OFF);
-//        final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
-//
-//        System.out.println(keyName + ": [");
-//        for (Double splitter_characters_grouper_search_step = startValue; splitter_characters_grouper_search_step < endValue; splitter_characters_grouper_search_step += delta) {
-//            final String value = ((Object)(toInt ? splitter_characters_grouper_search_step.intValue() : splitter_characters_grouper_search_step)).toString();
-//            if (toInt && value.contains(".")) {
-//                propertyBasedSettings.properties.setProperty(keyName, value.split("\\.")[0]);
-//            } else {
-//                propertyBasedSettings.properties.setProperty(keyName, value);
-//            }
-//
-//            final Map<String, List<String>> testResult = SimpleSentenceSplitterCharactersExtractorQualityTest.executeTest();
-//            System.out.println(String.format("{\"value\": %f, \"errors\": %d},", splitter_characters_grouper_search_step, testResult.keySet().stream().mapToInt(key -> testResult.get(key).size()).sum()));
-//        }
-//        System.out.println("]");
-//
-//    }
+    private static void experimentWithDictBuilding3D() throws Exception {
+        Logger logger = Logger.getRootLogger();
+        logger.setLevel(Level.OFF);
+        final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
+
+        System.out.println("data: [");
+        for (Double recursive_substring_comparator_weight = 0.; recursive_substring_comparator_weight < 1.; recursive_substring_comparator_weight += 0.005) {
+            for (Double simple_token_comparator_weight = 0.; simple_token_comparator_weight < 1.; simple_token_comparator_weight += 0.005) {
+                propertyBasedSettings.properties.setProperty("recursive_substring_comparator_weight", String.valueOf(recursive_substring_comparator_weight));
+                propertyBasedSettings.properties.setProperty("simple_token_comparator_weight", String.valueOf(simple_token_comparator_weight));
+                final DictBuilderIntegTest.ExperimentResult experimentResult = DictBuilderIntegTest.runExperiment();
+                System.out.println(String.format("{\"quality\": %d, \"rec\": %f, \"simple\": %f},", 
+                                                experimentResult.totalErrorsCount(),
+                                                recursive_substring_comparator_weight,
+                                                simple_token_comparator_weight));
+            }
+        }
+        System.out.println("]");
+
+    }
     
     // threshold_p_for_second_filter_separator_character 0.65
 

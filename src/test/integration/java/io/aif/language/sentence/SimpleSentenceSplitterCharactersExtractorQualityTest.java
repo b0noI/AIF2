@@ -238,7 +238,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         final Map<String, List<String>> errors = executeTest();
         System.out.println(
                 errors.keySet().stream().mapToDouble(key -> (double)errors.get(key).size()).sum()
-                /(double)engBooksProvider().length * 5.);
+                / (double)engBooksProvider().length * 5.);
     }
 
     @Test(groups = { "acceptance-tests", "quality-fast" })
