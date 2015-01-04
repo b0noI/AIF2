@@ -11,7 +11,7 @@ import java.util.Map;
 public class PropertyBasedSettingsTest {
 
     public static void main(String[] args) throws Exception {
-        experimentWithDictBuilding3D();
+        experimentWithDictBuilding();
     }
     
     private static void experimentWith_splitter_characters_grouper_search_step() throws Exception {
@@ -55,6 +55,23 @@ public class PropertyBasedSettingsTest {
             
             final Map<String, List<String>> testResult = SimpleSentenceSplitterCharactersExtractorQualityTest.executeTest();
             System.out.println(String.format("{\"value\": %f, \"errors\": %d},", splitter_characters_grouper_search_step, testResult.keySet().stream().mapToInt(key -> testResult.get(key).size()).sum()));
+        }
+        System.out.println("]");
+
+    }
+
+    private static void experimentWithDictBuilding() throws Exception {
+        Logger logger = Logger.getRootLogger();
+        logger.setLevel(Level.OFF);
+        final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
+
+        final String keyName = "word_set_dict_comparator_threshold";
+        System.out.println(keyName + ": [");
+        for (Double word_set_dict_comparator_threshold = 0.; word_set_dict_comparator_threshold < 1.; word_set_dict_comparator_threshold += .0005) {
+
+            propertyBasedSettings.properties.setProperty(keyName, String.valueOf(word_set_dict_comparator_threshold));
+
+            System.out.println(String.format("{\"value\": %f, \"errors\": %d},", word_set_dict_comparator_threshold, DictBuilderIntegTest.runExperiment().totalErrorsCount()));
         }
         System.out.println("]");
 
