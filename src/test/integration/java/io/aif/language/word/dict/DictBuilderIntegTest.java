@@ -47,12 +47,7 @@ public class DictBuilderIntegTest {
         final List<List<String>> sentences = sentenceSplitter.split(tokens);
         final List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
-        ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
-        IGroupComparator setComparator = IGroupComparator.createDefaultInstance(tokenComparator);
-        WordMapper groupToWordMapper = new WordMapper(new RootTokenExtractor(tokenComparator));
-        IGrouper grouper = new FormGrouper(setComparator);
-
-        IDictBuilder dictBuilder = new DictBuilder(grouper, groupToWordMapper);
+        IDictBuilder dictBuilder = new DictBuilder();
         IDict dict = dictBuilder.build(filteredTokens);
 
         long after = System.nanoTime();

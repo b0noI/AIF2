@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
+
+import io.aif.language.common.IExtractor;
 import io.aif.language.common.IMapper;
 import io.aif.language.word.IWord;
 import org.apache.log4j.Logger;
@@ -12,9 +14,9 @@ public class WordMapper implements IMapper<Collection<String>, IWord> {
 
     private static final Logger LOGGER = Logger.getLogger(WordMapper.class);
 
-    private final RootTokenExtractor rootTokenExtractor;
+    private final IExtractor<Collection<String>, String> rootTokenExtractor;
 
-    WordMapper(RootTokenExtractor rootTokenExtractor) {
+    WordMapper(IExtractor<Collection<String>, String> rootTokenExtractor) {
         this.rootTokenExtractor = rootTokenExtractor;
     }
 

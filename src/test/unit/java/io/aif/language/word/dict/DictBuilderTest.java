@@ -16,6 +16,16 @@ import static org.mockito.Mockito.*;
 public class DictBuilderTest {
 
     @Test
+    public void testConstructorWithoutArguments() throws Exception {
+        try {
+            new DictBuilder();
+            assert true;
+        } catch (Exception e) {
+            assert false;
+        }
+    }
+
+    @Test
     public void testBuild() throws Exception {
         List<String> input = Arrays.asList("hey", "heya", "hiya");
         Set<String> tokens = new HashSet<>(input);

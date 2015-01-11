@@ -1,8 +1,11 @@
 package io.aif.language.word.dict;
 
 import io.aif.language.common.IGrouper;
+import io.aif.language.common.IMapper;
+import io.aif.language.token.comparator.ITokenComparator;
 import io.aif.language.word.IDict;
 import io.aif.language.word.IWord;
+import io.aif.language.word.comparator.IGroupComparator;
 import org.apache.log4j.Logger;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,9 +15,17 @@ public class DictBuilder implements IDictBuilder<Collection<String>> {
     private static final Logger LOGGER = Logger.getLogger(DictBuilder.class);
 
     private final IGrouper grouper;
-    private final WordMapper groupToWordMapper;
+    private final IMapper<Collection<String>, IWord> groupToWordMapper;
 
-    public DictBuilder(IGrouper grouper, WordMapper groupToWordMapper) {
+    public DictBuilder() {
+        ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
+        IGroupComparator groupComparator = IGroupComparator.createDefaultInstance(tokenComparator);
+
+        this.groupToWordMapper = new WordMapper(new RootTokenExtractor(tokenComparator));
+        this.grouper = new FormGrouper(groupComparator);
+    }
+
+    public DictBuilder(IGrouper grouper, IMapper<Collection<String>, IWord> groupToWordMapper) {
         this.grouper = grouper;
         this.groupToWordMapper = groupToWordMapper;
     }

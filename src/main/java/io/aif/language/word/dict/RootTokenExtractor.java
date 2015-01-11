@@ -21,15 +21,32 @@ class RootTokenExtractor implements IExtractor<Collection<String>, String> {
         if (tokens.size() == 1) return Optional.of(tokens.stream().findAny().get());
         final Map<String, Double> results = new HashMap<>();
 
-        tokens.stream().map(token ->
+        /*tokens.stream().map(token ->
             results.put(token, tokens
                     .stream()
+                            //with similar characters.
                     .mapToDouble(tokenIn -> (token == tokenIn) ? 0 : comparator.compare(token, tokenIn))
                     .average()
                     .getAsDouble())
+        );*/
+
+        // TODO This will compare a,b and b,a?
+        tokens.forEach(
+                token ->
+                results.put(token,
+                            tokens
+                                    .stream()
+                                    //TODO Why return 0 if tokens are the same, the comparator returns large values
+                                    //for tokens with similar characters.
+                                    .mapToDouble(tokenIn -> (token == tokenIn) ? 0 : comparator.compare(token, tokenIn))
+                                    .average()
+                                    .getAsDouble())
         );
+
+
+
         final Optional<Double> minValueOpt = results.values().stream().min(Double::compare);
-        
+
         if (!minValueOpt.isPresent()) {
             return Optional.empty();
         }
