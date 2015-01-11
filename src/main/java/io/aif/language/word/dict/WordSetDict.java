@@ -12,8 +12,6 @@ class WordSetDict {
 
     private static final Logger LOGGER = Logger.getLogger(WordSetDict.class);
 
-    private static final double COMPARATOR_THRESHOLD = ISettings.SETTINGS.wordSetDictComparatorThreshold();
-
     private final IGroupComparator setComparator;
 
     private Map<String, Set<String>> tokensSetCache = new HashMap<>();
@@ -46,7 +44,7 @@ class WordSetDict {
         }
         for (int i = 0; i < tokens.size(); i++) {
             final Set<String> targetSet = tokens.get(i);
-            if (setComparator.compare(targetSet, set) > COMPARATOR_THRESHOLD) {
+            if (setComparator.compare(targetSet, set) > ISettings.SETTINGS.wordSetDictComparatorThreshold()) {
                 targetSet.addAll(set);
                 set.forEach(token -> tokensSetCache.put(token, targetSet));
                 return;
