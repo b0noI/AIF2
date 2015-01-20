@@ -1,7 +1,8 @@
 package io.aif.language.word.dict;
 
+import io.aif.language.common.IDictBuilder;
 import io.aif.language.common.IGrouper;
-import io.aif.language.word.IDict;
+import io.aif.language.common.IDict;
 import io.aif.language.word.IWord;
 import org.testng.annotations.Test;
 

@@ -1,6 +1,6 @@
 package io.aif.language.word.dict;
 
-import io.aif.language.word.IDict;
+import io.aif.language.common.IDict;
 import io.aif.language.word.IWord;
 
 import java.util.Set;

@@ -55,9 +55,7 @@ class RootTokenExtractor implements IExtractor<Collection<String>, String> {
         return Optional.of(results.keySet()
                 .stream()
                 .filter(key -> results.get(key) == minValue)
-                .sorted((str1, str2) ->
-                    ((Integer) str2.length()).compareTo(str1.length())
-                )
+                .sorted(Comparator.comparing(String::length))
                 .findFirst()
                 .get());
     }

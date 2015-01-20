@@ -7,7 +7,7 @@ import io.aif.language.word.IWord;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SemanticWord implements ISemanticNode<IWord> {
+class SemanticWord implements ISemanticNode<IWord> {
 
     private static  final int                                   MAX_DISTANCE_BETWEEN_WORDS  = 5;
 

@@ -1,9 +1,7 @@
 package io.aif.language.word.dict;
 
-import io.aif.language.word.IDict;
+import io.aif.language.common.IDict;
 import io.aif.language.word.IWord;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.*;

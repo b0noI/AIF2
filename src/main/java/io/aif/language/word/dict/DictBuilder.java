@@ -1,16 +1,17 @@
 package io.aif.language.word.dict;
 
+import io.aif.language.common.IDictBuilder;
 import io.aif.language.common.IGrouper;
 import io.aif.language.common.IMapper;
 import io.aif.language.token.comparator.ITokenComparator;
-import io.aif.language.word.IDict;
+import io.aif.language.common.IDict;
 import io.aif.language.word.IWord;
 import io.aif.language.word.comparator.IGroupComparator;
 import org.apache.log4j.Logger;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class DictBuilder implements IDictBuilder<Collection<String>> {
+public class DictBuilder implements IDictBuilder<Collection<String>, IWord> {
 
     private static final Logger LOGGER = Logger.getLogger(DictBuilder.class);
 
@@ -31,7 +32,7 @@ public class DictBuilder implements IDictBuilder<Collection<String>> {
     }
 
     @Override
-    public IDict build(final Collection<String> from) {
+    public IDict<IWord> build(final Collection<String> from) {
         LOGGER.debug(String.format("Beginning to build a dict: %s", from));
 
         List<Set<String>> groups = grouper.group(from);
