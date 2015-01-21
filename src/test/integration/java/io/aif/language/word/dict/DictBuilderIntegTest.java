@@ -2,13 +2,11 @@ package io.aif.language.word.dict;
 
 import com.google.gson.Gson;
 import io.aif.common.FileHelper;
-import io.aif.language.common.IGrouper;
+import io.aif.language.common.IDict;
+import io.aif.language.common.IDictBuilder;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
 import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
 import io.aif.language.token.TokenSplitter;
-import io.aif.language.token.comparator.ITokenComparator;
-import io.aif.language.word.IDict;
-import io.aif.language.word.comparator.IGroupComparator;
 import io.aif.language.word.IWord;
 import org.testng.annotations.Test;
 
@@ -48,7 +46,7 @@ public class DictBuilderIntegTest {
         final List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
         IDictBuilder dictBuilder = new DictBuilder();
-        IDict dict = dictBuilder.build(filteredTokens);
+        IDict<IWord> dict = dictBuilder.build(filteredTokens);
 
         long after = System.nanoTime();
         long delta = (after - before) / 1000_000_000;
