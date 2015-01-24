@@ -35,7 +35,6 @@ public class RootTokenExtractorTest {
     }
 
     @Test
-    //TODO Is this the intended behaviour?
     public void testExtractAllComparisonReturnNull() throws Exception {
         List<String> input = Arrays.asList("hoppa", "hippa", "homppa");
 
@@ -43,7 +42,8 @@ public class RootTokenExtractorTest {
         when(mockTokenComparator.compare(any(), any())).thenReturn(0.0);
         RootTokenExtractor extractor = new RootTokenExtractor(mockTokenComparator);
         Optional<String> actual = extractor.extract(input);
-        assertFalse(actual.isPresent());
+        assertTrue(actual.isPresent());
+        assertEquals(actual.get(), "hoppa");
     }
 
     @Test

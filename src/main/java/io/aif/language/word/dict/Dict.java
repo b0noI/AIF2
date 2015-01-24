@@ -10,7 +10,7 @@ class Dict implements IDict {
 
     private final Set<IWord> words;
 
-    //TODO Does it need to be sets.
+    // Why Set? DICT by definition should not have any duplicates.
     Dict(final Set<IWord> words) {
         this.words = words;
     }
