@@ -16,7 +16,8 @@ public class DictBuilder implements IDictBuilder<Collection<String>, IWord> {
     private static final Logger LOGGER = Logger.getLogger(DictBuilder.class);
 
     private final IGrouper grouper;
-    private final IMapper<Collection<String>, IWord> groupToWordMapper;
+
+    private final IMapper<WordMapper.DataForMapping, IWord> groupToWordMapper;
 
     public DictBuilder() {
         ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
@@ -26,7 +27,7 @@ public class DictBuilder implements IDictBuilder<Collection<String>, IWord> {
         this.grouper = new FormGrouper(groupComparator);
     }
 
-    public DictBuilder(IGrouper grouper, IMapper<Collection<String>, IWord> groupToWordMapper) {
+    public DictBuilder(IGrouper grouper, IMapper<WordMapper.DataForMapping, IWord> groupToWordMapper) {
         this.grouper = grouper;
         this.groupToWordMapper = groupToWordMapper;
     }
@@ -38,11 +39,12 @@ public class DictBuilder implements IDictBuilder<Collection<String>, IWord> {
         List<Set<String>> groups = grouper.group(from);
         LOGGER.debug(String.format("Tokens after grouping: %s", groups));
 
-        //TODO Ugly casting here!
-        List<Collection<String>> converted = groups
-                .stream()
-                .collect(Collectors.toList());
-        List<IWord> iWords = groupToWordMapper.mapAll(converted);
+        List<WordMapper.DataForMapping> dataForMapping = groups.parallelStream().map(group -> {
+            final Long count = from.stream().filter(group::contains).count();
+            return new WordMapper.DataForMapping(group, count);
+        }).collect(Collectors.toList());
+
+        List<IWord> iWords = groupToWordMapper.mapAll(dataForMapping);
         LOGGER.debug(String.format("IWords created: %s", iWords));
 
         IDict dict = new Dict(new HashSet<>(iWords));
