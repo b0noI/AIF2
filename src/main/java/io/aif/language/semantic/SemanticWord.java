@@ -33,7 +33,6 @@ class SemanticWord implements ISemanticNode<IWord> {
 
     @Override
     public double connectionWeight(final ISemanticNode<IWord> semanticNode) {
-
         return (connections.get(semanticNode).getDistances().stream()
                 .collect(Collectors.summarizingDouble(x -> x))
                 .getAverage() / MAX_DISTANCE_BETWEEN_WORDS) * semanticNode.weight();
@@ -48,6 +47,10 @@ class SemanticWord implements ISemanticNode<IWord> {
     @Override
     public IWord item() {
         return word;
+    }
+
+    public void addConnection(final ISemanticNode<IWord> node, final Connection connection) {
+        connections.put(node, connection);
     }
 
     public static class Connection {
