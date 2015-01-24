@@ -32,7 +32,6 @@ class SemanticWord implements ISemanticNode<IWord> {
     @Override
     public double connectionWeight(final ISemanticNode<IWord> semanticNode) {
         return (getAverageDistance(semanticNode) / maxConnection());
-
     }
 
     @Override
@@ -49,7 +48,7 @@ class SemanticWord implements ISemanticNode<IWord> {
         connections.put(node, edge);
     }
 
-    private double maxConnection() {
+    protected double maxConnection() {
         final OptionalDouble optionalMax = connections.keySet().stream()
                 .map(key -> connections.get(key).getDistances())
                 .mapToDouble(distances -> distances.stream().collect(Collectors.summarizingDouble(x -> x)).getAverage())
@@ -58,7 +57,7 @@ class SemanticWord implements ISemanticNode<IWord> {
         return .0;
     }
 
-    private double getAverageDistance(final ISemanticNode<IWord> node) {
+    protected double getAverageDistance(final ISemanticNode<IWord> node) {
         return connections.get(node)
                 .getDistances()
                 .stream()
