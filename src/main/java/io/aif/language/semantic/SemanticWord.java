@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 
 class SemanticWord implements ISemanticNode<IWord> {
 
-    private static  final int                                   MAX_DISTANCE_BETWEEN_WORDS  = 5;
+    private static final int MAX_DISTANCE_BETWEEN_WORDS = 5;
 
-    private         final INodeWeightCalculator<IWord> weightCalculator;
+    private final INodeWeightCalculator<IWord> weightCalculator;
 
-    private         final IWord                                  word;
+    private final IWord word;
 
-    private         final Map<ISemanticNode<IWord>, Connection>  connections                 = new HashMap<>();
+    private final Map<ISemanticNode<IWord>, Edge> connections = new HashMap<>();
 
     public SemanticWord(final IWord word, final INodeWeightCalculator<IWord> weightCalculator) {
         this.word = word;
@@ -49,11 +49,11 @@ class SemanticWord implements ISemanticNode<IWord> {
         return word;
     }
 
-    public void addConnection(final ISemanticNode<IWord> node, final Connection connection) {
-        connections.put(node, connection);
+    public void addConnection(final ISemanticNode<IWord> node, final Edge edge) {
+        connections.put(node, edge);
     }
 
-    public static class Connection {
+    public static class Edge {
 
         private final List<Double> distances = new ArrayList<>();
 
