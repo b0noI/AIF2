@@ -13,11 +13,18 @@ class SemanticWord implements ISemanticNode<IWord> {
 
     private final IWord word;
 
-    private final Map<ISemanticNode<IWord>, Edge> connections = new HashMap<>();
+    private final Map<ISemanticNode<IWord>, Edge> connections;
 
     public SemanticWord(final IWord word, final INodeWeightCalculator<IWord> weightCalculator) {
+        this(word, weightCalculator, new HashMap<>());
+    }
+
+    SemanticWord(final IWord word,
+                           final INodeWeightCalculator<IWord> weightCalculator,
+                           final Map<ISemanticNode<IWord>, Edge> connections ) {
         this.word = word;
         this.weightCalculator = weightCalculator;
+        this.connections = connections;
     }
 
     public SemanticWord(final IWord word) {
