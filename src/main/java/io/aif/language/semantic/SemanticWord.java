@@ -45,7 +45,7 @@ class SemanticWord implements ISemanticNode<IWord> {
         return word;
     }
 
-    public void addConnection(final ISemanticNode<IWord> node, final Edge edge) {
+    public void addEdge(final ISemanticNode<IWord> node, final Edge edge) {
         connections.put(node, edge);
     }
 
