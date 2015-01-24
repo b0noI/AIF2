@@ -18,7 +18,6 @@ public class StringHelper {
 
         int subWordLength = shortestWordLength;
         while (subWordLength > 0) {
-            // TODO: Potential candidate to parallelise
             s1SubWords = generateSubWords(s1, subWordLength);
             s2SubWords = generateSubWords(s2, subWordLength);
 
@@ -32,7 +31,6 @@ public class StringHelper {
     }
 
     public static String searchForCommonString(Set<String> s1, Set<String> s2) {
-        // TODO: Dealing with multiple common strings.
         String matched = "";
         for (String s1Word : s1)
             if (s2.contains(s1Word)) {

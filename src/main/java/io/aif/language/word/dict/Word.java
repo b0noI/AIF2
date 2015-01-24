@@ -15,7 +15,6 @@ class Word implements IWord {
 
     private final Long count;
 
-    //TODO What's the purpose of the count, assinging a LAME value to it.
     Word(final String rootToken, final Collection<String> tokens, final Long count) {
         this.tokens = new HashSet<>(tokens);
         this.rootToken = rootToken;

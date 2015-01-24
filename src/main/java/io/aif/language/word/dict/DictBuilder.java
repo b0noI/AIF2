@@ -38,7 +38,6 @@ public class DictBuilder implements IDictBuilder<Collection<String>, IWord> {
         List<Set<String>> groups = grouper.group(from);
         LOGGER.debug(String.format("Tokens after grouping: %s", groups));
 
-        //TODO Ugly casting here!
         List<Collection<String>> converted = groups
                 .stream()
                 .collect(Collectors.toList());
