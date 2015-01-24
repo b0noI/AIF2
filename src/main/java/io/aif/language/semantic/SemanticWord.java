@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 class SemanticWord implements ISemanticNode<IWord> {
 
-    private static  final int                                   MAX_DISTANCE_BETWEEN_WORDS  = 5;
-
     private         final INodeWeightCalculator<IWord> weightCalculator;
 
     private         final IWord                                  word;
@@ -33,9 +31,7 @@ class SemanticWord implements ISemanticNode<IWord> {
 
     @Override
     public double connectionWeight(final ISemanticNode<IWord> semanticNode) {
-        return (connections.get(semanticNode).getDistances().stream()
-                .collect(Collectors.summarizingDouble(x -> x))
-                .getAverage() / MAX_DISTANCE_BETWEEN_WORDS) * semanticNode.weight();
+        return (getAverageDistance(semanticNode) / maxConnection());
 
     }
 
@@ -51,6 +47,23 @@ class SemanticWord implements ISemanticNode<IWord> {
 
     public void addConnection(final ISemanticNode<IWord> node, final Connection connection) {
         connections.put(node, connection);
+    }
+
+    private double maxConnection() {
+        final OptionalDouble optionalMax = connections.keySet().stream()
+                .map(key -> connections.get(key).getDistances())
+                .mapToDouble(distances -> distances.stream().collect(Collectors.summarizingDouble(x -> x)).getAverage())
+                .max();
+        if (optionalMax.isPresent()) return optionalMax.getAsDouble();
+        return .0;
+    }
+
+    private double getAverageDistance(final ISemanticNode<IWord> node) {
+        return connections.get(node)
+                .getDistances()
+                .stream()
+                .collect(Collectors.summarizingDouble(x -> x))
+                .getAverage();
     }
 
     public static class Connection {
