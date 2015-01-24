@@ -44,7 +44,7 @@ public class DictBuilder implements IDictBuilder<Collection<String>, IWord> {
         List<IWord> iWords = groupToWordMapper.mapAll(converted);
         LOGGER.debug(String.format("IWords created: %s", iWords));
 
-        IDict dict = new Dict(new HashSet<>(iWords));
+        IDict dict = Dict.create(new HashSet<>(iWords));
         LOGGER.debug(String.format("Dict generated: %s", dict.getWords()));
         return dict;
     }

@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 
 public class RootTokenExtractorTest {
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testExtractEmptyInput() throws Exception {
         List<String> input = Arrays.asList();
         Optional expected = Optional.empty();
@@ -23,7 +23,7 @@ public class RootTokenExtractorTest {
         assertEquals(actual.get(), expected.get());
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testExtractCollectionWithOneElement() throws Exception {
         List<String> input = Arrays.asList("hoppa");
         Optional<String> expected = Optional.of(input.get(0));
@@ -34,7 +34,7 @@ public class RootTokenExtractorTest {
         assertEquals(actual.get(), expected.get());
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testExtractAllComparisonReturnNull() throws Exception {
         List<String> input = Arrays.asList("hoppa", "hippa", "homppa");
 
@@ -46,7 +46,7 @@ public class RootTokenExtractorTest {
         assertEquals(actual.get(), "hoppa");
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testExtract() throws Exception {
         List<String> input = Arrays.asList("hi", "hiya", "heya");
         Optional<String> expected = Optional.of(input.get(0));

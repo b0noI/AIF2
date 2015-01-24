@@ -20,19 +20,19 @@ public class WordTest {
         TOKENS.add("freya");
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGetRootToken() throws Exception {
         IWord word = new Word(ROOT_TOKEN, TOKENS, (long) TOKENS.size());
         assertEquals(ROOT_TOKEN, word.getRootToken());
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGetAllTokens() throws Exception {
         IWord word = new Word(ROOT_TOKEN, TOKENS, (long) TOKENS.size());
         assertEquals(TOKENS, word.getAllTokens());
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGetCount() throws Exception {
         IWord word = new Word(ROOT_TOKEN, TOKENS, (long) TOKENS.size());
         final Long actual = new Long(TOKENS.size());

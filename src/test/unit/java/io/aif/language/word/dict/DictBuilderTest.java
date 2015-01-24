@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 public class DictBuilderTest {
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testConstructorWithoutArguments() throws Exception {
         try {
             new DictBuilder();
@@ -26,7 +26,7 @@ public class DictBuilderTest {
         }
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testBuild() throws Exception {
         List<String> input = Arrays.asList("hey", "heya", "hiya");
         Set<String> tokens = new HashSet<>(input);
@@ -34,7 +34,7 @@ public class DictBuilderTest {
         IWord mockIWord = new Word("hey", tokens, (long) tokens.size());
         List<IWord> wordMapperReturn = Arrays.asList(mockIWord);
 
-        IDict expected = new Dict(new HashSet<>(Arrays.asList(mockIWord)));
+        IDict expected = Dict.create(new HashSet<>(Arrays.asList(mockIWord)));
 
         IGrouper grouperMock = mock(IGrouper.class);
         WordMapper wordMapperMock = mock(WordMapper.class);

@@ -14,7 +14,7 @@ import static org.testng.Assert.*;
 
 public class WordMapperTest {
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testMap() throws Exception {
         Set<String> inputTokenGroup = new HashSet<>(Arrays.asList("heya", "hey", "hiya"));
         IWord expected = new Word("heya", inputTokenGroup, (long) inputTokenGroup.size());
@@ -28,7 +28,7 @@ public class WordMapperTest {
         verify(rootTokenExtractorMock, times(1)).extract(inputTokenGroup);
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testMapEmptySet() throws Exception {
         Set<String> inputTokenGroup = new HashSet<>();
 

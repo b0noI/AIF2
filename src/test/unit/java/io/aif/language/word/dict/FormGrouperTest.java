@@ -16,7 +16,7 @@ public class FormGrouperTest {
     private static final double GT_COMPARATOR_THRESHOLD = ISettings.SETTINGS.wordSetDictComparatorThreshold() + .1;
     private static final double LT_COMPARATOR_THRESHOLD = ISettings.SETTINGS.wordSetDictComparatorThreshold() - .1;
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGroupAllTokensAreSimilar() throws Exception {
         List<String> input = Arrays.asList("hey", "heya", "hiya", "iyah");
         List<Set<String>> expected = new ArrayList<>();
@@ -30,7 +30,7 @@ public class FormGrouperTest {
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGroupNoTokensAreSimilar() throws Exception {
         List<String> input = Arrays.asList("aa", "bbb", "cccc", "dddd");
         List<Set<String>> expected = new ArrayList<>();
@@ -44,7 +44,7 @@ public class FormGrouperTest {
         assertEquals(actual, expected);
     }
 
-    @Test
+    @Test(groups = "unit-tests")
     public void testGroupSomeTokensAreSimilar() throws Exception {
         List<String> input = Arrays.asList("hi", "hiya", "cat", "catty", "brat");
         List<?> expected = new ArrayList<Set<String>>() {{
