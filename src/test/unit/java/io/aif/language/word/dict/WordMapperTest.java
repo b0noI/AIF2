@@ -23,7 +23,7 @@ public class WordMapperTest {
         when(rootTokenExtractorMock.extract(anySet())).thenReturn(Optional.<String>of("heya"));
 
         WordMapper wordMapper = new WordMapper(rootTokenExtractorMock);
-        IWord actual = wordMapper.map(inputTokenGroup);
+        IWord actual = wordMapper.map(new WordMapper.DataForMapping(inputTokenGroup, 0l));
         assertEquals(actual.toString(), expected.toString());
         verify(rootTokenExtractorMock, times(1)).extract(inputTokenGroup);
     }
@@ -35,7 +35,7 @@ public class WordMapperTest {
         RootTokenExtractor rootTokenExtractorMock = mock(RootTokenExtractor.class);
         WordMapper wordMapper = new WordMapper(rootTokenExtractorMock);
         try {
-            wordMapper.map(inputTokenGroup);
+            wordMapper.map(new WordMapper.DataForMapping(inputTokenGroup, 0l));
             assert false;
         } catch (NullPointerException e) {
             assert true;
