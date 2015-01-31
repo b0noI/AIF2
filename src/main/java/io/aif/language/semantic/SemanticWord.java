@@ -1,5 +1,6 @@
 package io.aif.language.semantic;
 
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.semantic.weights.node.word.IWordWeightCalculator;
 import io.aif.language.word.IWord;
@@ -19,6 +20,7 @@ class SemanticWord implements ISemanticNode<IWord> {
         this(word, weightCalculator, new HashMap<>());
     }
 
+    @VisibleForTesting
     SemanticWord(final IWord word,
                            final INodeWeightCalculator<IWord> weightCalculator,
                            final Map<ISemanticNode<IWord>, Edge> connections ) {
@@ -55,6 +57,7 @@ class SemanticWord implements ISemanticNode<IWord> {
         connections.put(node, edge);
     }
 
+    @VisibleForTesting
     protected double maxConnection() {
         final OptionalDouble optionalMax = connections.keySet().stream()
                 .map(key -> connections.get(key).getDistances())
@@ -64,6 +67,7 @@ class SemanticWord implements ISemanticNode<IWord> {
         return .0;
     }
 
+    @VisibleForTesting
     protected double getAverageDistance(final ISemanticNode<IWord> node) {
         return connections.get(node)
                 .getDistances()

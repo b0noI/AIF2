@@ -6,7 +6,7 @@ import io.aif.language.word.IWord;
 public class TokensCountBasedWeightCalculator implements IWordWeightCalculator {
 
     @Override
-    public double calculateWeight(ISemanticNode<IWord> semanticNode) {
+    public double calculateWeight(final ISemanticNode<IWord> semanticNode) {
         final IWord word = semanticNode.item();
         return 1.0 - 1.0 / (double)word.getAllTokens().size();
     }
