@@ -57,6 +57,11 @@ class SemanticWord implements ISemanticNode<IWord> {
         connections.put(node, edge);
     }
 
+    public void addEdge(final ISemanticNode<IWord> node, double weight) {
+        Edge e = connections.getOrDefault(node, new Edge());
+        e.addDistance(weight);
+    }
+
     @VisibleForTesting
     protected double maxConnection() {
         final OptionalDouble optionalMax = connections.keySet().stream()

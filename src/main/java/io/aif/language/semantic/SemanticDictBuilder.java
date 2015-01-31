@@ -17,6 +17,7 @@ public class SemanticDictBuilder implements IDictBuilder<IDict<IWord>, ISemantic
     }
 
     @Override
+    // This is a simple mapper and does not really build a dict.
     public ISemanticDict build(final IDict<IWord> dict) {
         return new SemanticDict(dict.getWords().stream().map(SemanticWord::new).collect(Collectors.toSet()));
     }
