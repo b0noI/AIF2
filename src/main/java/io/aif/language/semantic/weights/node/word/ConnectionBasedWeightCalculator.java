@@ -8,10 +8,10 @@ import java.util.Set;
 
 public class ConnectionBasedWeightCalculator implements IWordWeightCalculator {
 
-    private static  final int MAX_WORD_CONNECTION_COUNT = 20_000;
+    private static  final int MAX_WORD_CONNECTIONS_COUNT = 20_000;
 
     @Override
-    public double calculateWeight(ISemanticNode<IWord> semanticNode) {
+    public double calculateWeight(final ISemanticNode<IWord> semanticNode) {
         final Set<ISemanticNode<IWord>> items = semanticNode.connectedItems();
 
         final OptionalDouble maxConnectionWeightOptional = items
@@ -23,7 +23,7 @@ public class ConnectionBasedWeightCalculator implements IWordWeightCalculator {
             return 0;
 
         final double maxConnectionWeight = maxConnectionWeightOptional.getAsDouble();
-        final double normalizedConnectionCount = items.size() / MAX_WORD_CONNECTION_COUNT;
+        final double normalizedConnectionCount = (double)items.size() / (double)MAX_WORD_CONNECTIONS_COUNT;
 
         return maxConnectionWeight * (1. - normalizedConnectionCount);
     }

@@ -9,16 +9,16 @@ public class CompositeNodeWeightCalculator<T> implements INodeWeightCalculator<T
 
     private final Set<INodeWeightCalculator<T>> calculators;
 
-    public CompositeNodeWeightCalculator(Set<INodeWeightCalculator<T>> calculators) {
+    public CompositeNodeWeightCalculator(final Set<INodeWeightCalculator<T>> calculators) {
         this.calculators = calculators;
     }
 
     @Override
-    public double calculateWeight(ISemanticNode<T> semanticNode) {
+    public double calculateWeight(final ISemanticNode<T> semanticNode) {
         final double weightSum = calculators.stream()
                 .mapToDouble(calculator -> calculator.calculateWeight(semanticNode))
                 .sum();
-        return weightSum / calculators.size();
+        return weightSum / (double)calculators.size();
     }
 
 }
