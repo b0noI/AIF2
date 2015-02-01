@@ -81,5 +81,6 @@ class Word implements IWord {
             result = 37 * result + this.getWord().hashCode();
             return result;
         }
+        
     }
 }

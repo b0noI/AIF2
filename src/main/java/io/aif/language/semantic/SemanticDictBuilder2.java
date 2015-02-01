@@ -13,8 +13,8 @@ public class SemanticDictBuilder2 implements IDictBuilder<Collection<IWord.IWord
     private final Map<IWord, SemanticWord> iwordToSemanticWordCache = new HashMap<>();
 
     public static final int CONNECT_AHEAD_TILL_END = -1;
+    
     public static final int DONT_CONNECT = 0;
-
 
     public SemanticDictBuilder2() {
         this.connectAhead = CONNECT_AHEAD_TILL_END;
