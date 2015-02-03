@@ -5,6 +5,6 @@ import io.aif.language.semantic.ISemanticNode;
 
 public interface IEdgeWeightCalculator<T> {
 
-    public double calculateWeight(final ISemanticNode<T> from, final ISemanticNode<T> to);
+    public double calculateWeight(final T from, final T to);
     
 }

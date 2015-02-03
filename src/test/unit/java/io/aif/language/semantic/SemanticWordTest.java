@@ -20,7 +20,7 @@ public class SemanticWordTest {
 
         final SemanticWord testInstance = new SemanticWord(null, mockNodeWeightCalculator);
 
-        when(mockNodeWeightCalculator.calculateWeight(testInstance)).thenReturn(expectedResult);
+        when(mockNodeWeightCalculator.calculateWeight(testInstance.item())).thenReturn(expectedResult);
 
         final Double actualResult = testInstance.weight();
 

@@ -7,18 +7,22 @@ import java.util.Set;
 
 public class CompositeNodeWeightCalculator<T> implements INodeWeightCalculator<T> {
 
-    private final Set<INodeWeightCalculator<T>> calculators;
-
+    // public zone
+    
     public CompositeNodeWeightCalculator(final Set<INodeWeightCalculator<T>> calculators) {
         this.calculators = calculators;
     }
 
     @Override
-    public double calculateWeight(final ISemanticNode<T> semanticNode) {
+    public double calculateWeight(final T semanticNode) {
         final double weightSum = calculators.stream()
                 .mapToDouble(calculator -> calculator.calculateWeight(semanticNode))
                 .sum();
         return weightSum / (double)calculators.size();
     }
+    
+    // private zone
 
+    private final Set<INodeWeightCalculator<T>> calculators;
+    
 }

@@ -15,14 +15,14 @@ public class TokensCountBasedWeightCalculatorTest {
     @Test(groups = "unit-tests")
     public void testCalculateWeight() throws Exception {
         // input arguments
-        final ISemanticNode<IWord> inputWord = mock(ISemanticNode.class);
+        final IWord inputWord = mock(IWord.class);
         
         // mocks
         final IWord mockWord = mock(IWord.class);
         when(mockWord.getAllTokens()).thenReturn(
                 new HashSet<String>(){{addAll(Arrays.asList(new String[]{"1", "2", "3", "4", "5"}));}}
         );
-        when(inputWord.item()).thenReturn(mockWord);
+        when(inputWord).thenReturn(mockWord);
         
         // expected results
         final double expectedResult = .8;
@@ -37,7 +37,6 @@ public class TokensCountBasedWeightCalculatorTest {
         assertEquals(actualResult, expectedResult);
         
         // mocks verify
-        verify(inputWord, times(1)).item();
         verify(mockWord, times(1)).getAllTokens();
     }
     

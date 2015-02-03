@@ -22,8 +22,8 @@ public class WordEdgeWeightCalculator implements IEdgeWeightCalculator<IWord> {
     }
 
     @Override
-    public double calculateWeight(ISemanticNode<IWord> from, ISemanticNode<IWord> to) {
-        return WordEdgeWeightCalculator.getAverageDistance(distancesGraph, from.item(), to.item()) / maxConnection.get(from);
+    public double calculateWeight(final IWord from, final IWord to) {
+        return WordEdgeWeightCalculator.getAverageDistance(distancesGraph, from, to) / maxConnection.get(from);
     }
     
     // protected zone

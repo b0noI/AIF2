@@ -1,9 +1,12 @@
 package io.aif.language.semantic.weights.node.word;
 
+import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.word.IWord;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -11,11 +14,12 @@ import java.util.Set;
  */
 public interface IWordWeightCalculator extends INodeWeightCalculator<IWord> {
 
-    public static INodeWeightCalculator<IWord> createDefaultWeightCalculator() {
+    public static INodeWeightCalculator<IWord> createDefaultWeightCalculator(final IEdgeWeightCalculator<IWord> edgeWeightCalculator,
+                                                                             final Map<IWord, Map<IWord, List<Double>>> distancesGraph) {
         final Set<INodeWeightCalculator<IWord>> calculators = new HashSet<>();
 
         calculators.add(new TokensCountBasedWeightCalculator());
-        calculators.add(new ConnectionBasedWeightCalculator(edgeWeightCalculator));
+        calculators.add(new ConnectionBasedWeightCalculator(edgeWeightCalculator, distancesGraph));
 
         return new CompositeNodeWeightCalculator<>(calculators);
     }
