@@ -4,7 +4,6 @@ import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 

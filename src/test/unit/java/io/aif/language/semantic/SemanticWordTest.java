@@ -5,7 +5,6 @@ import io.aif.language.word.IWord;
 import org.testng.annotations.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

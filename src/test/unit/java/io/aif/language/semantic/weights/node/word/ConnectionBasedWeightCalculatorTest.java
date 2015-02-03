@@ -35,7 +35,7 @@ public class ConnectionBasedWeightCalculatorTest {
         final double expectedResult = 0.39992000000000005;
         
         // creating test instance
-        final IWordWeightCalculator testInstance = new ConnectionBasedWeightCalculator();
+        final IWordWeightCalculator testInstance = new ConnectionBasedWeightCalculator(edgeWeightCalculator);
         
         // execution test
         final double actualResult = testInstance.calculateWeight(inputNode);

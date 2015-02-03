@@ -2,7 +2,6 @@ package io.aif.language.semantic;
 
 import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
-import io.aif.language.semantic.weights.node.word.IWordWeightCalculator;
 import io.aif.language.word.IWord;
 
 import java.util.*;
@@ -30,7 +29,7 @@ class SemanticWord implements ISemanticNode<IWord> {
     }
 
     public SemanticWord(final IWord word) {
-        this(word, IWordWeightCalculator.createDefaultWeightCalculator());
+        this(word, io.aif.language.semantic.weights.node.word.IWordWeightCalculator.createDefaultWeightCalculator());
     }
 
     @Override
