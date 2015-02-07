@@ -13,6 +13,7 @@ import java.util.Set;
 class Dict implements IDict<IWord>, ISearchable<String, IWord> {
 
     private final Set<IWord> words;
+    
     private final Map<String, IWord> reverseIndex;
 
     private Dict(final Set<IWord> words, Map<String, IWord> reverseIndex) {
@@ -54,4 +55,5 @@ class Dict implements IDict<IWord>, ISearchable<String, IWord> {
         Dict d = new Dict(words, generateReverseIndex(words));
         return d;
     }
+    
 }

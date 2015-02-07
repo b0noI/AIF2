@@ -7,6 +7,7 @@ import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.semantic.weights.node.word.CompositeNodeWeightCalculator;
 import io.aif.language.semantic.weights.node.word.IWordWeightCalculator;
 import io.aif.language.word.IWord;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,6 +15,9 @@ import java.util.stream.Collectors;
 public class SemanticDictBuilder3 implements IDictBuilder<Collection<IWord.IWordPlaceholder>, ISemanticNode<IWord>> {
 
     private final int connectAhead;
+    
+    private static final Logger LOGGER = Logger.getLogger(SemanticDictBuilder3.class);
+    
     private final Map<IWord, Map<IWord, List<Double>>> iwordToSemanticWordCache = new HashMap<>();
 
     public static final int CONNECT_AHEAD_TILL_END = -1;
@@ -43,11 +47,11 @@ public class SemanticDictBuilder3 implements IDictBuilder<Collection<IWord.IWord
                 : connectAhead;
 
         IWord subjectNode;
-        List<IWord> subList;
-        for (int i = 0; i < semanticWords.size(); i++) {
+        for (int i = 0; i < semanticWords.size() - subListLen - 1; i++) {
+
+            LOGGER.debug(String.format("Done: %f percent", (double)i / (double)semanticWords.size()));
             subjectNode = semanticWords.get(i);
-            subList = semanticWords.subList(1, subListLen);
-            for (int j = 1; j < subList.size(); j++) {
+            for (int j = 1; j < subListLen; j++) {
                 if (!iwordToSemanticWordCache.containsKey(subjectNode)) {
                     iwordToSemanticWordCache.put(subjectNode, new HashMap<>());
                 }
@@ -55,7 +59,7 @@ public class SemanticDictBuilder3 implements IDictBuilder<Collection<IWord.IWord
                 if (!iwordToSemanticWordCache.get(subjectNode).containsKey(tNode)) {
                     iwordToSemanticWordCache.get(subjectNode).put(tNode, new ArrayList<>());
                 }
-                iwordToSemanticWordCache.get(subjectNode).get(tNode).add((double)(j - i));
+                iwordToSemanticWordCache.get(subjectNode).get(tNode).add((double)(j));
             }
         }
 

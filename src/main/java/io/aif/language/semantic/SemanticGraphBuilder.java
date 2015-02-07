@@ -5,10 +5,7 @@ import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.word.IWord;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -38,12 +35,12 @@ class SemanticGraphBuilder implements IMapper<Map<IWord, List<IWord>>, List<ISem
             final List<IWord> connections = words.get(node.item());
             final Map<ISemanticNode<IWord>, Double> semanticConnections = new HashMap<>();
             connections.forEach(connect -> {
-                final ISemanticNode<IWord> target = nodes
+                final Optional<ISemanticNode<IWord>> optTarget = nodes
                         .stream()
                         .filter(n -> n.item() == connect)
-                        .findFirst()
-                        .get();
-                semanticConnections.put(target, edgeWeightCalculator.calculateWeight(node.item(), target.item()));
+                        .findFirst();
+                if (optTarget.isPresent())
+                    semanticConnections.put(optTarget.get(), edgeWeightCalculator.calculateWeight(node.item(), optTarget.get().item()));
             });
             ((SemanticWord)node).setConnections(semanticConnections);
         });
@@ -65,17 +62,17 @@ class SemanticGraphBuilder implements IMapper<Map<IWord, List<IWord>>, List<ISem
 
         @Override
         public double weight() {
-            return 0;
+            return weight;
         }
 
         @Override
-        public double connectionWeight(ISemanticNode<IWord> semanticNode) {
-            return 0;
+        public double connectionWeight(final ISemanticNode<IWord> semanticNode) {
+            return connections.get(semanticNode);
         }
 
         @Override
         public Set<ISemanticNode<IWord>> connectedItems() {
-            return null;
+            return connections.keySet();
         }
 
         @Override

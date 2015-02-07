@@ -4,11 +4,12 @@ import io.aif.language.common.IMapper;
 import io.aif.language.common.ISearchable;
 import io.aif.language.word.IWord;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 
-class WordPlaceHolderMapper implements IMapper<Collection<String>, Collection<IWord.IWordPlaceholder>> {
+public class WordPlaceHolderMapper implements IMapper<Collection<String>, List<IWord.IWordPlaceholder>> {
 
     private final ISearchable<String, IWord> searchable;
 
@@ -17,7 +18,7 @@ class WordPlaceHolderMapper implements IMapper<Collection<String>, Collection<IW
     }
 
     @Override
-    public Collection<IWord.IWordPlaceholder> map(Collection<String> tokens) {
+    public List<IWord.IWordPlaceholder> map(Collection<String> tokens) {
         return tokens
                 .stream()
                 .map(token -> {
