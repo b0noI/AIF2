@@ -1,6 +1,5 @@
 package io.aif.language.semantic.weights.node.word;
 
-import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import org.testng.annotations.Test;
 
@@ -35,7 +34,7 @@ public class CompositeNodeWeightCalculatorTest {
         final double expectedResult = 0.19999999999999998;
         
         // creating test instance
-        final INodeWeightCalculator<String> testInstance = new CompositeNodeWeightCalculator<>(inputCalculators);
+        final INodeWeightCalculator<String> testInstance = new CompositeNodeWeightCalculator<>(inputCalculators, false);
         
         // execution test
         final double actualResult = testInstance.calculateWeight(node);

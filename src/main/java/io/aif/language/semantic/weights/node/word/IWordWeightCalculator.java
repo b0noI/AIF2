@@ -19,9 +19,10 @@ public interface IWordWeightCalculator extends INodeWeightCalculator<IWord> {
         final Set<INodeWeightCalculator<IWord>> calculators = new HashSet<>();
 
         calculators.add(new TokensCountBasedWeightCalculator());
+        calculators.add(new WordProbabilityBasedWeightCalculator(distancesGraph.keySet()));
         calculators.add(new ConnectionBasedWeightCalculator(edgeWeightCalculator, distancesGraph));
 
-        return new CompositeNodeWeightCalculator<>(calculators);
+        return new CompositeNodeWeightCalculator<>(calculators, true);
     }
     
 }

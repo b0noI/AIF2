@@ -6,6 +6,7 @@ import io.aif.language.semantic.weights.edge.word.WordEdgeWeightCalculator;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.semantic.weights.node.word.CompositeNodeWeightCalculator;
 import io.aif.language.semantic.weights.node.word.IWordWeightCalculator;
+import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassifier;
 import io.aif.language.word.IWord;
 import org.apache.log4j.Logger;
 
@@ -19,24 +20,17 @@ public class SemanticDictBuilder3 implements IDictBuilder<Collection<IWord.IWord
     private static final Logger LOGGER = Logger.getLogger(SemanticDictBuilder3.class);
     
     private final Map<IWord, Map<IWord, List<Double>>> iwordToSemanticWordCache = new HashMap<>();
+    
+    private final Map<ISeparatorGroupsClassifier.Group, Set<Character>> separators;
 
-    public static final int CONNECT_AHEAD_TILL_END = -1;
-
-    public static final int DONT_CONNECT = 0;
-
-    public SemanticDictBuilder3() {
-        this.connectAhead = CONNECT_AHEAD_TILL_END;
-    }
-
-    public SemanticDictBuilder3(int connectAhead) {
-        if (connectAhead < CONNECT_AHEAD_TILL_END)
-            throw new IllegalArgumentException(
-                    "Connect ahead parameter should be greater than -1, given"  + connectAhead);
+    public SemanticDictBuilder3(final int connectAhead,
+                                final Map<ISeparatorGroupsClassifier.Group, Set<Character>> separators) {
         this.connectAhead = connectAhead;
+        this.separators = separators;
     }
 
     @Override
-    public ISemanticDict build(Collection<IWord.IWordPlaceholder> placeholders) {
+    public ISemanticDict build(final Collection<IWord.IWordPlaceholder> placeholders) {
         final List<IWord> semanticWords = placeholders
                 .stream()
                 .map(IWord.IWordPlaceholder::getWord)
@@ -48,7 +42,7 @@ public class SemanticDictBuilder3 implements IDictBuilder<Collection<IWord.IWord
 
         IWord subjectNode;
         for (int i = 0; i < semanticWords.size() - subListLen - 1; i++) {
-
+            int multiplayer = 1;
             LOGGER.debug(String.format("Done: %f percent", (double)i / (double)semanticWords.size()));
             subjectNode = semanticWords.get(i);
             for (int j = 1; j < subListLen; j++) {
@@ -56,10 +50,18 @@ public class SemanticDictBuilder3 implements IDictBuilder<Collection<IWord.IWord
                     iwordToSemanticWordCache.put(subjectNode, new HashMap<>());
                 }
                 final IWord tNode = semanticWords.get(i + j);
+                
+                if (separators.get(ISeparatorGroupsClassifier.Group.GROUP_2).contains(tNode.getRootToken())) {
+                    multiplayer += 1;
+                }
+                if (separators.get(ISeparatorGroupsClassifier.Group.GROUP_1).contains(tNode.getRootToken())) {
+                    multiplayer += 4;
+                }
+                
                 if (!iwordToSemanticWordCache.get(subjectNode).containsKey(tNode)) {
                     iwordToSemanticWordCache.get(subjectNode).put(tNode, new ArrayList<>());
                 }
-                iwordToSemanticWordCache.get(subjectNode).get(tNode).add((double)(j));
+                iwordToSemanticWordCache.get(subjectNode).get(tNode).add((double)(j * multiplayer));
             }
         }
 
