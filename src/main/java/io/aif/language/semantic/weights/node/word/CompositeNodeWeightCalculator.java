@@ -9,10 +9,8 @@ public class CompositeNodeWeightCalculator<T> implements INodeWeightCalculator<T
 
     // public zone
     
-    public CompositeNodeWeightCalculator(final Set<INodeWeightCalculator<T>> calculators, 
-                                         final boolean inverted) {
+    public CompositeNodeWeightCalculator(final Set<INodeWeightCalculator<T>> calculators) {
         this.calculators = calculators;
-        this.inverted = inverted;
     }
 
     @Override
@@ -20,14 +18,11 @@ public class CompositeNodeWeightCalculator<T> implements INodeWeightCalculator<T
         final double weightSum = calculators.stream()
                 .mapToDouble(calculator -> calculator.calculateWeight(semanticNode))
                 .sum();
-        final double weight = weightSum / (double)calculators.size();
-        return inverted ? 1. - weight : weight;
+        return weightSum / (double)calculators.size();
     }
     
     // private zone
 
     private final Set<INodeWeightCalculator<T>> calculators;
-    
-    private final boolean inverted;
     
 }

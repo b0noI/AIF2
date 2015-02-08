@@ -51,8 +51,8 @@ public class SemanticGraphBuilderTest {
 
         final SemanticDictBuilder3 semanticDictBuilder3 = new SemanticDictBuilder3(5, grouppedSeparators);
         final ISemanticDict semanticDict = semanticDictBuilder3.build(placeholders);
-        final List<ISemanticNode<IWord>> sortedNodes = semanticDict.getWords().stream().sorted((w1, w2) -> ((Double) w1.weight()).compareTo(w2.weight())).collect(Collectors.toList());
-        final List<ISemanticNode<IWord>> invertedSortedNodes = semanticDict.getWords().stream().sorted((w2, w1) -> ((Double)w1.weight()).compareTo(w2.weight())).collect(Collectors.toList());
+        final List<ISemanticNode<IWord>> sortedNodes = semanticDict.getWords().stream().sorted((w2, w1) -> ((Double) w1.weight()).compareTo(w2.weight())).collect(Collectors.toList());
+        final List<ISemanticNode<IWord>> invertedSortedNodes = semanticDict.getWords().stream().sorted((w1, w2) -> ((Double)w1.weight()).compareTo(w2.weight())).collect(Collectors.toList());
         System.out.println(sortedNodes);
     }
 }

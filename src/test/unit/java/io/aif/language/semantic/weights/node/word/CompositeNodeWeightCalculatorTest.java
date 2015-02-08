@@ -34,7 +34,7 @@ public class CompositeNodeWeightCalculatorTest {
         final double expectedResult = 0.19999999999999998;
         
         // creating test instance
-        final INodeWeightCalculator<String> testInstance = new CompositeNodeWeightCalculator<>(inputCalculators, false);
+        final INodeWeightCalculator<String> testInstance = new CompositeNodeWeightCalculator<>(inputCalculators);
         
         // execution test
         final double actualResult = testInstance.calculateWeight(node);

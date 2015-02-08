@@ -19,7 +19,7 @@ public class WordProbabilityBasedWeightCalculator implements IWordWeightCalculat
 
     @Override
     public double calculateWeight(final IWord node) {
-        return 1. - Math.abs(TARGET - node.getCount() / maxCount);
+        return Math.abs(TARGET - node.getCount() / maxCount);
     }
     
 }

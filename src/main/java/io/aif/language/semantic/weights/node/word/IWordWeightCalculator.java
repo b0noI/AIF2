@@ -22,7 +22,7 @@ public interface IWordWeightCalculator extends INodeWeightCalculator<IWord> {
         calculators.add(new WordProbabilityBasedWeightCalculator(distancesGraph.keySet()));
         calculators.add(new ConnectionBasedWeightCalculator(edgeWeightCalculator, distancesGraph));
 
-        return new CompositeNodeWeightCalculator<>(calculators, true);
+        return new CompositeNodeWeightCalculator<>(calculators);
     }
     
 }
