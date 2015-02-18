@@ -27,7 +27,7 @@ public class SemanticGraphBuilderTest {
     @Test
     public void testMap() throws Exception {
         String text;
-        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("Whiffet+Squirrel.txt")) {
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("pg1112.txt")) {
             text = FileHelper.readAllText(modelResource);
         }
 

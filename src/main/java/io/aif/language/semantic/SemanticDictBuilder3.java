@@ -2,7 +2,7 @@ package io.aif.language.semantic;
 
 import io.aif.language.common.IDictBuilder;
 import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
-import io.aif.language.semantic.weights.edge.word.WordEdgeWeightCalculator;
+import io.aif.language.semantic.weights.edge.word.IWordEdgeWeightCalculator;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.semantic.weights.node.word.CompositeNodeWeightCalculator;
 import io.aif.language.semantic.weights.node.word.IWordWeightCalculator;
@@ -66,7 +66,7 @@ public class SemanticDictBuilder3 implements IDictBuilder<Collection<IWord.IWord
         }
 
 
-        final IEdgeWeightCalculator<IWord> edgeWeightCalculator = WordEdgeWeightCalculator.generateWordEdgeWeightCalculator(iwordToSemanticWordCache);
+        final IEdgeWeightCalculator<IWord> edgeWeightCalculator = IWordEdgeWeightCalculator.generateDefaultWeightCalculator(iwordToSemanticWordCache);
         final INodeWeightCalculator<IWord> nodeWeightCalculator = IWordWeightCalculator.createDefaultWeightCalculator(edgeWeightCalculator, iwordToSemanticWordCache);
         
         final SemanticGraphBuilder semanticGraphBuilder = new SemanticGraphBuilder(nodeWeightCalculator, edgeWeightCalculator);
