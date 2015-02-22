@@ -4,7 +4,7 @@ title: Documentation
 footer: false
 ---
  
-AIF2 is **fully language independent** NLP library. AIF2 is written in Java 8+. 
+AIF2 is **fully language independent** NLU (Natural Language Understanding) library. AIF2 is written in Java 8+. 
 
 ## How to use it
 
@@ -26,13 +26,14 @@ and add dependency:
     <dependency>
        <groupId>io.aif</groupId>
        <artifactId>aif</artifactId>
-       <version>1.1.0-Alpha3</version>
+       <version>1.2.0-Alpha4</version>
     </dependency> 
 ```
 ###AIF2 API
-* [AIF2: v0.0.0-alpha1](/docs/aif2-lib/alpha1/)
-* [AIF2: v1.0.0-alpha2](/docs/aif2-lib/alpha2/)
+* [AIF2: v1.2.0-alpha4](/docs/aif2-lib/alpha4/)
 * [AIF2: v1.1.0-alpha3](/docs/aif2-lib/alpha3/)
+* [AIF2: v1.0.0-alpha2](/docs/aif2-lib/alpha2/)
+* [AIF2: v0.0.0-alpha1](/docs/aif2-lib/alpha1/)
 
 ###Algorithms
 * [Main definitions](./algorithm/main-definitions.html)
