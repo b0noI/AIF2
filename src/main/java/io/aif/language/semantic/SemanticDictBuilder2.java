@@ -7,7 +7,7 @@ import io.aif.language.word.IWord;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SemanticDictBuilder2 implements IDictBuilder<Collection<IWord.IWordPlaceholder>, ISemanticNode<IWord>> {
+class SemanticDictBuilder2 implements IDictBuilder<Collection<IWord.IWordPlaceholder>, ISemanticNode<IWord>> {
 
     private final int connectAhead;
     private final Map<IWord, SemanticWord> iwordToSemanticWordCache = new HashMap<>();
