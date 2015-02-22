@@ -3,6 +3,10 @@ layout: page
 title: Changelog
 footer: false
 ---
+## alpha4 (1.2.0)
+
+1. Semantic graph builder
+2. Semantic dict builder
 
 ## alpha3 (1.1.0)
 
