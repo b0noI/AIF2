@@ -13,7 +13,7 @@ import java.util.Arrays;
 class RecursiveSubstringComparator implements ITokenComparator {
 
     // TODO find correct method of filtering string Regexcharaters
-    private static final Character[] CHARACTERS_FOR_FILTERING = {'?', '*', '[', ']', '(', ')', '$'};
+    private static final Character[] CHARACTERS_FOR_FILTERING = {'?', '*', '[', ']', '(', ')', '$', '+'};
 
     @Override
     public Double compare(final String t1, final String t2) {
