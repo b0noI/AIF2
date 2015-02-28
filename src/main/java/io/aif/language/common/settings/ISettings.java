@@ -10,7 +10,7 @@ public interface ISettings {
 
     public boolean useIsAlphabeticMethod();
 
-    public double thresholdPSecondFilterForSeparatorCharacter();
+    public double thresholdPForSeparatorCharacterInSecondFilter();
 
     public int minimalValuableTokenSizeForSentenceSplit();
 
@@ -21,5 +21,11 @@ public interface ISettings {
     public double splitterCharactersGrouperSearchStep();
 
     public double splitterCharactersGrouperInitSearchPValue();
+
+    public double wordSetDictComparatorThreshold();
+    
+    public double recursiveSubstringComparatorWeight();
+    
+    public double simpleTokenComparatorWeight();
 
 }

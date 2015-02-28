@@ -13,8 +13,6 @@ class StatGrouper implements ISeparatorsGrouper {
 
     private static final double START_LIMIT  = ISettings.SETTINGS.splitterCharactersGrouperInitSearchPValue();
 
-    private static final double QUALITY_STEP = ISettings.SETTINGS.splitterCharactersGrouperSearchStep();
-
     @Override
     public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
 
@@ -44,7 +42,7 @@ class StatGrouper implements ISeparatorsGrouper {
         List<CharactersGroup> lastCorrectResult = null;
         do {
             final List<CharactersGroup> result = parsGroup(connections, limit);
-            if (Math.abs(prevLimit - limit) < QUALITY_STEP) {
+            if (Math.abs(prevLimit - limit) < ISettings.SETTINGS.splitterCharactersGrouperSearchStep()) {
                 if (lastCorrectResult != null) {
                     return lastCorrectResult;
                 }

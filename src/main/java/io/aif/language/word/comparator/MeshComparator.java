@@ -2,11 +2,10 @@ package io.aif.language.word.comparator;
 
 
 import io.aif.language.token.comparator.ITokenComparator;
-import io.aif.language.word.IWord;
 
-import java.util.Set;
+import java.util.Collection;
 
-class MeshComparator implements ISetComparator {
+class MeshComparator implements IGroupComparator {
 
     private final ITokenComparator tokenComparator;
 
@@ -15,12 +14,12 @@ class MeshComparator implements ISetComparator {
     }
 
     @Override
-    public double compare(final Set<String> o1, final Set<String> o2) {
+    public double compare(final Collection<String> o1, final Collection<String> o2) {
         final Double sum = o1
                 .parallelStream()
                 .mapToDouble(t1 -> o2
                                 .stream()
-                                .mapToDouble(t2 -> tokenComparator.compare(t1, t2))
+                                .mapToDouble(t2 -> tokenComparator.compare(t1.toLowerCase(), t2.toLowerCase()))
                                 .sum()
                 )
                 .sum();

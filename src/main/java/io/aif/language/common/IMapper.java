@@ -14,7 +14,10 @@ public interface IMapper<T, S> extends Function<T, S>{
     default S apply(T t) {return map(t);}
 
     default List<S> mapAll(Collection<T> elements) {
-        return elements.stream().map(this).collect(Collectors.toList());
+        return elements
+                .parallelStream()
+                .map(this)
+                .collect(Collectors.toList());
     }
 
 }

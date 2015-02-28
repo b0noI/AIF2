@@ -6,7 +6,7 @@
 
     <groupId>io.aif</groupId>
     <artifactId>aif</artifactId>
-    <version>1.1.0-Alpha3</version>
+    <version>1.2.0-Alpha4</version>
 
     <dependencies>
         <dependency>
@@ -43,6 +43,11 @@
             <groupId>org.javatuples</groupId>
             <artifactId>javatuples</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3.1</version>
         </dependency>
 
         <dependency>

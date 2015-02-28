@@ -1,59 +1,54 @@
 package io.aif.language.word.dict;
 
+import io.aif.language.common.IDictBuilder;
+import io.aif.language.common.IGrouper;
+import io.aif.language.common.IMapper;
 import io.aif.language.token.comparator.ITokenComparator;
-import io.aif.language.word.IDict;
-import io.aif.language.word.comparator.ISetComparator;
-
+import io.aif.language.common.IDict;
+import io.aif.language.word.IWord;
+import io.aif.language.word.comparator.IGroupComparator;
+import org.apache.log4j.Logger;
 import java.util.*;
-import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
 
+public class DictBuilder implements IDictBuilder<Collection<String>, IWord> {
 
-public class DictBuilder implements IDictBuilder<Collection<String>> {
+    private static final Logger LOGGER = Logger.getLogger(DictBuilder.class);
 
-    private final ISetComparator comparator;
+    private final IGrouper grouper;
 
-    private final RootTokenExtractor rootTokenExtractor;
-
-    public DictBuilder(final ISetComparator comparator, final ITokenComparator tokenComparator) {
-        this.comparator = comparator;
-        this.rootTokenExtractor = new RootTokenExtractor(tokenComparator);
-    }
-
-    public DictBuilder(final ITokenComparator tokenComparator) {
-        this(ISetComparator.createDefaultInstance(tokenComparator), tokenComparator);
-    }
+    private final IMapper<WordMapper.DataForMapping, IWord> groupToWordMapper;
 
     public DictBuilder() {
-        this(ITokenComparator.defaultComparator());
+        ITokenComparator tokenComparator = ITokenComparator.defaultComparator();
+        IGroupComparator groupComparator = IGroupComparator.createDefaultInstance(tokenComparator);
+
+        this.groupToWordMapper = new WordMapper(new RootTokenExtractor(tokenComparator));
+        this.grouper = new FormGrouper(groupComparator);
+    }
+
+    public DictBuilder(IGrouper grouper, IMapper<WordMapper.DataForMapping, IWord> groupToWordMapper) {
+        this.grouper = grouper;
+        this.groupToWordMapper = groupToWordMapper;
     }
 
     @Override
-    public IDict build(final Collection<String> from) {
-        final List<Set<String>> tokenSets = from
-            .stream()
-            .map(token -> new HashSet<String>() {{
-                add(token);
-            }})
-            .collect(Collectors.toList());
+    public IDict<IWord> build(final Collection<String> from) {
+        LOGGER.debug(String.format("Beginning to build a dict: %s", from));
 
-        final WordSetDict wordSetDict = new WordSetDict(comparator);
-        tokenSets.stream().forEach(wordSetDict::mergeSet);
-        return new Dict(
-                wordSetDict.getTokens()
-                .parallelStream()
-                .filter(set -> !set.isEmpty())
-                .map(set -> {
-                    final Optional<String> rootTokenOpt = rootTokenExtractor.extract(set);
-                    final String rootToken;
-                    if (rootTokenOpt.isPresent()) {
-                        rootToken = rootTokenOpt.get();
-                    } else {
-                        rootToken = set.iterator().next();
-                    }
-                    return new Word(rootToken, set, wordSetDict.getCount(set));
-                })
-                .collect(Collectors.toSet()));
+        List<Set<String>> groups = grouper.group(from);
+        LOGGER.debug(String.format("Tokens after grouping: %s", groups));
+
+        List<WordMapper.DataForMapping> dataForMapping = groups.parallelStream().map(group -> {
+            final Long count = from.stream().filter(group::contains).count();
+            return new WordMapper.DataForMapping(group, count);
+        }).collect(Collectors.toList());
+
+        List<IWord> iWords = groupToWordMapper.mapAll(dataForMapping);
+        LOGGER.debug(String.format("IWords created: %s", iWords));
+
+        IDict dict = Dict.create(new HashSet<>(iWords));
+        LOGGER.debug(String.format("Dict generated: %s", dict.getWords()));
+        return dict;
     }
-
 }
