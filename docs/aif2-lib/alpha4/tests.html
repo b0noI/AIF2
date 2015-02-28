@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>AIF CLI usage(v 1.2) - AIF2</title>
+  <title>Tests - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="AIF CLI Usage(v 1.2) CLI could be downloaded here $ java -jar aif-cli.jar -help usage: aif-cli [key] &lt;path&gt;
--dbuild Extract stammers from text &hellip;">
+  <meta name="description" content="Tests AIF uses TestNG Tests groups BASIC: (conditions of running) &ldquo;unit-tests&rdquo; - method level tests without any additional logic checks &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif-cli/1.2/">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/tests.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,22 +86,64 @@
 <article role="article">
   
   <header>
-    <h1 class="entry-title">AIF CLI Usage(v 1.2)</h1>
+    <h1 class="entry-title">Tests</h1>
     
   </header>
   
-  <p>CLI could be downloaded <a href="https://s3.amazonaws.com/aif2/aif-cli/1.2/aif-cli-1.2-jar-with-dependencies.jar">here</a></p>
+  <p>AIF uses TestNG</p>
 
-<pre><code>$ java -jar aif-cli.jar -help 
-usage: aif-cli [key] &lt;path&gt;
--dbuild   Extract stammers from text
--ess      Extract sentences separators
--ets      Get token separator unicode hex
--help     Print this message
--ssplit   Split text to sentences
--tsplit   Split text to tokens
--v        Print CLI and AIF versions
-</code></pre>
+<h2>Tests groups</h2>
+
+<p><strong>BASIC:</strong> (conditions of running)</p>
+
+<ol>
+<li><em>&ldquo;unit-tests&rdquo;</em> - method level tests without any additional logic checks. Every class method should be covered by at least one positive unit-test and one negative unit test. Must be run at every method change.</li>
+<li><em>«integration-tests»</em> - test for checking communication between different parts of the system. Must be run at every change of the module(class) logic.</li>
+<li><em>«acceptance-tests»</em> - tests which test general quality and compare with set acceptance level. Must be run before every version release.</li>
+</ol>
+
+
+<p><strong>DETAILED:</strong> (what they test)</p>
+
+<ol>
+<li><em>«functional-fast»</em> - functional test with runtime not longer than predefined time duration</li>
+<li><em>«functional-slow»</em> - functional test with runtime longer than predefined time duration</li>
+<li><em>«quality-fast»</em> - quality test with runtime not longer than predefined time duration</li>
+<li><em>«quality-slow»</em> - quality test with runtime longer than predefined time duration</li>
+</ol>
+
+
+<p><strong>OPTIONAL:</strong></p>
+
+<ol>
+<li><em>«experimental»</em> - special test without any predefined test target. Just one experiment on the system</li>
+<li><em>«help-test»</em> - not a test in general, but a test method used to generate or save test data etc. Must be @Ignore by default - start it manually.</li>
+</ol>
+
+
+<h2>Test sources</h2>
+
+<p>Test sources are divided into 2 parts:</p>
+
+<ul>
+<li>functional/integration/quality tests</li>
+<li>unit tests</li>
+</ul>
+
+
+<p>functional/integration/quality tests can be found here:  src/test/unit/java
+unit tests can be found here: src/test/integration/java</p>
+
+<h2>Test resources</h2>
+
+<h3>Text corpuses</h3>
+
+<p>All RAW texts can be found at:
+src/test/resources/texts/<language></p>
+
+<h3>NLP models for 3d part engines</h3>
+
+<p>src/test/resources/models/<engine_name></p>
 
   
 </article>

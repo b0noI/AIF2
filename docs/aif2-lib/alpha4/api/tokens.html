@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/api/tokens.html">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/api/tokens.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -94,16 +94,22 @@
 
 <h2>Functions</h2>
 
-<p>There are 2 main functions that can be used in AIF2 about tokens:
-* extract tokens splitter characters from the text;
-* split the text into tokens.</p>
+<p>There are 2 main functions that can be used in AIF2 about tokens:</p>
+
+<ul>
+<li>extract tokens splitter characters from the text;</li>
+<li>split the text into tokens.</li>
+</ul>
+
 
 <h2>Extract tokens</h2>
 
 <p>This function gives you a possibility to extract the token separators list from the input text. This function should be used by using interface: ITokenSeparatorExtractor (from package: com.aif.language.token). If you want to create an instance of this interface, you need to select the type of TokenSeparatorExtractor and get instance, like this:</p>
 
-<pre><code>ITokenSeparatorExtractor.Type.PREDEFINED.getInstance()
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">ITokenSeparatorExtractor</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PREDEFINED</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>For the difference between separators types see the section below</p>
 
@@ -115,25 +121,39 @@
 
 <h2>Token splitting</h2>
 
-<p>If you want to split tokens, you need to:
-* create a TokenSplitter instance(from package: com.aif.language.token);
-* call the &ldquo;split&rdquo; method.</p>
+<p>If you want to split tokens, you need to:</p>
+
+<ul>
+<li>create a TokenSplitter instance(from package: com.aif.language.token);</li>
+<li>call the &ldquo;split&rdquo; method.</li>
+</ul>
+
 
 <h3>Creating TokenSplitter</h3>
 
-<p>You can initiate it in 2 ways:
-* setting Token Separators Extractor Type;
-* using default Token Separators Extractor Type.</p>
+<p>You can initiate it in 2 ways:</p>
 
-<pre><code> ITokenSeparatorExtractor tokenSeparatorExtractor = ...
+<ul>
+<li>setting Token Separators Extractor Type;</li>
+<li>using default Token Separators Extractor Type.</li>
+</ul>
 
- ISplitter&lt;String, String&gt; tokenSplitter = new TokenSplitter(tokenSeparatorExtractor);
-</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="n">ITokenSeparatorExtractor</span> <span class="n">tokenSeparatorExtractor</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">ISplitter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TokenSplitter</span><span class="o">(</span><span class="n">tokenSeparatorExtractor</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>This will create tokenSplitter that will use tokenSeparatorExtractor for splitting the text into tokens. Also, you can create TokenSplitter with default ITokenSeparatorExtractor like this:</p>
 
-<pre><code> ISplitter&lt;String, String&gt; tokenSplitter = new TokenSplitter();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="n">ISplitter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TokenSplitter</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>By default it will use this ITokenSeparatorExtractor.Type.PREDEFINED.getInstance() token separator extractor.</p>
 
@@ -141,12 +161,18 @@
 
 <p>After you have a TokenSplitter instance, you can split the text by calling the &ldquo;split&rdquo; method like this:</p>
 
-<pre><code> ISplitter&lt;String, String&gt; tokenSplitter = ...
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="n">ISplitter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenSplitter</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
- String text = ...
-
- List&lt;String&gt; tokens = tokenSplitter.split(text);
-</code></pre>
 
 <h2>Usage example</h2>
 
