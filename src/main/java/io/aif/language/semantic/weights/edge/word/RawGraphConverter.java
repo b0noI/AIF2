@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.OptionalDouble;
 
+// TODO Change name to something more specific eg: EdgeValueReducer
 class RawGraphConverter {
 
     public static final Map<IWord, Map<IWord, Double>> recalculateConnections(final Map<IWord, Map<IWord, List<Double>>> distancesGraph) {

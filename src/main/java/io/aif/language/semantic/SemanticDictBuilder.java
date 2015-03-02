@@ -43,6 +43,7 @@ public class SemanticDictBuilder implements IDictBuilder<Collection<IWord.IWordP
                 .map(IWord.IWordPlaceholder::getWord)
                 .collect(Collectors.toList());
 
+        // TODO Move connectAhead < 0
         final int subListLen = (connectAhead < 0 || connectAhead > semanticWords.size())
                 ? semanticWords.size()
                 : connectAhead;
