@@ -17,6 +17,7 @@ On the semantic level AIF provides the following functions:
 
 This function gives you a possibility to calculate semantic weight of all words in the text. 
 This function should be used by using class: SemanticDictBuilder (from package: io.aif.language.semantic). To create an instance of this class you need to extract sentence splitters characters like this:
+
 ``` java
     final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();   final ISeparatorsGrouper separatorsGrouper = ISeparatorsGrouper.Type.PROBABILITY.getInstance();   final ISeparatorGroupsClassifier sentenceSeparatorGroupsClassificatory = ISeparatorGroupsClassifier.Type.PROBABILITY.getInstance();   final List<Character> separators = testInstance.extract(tokens).get();   final Map<ISeparatorGroupsClassifier.Group, Set<Character>> grouppedSeparators = sentenceSeparatorGroupsClassificatory.classify(tokens, separatorsGrouper.group(tokens, separators));
 ```
@@ -35,6 +36,7 @@ To work with semantic words you need to build Semantic dict from the text. This 
 ``` java
     final ISemanticDict semanticDict = semanticDictBuilder.build(placeholders);
 ```
+
 ISemanticDict contains words with weights and connections. To obtain words with weights in sorted list:
 
 ``` java
@@ -48,4 +50,5 @@ To work with semantic words you need to build Semantic dict from the text. This 
 ``` java
     final ISemanticDict semanticDict = semanticDictBuilder.build(placeholders);
 ```
+
 ISemanticDict contains words connections with connections weights. 

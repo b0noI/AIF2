@@ -193,6 +193,7 @@ Here is how the program set on the text of the article works (only a part of the
 ``` bash
 java -jar aif-cli-1.2-jar-with-dependencies.jar -dbuild ~/tmp/text1.txt
 ```
+
 result:
 
     Basic token: something tokens: [ [something] ]
