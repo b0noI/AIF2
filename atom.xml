@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2015-02-28T19:31:33+00:00</updated>
+  <updated>2015-03-07T15:36:13+03:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[REST API specification draft]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2015/02/01/rest-api-specification-draft/"/>
-    <updated>2015-02-01T13:37:05+00:00</updated>
+    <updated>2015-02-01T16:37:05+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2015/02/01/rest-api-specification-draft</id>
     <content type="html"><![CDATA[<h2>REST API draft</h2>
 
@@ -29,7 +29,7 @@
   <entry>
     <title type="html"><![CDATA[Changes in RaodMap]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2015/02/01/changes-in-raodmap/"/>
-    <updated>2015-02-01T13:27:14+00:00</updated>
+    <updated>2015-02-01T16:27:14+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2015/02/01/changes-in-raodmap</id>
     <content type="html"><![CDATA[<h2>New release date for the upcoming Alpha4 version</h2>
 
@@ -44,9 +44,9 @@ New release date: 28 Feb</p>
   
   <entry>
     <title type="html"><![CDATA[project goals for 2015]]></title>
-    <link href="http://b0noI.github.io/AIF2/blog/2015/01/04/project-goals-for-2015/"/>
-    <updated>2015-01-04T22:14:56+00:00</updated>
-    <id>http://b0noI.github.io/AIF2/blog/2015/01/04/project-goals-for-2015</id>
+    <link href="http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015/"/>
+    <updated>2015-01-05T01:14:56+03:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015</id>
     <content type="html"><![CDATA[<p>This short posts describes goals that we going to achieve until the end of 2015th</p>
 
 <ul>
@@ -65,7 +65,7 @@ New release date: 28 Feb</p>
   <entry>
     <title type="html"><![CDATA[Building text dictionary illustrated by NLP library AIF]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif/"/>
-    <updated>2014-12-28T20:42:34+00:00</updated>
+    <updated>2014-12-28T23:42:34+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif</id>
     <content type="html"><![CDATA[<p>It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) on the two previous releases of Alpha1 and Alpha2 can be found <a href="http://habrahabr.ru/post/238359/">here</a> and <a href="http://habrahabr.ru/post/242147/">here</a> (text might be translated later). The current release i.e Alpha3 with its new feature of building a token dictionary from the entry text is no exception. We will describe how the token dictionary building process and how it can be applied to your project.</p>
 
@@ -399,12 +399,12 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
 <h1>Our team</h1>
 
 <ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#118;&#x69;&#97;&#99;&#x68;&#x65;&#x73;&#108;&#x61;&#x76;&#x40;&#x62;&#48;&#110;&#111;&#105;&#46;&#x63;&#111;&#109;">&#x76;&#105;&#x61;&#99;&#x68;&#101;&#115;&#108;&#x61;&#x76;&#x40;&#x62;&#48;&#x6e;&#x6f;&#x69;&#x2e;&#99;&#111;&#109;</a> / @b0noi)</li>
+<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#x76;&#x69;&#97;&#x63;&#x68;&#x65;&#x73;&#x6c;&#97;&#118;&#x40;&#x62;&#48;&#x6e;&#x6f;&#105;&#x2e;&#x63;&#x6f;&#x6d;">&#118;&#x69;&#x61;&#99;&#104;&#x65;&#x73;&#x6c;&#x61;&#x76;&#64;&#98;&#48;&#x6e;&#111;&#105;&#46;&#x63;&#x6f;&#109;</a> / @b0noi)</li>
 <li>Ifthikhan Nazeem (@ifthikhan) – algorithm designer, architecture design, developer</li>
 <li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
 <li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
 <li>Evgenia Kozlovska, English teacher and translator (who translated this article!).</li>
-<li>Balenko Aleksey (<a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#112;&#111;&#x64;&#111;&#x72;&#x6f;&#x7a;&#x68;&#110;&#x69;&#x63;&#107;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x70;&#111;&#100;&#111;&#114;&#x6f;&#122;&#x68;&#110;&#105;&#x63;&#x6b;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a>) – added stammer support to CLI, junior developer</li>
+<li>Balenko Aleksey (<a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#112;&#x6f;&#x64;&#111;&#x72;&#x6f;&#x7a;&#104;&#x6e;&#105;&#x63;&#107;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#112;&#111;&#100;&#x6f;&#x72;&#111;&#122;&#x68;&#x6e;&#x69;&#x63;&#107;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>) – added stammer support to CLI, junior developer</li>
 <li>Evgeniy Dolgikh — QA assistance, junior developer</li>
 </ul>
 
@@ -417,16 +417,16 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
 <li>Issue tracker: github.com/b0noI/AIF2/issues</li>
 <li>Wiki: github.com/b0noI/AIF2/wiki</li>
 <li>Source code: github.com/b0noI/AIF2</li>
-<li>Developers mail list: <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#97;&#x69;&#102;&#x32;&#45;&#100;&#x65;&#x76;&#64;&#121;&#x61;&#104;&#x6f;&#111;&#x67;&#114;&#111;&#x75;&#112;&#115;&#46;&#x63;&#111;&#x6d;">&#97;&#x69;&#102;&#50;&#45;&#x64;&#x65;&#118;&#64;&#x79;&#x61;&#104;&#x6f;&#x6f;&#x67;&#114;&#x6f;&#117;&#112;&#x73;&#46;&#x63;&#x6f;&#109;</a> (subscribe: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#97;&#105;&#102;&#50;&#45;&#x64;&#x65;&#118;&#x2d;&#115;&#117;&#98;&#115;&#x63;&#x72;&#105;&#98;&#101;&#64;&#x79;&#97;&#104;&#111;&#x6f;&#103;&#x72;&#x6f;&#x75;&#112;&#115;&#x2e;&#99;&#111;&#x6d;">&#x61;&#105;&#102;&#50;&#45;&#100;&#x65;&#118;&#45;&#x73;&#x75;&#x62;&#x73;&#99;&#x72;&#x69;&#x62;&#101;&#x40;&#121;&#x61;&#104;&#x6f;&#111;&#x67;&#x72;&#111;&#x75;&#112;&#115;&#46;&#x63;&#111;&#x6d;</a>)</li>
+<li>Developers mail list: <a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#97;&#x69;&#x66;&#50;&#45;&#100;&#x65;&#118;&#64;&#x79;&#x61;&#x68;&#111;&#111;&#103;&#114;&#x6f;&#x75;&#x70;&#115;&#46;&#x63;&#111;&#109;">&#x61;&#105;&#x66;&#x32;&#x2d;&#x64;&#x65;&#x76;&#x40;&#121;&#97;&#x68;&#111;&#x6f;&#x67;&#x72;&#111;&#x75;&#112;&#115;&#x2e;&#x63;&#x6f;&#109;</a> (subscribe: <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#97;&#x69;&#x66;&#x32;&#45;&#x64;&#x65;&#118;&#45;&#x73;&#117;&#x62;&#115;&#x63;&#114;&#x69;&#98;&#x65;&#x40;&#121;&#97;&#104;&#x6f;&#x6f;&#103;&#x72;&#111;&#117;&#112;&#x73;&#x2e;&#x63;&#111;&#109;">&#97;&#x69;&#x66;&#x32;&#x2d;&#x64;&#x65;&#x76;&#45;&#x73;&#117;&#x62;&#115;&#99;&#114;&#x69;&#x62;&#x65;&#64;&#121;&#97;&#104;&#111;&#111;&#x67;&#114;&#x6f;&#117;&#x70;&#x73;&#46;&#99;&#111;&#109;</a>)</li>
 </ul>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[splitter_characters_grouper_search_step parameter tuning]]></title>
+    <title type="html"><![CDATA[splitter_<wbr>characters_<wbr>grouper_<wbr>search_<wbr>step parameter tuning]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/"/>
-    <updated>2014-12-27T16:08:46+00:00</updated>
+    <updated>2014-12-27T19:08:46+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning</id>
     <content type="html"><![CDATA[<p>In last <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">article</a> we discussed our plan about searching optimal values for splitter_characters_grouper_search_step. This time we will show how we were able to find optimal value and prove that this value is optimal.</p>
 
@@ -487,7 +487,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   <entry>
     <title type="html"><![CDATA[First IPython Usage for analyzing quality ]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/27/first-ipython-usage-for-quality-analyze/"/>
-    <updated>2014-12-27T13:14:33+00:00</updated>
+    <updated>2014-12-27T16:14:33+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/27/first-ipython-usage-for-quality-analyze</id>
     <content type="html"><![CDATA[<p>Today is the first day of work with Alpha4. One of the main improvements that we’ve done is the way how we tune AIF settings. AIF has a lot of different variables in settings and we need to prove which value is best for quality.</p>
 
@@ -681,7 +681,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   <entry>
     <title type="html"><![CDATA[AIF Alpha3 is out]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/26/aif-alpha3-is-out/"/>
-    <updated>2014-12-26T13:48:56+00:00</updated>
+    <updated>2014-12-26T16:48:56+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/26/aif-alpha3-is-out</id>
     <content type="html"><![CDATA[<p>Today our community is happy to announce next version of AIF: Alpha3</p>
 
@@ -702,11 +702,11 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
 <p>big thanks to all of you who participate in this long, but important release. Our team that make this release possible:</p>
 
 <ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#x76;&#105;&#97;&#99;&#x68;&#101;&#115;&#108;&#97;&#118;&#64;&#98;&#x30;&#x6e;&#x6f;&#x69;&#46;&#x63;&#111;&#x6d;">&#x76;&#x69;&#x61;&#99;&#x68;&#101;&#115;&#x6c;&#97;&#118;&#64;&#x62;&#48;&#110;&#x6f;&#x69;&#x2e;&#x63;&#x6f;&#x6d;</a> / b0noi)</li>
+<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x76;&#105;&#x61;&#x63;&#x68;&#x65;&#x73;&#x6c;&#x61;&#x76;&#x40;&#98;&#x30;&#110;&#111;&#x69;&#46;&#x63;&#x6f;&#109;">&#x76;&#x69;&#97;&#x63;&#104;&#x65;&#x73;&#x6c;&#x61;&#118;&#x40;&#98;&#48;&#110;&#x6f;&#x69;&#x2e;&#x63;&#111;&#x6d;</a> / b0noi)</li>
 <li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
 <li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
 <li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
-<li>Balenko Aleksey (<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#x70;&#111;&#x64;&#111;&#x72;&#111;&#x7a;&#x68;&#x6e;&#x69;&#99;&#107;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#112;&#x6f;&#x64;&#x6f;&#114;&#x6f;&#122;&#x68;&#x6e;&#x69;&#x63;&#107;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a>) – added stammer support to CLI, junior developer</li>
+<li>Balenko Aleksey (<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#112;&#x6f;&#x64;&#111;&#x72;&#111;&#x7a;&#104;&#110;&#105;&#x63;&#x6b;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x70;&#x6f;&#100;&#x6f;&#x72;&#111;&#122;&#x68;&#110;&#105;&#99;&#x6b;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a>) – added stammer support to CLI, junior developer</li>
 <li>Evgeniy Dolgikh — QA assistance, junior developer</li>
 </ul>
 
@@ -721,9 +721,9 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   
   <entry>
     <title type="html"><![CDATA[aif.io is alive]]></title>
-    <link href="http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive/"/>
-    <updated>2014-12-20T22:11:13+00:00</updated>
-    <id>http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive</id>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/12/21/aif-dot-io-is-alive/"/>
+    <updated>2014-12-21T01:11:13+03:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2014/12/21/aif-dot-io-is-alive</id>
     <content type="html"><![CDATA[<h2>Long live aif.io!</h2>
 
 <p>Today, AIF community os proud to announce AIF web site: <a href="aif.io">aif.io</a></p>
@@ -747,7 +747,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   <entry>
     <title type="html"><![CDATA[initial]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/10/20/test/"/>
-    <updated>2014-10-20T17:53:13+01:00</updated>
+    <updated>2014-10-20T19:53:13+03:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/10/20/test</id>
     <content type="html"><![CDATA[<p>AIF finally moved to it&rsquo;s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
 ]]></content>

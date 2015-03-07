@@ -2,293 +2,202 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/2015/02/01/rest-api-specification-draft/</loc>
-    <lastmod>2015-02-01T13:37:05+00:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2015-02-01T16:37:05+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/2015/02/01/changes-in-raodmap/</loc>
-    <lastmod>2015-02-01T13:27:14+00:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2015-02-01T16:27:14+03:00</lastmod>
   </url>
   <url>
-    <loc>http://b0noI.github.io/AIF2/blog/2015/01/04/project-goals-for-2015/</loc>
-    <lastmod>2015-01-04T22:14:56+00:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015/</loc>
+    <lastmod>2015-01-05T01:14:56+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif/</loc>
-    <lastmod>2014-12-28T20:42:34+00:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2014-12-28T23:42:34+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/</loc>
-    <lastmod>2014-12-27T16:08:46+00:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2014-12-27T19:08:46+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/2014/12/27/first-ipython-usage-for-quality-analyze/</loc>
-    <lastmod>2014-12-27T13:14:33+00:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2014-12-27T16:14:33+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/2014/12/26/aif-alpha3-is-out/</loc>
-    <lastmod>2014-12-26T13:48:56+00:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2014-12-26T16:48:56+03:00</lastmod>
   </url>
   <url>
-    <loc>http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive/</loc>
-    <lastmod>2014-12-20T22:11:13+00:00</lastmod>
-    <priority>0.8</priority>
+    <loc>http://b0noI.github.io/AIF2/blog/2014/12/21/aif-dot-io-is-alive/</loc>
+    <lastmod>2014-12-21T01:11:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/2014/10/20/test/</loc>
-    <lastmod>2014-10-20T17:53:13+01:00</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2014-10-20T19:53:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/about.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/common/changelog.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/algorithm/classification-of-text-separators-groups.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/downloads/cli.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/algorithm/dividing-text-separators-into-groups.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/common/environment.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/common/how-version-number-is-chosen.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/blog/archives/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif-cli/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha1/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif-cli/1.2/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif-cli/1.0/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif-cli/1.1/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>http://b0noI.github.io/AIF2/docs/aif-cli/1.2/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/downloads/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif-cli/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif-cli/1.1/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha1/</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/algorithm/main-definitions.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/common/road-map.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/api/semantic.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/algorithm/sentence-splitting.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/api/sentences.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/api/sentences.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha1/api/sentences.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/api/sentences.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha1/api/sentences.html</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/api/sentences.html</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/common/software-that-uses-aif.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/algorithm/splitting-text-with-groups-of-text-separators.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/tests.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/tests.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/tests.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/algorithm/text-separators-extraction.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/algorithm/token-separator-extraction.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/api/tokens.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha1/api/tokens.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/api/tokens.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/api/tokens.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
-    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/api/words.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha1/api/tokens.html</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha2/api/tokens.html</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
   <url>
     <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha3/api/words.html</loc>
-    <lastmod>2015-02-28T19:31:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
+  </url>
+  <url>
+    <loc>http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/api/words.html</loc>
+    <lastmod>2015-03-07T15:36:13+03:00</lastmod>
   </url>
 </urlset>
