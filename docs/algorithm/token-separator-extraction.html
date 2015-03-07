@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -90,47 +106,46 @@
     
   </header>
   
-  <h2>Definitions</h2>
+  <h2 id="definitions">Definitions</h2>
 
 <ul>
-<li><a href="./main-definitions.html#tokens-separator">tokens separator</a></li>
+  <li><a href="./main-definitions.html#tokens-separator">tokens separator</a></li>
 </ul>
 
-
-<h2>Algorithm</h2>
+<h2 id="algorithm">Algorithm</h2>
 
 <p>The process of tokens separator extraction counts each unique character in the text. One rule is to be applied during calculation: if a unique character occurs more than once in a row, this occurrence is counted as one.</p>
 
 <p>This approach does not work under the following conditions:
 * input text is small;
-* language of input text doesn&rsquo;t have a token separator (some languages don&rsquo;t use token separators at all or in some cases).</p>
+* language of input text doesn’t have a token separator (some languages don’t use token separators at all or in some cases).</p>
 
 <p><strong>Example of input:</strong>
 Token1 token2 eeee4    .</p>
 
 <p><strong>Counting result:</strong></p>
 
-<p>&rsquo;T&#8217; - 1</p>
+<p>‘T’ - 1</p>
 
-<p>&rsquo;t&#8217; - 1</p>
+<p>‘t’ - 1</p>
 
-<p>&lsquo;o&rsquo; - 2</p>
+<p>‘o’ - 2</p>
 
-<p>&lsquo;k&rsquo; - 2</p>
+<p>‘k’ - 2</p>
 
-<p>&lsquo;e&rsquo; - 3</p>
+<p>‘e’ - 3</p>
 
-<p>&lsquo;n&rsquo; - 2</p>
+<p>‘n’ - 2</p>
 
-<p>&lsquo;1&rsquo; - 1</p>
+<p>‘1’ - 1</p>
 
-<p>&lsquo;2&rsquo; - 1</p>
+<p>‘2’ - 1</p>
 
-<p>&lsquo;4&rsquo; - 1</p>
+<p>‘4’ - 1</p>
 
-<p>&lsquo; &rsquo; - 3</p>
+<p>’ ’ - 3</p>
 
-<p>&lsquo;.&rsquo; - 1</p>
+<p>’.’ - 1</p>
 
   
 </article>

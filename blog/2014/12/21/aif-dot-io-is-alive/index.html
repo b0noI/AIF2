@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -110,7 +126,7 @@
   </header>
 
 
-<div class="entry-content"><h2>Long live aif.io!</h2>
+<div class="entry-content"><h2 id="long-live-aifio">Long live aif.io!</h2>
 
 <p>Today, AIF community os proud to announce AIF web site: <a href="aif.io">aif.io</a></p>
 
@@ -121,12 +137,11 @@
 <p>In nearest plans to have:</p>
 
 <ul>
-<li>IRC channel</li>
-<li>forum</li>
+  <li>IRC channel</li>
+  <li>forum</li>
 </ul>
 
-
-<p>And of course we are about to release Alpha3, so stay touched</p>
+<p>And of course we are about to release Alpha3, so stay touched </p>
 </div>
 
 

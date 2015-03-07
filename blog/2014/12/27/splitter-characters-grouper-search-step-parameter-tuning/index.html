@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -112,17 +128,16 @@
 
 <div class="entry-content"><p>In last <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">article</a> we discussed our plan about searching optimal values for splitter_characters_grouper_search_step. This time we will show how we were able to find optimal value and prove that this value is optimal.</p>
 
-<h2>Some theory about splitter_characters_grouper_search_step value</h2>
+<h2 id="some-theory-about-splittercharactersgroupersearchstep-value">Some theory about splitter_characters_grouper_search_step value</h2>
 
 <p>This value is used by Sentence splitting module. At some point our algorithm doing gradient search of the sentence splitters (we are not going to dive to the algorithm right now). Point is that this value is compromise between accuracy and speed. We can have as accurate result as small value we can set, on the other side of coin, this value have dramatic impact on the algorithm speed. As low we set this value as much slow we will make our algorithm.</p>
 
 <p>When choosing value for this parameter, you always need to ask:</p>
 
 <ul>
-<li>is there are highest level of accuracy that you can get with this algorithm? - if this limit exists you can&rsquo;t get more accurate result even by making value splitter_characters_grouper_search_step lower;</li>
-<li>if accuracy limit exists, what maximum value of splitter_characters_grouper_search_step we can set to achieve this level of accuracy? Knowing this information will give us compromise between best accuracy and algorithm speed;</li>
+  <li>is there are highest level of accuracy that you can get with this algorithm? - if this limit exists you can’t get more accurate result even by making value splitter_characters_grouper_search_step lower;</li>
+  <li>if accuracy limit exists, what maximum value of splitter_characters_grouper_search_step we can set to achieve this level of accuracy? Knowing this information will give us compromise between best accuracy and algorithm speed;</li>
 </ul>
-
 
 <p>In <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">prev</a> article we already collected enough experiments results for visualizing and building function:</p>
 
@@ -130,7 +145,7 @@
 
 <p>now we can proceed with function building</p>
 
-<h2>Building function for splitter_characters_grouper_search_step vs quality</h2>
+<h2 id="building-function-for-splittercharactersgroupersearchstep-vs-quality">Building function for splitter_characters_grouper_search_step vs quality</h2>
 
 <p>We decided to use least squares method for building polynomial. By quick first look on plot you may think that we should use polynomial with max power 2 (3 elements polynomial) like this one:</p>
 
@@ -144,7 +159,7 @@
 
 <p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.00.21.png" alt="img" /></p>
 
-<p>so the top quality that we can get is 54 errors. That is not true, because we have our experiment that shows 53 errors. Let&rsquo;s increase size of the polynomial to 5 (size 4 is similar to 3).</p>
+<p>so the top quality that we can get is 54 errors. That is not true, because we have our experiment that shows 53 errors. Let’s increase size of the polynomial to 5 (size 4 is similar to 3). </p>
 
 <p>Resulted chart:</p>
 
@@ -154,13 +169,13 @@
 
 <p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+18.04.46.png" alt="img" /></p>
 
-<p>this result is much more accurate and consistent with real life.</p>
+<p>this result is much more accurate and consistent with real life. </p>
 
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
-<p>As you can see, 53 errors is the best value of quality that can be achieved by setting different values to the variable. This means that we need to find biggest value of this variable that still gives us 53 error. And the value is:</p>
+<p>As you can see, 53 errors is the best value of quality that can be achieved by setting different values to the variable. This means that we need to find biggest value of this variable that still gives us 53 error. And the value is: </p>
 
-<p>{&ldquo;value&rdquo;: 0.0031, &ldquo;errors&rdquo;: 53},</p>
+<p>{“value”: 0.0031, “errors”: 53},</p>
 
 <p>this is 6x times bigger than previous value (0.0005), so we improve algorithm speed in 6x time without losing accuracy!</p>
 </div>

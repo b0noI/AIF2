@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -85,75 +101,69 @@
       <div>
 <article role="article">
   
-  <p>AIF2 is <strong>fully language independent</strong> NLU library. AIF2 is written in Java 8+.</p>
+  <p>AIF2 is <strong>fully language independent</strong> NLU library. AIF2 is written in Java 8+. </p>
 
-<h2>How to use it</h2>
+<h2 id="how-to-use-it">How to use it</h2>
 
-<p>You can use it by pulling artifact.</p>
+<p>You can use it by pulling artifact. </p>
 
 <p>Add repository to pom.xml:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;project</span> <span class="err">...</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;repositories&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;repository&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;id&gt;</span>aif.com<span class="nt">&lt;/id&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;url&gt;</span>http://192.241.238.122:8081/artifactory/libs-release-local/<span class="nt">&lt;/url&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/repository&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/repositories&gt;</span>
-</span><span class='line'><span class="nt">&lt;/project&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;project</span> <span class="err">...</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;repositories&gt;</span>
+</span><span class="line">        <span class="nt">&lt;repository&gt;</span>
+</span><span class="line">            <span class="nt">&lt;id&gt;</span>aif.com<span class="nt">&lt;/id&gt;</span>
+</span><span class="line">            <span class="nt">&lt;url&gt;</span>http://192.241.238.122:8081/artifactory/libs-release-local/<span class="nt">&lt;/url&gt;</span>
+</span><span class="line">        <span class="nt">&lt;/repository&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/repositories&gt;</span>
+</span><span class="line"><span class="nt">&lt;/project&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 <p>and add dependency:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;dependency&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;groupId&gt;</span>io.aif<span class="nt">&lt;/groupId&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;artifactId&gt;</span>aif<span class="nt">&lt;/artifactId&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;version&gt;</span>1.2.0-Alpha4<span class="nt">&lt;/version&gt;</span>
-</span><span class='line'><span class="nt">&lt;/dependency&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;dependency&gt;</span>
+</span><span class="line">   <span class="nt">&lt;groupId&gt;</span>io.aif<span class="nt">&lt;/groupId&gt;</span>
+</span><span class="line">   <span class="nt">&lt;artifactId&gt;</span>aif<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class="line">   <span class="nt">&lt;version&gt;</span>1.2.0-Alpha4<span class="nt">&lt;/version&gt;</span>
+</span><span class="line"><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h2>Current version</h2>
-
-<ul>
-<li>alpha4</li>
-</ul>
-
-
-<h2>Next versions</h2>
+<h2 id="current-version">Current version</h2>
 
 <ul>
-<li>alpha5 (~end of March 2015)</li>
-<li>beta1</li>
+  <li>alpha4</li>
 </ul>
 
+<h2 id="next-versions">Next versions</h2>
 
-<h2>Deprecated versions</h2>
+<ul>
+  <li>alpha5 (~end of March 2015)</li>
+  <li>beta1 </li>
+</ul>
+
+<h2 id="deprecated-versions">Deprecated versions</h2>
 
 <p>This versions are no longer supported and should not be used:</p>
 
 <ul>
-<li>alpha3</li>
-<li>alpha2</li>
-<li>alpha1</li>
+  <li>alpha3</li>
+  <li>alpha2</li>
+  <li>alpha1</li>
 </ul>
 
-
-<h2>License</h2>
+<h2 id="license">License</h2>
 
 <p>AIF2 is distributed under <a href="http://choosealicense.com/licenses/mit/">MIT license</a></p>
 

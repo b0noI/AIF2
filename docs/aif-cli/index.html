@@ -9,9 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="AIF2 CLI Documentation aif-cli v1.2 documentation
-aif-cli v1.1 documentation
-aif-cli v1.0 documentation Versions CLI: 1.2 (uses AIF: 1.1.0-Alpha3) &hellip;">
+  <meta name="description" content="AIF2 CLI Documentation aif-cli v1.2 documentation aif-cli v1.1 documentation aif-cli v1.0 documentation Versions CLI: 1.2 (uses AIF: 1.1.0-Alpha3) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +29,22 @@ aif-cli v1.0 documentation Versions CLI: 1.2 (uses AIF: 1.1.0-Alpha3) &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -87,23 +101,20 @@ aif-cli v1.0 documentation Versions CLI: 1.2 (uses AIF: 1.1.0-Alpha3) &hellip;">
       <div>
 <article role="article">
   
-  <h2>AIF2 CLI Documentation</h2>
+  <h2 id="aif2-cli-documentation">AIF2 CLI Documentation</h2>
 
 <ul>
-<li><a href="/docs/aif-cli/1.2/" title="Docs for aif cli v1.2">aif-cli v1.2</a> documentation</li>
-<li><a href="/docs/aif-cli/1.1/" title="Docs for aif cli v1.1">aif-cli v1.1</a> documentation</li>
-<li><a href="/docs/aif-cli/1.0/" title="Docs for aif cli v1.0">aif-cli v1.0</a> documentation</li>
+  <li><a href="/docs/aif-cli/1.2/" title="Docs for aif cli v1.2">aif-cli v1.2</a> documentation</li>
+  <li><a href="/docs/aif-cli/1.1/" title="Docs for aif cli v1.1">aif-cli v1.1</a> documentation</li>
+  <li><a href="/docs/aif-cli/1.0/" title="Docs for aif cli v1.0">aif-cli v1.0</a> documentation</li>
 </ul>
 
-
-<h2>Versions</h2>
-
+<h2 id="versions">Versions</h2>
 <ul>
-<li>CLI: 1.2 (uses AIF: 1.1.0-Alpha3)</li>
-<li>CLI: 1.1 (uses AIF: 1.0.0-Alpha2)</li>
-<li>CLI: 1.0 (uses AIF: 0.0.0-Alpha1)</li>
+  <li>CLI: 1.2 (uses AIF: 1.1.0-Alpha3)</li>
+  <li>CLI: 1.1 (uses AIF: 1.0.0-Alpha2)</li>
+  <li>CLI: 1.0 (uses AIF: 0.0.0-Alpha1)</li>
 </ul>
-
 
   
 </article>

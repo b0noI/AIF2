@@ -9,8 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Today our community is happy to announce next version of AIF: Alpha3 Main focus in Alpha3 was on the next 2 points: quality improvements;
-text &hellip;">
+  <meta name="description" content="Today our community is happy to announce next version of AIF: Alpha3 Main focus in Alpha3 was on the next 2 points: quality improvements; text &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,6 +29,22 @@ text &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -116,12 +131,11 @@ text &hellip;">
 <p>Main focus in Alpha3 was on the next 2 points:</p>
 
 <ul>
-<li>quality improvements;</li>
-<li>text dictionary building;</li>
+  <li>quality improvements;</li>
+  <li>text dictionary building;</li>
 </ul>
 
-
-<p>And we are proudly announcing that both of the goals are achieved!</p>
+<p>And we are proudly announcing that both of the goals are achieved! </p>
 
 <p><a href="http://aif.io/docs/aif2-lib/alpha3/">Alpha3 documentation page</a></p>
 
@@ -130,20 +144,20 @@ text &hellip;">
 <p>big thanks to all of you who participate in this long, but important release. Our team that make this release possible:</p>
 
 <ul>
-<li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x76;&#x69;&#97;&#99;&#104;&#101;&#115;&#108;&#97;&#x76;&#64;&#x62;&#x30;&#110;&#111;&#105;&#46;&#x63;&#111;&#109;">&#118;&#x69;&#x61;&#x63;&#104;&#101;&#115;&#x6c;&#97;&#118;&#x40;&#x62;&#x30;&#x6e;&#111;&#x69;&#x2e;&#99;&#x6f;&#109;</a> / b0noi)</li>
-<li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
-<li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
-<li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
-<li>Balenko Aleksey (<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#112;&#111;&#100;&#111;&#114;&#x6f;&#x7a;&#x68;&#110;&#x69;&#x63;&#x6b;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;">&#112;&#111;&#100;&#x6f;&#x72;&#x6f;&#x7a;&#104;&#x6e;&#x69;&#99;&#x6b;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;</a>) – added stammer support to CLI, junior developer</li>
-<li>Evgeniy Dolgikh — QA assistance, junior developer</li>
+  <li>Kovalevskyi Viacheslav – algorithm developer, architecture design, team lead (viacheslav@b0noi.com / b0noi)</li>
+  <li>Ifthikhan Nazeem – algorithm designer, architecture design, developer</li>
+  <li>Sviatoslav Glushchenko — REST design and implementation, developer</li>
+  <li>Oleg Kozlovskyi QA (integration and qaulity testing), developer.</li>
+  <li>Balenko Aleksey (podorozhnick@gmail.com) – added stammer support to CLI, junior developer</li>
+  <li>Evgeniy Dolgikh — QA assistance, junior developer</li>
 </ul>
-
 
 <p>Our next release (Alpha4) will be dedicated to the core component of semantic analyze. So it would be fun, stay tinned!</p>
 
 <p>Please note that Alpha2 is deprecated from very this moment and will not be supported.</p>
 
 <p>Also Alpha3 is the first release that taking place on the brand new AIF.IO site!</p>
+
 </div>
 
 

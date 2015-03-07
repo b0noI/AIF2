@@ -9,7 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Documentation AIF2 is fully language independent NLU (Natural Language Understanding) library. AIF2 is written in Java 8+. How to use it You can use &hellip;">
+  <meta name="description" content="Documentation AIF2 is fully language independent NLU (Natural Languageeeeee Understanding) library. AIF2 is written in Java 8+. How to use it You &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -90,82 +106,72 @@
     
   </header>
   
-  <p>AIF2 is <strong>fully language independent</strong> NLU (Natural Language Understanding) library. AIF2 is written in Java 8+.</p>
+  <p>AIF2 is <strong>fully language independent</strong> NLU (Natural Languageeeeee Understanding) library. AIF2 is written in Java 8+.</p>
 
-<h2>How to use it</h2>
+<h2 id="how-to-use-it">How to use it</h2>
 
-<p>You can use it by pulling artifact.</p>
+<p>You can use it by pulling artifact. </p>
 
 <p>Add repository to pom.xml:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;project</span> <span class="err">...</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;repositories&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;repository&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;id&gt;</span>aif.com<span class="nt">&lt;/id&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;url&gt;</span>http://192.241.238.122:8081/artifactory/libs-release-local/<span class="nt">&lt;/url&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/repository&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/repositories&gt;</span>
-</span><span class='line'><span class="nt">&lt;/project&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;project</span> <span class="err">...</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;repositories&gt;</span>
+</span><span class="line">        <span class="nt">&lt;repository&gt;</span>
+</span><span class="line">            <span class="nt">&lt;id&gt;</span>aif.com<span class="nt">&lt;/id&gt;</span>
+</span><span class="line">            <span class="nt">&lt;url&gt;</span>http://192.241.238.122:8081/artifactory/libs-release-local/<span class="nt">&lt;/url&gt;</span>
+</span><span class="line">        <span class="nt">&lt;/repository&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/repositories&gt;</span>
+</span><span class="line"><span class="nt">&lt;/project&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 <p>and add dependency:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;dependency&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;groupId&gt;</span>io.aif<span class="nt">&lt;/groupId&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;artifactId&gt;</span>aif<span class="nt">&lt;/artifactId&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;version&gt;</span>1.2.0-Alpha4<span class="nt">&lt;/version&gt;</span>
-</span><span class='line'><span class="nt">&lt;/dependency&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;dependency&gt;</span>
+</span><span class="line">   <span class="nt">&lt;groupId&gt;</span>io.aif<span class="nt">&lt;/groupId&gt;</span>
+</span><span class="line">   <span class="nt">&lt;artifactId&gt;</span>aif<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class="line">   <span class="nt">&lt;version&gt;</span>1.2.0-Alpha4<span class="nt">&lt;/version&gt;</span>
+</span><span class="line"><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h3>AIF2 API</h3>
-
+<h3 id="aif2-api">AIF2 API</h3>
 <ul>
-<li><a href="/docs/aif2-lib/alpha4/">AIF2: v1.2.0-alpha4</a></li>
-<li><a href="/docs/aif2-lib/alpha3/">AIF2: v1.1.0-alpha3</a></li>
-<li><a href="/docs/aif2-lib/alpha2/">AIF2: v1.0.0-alpha2</a></li>
-<li><a href="/docs/aif2-lib/alpha1/">AIF2: v0.0.0-alpha1</a></li>
+  <li><a href="/docs/aif2-lib/alpha4/">AIF2: v1.2.0-alpha4</a></li>
+  <li><a href="/docs/aif2-lib/alpha3/">AIF2: v1.1.0-alpha3</a></li>
+  <li><a href="/docs/aif2-lib/alpha2/">AIF2: v1.0.0-alpha2</a></li>
+  <li><a href="/docs/aif2-lib/alpha1/">AIF2: v0.0.0-alpha1</a></li>
 </ul>
 
-
-<h3>Algorithms</h3>
-
+<h3 id="algorithms">Algorithms</h3>
 <ul>
-<li><a href="./algorithm/main-definitions.html">Main definitions</a></li>
-<li><a href="./algorithm/sentence-splitting.html">Sentence splitting algorithm</a></li>
-<li><a href="./algorithm/token-separator-extraction.html">Algorithm of tokens separator extraction</a></li>
+  <li><a href="./algorithm/main-definitions.html">Main definitions</a></li>
+  <li><a href="./algorithm/sentence-splitting.html">Sentence splitting algorithm</a></li>
+  <li><a href="./algorithm/token-separator-extraction.html">Algorithm of tokens separator extraction</a></li>
 </ul>
 
-
-<h3>Other AIF documentation</h3>
-
+<h3 id="other-aif-documentation">Other AIF documentation</h3>
 <ul>
-<li><a href="./common/road-map.html">Road map</a></li>
-<li><a href="./common/changelog.html">ChangeLog</a></li>
-<li><a href="./common/environment.html">Environment</a></li>
-<li><a href="./common/how-version-number-is-chosen.html">How version number is chosen</a></li>
-<li><a href="./common/software-that-uses-aif.html">Software that uses aif</a></li>
+  <li><a href="./common/road-map.html">Road map</a></li>
+  <li><a href="./common/changelog.html">ChangeLog</a></li>
+  <li><a href="./common/environment.html">Environment</a></li>
+  <li><a href="./common/how-version-number-is-chosen.html">How version number is chosen</a></li>
+  <li><a href="./common/software-that-uses-aif.html">Software that uses aif</a></li>
 </ul>
 
-
-<h3>AIF2 CLI Documentation</h3>
-
-<p>We have command line interface for our library.<br/>
-You can download it from <a href="/downloads/cli.html" title="CLI Download page">CLI Download page</a>,<br/>
+<h3 id="aif2-cli-documentation">AIF2 CLI Documentation</h3>
+<p>We have command line interface for our library.<br />
+You can download it from <a href="/downloads/cli.html" title="CLI Download page">CLI Download page</a>,<br />
 and you can find usage instructions on <a href="/docs/aif-cli/" title="CLI Documentation page">CLI Documentation page</a></p>
 
   

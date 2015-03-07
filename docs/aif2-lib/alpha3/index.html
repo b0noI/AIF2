@@ -9,9 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="version: 1.1.0 Docs navigation API documentation: Work with tokens
-Work with sentences
-Work with words Tests documentation Recent Posts REST API &hellip;">
+  <meta name="description" content="version: 1.1.0 Docs navigation API documentation: Work with tokens Work with sentences Work with words Tests documentation Recent Posts REST API &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +29,22 @@ Work with words Tests documentation Recent Posts REST API &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -89,20 +103,18 @@ Work with words Tests documentation Recent Posts REST API &hellip;">
   
   <p><strong>version</strong>: 1.1.0</p>
 
-<h2>Docs navigation</h2>
+<h2 id="docs-navigation">Docs navigation</h2>
 
 <ul>
-<li>API documentation:
-
-<ul>
-<li><a href="./api/tokens.html">Work with tokens</a></li>
-<li><a href="./api/sentences.html">Work with sentences</a></li>
-<li><a href="./api/words.html">Work with words</a></li>
+  <li>API documentation:
+    <ul>
+      <li><a href="./api/tokens.html">Work with tokens</a></li>
+      <li><a href="./api/sentences.html">Work with sentences</a></li>
+      <li><a href="./api/words.html">Work with words</a></li>
+    </ul>
+  </li>
+  <li><a href="./tests.html">Tests documentation</a></li>
 </ul>
-</li>
-<li><a href="./tests.html">Tests documentation</a></li>
-</ul>
-
 
   
 </article>

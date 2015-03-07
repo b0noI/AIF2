@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -110,188 +126,184 @@
   </header>
 
 
-<div class="entry-content"><p>Today is the first day of work with Alpha4. One of the main improvements that we’ve done is the way how we tune AIF settings. AIF has a lot of different variables in settings and we need to prove which value is best for quality.</p>
+<div class="entry-content"><p>Today is the first day of work with Alpha4. One of the main improvements that we’ve done is the way how we tune AIF settings. AIF has a lot of different variables in settings and we need to prove which value is best for quality. </p>
 
 <p><em>note</em>: in this post we left measuring quality process out of our scope. Quality measurement is the question of other article.</p>
 
 <p>Here is config example of current revision:</p>
 
-<figure class='code'><figcaption><span>properties</span><a href='https://github.com/b0noI/AIF2/blob/master/src/main/resources/io/aif/common/settings/main.properties'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='basic'><span class='line'><span class="vg">version</span><span class="o">=</span><span class="mf">1.1.0</span><span class="o">-</span><span class="vg">alpha3</span>
-</span><span class='line'><span class="err"> </span><span class="vg">minimum_tokens_input_count</span><span class="o">=</span><span class="il">600</span>
-</span><span class='line'><span class="err"> </span><span class="vg">use_is_alphabetic_method</span><span class="o">=</span><span class="vg">true</span>
-</span><span class='line'><span class="err"> </span><span class="vg">threshold_p_for_second_filter_separator_character</span><span class="o">=</span><span class="mf">.65</span>
-</span><span class='line'><span class="err"> </span><span class="vg">minimal_valuable_token_size_during_sentence_splitting</span><span class="o">=</span><span class="il">3</span>
-</span><span class='line'><span class="err"> </span><span class="vg">minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting</span><span class="o">=</span><span class="il">10</span>
-</span><span class='line'><span class="err"> </span><span class="vg">threshold_p_for_first_filter_separator_character</span><span class="o">=</span><span class="mf">0.05</span>
-</span><span class='line'><span class="err"> </span><span class="vg">splitter_characters_grouper_search_step</span><span class="o">=</span><span class="mf">0.0005</span>
-</span><span class='line'><span class="err"> </span><span class="vg">splitter_characters_grouper_init_search_P_value</span><span class="o">=</span><span class="mf">0.65</span>
-</span><span class='line'><span class="err"> </span><span class="vg">word_set_dict_comparator_treshold</span><span class="o">=</span><span class="mf">0.75</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>properties</span><a href="https://github.com/b0noI/AIF2/blob/master/src/main/resources/io/aif/common/settings/main.properties">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="basic"><span class="line"><span class="vg">version</span><span class="o">=</span><span class="mf">1.1.0</span><span class="o">-</span><span class="vg">alpha3</span>
+</span><span class="line"><span class="err"> </span><span class="vg">minimum_tokens_input_count</span><span class="o">=</span><span class="il">600</span>
+</span><span class="line"><span class="err"> </span><span class="vg">use_is_alphabetic_method</span><span class="o">=</span><span class="vg">true</span>
+</span><span class="line"><span class="err"> </span><span class="vg">threshold_p_for_second_filter_separator_character</span><span class="o">=</span><span class="mf">.65</span>
+</span><span class="line"><span class="err"> </span><span class="vg">minimal_valuable_token_size_during_sentence_splitting</span><span class="o">=</span><span class="il">3</span>
+</span><span class="line"><span class="err"> </span><span class="vg">minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting</span><span class="o">=</span><span class="il">10</span>
+</span><span class="line"><span class="err"> </span><span class="vg">threshold_p_for_first_filter_separator_character</span><span class="o">=</span><span class="mf">0.05</span>
+</span><span class="line"><span class="err"> </span><span class="vg">splitter_characters_grouper_search_step</span><span class="o">=</span><span class="mf">0.0005</span>
+</span><span class="line"><span class="err"> </span><span class="vg">splitter_characters_grouper_init_search_P_value</span><span class="o">=</span><span class="mf">0.65</span>
+</span><span class="line"><span class="err"> </span><span class="vg">word_set_dict_comparator_treshold</span><span class="o">=</span><span class="mf">0.75</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>each of these variables can impact quality. So we need to have a way of building function that correlates each of these variables with output quality. In the perfect world with pony we should have the one big function that correlates all variables from settings with the quality. Unfortunately building the one global function is hard task. So we decided to build function for each variable independly to see how this particular variable impacts the quality.</p>
 
-<p>Today we will show the small step that was done with the &ldquo;splitter_characters_grouper_search_step&rdquo; variable.</p>
+<p>Today we will show the small step that was done with the “splitter_characters_grouper_search_step” variable. </p>
 
 <p>Our experiment is very simple:</p>
 
 <ul>
-<li>execute a lot of quality tests with different &ldquo;splitter_characters_grouper_search_step&rdquo; values;</li>
-<li>plot the results;</li>
-<li>build the function that based on the data from first step;</li>
-<li>find global extremum of the function and set configuration to that extremum.</li>
+  <li>execute a lot of quality tests with different “splitter_characters_grouper_search_step” values;</li>
+  <li>plot the results;</li>
+  <li>build the function that based on the data from first step;</li>
+  <li>find global extremum of the function and set configuration to that extremum.</li>
 </ul>
 
+<p>So, basically, we need to find value of “splitter_characters_grouper_search_step” that gives the best quality.</p>
 
-<p>So, basically, we need to find value of &ldquo;splitter_characters_grouper_search_step&rdquo; that gives the best quality.</p>
-
-<h2>Executing a lot of quality tests</h2>
+<h2 id="executing-a-lot-of-quality-tests">Executing a lot of quality tests</h2>
 
 <p>Done with the simple implementation (may be refactored in future):</p>
 
-<figure class='code'><figcaption><span>experimentWith_splitter_characters_grouper_search_step</span><a href='https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/java/io/aif/language/common/settings/PropertyBasedSettingsTest.java'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">experimentWith_splitter_characters_grouper_search_step</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getRootLogger</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">logger</span><span class="o">.</span><span class="na">setLevel</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">OFF</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="kd">final</span> <span class="n">PropertyBasedSettings</span> <span class="n">propertyBasedSettings</span> <span class="o">=</span> <span class="o">(</span><span class="n">PropertyBasedSettings</span><span class="o">)</span> <span class="n">ISettings</span><span class="o">.</span><span class="na">SETTINGS</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;splitter_characters_grouper_search_step: [&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="n">Double</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">=</span> <span class="mf">0.00005</span><span class="o">;</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="o">;</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">+=</span> <span class="mf">0.0005</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="n">propertyBasedSettings</span><span class="o">.</span><span class="na">properties</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">&quot;splitter_characters_grouper_search_step&quot;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">splitter_characters_grouper_search_step</span><span class="o">));</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">testResult</span> <span class="o">=</span> <span class="n">SimpleSentenceSplitterCharactersExtractorQualityTest</span><span class="o">.</span><span class="na">executeTest</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;{value: %f, errors: %d},&quot;</span><span class="o">,</span> <span class="n">splitter_characters_grouper_search_step</span><span class="o">,</span> <span class="n">testResult</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">key</span> <span class="o">-&gt;</span> <span class="n">testResult</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">).</span><span class="na">size</span><span class="o">()).</span><span class="na">sum</span><span class="o">()));</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;]&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>    <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>experimentWith_splitter_characters_grouper_search_step</span><a href="https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/java/io/aif/language/common/settings/PropertyBasedSettingsTest.java">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">experimentWith_splitter_characters_grouper_search_step</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getRootLogger</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">logger</span><span class="o">.</span><span class="na">setLevel</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">OFF</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">final</span> <span class="n">PropertyBasedSettings</span> <span class="n">propertyBasedSettings</span> <span class="o">=</span> <span class="o">(</span><span class="n">PropertyBasedSettings</span><span class="o">)</span> <span class="n">ISettings</span><span class="o">.</span><span class="na">SETTINGS</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;splitter_characters_grouper_search_step: [&quot;</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="n">Double</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">=</span> <span class="mf">0.00005</span><span class="o">;</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="o">;</span> <span class="n">splitter_characters_grouper_search_step</span> <span class="o">+=</span> <span class="mf">0.0005</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">propertyBasedSettings</span><span class="o">.</span><span class="na">properties</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">&quot;splitter_characters_grouper_search_step&quot;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">splitter_characters_grouper_search_step</span><span class="o">));</span>
+</span><span class="line">
+</span><span class="line">        <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">testResult</span> <span class="o">=</span> <span class="n">SimpleSentenceSplitterCharactersExtractorQualityTest</span><span class="o">.</span><span class="na">executeTest</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;{value: %f, errors: %d},&quot;</span><span class="o">,</span> <span class="n">splitter_characters_grouper_search_step</span><span class="o">,</span> <span class="n">testResult</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">key</span> <span class="o">-&gt;</span> <span class="n">testResult</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">).</span><span class="na">size</span><span class="o">()).</span><span class="na">sum</span><span class="o">()));</span>
+</span><span class="line">
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;]&quot;</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This code will generate Python array with data. Using this we can use Python for visualizing data to see the shape of the function.</p>
 
 <p><em>note</em>: this variable was chosen as the first to be analyzed because we expecting it to has simple function without local extremums at all with 1 global extremum that we are searching for.</p>
 
-<h2>Visualizing data with Python</h2>
+<h2 id="visualizing-data-with-python">Visualizing data with Python</h2>
 
 <p>After we have all the data we can plot it to see how quality chart is looks like. Here is Python code that is doing exactly this:</p>
 
-<figure class='code'><figcaption><span>splitter_characters_grouper_search_step.py</span><a href='https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/python/splitter_characters_grouper_search_step.py'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># data collected by PropertyBasedSettingsTest.experimentWith_splitter_characters_grouper_search_step</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.000050</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">53</span><span class="p">},</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.000550</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">53</span><span class="p">},</span>
-</span><span class='line'><span class="c"># ... lines removed</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.144550</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">},</span>
-</span><span class='line'><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.145050</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">},</span>
-</span><span class='line'><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">&quot;value&quot;</span><span class="p">])</span>
-</span><span class='line'>    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">&quot;errors&quot;</span><span class="p">])</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
-</span><span class='line'><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">pandas.tools.rplot</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;ro&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;errors&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;splitter_characters_grouper_search_step&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;splitter_characters_grouper_search_step vs errors count&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>splitter_characters_grouper_search_step.py</span><a href="https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/python/splitter_characters_grouper_search_step.py">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="c"># data collected by PropertyBasedSettingsTest.experimentWith_splitter_characters_grouper_search_step</span>
+</span><span class="line">
+</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line"><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.000050</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">53</span><span class="p">},</span>
+</span><span class="line"><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.000550</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">53</span><span class="p">},</span>
+</span><span class="line"><span class="c"># ... lines removed</span>
+</span><span class="line"><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.144550</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">},</span>
+</span><span class="line"><span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mf">0.145050</span><span class="p">,</span> <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">},</span>
+</span><span class="line"><span class="p">]</span>
+</span><span class="line">
+</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line"><span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span><span class="line">    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">&quot;value&quot;</span><span class="p">])</span>
+</span><span class="line">    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s">&quot;errors&quot;</span><span class="p">])</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class="line">
+</span><span class="line"><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+</span><span class="line"><span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">pandas.tools.rplot</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class="line">
+</span><span class="line"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;ro&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;errors&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;splitter_characters_grouper_search_step&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;splitter_characters_grouper_search_step vs errors count&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>result of execution  is:</p>
 
 <p><img src="https://s3.amazonaws.com/aif2/screenshots/Screen+Shot+2014-12-27+at+12.42.51.png" alt="img" /></p>
 
-<h2>Next steps</h2>
+<h2 id="next-steps">Next steps</h2>
 
 <p>Now we can try to build function that represents the plot. It will give us the answers, can we improve quality by reducing value even more or we already reach the limit of this function. For this we will have to find lim(f(x)) of our function.</p>
 

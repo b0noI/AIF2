@@ -9,9 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Algorithm of Splitting Text With Groups of Text Separators Definitions sentence;
-text separators;
-text separators groups; Algorithm Connections &hellip;">
+  <meta name="description" content="Algorithm of Splitting Text With Groups of Text Separators Definitions sentence; text separators; text separators groups; Algorithm Connections &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +29,22 @@ text separators groups; Algorithm Connections &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -92,31 +106,29 @@ text separators groups; Algorithm Connections &hellip;">
     
   </header>
   
-  <h2>Definitions</h2>
+  <h2 id="definitions">Definitions</h2>
 
 <ul>
-<li><a href="./main-definitions.html#sentence">sentence</a>;</li>
-<li><a href="./main-definitions.html#text-separators">text separators</a>;</li>
-<li><a href="./main-definitions.html#text-separators-groups">text separators groups</a>;</li>
+  <li><a href="./main-definitions.html#sentence">sentence</a>;</li>
+  <li><a href="./main-definitions.html#text-separators">text separators</a>;</li>
+  <li><a href="./main-definitions.html#text-separators-groups">text separators groups</a>;</li>
 </ul>
 
-
-<h2>Algorithm</h2>
+<h2 id="algorithm">Algorithm</h2>
 
 <p>Connections graphs for characters from Group1 and characters from Group2 should be provided for the given algorithm. The way for obtaining this graph is described here:</p>
 
 <ul>
-<li><a href="./text-separators-extraction.html">Algorithm of text separators extraction</a></li>
-<li><a href="./dividing-text-separators-into-groups.html">Algorithm of dividing text separators into groups</a>;</li>
-<li><a href="./classification-of-text-separators-groups.html">Algorithm of classification of text separators groups</a>;</li>
+  <li><a href="./text-separators-extraction.html">Algorithm of text separators extraction</a></li>
+  <li><a href="./dividing-text-separators-into-groups.html">Algorithm of dividing text separators into groups</a>;</li>
+  <li><a href="./classification-of-text-separators-groups.html">Algorithm of classification of text separators groups</a>;</li>
 </ul>
 
-
-<h3>Step 1 : Calculate average sentence size (in tokens)</h3>
+<h3 id="step-1--calculate-average-sentence-size-in-tokens">Step 1 : Calculate average sentence size (in tokens)</h3>
 
 <p>Average sentence size can be calculated by counting distances between characters from Group1. For example:</p>
 
-<p>Input tokens:</p>
+<p>Input tokens: </p>
 
 <pre><code>Hello! My name is: Max. I live in Kiev. My age is 18 years. This summer i'll go to Paris! And what about you?
 </code></pre>
@@ -125,34 +137,31 @@ text separators groups; Algorithm Connections &hellip;">
 Distances would be:</p>
 
 <ul>
-<li>1 - <strong>Hello!</strong> My name is: Max. I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?</li>
-<li>4 - Hello! <strong>My name is: Max.</strong> I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?</li>
-<li>4 - Hello! My name is: Max. <strong>I live in Kiev.</strong> My age is 18 years. This summer i&rsquo;ll go to Paris! And what about you?</li>
-<li>5 - Hello! My name is: Max. I live in Kiev. <strong>My age is 18 years.</strong> This summer i&rsquo;ll go to Paris! And what about you?</li>
-<li>6 - Hello! My name is: Max. I live in Kiev. My age is 18 years. <strong>This summer i&rsquo;ll go to Paris!</strong> And what about you?</li>
-<li>4 - Hello! My name is: Max. I live in Kiev. My age is 18 years. This summer i&rsquo;ll go to Paris! <strong>And what about you?</strong></li>
+  <li>1 - <strong>Hello!</strong> My name is: Max. I live in Kiev. My age is 18 years. This summer i’ll go to Paris! And what about you?</li>
+  <li>4 - Hello! <strong>My name is: Max.</strong> I live in Kiev. My age is 18 years. This summer i’ll go to Paris! And what about you?</li>
+  <li>4 - Hello! My name is: Max. <strong>I live in Kiev.</strong> My age is 18 years. This summer i’ll go to Paris! And what about you?</li>
+  <li>5 - Hello! My name is: Max. I live in Kiev. <strong>My age is 18 years.</strong> This summer i’ll go to Paris! And what about you?</li>
+  <li>6 - Hello! My name is: Max. I live in Kiev. My age is 18 years. <strong>This summer i’ll go to Paris!</strong> And what about you?</li>
+  <li>4 - Hello! My name is: Max. I live in Kiev. My age is 18 years. This summer i’ll go to Paris! <strong>And what about you?</strong></li>
 </ul>
-
 
 <p>average size in this case would be: (1 + 4 + 4 + 5 + 6 + 4) / 6 = 4</p>
 
-<h3>Step 2 : Splitting sentences</h3>
+<h3 id="step-2--splitting-sentences">Step 2 : Splitting sentences</h3>
 
 <p>Rules to be applied in the text for each splitter from Group 1:</p>
 
 <ol>
-<li>If the size of previous or next Group 1 character is bigger by more than 20% than the average sentence size, this splitter character is used for splitting sentences; otherwise, go to the next check.</li>
-<li>Calculating distance to connections graphs:
-
-<ol>
-<li>Creating one-character connection graph consisting of the splitter character and the first character of the next token;</li>
-<li>Calculating distances between one-character connection graph and Group1/2 connections graphs;</li>
-<li>If one-character graph is closer to Group 1 characters connections graph, this character is used for sentence splitting;</li>
-<li>If one-character graph is closer to Group 2 characters connections graph, this character is NOT used for sentence splitting.</li>
+  <li>If the size of previous or next Group 1 character is bigger by more than 20% than the average sentence size, this splitter character is used for splitting sentences; otherwise, go to the next check.</li>
+  <li>Calculating distance to connections graphs:
+    <ol>
+      <li>Creating one-character connection graph consisting of the splitter character and the first character of the next token; </li>
+      <li>Calculating distances between one-character connection graph and Group1/2 connections graphs;</li>
+      <li>If one-character graph is closer to Group 1 characters connections graph, this character is used for sentence splitting; </li>
+      <li>If one-character graph is closer to Group 2 characters connections graph, this character is NOT used for sentence splitting.</li>
+    </ol>
+  </li>
 </ol>
-</li>
-</ol>
-
 
 <hr />
 
@@ -161,23 +170,21 @@ Distances would be:</p>
 <pre><code>... He was born in the U.S.S.R. during the second world war...
 </code></pre>
 
-<p>will allow to split this sentence correctly.</p>
+<p>will allow to split this sentence correctly. </p>
 
 <p>Here are two examples from real books where Group 1 character usage is recognized as usage for non- sentence splitting purpose:</p>
 
 <ul>
-<li>&hellip; by <strong>U.S.</strong> federal laws and &hellip;</li>
-<li>&hellip; the <strong>U.S.</strong> unless a copyright &hellip;</li>
+  <li>… by <strong>U.S.</strong> federal laws and …</li>
+  <li>… the <strong>U.S.</strong> unless a copyright …</li>
 </ul>
 
-
-<h2>Research problems for this step</h2>
+<h2 id="research-problems-for-this-step">Research problems for this step</h2>
 
 <ul>
-<li>Magic number - 20%?</li>
-<li>There has to be one formula that represents the probability that this particular Group 1 character is used for sentence splitting. If such a formula is created, the last question will be to find the correct threshold.</li>
+  <li>Magic number - 20%?</li>
+  <li>There has to be one formula that represents the probability that this particular Group 1 character is used for sentence splitting. If such a formula is created, the last question will be to find the correct threshold.</li>
 </ul>
-
 
   
 </article>

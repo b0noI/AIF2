@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -90,17 +106,17 @@
     
   </header>
   
-  <p>version contains 3 parts: <major>.<minor>.<revision></p>
+  <p>version contains 3 parts: <major>.<minor>.<revision></revision></minor></major></p>
 
-<h2>major</h2>
+<h2 id="major">major</h2>
 
 <p>Major part is incremented only when backward compatibility is broken</p>
 
-<h2>minor</h2>
+<h2 id="minor">minor</h2>
 
 <p>Minor part is incremented only when new functionality is added (but backward compatibility is NOT broken)</p>
 
-<h2>revision</h2>
+<h2 id="revision">revision</h2>
 
 <p>Minor part is incremented when nothing new is added, but some issues in existing methods are fixed</p>
 

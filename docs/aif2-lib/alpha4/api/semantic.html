@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -92,61 +108,54 @@
   
   <p>This page describes the functions that AIF2 can perform with semantic.</p>
 
-<h2>Functions</h2>
+<h2 id="functions">Functions</h2>
 
 <p>On the semantic level AIF provides the following functions:</p>
 
 <ul>
-<li>calculate weight of the each word;</li>
-<li>build semantic connections graph between the words;</li>
+  <li>calculate weight of the each word;</li>
+  <li>build semantic connections graph between the words;</li>
 </ul>
 
+<h2 id="a-idcreate-semanticdictbuilder-instancecreate-semanticdictbuilder-instancea"><a id="create-SemanticDictBuilder-instance">Create SemanticDictBuilder instance</a></h2>
 
-<h2><a id="create-SemanticDictBuilder-instance">Create SemanticDictBuilder instance</a></h2>
-
-<p>This function gives you a possibility to calculate semantic weight of all words in the text.
+<p>This function gives you a possibility to calculate semantic weight of all words in the text. 
 This function should be used by using class: SemanticDictBuilder (from package: io.aif.language.semantic). To create an instance of this class you need to extract sentence splitters characters like this:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">ISeparatorExtractor</span> <span class="n">testInstance</span> <span class="o">=</span> <span class="n">ISeparatorExtractor</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">ISeparatorsGrouper</span> <span class="n">separatorsGrouper</span> <span class="o">=</span> <span class="n">ISeparatorsGrouper</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">ISeparatorGroupsClassifier</span> <span class="n">sentenceSeparatorGroupsClassificatory</span> <span class="o">=</span> <span class="n">ISeparatorGroupsClassifier</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;</span> <span class="n">separators</span> <span class="o">=</span> <span class="n">testInstance</span><span class="o">.</span><span class="na">extract</span><span class="o">(</span><span class="n">tokens</span><span class="o">).</span><span class="na">get</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">ISeparatorGroupsClassifier</span><span class="o">.</span><span class="na">Group</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;&gt;</span> <span class="n">grouppedSeparators</span> <span class="o">=</span> <span class="n">sentenceSeparatorGroupsClassificatory</span><span class="o">.</span><span class="na">classify</span><span class="o">(</span><span class="n">tokens</span><span class="o">,</span> <span class="n">separatorsGrouper</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">tokens</span><span class="o">,</span> <span class="n">separators</span><span class="o">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">ISeparatorExtractor</span> <span class="n">testInstance</span> <span class="o">=</span> <span class="n">ISeparatorExtractor</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">ISeparatorsGrouper</span> <span class="n">separatorsGrouper</span> <span class="o">=</span> <span class="n">ISeparatorsGrouper</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">ISeparatorGroupsClassifier</span> <span class="n">sentenceSeparatorGroupsClassificatory</span> <span class="o">=</span> <span class="n">ISeparatorGroupsClassifier</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PROBABILITY</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;</span> <span class="n">separators</span> <span class="o">=</span> <span class="n">testInstance</span><span class="o">.</span><span class="na">extract</span><span class="o">(</span><span class="n">tokens</span><span class="o">).</span><span class="na">get</span><span class="o">();</span>   <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">ISeparatorGroupsClassifier</span><span class="o">.</span><span class="na">Group</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;&gt;</span> <span class="n">grouppedSeparators</span> <span class="o">=</span> <span class="n">sentenceSeparatorGroupsClassificatory</span><span class="o">.</span><span class="na">classify</span><span class="o">(</span><span class="n">tokens</span><span class="o">,</span> <span class="n">separatorsGrouper</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">tokens</span><span class="o">,</span> <span class="n">separators</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 <p>with groups of separators SemanticDictBuilder class could be create:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">SemanticDictBuilder</span> <span class="n">semanticDictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">SemanticDictBuilder</span><span class="o">(</span><span class="n">grouppedSeparators</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">SemanticDictBuilder</span> <span class="n">semanticDictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">SemanticDictBuilder</span><span class="o">(</span><span class="n">grouppedSeparators</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>For the difference between separator types see the section below</p>
 
-<h2><a id="calculate-weight-of-the-each-word">Calculate weight of the each word</a></h2>
+<h2 id="a-idcalculate-weight-of-the-each-wordcalculate-weight-of-the-each-worda"><a id="calculate-weight-of-the-each-word">Calculate weight of the each word</a></h2>
 
 <p>To work with semantic words you need to build Semantic dict from the text. This could be done by:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">ISemanticDict</span> <span class="n">semanticDict</span> <span class="o">=</span> <span class="n">semanticDictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">placeholders</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">ISemanticDict</span> <span class="n">semanticDict</span> <span class="o">=</span> <span class="n">semanticDictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">placeholders</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>ISemanticDict contains words with weights and connections. To obtain words with weights in sorted list:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ISemanticNode</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;&gt;</span> <span class="n">sortedNodes</span> <span class="o">=</span> <span class="n">semanticDict</span><span class="o">.</span><span class="na">getWords</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">sorted</span><span class="o">((</span><span class="n">w2</span><span class="o">,</span> <span class="n">w1</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">((</span><span class="n">Double</span><span class="o">)</span> <span class="n">w1</span><span class="o">.</span><span class="na">weight</span><span class="o">()).</span><span class="na">compareTo</span><span class="o">(</span><span class="n">w2</span><span class="o">.</span><span class="na">weight</span><span class="o">())).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ISemanticNode</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;&gt;</span> <span class="n">sortedNodes</span> <span class="o">=</span> <span class="n">semanticDict</span><span class="o">.</span><span class="na">getWords</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">sorted</span><span class="o">((</span><span class="n">w2</span><span class="o">,</span> <span class="n">w1</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">((</span><span class="n">Double</span><span class="o">)</span> <span class="n">w1</span><span class="o">.</span><span class="na">weight</span><span class="o">()).</span><span class="na">compareTo</span><span class="o">(</span><span class="n">w2</span><span class="o">.</span><span class="na">weight</span><span class="o">())).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h2><a id="build-semantic-connections-graph-between-the-words">Build semantic connections graph between the words</a></h2>
+<h2 id="a-idbuild-semantic-connections-graph-between-the-wordsbuild-semantic-connections-graph-between-the-wordsa"><a id="build-semantic-connections-graph-between-the-words">Build semantic connections graph between the words</a></h2>
 
 <p>To work with semantic words you need to build Semantic dict from the text. This could be done by:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">ISemanticDict</span> <span class="n">semanticDict</span> <span class="o">=</span> <span class="n">semanticDictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">placeholders</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">ISemanticDict</span> <span class="n">semanticDict</span> <span class="o">=</span> <span class="n">semanticDictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">placeholders</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>ISemanticDict contains words connections with connections weights.</p>
+<p>ISemanticDict contains words connections with connections weights. </p>
 
   
 </article>

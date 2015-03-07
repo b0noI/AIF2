@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -92,17 +108,16 @@
   
   <p>This page describes the functions that AIF2 can perform with sentences.</p>
 
-<h2>Functions</h2>
+<h2 id="functions">Functions</h2>
 
 <p>There are 2 main functions that can be used in AIF2 about tokens:</p>
 
 <ul>
-<li>extract sentence splitters characters from tokens list;</li>
-<li>split tokens list into sentences list.</li>
+  <li>extract sentence splitters characters from tokens list;</li>
+  <li>split tokens list into sentences list.</li>
 </ul>
 
-
-<h2>Extract sentence splitters characters</h2>
+<h2 id="extract-sentence-splitters-characters">Extract sentence splitters characters</h2>
 
 <p>This function gives you a possibility to extract a sentence splitters characters list from the input tokens list. This function should be used by using interface: ISentenceSeparatorExtractor (from package: com.aif.language.sentence). To create an instance of this interface you need to select the type of ISentenceSeparatorExtractor and get an instance like this:</p>
 
@@ -111,37 +126,35 @@
 
 <p>For the difference between separators types see the section below</p>
 
-<h3>Sentence Separators Extractor Types</h3>
+<h3 id="sentence-separators-extractor-types">Sentence Separators Extractor Types</h3>
 
-<h4>Type.PREDEFINED</h4>
+<h4 id="typepredefined">Type.PREDEFINED</h4>
 
 <p>This extractor has <strong>predefined</strong> the characters that will be used for sentence splitting. It means that this extractor type will not parse tokens in any way and will just return the predefined characters.</p>
 
-<h4>Type.STAT</h4>
+<h4 id="typestat">Type.STAT</h4>
 
-<p>This extractor will parse input tokens and will extract sentence splitters from tokens. This splitter should be used when the current text has sentence splitters that are not included in Type.PREDEFINED splitter. It&rsquo;s very useful when your text has non-standard encoding, or symbols using strange encoding.</p>
+<p>This extractor will parse input tokens and will extract sentence splitters from tokens. This splitter should be used when the current text has sentence splitters that are not included in Type.PREDEFINED splitter. It’s very useful when your text has non-standard encoding, or symbols using strange encoding.  </p>
 
-<h2>Sentence splitting</h2>
+<h2 id="sentence-splitting">Sentence splitting</h2>
 
 <p>To split sentences you need to:</p>
 
 <ul>
-<li>create SentenceSplitter instance(from package: com.aif.language.sentence);</li>
-<li>call split method.</li>
+  <li>create SentenceSplitter instance(from package: com.aif.language.sentence);</li>
+  <li>call split method.</li>
 </ul>
 
-
-<h3>Creating SentenceSplitter</h3>
+<h3 id="creating-sentencesplitter">Creating SentenceSplitter</h3>
 
 <p>You can initiate it in 2 ways:</p>
 
 <ul>
-<li>setting Sentence Separators Extractor Type;</li>
-<li>using default Sentence Separators Extractor Type.</li>
+  <li>setting Sentence Separators Extractor Type; </li>
+  <li>using default Sentence Separators Extractor Type.</li>
 </ul>
 
-
-<h3></h3>
+<p>### </p>
 
 <pre><code>ISentenceSeparatorExtractor sentenceSeparatorExtractor = ...
 
@@ -155,7 +168,7 @@ ISplitter&lt;List&lt;String&gt;, List&lt;String&gt;&gt; sentenceSplitter = new S
 
 <p>By default it will use this ISentenceSeparatorExtractor.Type.STAT.getInstance() sentences separator extractor.</p>
 
-<h3>Splitting tokens with SentenceSplitter</h3>
+<h3 id="splitting-tokens-with-sentencesplitter">Splitting tokens with SentenceSplitter</h3>
 
 <p>After you have SentenceSplitter instance, you can split tokens by calling split method like this:</p>
 
@@ -166,11 +179,11 @@ List&lt;String&gt; tokens = ...
 List&lt;List&lt;String&gt;&gt; sentences = sentenceSplitter.split(tokens);
 </code></pre>
 
-<h2>Usage example</h2>
+<h2 id="usage-example">Usage example</h2>
 
 <p>example of real usage can be found <a href="https://github.com/b0noI/aif-cli/blob/master/src/main/java/com/aif/language/sentence/SentenceSplitCommand.java#L33">here</a></p>
 
-<h2>Algorithm</h2>
+<h2 id="algorithm">Algorithm</h2>
 
 <p>Information about algorithm can be found <a href="../../algorithm/sentence-splitting.html">here</a></p>
 

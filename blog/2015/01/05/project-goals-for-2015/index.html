@@ -9,8 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="This short posts describes goals that we going to achieve until the end of 2015th stable version of semantic module;
-all code covered with unit/ &hellip;">
+  <meta name="description" content="This short posts describes goals that we going to achieve until the end of 2015th stable version of semantic module; all code covered with unit/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,6 +29,22 @@ all code covered with unit/ &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -114,13 +129,12 @@ all code covered with unit/ &hellip;">
 <div class="entry-content"><p>This short posts describes goals that we going to achieve until the end of 2015th</p>
 
 <ul>
-<li>stable version of semantic module;</li>
-<li>all code covered with unit/functional  tests;</li>
-<li>our research presented on the NLP conference;</li>
-<li>REST service that is based on AIF library is created;</li>
-<li>first end-user UI program presented;</li>
+  <li>stable version of semantic module;</li>
+  <li>all code covered with unit/functional  tests;</li>
+  <li>our research presented on the NLP conference;</li>
+  <li>REST service that is based on AIF library is created;</li>
+  <li>first end-user UI program presented;</li>
 </ul>
-
 
 <p>This is totally achievable and we strongly believe that we will be able to deliver even more! Happy new year!</p>
 </div>

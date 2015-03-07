@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -90,79 +106,74 @@
     
   </header>
   
-  <h2>Definitions</h2>
+  <h2 id="definitions">Definitions</h2>
 
 <ul>
-<li><a href="./main-definitions.html#text-separators">Text separators</a></li>
+  <li><a href="./main-definitions.html#text-separators">Text separators</a></li>
 </ul>
 
-
-<h3>Functions definitions</h3>
+<h3 id="functions-definitions">Functions definitions</h3>
 
 <p>To explain the algorithm some functions have to be defined. The implementation of the functions is out of this scope; the given article only defines the functions used.</p>
 
-<p><strong>P1(ch: Character, tokens: List\&lt;String>): Double</strong> - Function that returns probability that character <em>ch</em> occurs in the end (or beginning) of the tokens.</p>
+<p><strong>P1(ch: Character, tokens: List&lt;String&gt;): Double</strong> - Function that returns probability that character <em>ch</em> occurs in the end (or beginning) of the tokens. </p>
 
-<p>For example, for the tokens input &ldquo;hello, my name is&rdquo; P1 is going to look like this:</p>
-
-<ul>
-<li>P1(&lsquo;,&rsquo;, &ldquo;hello, my name is&rdquo;) == 1.0</li>
-<li>P1(&lsquo;e&rsquo;, &ldquo;hello, my name is&rdquo;) == 0.5</li>
-<li>P1(&lsquo;l&rsquo;, &ldquo;hello, my name is&rdquo;) == 0.0</li>
-<li>P1(&rsquo;s&#8217;, &ldquo;hello, my name is&rdquo;) == 1.0</li>
-<li>P1(&lsquo;a&rsquo;, &ldquo;hello, my name is&rdquo;) == 0.0</li>
-<li>P1(&rsquo;m&#8217;, &ldquo;hello, my name is&rdquo;) == 0.5</li>
-<li>P1(&lsquo;o&rsquo;, &ldquo;hello, my name is&rdquo;) == 0.0</li>
-<li>P1(&lsquo;h&rsquo;, &ldquo;hello, my name is&rdquo;) == 0.0</li>
-</ul>
-
-
-<p><strong>P2(ch: Character, tokens: List\&lt;String>): Double</strong> - Function that returns average P1 probability of all characters from the tokens that occur before character <em>ch</em>.</p>
-
-<p>For example, for the tokens input &ldquo;hello, my name is&rdquo; P2 is going to look like this (P1 values can be seen in example for P1):</p>
+<p>For example, for the tokens input “hello, my name is” P1 is going to look like this:</p>
 
 <ul>
-<li>P2(&lsquo;,&rsquo;, &ldquo;hello, my name is&rdquo;) == (P1(&lsquo;o&rsquo;, &ldquo;&hellip;&rdquo;) * 1.0) / 1.0 == 0.0 / 1.0 == 0.0</li>
-<li>P2(&lsquo;y&rsquo;, &ldquo;hello, my name is&rdquo;) == (P1(&rsquo;m&#8217;, &ldquo;&hellip;&rdquo;) * 1.0) / 1.0 == 0.5 / 1.0 == 0.5</li>
-<li>P2(&lsquo;e&rsquo;, &ldquo;hello, my name is&rdquo;) == (P1(&rsquo;m&#8217;, &ldquo;&hellip;&rdquo;) * 1.0 + P1(&lsquo;h&rsquo;, &ldquo;&hellip;&rdquo;) * 1.0) / 2.0 == (0.5 + 0.0) / 2.0 == 0.25</li>
+  <li>P1(‘,’, “hello, my name is”) == 1.0</li>
+  <li>P1(‘e’, “hello, my name is”) == 0.5</li>
+  <li>P1(‘l’, “hello, my name is”) == 0.0</li>
+  <li>P1(‘s’, “hello, my name is”) == 1.0</li>
+  <li>P1(‘a’, “hello, my name is”) == 0.0</li>
+  <li>P1(‘m’, “hello, my name is”) == 0.5</li>
+  <li>P1(‘o’, “hello, my name is”) == 0.0</li>
+  <li>P1(‘h’, “hello, my name is”) == 0.0</li>
 </ul>
 
+<p><strong>P2(ch: Character, tokens: List&lt;String&gt;): Double</strong> - Function that returns average P1 probability of all characters from the tokens that occur before character <em>ch</em>.</p>
 
-<h2>Algorithm</h2>
+<p>For example, for the tokens input “hello, my name is” P2 is going to look like this (P1 values can be seen in example for P1):</p>
+
+<ul>
+  <li>P2(‘,’, “hello, my name is”) == (P1(‘o’, “…”) * 1.0) / 1.0 == 0.0 / 1.0 == 0.0</li>
+  <li>P2(‘y’, “hello, my name is”) == (P1(‘m’, “…”) * 1.0) / 1.0 == 0.5 / 1.0 == 0.5</li>
+  <li>P2(‘e’, “hello, my name is”) == (P1(‘m’, “…”) * 1.0 + P1(‘h’, “…”) * 1.0) / 2.0 == (0.5 + 0.0) / 2.0 == 0.25</li>
+</ul>
+
+<h2 id="algorithm">Algorithm</h2>
 
 <p>The algorithm contains 2 steps:</p>
 
 <ol>
-<li>Initial search</li>
-<li>Search result filter.</li>
+  <li>Initial search</li>
+  <li>Search result filter.</li>
 </ol>
 
+<p>The first step finds all text separators plus some “noise” (non-separators/alphabetic characters). The second step filters out all non-separators found in the first step.</p>
 
-<p>The first step finds all text separators plus some &ldquo;noise&rdquo; (non-separators/alphabetic characters). The second step filters out all non-separators found in the first step.</p>
-
-<h3>Initial search</h3>
+<h3 id="initial-search">Initial search</h3>
 
 <p>The probability of being a separator must be calculated for each unique character in tokens. This can be done according to the following formula:</p>
 
 <pre><code>P(ch: Character, tokens: List&lt;String&gt;): Double = P1(ch, tokens) * (P2(ch, tokens) ^ 2)
 </code></pre>
 
-<p>The result should contain 30% of characters that have the highest probability (calculated by formula P above).</p>
+<p>The result should contain 30% of characters that have the highest probability (calculated by formula P above). </p>
 
-<h3>Search result filter</h3>
+<h3 id="search-result-filter">Search result filter</h3>
 
 <p>Search result may contain characters that are not separators. They must be filtered out. Here is a filter that can be applied for each character in search result:</p>
 
 <pre><code>P1(ch, tokens) &gt; 0.65
 </code></pre>
 
-<h2>Research problems for the given steps</h2>
+<h2 id="research-problems-for-the-given-steps">Research problems for the given steps</h2>
 
 <ul>
-<li>How to determine the number of characters that should be used as a result during initial search (why is 30% is chosen and how to choose this value?);</li>
-<li>What value should be used as probability threshold in search result filter (why 0.65?).</li>
+  <li>How to determine the number of characters that should be used as a result during initial search (why is 30% is chosen and how to choose this value?);</li>
+  <li>What value should be used as probability threshold in search result filter (why 0.65?).</li>
 </ul>
-
 
   
 </article>

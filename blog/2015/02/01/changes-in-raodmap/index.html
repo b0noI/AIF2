@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -110,14 +126,14 @@
   </header>
 
 
-<div class="entry-content"><h2>New release date for the upcoming Alpha4 version</h2>
+<div class="entry-content"><h2 id="new-release-date-for-the-upcoming-alpha4-version">New release date for the upcoming Alpha4 version</h2>
 
 <p>Today we have to announce changes in Alpha4 release. This does not mean that AIF team works less, main reason is because we are going to roll-out HUGE update. Semantic module is one of the most complex modules in the AIF.</p>
 
 <p>Old release date: 31 Jan
 New release date: 28 Feb</p>
 
-<p>This will, officers have impact on Alpha5 release schedule. So the Alpha 5 release is moved from 28 Feb to 31 Mar</p>
+<p>This will, officers have impact on Alpha5 release schedule. So the Alpha 5 release is moved from 28 Feb to 31 Mar  </p>
 </div>
 
 

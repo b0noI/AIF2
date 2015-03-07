@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -85,14 +101,13 @@
       <div>
 <article role="article">
   
-  <h2>AIF2 LIB</h2>
+  <h2 id="aif2-lib">AIF2 LIB</h2>
 
 <ul>
-<li><a href="https://s3.amazonaws.com/aif2/AIF-LIB/1.2.0/aif-1.2.0-Alpha4.jar">1.2.0 Alpha4</a>;</li>
+  <li><a href="https://s3.amazonaws.com/aif2/AIF-LIB/1.2.0/aif-1.2.0-Alpha4.jar">1.2.0 Alpha4</a>;</li>
 </ul>
 
-
-<h2>AIF2 Command Line Interface</h2>
+<h2 id="aif2-command-line-interface">AIF2 Command Line Interface</h2>
 
 <p>You can download command line interface, and use it for text processing from <a href="/downloads/cli.html" title="CLI Download page">CLI Download Page</a></p>
 

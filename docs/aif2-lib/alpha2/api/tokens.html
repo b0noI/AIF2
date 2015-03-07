@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -92,13 +108,13 @@
   
   <p>This page <strong><em>describes</em></strong> the functions that AIF2 can perform with tokens.</p>
 
-<h2>Functions</h2>
+<h2 id="functions">Functions</h2>
 
 <p>There are 2 main functions that can be used in AIF2 about tokens:
 * extract tokens splitter characters from the text;
 * split the text into tokens.</p>
 
-<h2>Extract tokens</h2>
+<h2 id="extract-tokens">Extract tokens</h2>
 
 <p>This function gives you a possibility to extract the token separators list from the input text. This function should be used by using interface: ITokenSeparatorExtractor (from package: com.aif.language.token). If you want to create an instance of this interface, you need to select the type of TokenSeparatorExtractor and get instance, like this:</p>
 
@@ -107,26 +123,26 @@
 
 <p>For the difference between separators types see the section below</p>
 
-<h3>Token Separators Extractor Types</h3>
+<h3 id="token-separators-extractor-types">Token Separators Extractor Types</h3>
 
-<h4>Type.PREDEFINED</h4>
+<h4 id="typepredefined">Type.PREDEFINED</h4>
 
 <p>This extractor has <strong>predefined</strong> characters that will be used for token splitting. It means that the extractor type will not parse the text in any way and will just return predefined characters.</p>
 
-<h2>Token splitting</h2>
+<h2 id="token-splitting">Token splitting</h2>
 
 <p>If you want to split tokens, you need to:
 * create a TokenSplitter instance(from package: com.aif.language.token);
-* call the &ldquo;split&rdquo; method.</p>
+* call the “split” method.</p>
 
-<h3>Creating TokenSplitter</h3>
+<h3 id="creating-tokensplitter">Creating TokenSplitter</h3>
 
 <p>You can initiate it in 2 ways:
-* setting Token Separators Extractor Type;
+* setting Token Separators Extractor Type; 
 * using default Token Separators Extractor Type.</p>
 
 <pre><code> ITokenSeparatorExtractor tokenSeparatorExtractor = ...
-
+  
  ISplitter&lt;String, String&gt; tokenSplitter = new TokenSplitter(tokenSeparatorExtractor);
 </code></pre>
 
@@ -137,18 +153,18 @@
 
 <p>By default it will use this ITokenSeparatorExtractor.Type.PREDEFINED.getInstance() token separator extractor.</p>
 
-<h3>Splitting the text with TokenSplitter</h3>
+<h3 id="splitting-the-text-with-tokensplitter">Splitting the text with TokenSplitter</h3>
 
-<p>After you have a TokenSplitter instance, you can split the text by calling the &ldquo;split&rdquo; method like this:</p>
+<p>After you have a TokenSplitter instance, you can split the text by calling the “split” method like this:</p>
 
 <pre><code> ISplitter&lt;String, String&gt; tokenSplitter = ...
-
+  
  String text = ...
-
+  
  List&lt;String&gt; tokens = tokenSplitter.split(text);
 </code></pre>
 
-<h2>Usage example</h2>
+<h2 id="usage-example">Usage example</h2>
 
 <p><a href="https://github.com/b0noI/aif-cli/blob/master/src/main/java/com/aif/language/sentence/TokenSplitCommand.java">Here</a> you can find usage example.</p>
 

@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -92,83 +108,77 @@
   
   <p>This page <strong><em>describes</em></strong> the functions that AIF2 can perform with Words.</p>
 
-<h2>Functions</h2>
+<h2 id="functions">Functions</h2>
 
 <p>There are 2 main functions that can be used in Alpha3 about words:</p>
 
 <ul>
-<li>generate words dictionary for the text;</li>
-<li>find all tokens that represent the Word;</li>
-<li>find the root token of the word.</li>
+  <li>generate words dictionary for the text;</li>
+  <li>find all tokens that represent the Word;</li>
+  <li>find the root token of the word. </li>
 </ul>
 
-
-<h2>Dictionary generating</h2>
+<h2 id="dictionary-generating">Dictionary generating</h2>
 
 <p>For extracting words from text IDictBuilder instance should be instantiated:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">final</span> <span class="n">ITokenComparator</span> <span class="n">tokenComparator</span> <span class="o">=</span> <span class="n">ITokenComparator</span><span class="o">.</span><span class="na">defaultComparator</span><span class="o">();</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">ISetComparator</span> <span class="n">setComparator</span> <span class="o">=</span> <span class="n">ISetComparator</span><span class="o">.</span><span class="na">createDefaultInstance</span><span class="o">(</span><span class="n">tokenComparator</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">(</span><span class="n">setComparator</span><span class="o">,</span> <span class="n">tokenComparator</span><span class="o">);</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">final</span> <span class="n">ITokenComparator</span> <span class="n">tokenComparator</span> <span class="o">=</span> <span class="n">ITokenComparator</span><span class="o">.</span><span class="na">defaultComparator</span><span class="o">();</span>
+</span><span class="line"><span class="kd">final</span> <span class="n">ISetComparator</span> <span class="n">setComparator</span> <span class="o">=</span> <span class="n">ISetComparator</span><span class="o">.</span><span class="na">createDefaultInstance</span><span class="o">(</span><span class="n">tokenComparator</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">(</span><span class="n">setComparator</span><span class="o">,</span> <span class="n">tokenComparator</span><span class="o">);</span>
+</span><span class="line"><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>It could be also instantiated with default values:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
+</span><span class="line"><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h2>Working with text dictionary</h2>
+<h2 id="working-with-text-dictionary">Working with text dictionary</h2>
 
 <p>For building dictionary that includes all words from text next methods need to be called:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">filteredTokens</span><span class="o">);</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="n">dict</span><span class="o">.</span><span class="na">getWords</span><span class="o">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">final</span> <span class="n">IDictBuilder</span> <span class="n">dictBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DictBuilder</span><span class="o">();</span>
+</span><span class="line"><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">tokens</span><span class="o">);</span>
+</span><span class="line"><span class="kd">final</span> <span class="n">IDict</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">dictBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">filteredTokens</span><span class="o">);</span>
+</span><span class="line"><span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="n">dict</span><span class="o">.</span><span class="na">getWords</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Each word has set of tokens that this word represents:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="na">getAllTokens</span><span class="o">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="na">getAllTokens</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>And root token:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">String</span> <span class="n">rootToken</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="na">getRootToken</span><span class="o">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">String</span> <span class="n">rootToken</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="na">getRootToken</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
   
 </article>

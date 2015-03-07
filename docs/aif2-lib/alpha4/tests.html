@@ -9,7 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Tests AIF uses TestNG Tests groups BASIC: (conditions of running) &ldquo;unit-tests&rdquo; - method level tests without any additional logic checks &hellip;">
+  <meta name="description" content="Tests AIF uses TestNG Tests groups BASIC: (conditions of running) “unit-tests” - method level tests without any additional logic checks. Every class &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,6 +29,22 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
 
   
   <script type="text/javascript">
@@ -92,58 +108,54 @@
   
   <p>AIF uses TestNG</p>
 
-<h2>Tests groups</h2>
+<h2 id="tests-groups">Tests groups</h2>
 
 <p><strong>BASIC:</strong> (conditions of running)</p>
 
 <ol>
-<li><em>&ldquo;unit-tests&rdquo;</em> - method level tests without any additional logic checks. Every class method should be covered by at least one positive unit-test and one negative unit test. Must be run at every method change.</li>
-<li><em>«integration-tests»</em> - test for checking communication between different parts of the system. Must be run at every change of the module(class) logic.</li>
-<li><em>«acceptance-tests»</em> - tests which test general quality and compare with set acceptance level. Must be run before every version release.</li>
+  <li><em>“unit-tests”</em> - method level tests without any additional logic checks. Every class method should be covered by at least one positive unit-test and one negative unit test. Must be run at every method change.</li>
+  <li><em>«integration-tests»</em> - test for checking communication between different parts of the system. Must be run at every change of the module(class) logic.</li>
+  <li><em>«acceptance-tests»</em> - tests which test general quality and compare with set acceptance level. Must be run before every version release.</li>
 </ol>
-
 
 <p><strong>DETAILED:</strong> (what they test)</p>
 
 <ol>
-<li><em>«functional-fast»</em> - functional test with runtime not longer than predefined time duration</li>
-<li><em>«functional-slow»</em> - functional test with runtime longer than predefined time duration</li>
-<li><em>«quality-fast»</em> - quality test with runtime not longer than predefined time duration</li>
-<li><em>«quality-slow»</em> - quality test with runtime longer than predefined time duration</li>
+  <li><em>«functional-fast»</em> - functional test with runtime not longer than predefined time duration</li>
+  <li><em>«functional-slow»</em> - functional test with runtime longer than predefined time duration</li>
+  <li><em>«quality-fast»</em> - quality test with runtime not longer than predefined time duration</li>
+  <li><em>«quality-slow»</em> - quality test with runtime longer than predefined time duration</li>
 </ol>
-
 
 <p><strong>OPTIONAL:</strong></p>
 
 <ol>
-<li><em>«experimental»</em> - special test without any predefined test target. Just one experiment on the system</li>
-<li><em>«help-test»</em> - not a test in general, but a test method used to generate or save test data etc. Must be @Ignore by default - start it manually.</li>
+  <li><em>«experimental»</em> - special test without any predefined test target. Just one experiment on the system</li>
+  <li><em>«help-test»</em> - not a test in general, but a test method used to generate or save test data etc. Must be @Ignore by default - start it manually.</li>
 </ol>
 
-
-<h2>Test sources</h2>
+<h2 id="test-sources">Test sources</h2>
 
 <p>Test sources are divided into 2 parts:</p>
 
 <ul>
-<li>functional/integration/quality tests</li>
-<li>unit tests</li>
+  <li>functional/integration/quality tests </li>
+  <li>unit tests</li>
 </ul>
-
 
 <p>functional/integration/quality tests can be found here:  src/test/unit/java
 unit tests can be found here: src/test/integration/java</p>
 
-<h2>Test resources</h2>
+<h2 id="test-resources">Test resources</h2>
 
-<h3>Text corpuses</h3>
+<h3 id="text-corpuses">Text corpuses</h3>
 
 <p>All RAW texts can be found at:
-src/test/resources/texts/<language></p>
+src/test/resources/texts/<language></language></p>
 
-<h3>NLP models for 3d part engines</h3>
+<h3 id="nlp-models-for-3d-part-engines">NLP models for 3d part engines</h3>
 
-<p>src/test/resources/models/<engine_name></p>
+<p>src/test/resources/models/<engine_name></engine_name></p>
 
   
 </article>
