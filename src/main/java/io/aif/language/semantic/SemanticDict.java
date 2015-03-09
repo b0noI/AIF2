@@ -5,7 +5,7 @@ import io.aif.language.word.IWord;
 import java.util.Set;
 
 
-public class SemanticDict implements ISemanticDict {
+class SemanticDict implements ISemanticDict {
 
     private final Set<ISemanticNode<IWord>> semanticWords;
 

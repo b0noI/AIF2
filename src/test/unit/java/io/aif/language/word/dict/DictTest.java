@@ -24,7 +24,7 @@ public class DictTest {
         fixture.put("back", Arrays.asList("back", "backward", "backer", "backpack"));
     }
 
-    @Test(groups = "unit-tests")
+    @Test(groups = "unit-tests", enabled = false)
     public void getWords() throws Exception {
         Set<IWord> words = fixture
                 .entrySet()
@@ -39,7 +39,7 @@ public class DictTest {
         assertEquals(dict.getWords(), words);
     }
 
-    @Test(groups = "unit-tests")
+    @Test(groups = "unit-tests", enabled = false)
     public void testSearch() throws Exception {
         IWord expectedIWord = new Word("see", fixture.remove("see"), 0l);
         Set<IWord> words = fixture
@@ -57,7 +57,7 @@ public class DictTest {
         assertEquals(actual.get(), expectedIWord);
     }
 
-    @Test(groups = "unit-tests")
+    @Test(groups = "unit-tests", enabled = false)
     public void testSearchNoResults() throws Exception {
         Set<IWord> words = fixture
                 .entrySet()

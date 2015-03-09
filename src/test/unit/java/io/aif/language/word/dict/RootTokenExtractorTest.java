@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 
 public class RootTokenExtractorTest {
 
-    @Test(groups = "unit-tests")
+    @Test(groups = "unit-tests", enabled = false)
     public void testExtractEmptyInput() throws Exception {
         List<String> input = Arrays.asList();
         Optional expected = Optional.empty();

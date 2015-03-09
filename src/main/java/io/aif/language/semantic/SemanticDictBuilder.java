@@ -1,31 +1,49 @@
 package io.aif.language.semantic;
 
-
-import io.aif.language.common.IDict;
-import io.aif.language.word.IWord;
 import io.aif.language.common.IDictBuilder;
+import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
+import io.aif.language.semantic.weights.edge.word.IWordEdgeWeightCalculator;
+import io.aif.language.semantic.weights.node.INodeWeightCalculator;
+import io.aif.language.semantic.weights.node.word.IWordWeightCalculator;
+import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassifier;
+import io.aif.language.word.IWord;
+import org.apache.log4j.Logger;
 
-import java.util.Collection;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class SemanticDictBuilder implements IDictBuilder<IDict<IWord>, ISemanticNode<IWord>> {
+public class SemanticDictBuilder implements IDictBuilder<Collection<IWord.IWordPlaceholder>, ISemanticNode<IWord>> {
 
-    private SemanticDictBuilder(){}
+    private final int connectAhead;
 
-    public static SemanticDictBuilder getInstance() {
-        return SingletonHolder.INSTANCE;
+    private final Map<ISeparatorGroupsClassifier.Group, Set<Character>> separators;
+
+    public SemanticDictBuilder(final int connectAhead,
+                               final Map<ISeparatorGroupsClassifier.Group, Set<Character>> separators) {
+        this.connectAhead = connectAhead;
+        this.separators = separators;
+    }
+
+    public SemanticDictBuilder(final Map<ISeparatorGroupsClassifier.Group, Set<Character>> separators) {
+        this(0, separators);
     }
 
     @Override
-    // This is a simple mapper and does not really build a dict.
-    public ISemanticDict build(final IDict<IWord> dict) {
-        return new SemanticDict(dict.getWords().stream().map(SemanticWord::new).collect(Collectors.toSet()));
-    }
+    public ISemanticDict build(final Collection<IWord.IWordPlaceholder> placeholders) {
+        RawGraphBuilder graphBuilder = new RawGraphBuilder(connectAhead, separators);
+        Map<IWord, Map<IWord, List<Double>>> rawGraph = graphBuilder.build(placeholders);
 
-    private static class SingletonHolder {
+        final IEdgeWeightCalculator<IWord> edgeWeightCalculator = IWordEdgeWeightCalculator.generateDefaultWeightCalculator(rawGraph);
+        final INodeWeightCalculator<IWord> nodeWeightCalculator = IWordWeightCalculator.createDefaultWeightCalculator(edgeWeightCalculator, rawGraph);
+        
+        final SemanticGraphBuilder semanticGraphBuilder = new SemanticGraphBuilder(nodeWeightCalculator, edgeWeightCalculator);
+        
+        final Map<IWord, List<IWord>> connectionsMap = new HashMap<>();
+        rawGraph.keySet().forEach(connect -> {
+            connectionsMap.put(connect, new ArrayList<>(rawGraph.get(connect).keySet()));
+        });
 
-        static final SemanticDictBuilder INSTANCE = new SemanticDictBuilder();
-
+        return new SemanticDict(new HashSet<>(semanticGraphBuilder.map(connectionsMap)));
     }
 
 }
