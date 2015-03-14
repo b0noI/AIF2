@@ -3,9 +3,7 @@ package io.aif.language.common;
 import io.aif.language.sentence.separators.extractors.CharacterStatTest;
 import org.testng.annotations.Test;
 
-import java.util.LinkedHashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static org.testng.Assert.*;
 
@@ -195,5 +193,28 @@ public class StringHelperTest {
     public void testCastToCharReturnsFalse() throws Exception {
         Optional actual = StringHelper.castToChar("hey");
         assertEquals(actual.isPresent(), false);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testStartsWithUpperCase() throws Exception {
+        boolean actual = true;
+        boolean expected = StringHelper.startsWithUpperCase("Helo");
+        assertEquals(actual, expected);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testStartsWithUpperCaseWithLowerCasedWord() throws Exception {
+        boolean actual = false;
+        boolean expected = StringHelper.startsWithUpperCase("helo");
+        assertEquals(actual, expected);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testStartsWithUpperCaseWithGarbageStrings() throws Exception {
+        List<String> input = Arrays.asList("#$@@#@#@$@*", "#$%@!!!$%%");
+        boolean expected = false;
+        for (String token : input) {
+            assertEquals(StringHelper.startsWithUpperCase(token), expected);
+        }
     }
 }

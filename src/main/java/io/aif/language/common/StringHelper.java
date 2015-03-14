@@ -65,5 +65,7 @@ public class StringHelper {
             : Optional.of(text.charAt(0));
     }
 
-
+    public static boolean startsWithUpperCase(String text) {
+        return Character.isUpperCase(text.charAt(0));
+    }
 }

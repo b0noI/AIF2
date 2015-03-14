@@ -1,5 +1,7 @@
 package io.aif.language.semantic;
 
+import io.aif.language.common.IFuzzyBoolean;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.Set;
@@ -17,5 +19,6 @@ public interface ISemanticNode<T> {
     public Set<ISemanticNode<T>>    connectedItems();
 
     public T                        item();
-    
+
+    public IFuzzyBoolean            isProperNoun();
 }
