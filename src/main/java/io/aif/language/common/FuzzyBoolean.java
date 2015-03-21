@@ -2,7 +2,7 @@ package io.aif.language.common;
 
 public class FuzzyBoolean implements IFuzzyBoolean{
 
-    private final double DEFAULT_TRUTH_THRESHOLD = .5;
+    private static final double DEFAULT_TRUTH_THRESHOLD = .5;
 
     private final double threshold;
 
