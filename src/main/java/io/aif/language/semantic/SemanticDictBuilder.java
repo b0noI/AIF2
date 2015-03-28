@@ -46,7 +46,7 @@ public class SemanticDictBuilder implements IDictBuilder<Collection<IWord.IWordP
             connectionsMap.put(connect, new ArrayList<>(rawGraph.get(connect).keySet()));
         });
 
-        return new SemanticDict(new HashSet<>(semanticGraphBuilder.map(connectionsMap)));
+        return SemanticDict.create(new HashSet<>(semanticGraphBuilder.map(connectionsMap)));
     }
 
 }

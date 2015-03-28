@@ -13,19 +13,19 @@ public class SentenceMapperTest {
 
     @Test(groups = "unit-tests")
     public void testMap() throws Exception {
-        Collection<String> tokens = Arrays.asList("Hello", "Mathew", "Ibrahim", "Went");
+        List<String> tokens = Arrays.asList("Hello", "Mathew", "Ibrahim", "Went");
         ISearchable<String, String> searchable = mock(ISearchable.class);
         tokens.forEach(
                 token -> when(searchable.search(token)).thenReturn(Optional.of(token))
         );
         SentenceMapper<String, String> mapper = new SentenceMapper<>(searchable);
-        Collection<String> actual = mapper.map(tokens);
+        Object actual = mapper.map(tokens);
         assertEquals(actual, tokens);
     }
 
     @Test(groups = "unit-tests", expectedExceptions = NoSuchElementException.class)
     public void testMapFailMissingItemInSearchable() throws Exception {
-        Collection<String> tokens = Arrays.asList("Hello", "Mathew", "Ibrahim", "Went");
+        List<String> tokens = Arrays.asList("Hello", "Mathew", "Ibrahim", "Went");
         ISearchable<String, String> searchable = mock(ISearchable.class);
         tokens.forEach(
                 token -> {
@@ -41,7 +41,7 @@ public class SentenceMapperTest {
 
     @Test(groups = "unit-tests")
     public void testMapAll() throws Exception {
-        Collection<Collection<String>> rawSentences = Arrays.asList(
+        List<List<String>> rawSentences = Arrays.asList(
                 Arrays.asList("Hello", "Mathew", "Ibrahim", "Went"),
                 Arrays.asList("Dingo", "Bongo", "Django", "Dracula")
         );
