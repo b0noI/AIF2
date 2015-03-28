@@ -140,7 +140,7 @@
         <repository>
             <id>snapshots</id>
             <name>libs-snapshot-local</name>
-            <url>http://192.241.238.122:8081/artifactory/libs-snapshot-local</url>
+            <url>http://artifactory.aif.io/artifactory/libs-snapshot-local</url>
         </repository>
     </distributionManagement>
 

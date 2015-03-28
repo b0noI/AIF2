@@ -1,6 +1,8 @@
 package io.aif.language.semantic;
 
 import io.aif.language.common.IDictBuilder;
+import io.aif.language.semantic.weights.IProperNounCalculator;
+import io.aif.language.semantic.weights.TitleCaseProperNounCalculator;
 import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
 import io.aif.language.semantic.weights.edge.word.IWordEdgeWeightCalculator;
 import io.aif.language.semantic.weights.node.INodeWeightCalculator;
@@ -35,8 +37,9 @@ public class SemanticDictBuilder implements IDictBuilder<Collection<IWord.IWordP
 
         final IEdgeWeightCalculator<IWord> edgeWeightCalculator = IWordEdgeWeightCalculator.generateDefaultWeightCalculator(rawGraph);
         final INodeWeightCalculator<IWord> nodeWeightCalculator = IWordWeightCalculator.createDefaultWeightCalculator(edgeWeightCalculator, rawGraph);
+        final IProperNounCalculator properNounCalculator = IProperNounCalculator.getDefault();
         
-        final SemanticGraphBuilder semanticGraphBuilder = new SemanticGraphBuilder(nodeWeightCalculator, edgeWeightCalculator);
+        final SemanticGraphBuilder semanticGraphBuilder = new SemanticGraphBuilder(nodeWeightCalculator, edgeWeightCalculator, properNounCalculator);
         
         final Map<IWord, List<IWord>> connectionsMap = new HashMap<>();
         rawGraph.keySet().forEach(connect -> {
