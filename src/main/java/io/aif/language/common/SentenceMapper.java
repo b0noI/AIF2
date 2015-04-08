@@ -14,7 +14,7 @@ public class SentenceMapper<T, S> implements IMapper<List<T>,List<S>> {
     @Override
     public List<S> map(List<T> rawSentence) {
         return rawSentence
-                .stream()
+                .parallelStream()
                 .map(item -> searchable.search(item).get())
                 .collect(Collectors.toList());
     }

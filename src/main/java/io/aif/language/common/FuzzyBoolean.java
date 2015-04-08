@@ -54,6 +54,7 @@ public class FuzzyBoolean implements IFuzzyBoolean{
     }
 
     @Override
+    //TODO Perhaps change to isValue(true) or isValue(false)
     public boolean isTrue() {
         return (value >= threshold) ? true : false;
     }
