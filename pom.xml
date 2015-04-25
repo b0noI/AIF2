@@ -154,14 +154,6 @@
         </repository>
     </repositories>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>libs-release</name>
-            <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
-        </repository>
-    </repositories>
-
     <distributionManagement>
         <repository>
             <id>snapshots</id>
