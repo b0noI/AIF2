@@ -19,4 +19,5 @@ public class SentenceMapper<T, S> implements IMapper<Collection<T>, List<S>> {
                 .map(item -> searchable.search(item).get())
                 .collect(Collectors.toList());
     }
+
 }

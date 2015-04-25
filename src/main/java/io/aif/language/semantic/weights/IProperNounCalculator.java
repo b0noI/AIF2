@@ -1,7 +1,5 @@
 package io.aif.language.semantic.weights;
 
-import io.aif.language.common.IFuzzyBoolean;
-import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.word.IWord;
 
 /**

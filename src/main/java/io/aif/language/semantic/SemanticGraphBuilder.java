@@ -1,105 +1,32 @@
 package io.aif.language.semantic;
 
-import io.aif.language.common.FuzzyBoolean;
-import io.aif.language.common.IFuzzyBoolean;
-import io.aif.language.common.IMapper;
-import io.aif.language.semantic.weights.IProperNounCalculator;
-import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
-import io.aif.language.semantic.weights.node.INodeWeightCalculator;
+
+import io.aif.associations.builder.AssociationsGraphBuilder;
+import io.aif.associations.calculators.vertex.IVertexWeightCalculator;
+import io.aif.associations.model.IGraph;
+import io.aif.language.semantic.weights.node.word.TokensCountBasedWeightCalculator;
 import io.aif.language.word.IWord;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Created by b0noI on 06/02/2015.
- */
-class SemanticGraphBuilder implements IMapper<Map<IWord, List<IWord>>, List<ISemanticNode<IWord>>> {
-    
-    private final INodeWeightCalculator<IWord> nodeWeightCalculator;
-    
-    private final IEdgeWeightCalculator<IWord> edgeWeightCalculator;
+public class SemanticGraphBuilder {
 
-    private final IProperNounCalculator properNounCalculator;
+    private final AssociationsGraphBuilder<IWord> associationsGraphBuilder;
 
-    SemanticGraphBuilder(final INodeWeightCalculator<IWord> nodeWeightCalculator, 
-                         final IEdgeWeightCalculator<IWord> edgeWeightCalculator,
-                         final IProperNounCalculator properNounCalculator) {
-        this.nodeWeightCalculator = nodeWeightCalculator;
-        this.edgeWeightCalculator = edgeWeightCalculator;
-        this.properNounCalculator = properNounCalculator;
+    public SemanticGraphBuilder() {
+        associationsGraphBuilder = new AssociationsGraphBuilder<>(generateWeightCalculator());
     }
 
-    @Override
-    public List<ISemanticNode<IWord>> map(final Map<IWord, List<IWord>> words) {
-        final List<ISemanticNode<IWord>> nodes = words
-                .keySet()
-                .stream()
-                .map(key -> {
-                    //TODO Need to find out a way to send partial builders for IFuzzyBoolean
-                    return new SemanticWord(key,
-                                            nodeWeightCalculator.calculateWeight(key),
-                                            new FuzzyBoolean(properNounCalculator.calculate(key)));
-                })
-                .collect(Collectors.toList());    
-        
-        nodes.forEach(node -> {
-            final List<IWord> connections = words.get(node.item());
-            final Map<ISemanticNode<IWord>, Double> semanticConnections = new HashMap<>();
-            connections.forEach(connect -> {
-                final Optional<ISemanticNode<IWord>> optTarget = nodes
-                        .stream()
-                        .filter(n -> n.item() == connect)
-                        .findFirst();
-                if (optTarget.isPresent())
-                    semanticConnections.put(optTarget.get(), edgeWeightCalculator.calculateWeight(node.item(), optTarget.get().item()));
-            });
-            ((SemanticWord)node).setConnections(semanticConnections);
-        });
-        return nodes;
+    public IGraph<IWord> build(final Collection<IWord.IWordPlaceholder> placeholders) {
+        final List<IWord> words = placeholders.stream().map(IWord.IWordPlaceholder::getWord).collect(Collectors.toList());
+        return associationsGraphBuilder.buildGraph(words);
     }
-    
-    private static class SemanticWord implements ISemanticNode<IWord> {
 
-        private final IWord word;
-        
-        private final Double weight;
-        
-        private Map<ISemanticNode<IWord>, Double> connections = null;
-
-        private IFuzzyBoolean isProperNoun;
-
-        private SemanticWord(final IWord word, final Double weight, final IFuzzyBoolean isProperNoun) {
-            this.word = word;
-            this.weight = weight;
-            this.isProperNoun = isProperNoun;
-        }
-
-        @Override
-        public double weight() {
-            return weight;
-        }
-
-        @Override
-        public double connectionWeight(final ISemanticNode<IWord> semanticNode) {
-            return connections.get(semanticNode);
-        }
-
-        @Override
-        public Set<ISemanticNode<IWord>> connectedItems() {
-            return connections.keySet();
-        }
-
-        @Override
-        public IWord item() {
-            return word;
-        }
-        
-        void setConnections(final Map<ISemanticNode<IWord>, Double> connections) {
-            this.connections = connections;
-        }
-
-        @Override
-        public IFuzzyBoolean isProperNoun() { return isProperNoun; }
+    private Map<IVertexWeightCalculator<IWord>, Double> generateWeightCalculator() {
+        final Map<IVertexWeightCalculator<IWord>, Double> calculators = new HashMap<>();
+        calculators.put(new TokensCountBasedWeightCalculator(), .85);
+        return calculators;
     }
+
 }
