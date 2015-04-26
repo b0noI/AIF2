@@ -1,17 +1,6 @@
 package io.aif.language.semantic.weights.node.word;
 
-import io.aif.language.semantic.ISemanticNode;
-import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
-import io.aif.language.word.IWord;
 import org.testng.annotations.Test;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-
-import static org.mockito.Mockito.*;
-import static org.testng.Assert.*;
 
 public class ConnectionBasedWeightCalculatorTest {
 
@@ -44,7 +33,7 @@ public class ConnectionBasedWeightCalculatorTest {
 //        final IWordWeightCalculator testInstance = new ConnectionBasedWeightCalculator(edgeWeightCalculator, distancesGraph);
 //
 //        // execution test
-//        final double actualResult = testInstance.calculateWeight(inputNode);
+//        final double actualResult = testInstance.calculateW(inputNode);
 //
 //        // result assert
 //        assertEquals(actualResult, expectedResult);

@@ -1,5 +1,6 @@
 package io.aif.language.semantic;
 
+import io.aif.associations.model.IGraph;
 import io.aif.common.FileHelper;
 import io.aif.language.common.IDict;
 import io.aif.language.common.IDictBuilder;
@@ -25,7 +26,7 @@ public class SemanticGraphBuilderTest {
     @Test
     public void testMap() throws Exception {
         String text;
-        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("pg1112.txt")) {
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("aif_article.txt")) {
             text = FileHelper.readAllText(modelResource);
         }
 
@@ -40,17 +41,17 @@ public class SemanticGraphBuilderTest {
         final IMapper<Collection<String>, List<IWord.IWordPlaceholder>> toWordPlaceHolderMapper = new WordPlaceHolderMapper((ISearchable<String, IWord>)dict);
         final List<IWord.IWordPlaceholder> placeholders = toWordPlaceHolderMapper.map(filteredTokens);
 
-        final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();
-        final ISeparatorsGrouper separatorsGrouper = ISeparatorsGrouper.Type.PROBABILITY.getInstance();
-        final ISeparatorGroupsClassifier sentenceSeparatorGroupsClassificatory = ISeparatorGroupsClassifier.Type.PROBABILITY.getInstance();
-        final List<Character> separators = testInstance.extract(tokens).get();
-        final Map<ISeparatorGroupsClassifier.Group, Set<Character>> grouppedSeparators = sentenceSeparatorGroupsClassificatory.classify(tokens, separatorsGrouper.group(tokens, separators));
+//        final ISeparatorExtractor testInstance = ISeparatorExtractor.Type.PROBABILITY.getInstance();
+//        final ISeparatorsGrouper separatorsGrouper = ISeparatorsGrouper.Type.PROBABILITY.getInstance();
+//        final ISeparatorGroupsClassifier sentenceSeparatorGroupsClassificatory = ISeparatorGroupsClassifier.Type.PROBABILITY.getInstance();
+//        final List<Character> separators = testInstance.extract(tokens).get();
+//        final Map<ISeparatorGroupsClassifier.Group, Set<Character>> grouppedSeparators = sentenceSeparatorGroupsClassificatory.classify(tokens, separatorsGrouper.group(tokens, separators));
 
 
-        final SemanticDictBuilder semanticDictBuilder = new SemanticDictBuilder(grouppedSeparators);
-        final ISemanticDict semanticDict = semanticDictBuilder.build(placeholders);
-        final List<ISemanticNode<IWord>> sortedNodes = semanticDict.getWords().stream().sorted((w2, w1) -> ((Double) w1.weight()).compareTo(w2.weight())).collect(Collectors.toList());
-        final List<ISemanticNode<IWord>> invertedSortedNodes = semanticDict.getWords().stream().sorted((w1, w2) -> ((Double)w1.weight()).compareTo(w2.weight())).collect(Collectors.toList());
+        final SemanticGraphBuilder semanticGraphBuilder = new SemanticGraphBuilder();
+        final IGraph<IWord> graph = semanticGraphBuilder.build(placeholders);
+        final List<IWord> sortedNodes = graph.getVertex().stream().sorted((w2, w1) -> (graph.getVertexWeight(w1)).compareTo(graph.getVertexWeight(w2))).collect(Collectors.toList());
+        final List<IWord> invertedSortedNodes = graph.getVertex().stream().sorted((w1, w2) -> (graph.getVertexWeight(w1)).compareTo(graph.getVertexWeight(w2))).collect(Collectors.toList());
         System.out.println(sortedNodes);
     }
 }

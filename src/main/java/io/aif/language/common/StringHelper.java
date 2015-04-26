@@ -1,6 +1,7 @@
 package io.aif.language.common;
 
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -52,5 +53,19 @@ public class StringHelper {
             generatedWords.add(word.substring(i, length + i));
 
         return generatedWords;
+    }
+
+    public static boolean looksLikeCharacter(String text) {
+        return (text.length() == 1) ? true : false;
+    }
+
+    public static Optional<Character> castToChar(String text) {
+        return (!looksLikeCharacter(text))
+            ? Optional.<Character>empty()
+            : Optional.of(text.charAt(0));
+    }
+
+    public static boolean startsWithUpperCase(String text) {
+        return Character.isUpperCase(text.charAt(0));
     }
 }

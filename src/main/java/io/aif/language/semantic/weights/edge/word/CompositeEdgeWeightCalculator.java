@@ -1,7 +1,5 @@
 package io.aif.language.semantic.weights.edge.word;
 
-import io.aif.language.semantic.weights.edge.IEdgeWeightCalculator;
-import io.aif.language.semantic.weights.node.INodeWeightCalculator;
 import io.aif.language.word.IWord;
 
 import java.util.Set;

@@ -1,9 +1,9 @@
 package io.aif.language.common;
 
+import io.aif.language.sentence.separators.extractors.CharacterStatTest;
 import org.testng.annotations.Test;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.testng.Assert.*;
 
@@ -170,5 +170,51 @@ public class StringHelperTest {
             StringHelper.generateSubWords(t1, length);
             assert false;
         } catch (IllegalArgumentException e) {  }
+    }
+
+    @Test(groups = "unit-tests")
+    public void testLooksLikeCharacterWithAStringWithSingleChar() throws Exception {
+        assertEquals(StringHelper.looksLikeCharacter("h"), true);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testLooksLikeCharacterWithMultipleCharString() throws Exception {
+        assertEquals(StringHelper.looksLikeCharacter("hey"), false);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testCastToChar() throws Exception {
+        Character expected = 'h';
+        Character actual = StringHelper.castToChar("h").get();
+        assertEquals(actual, expected);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testCastToCharReturnsFalse() throws Exception {
+        Optional actual = StringHelper.castToChar("hey");
+        assertEquals(actual.isPresent(), false);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testStartsWithUpperCase() throws Exception {
+        boolean actual = true;
+        boolean expected = StringHelper.startsWithUpperCase("Helo");
+        assertEquals(actual, expected);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testStartsWithUpperCaseWithLowerCasedWord() throws Exception {
+        boolean actual = false;
+        boolean expected = StringHelper.startsWithUpperCase("helo");
+        assertEquals(actual, expected);
+    }
+
+    @Test(groups = "unit-tests")
+    public void testStartsWithUpperCaseWithGarbageStrings() throws Exception {
+        List<String> input = Arrays.asList("#$@@#@#@$@*", "#$%@!!!$%%");
+        boolean expected = false;
+        for (String token : input) {
+            assertEquals(StringHelper.startsWithUpperCase(token), expected);
+        }
     }
 }
