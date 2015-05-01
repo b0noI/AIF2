@@ -1,5 +1,6 @@
 package io.aif.language.fact;
 
+import io.aif.language.common.StringHelper;
 import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.word.IWord;
 
@@ -37,5 +38,12 @@ class Fact implements IFact {
                 return false;
         }
         return true;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (ISemanticNode<IWord> n : semanticSentence)
+            sb.append(n.toString());
+        return sb.toString();
     }
 }
