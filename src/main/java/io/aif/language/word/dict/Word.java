@@ -39,7 +39,7 @@ class Word implements IWord {
 
     @Override
     public String toString() {
-        return String.format("RootToken: [%s] tokens: [%s]",rootToken ,tokens);
+        return String.format("RootToken: [%s] tokens: [%s]", rootToken ,tokens);
     }
 
     public class WordPlaceholder implements IWordPlaceholder {
