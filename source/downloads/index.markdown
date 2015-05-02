@@ -6,6 +6,8 @@ footer: false
 
 ## AIF2 LIB
 
+**starting from Beta1 AIF2 is distributed only through the maven repository**
+
 * [1.2.0 Alpha4](https://s3.amazonaws.com/aif2/AIF-LIB/1.2.0/aif-1.2.0-Alpha4.jar);
 
 ##AIF2 Command Line Interface

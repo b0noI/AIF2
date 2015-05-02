@@ -17,8 +17,7 @@ Add repository to pom.xml:
         <repositories>
             <repository>
                 <id>aif.com</id>
-                <url>http://artifactory.aif.io/artifactory/libs-release-local
-</url>
+                <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
             </repository>
         </repositories>
     </project>
@@ -27,7 +26,9 @@ and add dependency:
 
 ``` xml
     <dependency>
-       <groupId>io.aif.pipeline</groupId>      <artifactId>pipeline</artifactId>      <packaging>jar</packaging>      <version>1.0-Beta1</version>
+             <groupId>io.aif.pipeline</groupId>
+          <artifactId>pipeline</artifactId>
+          <version>1.0-Beta1</version>
     </dependency> 
 ```
 
