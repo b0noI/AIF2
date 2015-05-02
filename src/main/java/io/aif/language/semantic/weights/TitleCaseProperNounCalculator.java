@@ -10,8 +10,8 @@ import java.util.Set;
 public class TitleCaseProperNounCalculator implements IProperNounCalculator {
 
     @Override
-    public double calculate(IWord word) {
-        Set<String> tokens = word.getAllTokens();
+    public double calculate(final IWord word) {
+        final Set<String> tokens = word.getAllTokens();
 
         // WARN! This is to handle the zero length case and avoid division by zero at the bottom
         if (tokens.size() == 0)
@@ -23,4 +23,5 @@ public class TitleCaseProperNounCalculator implements IProperNounCalculator {
                 .count();
         return (double)numTokensUpperCase / tokens.size();
     }
+
 }

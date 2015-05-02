@@ -32,7 +32,7 @@ public class Factr {
         FactGraph g = new FactGraph();
         for (int i = 0; i < facts.size(); i++) {
             IFact from = facts.get(i);
-            for (int j = i + 1; j < facts.size(); i++) {
+            for (int j = i + 1; j < facts.size(); j++) {
                 IFact to = facts.get(j);
                 if (hasCommonProperNoun(from, to))
                     g.connect(from, to);
