@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2015-05-02T17:03:41+01:00</updated>
+  <updated>2015-05-02T18:30:16+01:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AIF Beta1 is out]]></title>
+    <link href="http://b0noI.github.io/AIF2/blog/2015/05/02/aif-beta1-is-out/"/>
+    <updated>2015-05-02T18:11:48+01:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2015/05/02/aif-beta1-is-out</id>
+    <content type="html"><![CDATA[<p>AIF developer community is proud to announce the next big release: AIF Beta1. Huge thank to everyone who made this release possible!</p>
+
+<p>This release is a huge step forward for AIF and our team. Brand new and much more simple API (thanks to the new AIF-PIPELINE module). </p>
+
+<p>As usual all documentation about the new release could be found <a href="http://aif.io/docs/">here</a>.</p>
+
+<p>However there are some items that are not in the documentation but they are worth to be highlighted.</p>
+
+<h2 id="we-are-starting-active-development-of-the-rest-api">We are starting active development of the REST API</h2>
+
+<p>We are starting active development of the AIF REST service. This service will provide functionality of the AIF through the modern REST API.</p>
+
+<p>This means that we are switching our focus from AIF library to the AIF REST services. This means that should not be any expectation of the new releases of AIF library soon.</p>
+
+<h2 id="we-need-you">We need you!</h2>
+
+<p>We need your help. Yes, I’m talking bout you personally! If you have any time and willing to help us, we have a lot of very interesting (and some not very) tasks like:</p>
+
+<ul>
+  <li>next AIF lib release development (and bug fixing) while we are focusing on the AIF-REST services;</li>
+  <li>help with unit/integration tests implementation;</li>
+  <li>help with quality testing;</li>
+  <li>help with documentation improving;</li>
+  <li>help with site improving;</li>
+  <li>help with AIF-REST development;</li>
+</ul>
+
+<p>Or maybe you have any other ideas about AIF. Feel free to send to the <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#097;&#105;&#102;&#050;&#045;&#100;&#101;&#118;&#064;&#121;&#097;&#104;&#111;&#111;&#103;&#114;&#111;&#117;&#112;&#115;&#046;&#099;&#111;&#109;">maillist</a> your thoughts about any questions.</p>
+
+<h2 id="codenames-for-the-next-releases">CodeNames for the next releases</h2>
+
+<p>Starting from the AIF Beta2 we will have codenames for releases, will be no more boring 1,2,3… releases, only cool names. Code name for the next release is still an open question. </p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[REST API specification draft]]></title>
