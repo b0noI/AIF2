@@ -1,6 +1,5 @@
 package io.aif.language.fact;
 
-import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.word.IWord;
 
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.List;
 public interface IFactDefiner {
 
     // TODO Why can't we omit IWord
-    public boolean isFact(List<ISemanticNode<IWord>> semanticSentence);
+    public boolean isFact(List<IWord> semanticSentence);
 
     public enum Type {
         // TODO declare a default value for this in settings

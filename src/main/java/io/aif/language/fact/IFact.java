@@ -1,6 +1,5 @@
 package io.aif.language.fact;
 
-import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.word.IWord;
 
 import java.util.List;
@@ -8,11 +7,17 @@ import java.util.Set;
 
 public interface IFact {
 
-    public List<ISemanticNode<IWord>> getSemanticSentence();
+    public List<IWord> getSemanticSentence();
 
-    public Set<ISemanticNode<IWord>> getProperNouns();
+    public Set<IWord> getProperNouns();
 
-    public boolean hasProperNoun(ISemanticNode<IWord> properNoun);
+    public boolean hasProperNoun(final IWord properNoun);
 
-    public boolean hasProperNouns(Set<ISemanticNode<IWord>> properNouns);
+    public default boolean hasProperNouns(final Set<IWord> properNouns) {
+        return properNouns
+                .stream()
+                .filter(this::hasProperNoun)
+                .count() == properNouns.size();
+    }
+
 }

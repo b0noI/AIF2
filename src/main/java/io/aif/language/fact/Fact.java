@@ -1,7 +1,6 @@
 package io.aif.language.fact;
 
-import io.aif.language.common.StringHelper;
-import io.aif.language.semantic.ISemanticNode;
+import io.aif.language.semantic.weights.IProperNounCalculator;
 import io.aif.language.word.IWord;
 
 import java.util.List;
@@ -10,39 +9,29 @@ import java.util.stream.Collectors;
 
 class Fact implements IFact {
 
-    private final List<ISemanticNode<IWord>> semanticSentence;
+    private final List<IWord> semanticSentence;
 
-    public Fact(List<ISemanticNode<IWord>> semanticSentence) {
+    public Fact(List<IWord> semanticSentence) {
         this.semanticSentence = semanticSentence;
     }
 
-    public List<ISemanticNode<IWord>> getSemanticSentence() {
+    public List<IWord> getSemanticSentence() {
         return semanticSentence;
     }
 
-    public Set<ISemanticNode<IWord>> getProperNouns() {
+    public Set<IWord> getProperNouns() {
         //TODO The assumption here is that a sentence without a proper noun is not a fact.
-        return semanticSentence
-                .stream()
-                .filter(node -> node.isProperNoun().isTrue())
+        return FactHelper.getProperNouns(semanticSentence.stream())
                 .collect(Collectors.toSet());
     }
 
-    public boolean hasProperNoun(ISemanticNode<IWord> properNoun) {
+    public boolean hasProperNoun(final IWord properNoun) {
         return getProperNouns().contains(properNoun);
-    }
-
-    public boolean hasProperNouns(Set<ISemanticNode<IWord>> properNounsToCheck) {
-        for (ISemanticNode<IWord> properNoun : getProperNouns())  {
-            if (!properNounsToCheck.contains(properNoun))
-                return false;
-        }
-        return true;
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (ISemanticNode<IWord> n : semanticSentence)
+        for (IWord n : semanticSentence)
             sb.append(n.toString());
         return sb.toString();
     }

@@ -28,4 +28,5 @@ public interface IProperNounCalculator {
     }
 
     double calculate(IWord word);
+
 }

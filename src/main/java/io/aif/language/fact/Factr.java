@@ -2,7 +2,6 @@ package io.aif.language.fact;
 
 import io.aif.language.common.ISearchable;
 import io.aif.language.common.SentenceMapper;
-import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.word.IWord;
 
 import java.util.List;
@@ -16,13 +15,10 @@ public class Factr {
         this.factDefiner = definer;
     }
 
-    public FactQuery run(List<List<String>> rawSentences,
-                         ISearchable<String, ISemanticNode<IWord>> searchable
-    ) {
-        List<List<ISemanticNode<IWord>>> semanticSentences = new SentenceMapper<>(searchable).mapAll(rawSentences);
-
-        List<IFact> facts = semanticSentences
+    public IFactQuery run(final List<List<IWord.IWordPlaceholder>> sentences) {
+        List<IFact> facts = sentences
                 .parallelStream()
+                .map(sentence -> sentence.stream().map(IWord.IWordPlaceholder::getWord).collect(Collectors.toList()))
                 .filter(factDefiner::isFact)
                 .map(sentence -> new Fact(sentence))
                 .collect(Collectors.toList());
@@ -47,7 +43,7 @@ public class Factr {
 
     // TODO move this as a method to fact class
     private static boolean hasCommonProperNoun(IFact sf1, IFact sf2) {
-        for (ISemanticNode<IWord> node : sf1.getProperNouns()) {
+        for (IWord node : sf1.getProperNouns()) {
             // TODO ISemanticNode does not have equality checks
             // TODO getProperNouns generates the proper nouns on the fly.
             if (sf2.getProperNouns().contains(node))

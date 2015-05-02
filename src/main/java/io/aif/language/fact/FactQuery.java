@@ -1,12 +1,11 @@
 package io.aif.language.fact;
 
-import io.aif.language.semantic.ISemanticNode;
 import io.aif.language.word.IWord;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-class FactQuery {
+class FactQuery implements IFactQuery {
 
     private final FactGraph<IFact> graph;
     private final Set<IFact> facts;
@@ -18,10 +17,8 @@ class FactQuery {
         traverser = new DFS<>(graph);
     }
 
-    public Optional<List<List<IFact>>> findPath(final ISemanticNode<IWord> properNoun1,
-                                                final ISemanticNode<IWord> properNoun2) {
-        assert (properNoun1.isProperNoun().isTrue()
-                && properNoun2.isProperNoun().isTrue());
+    public Optional<List<List<IFact>>> findPath(final IWord properNoun1,
+                                                final IWord properNoun2) {
 
         Set<IFact> factsContainingProperNoun1 = getFactsWithProperNoun(properNoun1);
         Set<IFact> factsContainingProperNoun2 = getFactsWithProperNoun(properNoun2);
@@ -51,7 +48,12 @@ class FactQuery {
                 Optional.empty();
     }
 
-    private Set<IFact> getFactsWithProperNoun(ISemanticNode<IWord> properNoun1) {
+    @Override
+    public Optional<Set<IFact>> allFacts() {
+        return graph.getAll();
+    }
+
+    private Set<IFact> getFactsWithProperNoun(IWord properNoun1) {
         return facts
                 .stream()
                 .filter(fact -> fact.hasProperNoun(properNoun1))

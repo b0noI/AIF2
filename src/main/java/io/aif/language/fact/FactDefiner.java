@@ -1,6 +1,7 @@
 package io.aif.language.fact;
 
-import io.aif.language.semantic.ISemanticNode;
+import io.aif.language.common.FuzzyBoolean;
+import io.aif.language.semantic.weights.IProperNounCalculator;
 import io.aif.language.word.IWord;
 
 import java.util.List;
@@ -11,6 +12,8 @@ class FactDefiner implements IFactDefiner {
 
     private final int numProperNounsForFact;
 
+    private static final IProperNounCalculator properNounCalculator = IProperNounCalculator.getDefault();
+
     public FactDefiner(final int numProperNounsForFact) {
         this.numProperNounsForFact = numProperNounsForFact;
     }
@@ -20,14 +23,17 @@ class FactDefiner implements IFactDefiner {
     }
 
     @Override
-    public boolean isFact(List<ISemanticNode<IWord>> semanticSentence) {
+    public boolean isFact(List<IWord> semanticSentence) {
         return (factCount(semanticSentence) >= numProperNounsForFact) ? true : false;
     }
 
-    private static long factCount(final List<ISemanticNode<IWord>> semanticSentence) {
+    private static long factCount(final List<IWord> semanticSentence) {
         return semanticSentence
                 .stream()
-                .filter(node -> node.isProperNoun().isTrue())
+                .map(properNounCalculator::calculate)
+                .map(FuzzyBoolean::new)
+                .filter(FuzzyBoolean::isTrue)
                 .count();
     }
+
 }
