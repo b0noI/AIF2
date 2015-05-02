@@ -3,6 +3,13 @@ layout: page
 title: Changelog
 footer: false
 ---
+## beta1 (2.0.0)
+
+1. Object extraction support
+2. Facts extraction
+3. Object relations extractions
+4. Pipelines
+
 ## alpha4 (1.2.0)
 
 1. Semantic graph builder

@@ -16,7 +16,7 @@ Add repository to pom.xml:
         <repositories>
             <repository>
                 <id>aif.com</id>
-                <url>http://192.241.238.122:8081/artifactory/libs-release-local/</url>
+                <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
             </repository>
         </repositories>
     </project>
@@ -24,25 +24,24 @@ Add repository to pom.xml:
 and add dependency:
 ``` xml
     <dependency>
-       <groupId>io.aif</groupId>
-       <artifactId>aif</artifactId>
-       <version>1.2.0-Alpha4</version>
+       <groupId>io.aif.pipeline</groupId> <artifactId>pipeline</artifactId> <version>1.0-Beta1</version>
+
     </dependency> 
 ```
 
 ## Current version
 
-- alpha4
+- beta1
 
 ## Next versions
 
-- alpha5 (~end of March 2015)
-- beta1 
+- beta2 (~TBD)
 
 ## Deprecated versions 
 
 This versions are no longer supported and should not be used:
 
+- alpha4
 - alpha3
 - alpha2
 - alpha1

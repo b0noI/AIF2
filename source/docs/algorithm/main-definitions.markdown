@@ -5,11 +5,14 @@ footer: false
 ---
 ## Definitions List
 
-* [tokens separator](#tokens-separator)
-* [text separators](#text-separators)
-* [text separators groups](#text-separators-groups)
-* [sentence](#sentence)
-* [word](#word)
+* [tokens separator](#tokens-separator);
+* [text separators](#text-separators);
+* [text separators groups](#text-separators-groups);
+* [sentence](#sentence);
+* [word](#word);
+* [fact](#fact)
+* [initial text processing](#initial_text_processing);
+* [semantic text processing](#semantic_text_processing);
 
 ## <a id="tokens-separator"></a>Tokens separator
 
@@ -38,3 +41,25 @@ Sequence of tokens that contains semantic piece of information and surrounded by
 ## <a id="word"></a>Word
 
 Consists of an approximated root token and a list of tokens with similar forms
+
+## <a id="fact"></a>Fact
+
+Fact is a [sentence](#sentence), that contains one or more proper nouns
+
+## <a id="initial_text_processing"></a>Initial text processing
+
+Process that transforms plain text to the:
+
+* list of the tokens that text consists of;
+* list of [text separators](#text-separators) (that are grouped to the [text separators groups](#text-separators-groups));
+* list of all the [sentences](#sentence) from the text;
+* list of all the [words](#word) from the text;
+
+## <a id="semantic_text_processing"></a>Semantic text processing
+
+Process that transforms result of the [initial text processing](#initial_text_processing) to the::
+
+* graph of the semantic connections between the words from the text;
+* list of the [facts](#fact) that exists in the text;
+* list of the proper nouns that exists in the text;
+* graph of the connections between proper nouns in the text;
