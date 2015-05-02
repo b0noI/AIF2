@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>project goals for 2015 - AIF2</title>
+  <title>Semantic text processing - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="This short posts describes goals that we going to achieve until the end of 2015th stable version of semantic module; all code covered with unit/ &hellip;">
+  <meta name="description" content="Semantic Text Processing This page describes how to perform semantic text processing with the AIF2 library. The process overview The semantic &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015/">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/beta1/api/semantic_text_processing.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -100,92 +100,64 @@ MathJax.Hub.Config({
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Project Goals for 2015</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-05T01:14:56+03:00" pubdate data-updated="true"></time>
-        
-      </p>
+    <h1 class="entry-title">Semantic Text Processing</h1>
     
   </header>
+  
+  <p>This page describes how to perform semantic text processing with the AIF2 library.</p>
 
+<h2 id="the-process-overview">The process overview</h2>
 
-<div class="entry-content"><p>This short posts describes goals that we going to achieve until the end of 2015th</p>
+<p>The semantic process requires the initial text processing result as an input value(the result of the initial text processing is the IText instance). </p>
+
+<p>Semantic process of the text processing with the AIF2 library contains 3 steps:</p>
 
 <ul>
-  <li>stable version of semantic module;</li>
-  <li>all code covered with unit/functional  tests;</li>
-  <li>our research presented on the NLP conference;</li>
-  <li>REST service that is based on AIF library is created;</li>
-  <li>first end-user UI program presented;</li>
+  <li>creating the instance of the ISemanticText
+ type;</li>
+  <li>usage of the ISemanticText
+ type instance; </li>
 </ul>
 
-<p>This is totally achievable and we strongly believe that we will be able to deliver even more! Happy new year!</p>
-</div>
+<h2 id="creating-the-instance-of-the-isemantictext">Creating the instance of the ISemanticText</h2>
+<p>type</p>
 
+<p>ISemanticText instance need to be build by executing the factory method.</p>
 
-  <footer>
-    <p class="meta">
-      
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line">      <span class="kn">import</span> <span class="nn">io.aif.pipeline.factory.semantic.ISemanticTextFactory</span><span class="o">;</span>
+</span><span class="line">      <span class="kn">import</span> <span class="nn">io.aif.pipeline.model.ISemanticText</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">    <span class="c1">// ...</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">final</span> <span class="n">IText</span> <span class="n">text</span> <span class="o">=</span> <span class="n">fileTextFactory</span><span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</span><span class="line">    <span class="kd">final</span> <span class="n">ISemanticText</span> <span class="n">semanticText</span> <span class="o">=</span> <span class="n">ISemanticTextFactory</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>this is time consuming operation.</p>
+
+<h2 id="usage-of-the-isemantictext-type-instance">Usage of the ISemanticText type instance</h2>
+
+<p>Once the ISemanticText instance is created it could be used to obtain all necessary data from the SemanticText:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">IGraph</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="n">wordsGraph</span> <span class="o">=</span> <span class="n">semanticText</span><span class="o">.</span><span class="na">wordsGraph</span><span class="o">();</span>
+</span><span class="line"> <span class="kd">final</span> <span class="n">IFactQuery</span> <span class="n">factQuery</span> <span class="o">=</span> <span class="n">semanticText</span><span class="o">.</span><span class="na">factQuery</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
   
-
-<span class="byline author vcard">Posted by <span class="fn">AIF2 Team</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-05T01:14:56+03:00" pubdate data-updated="true"></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015/" data-via="" data-counturl="http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif/" title="Previous Post: Building text dictionary illustrated by NLP library AIF">&laquo; Building text dictionary illustrated by NLP library AIF</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2015/02/01/changes-in-raodmap/" title="Next Post: Changes in RaodMap">Changes in RaodMap &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
 </div>
@@ -205,7 +177,7 @@ MathJax.Hub.Config({
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/05/project-goals-for-2015/">project goals for 2015</a>
+        <a href="/blog/2015/01/04/project-goals-for-2015/">project goals for 2015</a>
       </li>
     
       <li class="post">

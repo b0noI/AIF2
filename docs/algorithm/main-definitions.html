@@ -9,7 +9,7 @@
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Main Definitions Definitions List tokens separator text separators text separators groups sentence word Tokens separator The character that is used &hellip;">
+  <meta name="description" content="Main Definitions Definitions List tokens separator; text separators; text separators groups; sentence; word; fact initial text processing; semantic &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,11 +110,14 @@ MathJax.Hub.Config({
   <h2 id="definitions-list">Definitions List</h2>
 
 <ul>
-  <li><a href="#tokens-separator">tokens separator</a></li>
-  <li><a href="#text-separators">text separators</a></li>
-  <li><a href="#text-separators-groups">text separators groups</a></li>
-  <li><a href="#sentence">sentence</a></li>
-  <li><a href="#word">word</a></li>
+  <li><a href="#tokens-separator">tokens separator</a>;</li>
+  <li><a href="#text-separators">text separators</a>;</li>
+  <li><a href="#text-separators-groups">text separators groups</a>;</li>
+  <li><a href="#sentence">sentence</a>;</li>
+  <li><a href="#word">word</a>;</li>
+  <li><a href="#fact">fact</a></li>
+  <li><a href="#initial_text_processing">initial text processing</a>;</li>
+  <li><a href="#semantic_text_processing">semantic text processing</a>;</li>
 </ul>
 
 <h2 id="a-idtokens-separatoratokens-separator"><a id="tokens-separator"></a>Tokens separator</h2>
@@ -145,6 +148,32 @@ MathJax.Hub.Config({
 
 <p>Consists of an approximated root token and a list of tokens with similar forms</p>
 
+<h2 id="a-idfactafact"><a id="fact"></a>Fact</h2>
+
+<p>Fact is a <a href="#sentence">sentence</a>, that contains one or more proper nouns</p>
+
+<h2 id="a-idinitialtextprocessingainitial-text-processing"><a id="initial_text_processing"></a>Initial text processing</h2>
+
+<p>Process that transforms plain text to the:</p>
+
+<ul>
+  <li>list of the tokens that text consists of;</li>
+  <li>list of <a href="#text-separators">text separators</a> (that are grouped to the <a href="#text-separators-groups">text separators groups</a>);</li>
+  <li>list of all the <a href="#sentence">sentences</a> from the text;</li>
+  <li>list of all the <a href="#word">words</a> from the text;</li>
+</ul>
+
+<h2 id="a-idsemantictextprocessingasemantic-text-processing"><a id="semantic_text_processing"></a>Semantic text processing</h2>
+
+<p>Process that transforms result of the <a href="#initial_text_processing">initial text processing</a> to the::</p>
+
+<ul>
+  <li>graph of the semantic connections between the words from the text;</li>
+  <li>list of the <a href="#fact">facts</a> that exists in the text;</li>
+  <li>list of the proper nouns that exists in the text;</li>
+  <li>graph of the connections between proper nouns in the text;</li>
+</ul>
+
   
 </article>
 
@@ -165,7 +194,7 @@ MathJax.Hub.Config({
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/05/project-goals-for-2015/">project goals for 2015</a>
+        <a href="/blog/2015/01/04/project-goals-for-2015/">project goals for 2015</a>
       </li>
     
       <li class="post">

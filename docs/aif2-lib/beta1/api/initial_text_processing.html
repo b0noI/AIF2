@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Work with tokens - AIF2</title>
+  <title>Initial text processing - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Work With Tokens This page describes the functions that AIF2 can perform with tokens. Functions There are 2 main functions that can be used in AIF2 &hellip;">
+  <meta name="description" content="Initial Text Processing This page describes how to perform initial text processing with the AIF2 library. The process overview Initial process of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha4/api/tokens.html">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/beta1/api/initial_text_processing.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -103,87 +103,87 @@ MathJax.Hub.Config({
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Work With Tokens</h1>
+    <h1 class="entry-title">Initial Text Processing</h1>
     
   </header>
   
-  <p>This page <strong><em>describes</em></strong> the functions that AIF2 can perform with tokens.</p>
+  <p>This page describes how to perform initial text processing with the AIF2 library.</p>
 
-<h2 id="functions">Functions</h2>
+<h2 id="the-process-overview">The process overview</h2>
 
-<p>There are 2 main functions that can be used in AIF2 about tokens:</p>
-
-<ul>
-  <li>extract tokens splitter characters from the text;</li>
-  <li>split the text into tokens.</li>
-</ul>
-
-<h2 id="extract-tokens">Extract tokens</h2>
-
-<p>This function gives you a possibility to extract the token separators list from the input text. This function should be used by using interface: ITokenSeparatorExtractor (from package: com.aif.language.token). If you want to create an instance of this interface, you need to select the type of TokenSeparatorExtractor and get instance, like this:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">ITokenSeparatorExtractor</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">PREDEFINED</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>For the difference between separators types see the section below</p>
-
-<h3 id="token-separators-extractor-types">Token Separators Extractor Types</h3>
-
-<h4 id="typepredefined">Type.PREDEFINED</h4>
-
-<p>This extractor has <strong>predefined</strong> characters that will be used for token splitting. It means that the extractor type will not parse the text in any way and will just return predefined characters.</p>
-
-<h2 id="token-splitting">Token splitting</h2>
-
-<p>If you want to split tokens, you need to:</p>
+<p>Initial process of the text processing with the AIF2 library contains 3 steps:</p>
 
 <ul>
-  <li>create a TokenSplitter instance(from package: com.aif.language.token);</li>
-  <li>call the “split” method.</li>
+  <li>creating the instance of the ITextFactory type;</li>
+  <li>creating the instance of the IText type;</li>
+  <li>usage of the IText type instance; </li>
 </ul>
 
-<h3 id="creating-tokensplitter">Creating TokenSplitter</h3>
+<h2 id="creating-the-instance-of-the-itextfactory-type">Creating the instance of the ITextFactory type</h2>
 
-<p>You can initiate it in 2 ways:</p>
-
-<ul>
-  <li>setting Token Separators Extractor Type; </li>
-  <li>using default Token Separators Extractor Type.</li>
-</ul>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"> <span class="n">ITokenSeparatorExtractor</span> <span class="n">tokenSeparatorExtractor</span> <span class="o">=</span> <span class="o">...</span>
-</span><span class="line">
-</span><span class="line"> <span class="n">ISplitter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TokenSplitter</span><span class="o">(</span><span class="n">tokenSeparatorExtractor</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>This will create tokenSplitter that will use tokenSeparatorExtractor for splitting the text into tokens. Also, you can create TokenSplitter with default ITokenSeparatorExtractor like this:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"> <span class="n">ISplitter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TokenSplitter</span><span class="o">();</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>By default it will use this ITokenSeparatorExtractor.Type.PREDEFINED.getInstance() token separator extractor.</p>
-
-<h3 id="splitting-the-text-with-tokensplitter">Splitting the text with TokenSplitter</h3>
-
-<p>After you have a TokenSplitter instance, you can split the text by calling the “split” method like this:</p>
+<p>For initial text parsing - instance of the ITextFactory need to be created. At this stage of development there is only one implementation of the ITextFactory interface:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"> <span class="n">ISplitter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenSplitter</span> <span class="o">=</span> <span class="o">...</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line">    <span class="kn">import</span> <span class="nn">io.aif.pipeline.factory.plain.ITextFactory</span><span class="o">;</span>
 </span><span class="line">
-</span><span class="line"> <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="o">...</span>
+</span><span class="line">    <span class="kn">import</span> <span class="nn">io.aif.pipeline.factory.plain.FileTextFactory</span><span class="o">;</span>
 </span><span class="line">
-</span><span class="line"> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenSplitter</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// ...</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">    <span class="kd">final</span> <span class="n">String</span> <span class="n">pathToTheTxtFile</span> <span class="o">=</span> <span class="s">&quot;/path/to/the/text.file&quot;</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">final</span> <span class="n">ITextFactory</span> <span class="n">textFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">FileTextFactory</span><span class="o">(</span><span class="n">pathToTheTxtFile</span><span class="o">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<h2 id="usage-example">Usage example</h2>
+<h2 id="creating-the-instance-of-the-itext-type">Creating the instance of the IText type</h2>
 
-<p><a href="https://github.com/b0noI/aif-cli/blob/master/src/main/java/com/aif/language/sentence/TokenSplitCommand.java">Here</a> you can find usage example.</p>
+<p>Once the ITextFactory type instance has been created, IText instance need to be build by executing the factory method.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line">    <span class="kn">import</span> <span class="nn">io.aif.pipeline.model.IText</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">    <span class="c1">// ...</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">final</span> <span class="n">ITextFactory</span> <span class="n">fileTextFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">FileTextFactory</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">final</span> <span class="n">IText</span> <span class="n">text</span> <span class="o">=</span> <span class="n">fileTextFactory</span><span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>this is time consuming operation.</p>
+
+<h2 id="usage-of-the-itext-type-instance">Usage of the IText type instance</h2>
+
+<p>Once the IText instance is created it could be used to obtain all necessary data from the text:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">.</span><span class="na">IWordPlaceholder</span><span class="o">&gt;&gt;</span> <span class="n">sentences</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">sentences</span><span class="o">();</span>
+</span><span class="line"> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">tokens</span><span class="o">();</span>
+</span><span class="line"> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">ISeparatorGroupsClassifier</span><span class="o">.</span><span class="na">Group</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;&gt;</span> <span class="n">separators</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">separators</span><span class="o">();</span>
+</span><span class="line"> <span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">IWord</span><span class="o">&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">words</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
   
 </article>

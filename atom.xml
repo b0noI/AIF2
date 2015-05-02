@@ -4,7 +4,7 @@
   <title><![CDATA[AIF2]]></title>
   <link href="http://b0noI.github.io/AIF2/atom.xml" rel="self"/>
   <link href="http://b0noI.github.io/AIF2/"/>
-  <updated>2015-03-10T19:42:29+03:00</updated>
+  <updated>2015-05-02T17:01:12+01:00</updated>
   <id>http://b0noI.github.io/AIF2/</id>
   <author>
     <name><![CDATA[AIF2 Team]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[REST API specification draft]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2015/02/01/rest-api-specification-draft/"/>
-    <updated>2015-02-01T16:37:05+03:00</updated>
+    <updated>2015-02-01T13:37:05+00:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2015/02/01/rest-api-specification-draft</id>
     <content type="html"><![CDATA[<h2 id="rest-api-draft">REST API draft</h2>
 
@@ -29,7 +29,7 @@
   <entry>
     <title type="html"><![CDATA[Changes in RaodMap]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2015/02/01/changes-in-raodmap/"/>
-    <updated>2015-02-01T16:27:14+03:00</updated>
+    <updated>2015-02-01T13:27:14+00:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2015/02/01/changes-in-raodmap</id>
     <content type="html"><![CDATA[<h2 id="new-release-date-for-the-upcoming-alpha4-version">New release date for the upcoming Alpha4 version</h2>
 
@@ -44,9 +44,9 @@ New release date: 28 Feb</p>
   
   <entry>
     <title type="html"><![CDATA[project goals for 2015]]></title>
-    <link href="http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015/"/>
-    <updated>2015-01-05T01:14:56+03:00</updated>
-    <id>http://b0noI.github.io/AIF2/blog/2015/01/05/project-goals-for-2015</id>
+    <link href="http://b0noI.github.io/AIF2/blog/2015/01/04/project-goals-for-2015/"/>
+    <updated>2015-01-04T22:14:56+00:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2015/01/04/project-goals-for-2015</id>
     <content type="html"><![CDATA[<p>This short posts describes goals that we going to achieve until the end of 2015th</p>
 
 <ul>
@@ -64,7 +64,7 @@ New release date: 28 Feb</p>
   <entry>
     <title type="html"><![CDATA[Building text dictionary illustrated by NLP library AIF]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif/"/>
-    <updated>2014-12-28T23:42:34+03:00</updated>
+    <updated>2014-12-28T20:42:34+00:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/28/building-text-dictionary-illustrated-by-nlp-library-aif</id>
     <content type="html"><![CDATA[<p>It is already a custom to complement every release of AIF, a language independent library of natural language processing, with a note about things done and the way they work. Similar texts (but on Russian) on the two previous releases of Alpha1 and Alpha2 can be found <a href="http://habrahabr.ru/post/238359/">here</a> and <a href="http://habrahabr.ru/post/242147/">here</a> (text might be translated later). The current release i.e Alpha3 with its new feature of building a token dictionary from the entry text is no exception. We will describe how the token dictionary building process and how it can be applied to your project.</p>
 
@@ -425,7 +425,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   <entry>
     <title type="html"><![CDATA[splitter_characters_grouper_search_step parameter tuning]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning/"/>
-    <updated>2014-12-27T19:08:46+03:00</updated>
+    <updated>2014-12-27T16:08:46+00:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/27/splitter-characters-grouper-search-step-parameter-tuning</id>
     <content type="html"><![CDATA[<p>In last <a href="http://aif.io/blog/2014/12/27/first-ipython-usage-for-quality-analyze/">article</a> we discussed our plan about searching optimal values for splitter_characters_grouper_search_step. This time we will show how we were able to find optimal value and prove that this value is optimal.</p>
 
@@ -485,7 +485,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   <entry>
     <title type="html"><![CDATA[First IPython Usage for analyzing quality ]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/27/first-ipython-usage-for-quality-analyze/"/>
-    <updated>2014-12-27T16:14:33+03:00</updated>
+    <updated>2014-12-27T13:14:33+00:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/27/first-ipython-usage-for-quality-analyze</id>
     <content type="html"><![CDATA[<p>Today is the first day of work with Alpha4. One of the main improvements that we’ve done is the way how we tune AIF settings. AIF has a lot of different variables in settings and we need to prove which value is best for quality. </p>
 
@@ -675,7 +675,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   <entry>
     <title type="html"><![CDATA[AIF Alpha3 is out]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/12/26/aif-alpha3-is-out/"/>
-    <updated>2014-12-26T16:48:56+03:00</updated>
+    <updated>2014-12-26T13:48:56+00:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/12/26/aif-alpha3-is-out</id>
     <content type="html"><![CDATA[<p>Today our community is happy to announce next version of AIF: Alpha3</p>
 
@@ -714,9 +714,9 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   
   <entry>
     <title type="html"><![CDATA[aif.io is alive]]></title>
-    <link href="http://b0noI.github.io/AIF2/blog/2014/12/21/aif-dot-io-is-alive/"/>
-    <updated>2014-12-21T01:11:13+03:00</updated>
-    <id>http://b0noI.github.io/AIF2/blog/2014/12/21/aif-dot-io-is-alive</id>
+    <link href="http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive/"/>
+    <updated>2014-12-20T22:11:13+00:00</updated>
+    <id>http://b0noI.github.io/AIF2/blog/2014/12/20/aif-dot-io-is-alive</id>
     <content type="html"><![CDATA[<h2 id="long-live-aifio">Long live aif.io!</h2>
 
 <p>Today, AIF community os proud to announce AIF web site: <a href="aif.io">aif.io</a></p>
@@ -739,7 +739,7 @@ Press 'Enter' to continue or 'q' command to quit. There are -102 entities to sho
   <entry>
     <title type="html"><![CDATA[initial]]></title>
     <link href="http://b0noI.github.io/AIF2/blog/2014/10/20/test/"/>
-    <updated>2014-10-20T19:53:13+03:00</updated>
+    <updated>2014-10-20T17:53:13+01:00</updated>
     <id>http://b0noI.github.io/AIF2/blog/2014/10/20/test</id>
     <content type="html"><![CDATA[<p>AIF finally moved to it’s own web-site! For documentation check our <a href="http://aif.io/docs/">documentation page</a></p>
 ]]></content>

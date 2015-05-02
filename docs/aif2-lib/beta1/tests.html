@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Work with tokens - AIF2</title>
+  <title>Tests - AIF2</title>
   <meta name="author" content="AIF2 Team">
 
   
-  <meta name="description" content="Work With Tokens This page describes functions that AIF2 can perform with tokens. Functions There are 2 main functions that can be used in AIF2 &hellip;">
+  <meta name="description" content="Tests AIF uses TestNG Tests groups BASIC: (conditions of running) “unit-tests” - method level tests without any additional logic checks. Every class &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/alpha1/api/tokens.html">
+  <link rel="canonical" href="http://b0noI.github.io/AIF2/docs/aif2-lib/beta1/tests.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -103,82 +103,60 @@ MathJax.Hub.Config({
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Work With Tokens</h1>
+    <h1 class="entry-title">Tests</h1>
     
   </header>
   
-  <p>This page <strong><em>describes</em></strong> functions that AIF2 can perform with tokens.</p>
+  <p>AIF uses TestNG</p>
 
-<h2 id="functions">Functions</h2>
+<h2 id="tests-groups">Tests groups</h2>
 
-<p>There are 2 main functions that can be used in AIF2 about tokens:</p>
+<p><strong>BASIC:</strong> (conditions of running)</p>
 
-<ul>
-  <li>extract tokens splitter character from text;</li>
-  <li>split text into tokens.</li>
-</ul>
+<ol>
+  <li><em>“unit-tests”</em> - method level tests without any additional logic checks. Every class method should be covered by at least one positive unit-test and one negative unit test. Must be run at every method change.</li>
+  <li><em>«integration-tests»</em> - test for checking communication between different parts of the system. Must be run at every change of the module(class) logic.</li>
+  <li><em>«acceptance-tests»</em> - tests which test general quality and compare with set acceptance level. Must be run before every version release.</li>
+</ol>
 
-<h2 id="extract-tokens">Extract tokens</h2>
+<p><strong>DETAILED:</strong> (what they test)</p>
 
-<p>This function gives you a possibility to extract token separators list from specific input text. This function should be used by using interface: ITokenSeparatorExtractor (from package: com.aif.language.token). If you want to create instance of this interface you need to select type of TokenSeparatorExtractor and get instance, like this:</p>
+<ol>
+  <li><em>«functional-fast»</em> - functional test with runtime not longer than predefined time duration</li>
+  <li><em>«functional-slow»</em> - functional test with runtime longer than predefined time duration</li>
+  <li><em>«quality-fast»</em> - quality test with runtime not longer than predefined time duration</li>
+  <li><em>«quality-slow»</em> - quality test with runtime longer than predefined time duration</li>
+</ol>
 
-<pre><code>ITokenSeparatorExtractor.Type.PREDEFINED.getInstance()
-</code></pre>
+<p><strong>OPTIONAL:</strong></p>
 
-<p>For difference between separators types see the section below</p>
+<ol>
+  <li><em>«experimental»</em> - special test without any predefined test target. Just one experiment on the system</li>
+  <li><em>«help-test»</em> - not a test in general, but a test method used to generate or save test data etc. Must be @Ignore by default - start it manually.</li>
+</ol>
 
-<h3 id="token-separators-extractor-types">Token Separators Extractor Types</h3>
+<h2 id="test-sources">Test sources</h2>
 
-<h4 id="typepredefined">Type.PREDEFINED</h4>
-
-<p>This extractor has <strong>predefined</strong> characters that will be used for token splitting. This means that extractor type will not parse text in any way and will just return predefined characters.</p>
-
-<h2 id="token-splitting">Token splitting</h2>
-
-<p>If you want to split tokens you need to:</p>
-
-<ul>
-  <li>create TokenSplitter instance(from package: com.aif.language.token);</li>
-  <li>call split method.</li>
-</ul>
-
-<h3 id="creating-tokensplitter">Creating TokenSplitter</h3>
-
-<p>You can initiate it in 2 ways:</p>
+<p>Test sources are divided into 2 parts:</p>
 
 <ul>
-  <li>setting Token Separators Extractor Type; </li>
-  <li>using default Token Separators Extractor Type.  </li>
+  <li>functional/integration/quality tests </li>
+  <li>unit tests</li>
 </ul>
 
-<p>### </p>
+<p>functional/integration/quality tests can be found here:  src/test/unit/java
+unit tests can be found here: src/test/integration/java</p>
 
-<pre><code>ITokenSeparatorExtractor tokenSeparatorExtractor = ...
+<h2 id="test-resources">Test resources</h2>
 
-ISplitter&lt;String, String&gt; tokenSplitter = new TokenSplitter(tokenSeparatorExtractor);
-</code></pre>
+<h3 id="text-corpuses">Text corpuses</h3>
 
-<p>This will create tokenSplitter that will use tokenSeparatorExtractor to split tokens in text. Also, you can create TokenSplitter with default ITokenSeparatorExtractor like this:</p>
+<p>All RAW texts can be found at:
+src/test/resources/texts/<language></language></p>
 
-<pre><code>ISplitter&lt;String, String&gt; tokenSplitter = new TokenSplitter();
-</code></pre>
+<h3 id="nlp-models-for-3d-part-engines">NLP models for 3d part engines</h3>
 
-<p>By default it will use this ITokenSeparatorExtractor.Type.PREDEFINED.getInstance() token separator extractor.</p>
-
-<h3 id="splitting-text-with-tokensplitter">Splitting text with TokenSplitter</h3>
-
-<p>After you have TokenSplitter instance, you can split text by calling split method like this:</p>
-
-<pre><code>ISplitter&lt;String, String&gt; tokenSplitter = ...
- 
-String text = ...
- 
-List&lt;String&gt; tokens = tokenSplitter.split(text);
-</code></pre>
-
-<h2 id="usage-example">Usage example</h2>
-
-<p><a href="https://github.com/b0noI/aif-cli/blob/master/src/main/java/com/aif/language/sentence/TokenSplitCommand.java">Here</a> you can find usage example.</p>
+<p>src/test/resources/models/<engine_name></engine_name></p>
 
   
 </article>
