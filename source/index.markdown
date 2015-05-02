@@ -26,7 +26,9 @@ and add dependency:
 
 ```xml
     <dependency>
-       <groupId>io.aif.pipeline</groupId> <artifactId>pipeline</artifactId> <version>1.0-Beta1</version>
+       <groupId>io.aif.pipeline</groupId>
+        <artifactId>pipeline</artifactId>
+        <version>1.0-Beta1</version>
 
     </dependency> 
 ```
