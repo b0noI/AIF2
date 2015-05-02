@@ -1,10 +1,9 @@
 package io.aif.language.common;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SentenceMapper<T, S> implements IMapper<Collection<T>, List<S>> {
+public class SentenceMapper<T, S> implements IMapper<List<T>,List<S>> {
 
     private final ISearchable<T, S> searchable;
 
@@ -13,9 +12,9 @@ public class SentenceMapper<T, S> implements IMapper<Collection<T>, List<S>> {
     }
 
     @Override
-    public List<S> map(Collection<T> nestedList) {
-        return nestedList
-                .stream()
+    public List<S> map(List<T> rawSentence) {
+        return rawSentence
+                .parallelStream()
                 .map(item -> searchable.search(item).get())
                 .collect(Collectors.toList());
     }

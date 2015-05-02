@@ -13,7 +13,7 @@ public interface IMapper<T, S> extends Function<T, S>{
     @Override
     default S apply(T t) {return map(t);}
 
-    default List<S> mapAll(Collection<T> elements) {
+    default List<S> mapAll(List<T> elements) {
         return elements
                 .parallelStream()
                 .map(this)
