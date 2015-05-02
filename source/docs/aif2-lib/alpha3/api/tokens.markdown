@@ -16,9 +16,11 @@ There are 2 main functions that can be used in AIF2 about tokens:
 ## Extract tokens
 
 This function gives you a possibility to extract the token separators list from the input text. This function should be used by using interface: ITokenSeparatorExtractor (from package: com.aif.language.token). If you want to create an instance of this interface, you need to select the type of TokenSeparatorExtractor and get instance, like this:
+
 ``` java
     ITokenSeparatorExtractor.Type.PREDEFINED.getInstance()
 ```
+
 For the difference between separators types see the section below
 
 ### Token Separators Extractor Types 
@@ -46,15 +48,19 @@ You can initiate it in 2 ways:
       
      ISplitter<String, String> tokenSplitter = new TokenSplitter(tokenSeparatorExtractor);
 ```
+
 This will create tokenSplitter that will use tokenSeparatorExtractor for splitting the text into tokens. Also, you can create TokenSplitter with default ITokenSeparatorExtractor like this:
+
 ``` java
      ISplitter<String, String> tokenSplitter = new TokenSplitter();
 ```
+
 By default it will use this ITokenSeparatorExtractor.Type.PREDEFINED.getInstance() token separator extractor.
 
 ### Splitting the text with TokenSplitter
 
 After you have a TokenSplitter instance, you can split the text by calling the "split" method like this:
+
 ``` java
      ISplitter<String, String> tokenSplitter = ...
       
@@ -62,6 +68,7 @@ After you have a TokenSplitter instance, you can split the text by calling the "
       
      List<String> tokens = tokenSplitter.split(text);
 ```
+
 ## Usage example
 
 [Here](https://github.com/b0noI/aif-cli/blob/master/src/main/java/com/aif/language/sentence/TokenSplitCommand.java) you can find usage example.

@@ -40,8 +40,9 @@ So, basically, we need to find value of "splitter_characters_grouper_search_step
 ## Executing a lot of quality tests
 
 Done with the simple implementation (may be refactored in future):
-``` java experimentWith_splitter_characters_grouper_search_step https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/java/io/aif/language/common/settings/PropertyBasedSettingsTest.java
-private static void experimentWith_splitter_characters_grouper_search_step() throws Exception {
+
+```java experimentWith_splitter_characters_grouper_search_step https://github.com/b0noI/AIF2/blob/c093104ecbc069016d1d187e6779efd3593d6a57/src/test/integration/java/io/aif/language/common/settings/PropertyBasedSettingsTest.java
+        private static void experimentWith_splitter_characters_grouper_search_step() throws Exception {
 
         Logger logger = Logger.getRootLogger();
 

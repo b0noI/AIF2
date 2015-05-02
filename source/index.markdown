@@ -11,7 +11,8 @@ AIF2 is **fully language independent** NLU library. AIF2 is written in Java 8+.
 You can use it by pulling artifact. 
 
 Add repository to pom.xml:
-``` xml
+
+```xml
     <project ...>
         <repositories>
             <repository>
@@ -22,7 +23,8 @@ Add repository to pom.xml:
     </project>
 ```
 and add dependency:
-``` xml
+
+```xml
     <dependency>
        <groupId>io.aif.pipeline</groupId> <artifactId>pipeline</artifactId> <version>1.0-Beta1</version>
 

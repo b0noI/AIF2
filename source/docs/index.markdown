@@ -4,13 +4,14 @@ title: Documentation
 footer: false
 ---
  
-AIF2 is **fully language independent** NLU (Natural Language Understanding) library. AIF2 is written in Java 8+. 
+AIF2 is **fully language independent** NLU (Natural Languageeeeee Understanding) library. AIF2 is written in Java 8+.
 
 ## How to use it
 
 You can use it by pulling artifact. 
 
 Add repository to pom.xml:
+
 ``` xml
     <project ...>
         <repositories>
@@ -23,11 +24,13 @@ Add repository to pom.xml:
     </project>
 ```
 and add dependency:
+
 ``` xml
     <dependency>
        <groupId>io.aif.pipeline</groupId>      <artifactId>pipeline</artifactId>      <packaging>jar</packaging>      <version>1.0-Beta1</version>
     </dependency> 
 ```
+
 ###AIF2 API
 * [AIF2: v2.0.0-beta1](/docs/aif2-lib/beta1/)
 * [AIF2: v1.2.0-alpha4](/docs/aif2-lib/alpha4/)

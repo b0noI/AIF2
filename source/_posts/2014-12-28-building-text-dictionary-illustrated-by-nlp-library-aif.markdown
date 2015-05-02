@@ -27,25 +27,28 @@ Token similarity tries to infer whether a given token is similar to another. It'
 
 Token similarity is computed using the formula [1]. It shows the probability that two tokens are included in one word. Accordingly, we assume that two tokens are included in one word if there is inequality [2]. 
 
-[1] 
-![img](http://hsto.org/files/e7f/7ff/efa/e7f7ffefad8b4710948f5ea4a9c22890.png)
+[1]
+
+$$ s(token_1,token_2) = \frac{s_1(token_1,token_2)*W_1 + s_2(token_1,token_2)*W_2}{2} $$
 
 where:
 
-* ![img](http://hsto.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on common characters calculation (see formula 1.1)
-* ![img](http://habrastorage.org/files/bb3/1b4/5c2/bb31b45c2ac5400e8bb8d0dffc30177e.png) - weight of formula of token similarity is based on common characters calculation (ranges 0.0 to 1.0). The given parameter is hardcoded (yuck!) and has a value of [0.8](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16). This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.
-* ![img](http://habrastorage.org/files/09f/389/49b/09f38949b26c454aaa559a6beb522076.png) - formula of token similarity based on recursively calculating the longest common substrings (see formula 1.2).
-* ![img](http://habrastorage.org/files/a96/f88/102/a96f881027664d8c96378e4cf22ec424.png) - weight of formula of token similarity based on recursive calculation of the longest common strings. This value is hardcoded as 1 and will be configurable from the next release.
+* $$ s_1(token_1,token2) $$ - formula of token similarity based on common characters calculation (see formula 1.1)
+* $$ W_1 $$ - weight of formula of token similarity is based on common characters calculation (ranges 0.0 to 1.0). The given parameter is hardcoded (yuck!) and has a value of [0.8](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/token/comparator/ITokenComparator.java#L16). This value will be configurable from the next release. However, if you want to fiddle with it without digging into the code, open a task for us here and we will do it.
+* $$ s_2(token_1,token2) $$ - formula of token similarity based on recursively calculating the longest common substrings (see formula 1.2).
+* $$ W_2 $$ - weight of formula of token similarity based on recursive calculation of the longest common strings. This value is hardcoded as 1 and will be configurable from the next release.
 
 # Formula for token similarity based on common characters calculation
 It has a noble name of which I can’t remember. There’s no thesis with all its links at hand. But I’m sure that a valiant reader will enlighten us.
 
-[1.1] ![img](http://habrastorage.org/files/925/d01/ecf/925d01ecf6c143829dafe523e4598b9b.png)
+[1.1]
+
+$$ s(token_1,token_2) = 2 * \frac{commonCharactersCount(token_1,token_2)}{length(token_1) + length(token_2)} $$
 
 where:
 
-* ![img](http://habrastorage.org/files/389/acf/60b/389acf60b8cf4bf4a9508c2b42b79e62.png) - Length of token.
-* ![img](http://habrastorage.org/files/cab/a83/ca0/caba83ca082c416ca8ba1b98f8654e85.png) - The number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.
+* $$ length(token_1) $$ - Length of token.
+* $$ commonCharactersCount(token_1,token_2) $$ - The number of characters that are included in the first and the second token. E.g., for input tokens: “aabbcc”, “aadddc”, the result is 3, since there are 3 characters [a, a, c] that are included in both tokens.
 
 The formula is very simple. We calculate the characters that are included in both tokens without regard to the position of these characters in the tokens.
 
@@ -53,27 +56,35 @@ The formula is very simple. We calculate the characters that are included in bot
 
 Here’s more fun, the formula is recursive and is also named after its author :)
 
-[1.2] ![img](http://habrastorage.org/files/14b/a2d/37e/14ba2d37ebd5484c89cc7b5f36b0570b.png)
+[1.2]
+
+$ s_2(token_1,token_2) = 2 * \frac{length(biggestSubstring(token_1,token_2)) + r_1(token_1,token_2) + r_r(token_1,token_2)}{length(token_1) + length(token_2)} $
 
 where:
 
-* ![img](http://habrastorage.org/files/06f/11c/bc9/06f11cbc997144da8265c7341db79bf4.png) - The maximum string that is included in both tokens;
-* ![img](http://habrastorage.org/files/05f/528/038/05f528038b134e5b8116861220f706b7.png) - Recursive call of formula 1.2 for the left substring, see formula 1.2.1;
-* ![img](http://habrastorage.org/files/102/be4/a0b/102be4a0b3024d89a358e4fc8cd30728.png) - Recursive call of formula 1.2 for the right substring, see formula 1.2.2;
+* $$ biggestSubstring(token_1,token_2) $$ - The maximum string that is included in both tokens;
+* $$ r_1(token_1,token_2) $$ - Recursive call of formula 1.2 for the left substring, see formula 1.2.1;
+* $$ r_r(token_1,token_2) $$ - Recursive call of formula 1.2 for the right substring, see formula 1.2.2;
 
-[1.2.1] ![img](http://habrastorage.org/files/8dd/f03/f84/8ddf03f840f544439314f61a0a0aada6.png)
+[1.2.1]
 
-where:
-
-* ![img](http://habrastorage.org/files/17f/1d9/72d/17f1d972d73248e88f209d635a7160e0.png) - The given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”
-
-[1.2.2] ![img](http://habrastorage.org/files/e15/d00/072/e15d000729564edbb21e40926a8f9cfd.png)
+$$ r_1(token_1,token_2) = s_2(leftSubstring(token_1, biggestSubstring(token_1,token_2)),\\ leftSubstring(token_2, biggestSubstring(token_1,token_2))) $$
 
 where:
 
-* ![img](http://habrastorage.org/files/d34/102/ed3/d34102ed3f01481eac24a8be1ece5f04.png) - The given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.
+* $$ leftSubstring(token_2, biggestSubstring(token_1,token_2)) $$ - The given method returns the substring of the first parameter in the range from the first character to the string that is passed as the second parameter. E.g., for the strings “hello” and “ll” the result is “he”
 
-[2] ![img](http://habrastorage.org/files/46f/85b/800/46f85b800a9046b18a78b411287c9004.png)
+[1.2.2]
+
+$$ r_r(token_1,token_2) = s_2(rightSubstring(token_1, biggestSubstring(token_1,token_2)),\\ rightSubstring(token_2, biggestSubstring(token_1,token_2))) $$
+
+where:
+
+* $$ rightSubstring(token_2, biggestSubstring(token_1,token_2)) $$ - The given method returns the substring of the first parameter in the range from the end of the string of the second argument in the first argument to the last character of the string. E.g., for the strings “hello” and “ll” the result is “o”.
+
+[2]
+
+$$ s(token_1,token_2) > 0.75 $$
 
 The threshold used in this inequality was chosen empirically: 0.75. In the current Alpha3 release this parameter is devilishly hardcoded [here](https://github.com/b0noI/AIF2/blob/2ebcc2fe7d5a404554c8b0d812554e5b9816e720/src/main/java/io/aif/language/word/dict/WordSetDict.java#L17).
 
@@ -83,7 +94,15 @@ Fixing this major sin :) is already planned in [Alpha4](https://github.com/b0noI
 
 In fact, the word is nothing more than a set of tokens grouped by a certain rule. The rule has been already specified (meeting the condition of inequality 2). So the comparison of two words is solved easily ([3]).
 
-[3] ![img](http://habrastorage.org/files/bb2/205/237/bb22052377ae4aeaae3570bdc250b376.png)
+[3]
+
+$$
+\sum_{i=1}^{\left | W_1 \right |} \sum_{j=1}^{\left | W_2 \right |} \frac{ s(token_{1,i}, token_{2,j}) }{ \left | W_1 \right | + \left | W_2 \right | }
+$$
+
+$$ token_{2,j} \in W_1 $$
+
+$$ token_{1,i} \in W_2 $$
 
 # A word about practical application
 
@@ -193,6 +212,7 @@ Here is how the program set on the text of the article works (only a part of the
 ``` bash
 java -jar aif-cli-1.2-jar-with-dependencies.jar -dbuild ~/tmp/text1.txt
 ```
+
 result:
 
     Basic token: something tokens: [ [something] ]
