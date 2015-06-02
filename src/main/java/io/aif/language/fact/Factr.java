@@ -1,7 +1,8 @@
 package io.aif.language.fact;
 
-import io.aif.language.common.ISearchable;
-import io.aif.language.common.SentenceMapper;
+import io.aif.graph.normal.IGraph;
+import io.aif.graph.simple.ISimpleGraph;
+import io.aif.graph.simple.ISimpleGraphBuilder;
 import io.aif.language.word.IWord;
 
 import java.util.List;
@@ -23,13 +24,13 @@ public class Factr {
                 .map(sentence -> new Fact(sentence))
                 .collect(Collectors.toList());
 
-        FactGraph g = buildGraph(facts);
+        final ISimpleGraph<IFact> g = buildGraph(facts);
         return new FactQuery(g);
     }
 
     // TODO Move this to the graph class. Should take a lambda to build graph
-    private static FactGraph buildGraph(List<IFact> facts) {
-        FactGraph g = new FactGraph();
+    private static ISimpleGraph<IFact> buildGraph(final List<IFact> facts) {
+        final ISimpleGraphBuilder<IFact> g = ISimpleGraphBuilder.defaultBuilder();
         for (int i = 0; i < facts.size(); i++) {
             IFact from = facts.get(i);
             for (int j = i + 1; j < facts.size(); i++) {
@@ -38,7 +39,7 @@ public class Factr {
                     g.connect(from, to);
             }
         }
-        return g;
+        return g.build();
     }
 
     // TODO move this as a method to fact class

@@ -1,5 +1,6 @@
 package io.aif.language.fact;
 
+import io.aif.graph.simple.ISimpleGraph;
 import io.aif.language.word.IWord;
 
 import java.util.*;
@@ -7,13 +8,13 @@ import java.util.stream.Collectors;
 
 class FactQuery implements IFactQuery {
 
-    private final FactGraph<IFact> graph;
+    private final ISimpleGraph<IFact> graph;
     private final Set<IFact> facts;
     private final DFS<IFact> traverser;
 
-    public FactQuery(final FactGraph g) {
+    public FactQuery(final ISimpleGraph<IFact> g) {
         this.graph = g;
-        facts = graph.getAll().get();
+        facts = graph.getVertices();
         traverser = new DFS<>(graph);
     }
 
@@ -49,8 +50,8 @@ class FactQuery implements IFactQuery {
     }
 
     @Override
-    public Optional<Set<IFact>> allFacts() {
-        return graph.getAll();
+    public Set<IFact> allFacts() {
+        return graph.getVertices();
     }
 
     private Set<IFact> getFactsWithProperNoun(IWord properNoun1) {
