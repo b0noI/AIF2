@@ -1,6 +1,5 @@
 package io.aif.language.semantic.weights;
 
-import io.aif.language.common.FuzzyBoolean;
 import io.aif.language.common.IFuzzyBoolean;
 import io.aif.language.common.StringHelper;
 import io.aif.language.word.IWord;

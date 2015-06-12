@@ -1,7 +1,7 @@
 package io.aif.language.fact;
 
 
-import io.aif.language.common.FuzzyBoolean;
+import io.aif.common.FuzzyBoolean;
 import io.aif.language.semantic.weights.IProperNounCalculator;
 import io.aif.language.word.IWord;
 
