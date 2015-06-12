@@ -1,5 +1,6 @@
 package io.aif.language.fact;
 
+import io.aif.graph.DFS;
 import io.aif.graph.simple.ISimpleGraph;
 import io.aif.language.word.IWord;
 
