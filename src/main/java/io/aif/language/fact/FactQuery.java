@@ -19,35 +19,30 @@ class FactQuery implements IFactQuery {
         traverser = new DFS<>(graph);
     }
 
-    public Optional<List<List<IFact>>> findPath(final IWord properNoun1,
+    public List<List<IFact>> findPath(final IWord properNoun1,
                                                 final IWord properNoun2) {
 
-        Set<IFact> factsContainingProperNoun1 = getFactsWithProperNoun(properNoun1);
-        Set<IFact> factsContainingProperNoun2 = getFactsWithProperNoun(properNoun2);
+        final Set<IFact> factsContainingProperNoun1 = getFactsWithProperNoun(properNoun1);
+        final Set<IFact> factsContainingProperNoun2 = getFactsWithProperNoun(properNoun2);
 
-        List<IFact> interception = factsContainingProperNoun1
+        final List<IFact> interception = factsContainingProperNoun1
                 .parallelStream()
                 .filter(fact -> factsContainingProperNoun2.contains(fact))
                 .collect(Collectors.toList());
 
         if (interception.size() > 0)
-            return Optional.of(
-                    new ArrayList<List<IFact>>() {{
-                        add(interception);
-                    }});
+            return Arrays.asList(interception);
 
-        List<List<IFact>> paths = new ArrayList<>();
+        final List<List<IFact>> paths = new ArrayList<>();
         for (IFact sfOut : factsContainingProperNoun1) {
             for (IFact sfIn : factsContainingProperNoun2) {
-                List<List<IFact>> r = traverser.findPath(sfOut, sfIn);
+                final List<List<IFact>> r = traverser.findPath(sfOut, sfIn);
                 if (r.size() > 0)
                     paths.addAll(r);
             }
         }
 
-        return (paths.size() > 0) ?
-                Optional.of(getCheapestPath(paths)) :
-                Optional.empty();
+        return getCheapestPath(paths);
     }
 
     @Override
@@ -58,12 +53,15 @@ class FactQuery implements IFactQuery {
     private Set<IFact> getFactsWithProperNoun(IWord properNoun1) {
         return facts
                 .stream()
-                .filter(fact -> fact.hasProperNoun(properNoun1))
+                .filter(fact -> fact.hasNamedEntity(properNoun1))
                 .collect(Collectors.toSet());
     }
 
     private List<List<IFact>> getCheapestPath(final List<List<IFact>> paths) {
-        OptionalInt minPathValue = paths.stream().mapToInt(List::size).min();
+        final OptionalInt minPathValue = paths.stream().mapToInt(List::size).min();
+
+        if (!minPathValue.isPresent()) return paths;
+
         return paths
                 .stream()
                 .filter(path -> path.size() == minPathValue.getAsInt())

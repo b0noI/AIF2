@@ -1,23 +1,20 @@
 package io.aif.language.fact;
 
-import io.aif.common.FuzzyBoolean;
 import io.aif.language.word.IWord;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.testng.Assert.*;
 
 public class FactTest {
 
     @Test(groups = "unit-tests")
     public void testFactConstruction() throws Exception {
-        IFact fact = new Fact(null);
+        final IFact fact = new Fact(Collections.emptyList());
         assert true;
     }
 
@@ -42,7 +39,7 @@ public class FactTest {
 //
 //        List<IWord> semanticSentenceInput = Arrays.asList(semanticNodeMock1, semanticNodeMock2);
 //        IFact fact = new Fact(semanticSentenceInput);
-//        Set<T> actual = fact.getProperNouns();
+//        Set<T> actual = fact.getNamedEntities();
 //
 //        assertEquals(actual, expected);
 //    }
@@ -58,7 +55,7 @@ public class FactTest {
 //
 //        List<IWord> semanticSentenceInput = Arrays.asList(semanticNodeMock1, semanticNodeMock2);
 //        IFact fact = new Fact(semanticSentenceInput);
-//        boolean actual = fact.hasProperNoun(semanticNodeMock1);
+//        boolean actual = fact.hasNamedEntity(semanticNodeMock1);
 //
 //        assertEquals(actual, expected);
 //    }
@@ -76,7 +73,7 @@ public class FactTest {
 //
 //        List<IWord> semanticSentenceInput = Arrays.asList(semanticNodeMock1, semanticNodeMock2);
 //        IFact fact = new Fact(semanticSentenceInput);
-//        boolean actual = fact.hasProperNoun(semanticNodeMock3);
+//        boolean actual = fact.hasNamedEntity(semanticNodeMock3);
 //
 //        assertEquals(actual, expected);
 //    }
@@ -95,7 +92,7 @@ public class FactTest {
 //        List<IWord> semanticSentenceInput = Arrays.asList(
 //                semanticNodeMock1, semanticNodeMock2, semanticNodeMock3);
 //        IFact fact = new Fact(semanticSentenceInput);
-//        boolean actual = fact.hasProperNouns(new HashSet(Arrays.asList(semanticNodeMock1, semanticNodeMock3)));
+//        boolean actual = fact.hasNamedEntities(new HashSet(Arrays.asList(semanticNodeMock1, semanticNodeMock3)));
 //
 //        assertEquals(actual, expected);
 //    }
@@ -116,7 +113,7 @@ public class FactTest {
 //        List<IWord> semanticSentenceInput = Arrays.asList(
 //                semanticNodeMock1, semanticNodeMock2, semanticNodeMock3);
 //        IFact fact = new Fact(semanticSentenceInput);
-//        boolean actual = fact.hasProperNouns(new HashSet(Arrays.asList(semanticNodeMock4)));
+//        boolean actual = fact.hasNamedEntities(new HashSet(Arrays.asList(semanticNodeMock4)));
 //
 //        assertEquals(actual, expected);
 //    }

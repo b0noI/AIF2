@@ -1,25 +1,26 @@
-package io.aif.language.semantic.weights;
+package io.aif.language.ner.noun;
 
-import io.aif.language.common.IFuzzyBoolean;
+import io.aif.fuzzy.FuzzyBoolean;
 import io.aif.language.common.StringHelper;
 import io.aif.language.word.IWord;
 
 import java.util.Set;
 
-public class TitleCaseProperNounCalculator implements IProperNounCalculator {
+class TitleCaseProperNounSet implements IProperNounSet {
 
     @Override
-    public double calculate(IWord word) {
-        Set<String> tokens = word.getAllTokens();
+    public FuzzyBoolean contains(final IWord word) {
+        final Set<String> tokens = word.getAllTokens();
 
         // WARN! This is to handle the zero length case and avoid division by zero at the bottom
         if (tokens.size() == 0)
-            return 0d;
+            return new FuzzyBoolean(0d);
 
         long numTokensUpperCase  =  tokens
                 .stream()
                 .filter(StringHelper::startsWithUpperCase)
                 .count();
-        return (double)numTokensUpperCase / tokens.size();
+        return new FuzzyBoolean((double)numTokensUpperCase / tokens.size());
     }
+
 }

@@ -1,6 +1,5 @@
 package io.aif.language.fact;
 
-import io.aif.graph.normal.IGraph;
 import io.aif.graph.simple.ISimpleGraph;
 import io.aif.graph.simple.ISimpleGraphBuilder;
 import io.aif.language.word.IWord;
@@ -12,8 +11,12 @@ public class Factr {
 
     private final IFactDefiner factDefiner;
 
-    public Factr(IFactDefiner definer) {
+    public Factr(final IFactDefiner definer) {
         this.factDefiner = definer;
+    }
+
+    public Factr() {
+        this(IFactDefiner.Type.SIMPLE_FACT.getInstance());
     }
 
     public IFactQuery run(final List<List<IWord.IWordPlaceholder>> sentences) {
@@ -44,10 +47,10 @@ public class Factr {
 
     // TODO move this as a method to fact class
     private static boolean hasCommonProperNoun(IFact sf1, IFact sf2) {
-        for (IWord node : sf1.getProperNouns()) {
+        for (IWord node : sf1.getNamedEntities()) {
             // TODO ISemanticNode does not have equality checks
-            // TODO getProperNouns generates the proper nouns on the fly.
-            if (sf2.getProperNouns().contains(node))
+            // TODO getNamedEntities generates the proper nouns on the fly.
+            if (sf2.getNamedEntities().contains(node))
                 return true;
         }
 

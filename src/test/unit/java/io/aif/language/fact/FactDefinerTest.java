@@ -1,16 +1,6 @@
 package io.aif.language.fact;
 
-import io.aif.common.FuzzyBoolean;
-import io.aif.language.word.IWord;
-import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.testng.Assert.*;
 
 public class FactDefinerTest {
 
