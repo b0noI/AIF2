@@ -9,7 +9,12 @@
     <version>2.0.0-Beta1-SNAPSHOT</version>
 
     <dependencies>
-         <dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
+        </dependency>
+        <dependency>
             <groupId>io.aif</groupId>
             <artifactId>aif-kernel</artifactId>
             <version>1.0</version>
