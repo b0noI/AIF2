@@ -14,12 +14,19 @@ class FactDefiner implements IFactDefiner {
 
     private final int numProperNounsForFact;
 
-    public FactDefiner(final int numProperNounsForFact) {
+    private final NERExtractor nerExtractor;
+
+    public FactDefiner(final int numProperNounsForFact, final NERExtractor nerExtractor) {
         this.numProperNounsForFact = numProperNounsForFact;
+        this.nerExtractor = nerExtractor;
     }
 
     public FactDefiner() {
-        this.numProperNounsForFact = NUM_PROPER_NOUNS_FOR_FACT;
+        this(NUM_PROPER_NOUNS_FOR_FACT, new NERExtractor());
+    }
+
+    public FactDefiner(final int numProperNounsForFact) {
+        this(numProperNounsForFact, new NERExtractor());
     }
 
     @Override
@@ -27,10 +34,10 @@ class FactDefiner implements IFactDefiner {
         return (namedEntityCount(semanticSentence) >= numProperNounsForFact) ? true : false;
     }
 
-    private static long namedEntityCount(final List<IWord> semanticSentence) {
+    private long namedEntityCount(final List<IWord> semanticSentence) {
         return semanticSentence
                 .stream()
-                .map(NERExtractor::getNerType)
+                .map(nerExtractor::getNerType)
                 .filter(Optional::isPresent)
                 .count();
     }

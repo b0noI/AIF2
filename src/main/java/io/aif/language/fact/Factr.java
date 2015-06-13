@@ -2,21 +2,26 @@ package io.aif.language.fact;
 
 import io.aif.graph.simple.ISimpleGraph;
 import io.aif.graph.simple.ISimpleGraphBuilder;
+import io.aif.language.ner.NERExtractor;
 import io.aif.language.word.IWord;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Factr {
 
     private final IFactDefiner factDefiner;
 
-    public Factr(final IFactDefiner definer) {
+    private final NERExtractor nerExtractor;
+
+    public Factr(final IFactDefiner definer, final NERExtractor nerExtractor) {
         this.factDefiner = definer;
+        this.nerExtractor = nerExtractor;
     }
 
     public Factr() {
-        this(IFactDefiner.Type.SIMPLE_FACT.getInstance());
+        this(IFactDefiner.Type.SIMPLE_FACT.getInstance(), new NERExtractor());
     }
 
     public IFactQuery run(final List<List<IWord.IWordPlaceholder>> sentences) {
@@ -24,7 +29,12 @@ public class Factr {
                 .parallelStream()
                 .map(sentence -> sentence.stream().map(IWord.IWordPlaceholder::getWord).collect(Collectors.toList()))
                 .filter(factDefiner::isFact)
-                .map(sentence -> new Fact(sentence))
+                .map(sentence -> {
+                    final Set<IWord> namedEntities = sentence.stream()
+                            .filter(word -> nerExtractor.getNerType(word).isPresent())
+                            .collect(Collectors.toSet());
+                    return new Fact(sentence, namedEntities);
+                })
                 .collect(Collectors.toList());
 
         final ISimpleGraph<IFact> g = buildGraph(facts);

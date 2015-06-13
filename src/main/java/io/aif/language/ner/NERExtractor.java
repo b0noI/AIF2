@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class NERExtractor {
 
-    public static Optional<Type> getNerType(final IWord word) {
+    public Optional<Type> getNerType(final IWord word) {
         for (Type nerType : Type.values()) {
             if (nerType.contains(word).isTrue()) {
                 return Optional.of(nerType);

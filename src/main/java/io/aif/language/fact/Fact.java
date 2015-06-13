@@ -1,6 +1,5 @@
 package io.aif.language.fact;
 
-import io.aif.language.ner.NERExtractor;
 import io.aif.language.word.IWord;
 
 import java.util.List;
@@ -13,11 +12,9 @@ class Fact implements IFact {
 
     private final Set<IWord> namedEntities;
 
-    public Fact(final List<IWord> semanticSentence) {
+    public Fact(final List<IWord> semanticSentence, final Set<IWord> namedEntities) {
         this.semanticSentence = semanticSentence;
-        namedEntities = semanticSentence.stream()
-                .filter(word -> NERExtractor.getNerType(word).isPresent())
-                .collect(Collectors.toSet());
+        this.namedEntities = namedEntities;
     }
 
     public List<IWord> getSemanticSentence() {
