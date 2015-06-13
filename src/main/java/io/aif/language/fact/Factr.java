@@ -29,16 +29,18 @@ public class Factr {
                 .parallelStream()
                 .map(sentence -> sentence.stream().map(IWord.IWordPlaceholder::getWord).collect(Collectors.toList()))
                 .filter(factDefiner::isFact)
-                .map(sentence -> {
-                    final Set<IWord> namedEntities = sentence.stream()
-                            .filter(word -> nerExtractor.getNerType(word).isPresent())
-                            .collect(Collectors.toSet());
-                    return new Fact(sentence, namedEntities);
-                })
+                .map(this::mapToFact)
                 .collect(Collectors.toList());
 
         final ISimpleGraph<IFact> g = buildGraph(facts);
         return new FactQuery(g);
+    }
+
+    IFact mapToFact(final List<IWord> sentence) {
+        final Set<IWord> namedEntities = sentence.stream()
+                .filter(word -> nerExtractor.getNerType(word).isPresent())
+                .collect(Collectors.toSet());
+        return new Fact(sentence, namedEntities);
     }
 
     // TODO Move this to the graph class. Should take a lambda to build graph

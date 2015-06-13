@@ -36,4 +36,5 @@ class Fact implements IFact {
             sb.append(n.toString());
         return sb.toString();
     }
+
 }
