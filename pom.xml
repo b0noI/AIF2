@@ -54,11 +54,6 @@
             <artifactId>gson</artifactId>
             <version>2.3.1</version>
         </dependency>
-        <dependency>
-            <groupId>io.aif</groupId>
-            <artifactId>aif-kernel</artifactId>
-            <version>1.0</version>
-        </dependency>
 
         <dependency>
             <groupId>org.testng</groupId>
