@@ -148,7 +148,7 @@
     
     <repositories>
         <repository>
-            <id>central</id>
+            <id>central-additional</id>
             <name>libs-release</name>
             <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
         </repository>
