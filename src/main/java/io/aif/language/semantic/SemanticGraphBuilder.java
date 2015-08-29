@@ -1,9 +1,10 @@
 package io.aif.language.semantic;
 
 
+import io.aif.associations.builder.AssociationGraph;
 import io.aif.associations.builder.AssociationsGraphBuilder;
 import io.aif.associations.calculators.vertex.IVertexWeightCalculator;
-import io.aif.associations.model.IGraph;
+import io.aif.graph.normal.IGraph;
 import io.aif.language.semantic.weights.node.word.TokensCountBasedWeightCalculator;
 import io.aif.language.word.IWord;
 
@@ -18,7 +19,7 @@ public class SemanticGraphBuilder {
         associationsGraphBuilder = new AssociationsGraphBuilder<>(generateWeightCalculator());
     }
 
-    public IGraph<IWord> build(final Collection<IWord.IWordPlaceholder> placeholders) {
+    public AssociationGraph<IWord> build(final Collection<IWord.IWordPlaceholder> placeholders) {
         final List<IWord> words = placeholders.stream().map(IWord.IWordPlaceholder::getWord).collect(Collectors.toList());
         return associationsGraphBuilder.buildGraph(words);
     }
