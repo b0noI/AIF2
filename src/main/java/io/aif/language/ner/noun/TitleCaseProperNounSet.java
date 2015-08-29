@@ -1,6 +1,6 @@
 package io.aif.language.ner.noun;
 
-import io.aif.fuzzy.FuzzyBoolean;
+import io.aif.fuzzy.bool.FuzzyBoolean;
 import io.aif.language.common.StringHelper;
 import io.aif.language.word.IWord;
 

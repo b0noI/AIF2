@@ -1,6 +1,6 @@
 package io.aif.language.ner.noun;
 
-import io.aif.fuzzy.IFuzzySet;
+import io.aif.fuzzy.set.IFuzzySet;
 import io.aif.language.word.IWord;
 
 @FunctionalInterface

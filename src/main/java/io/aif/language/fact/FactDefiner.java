@@ -1,8 +1,6 @@
 package io.aif.language.fact;
 
-import io.aif.fuzzy.FuzzyBoolean;
 import io.aif.language.ner.NERExtractor;
-import io.aif.language.ner.noun.IProperNounSet;
 import io.aif.language.word.IWord;
 
 import java.util.List;
