@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://b0noI.github.io/AIF2/sitemap.xml 
+Sitemap: http://aif.io/sitemap.xml 
