@@ -9,14 +9,14 @@ public interface IFact {
 
     public List<IWord> getSemanticSentence();
 
-    public Set<IWord> getProperNouns();
+    public Set<IWord> getNamedEntities();
 
-    public boolean hasProperNoun(final IWord properNoun);
+    public boolean hasNamedEntity(final IWord properNoun);
 
-    public default boolean hasProperNouns(final Set<IWord> properNouns) {
+    public default boolean hasNamedEntities(final Set<IWord> properNouns) {
         return properNouns
                 .stream()
-                .filter(this::hasProperNoun)
+                .filter(this::hasNamedEntity)
                 .count() == properNouns.size();
     }
 

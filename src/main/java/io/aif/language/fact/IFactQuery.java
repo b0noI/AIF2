@@ -9,9 +9,9 @@ import java.util.Set;
 
 public interface IFactQuery {
 
-    public Optional<List<List<IFact>>> findPath(final IWord properNoun1,
+    public List<List<IFact>> findPath(final IWord properNoun1,
                                                 final IWord properNoun2);
 
-    public Optional<Set<IFact>> allFacts();
+    public Set<IFact> allFacts();
 
 }
