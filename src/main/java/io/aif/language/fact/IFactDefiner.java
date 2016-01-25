@@ -7,7 +7,7 @@ import java.util.List;
 public interface IFactDefiner {
 
     // TODO Why can't we omit IWord
-    public boolean isFact(List<IWord> semanticSentence);
+    public boolean isFact(final List<IWord> semanticSentence);
 
     public enum Type {
         // TODO declare a default value for this in settings

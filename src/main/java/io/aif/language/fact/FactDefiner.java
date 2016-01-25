@@ -1,10 +1,10 @@
 package io.aif.language.fact;
 
-import io.aif.language.common.FuzzyBoolean;
-import io.aif.language.semantic.weights.IProperNounCalculator;
+import io.aif.language.ner.NERExtractor;
 import io.aif.language.word.IWord;
 
 import java.util.List;
+import java.util.Optional;
 
 class FactDefiner implements IFactDefiner {
 
@@ -12,27 +12,31 @@ class FactDefiner implements IFactDefiner {
 
     private final int numProperNounsForFact;
 
-    private static final IProperNounCalculator properNounCalculator = IProperNounCalculator.getDefault();
+    private final NERExtractor nerExtractor;
 
-    public FactDefiner(final int numProperNounsForFact) {
+    public FactDefiner(final int numProperNounsForFact, final NERExtractor nerExtractor) {
         this.numProperNounsForFact = numProperNounsForFact;
+        this.nerExtractor = nerExtractor;
     }
 
     public FactDefiner() {
-        this.numProperNounsForFact = NUM_PROPER_NOUNS_FOR_FACT;
+        this(NUM_PROPER_NOUNS_FOR_FACT, new NERExtractor());
+    }
+
+    public FactDefiner(final int numProperNounsForFact) {
+        this(numProperNounsForFact, new NERExtractor());
     }
 
     @Override
-    public boolean isFact(List<IWord> semanticSentence) {
-        return (factCount(semanticSentence) >= numProperNounsForFact) ? true : false;
+    public boolean isFact(final List<IWord> semanticSentence) {
+        return (namedEntityCount(semanticSentence) >= numProperNounsForFact) ? true : false;
     }
 
-    private static long factCount(final List<IWord> semanticSentence) {
+    private long namedEntityCount(final List<IWord> semanticSentence) {
         return semanticSentence
                 .stream()
-                .map(properNounCalculator::calculate)
-                .map(FuzzyBoolean::new)
-                .filter(FuzzyBoolean::isTrue)
+                .map(nerExtractor::getNerType)
+                .filter(Optional::isPresent)
                 .count();
     }
 

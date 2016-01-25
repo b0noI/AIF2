@@ -1,15 +1,13 @@
 package io.aif.language.semantic;
 
-import io.aif.associations.model.IGraph;
+import io.aif.associations.builder.AssociationGraph;
+import io.aif.graph.normal.IGraph;
 import io.aif.common.FileHelper;
 import io.aif.language.common.IDict;
 import io.aif.language.common.IDictBuilder;
 import io.aif.language.common.IMapper;
 import io.aif.language.common.ISearchable;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
-import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassifier;
-import io.aif.language.sentence.separators.extractors.ISeparatorExtractor;
-import io.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
 import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
 import io.aif.language.token.TokenSplitter;
 import io.aif.language.word.IWord;
@@ -49,9 +47,9 @@ public class SemanticGraphBuilderTest {
 
 
         final SemanticGraphBuilder semanticGraphBuilder = new SemanticGraphBuilder();
-        final IGraph<IWord> graph = semanticGraphBuilder.build(placeholders);
-        final List<IWord> sortedNodes = graph.getVertex().stream().sorted((w2, w1) -> (graph.getVertexWeight(w1)).compareTo(graph.getVertexWeight(w2))).collect(Collectors.toList());
-        final List<IWord> invertedSortedNodes = graph.getVertex().stream().sorted((w1, w2) -> (graph.getVertexWeight(w1)).compareTo(graph.getVertexWeight(w2))).collect(Collectors.toList());
+        final AssociationGraph<IWord> graph = semanticGraphBuilder.build(placeholders);
+        final List<IWord> sortedNodes = graph.getVertices().stream().sorted((w2, w1) -> (graph.getVertexWeight(w1)).compareTo(graph.getVertexWeight(w2))).collect(Collectors.toList());
+        final List<IWord> invertedSortedNodes = graph.getVertices().stream().sorted((w1, w2) -> (graph.getVertexWeight(w1)).compareTo(graph.getVertexWeight(w2))).collect(Collectors.toList());
         System.out.println(sortedNodes);
     }
 }

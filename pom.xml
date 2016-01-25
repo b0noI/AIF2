@@ -9,10 +9,10 @@
     <version>2.0.0-Beta1</version>
 
     <dependencies>
-         <dependency>
-            <groupId>io.aif</groupId>
-            <artifactId>aif-kernel</artifactId>
-            <version>1.0</version>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
@@ -151,20 +151,4 @@
         </plugins>
     </build>
     
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>libs-release</name>
-            <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>snapshots</id>
-            <name>libs-snapshot-local</name>
-            <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
-        </repository>
-    </distributionManagement>
-
 </project>
