@@ -86,6 +86,11 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.javaslang</groupId>
+            <artifactId>javaslang</artifactId>
+            <version>1.2.2</version>
+        </dependency>
     </dependencies>
 
     <properties>

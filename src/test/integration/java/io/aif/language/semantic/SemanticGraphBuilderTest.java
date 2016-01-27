@@ -1,18 +1,19 @@
 package io.aif.language.semantic;
 
 import io.aif.associations.builder.AssociationGraph;
-import io.aif.graph.normal.IGraph;
 import io.aif.common.FileHelper;
 import io.aif.language.common.IDict;
 import io.aif.language.common.IDictBuilder;
 import io.aif.language.common.IMapper;
 import io.aif.language.common.ISearchable;
+import io.aif.language.semantic.sinonims.SynonymsFinder;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
 import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
 import io.aif.language.token.TokenSplitter;
 import io.aif.language.word.IWord;
 import io.aif.language.word.dict.DictBuilder;
 import io.aif.language.word.dict.WordPlaceHolderMapper;
+import javaslang.Tuple2;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
@@ -52,4 +53,30 @@ public class SemanticGraphBuilderTest {
         final List<IWord> invertedSortedNodes = graph.getVertices().stream().sorted((w1, w2) -> (graph.getVertexWeight(w1)).compareTo(graph.getVertexWeight(w2))).collect(Collectors.toList());
         System.out.println(sortedNodes);
     }
+
+    @Test
+    public void testSynonyms() throws Exception {
+        String text;
+        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("Address+by+Honorable+William+C.+Redfield%2c+Secretary+of+Commerce+at+Conference+of+Regional+Chairmen.txt")) {
+            text = FileHelper.readAllText(modelResource);
+        }
+
+        final TokenSplitter tokenSplitter = new TokenSplitter();
+        final AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
+        final List<String> tokens = tokenSplitter.split(text);
+        final List<List<String>> sentences = sentenceSplitter.split(tokens);
+        final List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
+
+        final IDictBuilder dictBuilder = new DictBuilder();
+        final IDict<IWord> dict = dictBuilder.build(filteredTokens);
+        final IMapper<Collection<String>, List<IWord.IWordPlaceholder>> toWordPlaceHolderMapper = new WordPlaceHolderMapper((ISearchable<String, IWord>)dict);
+        final List<IWord.IWordPlaceholder> placeholders = toWordPlaceHolderMapper.map(filteredTokens);
+
+        final SemanticGraphBuilder semanticGraphBuilder = new SemanticGraphBuilder();
+        final AssociationGraph<IWord> graph = semanticGraphBuilder.build(placeholders);
+        final SynonymsFinder synonymsFinder = new SynonymsFinder();
+        final Set<Tuple2<IWord, IWord>> result = synonymsFinder.find(graph);
+        System.out.println(result);
+    }
+
 }
