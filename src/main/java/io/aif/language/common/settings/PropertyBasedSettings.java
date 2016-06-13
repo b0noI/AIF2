@@ -2,6 +2,7 @@ package io.aif.language.common.settings;
 
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
@@ -13,7 +14,7 @@ class PropertyBasedSettings implements ISettings {
             = "version";
 
     private static final String        PROPERTIES_FILE_NAME
-            = "/io/aif/common/settings/main.properties";
+            = "main.properties";
 
     private static final String        MINIMUM_TOKENS_INPUT_COUNT_KEY
             = "minimum_tokens_input_count";
@@ -57,7 +58,10 @@ class PropertyBasedSettings implements ISettings {
         
         if (userSettings.isPresent()) return userSettings.get();
         
-        try (final InputStream is = ISettings.class.getClass().getResourceAsStream(PROPERTIES_FILE_NAME)) {
+        try (final InputStream is
+                     = ISettings.class
+                        .getClassLoader()
+                        .getResourceAsStream(PROPERTIES_FILE_NAME)) {
             return new PropertyBasedSettings(is);
         } catch (IOException e) {
             throw new ValueException(e.getMessage());
@@ -65,7 +69,10 @@ class PropertyBasedSettings implements ISettings {
     }
     
     private static Optional<PropertyBasedSettings> checkUserSettings() {
-        try (final InputStream is = ISettings.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE_NAME)) {
+        try (final InputStream is
+                     = ISettings.class
+                .getClassLoader()
+                .getResourceAsStream(PROPERTIES_FILE_NAME)) {
             if (is != null) return Optional.of(new PropertyBasedSettings(is));
         } catch (IOException e) {
             throw new ValueException(e.getMessage());
