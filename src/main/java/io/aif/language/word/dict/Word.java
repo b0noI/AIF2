@@ -2,22 +2,29 @@ package io.aif.language.word.dict;
 
 import io.aif.language.word.IWord;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 class Word implements IWord {
 
-    private final Set<String> tokens;
-
+    private ConcurrentMap<String, AtomicInteger> tokens = new ConcurrentHashMap<>();
     private final String rootToken;
 
     private final Long count;
 
     Word(final String rootToken, final Collection<String> tokens, final Long count) {
-        this.tokens = new HashSet<>(tokens);
         this.rootToken = rootToken;
         this.count = count;
+
+        tokens.forEach(token -> add(token));
+    }
+
+    public void add(String token) {
+        tokens.putIfAbsent(token, new AtomicInteger(0)); //useful method that exists only in concurrent maps
+        tokens.get(token).incrementAndGet();
     }
 
     @Override
@@ -26,13 +33,24 @@ class Word implements IWord {
     }
 
     @Override
-    public Set<String> getAllTokens() {
-        return tokens;
-    }
+    public Set<String> getAllTokens() { return tokens.keySet(); }
 
     @Override
     public Long getCount() {
         return count;
+    }
+
+    /**
+     * Returns how many times the token present in Word
+     * @param token
+     * @return How many times the token present in Word
+     */
+    @Override
+    public int getTokenCount(String token) {
+        if( tokens.get(token) != null) {
+            return tokens.get(token).get();
+        }
+        else return 0;
     }
 
     //TODO Need to override equals and hash
@@ -67,10 +85,7 @@ class Word implements IWord {
 
             WordPlaceholder that = (WordPlaceholder) o;
 
-            if (!token.equals(that.token) || !this.getWord().equals(that.getWord()))
-                return false;
-
-            return true;
+            return (!token.equals(that.token) || !this.getWord().equals(that.getWord()));
         }
 
         @Override
