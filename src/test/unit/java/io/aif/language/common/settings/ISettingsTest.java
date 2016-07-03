@@ -8,15 +8,6 @@ import static org.testng.Assert.assertEquals;
 
 public class ISettingsTest {
 
-    private static final Injector INJECTOR = Guice.createInjector(new SettingsModule());
-
-    private ISettings settingsUnderTest;
-
-    @BeforeMethod
-    public void setUp() throws Exception {
-        settingsUnderTest = INJECTOR.getInstance(ISettings.class);
-    }
-
     @Test(groups = "unit-tests")
     public void testGetVersion() throws Exception {
         // input parameter
@@ -26,11 +17,8 @@ public class ISettingsTest {
         // expected result
         final String expectedResult = "2.0.0-Beta2";
 
-        // creating instances
-        final ISettings testInstance = settingsUnderTest;
-
         // execution test
-        final String actualResult = testInstance.getVersion();
+        final String actualResult = ISettings.SETTINGS.getVersion();
 
         // asserts
         assertEquals(actualResult, expectedResult);
