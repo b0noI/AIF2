@@ -28,8 +28,13 @@ public class DictBuilderIntegTest {
     @Test(enabled = false, groups = {"integration-tests", "quality-fast"})
     public void testQuality() throws Exception {
         final ExperimentResult experimentResult = runExperiment();
-        assertTrue(experimentResult.getRootTokenErrors()    <= 21);
-        assertTrue(experimentResult.getTokensErrors()       <= 19);
+        assertTrue(experimentResult.getRootTokenErrors()    <= 24);
+        assertTrue(experimentResult.getTokensErrors()       <= 26);
+    }
+
+
+    public static void main(String[] args) throws Exception {
+        new DictBuilderIntegTest().testQuality();
     }
     
     public static ExperimentResult runExperiment() throws IOException {

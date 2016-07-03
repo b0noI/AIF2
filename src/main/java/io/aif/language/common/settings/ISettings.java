@@ -1,8 +1,11 @@
 package io.aif.language.common.settings;
 
+import com.google.inject.Guice;
+
 public interface ISettings {
 
-    public ISettings SETTINGS = PropertyBasedSettings.createInstance();
+    @Deprecated
+    public ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
 
     public String getVersion();
 
@@ -27,5 +30,7 @@ public interface ISettings {
     public double recursiveSubstringComparatorWeight();
     
     public double simpleTokenComparatorWeight();
+
+    public double characterDensityComparatorWeight();
 
 }

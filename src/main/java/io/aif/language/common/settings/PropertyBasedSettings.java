@@ -1,5 +1,6 @@
 package io.aif.language.common.settings;
 
+import com.google.inject.Provides;
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 
 import java.io.FileInputStream;
@@ -49,10 +50,13 @@ class PropertyBasedSettings implements ISettings {
     private static final String         SIMPLE_TOKEN_COMPARATOR_WEIGHT_KEY 
             = "simple_token_comparator_weight";
 
+    private static final String         CHARACTER_DENSITY_COMPARATOR_WEIGHT_KEY
+            = "character_density_comparator_weight";
+
                    final Properties     properties
             = new Properties();
 
-    public static PropertyBasedSettings createInstance() {
+    private static PropertyBasedSettings createInstance() {
         
         final Optional<PropertyBasedSettings> userSettings = checkUserSettings();
         
@@ -142,6 +146,20 @@ class PropertyBasedSettings implements ISettings {
     @Override
     public double simpleTokenComparatorWeight() {
         return Double.valueOf(properties.getProperty(SIMPLE_TOKEN_COMPARATOR_WEIGHT_KEY));
+    }
+
+    @Override
+    public double characterDensityComparatorWeight() {
+        return Double.valueOf(properties.getProperty(CHARACTER_DENSITY_COMPARATOR_WEIGHT_KEY));
+    }
+
+    public static class Provider implements com.google.inject.Provider<ISettings> {
+
+        @Override
+        public ISettings get() {
+            return PropertyBasedSettings.createInstance();
+        }
+
     }
 
 }
