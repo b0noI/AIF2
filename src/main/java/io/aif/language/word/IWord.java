@@ -10,6 +10,8 @@ public interface IWord {
 
     public Long getCount();
 
+    public int getTokenCount(String token);
+
     public static interface IWordPlaceholder {
 
         public IWord getWord();

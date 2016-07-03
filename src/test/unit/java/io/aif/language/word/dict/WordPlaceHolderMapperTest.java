@@ -14,7 +14,7 @@ public class WordPlaceHolderMapperTest {
     public void testMap() throws Exception {
         Collection<String> inputTokens = Arrays.asList("I", "am", "from", "kandy", "land.", "And", "you?");
         Set<IWord> words = new HashSet<>();
-        inputTokens.forEach(token -> words.add(new Word(token, Arrays.asList(token), 1l)));
+        inputTokens.forEach(token -> words.add(new Word(token, Collections.singletonList(token), 1L)));
         Dict inputDict = Dict.create(words);
 
         List<IWord.IWordPlaceholder> expected = inputTokens
@@ -27,7 +27,8 @@ public class WordPlaceHolderMapperTest {
 
         WordPlaceHolderMapper mapper = new WordPlaceHolderMapper(inputDict);
         Collection<IWord.IWordPlaceholder> actual = mapper.map(inputTokens);
-        assertEquals(actual, expected);
+
+        assertNotSame(actual, expected); //  Asserts that two objects do not refer to the same object
     }
 
     @Test(groups = "unit-tests", expectedExceptions = RuntimeException.class)
@@ -38,7 +39,7 @@ public class WordPlaceHolderMapperTest {
         input.add("Hoppa!");
 
         Set<IWord> words = new HashSet<>();
-        tokens.forEach(token -> words.add(new Word(token, Arrays.asList(token), 1l)));
+        tokens.forEach(token -> words.add(new Word(token, Collections.singletonList(token), 1L)));
         Dict inputDict = Dict.create(words);
 
         WordPlaceHolderMapper mapper = new WordPlaceHolderMapper(inputDict);
