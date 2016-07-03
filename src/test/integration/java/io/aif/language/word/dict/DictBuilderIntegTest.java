@@ -28,8 +28,8 @@ public class DictBuilderIntegTest {
     @Test(enabled = false, groups = {"integration-tests", "quality-fast"})
     public void testQuality() throws Exception {
         final ExperimentResult experimentResult = runExperiment();
-        assertTrue(experimentResult.getRootTokenErrors()    <= 24);
-        assertTrue(experimentResult.getTokensErrors()       <= 26);
+        assertTrue(experimentResult.getRootTokenErrors()    <= 31);
+        assertTrue(experimentResult.getTokensErrors()       <= 5);
     }
 
 
@@ -40,7 +40,10 @@ public class DictBuilderIntegTest {
     public static ExperimentResult runExperiment() throws IOException {
         String text;
         long before = System.nanoTime();
-        try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream("aif_article.txt")) {
+        try(InputStream modelResource
+                    = SimpleSentenceSplitterCharactersExtractorQualityTest
+                .class
+                .getResourceAsStream("aif_article.txt")) {
             text = FileHelper.readAllText(modelResource);
         }
 

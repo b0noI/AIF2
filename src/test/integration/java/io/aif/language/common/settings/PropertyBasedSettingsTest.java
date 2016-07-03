@@ -67,11 +67,17 @@ public class PropertyBasedSettingsTest {
 
         final String keyName = "word_set_dict_comparator_threshold";
         System.out.println(keyName + ": [");
-        for (Double word_set_dict_comparator_threshold = 0.; word_set_dict_comparator_threshold < 1.; word_set_dict_comparator_threshold += .0005) {
+        // Name of the variable consistent with the name in the property file.
+        for (Double word_set_dict_comparator_threshold = 0.;
+             word_set_dict_comparator_threshold < 1.;
+             word_set_dict_comparator_threshold += .0005) {
 
             propertyBasedSettings.properties.setProperty(keyName, String.valueOf(word_set_dict_comparator_threshold));
 
-            System.out.println(String.format("{\"value\": %f, \"errors\": %d},", word_set_dict_comparator_threshold, DictBuilderIntegTest.runExperiment().totalErrorsCount()));
+            System.out.println(
+                    String.format("{\"value\": %f, \"errors\": %d},",
+                            word_set_dict_comparator_threshold,
+                            DictBuilderIntegTest.runExperiment().totalErrorsCount()));
         }
         System.out.println("]");
 
