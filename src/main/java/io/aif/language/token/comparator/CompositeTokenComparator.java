@@ -5,15 +5,15 @@ import java.util.*;
 
 class CompositeTokenComparator implements ITokenComparator {
 
-    private Collection<Map.Entry<ITokenComparator, Double>> comparatorWeightMap;
+    private Map<ITokenComparator, Double> comparatorWeightMap;
 
-    public CompositeTokenComparator(final Collection<Map.Entry<ITokenComparator, Double>> comparatorWeightMap) {
+    public CompositeTokenComparator(final Map<ITokenComparator, Double> comparatorWeightMap) {
         this.comparatorWeightMap = comparatorWeightMap;
     }
 
     @Override
     public Double compare(String t1, String t2) {
-        return comparatorWeightMap
+        return comparatorWeightMap.entrySet()
                 .stream()
                 .mapToDouble(comparatorWeight -> {
                     ITokenComparator comparator = comparatorWeight.getKey();

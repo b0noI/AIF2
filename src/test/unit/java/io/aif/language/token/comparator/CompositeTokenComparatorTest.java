@@ -3,6 +3,7 @@ package io.aif.language.token.comparator;
 import org.testng.annotations.Test;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,10 +23,12 @@ public class CompositeTokenComparatorTest {
         when(mockTokenComparator1.compare(any(), any())).thenReturn(1.0);
         when(mockTokenComparator2.compare(any(), any())).thenReturn(1.0);
 
-        List<Map.Entry<ITokenComparator, Double>> comparatorList = Arrays.asList(
-            new SimpleEntry<>(mockTokenComparator1, 1.0),
-            new SimpleEntry<>(mockTokenComparator2, 1.0)
-        );
+        final Map<ITokenComparator, Double> comparatorList
+                = new HashMap<ITokenComparator, Double>(){{
+                put(mockTokenComparator1, 1.0);
+                put(mockTokenComparator2, 1.0);
+            }
+        };
         CompositeTokenComparator comparator = new CompositeTokenComparator(comparatorList);
         Double actual = comparator.compare(t1, t2);
         assertEquals(actual, expected);
@@ -45,10 +48,12 @@ public class CompositeTokenComparatorTest {
         when(mockTokenComparator1.compare(any(), any())).thenReturn(1.0);
         when(mockTokenComparator2.compare(any(), any())).thenReturn(1.0);
 
-        List<Map.Entry<ITokenComparator, Double>> comparatorList = Arrays.asList(
-                new SimpleEntry<>(mockTokenComparator1, 1.0),
-                new SimpleEntry<>(mockTokenComparator2, 2.0)
-        );
+        final Map<ITokenComparator, Double> comparatorList
+                = new HashMap<ITokenComparator, Double>(){{
+                put(mockTokenComparator1, 1.0);
+                put(mockTokenComparator2, 1.0);
+            }
+        };
         CompositeTokenComparator comparator = new CompositeTokenComparator(comparatorList);
         Double actual = comparator.compare(t1, t2);
         assertEquals(actual, expected);
@@ -68,10 +73,12 @@ public class CompositeTokenComparatorTest {
 
         when(mockTokenComparator1.compare(any(), any())).thenReturn(1.0);
         when(mockTokenComparator2.compare(any(), any())).thenReturn(1.0);
-        List<Map.Entry<ITokenComparator, Double>> comparatorList = Arrays.asList(
-                new SimpleEntry<>(mockTokenComparator1, 1.0),
-                new SimpleEntry<>(mockTokenComparator2, 2.0)
-        );
+        final Map<ITokenComparator, Double> comparatorList
+                = new HashMap<ITokenComparator, Double>(){{
+                put(mockTokenComparator1, 1.0);
+                put(mockTokenComparator2, 1.0);
+            }
+        };
         ITokenComparator comparator = ITokenComparator.createComposite(comparatorList);
 
         Double actual = comparator.compare(t1, t2);

@@ -8,7 +8,7 @@ public interface ITokenComparator {
 
     public Double compare(String left, String right);
 
-    public static ITokenComparator createComposite(final Collection<Map.Entry<ITokenComparator, Double>> comparators) {
+    public static ITokenComparator createComposite(final Map<ITokenComparator, Double> comparators) {
         return new CompositeTokenComparator(comparators);
     }
 
@@ -19,7 +19,8 @@ public interface ITokenComparator {
     public static enum Type {
         SIMPLE_TOKEN_COMPARATOR(new SimpleTokenComparator()),
         RECURSIVE_SUBSTRING_COMPARATOR(new RecursiveSubstringComparator()),
-        CHARACTER_DENSITY_COMPARATOR(new CharacterDensityTokenComparator());
+        CHARACTER_DENSITY_COMPARATOR(new CharacterDensityTokenComparator()),
+        LEVENSHTEIN_COMPARATOR(new LevenshteinDistanceComparator());
 
         private final ITokenComparator instance;
 

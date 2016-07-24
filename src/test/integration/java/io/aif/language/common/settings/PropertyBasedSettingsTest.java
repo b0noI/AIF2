@@ -70,7 +70,7 @@ public class PropertyBasedSettingsTest {
         // Name of the variable consistent with the name in the property file.
         for (Double word_set_dict_comparator_threshold = 0.;
              word_set_dict_comparator_threshold < 1.;
-             word_set_dict_comparator_threshold += .0005) {
+             word_set_dict_comparator_threshold += .005) {
 
             propertyBasedSettings.properties.setProperty(keyName, String.valueOf(word_set_dict_comparator_threshold));
 

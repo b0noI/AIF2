@@ -57,7 +57,7 @@ public class DictBuilderIntegTest {
         IDict<IWord> dict = dictBuilder.build(filteredTokens);
 
         long after = System.nanoTime();
-        long delta = (after - before) / 1000_000_000;
+        long delta = (after - before) / 1_000_000_000;
 
         final IdealDict idealDict = loadIdealDict();
 
