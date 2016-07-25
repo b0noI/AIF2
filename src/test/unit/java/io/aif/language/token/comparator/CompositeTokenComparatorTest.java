@@ -51,7 +51,7 @@ public class CompositeTokenComparatorTest {
         final Map<ITokenComparator, Double> comparatorList
                 = new HashMap<ITokenComparator, Double>(){{
                 put(mockTokenComparator1, 1.0);
-                put(mockTokenComparator2, 1.0);
+                put(mockTokenComparator2, 2.0);
             }
         };
         CompositeTokenComparator comparator = new CompositeTokenComparator(comparatorList);
@@ -76,7 +76,7 @@ public class CompositeTokenComparatorTest {
         final Map<ITokenComparator, Double> comparatorList
                 = new HashMap<ITokenComparator, Double>(){{
                 put(mockTokenComparator1, 1.0);
-                put(mockTokenComparator2, 1.0);
+                put(mockTokenComparator2, 2.0);
             }
         };
         ITokenComparator comparator = ITokenComparator.createComposite(comparatorList);
