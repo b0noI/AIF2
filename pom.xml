@@ -173,5 +173,13 @@
             <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
         </repository>
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>aif-rep</id>
+            <name>artifactory.aif.io</name>
+            <url>http://artifactory.aif.io/artifactory/libs-release-local</url>
+        </repository>
+    </repositories>
     
 </project>
