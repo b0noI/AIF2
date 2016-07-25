@@ -7,7 +7,7 @@ class LevenshteinDistanceComparator implements ITokenComparator {
     @Override
     public Double compare(String left, String right) {
         final int biggestLength = Math.max(left.length(), right.length());
-        return 1 - ((double)StringUtils.getLevenshteinDistance(left, right)
+        return 1. - ((double)StringUtils.getLevenshteinDistance(left, right)
                 / (double)biggestLength);
     }
 
