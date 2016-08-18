@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+// TODO(#252): TokenSplitter should be renamed to Tokenizer.
 public class TokenSplitter implements ISplitter<String, String> {
 
     private static  final   Logger                      logger = Logger.getLogger(TokenSplitter.class);

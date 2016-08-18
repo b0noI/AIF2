@@ -2,6 +2,8 @@ package io.aif.language.common;
 
 import java.util.List;
 
+// TODO(#249): find if the class can be replaced with
+// some open source analog.
 public class RegexpCooker {
 
     private final static String REGEXP_TEMPLATE = "%s[%s]+%s";
