@@ -27,7 +27,7 @@ import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.Matchers.eq;
 
-public class ITTokenSplitterTest {
+public class ITTokenizerTest {
 
     
     //This two String are pathes for gethering statistic
@@ -66,9 +66,9 @@ public class ITTokenSplitterTest {
             final String firstToken = "-";
             final long numberOfTokens = 8;
 
-            final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+            final Tokenizer tokenizer = new Tokenizer(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
 
-            final List<String> output = tokenSplitter.split(textFromFileToString(PathToFile));
+            final List<String> output = tokenizer.split(textFromFileToString(PathToFile));
 
             assertNotNull(output);
             assertEquals(numberOfTokens, output.size());
@@ -92,9 +92,9 @@ public class ITTokenSplitterTest {
             final String firstToken = "В";
             final long numberOfTokens = 9;
 
-            final TokenSplitter tokenSplitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
+            final Tokenizer tokenizer = new Tokenizer(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance());
 
-            final List<String> output = tokenSplitter.split(textFromFileToString(PathToFile));
+            final List<String> output = tokenizer.split(textFromFileToString(PathToFile));
 
             assertNotNull(output);
             assertEquals(firstToken, output.get(0));
@@ -114,7 +114,7 @@ public class ITTokenSplitterTest {
 
             final Path PathToFile = Paths.get(getClass().getResource("/texts/RU/RU_10000_СеврюгаГрач.txt").toURI());
 
-            final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
+            final Tokenizer splitter = new Tokenizer(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
             final List<String> tokens = splitter.split(textFromFileToString(PathToFile));
 
@@ -131,7 +131,7 @@ public class ITTokenSplitterTest {
     public void generateStatisticForProbabilitySplitter() {
 
         final List<Path> files = getAllFilesInFolder(Paths.get(pathToStatisticSet));
-        final TokenSplitter splitter = new TokenSplitter(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
+        final Tokenizer splitter = new Tokenizer(ITokenSeparatorExtractor.Type.PROBABILITY.getInstance());
 
         List<String> splittedText;
 

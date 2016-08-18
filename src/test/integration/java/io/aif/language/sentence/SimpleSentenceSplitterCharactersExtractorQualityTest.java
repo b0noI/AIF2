@@ -5,11 +5,11 @@ import io.aif.language.common.ISplitter;
 import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassifier;
 import io.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import io.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
-import io.aif.language.token.TokenSplitter;
+import io.aif.language.token.Tokenizer;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.InputStream;
 import java.util.*;
 
@@ -264,8 +264,8 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
         try(InputStream modelResource = SimpleSentenceSplitterCharactersExtractorQualityTest.class.getResourceAsStream(path)) {
             inputText = FileHelper.readAllText(modelResource);
         }
-        final TokenSplitter tokenSplitter = new TokenSplitter();
-        final List<String> inputTokens = tokenSplitter.split(inputText);
+        final Tokenizer tokenizer = new Tokenizer();
+        final List<String> inputTokens = tokenizer.split(inputText);
 
         // expected results
         final List<Character> expectedResult = Arrays.asList(new Character[]{
@@ -357,8 +357,8 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
     }
 
     private static List<String> qualityTest(final String inputText) {
-        final TokenSplitter tokenSplitter = new TokenSplitter();
-        final List<String> inputTokens = tokenSplitter.split(inputText);
+        final Tokenizer tokenizer = new Tokenizer();
+        final List<String> inputTokens = tokenizer.split(inputText);
 
         // expected results
         final List<Character> expectedResult = Arrays.asList(new Character[]{

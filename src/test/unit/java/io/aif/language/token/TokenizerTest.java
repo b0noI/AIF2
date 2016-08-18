@@ -17,7 +17,7 @@ import static junit.framework.Assert.assertTrue;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
 
-public class TokenSplitterTest {
+public class TokenizerTest {
 
     @Test(groups = "unit-tests")
     public void testExtract() throws Exception {
@@ -27,7 +27,7 @@ public class TokenSplitterTest {
         expectedResult.add("test2");
         expectedResult.add("test3");
 
-        final ISplitter<String, String> tokenSeparatorExtractor = new TokenSplitter();
+        final ISplitter<String, String> tokenSeparatorExtractor = new Tokenizer();
         final List<String> actualResult = tokenSeparatorExtractor.split(inputText);
 
         assertEquals(expectedResult, actualResult);
@@ -37,7 +37,7 @@ public class TokenSplitterTest {
     public void testConstructor() throws Exception {
         final ITokenSeparatorExtractor mockTokenSeparatorExtractor = mock(ITokenSeparatorExtractor.class);
 
-        new TokenSplitter(mockTokenSeparatorExtractor);
+        new Tokenizer(mockTokenSeparatorExtractor);
     }
 
     @Test(groups = "unit-tests")
@@ -56,7 +56,7 @@ public class TokenSplitterTest {
         final List<String> expectedResult = Arrays.asList(inputText);
 
         // creating instances
-        final ISplitter<String, String> tokenSplitter = new TokenSplitter(mockTokenSeparatorExtractor);
+        final ISplitter<String, String> tokenSplitter = new Tokenizer(mockTokenSeparatorExtractor);
 
         // execution test
         final List<String> actualResult = tokenSplitter.split(inputText);
@@ -87,7 +87,7 @@ public class TokenSplitterTest {
         final List<String> expectedResult = Arrays.asList("token1", "token2");
 
         // creating instances
-        final ISplitter<String, String> tokenSplitter = new TokenSplitter(mockTokenSeparatorExtractor, mockRegexpCooker);
+        final ISplitter<String, String> tokenSplitter = new Tokenizer(mockTokenSeparatorExtractor, mockRegexpCooker);
 
         // execution test
         final List<String> actualResult = tokenSplitter.split(inputText);
@@ -113,7 +113,7 @@ public class TokenSplitterTest {
         // creating instances
 
         // execution test
-        final List<String> actualResult = TokenSplitter.filterIncorrectTokens(inputTokens);
+        final List<String> actualResult = Tokenizer.filterIncorrectTokens(inputTokens);
 
         // asserts
         assertEquals(expectedResult, actualResult);

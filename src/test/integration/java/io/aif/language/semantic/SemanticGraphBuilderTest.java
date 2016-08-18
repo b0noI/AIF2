@@ -9,7 +9,7 @@ import io.aif.language.common.ISearchable;
 import io.aif.language.semantic.sinonims.SynonymsFinder;
 import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQualityTest;
 import io.aif.language.sentence.splitters.AbstractSentenceSplitter;
-import io.aif.language.token.TokenSplitter;
+import io.aif.language.token.Tokenizer;
 import io.aif.language.word.IWord;
 import io.aif.language.word.dict.DictBuilder;
 import io.aif.language.word.dict.WordPlaceHolderMapper;
@@ -29,9 +29,9 @@ public class SemanticGraphBuilderTest {
             text = FileHelper.readAllText(modelResource);
         }
 
-        final TokenSplitter tokenSplitter = new TokenSplitter();
+        final Tokenizer tokenizer = new Tokenizer();
         final AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
-        final List<String> tokens = tokenSplitter.split(text);
+        final List<String> tokens = tokenizer.split(text);
         final List<List<String>> sentences = sentenceSplitter.split(tokens);
         final List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
@@ -61,9 +61,9 @@ public class SemanticGraphBuilderTest {
             text = FileHelper.readAllText(modelResource);
         }
 
-        final TokenSplitter tokenSplitter = new TokenSplitter();
+        final Tokenizer tokenizer = new Tokenizer();
         final AbstractSentenceSplitter sentenceSplitter = AbstractSentenceSplitter.Type.HEURISTIC.getInstance();
-        final List<String> tokens = tokenSplitter.split(text);
+        final List<String> tokens = tokenizer.split(text);
         final List<List<String>> sentences = sentenceSplitter.split(tokens);
         final List<String> filteredTokens = sentences.stream().flatMap(List::stream).collect(Collectors.toList());
 
