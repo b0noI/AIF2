@@ -11,25 +11,24 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-// TODO(#252): TokenSplitter should be renamed to Tokenizer.
-public class TokenSplitter implements ISplitter<String, String> {
+public class Tokenizer implements ISplitter<String, String> {
 
-    private static  final   Logger                      logger = Logger.getLogger(TokenSplitter.class);
+    private static  final   Logger                      logger = Logger.getLogger(Tokenizer.class);
 
     private         final   RegexpCooker                regexpCooker;
 
     private         final   ITokenSeparatorExtractor    tokenSeparatorExtractor;
 
-    public TokenSplitter(final ITokenSeparatorExtractor tokenSeparatorExtractor) {
+    public Tokenizer(final ITokenSeparatorExtractor tokenSeparatorExtractor) {
         this(tokenSeparatorExtractor, new RegexpCooker());
     }
 
-    public TokenSplitter() {
+    public Tokenizer() {
         this(ITokenSeparatorExtractor.Type.PREDEFINED.getInstance(), new RegexpCooker());
     }
 
     @VisibleForTesting
-    TokenSplitter(final ITokenSeparatorExtractor tokenSeparatorExtractor, final RegexpCooker regexpCooker) {
+    Tokenizer(final ITokenSeparatorExtractor tokenSeparatorExtractor, final RegexpCooker regexpCooker) {
         this.tokenSeparatorExtractor = tokenSeparatorExtractor;
         this.regexpCooker = regexpCooker;
     }
@@ -52,7 +51,7 @@ public class TokenSplitter implements ISplitter<String, String> {
         logger.debug(String.format("Regexp for toke splitting: %s", regExp));
         final List<String> tokens = Arrays.asList(txt.split(regExp));
         logger.debug(String.format("Tokens found (before filtering): %d", tokens.size()));
-        return TokenSplitter.filterIncorrectTokens(tokens);
+        return Tokenizer.filterIncorrectTokens(tokens);
     }
 
     @VisibleForTesting
