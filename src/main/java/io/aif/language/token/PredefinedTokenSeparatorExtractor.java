@@ -11,7 +11,7 @@ class PredefinedTokenSeparatorExtractor implements ITokenSeparatorExtractor {
     // TODO(#254): Revisit default list of token separators.
     private static final List<Character> SEPARATORS
             = Arrays.asList(
-                    new Character[]{' ', '\n', '\t', System.lineSeparator().charAt(0)});
+                    new Character[]{' ', '\n', System.lineSeparator().charAt(0)});
 
     @Override
     public Optional<List<Character>> extract(final String txt) {
