@@ -1,6 +1,8 @@
-package io.aif.language.token;
+package io.aif.language.token.separator;
 
 
+import io.aif.language.token.separator.ITokenSeparatorExtractor;
+import io.aif.language.token.separator.ProbabilityBasedTokenSeparatorExtractor;
 import junit.framework.Assert;
 import org.testng.annotations.Test;
 

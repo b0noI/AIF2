@@ -1,6 +1,7 @@
 package io.aif.language.token;
 
 
+import io.aif.language.token.separator.ITokenSeparatorExtractor;
 import org.testng.annotations.BeforeMethod;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;

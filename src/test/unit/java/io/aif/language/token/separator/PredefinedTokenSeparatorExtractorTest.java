@@ -1,5 +1,6 @@
-package io.aif.language.token;
+package io.aif.language.token.separator;
 
+import io.aif.language.token.separator.ITokenSeparatorExtractor;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;

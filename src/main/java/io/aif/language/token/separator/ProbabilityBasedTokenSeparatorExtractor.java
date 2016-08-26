@@ -1,4 +1,4 @@
-package io.aif.language.token;
+package io.aif.language.token.separator;
 
 import com.google.common.annotations.VisibleForTesting;
 import org.apache.commons.lang3.ArrayUtils;

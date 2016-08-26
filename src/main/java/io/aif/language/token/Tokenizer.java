@@ -3,6 +3,7 @@ package io.aif.language.token;
 import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.ISplitter;
 import io.aif.language.common.RegexpCooker;
+import io.aif.language.token.separator.ITokenSeparatorExtractor;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class Tokenizer implements ISplitter<String, String> {
 
     private         final   RegexpCooker                regexpCooker;
 
-    private         final   ITokenSeparatorExtractor    tokenSeparatorExtractor;
+    private         final ITokenSeparatorExtractor tokenSeparatorExtractor;
 
     public Tokenizer(final ITokenSeparatorExtractor tokenSeparatorExtractor) {
         this(tokenSeparatorExtractor, new RegexpCooker());

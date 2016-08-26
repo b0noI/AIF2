@@ -1,4 +1,4 @@
-package io.aif.language.token;
+package io.aif.language.token.separator;
 
 import java.util.Arrays;
 import java.util.List;
