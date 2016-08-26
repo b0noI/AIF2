@@ -8,11 +8,8 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-// TODO(#250): PredefinedTokenSeparatorExtractor should have list of the characters in
-// the config (and not hardcoded).
 class PredefinedTokenSeparatorExtractor implements ITokenSeparatorExtractor {
 
-    // TODO(#254): Revisit default list of token separators.
     private final List<Character> separators;
 
     PredefinedTokenSeparatorExtractor(ISettings settings) {
