@@ -53,6 +53,9 @@ class PropertyBasedSettings implements ISettings {
     private static final String         CHARACTER_DENSITY_COMPARATOR_WEIGHT_KEY
             = "character_density_comparator_weight";
 
+    private static final String         PREDEFINED_SEPARATORS
+            = "predefined_separators";
+
                    final Properties     properties
             = new Properties();
 
@@ -151,6 +154,11 @@ class PropertyBasedSettings implements ISettings {
     @Override
     public double characterDensityComparatorWeight() {
         return Double.valueOf(properties.getProperty(CHARACTER_DENSITY_COMPARATOR_WEIGHT_KEY));
+    }
+
+    @Override
+    public String predefinedSeparators() {
+        return properties.getProperty(PREDEFINED_SEPARATORS);
     }
 
     public static class Provider implements com.google.inject.Provider<ISettings> {

@@ -1,6 +1,8 @@
 package io.aif.language.token.separator;
 
+import io.aif.language.common.settings.ISettings;
 import io.aif.language.token.separator.ITokenSeparatorExtractor;
+import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -8,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PredefinedTokenSeparatorExtractorTest {
 
@@ -17,13 +21,14 @@ public class PredefinedTokenSeparatorExtractorTest {
         final String inputText = null;
 
         // mocks
+        ISettings settings = mock(ISettings.class);
+        when(settings.predefinedSeparators()).thenReturn("\r\n \t");
 
         // expected result
-        final Optional<List<Character>> expectedResult = Optional.of(
-                Arrays.asList(new Character[]{' ', '\n', System.lineSeparator().charAt(0)}));
+        final Optional<List<Character>> expectedResult = Optional.of(Arrays.asList('\r', '\n', ' ', '\t'));
 
         // creating instances
-        final ITokenSeparatorExtractor testInstance = ITokenSeparatorExtractor.Type.PREDEFINED.getInstance();
+        final ITokenSeparatorExtractor testInstance = new PredefinedTokenSeparatorExtractor(settings);
 
         // execution test
         final Optional<List<Character>> actualResult = testInstance.extract(inputText);

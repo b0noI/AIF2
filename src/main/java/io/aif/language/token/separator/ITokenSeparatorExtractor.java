@@ -1,6 +1,7 @@
 package io.aif.language.token.separator;
 
 import io.aif.language.common.IExtractor;
+import io.aif.language.common.settings.ISettings;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ public interface ITokenSeparatorExtractor extends IExtractor<String, List<Charac
 
     public static enum Type {
 
-        PREDEFINED(new PredefinedTokenSeparatorExtractor()),
+        PREDEFINED(new PredefinedTokenSeparatorExtractor(ISettings.SETTINGS)),
         PROBABILITY(new ProbabilityBasedTokenSeparatorExtractor());
 
         private final ITokenSeparatorExtractor instance;

@@ -33,4 +33,5 @@ public interface ISettings {
 
     public double characterDensityComparatorWeight();
 
+    public String predefinedSeparators();
 }
