@@ -1,46 +1,19 @@
 package io.aif.language.common;
 
+import ru.lanwen.verbalregex.VerbalExpression;
+
 import java.util.List;
 
-// TODO(#249): find if the class can be replaced with
-// some open source analog.
-public class RegexpCooker {
+import static java.util.stream.Collectors.joining;
 
-    private final static String REGEXP_TEMPLATE = "%s[%s]+%s";
+public class RegexpCooker implements IRegexpCooker {
 
-    private final String prefix;
-
-    private final String postfix;
-
-    public RegexpCooker(String prefix, String postfix) {
-        this.prefix = prefix;
-        this.postfix = postfix;
-    }
-
-    public RegexpCooker() {
-        this("", "");
-    }
-
+    @Override
     public String prepareRegexp(final List<Character> characters) {
-        final StringBuffer stringBuffer = new StringBuffer();
-        characters.stream().forEach(separator -> stringBuffer.append(RegexpCooker.prepareCharacter(separator)));
-        return String.format(REGEXP_TEMPLATE, prefix, stringBuffer.toString(), postfix);
+        final String joinedCharacters = characters.stream().map(Object::toString).collect(joining());
+        return VerbalExpression.regex()
+                               .anyOf(joinedCharacters).oneOrMore()
+                               .build()
+                               .toString();
     }
-
-    private static String prepareCharacter(final Character ch) {
-        switch (ch) {
-            case '.':
-            case '\\':
-            case '\'':
-            case '\"':
-            case ']':
-            case '[':
-            case '(':
-            case ')':
-                return "\\" + ch;
-            default:
-                return "" + ch;
-        }
-    }
-
 }

@@ -1,6 +1,7 @@
 package io.aif.language.token;
 
 import com.google.common.annotations.VisibleForTesting;
+import io.aif.language.common.IRegexpCooker;
 import io.aif.language.common.ISplitter;
 import io.aif.language.common.RegexpCooker;
 import io.aif.language.token.separator.ITokenSeparatorExtractor;
@@ -16,7 +17,7 @@ public class Tokenizer implements ISplitter<String, String> {
 
     private static  final   Logger                      logger = Logger.getLogger(Tokenizer.class);
 
-    private         final   RegexpCooker                regexpCooker;
+    private         final   IRegexpCooker                regexpCooker;
 
     private         final ITokenSeparatorExtractor tokenSeparatorExtractor;
 
@@ -29,7 +30,7 @@ public class Tokenizer implements ISplitter<String, String> {
     }
 
     @VisibleForTesting
-    Tokenizer(final ITokenSeparatorExtractor tokenSeparatorExtractor, final RegexpCooker regexpCooker) {
+    Tokenizer(final ITokenSeparatorExtractor tokenSeparatorExtractor, final IRegexpCooker regexpCooker) {
         this.tokenSeparatorExtractor = tokenSeparatorExtractor;
         this.regexpCooker = regexpCooker;
     }
