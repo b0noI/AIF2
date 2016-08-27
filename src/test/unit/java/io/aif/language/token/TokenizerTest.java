@@ -1,8 +1,7 @@
 package io.aif.language.token;
 
-
+import io.aif.language.common.IRegexpCooker;
 import io.aif.language.common.ISplitter;
-import io.aif.language.common.RegexpCooker;
 import io.aif.language.token.separator.ITokenSeparatorExtractor;
 import org.testng.annotations.Test;
 
@@ -12,9 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
-
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
 
@@ -81,7 +77,7 @@ public class TokenizerTest {
         final ITokenSeparatorExtractor mockTokenSeparatorExtractor = mock(ITokenSeparatorExtractor.class);
         when(mockTokenSeparatorExtractor.extract(eq(inputText))).thenReturn(mockOptionalsSplitCharacters);
 
-        final RegexpCooker mockRegexpCooker = mock(RegexpCooker.class);
+        final IRegexpCooker mockRegexpCooker = mock(IRegexpCooker.class);
         when(mockRegexpCooker.prepareRegexp(eq(Arrays.asList(' ', '\n')))).thenReturn("[ \n]+");
 
         // expected result
@@ -121,5 +117,4 @@ public class TokenizerTest {
 
         // verify
     }
-
 }
