@@ -3,6 +3,7 @@ package io.aif.language.token;
 
 import io.aif.language.common.ISplitter;
 import io.aif.language.common.RegexpCooker;
+import io.aif.language.token.separator.ITokenSeparatorExtractor;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
