@@ -17,9 +17,9 @@ public class Tokenizer implements ISplitter<String, String> {
 
     private static  final   Logger                      logger = Logger.getLogger(Tokenizer.class);
 
-    private         final   IRegexpCooker                regexpCooker;
+    private         final   IRegexpCooker               regexpCooker;
 
-    private         final ITokenSeparatorExtractor tokenSeparatorExtractor;
+    private         final   ITokenSeparatorExtractor    tokenSeparatorExtractor;
 
     public Tokenizer(final ITokenSeparatorExtractor tokenSeparatorExtractor) {
         this(tokenSeparatorExtractor, new RegexpCooker());
