@@ -10,10 +10,10 @@ public class RegexpCookerTest {
     @Test(groups = "unit-tests")
     public void testPrepareRegexp() throws Exception {
         // given
-        RegexpCooker regexpCooker = new RegexpCooker();
+        final RegexpCooker regexpCooker = new RegexpCooker();
 
         // when
-        String actualRegexp = regexpCooker.prepareRegexp(asList('\n', '\t', ' '));
+        final String actualRegexp = regexpCooker.prepareRegexp(asList('\n', '\t', ' '));
 
         // then
         assertEquals(actualRegexp, "[\\\n\\\t\\ ]+");
