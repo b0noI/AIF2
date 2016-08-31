@@ -13,9 +13,9 @@ public class RegexpCookerTest {
         RegexpCooker regexpCooker = new RegexpCooker();
 
         // when
-        String actualRegexp = regexpCooker.prepareRegexp(asList('a', 'd', 'g'));
+        String actualRegexp = regexpCooker.prepareRegexp(asList('\n', '\t', ' '));
 
         // then
-        assertEquals(actualRegexp, "[adg]+");
+        assertEquals(actualRegexp, "[\\\n\\\t\\ ]+");
     }
 }
