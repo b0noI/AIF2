@@ -27,7 +27,7 @@ public class FormGrouper implements IGrouper {
         .collect(Collectors.toList());
 
     final WordSetDict wordSetDict = new WordSetDict(groupComparator);
-    tokenSets.stream().forEach(wordSetDict::mergeSet);
+    tokenSets.forEach(wordSetDict::mergeSet);
     return wordSetDict.getTokens();
   }
 }

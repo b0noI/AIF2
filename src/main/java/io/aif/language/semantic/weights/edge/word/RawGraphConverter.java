@@ -14,7 +14,7 @@ class RawGraphConverter {
       final Map<IWord, Map<IWord, List<Double>>> distancesGraph) {
 
     final Map<IWord, Map<IWord, Double>> results = new HashMap<>();
-    distancesGraph.keySet().stream().forEach(key -> {
+    distancesGraph.keySet().forEach(key -> {
       results.put(key, new HashMap<>());
       distancesGraph
           .get(key)

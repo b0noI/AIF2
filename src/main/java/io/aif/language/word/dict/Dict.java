@@ -24,7 +24,7 @@ class Dict implements IDict<IWord>, ISearchable<String, IWord> {
     //TODO: Opportunities for parallelization?
     final Map<String, IWord> reverseIndex = new HashMap<>();
     for (IWord word : words) {
-      word.getAllTokens().stream().forEach(token -> reverseIndex.put(token, word));
+      word.getAllTokens().forEach(token -> reverseIndex.put(token, word));
     }
     return reverseIndex;
   }

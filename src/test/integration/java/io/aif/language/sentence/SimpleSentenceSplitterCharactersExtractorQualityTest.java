@@ -265,7 +265,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
 
     final Map<String, Integer> errorsCounts = new HashMap<>();
 
-    totalErrors.entrySet().stream().forEach(element -> {
+    totalErrors.entrySet().forEach(element -> {
       element.getValue().forEach(error -> {
         final int errorCount = errorsCounts.getOrDefault(error, 0);
         errorsCounts.put(error, errorCount + 1);
