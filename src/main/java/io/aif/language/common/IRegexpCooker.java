@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface IRegexpCooker {
 
-    String prepareRegexp(List<Character> characters);
+  String prepareRegexp(List<Character> characters);
 }

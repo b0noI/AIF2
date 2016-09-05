@@ -4,34 +4,34 @@ import com.google.inject.Guice;
 
 public interface ISettings {
 
-    @Deprecated
-    public ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
+  @Deprecated
+  public ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
 
-    public String getVersion();
+  public String getVersion();
 
-    public int recommendedMinimumTokensInputCount();
+  public int recommendedMinimumTokensInputCount();
 
-    public boolean useIsAlphabeticMethod();
+  public boolean useIsAlphabeticMethod();
 
-    public double thresholdPForSeparatorCharacterInSecondFilter();
+  public double thresholdPForSeparatorCharacterInSecondFilter();
 
-    public int minimalValuableTokenSizeForSentenceSplit();
+  public int minimalValuableTokenSizeForSentenceSplit();
 
-    public int minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting();
+  public int minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting();
 
-    public double thresholdPFirstFilterForSeparatorCharacter();
+  public double thresholdPFirstFilterForSeparatorCharacter();
 
-    public double splitterCharactersGrouperSearchStep();
+  public double splitterCharactersGrouperSearchStep();
 
-    public double splitterCharactersGrouperInitSearchPValue();
+  public double splitterCharactersGrouperInitSearchPValue();
 
-    public double wordSetDictComparatorThreshold();
-    
-    public double recursiveSubstringComparatorWeight();
-    
-    public double simpleTokenComparatorWeight();
+  public double wordSetDictComparatorThreshold();
 
-    public double characterDensityComparatorWeight();
+  public double recursiveSubstringComparatorWeight();
 
-    public String predefinedSeparators();
+  public double simpleTokenComparatorWeight();
+
+  public double characterDensityComparatorWeight();
+
+  public String predefinedSeparators();
 }

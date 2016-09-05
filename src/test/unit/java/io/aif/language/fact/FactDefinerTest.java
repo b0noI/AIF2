@@ -1,7 +1,5 @@
 package io.aif.language.fact;
 
-import static org.mockito.Mockito.mock;
-
 public class FactDefinerTest {
 
 //    @Test(groups = "unit-tests")

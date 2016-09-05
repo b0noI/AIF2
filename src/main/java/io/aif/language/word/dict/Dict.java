@@ -1,59 +1,58 @@
 package io.aif.language.word.dict;
 
-import io.aif.language.common.IDict;
-import io.aif.language.common.ISearchable;
-import io.aif.language.word.IWord;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import io.aif.language.common.IDict;
+import io.aif.language.common.ISearchable;
+import io.aif.language.word.IWord;
 
 class Dict implements IDict<IWord>, ISearchable<String, IWord> {
 
-    private final Set<IWord> words;
-    
-    private final Map<String, IWord> reverseIndex;
+  private final Set<IWord> words;
 
-    private Dict(final Set<IWord> words, Map<String, IWord> reverseIndex) {
-        this.words = words;
-        this.reverseIndex = reverseIndex;
-    }
+  private final Map<String, IWord> reverseIndex;
 
-    @Override
-    public Set<IWord> getWords() {
-        return words;
-    }
+  private Dict(final Set<IWord> words, Map<String, IWord> reverseIndex) {
+    this.words = words;
+    this.reverseIndex = reverseIndex;
+  }
 
-    @Override
-    public String toString() {
-        final StringBuilder stringBuilder = new StringBuilder();
-        getWords()
-                .stream()
-                .sorted((w1, w2) -> w1.getRootToken().compareTo(w2.getRootToken()))
-                .forEach(word -> stringBuilder.append(String.format("%s\n", word.toString())));
-        return stringBuilder.toString();
+  private static Map<String, IWord> generateReverseIndex(final Set<IWord> words) {
+    //TODO: Opportunities for parallelization?
+    final Map<String, IWord> reverseIndex = new HashMap<>();
+    for (IWord word : words) {
+      word.getAllTokens().stream().forEach(token -> reverseIndex.put(token, word));
     }
+    return reverseIndex;
+  }
 
-    @Override
-    public Optional<IWord> search(String token) {
-        return reverseIndex.containsKey(token)
-                ? Optional.of(reverseIndex.get(token))
-                : Optional.empty();
-    }
+  public static Dict create(final Set<IWord> words) {
+    final Dict d = new Dict(words, generateReverseIndex(words));
+    return d;
+  }
 
-    private static Map<String, IWord> generateReverseIndex(Set<IWord> words) {
-        //TODO: Opportunities for parallelization?
-        Map<String, IWord> reverseIndex = new HashMap<>();
-        for (IWord word : words)
-            word.getAllTokens().stream().forEach(token -> reverseIndex.put(token, word));
-        return reverseIndex;
-    }
+  @Override
+  public Set<IWord> getWords() {
+    return words;
+  }
 
-    public static Dict create(Set<IWord> words) {
-        Dict d = new Dict(words, generateReverseIndex(words));
-        return d;
-    }
-    
+  @Override
+  public String toString() {
+    final StringBuilder stringBuilder = new StringBuilder();
+    getWords()
+        .stream()
+        .sorted((w1, w2) -> w1.getRootToken().compareTo(w2.getRootToken()))
+        .forEach(word -> stringBuilder.append(String.format("%s\n", word.toString())));
+    return stringBuilder.toString();
+  }
+
+  @Override
+  public Optional<IWord> search(final String token) {
+    return reverseIndex.containsKey(token) ?
+        Optional.of(reverseIndex.get(token)) : Optional.empty();
+  }
+
 }

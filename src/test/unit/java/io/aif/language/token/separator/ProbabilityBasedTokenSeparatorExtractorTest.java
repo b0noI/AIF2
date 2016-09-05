@@ -1,88 +1,94 @@
 package io.aif.language.token.separator;
 
-
-import io.aif.language.token.separator.ITokenSeparatorExtractor;
-import io.aif.language.token.separator.ProbabilityBasedTokenSeparatorExtractor;
 import junit.framework.Assert;
+
 import org.testng.annotations.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import static org.testng.Assert.assertEquals;
 
-
 public class ProbabilityBasedTokenSeparatorExtractorTest {
 
-    @Test (groups = "unit-tests")
-    public void testGetCharactersMappedToCount() throws Exception {
-        // input parameter
-        final List<Character> inputCharacters = Arrays.asList('a', 'a', 'A', ' ', ' ', ' ');
+  @Test(groups = "unit-tests")
+  public void testGetCharactersMappedToCount() throws Exception {
+    // input parameter
+    final List<Character> inputCharacters = Arrays.asList('a', 'a', 'A', ' ', ' ', ' ');
 
-        final Map<Character, Integer> expectedResult = new HashMap<Character, Integer>(){{
-            put('a', 2);
-            put('A', 1);
-            put(' ', 3);
-        }};
+    final Map<Character, Integer> expectedResult = new HashMap<Character, Integer>() {{
+      put('a', 2);
+      put('A', 1);
+      put(' ', 3);
+    }};
 
-        // mocks
+    // mocks
 
-        // expected result
+    // expected result
 
-        // creating instances
+    // creating instances
 
-        // execution test
-        final Map<Character, Integer> actualResult = ProbabilityBasedTokenSeparatorExtractor.getCharactersMappedToCount(inputCharacters);
+    // execution test
+    final Map<Character, Integer> actualResult =
+        ProbabilityBasedTokenSeparatorExtractor.getCharactersMappedToCount(inputCharacters);
 
-        // asserts
-        assertEquals(expectedResult, actualResult);
+    // asserts
+    assertEquals(expectedResult, actualResult);
 
-        // verify
-    }
+    // verify
+  }
 
-    @Test (groups = "unit-tests")
-    public void testSortBySeparatorProbability() {
-        // input parameter
-        final Map<Character, Integer> inputCharactersMappedToCount = new HashMap<>();
-        inputCharactersMappedToCount.put('a', 5);
-        inputCharactersMappedToCount.put('b', 3);
-        inputCharactersMappedToCount.put('c', 7);
+  @Test(groups = "unit-tests")
+  public void testSortBySeparatorProbability() {
+    // input parameter
+    final Map<Character, Integer> inputCharactersMappedToCount = new HashMap<>();
+    inputCharactersMappedToCount.put('a', 5);
+    inputCharactersMappedToCount.put('b', 3);
+    inputCharactersMappedToCount.put('c', 7);
 
-        // mocks
+    // mocks
 
-        // expected result
-        final List<Character> expectedResult = Arrays.asList(new Character[]{'c', 'a', 'b'});
+    // expected result
+    final List<Character> expectedResult = Arrays.asList('c', 'a', 'b');
 
-        // creating instances
+    // creating instances
 
-        // execution test
-        final List<Character> actualResult = ProbabilityBasedTokenSeparatorExtractor.sortBySeparatorProbability(inputCharactersMappedToCount);
+    // execution test
+    final List<Character> actualResult =
+        ProbabilityBasedTokenSeparatorExtractor
+            .sortBySeparatorProbability(inputCharactersMappedToCount);
 
-        // asserts
-        Assert.assertEquals(expectedResult, actualResult);
+    // asserts
+    Assert.assertEquals(expectedResult, actualResult);
 
-        // verify
-    }
+    // verify
+  }
 
-    @Test (groups = "unit-tests")
-    public void testExtract() throws Exception {
-        // input arguments
-        final String inputText = "token1 adddddddddd";
+  @Test(groups = "unit-tests")
+  public void testExtract() throws Exception {
+    // input arguments
+    final String inputText = "token1 adddddddddd";
 
-        // mocks
+    // mocks
 
-        // expected results
-        final Optional<List<Character>> expectedResult = Optional.of(Arrays.asList(new Character[]{'d'}));
+    // expected results
+    final Optional<List<Character>> expectedResult = Optional.of(Collections.singletonList('d'));
 
-        // creating test instance
-        final ITokenSeparatorExtractor tokenSeparatorExtractor = ITokenSeparatorExtractor.Type.PROBABILITY.getInstance();
+    // creating test instance
+    final ITokenSeparatorExtractor tokenSeparatorExtractor =
+        ITokenSeparatorExtractor.Type.PROBABILITY.getInstance();
 
-        // execution test
-        final Optional<List<Character>> actualResult = tokenSeparatorExtractor.extract(inputText);
+    // execution test
+    final Optional<List<Character>> actualResult = tokenSeparatorExtractor.extract(inputText);
 
-        // result assert
-        assertEquals(expectedResult, actualResult);
+    // result assert
+    assertEquals(expectedResult, actualResult);
 
-        // mocks verify
-    }
+    // mocks verify
+  }
 
 }

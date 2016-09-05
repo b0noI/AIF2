@@ -4,20 +4,20 @@ import java.util.Set;
 
 public interface IWord {
 
-    public String getRootToken();
+  public String getRootToken();
 
-    public Set<String> getAllTokens();
+  public Set<String> getAllTokens();
 
-    public Long getCount();
+  public Long getCount();
 
-    public int getTokenCount(String token);
+  public int getTokenCount(String token);
 
-    public static interface IWordPlaceholder {
+  public static interface IWordPlaceholder {
 
-        public IWord getWord();
+    public IWord getWord();
 
-        public String getToken();
+    public String getToken();
 
-    }
+  }
 
 }
