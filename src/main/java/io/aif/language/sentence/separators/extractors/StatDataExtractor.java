@@ -17,18 +17,22 @@ class StatDataExtractor {
         this.characterNearEdgeCharacterExtractor = characterNearEdgeCharacterExtractor;
     }
 
-    public StatData parseStat(List<String> tokens) {
-        final StatData endCharacterStatdata = new StatData();
-        tokens.parallelStream().filter(token -> token.length() > 2).forEach(token -> parsToken(token, endCharacterStatdata));
-        return endCharacterStatdata;
+    public StatData parseStat(final List<String> tokens) {
+        final StatData endCharacterStatData = new StatData();
+        tokens.parallelStream()
+                .filter(token -> token.length() > 2)
+                .forEach(token -> parsToken(token, endCharacterStatData));
+        return endCharacterStatData;
     }
 
     @VisibleForTesting
     void parsToken(final String token, final StatData statData) {
         token.chars().forEach(ch -> statData.addCharacter((char) ch));
 
-        final Optional<Character> edgeCharacter = edgeCharacterExtractor.extract(token);
-        final Optional<Character> characterNearEdge = characterNearEdgeCharacterExtractor.extract(token);
+        final Optional<Character> edgeCharacter
+                = edgeCharacterExtractor.extract(token);
+        final Optional<Character> characterNearEdge
+                = characterNearEdgeCharacterExtractor.extract(token);
 
         if (!edgeCharacter.isPresent() || !characterNearEdge.isPresent()) {
             return;

@@ -243,7 +243,7 @@ public class SimpleSentenceSplitterCharactersExtractorQualityTest {
 
     @Test(groups = { "acceptance-tests", "quality-fast" })
     public void testSeparatorGroupingQualityBig() throws Exception {
-        assertTrue(executeTest().size() <= 22);
+        assertTrue(executeTest().size() <= 21);
     }
 
     @Test(groups = { "acceptance-tests", "quality-slow" }, dataProvider = "path_provider")
