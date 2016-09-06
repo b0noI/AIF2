@@ -1,8 +1,5 @@
 package io.aif.language.token;
 
-import io.aif.language.common.IRegexpCooker;
-import io.aif.language.common.ISplitter;
-import io.aif.language.token.separator.ITokenSeparatorExtractor;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -10,111 +7,124 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import io.aif.language.common.IRegexpCooker;
+import io.aif.language.common.ISplitter;
+import io.aif.language.token.separator.ITokenSeparatorExtractor;
+
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class TokenizerTest {
 
-    @Test(groups = "unit-tests")
-    public void testExtract() throws Exception {
-        final String inputText = "test1 test2\ntest3";
-        final List<String> expectedResult = new ArrayList<>();
-        expectedResult.add("test1");
-        expectedResult.add("test2");
-        expectedResult.add("test3");
+  @Test(groups = "unit-tests")
+  public void testExtract() throws Exception {
+    final String inputText = "test1 test2\ntest3";
+    final List<String> expectedResult = new ArrayList<>();
+    expectedResult.add("test1");
+    expectedResult.add("test2");
+    expectedResult.add("test3");
 
-        final ISplitter<String, String> tokenSeparatorExtractor = new Tokenizer();
-        final List<String> actualResult = tokenSeparatorExtractor.split(inputText);
+    final ISplitter<String, String> tokenSeparatorExtractor = new Tokenizer();
+    final List<String> actualResult = tokenSeparatorExtractor.split(inputText);
 
-        assertEquals(expectedResult, actualResult);
-    }
+    assertEquals(expectedResult, actualResult);
+  }
 
-    @Test(groups = "unit-tests")
-    public void testConstructor() throws Exception {
-        final ITokenSeparatorExtractor mockTokenSeparatorExtractor = mock(ITokenSeparatorExtractor.class);
+  @Test(groups = "unit-tests")
+  public void testConstructor() throws Exception {
+    final ITokenSeparatorExtractor mockTokenSeparatorExtractor =
+        mock(ITokenSeparatorExtractor.class);
 
-        new Tokenizer(mockTokenSeparatorExtractor);
-    }
+    new Tokenizer(mockTokenSeparatorExtractor);
+  }
 
-    @Test(groups = "unit-tests")
-    public void testSplitWhenSplittersNotFound() throws Exception {
+  @Test(groups = "unit-tests")
+  public void testSplitWhenSplittersNotFound() throws Exception {
 
-        // input parameter
-        final String inputText = "token1 token2";
+    // input parameter
+    final String inputText = "token1 token2";
 
-        // mocks
-        final Optional<List<Character>> mockSplitCharacters = Optional.ofNullable(null);
+    // mocks
+    final Optional<List<Character>> mockSplitCharacters = Optional.ofNullable(null);
 
-        final ITokenSeparatorExtractor mockTokenSeparatorExtractor = mock(ITokenSeparatorExtractor.class);
-        when(mockTokenSeparatorExtractor.extract(eq(inputText))).thenReturn(mockSplitCharacters);
+    final ITokenSeparatorExtractor mockTokenSeparatorExtractor =
+        mock(ITokenSeparatorExtractor.class);
+    when(mockTokenSeparatorExtractor.extract(eq(inputText))).thenReturn(mockSplitCharacters);
 
-        // expected result
-        final List<String> expectedResult = Arrays.asList(inputText);
+    // expected result
+    final List<String> expectedResult = Arrays.asList(inputText);
 
-        // creating instances
-        final ISplitter<String, String> tokenSplitter = new Tokenizer(mockTokenSeparatorExtractor);
+    // creating instances
+    final ISplitter<String, String> tokenSplitter = new Tokenizer(mockTokenSeparatorExtractor);
 
-        // execution test
-        final List<String> actualResult = tokenSplitter.split(inputText);
+    // execution test
+    final List<String> actualResult = tokenSplitter.split(inputText);
 
-        // asserts
-        assertEquals(expectedResult, actualResult);
+    // asserts
+    assertEquals(expectedResult, actualResult);
 
-        // verify
-        verify(mockTokenSeparatorExtractor, times(1)).extract(inputText);
-    }
+    // verify
+    verify(mockTokenSeparatorExtractor, times(1)).extract(inputText);
+  }
 
-    @Test(groups = "unit-tests")
-    public void testSplitWhenSplittersFound() throws Exception {
+  @Test(groups = "unit-tests")
+  public void testSplitWhenSplittersFound() throws Exception {
 
-        // input parameter
-        final String inputText = "token1  token2";
+    // input parameter
+    final String inputText = "token1  token2";
 
-        // mocks
-        final Optional<List<Character>> mockOptionalsSplitCharacters = Optional.of(Arrays.asList(' ', '\n'));
+    // mocks
+    final Optional<List<Character>> mockOptionalsSplitCharacters =
+        Optional.of(Arrays.asList(' ', '\n'));
 
-        final ITokenSeparatorExtractor mockTokenSeparatorExtractor = mock(ITokenSeparatorExtractor.class);
-        when(mockTokenSeparatorExtractor.extract(eq(inputText))).thenReturn(mockOptionalsSplitCharacters);
+    final ITokenSeparatorExtractor mockTokenSeparatorExtractor =
+        mock(ITokenSeparatorExtractor.class);
+    when(mockTokenSeparatorExtractor.extract(eq(inputText)))
+        .thenReturn(mockOptionalsSplitCharacters);
 
-        final IRegexpCooker mockRegexpCooker = mock(IRegexpCooker.class);
-        when(mockRegexpCooker.prepareRegexp(eq(Arrays.asList(' ', '\n')))).thenReturn("[ \n]+");
+    final IRegexpCooker mockRegexpCooker = mock(IRegexpCooker.class);
+    when(mockRegexpCooker.prepareRegexp(eq(Arrays.asList(' ', '\n')))).thenReturn("[ \n]+");
 
-        // expected result
-        final List<String> expectedResult = Arrays.asList("token1", "token2");
+    // expected result
+    final List<String> expectedResult = Arrays.asList("token1", "token2");
 
-        // creating instances
-        final ISplitter<String, String> tokenSplitter = new Tokenizer(mockTokenSeparatorExtractor, mockRegexpCooker);
+    // creating instances
+    final ISplitter<String, String> tokenSplitter =
+        new Tokenizer(mockTokenSeparatorExtractor, mockRegexpCooker);
 
-        // execution test
-        final List<String> actualResult = tokenSplitter.split(inputText);
+    // execution test
+    final List<String> actualResult = tokenSplitter.split(inputText);
 
-        // asserts
-        assertEquals(expectedResult, actualResult);
+    // asserts
+    assertEquals(expectedResult, actualResult);
 
-        // verify
-        verify(mockTokenSeparatorExtractor, times(1)).extract(inputText);
-        verify(mockRegexpCooker, times(1)).prepareRegexp(Arrays.asList(' ', '\n'));
-    }
+    // verify
+    verify(mockTokenSeparatorExtractor, times(1)).extract(inputText);
+    verify(mockRegexpCooker, times(1)).prepareRegexp(Arrays.asList(' ', '\n'));
+  }
 
-    @Test(groups = "unit-tests")
-    public void testFilterIncorrectTokens() throws Exception {
-        // input parameter
-        final List<String> inputTokens = Arrays.asList("token1", "", "token2");
+  @Test(groups = "unit-tests")
+  public void testFilterIncorrectTokens() throws Exception {
+    // input parameter
+    final List<String> inputTokens = Arrays.asList("token1", "", "token2");
 
-        // mocks
+    // mocks
 
-        // expected result
-        final List<String> expectedResult = Arrays.asList("token1", "token2");
+    // expected result
+    final List<String> expectedResult = Arrays.asList("token1", "token2");
 
-        // creating instances
+    // creating instances
 
-        // execution test
-        final List<String> actualResult = Tokenizer.filterIncorrectTokens(inputTokens);
+    // execution test
+    final List<String> actualResult = Tokenizer.filterIncorrectTokens(inputTokens);
 
-        // asserts
-        assertEquals(expectedResult, actualResult);
+    // asserts
+    assertEquals(expectedResult, actualResult);
 
-        // verify
-    }
+    // verify
+  }
 }

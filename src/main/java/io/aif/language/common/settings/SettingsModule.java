@@ -4,9 +4,9 @@ import com.google.inject.AbstractModule;
 
 public class SettingsModule extends AbstractModule {
 
-    @Override
-    protected void configure() {
-        bind(ISettings.class).toProvider(new PropertyBasedSettings.Provider());
-    }
+  @Override
+  protected void configure() {
+    bind(ISettings.class).toProvider(new PropertyBasedSettings.Provider());
+  }
 
 }

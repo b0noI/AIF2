@@ -2,29 +2,29 @@ package io.aif.language.token;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class TokenMappersTest {
 
-    @Test(groups = "unit-tests")
-    public void testRemoveMultipleEndCharacters() throws Exception {
-        // input arguments
-        final String inputToken = "Token....";
+  @Test(groups = "unit-tests")
+  public void testRemoveMultipleEndCharacters() throws Exception {
+    // input arguments
+    final String inputToken = "Token....";
 
-        // mocks
+    // mocks
 
-        // expected results
-        final String expectedToken = "Token.";
+    // expected results
+    final String expectedToken = "Token.";
 
-        // creating test instance
+    // creating test instance
 
-        // execution test
-        final String actualResult = TokenMappers.removeMultipleEndCharacters(inputToken);
+    // execution test
+    final String actualResult = TokenMappers.removeMultipleEndCharacters(inputToken);
 
-        // result assert
-        assertEquals(actualResult, expectedToken);
+    // result assert
+    assertEquals(actualResult, expectedToken);
 
-        // mocks verify
-    }
+    // mocks verify
+  }
 
 }

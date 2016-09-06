@@ -2,9 +2,9 @@ package io.aif.language.common;
 
 public interface IFuzzyBoolean {
 
-    public double getValue();
+  public double getValue();
 
-    public double getThreshold();
+  public double getThreshold();
 
-    public boolean isTrue();
+  public boolean isTrue();
 }

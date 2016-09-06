@@ -4,8 +4,8 @@ import org.testng.annotations.Test;
 
 public class ConnectionBasedWeightCalculatorTest {
 
-    @Test(groups = "unit-tests")
-    public void testCalculateWeight() throws Exception {
+  @Test(groups = "unit-tests")
+  public void testCalculateWeight() throws Exception {
 //        // input arguments
 //        final IWord inputNode = mock(IWord.class);
 //
@@ -44,6 +44,6 @@ public class ConnectionBasedWeightCalculatorTest {
 //        verify(inputNode, times(1)).connectionWeight(mockConnection3);
 //        verify(inputNode, times(1)).connectionWeight(mockConnection4);
 //        verify(inputNode, times(1)).connectedItems();
-    }
-    
+  }
+
 }

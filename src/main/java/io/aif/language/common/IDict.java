@@ -6,11 +6,11 @@ import java.util.Set;
 
 public interface IDict<T> extends Iterable<T> {
 
-    public Set<T> getWords();
+  public Set<T> getWords();
 
-    @Override
-    default public Iterator<T> iterator() {
-        return getWords().iterator();
-    }
+  @Override
+  default public Iterator<T> iterator() {
+    return getWords().iterator();
+  }
 
 }

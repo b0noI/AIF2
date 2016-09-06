@@ -6,13 +6,11 @@ import java.util.Optional;
 
 class PredefinedSeparatorExtractor implements ISeparatorExtractor {
 
-    private static final List<Character> SEPARATORS = Arrays.asList(new Character[]{'.', '!', '?',
-                                                                                    '(', ')', '[',
-                                                                                    ']', '{', '}',
-                                                                                    ';', '\'', '\"'});
+  private static final List<Character> SEPARATORS =
+      Arrays.asList('.', '!', '?', '(', ')', '[', ']', '{', '}', ';', '\'', '\"');
 
-    @Override
-    public Optional<List<Character>> extract(List<String> tokens) {
-        return Optional.of(SEPARATORS);
-    }
+  @Override
+  public Optional<List<Character>> extract(List<String> tokens) {
+    return Optional.of(SEPARATORS);
+  }
 }
