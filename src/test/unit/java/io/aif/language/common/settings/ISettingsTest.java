@@ -12,10 +12,9 @@ public class ISettingsTest {
   private ISettings settings;
 
   @BeforeClass
-  public void setup(){
+  public void setup() {
     settings = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
   }
-
 
   @Test(groups = "unit-tests")
   public void testGetVersion() throws Exception {
