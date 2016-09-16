@@ -30,7 +30,7 @@ public class StringHelper {
     return subWord;
   }
 
-  public static String searchForCommonString(Set<String> s1, Set<String> s2) {
+  public static String searchForCommonString(final Set<String> s1, final Set<String> s2) {
     String matched = "";
     for (String s1Word : s1)
       if (s2.contains(s1Word)) {
@@ -40,7 +40,7 @@ public class StringHelper {
     return matched;
   }
 
-  public static Set<String> generateSubWords(String word, int length) {
+  public static Set<String> generateSubWords(final String word, final int length) {
     if (length > word.length())
       throw new IllegalArgumentException(
           "The word '" + word + "' length cannot be less than the length " + length
@@ -54,17 +54,17 @@ public class StringHelper {
     return generatedWords;
   }
 
-  public static boolean looksLikeCharacter(String text) {
+  public static boolean looksLikeCharacter(final String text) {
     return (text.length() == 1) ? true : false;
   }
 
-  public static Optional<Character> castToChar(String text) {
+  public static Optional<Character> castToChar(final String text) {
     return (!looksLikeCharacter(text))
         ? Optional.<Character>empty()
         : Optional.of(text.charAt(0));
   }
 
-  public static boolean startsWithUpperCase(String text) {
+  public static boolean startsWithUpperCase(final String text) {
     return Character.isUpperCase(text.charAt(0));
   }
 }
