@@ -9,13 +9,6 @@ import static org.testng.Assert.assertEquals;
 
 public class ISettingsTest {
 
-  private ISettings settings;
-
-  @BeforeClass
-  public void setup() {
-    settings = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
-  }
-
   @Test(groups = "unit-tests")
   public void testGetVersion() throws Exception {
     // input parameter
@@ -26,6 +19,7 @@ public class ISettingsTest {
     final String expectedResult = "2.0.0-Beta2";
 
     // execution test
+    final ISettings settings = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
     final String actualResult = settings.getVersion();
 
     // asserts
@@ -47,6 +41,7 @@ public class ISettingsTest {
         "\u200C\u200D\u2060\uFEFF";
 
     // execution test
+    final ISettings settings = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
     final String actualResult = settings.predefinedSeparators();
 
     // asserts
