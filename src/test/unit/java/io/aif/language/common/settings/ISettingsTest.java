@@ -1,10 +1,21 @@
 package io.aif.language.common.settings;
 
+import com.google.inject.Guice;
+
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class ISettingsTest {
+
+  private ISettings settings;
+
+  @BeforeClass
+  public void setup(){
+    settings = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
+  }
+
 
   @Test(groups = "unit-tests")
   public void testGetVersion() throws Exception {
@@ -16,7 +27,7 @@ public class ISettingsTest {
     final String expectedResult = "2.0.0-Beta2";
 
     // execution test
-    final String actualResult = ISettings.SETTINGS.getVersion();
+    final String actualResult = settings.getVersion();
 
     // asserts
     assertEquals(actualResult, expectedResult);
@@ -37,7 +48,7 @@ public class ISettingsTest {
         "\u200C\u200D\u2060\uFEFF";
 
     // execution test
-    final String actualResult = ISettings.SETTINGS.predefinedSeparators();
+    final String actualResult = settings.predefinedSeparators();
 
     // asserts
     assertEquals(actualResult, expectedResult);

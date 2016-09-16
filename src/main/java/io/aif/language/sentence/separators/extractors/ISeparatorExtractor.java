@@ -1,9 +1,12 @@
 package io.aif.language.sentence.separators.extractors;
 
+import com.google.inject.Guice;
+
 import java.util.List;
 
 import io.aif.language.common.IExtractor;
 import io.aif.language.common.settings.ISettings;
+import io.aif.language.common.settings.SettingsModule;
 
 public interface ISeparatorExtractor extends IExtractor<List<String>, List<Character>> {
 
@@ -19,7 +22,8 @@ public interface ISeparatorExtractor extends IExtractor<List<String>, List<Chara
     }
 
     public static ISeparatorExtractor getDefault() {
-      return ISettings.SETTINGS.useIsAlphabeticMethod() ?
+      final ISettings settings = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
+      return settings.useIsAlphabeticMethod() ?
           Type.NON_ALPHABETIC_CHARACTERS_EXTRACTOR.getInstance() :
           Type.PROBABILITY.getInstance();
     }
