@@ -7,14 +7,14 @@ import java.util.stream.Collectors;
 @FunctionalInterface
 public interface IMapper<T, S> extends Function<T, S> {
 
-  public S map(T nestedList);
+  public S map(final T nestedList);
 
   @Override
-  default S apply(T t) {
+  default S apply(final T t) {
     return map(t);
   }
 
-  default List<S> mapAll(List<T> elements) {
+  default List<S> mapAll(final List<T> elements) {
     return elements
         .parallelStream()
         .map(this)

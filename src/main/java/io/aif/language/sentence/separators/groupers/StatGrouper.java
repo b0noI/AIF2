@@ -1,6 +1,7 @@
 package io.aif.language.sentence.separators.groupers;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.inject.Guice;
 
 import org.javatuples.Pair;
 
@@ -15,12 +16,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import io.aif.language.common.settings.ISettings;
+import io.aif.language.common.settings.SettingsModule;
 import io.aif.language.token.TokenMappers;
 
 class StatGrouper implements ISeparatorsGrouper {
 
-  private static final double START_LIMIT =
-      ISettings.SETTINGS.splitterCharactersGrouperInitSearchPValue();
+  private static final ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
+  private static final double START_LIMIT = SETTINGS.splitterCharactersGrouperInitSearchPValue();
 
   @Override
   public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
@@ -47,7 +49,7 @@ class StatGrouper implements ISeparatorsGrouper {
     List<CharactersGroup> lastCorrectResult = null;
     do {
       final List<CharactersGroup> result = parsGroup(connections, limit);
-      if (Math.abs(prevLimit - limit) < ISettings.SETTINGS.splitterCharactersGrouperSearchStep()) {
+      if (Math.abs(prevLimit - limit) < SETTINGS.splitterCharactersGrouperSearchStep()) {
         if (lastCorrectResult != null) {
           return lastCorrectResult;
         }

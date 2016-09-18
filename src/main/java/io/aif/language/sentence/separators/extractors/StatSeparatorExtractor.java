@@ -1,6 +1,7 @@
 package io.aif.language.sentence.separators.extractors;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.inject.Guice;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -14,11 +15,9 @@ import java.util.stream.IntStream;
 import io.aif.language.common.IExtractor;
 import io.aif.language.common.VisibilityReducedForCLI;
 import io.aif.language.common.settings.ISettings;
+import io.aif.language.common.settings.SettingsModule;
 import io.aif.language.token.TokenMappers;
 
-// TODO(#261): Reformat Java code in StatSeparatorExtractor according to a Google Java Code
-// guideline.
-// TODO(#262): Settings should be injected in StatSeparatorExtractor.
 // TODO(#263): StatSeparatorExtractor should be documented.
 // TODO(#265): Publish article about the algorithm of separators extractors.
 class StatSeparatorExtractor implements ISeparatorExtractor {
@@ -41,7 +40,7 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
   private static final StatDataExtractor START_CHARACTER_STAT_DATA_EXTRACTOR =
       new StatDataExtractor(START_CHARACTER_EXTRACTOR, CHARACTER_AFTER_START_CHARACTER_EXTRACTOR);
 
-  private static final ISettings SETTINGS = ISettings.SETTINGS;
+  private static final ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
 
   @Override
   public Optional<List<Character>> extract(final List<String> tokens) {

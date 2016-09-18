@@ -27,7 +27,7 @@ class PropertyBasedSettings implements ISettings {
   private static final String MINIMAL_VALUABLE_TOKEN_SIZE_DURING_SENTENCE_SPLITTING_KEY
       = "minimal_valuable_token_size_during_sentence_splitting";
 
-  private static final String MINIMUM_CHARACTER_OBERVATIONS_COUNT_FOR_MAKE_CHARATCER_VALUABLE_DURING_SENTENCE_SPLITTING_KEY
+  private static final String MINIMUM_CHARACTER_OBSERVATIONS_COUNT_FOR_MAKE_CHARACTER_VALUABLE_DURING_SENTENCE_SPLITTING_KEY
       = "minimum_character_observations_count_for_make_character_valuable_during_sentence_splitting";
 
   private static final String THRESHOLD_P_FOR_FIRST_FILTER_SEPARATOR_CHARACTER_KEY
@@ -115,8 +115,8 @@ class PropertyBasedSettings implements ISettings {
   }
 
   @Override
-  public int minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting() {
-    return Integer.valueOf(properties.getProperty(MINIMUM_CHARACTER_OBERVATIONS_COUNT_FOR_MAKE_CHARATCER_VALUABLE_DURING_SENTENCE_SPLITTING_KEY));
+  public int minimumCharacterObservationsCountForMakingCharacterValuableDuringSentenceSplitting() {
+    return Integer.valueOf(properties.getProperty(MINIMUM_CHARACTER_OBSERVATIONS_COUNT_FOR_MAKE_CHARACTER_VALUABLE_DURING_SENTENCE_SPLITTING_KEY));
   }
 
   @Override
