@@ -17,7 +17,7 @@ public interface ISettings {
 
   public int minimalValuableTokenSizeForSentenceSplit();
 
-  public int minimumCharacterObervationsCountForMakingCharatcerValuableDuringSentenceSplitting();
+  public int minimumCharacterObservationsCountForMakingCharacterValuableDuringSentenceSplitting();
 
   public double thresholdPFirstFilterForSeparatorCharacter();
 
