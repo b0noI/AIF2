@@ -1,6 +1,7 @@
 package io.aif.language.sentence.splitters;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.inject.Guice;
 
 import org.apache.log4j.Logger;
 
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 import io.aif.language.common.ISplitter;
 import io.aif.language.common.settings.ISettings;
+import io.aif.language.common.settings.SettingsModule;
 import io.aif.language.sentence.separators.classificators.ISeparatorGroupsClassifier;
 import io.aif.language.sentence.separators.extractors.ISeparatorExtractor;
 import io.aif.language.sentence.separators.groupers.ISeparatorsGrouper;
@@ -101,13 +103,13 @@ public abstract class AbstractSentenceSplitter implements ISplitter<List<String>
   }
 
   public List<List<String>> split(final List<String> tokens) {
-
-    if (tokens.size() <= ISettings.SETTINGS.recommendedMinimumTokensInputCount()) {
+    final ISettings settings = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
+    if (tokens.size() <= settings.recommendedMinimumTokensInputCount()) {
       logger.warn(
           String.format("Tokens input count is too low: %d, recommend count is: %d. Don't expect " +
                   "good quality of output",
               tokens.size(),
-              ISettings.SETTINGS.recommendedMinimumTokensInputCount()));
+              settings.recommendedMinimumTokensInputCount()));
     }
 
     logger.debug(String.format("Starting sentence extraction for tokens: %d", tokens.size()));

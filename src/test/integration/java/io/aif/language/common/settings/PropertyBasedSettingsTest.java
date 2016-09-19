@@ -1,5 +1,7 @@
 package io.aif.language.common.settings;
 
+import com.google.inject.Guice;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -10,6 +12,8 @@ import io.aif.language.sentence.SimpleSentenceSplitterCharactersExtractorQuality
 import io.aif.language.word.dict.DictBuilderIntegTest;
 
 public class PropertyBasedSettingsTest {
+
+  private static final ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
 
   public static void main(String[] args) throws Exception {
     experimentWithDictBuilding();
@@ -32,9 +36,11 @@ public class PropertyBasedSettingsTest {
         0.0005, false);
   }
 
-  private static void experimentWith_minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting()
+  private static void
+  experimentWith_minimum_character_obervations_count_for_make_charatcer_valuable_during_sentence_splitting()
       throws Exception {
-    experimentWithSentenceSplitting("minimum_character_observations_count_for_make_character_valuable_during_sentence_splitting",
+    experimentWithSentenceSplitting
+        ("minimum_character_observations_count_for_make_character_valuable_during_sentence_splitting",
         96, 1000, 1, true);
   }
 
@@ -51,7 +57,7 @@ public class PropertyBasedSettingsTest {
                                                       final boolean toInt) throws Exception {
     Logger logger = Logger.getRootLogger();
     logger.setLevel(Level.OFF);
-    final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
+    final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) SETTINGS;
 
     System.out.println(keyName + ": [");
     for (Double splitter_characters_grouper_search_step = startValue;
@@ -79,7 +85,7 @@ public class PropertyBasedSettingsTest {
   private static void experimentWithDictBuilding() throws Exception {
     Logger logger = Logger.getRootLogger();
     logger.setLevel(Level.OFF);
-    final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
+    final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) SETTINGS;
 
     final String keyName = "word_set_dict_comparator_threshold";
     System.out.println(keyName + ": [");
@@ -104,7 +110,7 @@ public class PropertyBasedSettingsTest {
   private static void experimentWithDictBuilding3D() throws Exception {
     Logger logger = Logger.getRootLogger();
     logger.setLevel(Level.OFF);
-    final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) ISettings.SETTINGS;
+    final PropertyBasedSettings propertyBasedSettings = (PropertyBasedSettings) SETTINGS;
 
     System.out.println("data: [");
     for (Double recursive_substring_comparator_weight = 0.;
