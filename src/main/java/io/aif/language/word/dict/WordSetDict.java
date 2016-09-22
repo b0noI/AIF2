@@ -1,5 +1,7 @@
 package io.aif.language.word.dict;
 
+import com.google.inject.Guice;
+
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -11,11 +13,14 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 import io.aif.language.common.settings.ISettings;
+import io.aif.language.common.settings.SettingsModule;
 import io.aif.language.word.comparator.IGroupComparator;
 
 class WordSetDict {
 
   private static final Logger LOGGER = Logger.getLogger(WordSetDict.class);
+
+  private static final ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
 
   private final IGroupComparator setComparator;
 
@@ -50,7 +55,7 @@ class WordSetDict {
     for (int i = 0; i < tokens.size(); i++) {
       final Set<String> targetSet = tokens.get(i);
       if (setComparator.compare(targetSet, set) >
-          ISettings.SETTINGS.wordSetDictComparatorThreshold()) {
+          SETTINGS.wordSetDictComparatorThreshold()) {
         targetSet.addAll(set);
         set.forEach(token -> tokensSetCache.put(token, targetSet));
         return;

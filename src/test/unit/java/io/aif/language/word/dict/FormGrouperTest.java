@@ -1,5 +1,7 @@
 package io.aif.language.word.dict;
 
+import com.google.inject.Guice;
+
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.Set;
 
 import io.aif.language.common.IGrouper;
 import io.aif.language.common.settings.ISettings;
+import io.aif.language.common.settings.SettingsModule;
 import io.aif.language.word.comparator.IGroupComparator;
 
 import static org.mockito.Matchers.anySet;
@@ -18,11 +21,12 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class FormGrouperTest {
-
+  private static final ISettings SETTINGS =
+      Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
   private static final double GT_COMPARATOR_THRESHOLD =
-      ISettings.SETTINGS.wordSetDictComparatorThreshold() + .1;
+      SETTINGS.wordSetDictComparatorThreshold() + .1;
   private static final double LT_COMPARATOR_THRESHOLD =
-      ISettings.SETTINGS.wordSetDictComparatorThreshold() - .1;
+      SETTINGS.wordSetDictComparatorThreshold() - .1;
 
   @Test(groups = "unit-tests")
   public void testGroupAllTokensAreSimilar() throws Exception {
