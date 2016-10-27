@@ -13,8 +13,7 @@ class TitleCaseProperNounSet implements IProperNounSet {
     final Set<String> tokens = word.getAllTokens();
 
     // WARN! This is to handle the zero length case and avoid division by zero at the bottom
-    if (tokens.size() == 0)
-      return new FuzzyBoolean(0d);
+    if (tokens.isEmpty()) return new FuzzyBoolean(0d);
 
     long numTokensUpperCase = tokens
         .stream()
