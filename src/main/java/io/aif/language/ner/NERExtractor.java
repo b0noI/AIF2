@@ -1,18 +1,15 @@
 package io.aif.language.ner;
 
-import java.util.Optional;
-
 import io.aif.language.word.IWord;
+
+import java.util.Arrays;
+import java.util.Optional;
 
 public class NERExtractor {
 
-  public Optional<Type> getNerType(final IWord word) {
-    for (Type nerType : Type.values()) {
-      if (nerType.contains(word).isTrue()) {
-        return Optional.of(nerType);
-      }
+    public Optional<Type> getNerType(final IWord word) {
+        return Arrays.stream(Type.values())
+                .filter(nerType -> nerType.contains(word).isTrue())
+                .findAny();
     }
-    return Optional.empty();
-  }
-
 }
