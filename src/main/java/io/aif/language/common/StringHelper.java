@@ -55,12 +55,12 @@ public class StringHelper {
   }
 
   public static boolean looksLikeCharacter(final String text) {
-    return (text.length() == 1) ? true : false;
+    return (text.length() == 1);
   }
 
   public static Optional<Character> castToChar(final String text) {
     return (!looksLikeCharacter(text))
-        ? Optional.<Character>empty()
+        ? Optional.empty()
         : Optional.of(text.charAt(0));
   }
 

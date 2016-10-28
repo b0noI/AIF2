@@ -1,7 +1,7 @@
 package io.aif.language.fact;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -31,18 +31,16 @@ class FactQuery implements IFactQuery {
 
     final List<IFact> interception = factsContainingProperNoun1
         .parallelStream()
-        .filter(fact -> factsContainingProperNoun2.contains(fact))
+        .filter(factsContainingProperNoun2::contains)
         .collect(Collectors.toList());
 
-    if (interception.size() > 0)
-      return Arrays.asList(interception);
+    if (!interception.isEmpty()) return Collections.singletonList(interception);
 
     final List<List<IFact>> paths = new ArrayList<>();
     for (IFact sfOut : factsContainingProperNoun1) {
       for (IFact sfIn : factsContainingProperNoun2) {
         final List<List<IFact>> r = traverser.findPath(sfOut, sfIn);
-        if (r.size() > 0)
-          paths.addAll(r);
+        if (!r.isEmpty()) paths.addAll(r);
       }
     }
 

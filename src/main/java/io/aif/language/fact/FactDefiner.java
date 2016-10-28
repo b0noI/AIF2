@@ -29,7 +29,7 @@ class FactDefiner implements IFactDefiner {
 
   @Override
   public boolean isFact(final List<IWord> semanticSentence) {
-    return (namedEntityCount(semanticSentence) >= numProperNounsForFact) ? true : false;
+    return namedEntityCount(semanticSentence) >= numProperNounsForFact;
   }
 
   private long namedEntityCount(final List<IWord> semanticSentence) {
