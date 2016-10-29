@@ -2,6 +2,7 @@ package io.aif.language.fact;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import io.aif.language.word.IWord;
 
@@ -30,10 +31,7 @@ class Fact implements IFact {
   }
 
   public String toString() {
-    final StringBuilder sb = new StringBuilder();
-    for (IWord n : semanticSentence)
-      sb.append(n.toString());
-    return sb.toString();
+    return semanticSentence.stream().map(IWord::toString).collect(Collectors.joining());
   }
 
 }
