@@ -1,12 +1,13 @@
 package io.aif.language.sentence.separators.extractors;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.google.inject.Guice;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.inject.Guice;
 import io.aif.language.common.IExtractor;
 import io.aif.language.common.VisibilityReducedForCLI;
 import io.aif.language.common.settings.ISettings;

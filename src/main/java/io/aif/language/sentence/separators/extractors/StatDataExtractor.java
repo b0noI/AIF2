@@ -1,9 +1,10 @@
 package io.aif.language.sentence.separators.extractors;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import java.util.List;
 import java.util.Optional;
 
-import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.IExtractor;
 
 class StatDataExtractor {
