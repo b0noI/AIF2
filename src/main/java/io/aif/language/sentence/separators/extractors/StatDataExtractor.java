@@ -1,10 +1,9 @@
 package io.aif.language.sentence.separators.extractors;
 
-import com.google.common.annotations.VisibleForTesting;
-
 import java.util.List;
 import java.util.Optional;
 
+import com.google.common.annotations.VisibleForTesting;
 import io.aif.language.common.IExtractor;
 
 class StatDataExtractor {
@@ -22,8 +21,8 @@ class StatDataExtractor {
   public StatData parseStat(final List<String> tokens) {
     final StatData endCharacterStatData = new StatData();
     tokens.parallelStream()
-        .filter(token -> token.length() > 2)
-        .forEach(token -> parsToken(token, endCharacterStatData));
+      .filter(token -> token.length() > 2)
+      .forEach(token -> parsToken(token, endCharacterStatData));
     return endCharacterStatData;
   }
 
@@ -32,8 +31,7 @@ class StatDataExtractor {
     token.chars().forEach(ch -> statData.addCharacter((char) ch));
 
     final Optional<Character> edgeCharacter = edgeCharacterExtractor.extract(token);
-    final Optional<Character> characterNearEdge =
-        characterNearEdgeCharacterExtractor.extract(token);
+    final Optional<Character> characterNearEdge = characterNearEdgeCharacterExtractor.extract(token);
 
     if (!edgeCharacter.isPresent() || !characterNearEdge.isPresent()) {
       return;
