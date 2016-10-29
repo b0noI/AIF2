@@ -1,7 +1,5 @@
 package io.aif.language.token.comparator;
 
-import java.util.Arrays;
-
 import io.aif.language.common.StringHelper;
 
 /**
@@ -12,14 +10,12 @@ import io.aif.language.common.StringHelper;
  */
 class RecursiveSubstringComparator implements ITokenComparator {
 
-  // TODO find correct method of filtering string Regexcharaters
-  private static final Character[] CHARACTERS_FOR_FILTERING =
-      {'?', '*', '[', ']', '(', ')', '$', '+'};
+  private static final String  REPLACE_REGEXP = "[?*\\[\\]()$+]";
 
   @Override
   public Double compare(final String t1, final String t2) {
-    final String clearedT1 = clearString(t1);
-    final String clearedT2 = clearString(t2);
+    final String clearedT1 = t1.replaceAll(REPLACE_REGEXP, "");
+    final String clearedT2 = t2.replaceAll(REPLACE_REGEXP, "");
     return (double) (sumOfLongestCommonSubstrings(clearedT1, clearedT2) * 2)
         / (clearedT1.length() + clearedT2.length());
   }
@@ -45,16 +41,6 @@ class RecursiveSubstringComparator implements ITokenComparator {
     } catch (StackOverflowError e) {
       throw e;
     }
-  }
-
-  private String clearString(final String token) {
-    final StringBuilder sb = new StringBuilder();
-    for (char ch : token.toCharArray()) {
-      if (!Arrays.asList(CHARACTERS_FOR_FILTERING).contains(ch)) {
-        sb.append(ch);
-      }
-    }
-    return sb.toString();
   }
 
 }

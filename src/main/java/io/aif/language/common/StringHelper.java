@@ -21,23 +21,17 @@ public class StringHelper {
       s1SubWords = generateSubWords(s1, subWordLength);
       s2SubWords = generateSubWords(s2, subWordLength);
 
-      subWord = searchForCommonString(s1SubWords, s2SubWords);
+      subWord = s1SubWords.stream()
+              .filter(s2SubWords::contains)
+              .findFirst()
+              .orElse("");
+
       if (!subWord.isEmpty())
         break;
 
       subWordLength--;
     }
     return subWord;
-  }
-
-  public static String searchForCommonString(final Set<String> s1, final Set<String> s2) {
-    String matched = "";
-    for (String s1Word : s1)
-      if (s2.contains(s1Word)) {
-        matched = s1Word;
-        break;
-      }
-    return matched;
   }
 
   public static Set<String> generateSubWords(final String word, final int length) {
@@ -55,13 +49,11 @@ public class StringHelper {
   }
 
   public static boolean looksLikeCharacter(final String text) {
-    return (text.length() == 1);
+    return text.length() == 1;
   }
 
   public static Optional<Character> castToChar(final String text) {
-    return (!looksLikeCharacter(text))
-        ? Optional.empty()
-        : Optional.of(text.charAt(0));
+    return !looksLikeCharacter(text) ? Optional.empty() : Optional.of(text.charAt(0));
   }
 
   public static boolean startsWithUpperCase(final String text) {
