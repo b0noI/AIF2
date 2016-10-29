@@ -1,44 +1,42 @@
 package io.aif.language.sentence.separators.extractors;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.inject.Guice;
-
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.google.inject.Guice;
 import io.aif.language.common.IExtractor;
 import io.aif.language.common.VisibilityReducedForCLI;
 import io.aif.language.common.settings.ISettings;
 import io.aif.language.common.settings.SettingsModule;
 import io.aif.language.token.TokenMappers;
 
+import static java.lang.Character.isAlphabetic;
+import static java.util.Collections.emptyList;
+import static java.util.stream.Collectors.toList;
+
 // TODO(#263): StatSeparatorExtractor should be documented.
 // TODO(#265): Publish article about the algorithm of separators extractors.
 class StatSeparatorExtractor implements ISeparatorExtractor {
 
   private static final IExtractor<String, Character> END_CHARACTER_EXTRACTOR =
-      token -> Optional.of(token.charAt(token.length() - 1));
+    token -> Optional.of(token.charAt(token.length() - 1));
 
   private static final IExtractor<String, Character> CHARACTER_BEFORE_END_CHARACTER_EXTRACTOR =
-      token -> Optional.of(token.charAt(token.length() - 2));
+    token -> Optional.of(token.charAt(token.length() - 2));
 
-  private static final IExtractor<String, Character> START_CHARACTER_EXTRACTOR =
-      token -> Optional.of(token.charAt(0));
+  private static final IExtractor<String, Character> START_CHARACTER_EXTRACTOR = token -> Optional.of(token.charAt(0));
 
   private static final IExtractor<String, Character> CHARACTER_AFTER_START_CHARACTER_EXTRACTOR =
-      token -> Optional.of(token.charAt(1));
+    token -> Optional.of(token.charAt(1));
 
   private static final StatDataExtractor END_CHARACTER_STAT_DATA_EXTRACTOR =
-      new StatDataExtractor(END_CHARACTER_EXTRACTOR, CHARACTER_BEFORE_END_CHARACTER_EXTRACTOR);
+    new StatDataExtractor(END_CHARACTER_EXTRACTOR, CHARACTER_BEFORE_END_CHARACTER_EXTRACTOR);
 
   private static final StatDataExtractor START_CHARACTER_STAT_DATA_EXTRACTOR =
-      new StatDataExtractor(START_CHARACTER_EXTRACTOR, CHARACTER_AFTER_START_CHARACTER_EXTRACTOR);
+    new StatDataExtractor(START_CHARACTER_EXTRACTOR, CHARACTER_AFTER_START_CHARACTER_EXTRACTOR);
 
   private static final ISettings SETTINGS = Guice.createInjector(new SettingsModule()).getInstance(ISettings.class);
 
@@ -52,36 +50,26 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
   @VisibilityReducedForCLI
   List<Character> getCharacters(final List<String> tokens) {
     final List<String> filteredTokens = filter(tokens);
-
-    final StatData endCharactersStatData
-        = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
-    final StatData startCharactersStatData
-        = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
-
-    final List<CharacterStat> characterStats = getNormalizedCharactersStatistic(
-        startCharactersStatData, endCharactersStatData);
-    final List<CharacterStat> filteredCharactersStats
-        = filterTillFirsCharacter(characterStats);
+    final StatData endCharactersStatData = END_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
+    final StatData startCharactersStatData = START_CHARACTER_STAT_DATA_EXTRACTOR.parseStat(filteredTokens);
+    final List<CharacterStat> characterStats = getNormalizedCharactersStatistic(startCharactersStatData,
+      endCharactersStatData);
+    final List<CharacterStat> filteredCharactersStats = filterTillFirstCharacter(characterStats);
     return convertCharacterStatToCharacters(filteredCharactersStats);
   }
 
-  List<CharacterStat> filterTillFirsCharacter(final List<CharacterStat> characterStats) {
-    final OptionalInt firstIndex = IntStream
-        .range(0, characterStats.size())
-        .filter(i ->
-            Character
-                .isAlphabetic(characterStats.get(i).getCharacter()))
-        .findFirst();
-    if (!firstIndex.isPresent()) {
-      return Collections.emptyList();
-    }
-    return characterStats.subList(0, firstIndex.getAsInt());
+  List<CharacterStat> filterTillFirstCharacter(final List<CharacterStat> characterStats) {
+    Optional<CharacterStat> firstStat = characterStats
+      .stream()
+      .filter(stat -> isAlphabetic(stat.getCharacter()))
+      .findFirst();
+    return firstStat.isPresent() ? characterStats.subList(0, characterStats.indexOf(firstStat.get())) : emptyList();
   }
 
   List<Character> convertCharacterStatToCharacters(final List<CharacterStat> charactersStats) {
     return charactersStats.stream()
-        .map(CharacterStat::getCharacter)
-        .collect(Collectors.toList());
+      .map(CharacterStat::getCharacter)
+      .collect(toList());
   }
 
   @VisibleForTesting
@@ -89,28 +77,23 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
                                                        final StatData endCharactersStatData) {
     final Set<Character> allCharacters = new HashSet<>(startCharacterStatData.getAllCharacters());
     allCharacters.addAll(endCharactersStatData.getAllCharacters());
-    final List<CharacterStat> characterStats =
-        allCharacters
-            .stream()
-            .map(ch -> {
-              final double probability1 =
-                  startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
-              final double probability2 =
-                  endCharactersStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
-              return new CharacterStat(ch, Math.max(probability1, probability2));
-            }).collect(Collectors.toList());
-
-    Collections.sort(characterStats);
-    return characterStats;
+    return allCharacters.stream()
+      .map(ch -> {
+        final double probability1 = startCharacterStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
+        final double probability2 = endCharactersStatData.getProbabilityThatCharacterIsSplitterCharacter(ch);
+        return new CharacterStat(ch, Math.max(probability1, probability2));
+      })
+      .sorted()
+      .collect(toList());
   }
 
   @VisibleForTesting
   List<String> filter(final List<String> tokens) {
     return tokens.parallelStream()
-        .map(String::toLowerCase)
-        .map(TokenMappers::removeMultipleEndCharacters)
-        .filter(token -> token.length() > SETTINGS.minimalValuableTokenSizeForSentenceSplit())
-        .collect(Collectors.toList());
+      .map(String::toLowerCase)
+      .map(TokenMappers::removeMultipleEndCharacters)
+      .filter(token -> token.length() > SETTINGS.minimalValuableTokenSizeForSentenceSplit())
+      .collect(toList());
   }
 
   @VisibilityReducedForCLI
@@ -146,10 +129,7 @@ class StatSeparatorExtractor implements ISeparatorExtractor {
 
       CharacterStat that = (CharacterStat) o;
 
-      if (!character.equals(that.character)) return false;
-      if (!probabilityThatEndCharacter.equals(that.probabilityThatEndCharacter)) return false;
-
-      return true;
+      return character.equals(that.character) && probabilityThatEndCharacter.equals(that.probabilityThatEndCharacter);
     }
 
     @Override
