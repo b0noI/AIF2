@@ -1,11 +1,12 @@
 package io.aif.language.sentence.separators.classificators;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.Set;
 import java.util.function.Function;
@@ -46,24 +47,22 @@ class StatSeparatorGroupsClassifier implements ISeparatorGroupsClassifier {
     }
 
     final Function<Map<Character, Integer>, Map<Character, Double>> mapper = map -> {
-      final Map<Character, Double> mappingResult = new HashMap<>();
       final OptionalInt max = map.entrySet().stream().mapToInt(Map.Entry::getValue).max();
-      if (!max.isPresent()) {
-        return mappingResult;
+      if (max.isPresent()) {
+        return map.entrySet()
+          .stream()
+          .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue() / (double) max.getAsInt()));
       }
-      map.keySet()
-          .forEach(key -> mappingResult.put(key, (double) map.get(key) / (double) max.getAsInt()));
-      return mappingResult;
+      return Collections.emptyMap();
     };
 
     final Function<Map<Character, Double>, Map<Character, Double>> filter = map -> {
       final Map<Character, Double> filteredResults = new HashMap<>();
 
-      final List<Map.Entry<Character, Double>> list =
-          map.entrySet()
-              .stream()
-              .sorted((e1, e2) -> e1.getValue().compareTo(e2.getValue()))
-              .collect(Collectors.toList());
+      final List<Map.Entry<Character, Double>> list = map.entrySet()
+        .stream()
+        .sorted(Comparator.comparing(Map.Entry::getValue))
+        .collect(Collectors.toList());
 
       for (int i = (int) ((double) list.size() * .7); i < list.size(); i++) {
         filteredResults.put(list.get(i).getKey(), list.get(i).getValue());
@@ -72,10 +71,9 @@ class StatSeparatorGroupsClassifier implements ISeparatorGroupsClassifier {
       return filteredResults;
     };
 
-    final Map<Integer, Map<Character, Double>> convertedGroupsMap = new HashMap<>();
-
-    connections.keySet().forEach(key ->
-        convertedGroupsMap.put(key, mapper.andThen(filter).apply(connections.get(key))));
+    final Map<Integer, Map<Character, Double>> convertedGroupsMap = connections.entrySet()
+      .stream()
+      .collect(Collectors.toMap(Map.Entry::getKey, e -> mapper.andThen(filter).apply(e.getValue())));
 
     final List<Double> p = new ArrayList<>();
     for (int i = 0; i < separatorsGroups.size(); i++) {
@@ -99,37 +97,33 @@ class StatSeparatorGroupsClassifier implements ISeparatorGroupsClassifier {
   }
 
   private double distance(final Map<Character, Double> from, final Map<Character, Double> to) {
-    final OptionalDouble averager = from.keySet().stream().mapToDouble(key -> {
-      if (!to.keySet().contains(key))
-        return .0;
-
-      return (from.get(key) + to.get(key)) / 2.;
-    }).average();
-    if (!averager.isPresent()) {
-      return .0;
-    }
-    return averager.getAsDouble();
+    return from.keySet()
+      .stream()
+      .filter(to::containsKey)
+      .mapToDouble(key -> (from.get(key) + to.get(key)) / 2.)
+      .average()
+      .orElse(.0);
   }
 
   private List<Integer> mapTokensToGroups(final List<String> tokens,
                                           final List<Set<Character>> separatorsGroups) {
     return tokens
-        .stream()
-        .map(
-            token -> {
-              if (token.isEmpty()) return 0;
-              for (Integer i = 0; i < separatorsGroups.size(); i++) {
-                final Set<Character> separatorGroup = separatorsGroups.get(i);
-                if (separatorGroup.contains(token.charAt(0))) {
-                  return i + 1;
-                }
-                if (separatorGroup.contains(token.charAt(token.length() - 1))) {
-                  return i + 1;
-                }
-              }
-              return 0;
+      .stream()
+      .map(
+        token -> {
+          if (token.isEmpty()) return 0;
+          for (Integer i = 0; i < separatorsGroups.size(); i++) {
+            final Set<Character> separatorGroup = separatorsGroups.get(i);
+            if (separatorGroup.contains(token.charAt(0))) {
+              return i + 1;
             }
-        ).collect(Collectors.toList());
+            if (separatorGroup.contains(token.charAt(token.length() - 1))) {
+              return i + 1;
+            }
+          }
+          return 0;
+        }
+      ).collect(Collectors.toList());
   }
 
 }

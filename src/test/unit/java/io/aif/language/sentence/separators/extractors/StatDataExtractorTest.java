@@ -1,8 +1,9 @@
 package io.aif.language.sentence.separators.extractors;
 
+import com.google.common.collect.ImmutableList;
+
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class StatDataExtractorTest {
   @Test(groups = "unit-tests")
   public void testParseStat() throws Exception {
     // input arguments
-    final List<String> tokens = Arrays.asList(new String[]{"12", "token"});
+    final List<String> tokens = ImmutableList.of("12", "token");
 
     // mocks
 
@@ -30,8 +31,8 @@ public class StatDataExtractorTest {
 
     // creating test instance
     final StatDataExtractor statDataExtractor = new StatDataExtractor(
-        str -> Optional.of(str.charAt(0)),
-        str -> Optional.of(str.charAt(0))) {
+      str -> Optional.of(str.charAt(0)),
+      str -> Optional.of(str.charAt(0))) {
 
       @Override
       void parsToken(final String token, final StatData statData) {
@@ -66,7 +67,7 @@ public class StatDataExtractorTest {
 
     // creating test instance
     final StatDataExtractor statDataExtractor =
-        new StatDataExtractor(mockFirstExtractor, mockSecondExtractor);
+      new StatDataExtractor(mockFirstExtractor, mockSecondExtractor);
 
     // execution test
     statDataExtractor.parsToken(inputToken, mockStatData);

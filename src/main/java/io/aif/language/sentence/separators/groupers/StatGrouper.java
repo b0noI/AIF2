@@ -6,6 +6,7 @@ import com.google.inject.Guice;
 import org.javatuples.Pair;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -28,32 +29,29 @@ class StatGrouper implements ISeparatorsGrouper {
   public List<Set<Character>> group(final List<String> tokens, final List<Character> splitters) {
     final List<String> filteredTokens = filterTokens(tokens);
     final Map<Character, Map<Character, Integer>> connections =
-        parsConnections(filteredTokens, splitters);
+      parsConnections(filteredTokens, splitters);
     filterConnections(connections);
-    final List<CharactersGroup> groups = parsGroup(connections);
+    final List<CharactersGroup> groups = parseGroup(connections);
     return convert(groups);
   }
 
   @VisibleForTesting
   List<Set<Character>> convert(final List<CharactersGroup> groups) {
     return groups
-        .stream()
-        .map(CharactersGroup::getSplitters)
-        .collect(Collectors.toList());
+      .stream()
+      .map(CharactersGroup::getSplitters)
+      .collect(Collectors.toList());
   }
 
   @VisibleForTesting
-  List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections) {
+  List<CharactersGroup> parseGroup(final Map<Character, Map<Character, Integer>> connections) {
     double limit = START_LIMIT;
     double prevLimit = 1.;
     List<CharactersGroup> lastCorrectResult = null;
     do {
-      final List<CharactersGroup> result = parsGroup(connections, limit);
+      final List<CharactersGroup> result = parseGroup(connections, limit);
       if (Math.abs(prevLimit - limit) < SETTINGS.splitterCharactersGrouperSearchStep()) {
-        if (lastCorrectResult != null) {
-          return lastCorrectResult;
-        }
-        return result;
+        return lastCorrectResult == null ? result : lastCorrectResult;
       }
       if (result.size() >= 2) {
         if (result.size() == 2) {
@@ -68,24 +66,24 @@ class StatGrouper implements ISeparatorsGrouper {
   }
 
   @VisibleForTesting
-  List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections,
-                                  final double limit) {
+  List<CharactersGroup> parseGroup(final Map<Character, Map<Character, Integer>> connections,
+                                   final double limit) {
     final List<CharactersGroup> groups = new ArrayList<>();
     connections
-        .keySet()
-        .stream()
-        .sorted((key1, key2) -> ((Integer) connections.get(key1).keySet().size())
-            .compareTo(connections.get(key2).keySet().size()))
-        .forEach(
-            key -> {
-              if (connections.get(key).isEmpty()) return;
-              if (connections.get(key).keySet().size() <= 3) return;
+      .keySet()
+      .stream()
+      .sorted((key1, key2) -> ((Integer) connections.get(key1).keySet().size())
+        .compareTo(connections.get(key2).keySet().size()))
+      .forEach(
+        key -> {
+          if (connections.get(key).isEmpty()) return;
+          if (connections.get(key).keySet().size() <= 3) return;
 
-              final Map<Character, Double> characters = convertConnections(connections.get(key));
+          final Map<Character, Double> characters = convertConnections(connections.get(key));
 
-              addCharactersToGroup(characters, key, groups, limit);
-            }
-        );
+          addCharactersToGroup(characters, key, groups, limit);
+        }
+      );
     return groups;
   }
 
@@ -98,9 +96,9 @@ class StatGrouper implements ISeparatorsGrouper {
     tmpCharactersGroup.normalize();
 
     final Optional<Pair<CharactersGroup, Double>> closesGroupOpt = groups.stream()
-        .map(group -> new Pair<>(group, group.closeTo(tmpCharactersGroup.groupCharacters)))
-        .sorted((p1, p2) -> p2.getValue1().compareTo(p1.getValue1()))
-        .findFirst();
+      .map(group -> new Pair<>(group, group.closeTo(tmpCharactersGroup.groupCharacters)))
+      .sorted((p1, p2) -> p2.getValue1().compareTo(p1.getValue1()))
+      .findFirst();
 
     if (closesGroupOpt.isPresent()) {
       final Pair<CharactersGroup, Double> closesGroupPair = closesGroupOpt.get();
@@ -118,13 +116,10 @@ class StatGrouper implements ISeparatorsGrouper {
 
   @VisibleForTesting
   Map<Character, Double> convertConnections(final Map<Character, Integer> connections) {
-    final Map<Character, Double> convertedConnections = new HashMap<>();
-    connections.keySet().forEach(key1 -> {
-      final double sum =
-          (double) connections.keySet().stream().mapToInt(key2 -> connections.get(key2)).sum();
-      convertedConnections.put(key1, (double) connections.get(key1) / sum);
-    });
-    return convertedConnections;
+    final double sum = connections.keySet().stream().mapToDouble(connections::get).sum();
+    return connections.entrySet()
+      .stream()
+      .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue() / sum));
   }
 
   @VisibleForTesting
@@ -138,10 +133,9 @@ class StatGrouper implements ISeparatorsGrouper {
       final Map<Character, Integer> filteredConnection = new HashMap<>();
 
       final List<Character> keysSorted = currentConnection.keySet()
-          .stream()
-          .sorted((key1, key2) ->
-              currentConnection.get(key1).compareTo(currentConnection.get(key2)))
-          .collect(Collectors.toList());
+        .stream()
+        .sorted(Comparator.comparing(currentConnection::get))
+        .collect(Collectors.toList());
 
       for (int i = (int) ((double) keysSorted.size() * .8); i < keysSorted.size(); i++) {
         filteredConnection.put(keysSorted.get(i), currentConnection.get(keysSorted.get(i)));
@@ -154,15 +148,15 @@ class StatGrouper implements ISeparatorsGrouper {
   @VisibleForTesting
   List<String> filterTokens(final List<String> tokens) {
     return tokens
-        .parallelStream()
-        .map(TokenMappers::removeMultipleEndCharacters)
-        .map(token -> {
-          if (token.length() <= 3) {
-            return null;
-          }
-          return token;
-        })
-        .collect(Collectors.toList());
+      .parallelStream()
+      .map(TokenMappers::removeMultipleEndCharacters)
+      .map(token -> {
+        if (token.length() <= 3) {
+          return null;
+        }
+        return token;
+      })
+      .collect(Collectors.toList());
   }
 
   @VisibleForTesting
@@ -214,14 +208,12 @@ class StatGrouper implements ISeparatorsGrouper {
       if (groupCharacters.size() == 0) {
         return 1.;
       }
-
-      final double commonCharacters = characters.keySet().stream().mapToDouble(ch -> {
-        if (groupCharacters.keySet().contains(ch))
-          return characters.get(ch) * groupCharacters.get(ch);
-        return 0.;
-      }).sum();
-      return commonCharacters /
-          (double) Math.min(characters.size(), groupCharacters.size());
+      final double commonCharacters = characters.keySet().stream()
+        .filter(groupCharacters::containsKey)
+        .mapToDouble(key -> characters.get(key) * groupCharacters.get(key))
+        .sum();
+      final double min = (double) Math.min(characters.size(), groupCharacters.size());
+      return commonCharacters / min;
     }
 
     public Set<Character> getSplitters() {
@@ -230,7 +222,7 @@ class StatGrouper implements ISeparatorsGrouper {
 
     public void addCharacters(final Map<Character, Double> characters) {
       characters.entrySet().forEach(element -> {
-        if (groupCharacters.keySet().contains(element.getKey())) {
+        if (groupCharacters.containsKey(element.getKey())) {
           final double value = groupCharacters.get(element.getKey());
           groupCharacters.put(element.getKey(), (value + element.getValue()) / 2.);
         } else {
@@ -240,14 +232,12 @@ class StatGrouper implements ISeparatorsGrouper {
     }
 
     public void normalize() {
-      final OptionalDouble maxOpt =
-          groupCharacters.keySet().stream().mapToDouble(groupCharacters::get).max();
-      if (maxOpt.isPresent()) {
-        groupCharacters.keySet()
-            .stream()
-            .forEach(key ->
-                groupCharacters.put(key, groupCharacters.get(key) / maxOpt.getAsDouble()));
-      }
+      final OptionalDouble maxOpt = groupCharacters.keySet()
+        .stream()
+        .mapToDouble(groupCharacters::get)
+        .max();
+      maxOpt.ifPresent(max -> groupCharacters.keySet().forEach(key ->
+        groupCharacters.put(key, groupCharacters.get(key) / max)));
     }
 
     public void addSplitter(final Character splitter) {

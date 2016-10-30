@@ -66,7 +66,7 @@ public class StatGrouperTest {
       }
 
       @Override
-      List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections) {
+      List<CharactersGroup> parseGroup(final Map<Character, Map<Character, Integer>> connections) {
         assertEquals(connections, mockCharactersConnections);
         return new ArrayList<CharactersGroup>() {{
           add(mockCharactersGroup);
@@ -140,7 +140,7 @@ public class StatGrouperTest {
     final StatGrouper testInstance = new StatGrouper() {
 
       @Override
-      List<CharactersGroup> parsGroup(final Map<Character, Map<Character, Integer>> connections, final double limit) {
+      List<CharactersGroup> parseGroup(final Map<Character, Map<Character, Integer>> connections, final double limit) {
         assertEquals(connections, inputConnections);
         assertTrue(limit == .4 || limit == .2 || limit == .1 || limit == 0.15000000000000002);
         final List<CharactersGroup> result = mock(List.class);
@@ -159,7 +159,7 @@ public class StatGrouperTest {
     };
 
     // execution test
-    final List<StatGrouper.CharactersGroup> actualResult = testInstance.parsGroup(inputConnections);
+    final List<StatGrouper.CharactersGroup> actualResult = testInstance.parseGroup(inputConnections);
 
     // result assert
     assertEquals(actualResult.size(), 2);
@@ -200,7 +200,7 @@ public class StatGrouperTest {
 
     // execution test
     final List<StatGrouper.CharactersGroup> actualResult =
-        testInstance.parsGroup(inputConnections, 0.5);
+        testInstance.parseGroup(inputConnections, 0.5);
 
     // result assert
     assertEquals(actualResult.size(), 0);
@@ -250,7 +250,7 @@ public class StatGrouperTest {
 
     // execution test
     final List<StatGrouper.CharactersGroup> actualResult =
-        testInstance.parsGroup(inputConnections, 0.3);
+        testInstance.parseGroup(inputConnections, 0.3);
 
     // result assert
     assertEquals(actualResult.size(), 1);

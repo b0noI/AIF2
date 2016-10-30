@@ -7,7 +7,7 @@ import java.util.Optional;
 class PredefinedSeparatorExtractor implements ISeparatorExtractor {
 
   private static final List<Character> SEPARATORS =
-      Arrays.asList('.', '!', '?', '(', ')', '[', ']', '{', '}', ';', '\'', '\"');
+    Arrays.asList('.', '!', '?', '(', ')', '[', ']', '{', '}', ';', '\'', '\"');
 
   @Override
   public Optional<List<Character>> extract(List<String> tokens) {
